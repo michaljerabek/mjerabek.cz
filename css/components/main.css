@@ -1,0 +1,193 @@
+/*====================================================================*/
+/*-------------------------- GENERAL STYLES --------------------------*/
+/*====================================================================*/
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    min-width: 320px;
+
+    font-family: sans-serif;
+}
+
+b,
+strong {
+    font-weight: bold;
+}
+
+i,
+em {
+    font-style: italic;
+}
+
+s {
+    text-decoration: line-through;
+}
+
+/* Zobrazí inline obsah před/za elementem podle jeho data-atributu.
+ * Vhodné pro oddělení obsahu. */
+[data-before]:before {
+    content: attr(data-before);
+}
+
+[data-after]:after {
+    content: attr(data-after);
+}
+
+/* Skryje obsah podle velikosti viewportu. */
+@media (min-width: 1024px) {
+
+    html .x-desktop.x-desktop {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    html .x-tablet.x-tablet {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+
+    html .x-mobile.x-mobile {
+        display: none;
+    }
+}
+
+/* Skryje obsah, pokud je zapnutý/vypnutý JavaScript. */
+html.no-js .x-no-js,
+html.js .x-js,
+.no-js .if-no-js-hidden,
+.js .if-js-hidden {
+    display: none;
+}
+
+/* Vyzuálně skryje obsah, ale zůstane přístupný. */
+.js .if-js-visually-hidden,
+.visually-hidden {
+    position: absolute;
+
+    height: 1px;
+    width: 1px;
+    padding: 0;
+    margin: -1px;
+
+    border: 0;
+
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+/*--------------------------------------------------------------------*/
+/*------------------------------ LAYOUT ------------------------------*/
+/*--------------------------------------------------------------------*/
+
+* {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+:after, :before {
+    -webkit-box-sizing: inherit;
+       -moz-box-sizing: inherit;
+            box-sizing: inherit;
+}
+
+/* Zajišťuje, aby byla patička vždy dole.
+ * Nastavení velikosti je v page-footer.css. */
+.layout__push-footer {
+    min-height: 100%;
+}
+
+.layout__push-footer:after {
+    content: "";
+
+    display: block;
+}
+
+.layout__half {
+    width: 50%;
+}
+
+.layout__third {
+    width: 33.3333%;
+    width: calc(100% / 3);
+}
+
+.layout__quarter {
+    width: 25%;
+}
+
+.layout__left {
+    float: left;
+}
+
+.layout__right {
+    float: right;
+}
+
+.layout__clear {
+    clear: both;
+}
+
+/* Zarovná osbah do středu stránky. */
+.layout__center {
+    max-width: 1260px;
+    padding: 0 30px;
+    margin: 0px auto;
+}
+
+@media (max-width: 767px) {
+
+    .layout__center {
+        padding: 0 20px;
+    }
+}
+
+/* Zalomí inline obsah podle velikosti viewportu. */
+.layout__br--all:before {
+    content: "\A";
+
+    display: block;
+
+    white-space: nowrap;
+}
+
+@media (min-width: 1024px) {
+
+    .layout__br--desktop:before {
+        content: "\A";
+
+        display: block;
+
+        white-space: nowrap;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    .layout__br--tablet:before {
+        content: "\A";
+
+        display: block;
+
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .layout__br--mobile:before {
+        content: "\A";
+
+        display: block;
+
+        white-space: nowrap;
+    }
+}

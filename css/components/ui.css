@@ -1,0 +1,248 @@
+/*--------------------------------------------------------------------*/
+/*-------------------------------- UI --------------------------------*/
+/*--------------------------------------------------------------------*/
+
+/* Outline zaměřovatelných elementů. */
+a:not(.btn):focus {
+    outline: 1px dotted rgba(0, 0, 0, 0.5);
+}
+
+/*---------------------------- TRANSITION ----------------------------*/
+
+/* Univerzální transition.
+ * Lze přidat jakémukoliv elementu.
+ * Pokud bude element s třídou .transition uvnitř elementu,
+ * který má :hover, :focus nebo :active, bude se chovat stejně,
+ * jako kdyby i tento element měl :hover, :focus nebo :active. */
+a,
+.transition,
+a .transition {
+    transition: all 0.275s cubic-bezier(.5, .25, .5, 1) 0s;
+}
+
+a:hover,
+a:focus,
+.transition:hover,
+.transition:focus,
+a:hover .transition,
+a:focus .transition,
+.transition:hover .transition,
+.transition:focus .transition,
+.transition-hidable:hover .transition,
+.transition-hidable:focus .transition {
+    transition: all 0.125s ease-out 0s;
+}
+
+.transition:active,
+a:active,
+a:active .transition,
+.transition:active .transition,
+.transition-hidable:active .transition {
+    transition: all 0.05s ease-out 0s;
+}
+
+/* Transition animující vzhled stejně jako základní .transition,
+ * ale upravený pro animaci výšky elementu, která zůstane
+ * konzistentní i při změně stavu na :hover, :focus nebo :active. */
+.transition-hideable,
+a .transition-hideable {
+    transition:
+        all            0.3s   ease                          0s,
+        color          0.275s cubic-bezier(.5, .25, .5, 1)  0s,
+        transform      0.275s cubic-bezier(.5, .25, .5, 1)  0s,
+        border-radius  0.275s cubic-bezier(.5, .25, .5, 1)  0s,
+        border-color   0.275s cubic-bezier(.5, .25, .5, 1)  0s,
+        filter         0.275s cubic-bezier(.5, .25, .5, 1)  0s,
+        -webkit-filter 0.275s cubic-bezier(.5, .25, .5, 1)  0s,
+        background     0.275s cubic-bezier(.5, .25, .5, 1)  0s;
+}
+
+.transition-hideable:hover,
+.transition-hideable:focus,
+.transition-hideable:hover .transition-hideable,
+.transition-hideable:focus .transition-hideable,
+.transition:hover .transition-hideable,
+.transition:focus .transition-hideable,
+a:hover .transition-hideable,
+a:focus .transition-hideable {
+    transition:
+        all            0.3s   ease     0s,
+        color          0.125s ease-out 0s,
+        transform      0.125s ease-out 0s,
+        border-radius  0.125s ease-out 0s,
+        border-color   0.125s ease-out 0s,
+        filter         0.125s ease-out 0s,
+        -webkit-filter 0.125s ease-out 0s,
+        background     0.125s ease-out 0s;
+}
+
+.transition-hideable:active,
+.transition-hideable:active .transition-hideable,
+.transition:active .transition-hideable,
+a:active .transition-hideable {
+    transition:
+        all            0.3s  ease     0s,
+        color          0.05s ease-out 0s,
+        transform      0.05s ease-out 0s,
+        border-radius  0.05s ease-out 0s,
+        border-color   0.05s ease-out 0s,
+        filter         0.05s ease-out 0s,
+        -webkit-filter 0.05s ease-out 0s,
+        background     0.05s ease-out 0s;
+}
+
+/*//////////////////////////// TRANSITION ////////////////////////////*/
+
+/*---------------------------- ICONS ----------------------------*/
+
+/* Přidá elementům ikonu (sprite). */
+.icon {
+    position: relative;
+
+    display: inline-block;
+
+    background: url("../../img/sprites.png") no-repeat;
+}
+
+.icon-before,
+.icon-after {
+    position: relative;
+}
+
+.icon-before:before,
+.icon-after:after {
+    content: "";
+
+    position: absolute;
+
+    background: url("../../img/sprites.png") no-repeat;
+}
+
+/* Pro elementy button. */
+.icon-btn {
+    background: url("../../img/sprites.png") no-repeat;
+    border: none;
+    border-radius: 0px;
+    cursor: pointer;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+
+    touch-action: manipulation;
+
+    transition: all 0.275s cubic-bezier(.5, .25, .5, 1) 0s;
+}
+
+.icon-btn::-moz-focus-inner {
+    padding: 0;
+
+    border: 0;
+}
+
+.icon-btn:hover,
+.icon-btn:focus {
+    transition: all 0.125s ease-out 0s;
+}
+
+.icon-btn:active {
+    transition: all 0.05s ease-out 0s;
+}
+
+/*//////////////////////////// ICONS ////////////////////////////*/
+
+/*--------------------------------------------------------------------*/
+/*------------------------------ INPUTS ------------------------------*/
+/*--------------------------------------------------------------------*/
+
+/* Vizuálně skryje element.
+ * Slouží hlavně pro skrytí checkboxů použitých jako přepínače obsahu,
+ * kde nemá být checkbox vidět a přepíná se labelem. */
+.ui__hidden-toggle {
+    position: absolute;
+
+    opacity: 0;
+    filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+}
+
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="email"],
+input[type="number"],
+input[type="step"],
+input[type^="date"],
+input[type="time"] {
+    background: none;
+    border: none;
+    border-radius: 0px;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+
+    transition:
+        color            0.275s cubic-bezier(.5, .25, .5, 1) 0s,
+        border-color     0.275s cubic-bezier(.5, .25, .5, 1) 0s,
+        opacity          0.275s cubic-bezier(.5, .25, .5, 1) 0s,
+        background-color 0.275s cubic-bezier(.5, .25, .5, 1) 0s,
+        filter           0.275s cubic-bezier(.5, .25, .5, 1) 0s,
+        -webkit-filter   0.275s cubic-bezier(.5, .25, .5, 1) 0s,
+        height           0.3s   ease                         0s,
+        width            0.3s   ease                         0s,
+        border-width     0.3s   ease                         0s,
+        margin           0.3s   ease                         0s,
+        padding          0.3s   ease                         0s,
+        line-height      0.3s   ease                         0s;
+}
+
+/*
+input::-ms-clear {
+    display: none;
+}
+
+input::-ms-reveal {
+    display: none;
+}
+*/
+/*
+select::-ms-expand {
+    display: none;
+}
+*/
+
+select:hover,
+textarea:hover,
+input[type="text"]:hover,
+input[type="password"]:hover,
+input[type="search"]:hover,
+input[type="tel"]:hover,
+input[type="email"]:hover,
+input[type="number"]:hover,
+input[type="step"]:hover,
+input[type^="date"]:hover,
+input[type="time"]:hover,
+select:focus,
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="step"]:focus,
+input[type^="date"]:focus,
+input[type="time"]:focus {
+    transition:
+        color            0.125s ease-out 0s,
+        border-color     0.125s ease-out 0s,
+        opacity          0.125s ease-out 0s,
+        background-color 0.125s ease-out 0s,
+        filter           0.125s ease-out 0s,
+        -webkit-filter   0.125s ease-out 0s,
+        height           0.3s   ease     0s,
+        width            0.3s   ease     0s,
+        border-width     0.3s   ease     0s,
+        margin           0.3s   ease     0s,
+        padding          0.3s   ease     0s,
+        line-height      0.3s   ease     0s;
+}
