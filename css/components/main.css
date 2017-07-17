@@ -193,101 +193,27 @@ html.js .x-js,
 }
 
 
-.intro__logo-svg {
-    transform: scale(1.5) rotate(45deg);
+@media (min-width: 480px) and (max-width: 639px) {
 
-    opacity: 0;
+    .layout__br--mobile-m:before {
+        content: "\A";
 
-    animation: show-logo-svg 3s cubic-bezier(.2, .7, .5, 1) 0s forwards 1;
-    will-change: transform;
-}
+        display: block;
 
-.intro__logo-svg + .intro__logo-svg {
-    margin-left: -100px;
-
-    animation: show-logo-svg 3s cubic-bezier(.2, .7, .5, 1) 0.2s forwards 1;
-}
-
-.intro__logo-svg path {
-    stroke-width: 1;
-    stroke-dasharray: 180;
-    stroke-dashoffset: -180;
-
-    will-change: transform;
-}
-
-.intro__logo-svg path:nth-child(2) {
-    display: none;
-}
-
-.intro__logo-svg + .intro__logo-svg path:nth-child(2) {
-    display: block;
-}
-
-.intro__logo-svg + .intro__logo-svg path:nth-child(1) {
-    display: none;
-}
-
-.intro__logo-svg path:nth-child(1) {
-    transform: translateY(10px);
-
-    stroke: #111111;
-    fill: transparent;
-
-    animation: show-logo-path-draw 1.5s cubic-bezier(.5, .15, .65, .9) 0s forwards 1,
-        show-logo-path-transform 3s cubic-bezier(.2, .7, .5, 1) 0s forwards 1,
-        show-logo-path-fill-1 1.5s ease 1.5s forwards 1;
-}
-
-.intro__logo-svg path:nth-child(2) {
-    transform: translateY(-10px);
-
-    stroke: #b19653;
-    fill: transparent;
-
-    animation: show-logo-path-draw 1.5s cubic-bezier(.5, .15, .65, .9) 0.2s forwards 1,
-        show-logo-path-transform 3s cubic-bezier(.2, .7, .5, 1) 0.2s forwards 1,
-        show-logo-path-fill-2 1.5s ease 1.7s forwards 1;
-}
-
-@keyframes show-logo-svg {
-    75% {
-        opacity: 1;
-    }
-    100% {
-        transform: scale(1) rotate(0deg);
-
-        opacity: 1;
+        white-space: nowrap;
     }
 }
 
-@keyframes show-logo-path-draw {
-    to {
-        stroke-dashoffset: 0;
+@media (max-width: 479px) {
+
+    .layout__br--mobile-s:before {
+        content: "\A";
+
+        display: block;
+
+        white-space: nowrap;
     }
 }
-
-@keyframes show-logo-path-transform {
-    to {
-        transform: translateY(0px);
-    }
-}
-
-@keyframes show-logo-path-fill-1 {
-    to {
-        stroke-width: 0;
-        fill: #111111;
-    }
-}
-
-@keyframes show-logo-path-fill-2 {
-    to {
-        stroke-width: 0;
-        fill: #b19653;
-    }
-}
-
-
 
 
 

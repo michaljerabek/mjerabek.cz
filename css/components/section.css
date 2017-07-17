@@ -1,0 +1,92 @@
+/*====================================================================*/
+/*------------------------------ SECTION -----------------------------*/
+/*====================================================================*/
+
+.section {
+    position: relative;
+
+	min-height: 100vmin;
+}
+/*
+
+.section::after {
+    content: "";
+
+    position: absolute;
+    top: 50%;
+    left: 0;
+
+    width: 100%;
+
+    border-top: 1px solid #f00;
+}
+
+.section::before {
+    content: "";
+
+    position: absolute;
+    top: 0%;
+    left: 50%;
+
+    height: 100%;
+
+    border-left: 1px solid #f00;
+}
+*/
+
+/*--------------------------------------------------------------------*/
+/*---------------------------- BACKGROUND ----------------------------*/
+/*--------------------------------------------------------------------*/
+
+.section__background {
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    pointer-events: none;
+}
+
+    .section__background-layer {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        transform: translate(-50%, -50%);
+
+        width: 100%;
+        height: 100%;
+    }
+
+        .section__background-layer .square {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            transform: translate(223.5px, 223.5px) rotate(45deg);
+
+            width: 1080px;
+            height: 1080px;
+
+            border-width: 1px;
+            border-style: solid;
+
+            pointer-events: auto;
+
+            will-change: transform, opacity, background-color, border-color;
+        }
+
+
+@media (min-width: 1024px) {
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+}
+
+@media (max-width: 767px) {
+}

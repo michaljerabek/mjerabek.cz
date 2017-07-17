@@ -3,6 +3,10 @@
 /*--------------------------------------------------------------------*/
 
 /* Outline zaměřovatelných elementů. */
+a:not(.btn) {
+    outline: 1px dotted rgba(0, 0, 0, 0);
+}
+
 a:not(.btn):focus {
     outline: 1px dotted rgba(0, 0, 0, 0.5);
 }
