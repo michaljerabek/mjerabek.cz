@@ -34,6 +34,10 @@
 }
 */
 
+.section:not(.intro):nth-child(odd) {
+    background-color: #111;
+}
+
 /*--------------------------------------------------------------------*/
 /*---------------------------- BACKGROUND ----------------------------*/
 /*--------------------------------------------------------------------*/
@@ -61,6 +65,10 @@
 
         width: 100%;
         height: 100%;
+
+        overflow: hidden;
+
+        will-change: transform;
     }
 
         .section__background-layer .square {
@@ -78,7 +86,7 @@
 
             pointer-events: auto;
 
-            will-change: transform, opacity, background-color, border-color;
+            will-change: opacity;
         }
 
 

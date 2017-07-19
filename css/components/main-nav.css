@@ -8,6 +8,8 @@
     left: 0;
     z-index: 999;
 
+    transform: translateY(0%);
+
     width: 100%;
 
     background-color: transparent;
@@ -18,7 +20,16 @@
 
     transition: background-color 1.5s cubic-bezier(.25, .65, .2, 1) 0s,
         border-color 1.5s cubic-bezier(.25, .65, .2, 1) 0s,
-        box-shadow 1.5s cubic-bezier(.25, .65, .2, 1) 0s;
+        box-shadow 1.5s cubic-bezier(.25, .65, .2, 1) 0s,
+        transform 1.5s cubic-bezier(.25, .65, .2, 1) 0s,
+        opacity 0.5s ease 0s;
+    animation: show--init 2.25s linear 0s 1 backwards,
+        show 1.75s ease-out 2.25s 1 backwards;
+}
+
+.main-nav--stop-anim {
+    animation-duration: 0s, 0s;
+    animation-delay: 0s, 0s;
 }
 
 .main-nav--fixed {
@@ -27,16 +38,101 @@
     background-color: #fff;
     border-bottom-color: #CEB77E;
     box-shadow: 0px 0px 5px rgba(17, 17, 17, 0.35);
+    opacity: 1;
 
     pointer-events: auto;
 
     transition: background-color 0.3s ease-out 0s,
         border-color 0.3s ease-out 0s,
-        box-shadow 0.3s ease-out 0s;
+        box-shadow 0.3s ease-out 0s,
+        transform 0.75s cubic-bezier(.2, .55, .25, 1) 0s,
+        opacity 0.75s ease-out 0s,
+        z-index 0.75s ease-out 0s;
+    animation-duration: 0s, 0s;
+    animation-delay: 0s, 0s;
 }
+
+.main-nav--fixed.main-nav--hidden {
+    transform: translateY(-100%);
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+.main-nav:focus-within {
+    --focus-within: true;
+}
+
+.main-nav:active,
+.main-nav:hover {
+    --pointer: true;
+}
+
+.main-nav--fixed.mian-nav--hidden:focus-within,
+.main-nav--fixed:focus-within {
+    transform: translateY(0%);
+
+    opacity: 1;
+
+    pointer-events: auto;
+}
+
+.main-nav:active,
+.main-nav:hover {
+    transform: translateY(0%);
+
+    opacity: 1;
+
+    pointer-events: auto;
+}
+
+/*skrytý element pro otevření menu*/
+.main-nav--fixed::after {
+    content: "";
+
+    position: absolute;
+    top: calc(100% + 2px);
+    left: 0px;
+    z-index: -1;
+
+    transform: translateY(-100%);
+
+    width: 100%;
+    height: calc(100% + 3px);
+
+    pointer-events: auto;
+
+    transition: inherit;
+}
+
+.main-nav--hidden::after {
+    z-index: 2;
+
+    transform: translateY(0%);
+}
+
+.main-nav--fixed.mian-nav--hidden:focus-within::after,
+.main-nav--fixed:focus-within::after {
+    z-index: -1;
+
+    transform: translateY(-100%);
+}
+
+.main-nav:active::after,
+.main-nav:hover::after {
+    z-index: -1;
+
+    transform: translateY(-100%);
+}
+/*/skrytý element pro otevření menu*/
 
     .main-nav__items {
         font-size: 0rem;
+    }
+
+    .main-nav__items:focus {
+        outline: none;
     }
 
         .main-nav__item {
@@ -58,13 +154,14 @@
                 pointer-events: auto;
             }
 
+                .main-nav__link:hover .text,
+                .main-nav__link:focus .text,
+                .main-nav__link:active .text,
                 .main-nav__link .text {
                     transition-property: color;
                 }
 
-                .main-nav__items:not(:hover) .main-nav__item--active .main-nav__link .text,
-                .main-nav__items:hover .main-nav__item--logo:hover + .main-nav__item--active .main-nav__link .text,
-                .main-nav__items:hover .main-nav__item--logo:focus + .main-nav__item--active .main-nav__link .text,
+                .main-nav__item--active .main-nav__link .text,
                 .main-nav__link:active .text,
                 .main-nav__link:hover .text,
                 .main-nav__link:focus .text {
@@ -141,12 +238,18 @@
 
             @media (min-width: 768px) {
 
+                .main-nav__link:hover,
+                .main-nav__link:focus,
+                .main-nav__link:active,
                 .main-nav__link {
                     transition: line-height 1.5s cubic-bezier(.25, .65, .2, 1) 0s,
                         height 1.5s cubic-bezier(.25, .65, .2, 1) 0s,
                         padding 1.5s cubic-bezier(.25, .65, .2, 1) 0s;
                 }
 
+                .main-nav--fixed .main-nav__link:hover,
+                .main-nav--fixed .main-nav__link:focus,
+                .main-nav--fixed .main-nav__link:active,
                 .main-nav--fixed .main-nav__link {
                     transition: line-height 0.75s cubic-bezier(.2, .55, .25, 1) 0s,
                         height 0.75s cubic-bezier(.2, .55, .25, 1) 0s,
@@ -462,6 +565,7 @@
                 border-bottom: 2px solid transparent;
                 box-shadow: 0px 0px 0px rgba(17, 17, 17, 0);
                 opacity: 0;
+                visibility: hidden;
 
     /*            clip-path: inset(0px 0px -10px -10px); bug v Chromu*/
                 clip: rect(0px, auto, 1000px, -10px);
@@ -477,7 +581,8 @@
                     padding 0.4s cubic-bezier(0.15, .65, .65, .875) 0.4s,
                     max-height 0.4s cubic-bezier(0.15, .65, .65, .875) 0.4s,
                     margin-top 0.4s cubic-bezier(0.15, .65, .65, .875) 0.4s,
-                    opacity 0.3s ease 0.6s;
+                    opacity 0.3s ease 0.6s,
+                    visibility 0s linear 0.9s;
             }
 
             .main-nav__items::-webkit-scrollbar {
@@ -495,7 +600,8 @@
                     padding 0.4s cubic-bezier(0.15, .65, .65, .875) 0.4s,
                     max-height 0.4s cubic-bezier(0.15, .65, .65, .875) 0.4s,
                     margin-top 0.4s cubic-bezier(0.15, .65, .65, .875) 0.4s,
-                    opacity 0.3s ease 0.6s;
+                    opacity 0.3s ease 0.6s,
+                    visibility 0s linear 0.9s;
             }
 
             @media (min-height: 767px) and (max-width: 767px) {
@@ -572,6 +678,7 @@
                 background-color: #f9f9f9;
                 border-color: #CEB77E;
                 opacity: 1;
+                visibility: visible;
 
                 pointer-events: all;
 
@@ -670,8 +777,10 @@
 
                 @media (max-width: 767px) {
 
-/*                    .main-nav__item.main-nav__item--active .main-nav__link,*/
-                    .main-nav__item .main-nav__link {
+                    .main-nav__link:hover,
+                    .main-nav__link:focus,
+                    .main-nav__link:active,
+                    .main-nav__link {
                         display: flex;
                         padding: 0 40px;
 
@@ -683,6 +792,9 @@
                         transition: line-height 0.4s cubic-bezier(0.15, .65, .65, .875) 0.4s;
                     }
 
+                    #main-nav__mobile-opener:checked ~ .main-nav__wrapper .main-nav__item .main-nav__link:hover,
+                    #main-nav__mobile-opener:checked ~ .main-nav__wrapper .main-nav__item .main-nav__link:focus,
+                    #main-nav__mobile-opener:checked ~ .main-nav__wrapper .main-nav__item .main-nav__link:active,
                     #main-nav__mobile-opener:checked ~ .main-nav__wrapper .main-nav__item .main-nav__link {
                         line-height: 2.5rem;
 

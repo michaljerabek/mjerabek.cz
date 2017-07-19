@@ -4,7 +4,7 @@
 
     <meta charset="UTF-8">
 
-    <title>Front-End kodér</title>
+    <title>Michal Jeřábek — Front-End kodér</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
@@ -46,10 +46,10 @@
 
     <!--–––––––– ** INTRO | SECTION ** –––––––––-->
 
-    <header class="intro section" id="uvod">
+    <header class="intro section" id="uvod" data-main-nav-target="true" data-main-nav-active=".main-nav__item:eq(1) .main-nav__link">
 
         <div class="section__background intro__background">
-            <div class="section__background-layer intro__background-layer">
+            <div class="section__background-layer intro__background-layer" data-parallax-reverse="scroll">
                 <div class="square"><!-- css --></div>
             </div>
             <div class="section__background-layer intro__background-layer">
@@ -58,7 +58,7 @@
             <div class="section__background-layer intro__background-layer">
                 <div class="square"><!-- css --></div>
             </div>
-            <div class="section__background-layer intro__background-layer">
+            <div class="section__background-layer intro__background-layer" data-parallax-reverse="scroll">
                 <div class="square"><!-- css --></div>
             </div>
         </div>
@@ -79,17 +79,17 @@
 
                 <h2 class="visually-hidden">Hlavní menu</h2>
 
-                <a href="#uvod" class="main-nav__mobile-logo x-desktop x-tablet">
+                <a class="main-nav__mobile-logo x-desktop x-tablet" href="#uvod" title="Úvod">
                     <svg class="main-nav__mobile-logo-svg transition" width="48" height="48" viewBox="0 0 100 100">
                         <path d="M16.809,38.718c-0.162,-0.227 -0.244,-0.488 -0.244,-0.781c0,-0.097 0,-0.195 0,-0.293c0.065,-0.488 0.537,-1.074 1.416,-1.758c0,0 38.395,-30.371 38.916,-30.371l-31.396,32.032l20.849,26.269c0.391,0.586 0.554,1.188 0.489,1.807c-0.065,0.358 -0.277,0.7 -0.635,1.025l-2.881,2.344c-0.391,0.325 -0.781,0.488 -1.172,0.488c-0.521,0 -1.041,-0.309 -1.562,-0.928l-23.78,-29.834Z" fill="#111111"/>
                         <path d="M82.65,63.6c0,0 -39.137,30.885 -39.66,30.885l31.523,-32.062l-20.983,-26.423c-0.457,-0.654 -0.62,-1.242 -0.49,-1.765c0.131,-0.425 0.36,-0.785 0.687,-1.079l2.892,-2.402c0.392,-0.327 0.784,-0.49 1.177,-0.49c0.522,0 1.045,0.31 1.568,0.931l23.482,29.562c0.393,0.49 0.589,0.931 0.589,1.323c0,0.196 -0.017,0.343 -0.049,0.441c-0.131,0.425 -0.376,0.785 -0.736,1.079Z" fill="#b19653"/>
                     </svg>
                 </a>
 
-                <ul class="main-nav__items">
+                <ul class="main-nav__items" tabindex="-1">
 
                     <li class="main-nav__item main-nav__item--logo x-mobile">
-                        <a href="#uvod" class="main-nav__link">
+                        <a href="#uvod" class="main-nav__link" title="Úvod">
                             <svg class="main-nav__item-svg transition" width="48" height="48" viewBox="0 0 100 100">
                                 <path d="M16.809,38.718c-0.162,-0.227 -0.244,-0.488 -0.244,-0.781c0,-0.097 0,-0.195 0,-0.293c0.065,-0.488 0.537,-1.074 1.416,-1.758c0,0 38.395,-30.371 38.916,-30.371l-31.396,32.032l20.849,26.269c0.391,0.586 0.554,1.188 0.489,1.807c-0.065,0.358 -0.277,0.7 -0.635,1.025l-2.881,2.344c-0.391,0.325 -0.781,0.488 -1.172,0.488c-0.521,0 -1.041,-0.309 -1.562,-0.928l-23.78,-29.834Z" fill="#111111"/>
                                 <path d="M82.65,63.6c0,0 -39.137,30.885 -39.66,30.885l31.523,-32.062l-20.983,-26.423c-0.457,-0.654 -0.62,-1.242 -0.49,-1.765c0.131,-0.425 0.36,-0.785 0.687,-1.079l2.892,-2.402c0.392,-0.327 0.784,-0.49 1.177,-0.49c0.522,0 1.045,0.31 1.568,0.931l23.482,29.562c0.393,0.49 0.589,0.931 0.589,1.323c0,0.196 -0.017,0.343 -0.049,0.441c-0.131,0.425 -0.376,0.785 -0.736,1.079Z" fill="#b19653"/>
@@ -98,37 +98,37 @@
                     </li>
 
                     <li class="main-nav__item main-nav__item--active">
-                        <a href="#uvod" class="main-nav__link">
+                        <a class="main-nav__link" href="#uvod">
                             <span class="text transition" data-small-caps="true">Úvod</span>
                         </a>
                     </li>
 
                     <li class="main-nav__item">
-                        <a href="#co-delam" class="main-nav__link">
+                        <a class="main-nav__link" href="#co-delam">
                             <span class="text transition" data-small-caps="true">Co dělám</span>
                         </a>
                     </li>
 
                     <li class="main-nav__item">
-                        <a href="#reference" class="main-nav__link">
+                        <a class="main-nav__link" href="#reference">
                             <span class="text transition" data-small-caps="true">Reference</span>
                         </a>
                     </li>
 
                     <li class="main-nav__item">
-                        <a href="#kdo-jsem" class="main-nav__link">
+                        <a class="main-nav__link" href="#kdo-jsem">
                             <span class="text transition" data-small-caps="true">Kdo jsem</span>
                         </a>
                     </li>
 
                     <li class="main-nav__item">
-                        <a href="#cenik" class="main-nav__link">
+                        <a class="main-nav__link" href="#cenik">
                             <span class="text transition" data-small-caps="true">Ceník</span>
                         </a>
                     </li>
 
                     <li class="main-nav__item">
-                        <a href="#kontakt" class="main-nav__link">
+                        <a class="main-nav__link" href="#kontakt">
                             <span class="text transition" data-small-caps="true">Kontakt</span>
                         </a>
                     </li>
@@ -148,7 +148,7 @@
         <div class="intro__content-wrapper layout__center">
 
             <div class="intro__logo">
-                <a class="intro__logo-link" href="/" title="Michal Jeřábek — Úvod">
+                <a class="intro__logo-link" href="/" title="Michal Jeřábek — Front-End kodér">
 
                     <svg class="intro__logo-svg" width="100" height="100" viewBox="0 0 100 100">
                         <path d="M16.809,38.718c-0.162,-0.227 -0.244,-0.488 -0.244,-0.781c0,-0.097 0,-0.195 0,-0.293c0.065,-0.488 0.537,-1.074 1.416,-1.758c0,0 38.395,-30.371 38.916,-30.371l-31.396,32.032l20.849,26.269c0.391,0.586 0.554,1.188 0.489,1.807c-0.065,0.358 -0.277,0.7 -0.635,1.025l-2.881,2.344c-0.391,0.325 -0.781,0.488 -1.172,0.488c-0.521,0 -1.041,-0.309 -1.562,-0.928l-23.78,-29.834Z" fill="#111111"/>
@@ -166,9 +166,9 @@
 
             <div class="intro__content">
 
-                <h1 class="intro__title">
+                <h1 class="intro__title intro__title--hidden">
                     <span class="visually-hidden">Michal Jeřábek —</span>
-                    <div class="text" data-small-caps="true">Front-End kodér</div>
+                    <span class="text" data-small-caps="true" data-break-text="true">Front-End kodér</span>
                 </h1>
 
                 <p class="intro__claim">přeměňuji vaše grafické návrhy <span class="layout__br--mobile-m layout__br--mobile-s">na webové stránky</span></p>
@@ -177,7 +177,9 @@
             <!-- /.intro__content -->
 
             <div class="intro__name">
+
                 <span class="text" role="presentation" aria-hidden="true">Michal Jeřábek</span>
+
                 <svg class="intro__name-svg" width="220" height="32" viewBox="0 0 220 32">
                     <path d="M22.265,9.505l0,11.392c0,0.444 0.173,0.726 0.518,0.846c0.345,0.119 0.518,0.265 0.518,0.435c0,0.144 -0.072,0.216 -0.215,0.216l-3.476,0c-0.144,0 -0.216,-0.072 -0.216,-0.216c0,-0.17 0.171,-0.316 0.513,-0.435c0.342,-0.12 0.513,-0.402 0.513,-0.846l0,-10.982l-5.917,12.786l-0.4,0l-5.855,-12.304l0,10.5c0,0.444 0.171,0.726 0.513,0.846c0.342,0.119 0.513,0.265 0.513,0.435c0,0.144 -0.072,0.216 -0.216,0.216l-2.604,0c-0.144,0 -0.216,-0.072 -0.216,-0.216c0,-0.17 0.171,-0.316 0.513,-0.435c0.342,-0.12 0.513,-0.402 0.513,-0.846l0,-11.392c0,-0.438 -0.171,-0.718 -0.513,-0.841c-0.342,-0.123 -0.513,-0.274 -0.513,-0.451c0,-0.144 0.072,-0.216 0.216,-0.216l2.727,0l5.609,11.505l5.435,-11.505l2.861,0c0.143,0 0.215,0.072 0.215,0.216c0,0.177 -0.173,0.328 -0.518,0.451c-0.345,0.123 -0.518,0.403 -0.518,0.841Z" fill="#111"/>
                     <path d="M33.766,13.617l0,7.75c0,0.308 0.116,0.502 0.349,0.583c0.233,0.082 0.349,0.181 0.349,0.297c0,0.098 -0.049,0.147 -0.146,0.147l-2.367,0c-0.093,0 -0.14,-0.049 -0.14,-0.147c0,-0.116 0.116,-0.215 0.349,-0.297c0.233,-0.081 0.349,-0.273 0.349,-0.576l0,-7.757c0,-0.302 -0.116,-0.494 -0.349,-0.576c-0.233,-0.081 -0.349,-0.182 -0.349,-0.303c0,-0.098 0.049,-0.147 0.147,-0.147l2.36,0c0.097,0 0.146,0.049 0.146,0.147c0,0.121 -0.116,0.222 -0.349,0.303c-0.233,0.082 -0.349,0.274 -0.349,0.576Z" fill="#111"/>
@@ -193,7 +195,9 @@
                     <path d="M193.772,21.737l2.982,0c0.433,0 0.799,-0.166 1.099,-0.499c0.301,-0.333 0.527,-0.592 0.681,-0.778c0.084,-0.103 0.149,-0.154 0.196,-0.154c0.097,0 0.146,0.049 0.146,0.147c0,0.06 -0.005,0.109 -0.014,0.146l-0.51,1.795l-6.416,0c-0.084,0 -0.126,-0.049 -0.126,-0.147c0,-0.116 0.117,-0.215 0.349,-0.297c0.233,-0.081 0.35,-0.273 0.35,-0.576l0,-7.757c0,-0.302 -0.117,-0.494 -0.35,-0.576c-0.232,-0.081 -0.349,-0.182 -0.349,-0.303c0,-0.098 0.049,-0.147 0.147,-0.147l6.479,0l0,1.794c0,0.098 -0.049,0.147 -0.146,0.147c-0.047,0 -0.133,-0.093 -0.259,-0.279c-0.232,-0.321 -0.434,-0.57 -0.604,-0.747c-0.17,-0.177 -0.394,-0.266 -0.673,-0.266l-2.982,0l0,3.792l1.599,0c0.298,0 0.494,-0.12 0.587,-0.36c0.093,-0.24 0.2,-0.36 0.321,-0.36c0.093,0 0.139,0.049 0.139,0.147l0,1.774c0,0.097 -0.046,0.146 -0.139,0.146c-0.121,0 -0.235,-0.119 -0.342,-0.356c-0.107,-0.237 -0.31,-0.356 -0.608,-0.356l-1.557,0l0,4.07Z" fill="#111"/>
                     <path d="M211.442,13.729c0.363,-0.34 0.649,-0.613 0.859,-0.82c0.209,-0.207 0.377,-0.311 0.503,-0.311c0.125,0 0.23,0.021 0.314,0.063l0.74,0.363c0.079,0.046 0.119,0.093 0.119,0.14c0,0.046 -0.007,0.086 -0.021,0.118l-0.363,1.02l-0.482,-0.203c-0.182,-0.074 -0.371,-0.112 -0.569,-0.112c-0.198,0 -0.388,0.091 -0.569,0.273l-2.814,2.744l5.25,4.845c0.098,0.098 0.202,0.171 0.311,0.22c0.11,0.049 0.164,0.108 0.164,0.178c0,0.098 -0.046,0.147 -0.139,0.147l-2.367,0c-0.098,0 -0.147,-0.049 -0.147,-0.147c0,-0.032 0.035,-0.081 0.105,-0.146c0.051,-0.047 0.077,-0.098 0.077,-0.154c0.004,-0.093 -0.068,-0.203 -0.217,-0.328l-4.406,-4.064l0,3.819c0,0.303 0.117,0.495 0.35,0.576c0.232,0.082 0.349,0.176 0.349,0.283c0,0.107 -0.047,0.161 -0.14,0.161l-2.367,0c-0.098,0 -0.146,-0.054 -0.146,-0.161c0,-0.107 0.116,-0.201 0.349,-0.283c0.232,-0.081 0.349,-0.273 0.349,-0.576l0,-7.757c0,-0.297 -0.117,-0.488 -0.349,-0.572c-0.233,-0.084 -0.349,-0.186 -0.349,-0.307c0,-0.098 0.048,-0.147 0.146,-0.147l2.367,0c0.093,0 0.14,0.049 0.14,0.147c0,0.121 -0.117,0.223 -0.349,0.307c-0.233,0.084 -0.35,0.275 -0.35,0.572l0,3.568l3.652,-3.456Z" fill="#111"/>
                 </svg>
+
             </div>
+            <!-- /.intro__name -->
 
         </div>
         <!-- /.intro__content-wrapper layout__center -->
@@ -209,7 +213,7 @@
 
         <!--–––––––– ** OFFER | SECTION ** –––––––––-->
 
-        <article class="offer section" id="co-delam">
+        <article class="offer section" id="co-delam" data-main-nav-target="true">
 
 
 
@@ -221,7 +225,7 @@
 
         <!--–––––––– ** REFERENCE | SECTION ** –––––––––-->
 
-        <article class="reference section" id="reference">
+        <article class="reference section" id="reference" data-main-nav-target="true">
 
 
 
@@ -233,7 +237,7 @@
 
         <!--–––––––– ** ABOUT-ME | SECTION ** –––––––––-->
 
-        <article class="about-me section" id="kdo-jsem">
+        <article class="about-me section" id="kdo-jsem" data-main-nav-target="true">
 
 
 
@@ -245,7 +249,7 @@
 
         <!--–––––––– ** PRICELIST | SECTION ** –––––––––-->
 
-        <article class="pricelist section" id="cenik">
+        <article class="pricelist section" id="cenik" data-main-nav-target="true">
 
 
 
@@ -257,7 +261,7 @@
 
         <!--–––––––– ** CONTACT | SECTION ** –––––––––-->
 
-        <article class="contact section" id="kontakt">
+        <article class="contact section" id="kontakt" data-main-nav-target="true">
 
 
 
@@ -274,70 +278,15 @@
     <script>!window.jQuery && document.write("<script src='libs/jq.min.js'><"+"/script>");</script>
 
     <script src="libs/jquery.smallcaps.js"></script>
+    <script src="libs/fulltilt.min.js"></script>
+    <script src="libs/parallax.js"></script>
 
-    <script>/*global $*/
+    <script src="js/modules/BreakText.js"></script>
+    <script src="js/modules/Intro.js"></script>
+    <script src="js/modules/SmallCaps.js"></script>
+    <script src="js/modules/MainNav.js"></script>
 
-        $(function () {
-            $("[data-small-caps='true']").smallCaps();
-
-            $(".main-nav__items").on("mouseover", function (e) {
-
-                var overflows = e.target.classList.contains("main-nav__items--has-top-overflow") ||
-                    e.target.classList.contains("main-nav__items--has-bottom-overflow");
-
-                this.style.pointerEvents = !overflows && e.target.matches("ul, li") ? "none" : "";
-            });
-
-            function isNavScrollable() {
-
-                if (this.scrollTop > 0) {
-
-                    $(this).addClass("main-nav__items--has-top-overflow");
-
-                } else {
-
-                    $(this).removeClass("main-nav__items--has-top-overflow");
-                }
-
-                if (this.scrollHeight >= this.scrollTop + this.offsetHeight) {
-
-                    $(this).addClass("main-nav__items--has-bottom-overflow");
-
-                } else {
-
-                    $(this).removeClass("main-nav__items--has-bottom-overflow");
-                }
-            }
-
-            $(".main-nav__items").on("scroll", isNavScrollable);
-
-            var to = null;
-
-            $("#main-nav__mobile-opener").on("change", function () {
-
-                clearTimeout(to);
-
-                if (this.checked) {
-
-                    to = setTimeout(isNavScrollable.bind($(".main-nav__items")[0]), 1000);
-                }
-            });
-        });
-
-        const nav = document.querySelector(".main-nav");
-
-        window.addEventListener("scroll", () => {
-            if (document.scrollingElement.scrollTop <= 0) {
-
-                nav.classList.remove("main-nav--fixed");
-
-            } else {
-
-                nav.classList.add("main-nav--fixed");
-            }
-        });
-
-    </script>
+    <script src="js/init.js"></script>
 
 <!--    <script src="js/libs.min.js"></script>-->
 <!--    <script src="js/all-init.min.js"></script>-->
