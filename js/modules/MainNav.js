@@ -9,6 +9,10 @@
 
     ns.MainNav = (function () {
 
+        $.easing["mainNav." + ns] = function (x) {
+            return 1 - Math.pow(1 - x, 3);
+        };
+
         var CLASS = {
                 hidden: "main-nav--hidden",
                 stopAnim: "main-nav--stop-anim",
@@ -34,7 +38,7 @@
 
                 localLink: "a[href^='#']:not([href='#'])",
 
-                target: "[data-main-nav-target='true']"
+                scrollTarget: "[data-main-nav-target='true']"
             },
 
             DATA = {
@@ -43,7 +47,7 @@
                 scrollTo: "main-nav-scroll-to"
             },
 
-            SCROLL_DURATION_BASE = 300,
+            SCROLL_DURATION_BASE = 350,
 
             AUTOHIDE = 10000,
 
@@ -66,14 +70,14 @@
             $self,
             $itemsWrapper,
             $fixedElement,
-            $targets,
+            $scrollTargets,
             $lastAcitvateItem$link,
 
             $opener,
             onOpenerToggleTimeout,
 
-            skipFindLinkToActivate,
-            skipFindLinkToActivateTimeout,
+            skipFindItemToActivate,
+            skipFindItemToActivateTimeout,
 
             getFixPosition = function () {
 
@@ -117,11 +121,11 @@
                 return ns.$win.scrollTop() === getScrollableHeight();
             },
 
-            toggleVisibility = function (state) {
+            toggleVisibility = function (state, force) {
 
                 clearTimeout(autohideTimeout);
 
-                if (state) {
+                if (state || (!state && isMobileNavOpened() && !force)) {
 
                     autohideTimeout = setTimeout(function() {
 
@@ -189,24 +193,24 @@
                     updateHistory($link);
                 }
 
-                skipFindLinkToActivate = !scroll;
+                skipFindItemToActivate = !scroll;
             },
 
-            moveFocus = function ($target, $link) {
+            moveFocus = function ($focusTarget, $link) {
 
                 var focusSelector = $link.attr("data-" + DATA.focus);
 
                 if (focusSelector) {
 
-                    $target = $(focusSelector).focus();
+                    $focusTarget = $(focusSelector);
                 }
 
-                if (typeof $target.attr("tabindex") === "undefined") {
+                if (typeof $focusTarget.attr("tabindex") === "undefined") {
 
-                    $target.attr("tabindex", -1);
+                    $focusTarget.attr("tabindex", -1);
                 }
 
-                $target.focus();
+                $focusTarget.focus();
             },
 
             isLocalLink = function (link) {
@@ -214,7 +218,7 @@
                 return location.pathname.replace(/^\//, "") === link.pathname.replace(/^\//, "") && location.hostname === link.hostname;
             },
 
-            getScrollTop = function ($link, $target) {
+            getScrollTargetTop = function ($link, $target) {
 
                 var scrollTo = parseFloat($link.attr("data-" + DATA.scrollTo) || $target.attr("data-" + DATA.scrollTo));
 
@@ -234,6 +238,8 @@
                 $scrollingElement.animate({ scrollTop: scrollTop }, {
 
                     duration: scrollDuration,
+
+                    easing: "mainNav." + ns,
 
                     step: function () {
 
@@ -261,19 +267,19 @@
 
                     $link = $(event.currentTarget),
 
-                    $target = $("#" + targetId);
+                    $scrollTarget = $("#" + targetId);
 
-                if ($target.length) {
+                if ($scrollTarget.length) {
 
                     $link.blur();
 
-                    $target.attr("id", "");
+                    $scrollTarget.attr("id", "");
 
                     toggleMobileNav(false);
 
-                    var scrollTop = getScrollTop($link, $target),
+                    var scrollTargetTop = getScrollTargetTop($link, $scrollTarget),
 
-                        activeSelector = $link.attr("data-" + DATA.active) || $target.attr("data-" + DATA.active);
+                        activeSelector = $link.attr("data-" + DATA.active) || $scrollTarget.attr("data-" + DATA.active);
 
                     if (activeSelector) {
 
@@ -289,12 +295,12 @@
                     }
 
                     animate(
-                        scrollTop,
-                        getScrollDuration(scrollTop),
-                        moveFocus.bind(null, $target, $link)
+                        scrollTargetTop,
+                        getScrollDuration(scrollTargetTop),
+                        moveFocus.bind(null, $scrollTarget, $link)
                     );
 
-                    $target.attr("id", targetId);
+                    $scrollTarget.attr("id", targetId);
 
                     event.preventDefault();
                 }
@@ -305,50 +311,51 @@
                 return rect.top <= window.innerHeight / 4 && rect.bottom > window.innerHeight / 4;
             },
 
-            findCurrentTarget = function () {
+            findCurrentScrollTarget = function () {
 
-                var currentTarget,
-                    currentTargetTop = null;
+                var currentScrollTarget,
+                    currentScrollTargetTop = null;
 
-                $targets.each(function (i, target) {
+                $scrollTargets.each(function (i, target) {
 
                     var rect = target.getBoundingClientRect();
 
-                    if (isTargetInView(rect) && (rect.top > currentTargetTop || currentTargetTop === null)) {
+                    if (isTargetInView(rect) && (rect.top > currentScrollTargetTop || currentScrollTargetTop === null)) {
 
-                        currentTarget = target;
+                        currentScrollTarget = target;
 
-                        currentTargetTop = rect.top;
+                        currentScrollTargetTop = rect.top;
                     }
                 });
 
-                return currentTarget;
+                return currentScrollTarget;
             },
 
             findLinkToActivate = function () {
 
-                if (skipFindLinkToActivate) {
+                //nevyhledávat aktivní odkaz, pokud se stránka posouvá kliknutím na odkaz v menu
+                if (skipFindItemToActivate) {
 
-                    clearTimeout(skipFindLinkToActivateTimeout);
+                    clearTimeout(skipFindItemToActivateTimeout);
 
-                    skipFindLinkToActivateTimeout = setTimeout(function() {
+                    skipFindItemToActivateTimeout = setTimeout(function() {
 
-                        skipFindLinkToActivate = false;
+                        skipFindItemToActivate = false;
 
                     }, 150);
 
                     return;
                 }
 
-                var currentTarget = findCurrentTarget();
+                var currentScrollTarget = findCurrentScrollTarget();
 
-                if (currentTarget) {
+                if (currentScrollTarget) {
 
-                    ns.$temp[0] = currentTarget;
+                    ns.$temp[0] = currentScrollTarget;
 
                     var activeSelector = ns.$temp.attr("data-" + DATA.active),
 
-                        $link = activeSelector ? $(activeSelector) : $self.find("[href*='#" + currentTarget.id + "']");
+                        $link = activeSelector ? $(activeSelector) : $self.find("[href*='#" + currentScrollTarget.id + "']");
 
                     activateItem($link, true);
 
@@ -484,10 +491,10 @@
 
                     $itemsWrapper.focus();
 
-                } else {
-
-                    $opener.blur();
+                    return;
                 }
+
+                $opener.blur();
             },
 
             initEvents = function () {
@@ -519,7 +526,7 @@
 
                 $opener = $self.find(SELECTOR.opener);
 
-                $targets = $(SELECTOR.target);
+                $scrollTargets = $(SELECTOR.scrollTarget);
             },
 
             init = function () {
