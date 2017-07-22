@@ -4,6 +4,14 @@
 
 .intro {
     z-index: 10;
+
+    padding: 0;
+
+    background-color: #fff;
+}
+
+.intro > .layout__center {
+	min-height: 100vh;
 }
 
     .intro__content-wrapper {
@@ -36,16 +44,6 @@
         .intro__content-wrapper {
             padding-top: 40px;
         }
-    }
-
-    .intro ::-moz-selection {
-        color: white;
-        background: rgba(125, 105, 55, 0.85);
-    }
-
-    .intro ::selection {
-        color: white;
-        background: rgba(125, 105, 55, 0.85);
     }
 
 /*--------------------------------------------------------------------*/
@@ -173,6 +171,12 @@
                 will-change: transform;
             }
 
+            _:-ms-fullscreen, :root .intro__logo-svg path {
+                stroke-width: 0;
+                stroke-dasharray: 0;
+                stroke-dashoffset: 0;
+            }
+
             .intro__logo-svg path:nth-child(2) {
                 display: none;
             }
@@ -205,6 +209,24 @@
                 animation: intro__show-logo-stroke 1.5s cubic-bezier(.5, .15, .65, .9) 0.7s 1 forwards,
                     intro__show-logo-transform 3s cubic-bezier(.2, .7, .5, 1) 0.7s 1 forwards,
                     intro__show-logo-fill--2 1.5s ease 2.2s 1 forwards;
+            }
+
+            _:-ms-fullscreen, :root .intro__logo-svg path:nth-child(1) {
+                transform: none;
+
+                fill: rgba(17, 17, 17, 1);
+
+                animation: show--init 0.5s linear 0s 1 forwards,
+                    show 1.5s ease 0.5s 1 forwards;
+            }
+
+            _:-ms-fullscreen, :root .intro__logo-svg path:nth-child(2) {
+                transform: none;
+
+                fill: rgba(177, 150, 83, 1);
+
+                animation: show--init 0.7s linear 0s 1 forwards,
+                    show 1.5s ease 0.7s 1 forwards;
             }
 
             @keyframes intro__show-logo-stroke {
@@ -588,6 +610,10 @@
             opacity 1.5s ease 0s;
     }
 
+    .intro__background-layer.section__background-layer--stop-animation .square:not(:hover) {
+        border-color: rgba(206, 183, 126, 0.4);
+    }
+
     .intro__background-layer:nth-child(1) .square {
         margin-top: -223.5px;
         margin-left: 190px;
@@ -634,7 +660,7 @@
         }
     }
 
-    .intro__background-layer .square:hover {
+    .intro__background-layer:not(.section__background-layer--stop-hover) .square:hover {
         background-color: rgba(206, 183, 126, 0.175);
         border-color: rgba(206, 183, 126, 0);
 

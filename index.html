@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="css/components/section.css">
     <link rel="stylesheet" href="css/components/intro.css">
     <link rel="stylesheet" href="css/components/main-nav.css">
+    <link rel="stylesheet" href="css/components/offer.css">
+    <link rel="stylesheet" href="css/components/technologies.css">
 
     <!--SUPPORT-->
     <!--[if IE]>
@@ -44,247 +46,424 @@
     <script src="http://mjerabek.wz.cz/onScreenLog.js"></script>
 
 
-    <!--–––––––– ** INTRO | SECTION ** –––––––––-->
+    <div class="layout__page-wrapper">
 
-    <header class="intro section" id="uvod" data-main-nav-target="true" data-main-nav-active=".main-nav__item:eq(1) .main-nav__link">
+        <!--–––––––– ** INTRO | SECTION ** –––––––––-->
 
-        <div class="section__background intro__background">
-            <div class="section__background-layer intro__background-layer" data-parallax-reverse="scroll">
-                <div class="square"><!-- css --></div>
+        <header class="intro section" id="uvod" data-main-nav-target="true" data-main-nav-active=".main-nav__item:eq(1) .main-nav__link">
+
+            <div class="section__background intro__background">
+                <div class="section__background-layer intro__background-layer" data-parallax-reverse="scroll">
+                    <div class="square"><!-- css --></div>
+                </div>
+                <div class="section__background-layer intro__background-layer">
+                    <div class="square"><!-- css --></div>
+                </div>
+                <div class="section__background-layer intro__background-layer">
+                    <div class="square"><!-- css --></div>
+                </div>
+                <div class="section__background-layer intro__background-layer" data-parallax-reverse="scroll">
+                    <div class="square"><!-- css --></div>
+                </div>
             </div>
-            <div class="section__background-layer intro__background-layer">
-                <div class="square"><!-- css --></div>
+            <!-- /.section__background intro__background -->
+
+
+            <!--–––––––– ** MAIN-NAV ** –––––––––-->
+
+            <div class="intro__main-nav main-nav">
+
+                <input class="ui__hidden-toggle x-desktop x-tablet" id="main-nav__mobile-opener" type="checkbox">
+
+                <label class="main-nav__mobile-opener x-desktop x-tablet transition" for="main-nav__mobile-opener">
+                    <span class="text transition">Menu</span>
+                </label>
+
+                <nav class="main-nav__wrapper layout__center">
+
+                    <h2 class="visually-hidden">Hlavní menu</h2>
+
+                    <a class="main-nav__mobile-logo x-desktop x-tablet" href="#uvod" title="Úvod">
+                        <svg class="main-nav__mobile-logo-svg transition" width="48" height="48" viewBox="0 0 100 100">
+                            <path d="M16.809,38.718c-0.162,-0.227 -0.244,-0.488 -0.244,-0.781c0,-0.097 0,-0.195 0,-0.293c0.065,-0.488 0.537,-1.074 1.416,-1.758c0,0 38.395,-30.371 38.916,-30.371l-31.396,32.032l20.849,26.269c0.391,0.586 0.554,1.188 0.489,1.807c-0.065,0.358 -0.277,0.7 -0.635,1.025l-2.881,2.344c-0.391,0.325 -0.781,0.488 -1.172,0.488c-0.521,0 -1.041,-0.309 -1.562,-0.928l-23.78,-29.834Z" fill="#111111"/>
+                            <path d="M82.65,63.6c0,0 -39.137,30.885 -39.66,30.885l31.523,-32.062l-20.983,-26.423c-0.457,-0.654 -0.62,-1.242 -0.49,-1.765c0.131,-0.425 0.36,-0.785 0.687,-1.079l2.892,-2.402c0.392,-0.327 0.784,-0.49 1.177,-0.49c0.522,0 1.045,0.31 1.568,0.931l23.482,29.562c0.393,0.49 0.589,0.931 0.589,1.323c0,0.196 -0.017,0.343 -0.049,0.441c-0.131,0.425 -0.376,0.785 -0.736,1.079Z" fill="#b19653"/>
+                        </svg>
+                    </a>
+
+                    <ul class="main-nav__items" tabindex="-1">
+
+                        <li class="main-nav__item main-nav__item--logo x-mobile">
+                            <a href="#uvod" class="main-nav__link" title="Úvod">
+                                <svg class="main-nav__item-svg transition" width="48" height="48" viewBox="0 0 100 100">
+                                    <path d="M16.809,38.718c-0.162,-0.227 -0.244,-0.488 -0.244,-0.781c0,-0.097 0,-0.195 0,-0.293c0.065,-0.488 0.537,-1.074 1.416,-1.758c0,0 38.395,-30.371 38.916,-30.371l-31.396,32.032l20.849,26.269c0.391,0.586 0.554,1.188 0.489,1.807c-0.065,0.358 -0.277,0.7 -0.635,1.025l-2.881,2.344c-0.391,0.325 -0.781,0.488 -1.172,0.488c-0.521,0 -1.041,-0.309 -1.562,-0.928l-23.78,-29.834Z" fill="#111111"/>
+                                    <path d="M82.65,63.6c0,0 -39.137,30.885 -39.66,30.885l31.523,-32.062l-20.983,-26.423c-0.457,-0.654 -0.62,-1.242 -0.49,-1.765c0.131,-0.425 0.36,-0.785 0.687,-1.079l2.892,-2.402c0.392,-0.327 0.784,-0.49 1.177,-0.49c0.522,0 1.045,0.31 1.568,0.931l23.482,29.562c0.393,0.49 0.589,0.931 0.589,1.323c0,0.196 -0.017,0.343 -0.049,0.441c-0.131,0.425 -0.376,0.785 -0.736,1.079Z" fill="#b19653"/>
+                                </svg>
+                            </a>
+                        </li>
+
+                        <li class="main-nav__item main-nav__item--active">
+                            <a class="main-nav__link" href="#uvod">
+                                <span class="text transition" data-small-caps="true">Úvod</span>
+                            </a>
+                        </li>
+
+                        <li class="main-nav__item">
+                            <a class="main-nav__link" href="#co-delam">
+                                <span class="text transition" data-small-caps="true">Co dělám</span>
+                            </a>
+                        </li>
+
+                        <li class="main-nav__item">
+                            <a class="main-nav__link" href="#reference">
+                                <span class="text transition" data-small-caps="true">Reference</span>
+                            </a>
+                        </li>
+
+                        <li class="main-nav__item">
+                            <a class="main-nav__link" href="#kdo-jsem">
+                                <span class="text transition" data-small-caps="true">Kdo jsem</span>
+                            </a>
+                        </li>
+
+                        <li class="main-nav__item">
+                            <a class="main-nav__link" href="#cenik">
+                                <span class="text transition" data-small-caps="true">Ceník</span>
+                            </a>
+                        </li>
+
+                        <li class="main-nav__item">
+                            <a class="main-nav__link" href="#kontakt">
+                                <span class="text transition" data-small-caps="true">Kontakt</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                    <!-- /.main-nav__items -->
+
+                </nav>
+                <!-- /.main-nav__wrapper layout__center -->
+
             </div>
-            <div class="section__background-layer intro__background-layer">
-                <div class="square"><!-- css --></div>
-            </div>
-            <div class="section__background-layer intro__background-layer" data-parallax-reverse="scroll">
-                <div class="square"><!-- css --></div>
-            </div>
-        </div>
-        <!-- /.section__background intro__background -->
+            <!-- /.intro__main-nav main-nav -->
+
+            <!--–––––––– // MAIN-NAV // –––––––––-->
 
 
-        <!--–––––––– ** MAIN-NAV ** –––––––––-->
+            <div class="intro__content-wrapper layout__center">
 
-        <div class="intro__main-nav main-nav">
+                <div class="intro__logo">
+                    <a class="intro__logo-link" href="/" title="Michal Jeřábek — Front-End kodér">
 
-            <input class="ui__hidden-toggle x-desktop x-tablet" id="main-nav__mobile-opener" type="checkbox">
+                        <svg class="intro__logo-svg" width="100" height="100" viewBox="0 0 100 100">
+                            <path d="M16.809,38.718c-0.162,-0.227 -0.244,-0.488 -0.244,-0.781c0,-0.097 0,-0.195 0,-0.293c0.065,-0.488 0.537,-1.074 1.416,-1.758c0,0 38.395,-30.371 38.916,-30.371l-31.396,32.032l20.849,26.269c0.391,0.586 0.554,1.188 0.489,1.807c-0.065,0.358 -0.277,0.7 -0.635,1.025l-2.881,2.344c-0.391,0.325 -0.781,0.488 -1.172,0.488c-0.521,0 -1.041,-0.309 -1.562,-0.928l-23.78,-29.834Z" fill="#111111"/>
+                            <path d="M82.65,63.6c0,0 -39.137,30.885 -39.66,30.885l31.523,-32.062l-20.983,-26.423c-0.457,-0.654 -0.62,-1.242 -0.49,-1.765c0.131,-0.425 0.36,-0.785 0.687,-1.079l2.892,-2.402c0.392,-0.327 0.784,-0.49 1.177,-0.49c0.522,0 1.045,0.31 1.568,0.931l23.482,29.562c0.393,0.49 0.589,0.931 0.589,1.323c0,0.196 -0.017,0.343 -0.049,0.441c-0.131,0.425 -0.376,0.785 -0.736,1.079Z" fill="#b19653"/>
+                        </svg>
 
-            <label class="main-nav__mobile-opener x-desktop x-tablet transition" for="main-nav__mobile-opener">
-                <span class="text transition">Menu</span>
-            </label>
+                        <svg class="intro__logo-svg" width="100" height="100" viewBox="0 0 100 100">
+                            <path d="M16.809,38.718c-0.162,-0.227 -0.244,-0.488 -0.244,-0.781c0,-0.097 0,-0.195 0,-0.293c0.065,-0.488 0.537,-1.074 1.416,-1.758c0,0 38.395,-30.371 38.916,-30.371l-31.396,32.032l20.849,26.269c0.391,0.586 0.554,1.188 0.489,1.807c-0.065,0.358 -0.277,0.7 -0.635,1.025l-2.881,2.344c-0.391,0.325 -0.781,0.488 -1.172,0.488c-0.521,0 -1.041,-0.309 -1.562,-0.928l-23.78,-29.834Z" fill="#111111"/>
+                            <path d="M82.65,63.6c0,0 -39.137,30.885 -39.66,30.885l31.523,-32.062l-20.983,-26.423c-0.457,-0.654 -0.62,-1.242 -0.49,-1.765c0.131,-0.425 0.36,-0.785 0.687,-1.079l2.892,-2.402c0.392,-0.327 0.784,-0.49 1.177,-0.49c0.522,0 1.045,0.31 1.568,0.931l23.482,29.562c0.393,0.49 0.589,0.931 0.589,1.323c0,0.196 -0.017,0.343 -0.049,0.441c-0.131,0.425 -0.376,0.785 -0.736,1.079Z" fill="#b19653"/>
+                        </svg>
 
-            <nav class="main-nav__wrapper layout__center">
+                    </a>
+                </div>
+                <!-- /.intro__logo -->
 
-                <h2 class="visually-hidden">Hlavní menu</h2>
+                <div class="intro__content">
 
-                <a class="main-nav__mobile-logo x-desktop x-tablet" href="#uvod" title="Úvod">
-                    <svg class="main-nav__mobile-logo-svg transition" width="48" height="48" viewBox="0 0 100 100">
-                        <path d="M16.809,38.718c-0.162,-0.227 -0.244,-0.488 -0.244,-0.781c0,-0.097 0,-0.195 0,-0.293c0.065,-0.488 0.537,-1.074 1.416,-1.758c0,0 38.395,-30.371 38.916,-30.371l-31.396,32.032l20.849,26.269c0.391,0.586 0.554,1.188 0.489,1.807c-0.065,0.358 -0.277,0.7 -0.635,1.025l-2.881,2.344c-0.391,0.325 -0.781,0.488 -1.172,0.488c-0.521,0 -1.041,-0.309 -1.562,-0.928l-23.78,-29.834Z" fill="#111111"/>
-                        <path d="M82.65,63.6c0,0 -39.137,30.885 -39.66,30.885l31.523,-32.062l-20.983,-26.423c-0.457,-0.654 -0.62,-1.242 -0.49,-1.765c0.131,-0.425 0.36,-0.785 0.687,-1.079l2.892,-2.402c0.392,-0.327 0.784,-0.49 1.177,-0.49c0.522,0 1.045,0.31 1.568,0.931l23.482,29.562c0.393,0.49 0.589,0.931 0.589,1.323c0,0.196 -0.017,0.343 -0.049,0.441c-0.131,0.425 -0.376,0.785 -0.736,1.079Z" fill="#b19653"/>
+                    <h1 class="intro__title intro__title--hidden">
+                        <span class="visually-hidden">Michal Jeřábek —</span>
+                        <span class="text" data-small-caps="true" data-break-text="true">Front-End kodér</span>
+                    </h1>
+
+                    <p class="intro__claim">přeměňuji vaše grafické návrhy <span class="layout__br--mobile-m layout__br--mobile-s">na webové stránky</span></p>
+
+                </div>
+                <!-- /.intro__content -->
+
+                <div class="intro__name">
+
+                    <span class="text" role="presentation" aria-hidden="true">Michal Jeřábek</span>
+
+                    <svg class="intro__name-svg" width="220" height="32" viewBox="0 0 220 32">
+                        <path d="M22.265,9.505l0,11.392c0,0.444 0.173,0.726 0.518,0.846c0.345,0.119 0.518,0.265 0.518,0.435c0,0.144 -0.072,0.216 -0.215,0.216l-3.476,0c-0.144,0 -0.216,-0.072 -0.216,-0.216c0,-0.17 0.171,-0.316 0.513,-0.435c0.342,-0.12 0.513,-0.402 0.513,-0.846l0,-10.982l-5.917,12.786l-0.4,0l-5.855,-12.304l0,10.5c0,0.444 0.171,0.726 0.513,0.846c0.342,0.119 0.513,0.265 0.513,0.435c0,0.144 -0.072,0.216 -0.216,0.216l-2.604,0c-0.144,0 -0.216,-0.072 -0.216,-0.216c0,-0.17 0.171,-0.316 0.513,-0.435c0.342,-0.12 0.513,-0.402 0.513,-0.846l0,-11.392c0,-0.438 -0.171,-0.718 -0.513,-0.841c-0.342,-0.123 -0.513,-0.274 -0.513,-0.451c0,-0.144 0.072,-0.216 0.216,-0.216l2.727,0l5.609,11.505l5.435,-11.505l2.861,0c0.143,0 0.215,0.072 0.215,0.216c0,0.177 -0.173,0.328 -0.518,0.451c-0.345,0.123 -0.518,0.403 -0.518,0.841Z" fill="#111"/>
+                        <path d="M33.766,13.617l0,7.75c0,0.308 0.116,0.502 0.349,0.583c0.233,0.082 0.349,0.181 0.349,0.297c0,0.098 -0.049,0.147 -0.146,0.147l-2.367,0c-0.093,0 -0.14,-0.049 -0.14,-0.147c0,-0.116 0.116,-0.215 0.349,-0.297c0.233,-0.081 0.349,-0.273 0.349,-0.576l0,-7.757c0,-0.302 -0.116,-0.494 -0.349,-0.576c-0.233,-0.081 -0.349,-0.182 -0.349,-0.303c0,-0.098 0.049,-0.147 0.147,-0.147l2.36,0c0.097,0 0.146,0.049 0.146,0.147c0,0.121 -0.116,0.222 -0.349,0.303c-0.233,0.082 -0.349,0.274 -0.349,0.576Z" fill="#111"/>
+                        <path d="M46.758,22.652c-1.429,0 -2.695,-0.456 -3.798,-1.368c-1.103,-0.913 -1.655,-2.174 -1.655,-3.785c0,-1.568 0.536,-2.826 1.609,-3.773c1.073,-0.948 2.354,-1.421 3.844,-1.421c0.535,0 1.104,0.059 1.707,0.178c0.603,0.119 1.176,0.352 1.721,0.702l-0.168,1.466c-0.018,0.084 -0.065,0.125 -0.139,0.125l-0.021,0c-0.056,-0.004 -0.116,-0.069 -0.182,-0.195c-0.27,-0.582 -0.675,-1.01 -1.214,-1.285c-0.503,-0.246 -1.038,-0.37 -1.606,-0.37l-0.147,0c-1.257,0.056 -2.239,0.559 -2.946,1.508c-0.638,0.852 -0.957,1.795 -0.957,2.828c0,0.116 0.005,0.233 0.014,0.349c0.065,1.071 0.442,2.046 1.131,2.926c0.689,0.879 1.625,1.347 2.807,1.403c0.112,0.005 0.219,0.007 0.321,0.007c0.596,0 1.087,-0.091 1.473,-0.272c0.447,-0.214 0.822,-0.645 1.124,-1.292c0.061,-0.13 0.135,-0.196 0.224,-0.196c0.018,0 0.037,0.003 0.056,0.007c0.074,0.028 0.111,0.082 0.111,0.161c0,0.037 -0.009,0.079 -0.028,0.126l-0.607,1.696c-0.447,0.187 -0.901,0.312 -1.361,0.377c-0.461,0.066 -0.899,0.098 -1.313,0.098Z" fill="#111"/>
+                        <path d="M58.975,13.617l0,3.268l5.9,0l0,-3.268c0,-0.297 -0.117,-0.488 -0.35,-0.572c-0.232,-0.084 -0.349,-0.186 -0.349,-0.307c0,-0.098 0.049,-0.147 0.147,-0.147l2.367,0c0.098,0 0.146,0.049 0.146,0.147c0,0.121 -0.117,0.223 -0.352,0.307c-0.235,0.084 -0.353,0.275 -0.353,0.572l0,7.757c0,0.303 0.118,0.495 0.353,0.576c0.235,0.082 0.352,0.181 0.352,0.297c0,0.098 -0.048,0.147 -0.146,0.147l-2.367,0c-0.098,0 -0.147,-0.049 -0.147,-0.147c0,-0.116 0.117,-0.215 0.349,-0.297c0.233,-0.081 0.35,-0.273 0.35,-0.576l0,-3.847l-5.9,0l0,3.847c0,0.303 0.116,0.495 0.349,0.576c0.233,0.082 0.349,0.181 0.349,0.297c0,0.098 -0.047,0.147 -0.14,0.147l-2.367,0c-0.097,0 -0.146,-0.049 -0.146,-0.147c0,-0.116 0.116,-0.215 0.349,-0.297c0.233,-0.081 0.349,-0.273 0.349,-0.576l0,-7.757c0,-0.297 -0.116,-0.488 -0.349,-0.572c-0.233,-0.084 -0.349,-0.186 -0.349,-0.307c0,-0.098 0.049,-0.147 0.146,-0.147l2.367,0c0.093,0 0.14,0.049 0.14,0.147c0,0.121 -0.116,0.223 -0.349,0.307c-0.233,0.084 -0.349,0.275 -0.349,0.572Z" fill="#111"/>
+                        <path d="M83.298,22.237c0.012,0.025 0.018,0.046 0.018,0.063c0,0.016 -0.006,0.036 -0.018,0.059c-0.011,0.023 -0.038,0.035 -0.08,0.035l-2.36,0c-0.042,0 -0.085,-0.015 -0.129,-0.046c-0.044,-0.03 -0.071,-0.058 -0.08,-0.083c-0.009,-0.026 -0.014,-0.053 -0.014,-0.081c0,-0.028 0.024,-0.064 0.073,-0.108c0.049,-0.044 0.104,-0.089 0.164,-0.136c0.061,-0.047 0.101,-0.099 0.122,-0.157c0.021,-0.058 0.032,-0.12 0.032,-0.185c0,-0.07 -0.019,-0.147 -0.056,-0.231l-1.033,-2.387l-4.071,0c-0.167,0.4 -0.334,0.799 -0.499,1.197c-0.165,0.398 -0.3,0.719 -0.405,0.964c-0.105,0.244 -0.159,0.393 -0.164,0.446c-0.005,0.054 -0.007,0.1 -0.007,0.14c0,0.04 0.007,0.085 0.021,0.136c0.014,0.051 0.037,0.097 0.07,0.136c0.032,0.04 0.053,0.079 0.063,0.119c0.009,0.04 0.013,0.066 0.013,0.08c0,0.014 -0.004,0.031 -0.013,0.049c-0.033,0.098 -0.084,0.147 -0.154,0.147l-1.801,0c-0.094,0 -0.128,-0.049 -0.105,-0.147c0.018,-0.084 0.098,-0.156 0.237,-0.216c0.14,-0.061 0.3,-0.133 0.482,-0.217c0.177,-0.125 0.303,-0.272 0.377,-0.44l3.959,-8.944l0.433,0c0.232,0.55 0.52,1.222 0.862,2.018c0.342,0.796 0.696,1.615 1.061,2.458c0.366,0.842 0.719,1.662 1.062,2.458c0.342,0.796 0.631,1.466 0.869,2.01c0.07,0.173 0.182,0.311 0.338,0.416c0.156,0.105 0.287,0.18 0.391,0.227c0.105,0.046 0.185,0.088 0.241,0.125c0.056,0.038 0.09,0.069 0.101,0.095Zm-3.606,-3.823l-1.822,-4.252c-0.298,0.712 -0.595,1.422 -0.89,2.13c-0.296,0.707 -0.59,1.415 -0.883,2.122l3.595,0Z" fill="#111"/>
+                        <path d="M90.978,21.737l2.981,0c0.433,0 0.8,-0.166 1.1,-0.499c0.3,-0.333 0.527,-0.592 0.681,-0.778c0.084,-0.103 0.149,-0.154 0.195,-0.154c0.098,0 0.147,0.049 0.147,0.147c0,0.06 -0.005,0.109 -0.014,0.146l-0.51,1.795l-6.395,0c-0.098,0 -0.147,-0.049 -0.147,-0.147c0,-0.116 0.116,-0.215 0.349,-0.297c0.233,-0.081 0.349,-0.273 0.349,-0.576l0,-7.757c0,-0.297 -0.116,-0.488 -0.349,-0.572c-0.233,-0.084 -0.349,-0.186 -0.349,-0.307c0,-0.098 0.049,-0.147 0.147,-0.147l2.367,0c0.093,0 0.139,0.049 0.139,0.147c0,0.121 -0.116,0.223 -0.349,0.307c-0.233,0.084 -0.349,0.275 -0.349,0.572l0.007,8.12Z" fill="#111"/>
+                        <path d="M117.209,20.548c0,1.347 -0.091,2.348 -0.272,3.004c-0.181,0.657 -0.494,1.217 -0.938,1.682c-0.615,0.629 -1.306,1.046 -2.071,1.251l0,-0.513c0.266,-0.164 0.516,-0.374 0.748,-0.63c0.232,-0.257 0.414,-0.593 0.544,-1.01c0.082,-0.28 0.124,-0.674 0.128,-1.179c0.003,-0.506 0.005,-1.354 0.005,-2.543l0,-11.116c0,-0.437 -0.171,-0.717 -0.513,-0.84c-0.342,-0.123 -0.513,-0.274 -0.513,-0.452c0,-0.136 0.072,-0.205 0.216,-0.205l3.476,0c0.143,0 0.215,0.069 0.215,0.205c0,0.178 -0.171,0.329 -0.513,0.452c-0.341,0.123 -0.512,0.403 -0.512,0.84l0,11.054Z" fill="#111"/>
+                        <path d="M130.397,21.737l2.981,0c0.433,0 0.8,-0.166 1.1,-0.499c0.3,-0.333 0.527,-0.592 0.681,-0.778c0.083,-0.103 0.149,-0.154 0.195,-0.154c0.098,0 0.147,0.049 0.147,0.147c0,0.06 -0.005,0.109 -0.014,0.146l-0.51,1.795l-6.416,0c-0.084,0 -0.126,-0.049 -0.126,-0.147c0,-0.116 0.116,-0.215 0.349,-0.297c0.233,-0.081 0.349,-0.273 0.349,-0.576l0,-7.757c0,-0.302 -0.116,-0.494 -0.349,-0.576c-0.233,-0.081 -0.349,-0.182 -0.349,-0.303c0,-0.098 0.049,-0.147 0.147,-0.147l6.479,0l0,1.794c0,0.098 -0.049,0.147 -0.147,0.147c-0.046,0 -0.132,-0.093 -0.258,-0.279c-0.233,-0.321 -0.434,-0.57 -0.604,-0.747c-0.17,-0.177 -0.394,-0.266 -0.674,-0.266l-2.981,0l0,3.792l1.599,0c0.298,0 0.493,-0.12 0.586,-0.36c0.093,-0.24 0.2,-0.36 0.321,-0.36c0.094,0 0.14,0.049 0.14,0.147l0,1.774c0,0.097 -0.046,0.146 -0.14,0.146c-0.121,0 -0.235,-0.119 -0.342,-0.356c-0.107,-0.237 -0.309,-0.356 -0.607,-0.356l-1.557,0l0,4.07Z" fill="#111"/>
+                        <path d="M145.741,9.177l0.405,0l1.605,1.459l1.606,-1.459l0.398,0l-1.599,2.423l-0.81,0l-1.605,-2.423Zm-0.329,3.994l0,4.077l1.62,0c0.321,0 0.647,-0.046 0.978,-0.14c0.33,-0.093 0.614,-0.258 0.852,-0.495c0.372,-0.359 0.558,-0.833 0.558,-1.425c0,-0.567 -0.193,-1.042 -0.579,-1.424c-0.415,-0.396 -0.971,-0.593 -1.669,-0.593l-1.76,0Zm5.928,8.72c0.13,0.107 0.3,0.17 0.51,0.189c0.13,0.014 0.195,0.062 0.195,0.146l0,0.021c-0.014,0.098 -0.063,0.147 -0.146,0.147l-1.864,0c-0.042,0 -0.201,-0.182 -0.475,-0.545c-0.275,-0.363 -0.594,-0.796 -0.957,-1.298c-0.363,-0.503 -0.735,-1.017 -1.117,-1.543c-0.382,-0.526 -0.7,-0.95 -0.956,-1.271l-1.118,0l0,3.637c0,0.303 0.117,0.495 0.35,0.576c0.232,0.082 0.349,0.181 0.349,0.297c0,0.098 -0.047,0.147 -0.14,0.147l-2.367,0c-0.098,0 -0.147,-0.049 -0.147,-0.147c0,-0.116 0.117,-0.215 0.35,-0.297c0.232,-0.081 0.349,-0.273 0.349,-0.576l0,-7.757c0,-0.297 -0.117,-0.488 -0.349,-0.572c-0.233,-0.084 -0.35,-0.186 -0.35,-0.307c0,-0.098 0.049,-0.147 0.147,-0.147l4.119,0c0.48,0 0.98,0.085 1.502,0.255c0.521,0.17 0.924,0.499 1.207,0.988c0.224,0.396 0.336,0.87 0.336,1.424c-0.01,0.526 -0.161,0.999 -0.454,1.418c-0.233,0.33 -0.556,0.583 -0.971,0.757c-0.414,0.175 -0.807,0.274 -1.18,0.297l3.177,4.161Z" fill="#111"/>
+                        <path d="M162.666,11.586c-0.01,0.004 -0.024,0.007 -0.042,0.007c-0.084,0 -0.126,-0.04 -0.126,-0.119c0,-0.037 0.014,-0.072 0.042,-0.105l2.625,-1.801c0.084,-0.061 0.177,-0.091 0.279,-0.091c0.345,0 0.517,0.172 0.517,0.517c0,0.242 -0.107,0.402 -0.321,0.482l-2.974,1.11Zm3.155,6.828l-1.822,-4.252c-0.298,0.712 -0.595,1.422 -0.89,2.13c-0.296,0.707 -0.59,1.415 -0.883,2.122l3.595,0Zm3.607,3.823c0.011,0.025 0.017,0.046 0.017,0.063c0,0.016 -0.006,0.036 -0.017,0.059c-0.012,0.023 -0.039,0.035 -0.081,0.035l-2.36,0c-0.042,0 -0.085,-0.015 -0.129,-0.046c-0.044,-0.03 -0.071,-0.058 -0.08,-0.083c-0.009,-0.026 -0.014,-0.053 -0.014,-0.081c0,-0.028 0.024,-0.064 0.073,-0.108c0.049,-0.044 0.104,-0.089 0.164,-0.136c0.061,-0.047 0.102,-0.099 0.123,-0.157c0.02,-0.058 0.031,-0.12 0.031,-0.185c0,-0.07 -0.019,-0.147 -0.056,-0.231l-1.033,-2.387l-4.071,0c-0.167,0.4 -0.334,0.799 -0.499,1.197c-0.165,0.398 -0.3,0.719 -0.405,0.964c-0.105,0.244 -0.159,0.393 -0.164,0.446c-0.005,0.054 -0.007,0.1 -0.007,0.14c0,0.04 0.007,0.085 0.021,0.136c0.014,0.051 0.037,0.097 0.07,0.136c0.032,0.04 0.053,0.079 0.063,0.119c0.009,0.04 0.014,0.066 0.014,0.08c0,0.014 -0.005,0.031 -0.014,0.049c-0.033,0.098 -0.084,0.147 -0.154,0.147l-1.801,0c-0.093,0 -0.128,-0.049 -0.105,-0.147c0.019,-0.084 0.098,-0.156 0.237,-0.216c0.14,-0.061 0.301,-0.133 0.482,-0.217c0.177,-0.125 0.303,-0.272 0.377,-0.44l3.959,-8.944l0.433,0c0.233,0.55 0.52,1.222 0.862,2.018c0.342,0.796 0.696,1.615 1.061,2.458c0.366,0.842 0.719,1.662 1.062,2.458c0.342,0.796 0.631,1.466 0.869,2.01c0.07,0.173 0.183,0.311 0.338,0.416c0.156,0.105 0.287,0.18 0.391,0.227c0.105,0.046 0.185,0.088 0.241,0.125c0.056,0.038 0.09,0.069 0.102,0.095Z" fill="#111"/>
+                        <path d="M180.551,12.591c0.456,0 0.932,0.08 1.428,0.241c0.496,0.161 0.876,0.474 1.142,0.939c0.214,0.372 0.321,0.824 0.321,1.355c-0.01,0.502 -0.154,0.949 -0.433,1.34c-0.2,0.293 -0.51,0.535 -0.929,0.726c0.661,0.214 1.145,0.584 1.452,1.11c0.233,0.415 0.35,0.913 0.35,1.494c-0.01,0.554 -0.168,1.048 -0.475,1.481c-0.265,0.377 -0.64,0.657 -1.124,0.841c-0.484,0.184 -0.929,0.276 -1.334,0.276l-4.378,0c-0.097,0 -0.146,-0.049 -0.146,-0.147c0,-0.116 0.116,-0.216 0.349,-0.3c0.233,-0.084 0.349,-0.275 0.349,-0.573l0,-7.764c0,-0.293 -0.116,-0.481 -0.349,-0.565c-0.233,-0.084 -0.349,-0.186 -0.349,-0.307c0,-0.098 0.049,-0.147 0.146,-0.147l3.98,0Zm-2.171,5.006l0,4.287l1.578,0c0.34,0 0.683,-0.05 1.03,-0.15c0.346,-0.1 0.645,-0.273 0.897,-0.52c0.386,-0.377 0.579,-0.875 0.579,-1.494c0,-0.596 -0.202,-1.094 -0.607,-1.494c-0.438,-0.419 -1.022,-0.629 -1.753,-0.629l-1.724,0Zm0,-0.607l1.927,0c0.549,-0.061 0.991,-0.252 1.326,-0.573c0.349,-0.34 0.524,-0.791 0.524,-1.354c0,-0.55 -0.184,-1.001 -0.552,-1.355c-0.395,-0.377 -0.921,-0.565 -1.577,-0.565l-1.648,0l0,3.847Z" fill="#111"/>
+                        <path d="M193.772,21.737l2.982,0c0.433,0 0.799,-0.166 1.099,-0.499c0.301,-0.333 0.527,-0.592 0.681,-0.778c0.084,-0.103 0.149,-0.154 0.196,-0.154c0.097,0 0.146,0.049 0.146,0.147c0,0.06 -0.005,0.109 -0.014,0.146l-0.51,1.795l-6.416,0c-0.084,0 -0.126,-0.049 -0.126,-0.147c0,-0.116 0.117,-0.215 0.349,-0.297c0.233,-0.081 0.35,-0.273 0.35,-0.576l0,-7.757c0,-0.302 -0.117,-0.494 -0.35,-0.576c-0.232,-0.081 -0.349,-0.182 -0.349,-0.303c0,-0.098 0.049,-0.147 0.147,-0.147l6.479,0l0,1.794c0,0.098 -0.049,0.147 -0.146,0.147c-0.047,0 -0.133,-0.093 -0.259,-0.279c-0.232,-0.321 -0.434,-0.57 -0.604,-0.747c-0.17,-0.177 -0.394,-0.266 -0.673,-0.266l-2.982,0l0,3.792l1.599,0c0.298,0 0.494,-0.12 0.587,-0.36c0.093,-0.24 0.2,-0.36 0.321,-0.36c0.093,0 0.139,0.049 0.139,0.147l0,1.774c0,0.097 -0.046,0.146 -0.139,0.146c-0.121,0 -0.235,-0.119 -0.342,-0.356c-0.107,-0.237 -0.31,-0.356 -0.608,-0.356l-1.557,0l0,4.07Z" fill="#111"/>
+                        <path d="M211.442,13.729c0.363,-0.34 0.649,-0.613 0.859,-0.82c0.209,-0.207 0.377,-0.311 0.503,-0.311c0.125,0 0.23,0.021 0.314,0.063l0.74,0.363c0.079,0.046 0.119,0.093 0.119,0.14c0,0.046 -0.007,0.086 -0.021,0.118l-0.363,1.02l-0.482,-0.203c-0.182,-0.074 -0.371,-0.112 -0.569,-0.112c-0.198,0 -0.388,0.091 -0.569,0.273l-2.814,2.744l5.25,4.845c0.098,0.098 0.202,0.171 0.311,0.22c0.11,0.049 0.164,0.108 0.164,0.178c0,0.098 -0.046,0.147 -0.139,0.147l-2.367,0c-0.098,0 -0.147,-0.049 -0.147,-0.147c0,-0.032 0.035,-0.081 0.105,-0.146c0.051,-0.047 0.077,-0.098 0.077,-0.154c0.004,-0.093 -0.068,-0.203 -0.217,-0.328l-4.406,-4.064l0,3.819c0,0.303 0.117,0.495 0.35,0.576c0.232,0.082 0.349,0.176 0.349,0.283c0,0.107 -0.047,0.161 -0.14,0.161l-2.367,0c-0.098,0 -0.146,-0.054 -0.146,-0.161c0,-0.107 0.116,-0.201 0.349,-0.283c0.232,-0.081 0.349,-0.273 0.349,-0.576l0,-7.757c0,-0.297 -0.117,-0.488 -0.349,-0.572c-0.233,-0.084 -0.349,-0.186 -0.349,-0.307c0,-0.098 0.048,-0.147 0.146,-0.147l2.367,0c0.093,0 0.14,0.049 0.14,0.147c0,0.121 -0.117,0.223 -0.349,0.307c-0.233,0.084 -0.35,0.275 -0.35,0.572l0,3.568l3.652,-3.456Z" fill="#111"/>
                     </svg>
-                </a>
 
-                <ul class="main-nav__items" tabindex="-1">
+                </div>
+                <!-- /.intro__name -->
 
-                    <li class="main-nav__item main-nav__item--logo x-mobile">
-                        <a href="#uvod" class="main-nav__link" title="Úvod">
-                            <svg class="main-nav__item-svg transition" width="48" height="48" viewBox="0 0 100 100">
-                                <path d="M16.809,38.718c-0.162,-0.227 -0.244,-0.488 -0.244,-0.781c0,-0.097 0,-0.195 0,-0.293c0.065,-0.488 0.537,-1.074 1.416,-1.758c0,0 38.395,-30.371 38.916,-30.371l-31.396,32.032l20.849,26.269c0.391,0.586 0.554,1.188 0.489,1.807c-0.065,0.358 -0.277,0.7 -0.635,1.025l-2.881,2.344c-0.391,0.325 -0.781,0.488 -1.172,0.488c-0.521,0 -1.041,-0.309 -1.562,-0.928l-23.78,-29.834Z" fill="#111111"/>
-                                <path d="M82.65,63.6c0,0 -39.137,30.885 -39.66,30.885l31.523,-32.062l-20.983,-26.423c-0.457,-0.654 -0.62,-1.242 -0.49,-1.765c0.131,-0.425 0.36,-0.785 0.687,-1.079l2.892,-2.402c0.392,-0.327 0.784,-0.49 1.177,-0.49c0.522,0 1.045,0.31 1.568,0.931l23.482,29.562c0.393,0.49 0.589,0.931 0.589,1.323c0,0.196 -0.017,0.343 -0.049,0.441c-0.131,0.425 -0.376,0.785 -0.736,1.079Z" fill="#b19653"/>
-                            </svg>
+            </div>
+            <!-- /.intro__content-wrapper layout__center -->
+
+        </header>
+        <!-- /.intro section -->
+
+        <!--–––––––– // INTRO | SECTION // –––––––––-->
+
+
+        <main role="main">
+
+
+            <!--–––––––– ** OFFER | SECTION ** –––––––––-->
+
+            <article class="offer offer--init-fade-in section" id="co-delam" data-main-nav-target="true">
+
+                <div class="section__background offer__background">
+                    <div class="section__background-layer offer__background-layer">
+                        <div class="square"><!-- css --></div>
+                    </div>
+                    <div class="section__background-layer offer__background-layer" >
+                        <div class="square"><!-- css --></div>
+                    </div>
+                </div>
+                <!-- /.section__background offer__background -->
+
+                <div class="layout__center">
+
+                    <h2 class="section__title offer__title">
+                        <span class="text" data-small-caps="true">Co vám mohu nabídnout?</span>
+                    </h2>
+
+                    <p class="offer__description">
+                        <span class="text">Kóduji grafické návrhy webů do <span class="layout__br--mobile-m layout__br--mobile-s"><span class="small">HTML</span>, <span class="small">CSS</span> a JavaScriptu.</span></span>
+                    </p>
+
+                    <ul class="offer__technologies">
+
+                        <li class="offer__technology offer__technology--html">
+
+                            <a href="#" class="offer__technology-link">
+                                <h3 class="offer__technology-name transition">
+                                    <span class="text transition" data-break-text="true">HTML</span>
+                                </h3>
+                            </a>
+
+                            <p class="offer__technology-description">Správně označený význam obsahu <span class="layout__br--mobile-s">podle nejnovějšího standardu <span class="small">HTML5.1</span>. <strong>Přehledný, sémantický a přístupný</strong> kód.</span></p>
+
+                        </li>
+                        <!-- /.offer__technology offer__technology--html -->
+
+                        <li class="offer__technology offer__technology--css">
+
+                            <a href="#" class="offer__technology-link">
+                                <h3 class="offer__technology-name transition">
+                                    <span class="text transition">CSS</span>
+                                </h3>
+                            </a>
+
+                            <p class="offer__technology-description"><strong>Stabilní layout</strong> a vzhled <span class="layout__br--mobile-s">odpovídající návrhu. Ručně psané <span class="small">CSS</span> a&nbsp;<strong>metodologický přístup</strong> pak zajistí udržovatelný kód.</span></p>
+
+                        </li>
+                        <!-- /.offer__technology offer__technology--css -->
+
+                        <li class="offer__technology offer__technology--js">
+
+                            <a href="#" class="offer__technology-link">
+                                <h3 class="offer__technology-name transition">
+                                    <span class="text transition">JS</span>
+                                </h3>
+                            </a>
+
+                            <p class="offer__technology-description">Interakivní <span class="small">UI</span> — galerie, kalendář, kalkulačka nebo třeba animace — zajistí <strong>čistý, efektivní, modulární a&nbsp;udržovatelný</strong> <span class="small">JS</span>.</p>
+
+                        </li>
+                        <!-- /.offer__technology offer__technology--js -->
+
+                    </ul>
+                    <!-- /.offer__technologies -->
+
+                    <p class="offer__info">
+                        <span class="text">Potřebujete-li nejdříve vytvořit grafický návrh webu, můžu jej zajistit u svého <a href="#">bratra</a> :·).</span>
+                    </p>
+                    <p class="offer__info">
+                        <span class="text">Pro zajištění funkcí jako odeslání formuláře budete potřebovat back-endového <span class="small">(PHP)</span> vývojáře.</span>
+                    </p>
+
+                    <div class="offer__btn-wrapper">
+                        <a href="#kontakt" class="btn btn--light offer__btn">
+                            <span class="text">kontaktovat</span>
                         </a>
-                    </li>
+                    </div>
 
-                    <li class="main-nav__item main-nav__item--active">
-                        <a class="main-nav__link" href="#uvod">
-                            <span class="text transition" data-small-caps="true">Úvod</span>
-                        </a>
-                    </li>
+                </div>
+                <!-- /.layout__center -->
 
-                    <li class="main-nav__item">
-                        <a class="main-nav__link" href="#co-delam">
-                            <span class="text transition" data-small-caps="true">Co dělám</span>
-                        </a>
-                    </li>
+            </article>
+            <!-- /.offer section -->
 
-                    <li class="main-nav__item">
-                        <a class="main-nav__link" href="#reference">
-                            <span class="text transition" data-small-caps="true">Reference</span>
-                        </a>
-                    </li>
+            <!--–––––––– // OFFER | SECTION // –––––––––-->
 
-                    <li class="main-nav__item">
-                        <a class="main-nav__link" href="#kdo-jsem">
-                            <span class="text transition" data-small-caps="true">Kdo jsem</span>
-                        </a>
-                    </li>
 
-                    <li class="main-nav__item">
-                        <a class="main-nav__link" href="#cenik">
-                            <span class="text transition" data-small-caps="true">Ceník</span>
-                        </a>
-                    </li>
+            <!--–––––––– ** REFERENCE | SECTION ** –––––––––-->
 
-                    <li class="main-nav__item">
-                        <a class="main-nav__link" href="#kontakt">
-                            <span class="text transition" data-small-caps="true">Kontakt</span>
-                        </a>
-                    </li>
+            <article class="reference section" id="reference" data-main-nav-target="true">
 
-                </ul>
-                <!-- /.main-nav__items -->
 
-            </nav>
-            <!-- /.main-nav__wrapper layout__center -->
+
+            </article>
+            <!-- /.reference section -->
+
+            <!--–––––––– // REFERENCE | SECTION // –––––––––-->
+
+
+            <!--–––––––– ** ABOUT-ME | SECTION ** –––––––––-->
+
+            <article class="about-me section" id="kdo-jsem" data-main-nav-target="true">
+
+
+
+            </article>
+            <!-- /.about-me section -->
+
+            <!--–––––––– // ABOUT-ME | SECTION // –––––––––-->
+
+
+            <!--–––––––– ** PRICELIST | SECTION ** –––––––––-->
+
+            <article class="pricelist section" id="cenik" data-main-nav-target="true">
+
+
+
+            </article>
+            <!-- /.pricelist section -->
+
+            <!--–––––––– // PRICELIST | SECTION // –––––––––-->
+
+
+            <!--–––––––– ** CONTACT | SECTION ** –––––––––-->
+
+            <article class="contact section" id="kontakt" data-main-nav-target="true">
+
+
+
+            </article>
+            <!-- /.contact section -->
+
+            <!--–––––––– // CONTACT | SECTION // –––––––––-->
+
+
+        </main>
+
+    </div>
+    <!-- /.layout__page-wrapper -->
+
+
+    <!--–––––––– ** TECHNOLOGIES ** –––––––––-->
+
+    <article class="technologies">
+
+        <h2 class="visually-hidden">Podrobnosti o HTML, CSS a JavaScriptu</h2>
+
+        <button class="technologies__close">&times;</button>
+
+        <div class="technologies__content">
+
+            <article class="technologies__technology technologies__technology--html">
+
+                <h3 class="visually-hidden">HTML</h3>
+
+                <div class="technologies__text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem repellendus ipsum atque doloremque culpa nesciunt adipisci facere placeat perferendis incidunt distinctio, tempore dignissimos minus possimus. Beatae voluptatum nam adipisci totam minus distinctio provident delectus natus ullam odio veritatis possimus voluptates exercitationem aperiam corporis modi cupiditate, repellat facere animi, ipsa pariatur.
+                </div>
+                <!-- /.technologies__text -->
+
+                <figure class="technologies__preview">
+
+                    <code>
+
+                        <pre>&lt;div&gt;&lt;&sol;div&gt;&NewLine;</pre>
+
+                    </code>
+
+                </figure>
+                <!-- /.technologies__preview -->
+
+            </article>
+            <!-- /.technologies__technology technologies__technology--html -->
+
+            <article class="technologies__technology technologies__technology--css">
+
+                <h3 class="visually-hidden">CSS</h3>
+
+                <div class="technologies__text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem repellendus ipsum atque doloremque culpa nesciunt adipisci facere placeat perferendis incidunt distinctio, tempore dignissimos minus possimus. Beatae voluptatum nam adipisci totam minus distinctio provident delectus natus ullam odio veritatis possimus voluptates exercitationem aperiam corporis modi cupiditate, repellat facere animi, ipsa pariatur.
+                </div>
+                <!-- /.technologies__text -->
+
+                <figure class="technologies__preview">
+
+                    <code>
+
+                        <pre>&lt;div&gt;&lt;&sol;div&gt;&NewLine;</pre>
+
+                    </code>
+
+                </figure>
+                <!-- /.technologies__preview -->
+
+            </article>
+            <!-- /.technologies__technology technologies__technology--css -->
+
+            <article class="technologies__technology technologies__technology--js">
+
+                <h3 class="visually-hidden">JS</h3>
+
+                <div class="technologies__text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem repellendus ipsum atque doloremque culpa nesciunt adipisci facere placeat perferendis incidunt distinctio, tempore dignissimos minus possimus. Beatae voluptatum nam adipisci totam minus distinctio provident delectus natus ullam odio veritatis possimus voluptates exercitationem aperiam corporis modi cupiditate, repellat facere animi, ipsa pariatur.
+                </div>
+                <!-- /.technologies__text -->
+
+                <figure class="technologies__preview">
+
+                    <code>
+
+                        <pre>&lt;div&gt;&lt;&sol;div&gt;&NewLine;</pre>
+
+                    </code>
+
+                </figure>
+                <!-- /.technologies__preview -->
+
+            </article>
+            <!-- /.technologies__technology technologies__technology--js -->
 
         </div>
-        <!-- /.intro__main-nav main-nav -->
+        <!-- /.technologies__content -->
 
-        <!--–––––––– // MAIN-NAV // –––––––––-->
+    </article>
+    <!-- /.technologies -->
 
+    <!--–––––––– // TECHNOLOGIES // –––––––––-->
 
-        <div class="intro__content-wrapper layout__center">
-
-            <div class="intro__logo">
-                <a class="intro__logo-link" href="/" title="Michal Jeřábek — Front-End kodér">
-
-                    <svg class="intro__logo-svg" width="100" height="100" viewBox="0 0 100 100">
-                        <path d="M16.809,38.718c-0.162,-0.227 -0.244,-0.488 -0.244,-0.781c0,-0.097 0,-0.195 0,-0.293c0.065,-0.488 0.537,-1.074 1.416,-1.758c0,0 38.395,-30.371 38.916,-30.371l-31.396,32.032l20.849,26.269c0.391,0.586 0.554,1.188 0.489,1.807c-0.065,0.358 -0.277,0.7 -0.635,1.025l-2.881,2.344c-0.391,0.325 -0.781,0.488 -1.172,0.488c-0.521,0 -1.041,-0.309 -1.562,-0.928l-23.78,-29.834Z" fill="#111111"/>
-                        <path d="M82.65,63.6c0,0 -39.137,30.885 -39.66,30.885l31.523,-32.062l-20.983,-26.423c-0.457,-0.654 -0.62,-1.242 -0.49,-1.765c0.131,-0.425 0.36,-0.785 0.687,-1.079l2.892,-2.402c0.392,-0.327 0.784,-0.49 1.177,-0.49c0.522,0 1.045,0.31 1.568,0.931l23.482,29.562c0.393,0.49 0.589,0.931 0.589,1.323c0,0.196 -0.017,0.343 -0.049,0.441c-0.131,0.425 -0.376,0.785 -0.736,1.079Z" fill="#b19653"/>
-                    </svg>
-
-                    <svg class="intro__logo-svg" width="100" height="100" viewBox="0 0 100 100">
-                        <path d="M16.809,38.718c-0.162,-0.227 -0.244,-0.488 -0.244,-0.781c0,-0.097 0,-0.195 0,-0.293c0.065,-0.488 0.537,-1.074 1.416,-1.758c0,0 38.395,-30.371 38.916,-30.371l-31.396,32.032l20.849,26.269c0.391,0.586 0.554,1.188 0.489,1.807c-0.065,0.358 -0.277,0.7 -0.635,1.025l-2.881,2.344c-0.391,0.325 -0.781,0.488 -1.172,0.488c-0.521,0 -1.041,-0.309 -1.562,-0.928l-23.78,-29.834Z" fill="#111111"/>
-                        <path d="M82.65,63.6c0,0 -39.137,30.885 -39.66,30.885l31.523,-32.062l-20.983,-26.423c-0.457,-0.654 -0.62,-1.242 -0.49,-1.765c0.131,-0.425 0.36,-0.785 0.687,-1.079l2.892,-2.402c0.392,-0.327 0.784,-0.49 1.177,-0.49c0.522,0 1.045,0.31 1.568,0.931l23.482,29.562c0.393,0.49 0.589,0.931 0.589,1.323c0,0.196 -0.017,0.343 -0.049,0.441c-0.131,0.425 -0.376,0.785 -0.736,1.079Z" fill="#b19653"/>
-                    </svg>
-
-                </a>
-            </div>
-            <!-- /.intro__logo -->
-
-            <div class="intro__content">
-
-                <h1 class="intro__title intro__title--hidden">
-                    <span class="visually-hidden">Michal Jeřábek —</span>
-                    <span class="text" data-small-caps="true" data-break-text="true">Front-End kodér</span>
-                </h1>
-
-                <p class="intro__claim">přeměňuji vaše grafické návrhy <span class="layout__br--mobile-m layout__br--mobile-s">na webové stránky</span></p>
-
-            </div>
-            <!-- /.intro__content -->
-
-            <div class="intro__name">
-
-                <span class="text" role="presentation" aria-hidden="true">Michal Jeřábek</span>
-
-                <svg class="intro__name-svg" width="220" height="32" viewBox="0 0 220 32">
-                    <path d="M22.265,9.505l0,11.392c0,0.444 0.173,0.726 0.518,0.846c0.345,0.119 0.518,0.265 0.518,0.435c0,0.144 -0.072,0.216 -0.215,0.216l-3.476,0c-0.144,0 -0.216,-0.072 -0.216,-0.216c0,-0.17 0.171,-0.316 0.513,-0.435c0.342,-0.12 0.513,-0.402 0.513,-0.846l0,-10.982l-5.917,12.786l-0.4,0l-5.855,-12.304l0,10.5c0,0.444 0.171,0.726 0.513,0.846c0.342,0.119 0.513,0.265 0.513,0.435c0,0.144 -0.072,0.216 -0.216,0.216l-2.604,0c-0.144,0 -0.216,-0.072 -0.216,-0.216c0,-0.17 0.171,-0.316 0.513,-0.435c0.342,-0.12 0.513,-0.402 0.513,-0.846l0,-11.392c0,-0.438 -0.171,-0.718 -0.513,-0.841c-0.342,-0.123 -0.513,-0.274 -0.513,-0.451c0,-0.144 0.072,-0.216 0.216,-0.216l2.727,0l5.609,11.505l5.435,-11.505l2.861,0c0.143,0 0.215,0.072 0.215,0.216c0,0.177 -0.173,0.328 -0.518,0.451c-0.345,0.123 -0.518,0.403 -0.518,0.841Z" fill="#111"/>
-                    <path d="M33.766,13.617l0,7.75c0,0.308 0.116,0.502 0.349,0.583c0.233,0.082 0.349,0.181 0.349,0.297c0,0.098 -0.049,0.147 -0.146,0.147l-2.367,0c-0.093,0 -0.14,-0.049 -0.14,-0.147c0,-0.116 0.116,-0.215 0.349,-0.297c0.233,-0.081 0.349,-0.273 0.349,-0.576l0,-7.757c0,-0.302 -0.116,-0.494 -0.349,-0.576c-0.233,-0.081 -0.349,-0.182 -0.349,-0.303c0,-0.098 0.049,-0.147 0.147,-0.147l2.36,0c0.097,0 0.146,0.049 0.146,0.147c0,0.121 -0.116,0.222 -0.349,0.303c-0.233,0.082 -0.349,0.274 -0.349,0.576Z" fill="#111"/>
-                    <path d="M46.758,22.652c-1.429,0 -2.695,-0.456 -3.798,-1.368c-1.103,-0.913 -1.655,-2.174 -1.655,-3.785c0,-1.568 0.536,-2.826 1.609,-3.773c1.073,-0.948 2.354,-1.421 3.844,-1.421c0.535,0 1.104,0.059 1.707,0.178c0.603,0.119 1.176,0.352 1.721,0.702l-0.168,1.466c-0.018,0.084 -0.065,0.125 -0.139,0.125l-0.021,0c-0.056,-0.004 -0.116,-0.069 -0.182,-0.195c-0.27,-0.582 -0.675,-1.01 -1.214,-1.285c-0.503,-0.246 -1.038,-0.37 -1.606,-0.37l-0.147,0c-1.257,0.056 -2.239,0.559 -2.946,1.508c-0.638,0.852 -0.957,1.795 -0.957,2.828c0,0.116 0.005,0.233 0.014,0.349c0.065,1.071 0.442,2.046 1.131,2.926c0.689,0.879 1.625,1.347 2.807,1.403c0.112,0.005 0.219,0.007 0.321,0.007c0.596,0 1.087,-0.091 1.473,-0.272c0.447,-0.214 0.822,-0.645 1.124,-1.292c0.061,-0.13 0.135,-0.196 0.224,-0.196c0.018,0 0.037,0.003 0.056,0.007c0.074,0.028 0.111,0.082 0.111,0.161c0,0.037 -0.009,0.079 -0.028,0.126l-0.607,1.696c-0.447,0.187 -0.901,0.312 -1.361,0.377c-0.461,0.066 -0.899,0.098 -1.313,0.098Z" fill="#111"/>
-                    <path d="M58.975,13.617l0,3.268l5.9,0l0,-3.268c0,-0.297 -0.117,-0.488 -0.35,-0.572c-0.232,-0.084 -0.349,-0.186 -0.349,-0.307c0,-0.098 0.049,-0.147 0.147,-0.147l2.367,0c0.098,0 0.146,0.049 0.146,0.147c0,0.121 -0.117,0.223 -0.352,0.307c-0.235,0.084 -0.353,0.275 -0.353,0.572l0,7.757c0,0.303 0.118,0.495 0.353,0.576c0.235,0.082 0.352,0.181 0.352,0.297c0,0.098 -0.048,0.147 -0.146,0.147l-2.367,0c-0.098,0 -0.147,-0.049 -0.147,-0.147c0,-0.116 0.117,-0.215 0.349,-0.297c0.233,-0.081 0.35,-0.273 0.35,-0.576l0,-3.847l-5.9,0l0,3.847c0,0.303 0.116,0.495 0.349,0.576c0.233,0.082 0.349,0.181 0.349,0.297c0,0.098 -0.047,0.147 -0.14,0.147l-2.367,0c-0.097,0 -0.146,-0.049 -0.146,-0.147c0,-0.116 0.116,-0.215 0.349,-0.297c0.233,-0.081 0.349,-0.273 0.349,-0.576l0,-7.757c0,-0.297 -0.116,-0.488 -0.349,-0.572c-0.233,-0.084 -0.349,-0.186 -0.349,-0.307c0,-0.098 0.049,-0.147 0.146,-0.147l2.367,0c0.093,0 0.14,0.049 0.14,0.147c0,0.121 -0.116,0.223 -0.349,0.307c-0.233,0.084 -0.349,0.275 -0.349,0.572Z" fill="#111"/>
-                    <path d="M83.298,22.237c0.012,0.025 0.018,0.046 0.018,0.063c0,0.016 -0.006,0.036 -0.018,0.059c-0.011,0.023 -0.038,0.035 -0.08,0.035l-2.36,0c-0.042,0 -0.085,-0.015 -0.129,-0.046c-0.044,-0.03 -0.071,-0.058 -0.08,-0.083c-0.009,-0.026 -0.014,-0.053 -0.014,-0.081c0,-0.028 0.024,-0.064 0.073,-0.108c0.049,-0.044 0.104,-0.089 0.164,-0.136c0.061,-0.047 0.101,-0.099 0.122,-0.157c0.021,-0.058 0.032,-0.12 0.032,-0.185c0,-0.07 -0.019,-0.147 -0.056,-0.231l-1.033,-2.387l-4.071,0c-0.167,0.4 -0.334,0.799 -0.499,1.197c-0.165,0.398 -0.3,0.719 -0.405,0.964c-0.105,0.244 -0.159,0.393 -0.164,0.446c-0.005,0.054 -0.007,0.1 -0.007,0.14c0,0.04 0.007,0.085 0.021,0.136c0.014,0.051 0.037,0.097 0.07,0.136c0.032,0.04 0.053,0.079 0.063,0.119c0.009,0.04 0.013,0.066 0.013,0.08c0,0.014 -0.004,0.031 -0.013,0.049c-0.033,0.098 -0.084,0.147 -0.154,0.147l-1.801,0c-0.094,0 -0.128,-0.049 -0.105,-0.147c0.018,-0.084 0.098,-0.156 0.237,-0.216c0.14,-0.061 0.3,-0.133 0.482,-0.217c0.177,-0.125 0.303,-0.272 0.377,-0.44l3.959,-8.944l0.433,0c0.232,0.55 0.52,1.222 0.862,2.018c0.342,0.796 0.696,1.615 1.061,2.458c0.366,0.842 0.719,1.662 1.062,2.458c0.342,0.796 0.631,1.466 0.869,2.01c0.07,0.173 0.182,0.311 0.338,0.416c0.156,0.105 0.287,0.18 0.391,0.227c0.105,0.046 0.185,0.088 0.241,0.125c0.056,0.038 0.09,0.069 0.101,0.095Zm-3.606,-3.823l-1.822,-4.252c-0.298,0.712 -0.595,1.422 -0.89,2.13c-0.296,0.707 -0.59,1.415 -0.883,2.122l3.595,0Z" fill="#111"/>
-                    <path d="M90.978,21.737l2.981,0c0.433,0 0.8,-0.166 1.1,-0.499c0.3,-0.333 0.527,-0.592 0.681,-0.778c0.084,-0.103 0.149,-0.154 0.195,-0.154c0.098,0 0.147,0.049 0.147,0.147c0,0.06 -0.005,0.109 -0.014,0.146l-0.51,1.795l-6.395,0c-0.098,0 -0.147,-0.049 -0.147,-0.147c0,-0.116 0.116,-0.215 0.349,-0.297c0.233,-0.081 0.349,-0.273 0.349,-0.576l0,-7.757c0,-0.297 -0.116,-0.488 -0.349,-0.572c-0.233,-0.084 -0.349,-0.186 -0.349,-0.307c0,-0.098 0.049,-0.147 0.147,-0.147l2.367,0c0.093,0 0.139,0.049 0.139,0.147c0,0.121 -0.116,0.223 -0.349,0.307c-0.233,0.084 -0.349,0.275 -0.349,0.572l0.007,8.12Z" fill="#111"/>
-                    <path d="M117.209,20.548c0,1.347 -0.091,2.348 -0.272,3.004c-0.181,0.657 -0.494,1.217 -0.938,1.682c-0.615,0.629 -1.306,1.046 -2.071,1.251l0,-0.513c0.266,-0.164 0.516,-0.374 0.748,-0.63c0.232,-0.257 0.414,-0.593 0.544,-1.01c0.082,-0.28 0.124,-0.674 0.128,-1.179c0.003,-0.506 0.005,-1.354 0.005,-2.543l0,-11.116c0,-0.437 -0.171,-0.717 -0.513,-0.84c-0.342,-0.123 -0.513,-0.274 -0.513,-0.452c0,-0.136 0.072,-0.205 0.216,-0.205l3.476,0c0.143,0 0.215,0.069 0.215,0.205c0,0.178 -0.171,0.329 -0.513,0.452c-0.341,0.123 -0.512,0.403 -0.512,0.84l0,11.054Z" fill="#111"/>
-                    <path d="M130.397,21.737l2.981,0c0.433,0 0.8,-0.166 1.1,-0.499c0.3,-0.333 0.527,-0.592 0.681,-0.778c0.083,-0.103 0.149,-0.154 0.195,-0.154c0.098,0 0.147,0.049 0.147,0.147c0,0.06 -0.005,0.109 -0.014,0.146l-0.51,1.795l-6.416,0c-0.084,0 -0.126,-0.049 -0.126,-0.147c0,-0.116 0.116,-0.215 0.349,-0.297c0.233,-0.081 0.349,-0.273 0.349,-0.576l0,-7.757c0,-0.302 -0.116,-0.494 -0.349,-0.576c-0.233,-0.081 -0.349,-0.182 -0.349,-0.303c0,-0.098 0.049,-0.147 0.147,-0.147l6.479,0l0,1.794c0,0.098 -0.049,0.147 -0.147,0.147c-0.046,0 -0.132,-0.093 -0.258,-0.279c-0.233,-0.321 -0.434,-0.57 -0.604,-0.747c-0.17,-0.177 -0.394,-0.266 -0.674,-0.266l-2.981,0l0,3.792l1.599,0c0.298,0 0.493,-0.12 0.586,-0.36c0.093,-0.24 0.2,-0.36 0.321,-0.36c0.094,0 0.14,0.049 0.14,0.147l0,1.774c0,0.097 -0.046,0.146 -0.14,0.146c-0.121,0 -0.235,-0.119 -0.342,-0.356c-0.107,-0.237 -0.309,-0.356 -0.607,-0.356l-1.557,0l0,4.07Z" fill="#111"/>
-                    <path d="M145.741,9.177l0.405,0l1.605,1.459l1.606,-1.459l0.398,0l-1.599,2.423l-0.81,0l-1.605,-2.423Zm-0.329,3.994l0,4.077l1.62,0c0.321,0 0.647,-0.046 0.978,-0.14c0.33,-0.093 0.614,-0.258 0.852,-0.495c0.372,-0.359 0.558,-0.833 0.558,-1.425c0,-0.567 -0.193,-1.042 -0.579,-1.424c-0.415,-0.396 -0.971,-0.593 -1.669,-0.593l-1.76,0Zm5.928,8.72c0.13,0.107 0.3,0.17 0.51,0.189c0.13,0.014 0.195,0.062 0.195,0.146l0,0.021c-0.014,0.098 -0.063,0.147 -0.146,0.147l-1.864,0c-0.042,0 -0.201,-0.182 -0.475,-0.545c-0.275,-0.363 -0.594,-0.796 -0.957,-1.298c-0.363,-0.503 -0.735,-1.017 -1.117,-1.543c-0.382,-0.526 -0.7,-0.95 -0.956,-1.271l-1.118,0l0,3.637c0,0.303 0.117,0.495 0.35,0.576c0.232,0.082 0.349,0.181 0.349,0.297c0,0.098 -0.047,0.147 -0.14,0.147l-2.367,0c-0.098,0 -0.147,-0.049 -0.147,-0.147c0,-0.116 0.117,-0.215 0.35,-0.297c0.232,-0.081 0.349,-0.273 0.349,-0.576l0,-7.757c0,-0.297 -0.117,-0.488 -0.349,-0.572c-0.233,-0.084 -0.35,-0.186 -0.35,-0.307c0,-0.098 0.049,-0.147 0.147,-0.147l4.119,0c0.48,0 0.98,0.085 1.502,0.255c0.521,0.17 0.924,0.499 1.207,0.988c0.224,0.396 0.336,0.87 0.336,1.424c-0.01,0.526 -0.161,0.999 -0.454,1.418c-0.233,0.33 -0.556,0.583 -0.971,0.757c-0.414,0.175 -0.807,0.274 -1.18,0.297l3.177,4.161Z" fill="#111"/>
-                    <path d="M162.666,11.586c-0.01,0.004 -0.024,0.007 -0.042,0.007c-0.084,0 -0.126,-0.04 -0.126,-0.119c0,-0.037 0.014,-0.072 0.042,-0.105l2.625,-1.801c0.084,-0.061 0.177,-0.091 0.279,-0.091c0.345,0 0.517,0.172 0.517,0.517c0,0.242 -0.107,0.402 -0.321,0.482l-2.974,1.11Zm3.155,6.828l-1.822,-4.252c-0.298,0.712 -0.595,1.422 -0.89,2.13c-0.296,0.707 -0.59,1.415 -0.883,2.122l3.595,0Zm3.607,3.823c0.011,0.025 0.017,0.046 0.017,0.063c0,0.016 -0.006,0.036 -0.017,0.059c-0.012,0.023 -0.039,0.035 -0.081,0.035l-2.36,0c-0.042,0 -0.085,-0.015 -0.129,-0.046c-0.044,-0.03 -0.071,-0.058 -0.08,-0.083c-0.009,-0.026 -0.014,-0.053 -0.014,-0.081c0,-0.028 0.024,-0.064 0.073,-0.108c0.049,-0.044 0.104,-0.089 0.164,-0.136c0.061,-0.047 0.102,-0.099 0.123,-0.157c0.02,-0.058 0.031,-0.12 0.031,-0.185c0,-0.07 -0.019,-0.147 -0.056,-0.231l-1.033,-2.387l-4.071,0c-0.167,0.4 -0.334,0.799 -0.499,1.197c-0.165,0.398 -0.3,0.719 -0.405,0.964c-0.105,0.244 -0.159,0.393 -0.164,0.446c-0.005,0.054 -0.007,0.1 -0.007,0.14c0,0.04 0.007,0.085 0.021,0.136c0.014,0.051 0.037,0.097 0.07,0.136c0.032,0.04 0.053,0.079 0.063,0.119c0.009,0.04 0.014,0.066 0.014,0.08c0,0.014 -0.005,0.031 -0.014,0.049c-0.033,0.098 -0.084,0.147 -0.154,0.147l-1.801,0c-0.093,0 -0.128,-0.049 -0.105,-0.147c0.019,-0.084 0.098,-0.156 0.237,-0.216c0.14,-0.061 0.301,-0.133 0.482,-0.217c0.177,-0.125 0.303,-0.272 0.377,-0.44l3.959,-8.944l0.433,0c0.233,0.55 0.52,1.222 0.862,2.018c0.342,0.796 0.696,1.615 1.061,2.458c0.366,0.842 0.719,1.662 1.062,2.458c0.342,0.796 0.631,1.466 0.869,2.01c0.07,0.173 0.183,0.311 0.338,0.416c0.156,0.105 0.287,0.18 0.391,0.227c0.105,0.046 0.185,0.088 0.241,0.125c0.056,0.038 0.09,0.069 0.102,0.095Z" fill="#111"/>
-                    <path d="M180.551,12.591c0.456,0 0.932,0.08 1.428,0.241c0.496,0.161 0.876,0.474 1.142,0.939c0.214,0.372 0.321,0.824 0.321,1.355c-0.01,0.502 -0.154,0.949 -0.433,1.34c-0.2,0.293 -0.51,0.535 -0.929,0.726c0.661,0.214 1.145,0.584 1.452,1.11c0.233,0.415 0.35,0.913 0.35,1.494c-0.01,0.554 -0.168,1.048 -0.475,1.481c-0.265,0.377 -0.64,0.657 -1.124,0.841c-0.484,0.184 -0.929,0.276 -1.334,0.276l-4.378,0c-0.097,0 -0.146,-0.049 -0.146,-0.147c0,-0.116 0.116,-0.216 0.349,-0.3c0.233,-0.084 0.349,-0.275 0.349,-0.573l0,-7.764c0,-0.293 -0.116,-0.481 -0.349,-0.565c-0.233,-0.084 -0.349,-0.186 -0.349,-0.307c0,-0.098 0.049,-0.147 0.146,-0.147l3.98,0Zm-2.171,5.006l0,4.287l1.578,0c0.34,0 0.683,-0.05 1.03,-0.15c0.346,-0.1 0.645,-0.273 0.897,-0.52c0.386,-0.377 0.579,-0.875 0.579,-1.494c0,-0.596 -0.202,-1.094 -0.607,-1.494c-0.438,-0.419 -1.022,-0.629 -1.753,-0.629l-1.724,0Zm0,-0.607l1.927,0c0.549,-0.061 0.991,-0.252 1.326,-0.573c0.349,-0.34 0.524,-0.791 0.524,-1.354c0,-0.55 -0.184,-1.001 -0.552,-1.355c-0.395,-0.377 -0.921,-0.565 -1.577,-0.565l-1.648,0l0,3.847Z" fill="#111"/>
-                    <path d="M193.772,21.737l2.982,0c0.433,0 0.799,-0.166 1.099,-0.499c0.301,-0.333 0.527,-0.592 0.681,-0.778c0.084,-0.103 0.149,-0.154 0.196,-0.154c0.097,0 0.146,0.049 0.146,0.147c0,0.06 -0.005,0.109 -0.014,0.146l-0.51,1.795l-6.416,0c-0.084,0 -0.126,-0.049 -0.126,-0.147c0,-0.116 0.117,-0.215 0.349,-0.297c0.233,-0.081 0.35,-0.273 0.35,-0.576l0,-7.757c0,-0.302 -0.117,-0.494 -0.35,-0.576c-0.232,-0.081 -0.349,-0.182 -0.349,-0.303c0,-0.098 0.049,-0.147 0.147,-0.147l6.479,0l0,1.794c0,0.098 -0.049,0.147 -0.146,0.147c-0.047,0 -0.133,-0.093 -0.259,-0.279c-0.232,-0.321 -0.434,-0.57 -0.604,-0.747c-0.17,-0.177 -0.394,-0.266 -0.673,-0.266l-2.982,0l0,3.792l1.599,0c0.298,0 0.494,-0.12 0.587,-0.36c0.093,-0.24 0.2,-0.36 0.321,-0.36c0.093,0 0.139,0.049 0.139,0.147l0,1.774c0,0.097 -0.046,0.146 -0.139,0.146c-0.121,0 -0.235,-0.119 -0.342,-0.356c-0.107,-0.237 -0.31,-0.356 -0.608,-0.356l-1.557,0l0,4.07Z" fill="#111"/>
-                    <path d="M211.442,13.729c0.363,-0.34 0.649,-0.613 0.859,-0.82c0.209,-0.207 0.377,-0.311 0.503,-0.311c0.125,0 0.23,0.021 0.314,0.063l0.74,0.363c0.079,0.046 0.119,0.093 0.119,0.14c0,0.046 -0.007,0.086 -0.021,0.118l-0.363,1.02l-0.482,-0.203c-0.182,-0.074 -0.371,-0.112 -0.569,-0.112c-0.198,0 -0.388,0.091 -0.569,0.273l-2.814,2.744l5.25,4.845c0.098,0.098 0.202,0.171 0.311,0.22c0.11,0.049 0.164,0.108 0.164,0.178c0,0.098 -0.046,0.147 -0.139,0.147l-2.367,0c-0.098,0 -0.147,-0.049 -0.147,-0.147c0,-0.032 0.035,-0.081 0.105,-0.146c0.051,-0.047 0.077,-0.098 0.077,-0.154c0.004,-0.093 -0.068,-0.203 -0.217,-0.328l-4.406,-4.064l0,3.819c0,0.303 0.117,0.495 0.35,0.576c0.232,0.082 0.349,0.176 0.349,0.283c0,0.107 -0.047,0.161 -0.14,0.161l-2.367,0c-0.098,0 -0.146,-0.054 -0.146,-0.161c0,-0.107 0.116,-0.201 0.349,-0.283c0.232,-0.081 0.349,-0.273 0.349,-0.576l0,-7.757c0,-0.297 -0.117,-0.488 -0.349,-0.572c-0.233,-0.084 -0.349,-0.186 -0.349,-0.307c0,-0.098 0.048,-0.147 0.146,-0.147l2.367,0c0.093,0 0.14,0.049 0.14,0.147c0,0.121 -0.117,0.223 -0.349,0.307c-0.233,0.084 -0.35,0.275 -0.35,0.572l0,3.568l3.652,-3.456Z" fill="#111"/>
-                </svg>
-
-            </div>
-            <!-- /.intro__name -->
-
-        </div>
-        <!-- /.intro__content-wrapper layout__center -->
-
-    </header>
-    <!-- /.intro section -->
-
-    <!--–––––––– // INTRO | SECTION // –––––––––-->
-
-
-    <main role="main">
-
-
-        <!--–––––––– ** OFFER | SECTION ** –––––––––-->
-
-        <article class="offer section" id="co-delam" data-main-nav-target="true">
-
-
-
-        </article>
-        <!-- /.offer section -->
-
-        <!--–––––––– // OFFER | SECTION // –––––––––-->
-
-
-        <!--–––––––– ** REFERENCE | SECTION ** –––––––––-->
-
-        <article class="reference section" id="reference" data-main-nav-target="true">
-
-
-
-        </article>
-        <!-- /.reference section -->
-
-        <!--–––––––– // REFERENCE | SECTION // –––––––––-->
-
-
-        <!--–––––––– ** ABOUT-ME | SECTION ** –––––––––-->
-
-        <article class="about-me section" id="kdo-jsem" data-main-nav-target="true">
-
-
-
-        </article>
-        <!-- /.about-me section -->
-
-        <!--–––––––– // ABOUT-ME | SECTION // –––––––––-->
-
-
-        <!--–––––––– ** PRICELIST | SECTION ** –––––––––-->
-
-        <article class="pricelist section" id="cenik" data-main-nav-target="true">
-
-
-
-        </article>
-        <!-- /.pricelist section -->
-
-        <!--–––––––– // PRICELIST | SECTION // –––––––––-->
-
-
-        <!--–––––––– ** CONTACT | SECTION ** –––––––––-->
-
-        <article class="contact section" id="kontakt" data-main-nav-target="true">
-
-
-
-        </article>
-        <!-- /.contact section -->
-
-        <!--–––––––– // CONTACT | SECTION // –––––––––-->
-
-
-    </main>
 
     <!--JAVASCRIPT-->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script>!window.jQuery && document.write("<script src='libs/jq.min.js'><"+"/script>");</script>
 
+    <script src="libs/inert-polyfill/inert-polyfill.min.js"></script>
+    <link rel="stylesheet" href="libs/inert-polyfill/inert-polyfill.css">
     <script src="libs/jquery.smallcaps.js"></script>
     <script src="libs/fulltilt.min.js"></script>
     <script src="libs/parallax.js"></script>
 
+    <script src="js/modules/Performance.js"></script>
+    <script src="js/modules/BGObjectsOpacityAnimation.js"></script>
     <script src="js/modules/BreakText.js"></script>
     <script src="js/modules/Intro.js"></script>
     <script src="js/modules/SmallCaps.js"></script>
     <script src="js/modules/MainNav.js"></script>
+    <script src="js/modules/Offer.js"></script>
 
     <script src="js/init.js"></script>
 

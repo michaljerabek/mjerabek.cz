@@ -3,26 +3,35 @@
 
 (function (ns, $) {
 
+    ns.$win = ns.$win || $(window);
     ns.$temp = ns.$temp || $([null]);
 
-    ns.Intro = (function () {
+    ns.Offer = (function () {
 
         var CLASS = {
-                hidden: "intro__title--hidden"
+                initFadeIn: "offer--init-fade-in"
             },
 
             SELECTOR = {
-                title: ".intro__title",
+                self: ".offer",
 
-                background: ".intro__background",
-                backgroundLayers: ".intro__background-layer",
+                background: ".offer__background",
+                backgroundLayers: ".offer__background-layer",
                 findSquare: ".square"
             },
 
-            $title,
+            $self,
 
             $bgLayers,
             parallax,
+
+            checkScrollTop = function  () {
+
+                if (ns.$win.scrollTop()) {
+
+                    $self.removeClass(CLASS.initFadeIn);
+                }
+            },
 
             initBackground = function () {
 
@@ -34,6 +43,10 @@
                     fakeTilt: false
                 });
 
+                setTimeout(function() {
+                    parallax.refresh();
+                }, 200);
+
                 ns.$win.on("verylowperformance." + ns, function () {
                     parallax.destroy();
                 });
@@ -43,12 +56,14 @@
 
             init = function () {
 
-                $title = $(SELECTOR.title);
-
-                //text je skrytý kvůli animaci
-                $title.removeClass(CLASS.hidden);
-
                 initBackground();
+
+                $self = $(SELECTOR.self);
+
+                checkScrollTop();
+
+                //ie fix
+                setTimeout(checkScrollTop, 50);
             };
 
         return {

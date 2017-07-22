@@ -8,6 +8,11 @@ jQuery(function () {
         return;
     }
 
+    if (window.MJNS.Performance) {
+
+        window.MJNS.Performance.init();
+    }
+
     if (window.MJNS.BreakText) {
 
         window.MJNS.BreakText.init();
@@ -26,5 +31,10 @@ jQuery(function () {
     if (window.MJNS.MainNav) {
 
         window.MJNS.MainNav.init();
+    }
+
+    if (window.MJNS.Offer) {
+
+        window.MJNS.Offer.init();
     }
 });

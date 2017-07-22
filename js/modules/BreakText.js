@@ -3,13 +3,13 @@
 
 (function (ns, $) {
 
+    ns.$temp = ns.$temp || $([null]);
+
     ns.BreakText = (function () {
 
         var SELECTOR = {
                 items: "[data-break-text='true']"
             },
-
-            $temp = $([null]),
 
             wrapLetter = function (letter, smallCaps) {
 
@@ -23,10 +23,10 @@
 
             breakText = function (item) {
 
-                $temp[0] = item;
+                ns.$temp[0] = item;
 
-                var text = $temp.text(),
-                    hasSmallCaps = ns.SmallCaps.isItem($temp),
+                var text = ns.$temp.text(),
+                    hasSmallCaps = ns.SmallCaps.isItem(ns.$temp),
 
                     l = 0,
                     newText = [];
@@ -38,10 +38,10 @@
 
                 if (hasSmallCaps) {
 
-                    ns.SmallCaps.removeItem($temp);
+                    ns.SmallCaps.removeItem(ns.$temp);
                 }
 
-                $temp.html(newText.join(""));
+                ns.$temp.html(newText.join(""));
             },
 
             init = function () {

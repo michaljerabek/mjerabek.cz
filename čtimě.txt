@@ -135,9 +135,9 @@ následujícího pořadí (neobsahuje všechny možné vlastnosti):
     display, justify-content, align-items, clear, float, width, min-width,
     max-width, height, min-height, max-height, padding, margin
 
-    font-family, font-size, font-variant, text-indent, text-transform,
-    text-align, vertical-align, line-height, white-space, word-wrap,
-    columns
+    font-family, font-size, font-weigth, font-style, font-variant, 
+    text-indent, text-transform, text-align, vertical-align, line-height, 
+    white-space, word-wrap, columns
 
     color, text-shadow, background, fill, border, stroke, box-shadow,
     list-style, opacity, visibility, filter, mix-blend-mode, 

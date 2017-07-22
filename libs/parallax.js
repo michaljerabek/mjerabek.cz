@@ -158,10 +158,10 @@
 
             watchTilt = function () {
 
-                if (!window.FULLTILT || !window.Promise || !window.Float32Array) {
+//                if (!window.FULLTILT || !window.Promise || !window.Float32Array) {
 
                     return;
-                }
+//                }
 
                 var promise = FULLTILT.getDeviceOrientation();
 
