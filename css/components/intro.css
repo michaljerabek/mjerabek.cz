@@ -11,7 +11,7 @@
 }
 
 .intro > .layout__center {
-	min-height: 100vh;
+	min-height: 100vmin;
 }
 
     .intro__content-wrapper {
@@ -164,7 +164,7 @@
 
             .intro__logo-svg path {
                 fill: transparent;
-                stroke-width: 1;
+                stroke-width: 0.6;
                 stroke-dasharray: 180 180;
                 stroke-dashoffset: -180;
 

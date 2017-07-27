@@ -37,4 +37,9 @@ jQuery(function () {
 
         window.MJNS.Offer.init();
     }
+
+    if (window.MJNS.Technologies) {
+
+        window.MJNS.Technologies.init();
+    }
 });

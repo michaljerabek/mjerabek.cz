@@ -7,7 +7,12 @@
 
     ns.Performance = (function () {
 
-        var TRASHHOLD = 45,
+        var CLASS = {
+                low: "performance--low",
+                veryLow: "performance--very-low"
+            },
+
+            TRASHHOLD = 40,
             TRASHHOLD2 = 30,
 
             fps = [60, 60, 60, 60],
@@ -34,12 +39,16 @@
 
                     ns.$win.trigger("lowperformance." + ns, [currentFps]);
 
+                    document.body.className += " " + CLASS.low;
+
                     lastState++;
                 }
 
                 if (currentFps < TRASHHOLD2 && lastState === 1) {
 
                     ns.$win.trigger("verylowperformance." + ns, [currentFps]);
+
+                    document.body.className += " " + CLASS.veryLow;
 
                     lastState++;
                 }

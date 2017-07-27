@@ -24,6 +24,13 @@
                 itemsBottomOverflow: "main-nav__items--has-bottom-overflow"
             },
 
+            DATA = {
+                focus: "main-nav-focus",
+                active: "main-nav-active",
+                scrollTo: "main-nav-scroll-to",
+                ignore: "main-nav-ignore"
+            },
+
             SELECTOR = {
                 self: ".main-nav",
 
@@ -36,18 +43,12 @@
 
                 fixedElement: ".main-nav",
 
-                localLink: "a[href^='#']:not([href='#'])",
+                localLink: "a[href^='#']:not([href='#']):not([data-" + DATA.ignore + "='true'])",
 
                 scrollTarget: "[data-main-nav-target='true']"
             },
 
-            DATA = {
-                focus: "main-nav-focus",
-                active: "main-nav-active",
-                scrollTo: "main-nav-scroll-to"
-            },
-
-            SCROLL_DURATION_BASE = 350,
+            SCROLL_DURATION_BASE = 425,
 
             AUTOHIDE = 10000,
 

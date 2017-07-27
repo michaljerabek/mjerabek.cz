@@ -2,21 +2,1018 @@
 /*---------------------------- TECHNOLOGIES --------------------------*/
 /*====================================================================*/
 
-.layout__page-wrapper {
-    transform: scale(0.9);
-}
-
 .technologies {
-    z-index: 9999;
+    z-index: -1;
 	position: fixed;
     top: 0;
     left: 0;
 
     width: 100%;
-    height: 100%;
+    height: 0%; /*ios bug - zobrazuje se nad obsahem i při skrytí*/
+
+    color: #e7e7e7;
+    visibility: hidden;
+
+    overflow: hidden;
+
+    transition: visibility 0s linear 0.5s,
+        height 0s linear 0.5s,
+        z-index 0s linear 0.5s;
 }
 
+.no-js #html:target ~ .technologies,
+.no-js #css:target ~ .technologies,
+.no-js #js:target ~ .technologies,
+.ui__content--technologies .technologies {
+    z-index: 9999;
 
+    height: 100%;
+
+    visibility: visible;
+
+    transition: none;
+}
+
+    .technologies__close {
+        position: absolute;
+        z-index: 20;
+
+        font-size: 0;
+        text-align: center;
+        line-height: 40px;
+
+        width: 40px;
+        max-width: 40px;
+        min-width: 40px;
+        height: 40px;
+
+        background: none;
+        border: none;
+        border-radius: 0px;
+        outline: none;
+        opacity: 0;
+        cursor: pointer;
+        -webkit-appearance: none;
+           -moz-appearance: none;
+
+        overflow: hidden;
+
+        transition: opacity 0.5s ease-out 0s;
+    }
+
+    @media (min-height: 768px) and (min-width: 768px) {
+
+        .technologies__close {
+            top: 27px;
+            right: 27px;
+        }
+    }
+
+    @media (min-height: 768px) and (max-width: 767px) {
+
+        .technologies__close {
+            top: 17px;
+            right: 17px;
+        }
+    }
+
+    @media (max-height: 767px) and (min-width: 768px) {
+
+        .technologies__close {
+            top: 17px;
+            right: 17px;
+        }
+    }
+
+    @media (max-height: 767px) and (max-width: 767px) {
+
+        .technologies__close {
+            top: 12px;
+            right: 12px;
+        }
+    }
+
+    .no-js #html:target ~ .technologies .technologies__close,
+    .no-js #css:target ~ .technologies .technologies__close,
+    .no-js #js:target ~ .technologies .technologies__close,
+    .ui__content--technologies .technologies__close {
+        opacity: 1;
+
+        transition: opacity 0.5s ease-out 0.5s;
+    }
+
+        .technologies__close .text {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+
+            height: inherit;
+            width: inherit;
+            margin: auto;
+
+            font-family: "Josefin Sans";
+            font-size: 71px;
+            font-weight: 100;
+            text-decoration: none;
+            line-height: 9px;
+
+            color: #C06C47;
+            outline-offset: -1px;
+            text-shadow: -1px 1px 2px rgba(15, 17, 17, 0.65),
+                -1px 1px 4px rgba(15, 17, 17, 0.5),
+                -1px 1px 6px rgba(15, 17, 17, 0.35);
+        }
+
+        @-moz-document url-prefix() {
+
+            .technologies__close .text {
+                line-height: 8px;
+            }
+        }
+
+        .ios .technologies__close .text {
+            line-height: 22px;
+        }
+
+        .technologies__close:hover .text,
+        .technologies__close:focus .text {
+            transform: rotate(-15deg);
+
+            color: #79A9BD;
+        }
+
+        .technologies__close:active .text {
+            transform: rotate(-25deg) scale(0.9);
+        }
+
+/*--------------------------------------------------------------------*/
+/*---------------------------- BACKGROUND ----------------------------*/
+/*--------------------------------------------------------------------*/
+
+.technologies__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: auto;
+}
+
+    .technologies__background-layer {
+        position: relative;
+
+        flex: none;
+        height: 100vh;
+
+        opacity: 0;
+
+        transition: transform 0.5s cubic-bezier(.5, .2, .8, .5) 0s,
+            opacity 0.5s ease-in 0s;
+        will-change: transform, opacity;
+    }
+
+    .no-js #html:target ~ .technologies .technologies__background-layer,
+    .no-js #css:target ~ .technologies .technologies__background-layer,
+    .no-js #js:target ~ .technologies .technologies__background-layer,
+    .ui__content--technologies .technologies__background-layer {
+        transform: translateX(0px);
+
+        opacity: 1;
+
+        transition: transform 0.75s cubic-bezier(.15, .75, .25, 1) 0.1s,
+            opacity 0.75s ease-out 0.1s;
+    }
+
+    .technologies__background-layer--text {
+        transform: translateX(-100px);
+
+        background-color: rgba(0, 0, 0, 0.82);
+    }
+
+    @media (min-width: 1024px) {
+
+        .technologies__background-layer--text {
+            width: 38.12%;
+            width: calc((100% / 21) * 8);
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 1023px) {
+
+        .technologies__background-layer--text {
+            width: 50%;
+        }
+    }
+
+    @media (max-width: 767px) {
+
+        .technologies__background-layer--text {
+            width: 100%;
+            width: calc(100% - 40px);
+        }
+    }
+
+    .technologies__background-layer--sample {
+        transform: translateX(100px);
+
+        background-color: rgba(17, 17, 17, 0.82);
+    }
+
+    @media (min-width: 1024px) {
+
+        .technologies__background-layer--sample {
+            width: 61.88%;
+            width: calc((100% / 21) * 13);
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 1023px) {
+
+        .technologies__background-layer--sample {
+            width: 50%;
+        }
+    }
+
+    @media (max-width: 767px) {
+
+        .technologies__background-layer--sample {
+            position: absolute;
+            top: 0;
+            right: 0px;
+
+            width: 40px;
+
+            background-color: transparent;
+        }
+
+        .technologies--show-sample .technologies__background-layer--sample {
+            width: 100%;
+        }
+
+        .performance--low .technologies--show-sample .technologies__background-layer--sample:hover {
+            box-shadow: none;
+        }
+    }
+
+    .technologies__background-layer::after {
+        content: "";
+
+        position: absolute;
+        top: 0;
+
+        height: 100%;
+
+        background-color: inherit;
+    }
+
+    .technologies__background-layer--sample::after {
+        left: 100%;
+
+        width: 100%;
+        width: calc((100vw - 1120px) / 2);
+        padding-right: 40px;
+    }
+
+    .technologies__background-layer--text::after {
+        right: 100%;
+
+        width: 100%;
+        width: calc((100vw - 1120px) / 2);
+        padding-left: 40px;
+    }
+
+/*--------------------------------------------------------------------*/
+/*------------------------- TECHNOLOGY (TABS) -------------------------*/
+/*--------------------------------------------------------------------*/
+
+.technologies__technology {
+    display: block;
+    height: 100vh;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition: visibility 0s linear 0.65s;
+}
+
+.technologies__technology + .technologies__technology {
+    margin-top: -100vh;
+}
+
+.no-js #html:target ~ .technologies .technologies__technology--html,
+.no-js #css:target ~ .technologies .technologies__technology--css,
+.no-js #js:target ~ .technologies .technologies__technology--js,
+.js .technologies__technology--active {
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transition: none;
+}
+
+    .technologies__content {
+        position: relative;
+        z-index: 2;
+
+        display: flex;
+        padding: 0;
+    }
+
+        .technologies__text,
+        .technologies__sample {
+            position: relative;
+
+            flex: none;
+            height: 100vh;
+
+            outline: none;
+            opacity: 0;
+
+            transition: transform 0.5s cubic-bezier(.5, .2, .8, .5) 0s,
+                opacity 0.5s ease-in 0s,
+                background 0s cubic-bezier(0, 0, .2, 1) 0.2s,
+                width 0.75s cubic-bezier(.15, .75, .25, 1) 0s,
+                padding-left 0.75s cubic-bezier(.15, .75, .25, 1) 0s,
+                padding-right 0.75s cubic-bezier(.15, .75, .25, 1) 0s,
+                box-shadow 0.75s cubic-bezier(.15, .75, .25, 1) 0s,
+                filter 0.75s cubic-bezier(.15, .75, .25, 1) 0s;
+            will-change: transform, opacity;
+        }
+
+        .no-js #html:target ~ .technologies .technologies__technology--html .technologies__text,
+        .no-js #css:target ~ .technologies .technologies__technology--css .technologies__text,
+        .no-js #js:target ~ .technologies .technologies__technology--js .technologies__text,
+        .no-js #html:target ~ .technologies .technologies__technology--html .technologies__sample,
+        .no-js #css:target ~ .technologies .technologies__technology--css .technologies__sample,
+        .no-js #js:target ~ .technologies .technologies__technology--js .technologies__sample,
+        .technologies__technology--active .technologies__text,
+        .technologies__technology--active .technologies__sample {
+            transition: transform 0.5s cubic-bezier(.5, .2, .8, .5) 0s,
+                opacity 0.5s ease-in 0s,
+                width 0.75s cubic-bezier(.15, .75, .25, 1) 0s,
+                padding-left 0.75s cubic-bezier(.15, .75, .25, 1) 0s,
+                padding-right 0.75s cubic-bezier(.15, .75, .25, 1) 0s,
+                box-shadow 0.75s cubic-bezier(.15, .75, .25, 1) 0s,
+                filter 0.75s cubic-bezier(.15, .75, .25, 1) 0s;
+        }
+
+        @media (min-height: 768px) {
+
+            .technologies__text,
+            .technologies__sample {
+                padding-bottom: 80px;
+                padding-top: 165px;
+            }
+        }
+
+        @media (min-height: 640px) and (max-height: 767px) {
+
+            .technologies__text,
+            .technologies__sample {
+                padding-bottom: 40px;
+                padding-top: 135px;
+            }
+        }
+
+        @media (max-height: 639px) {
+
+            .technologies__text,
+            .technologies__sample {
+                padding-bottom: 20px;
+                padding-top: 105px;
+            }
+        }
+
+        @media (min-width: 768px) {
+
+            .technologies__text {
+                padding-right: 40px;
+                padding-left: 40px;
+            }
+        }
+
+        @media (max-width: 767px) {
+
+            .technologies__text {
+                padding-right: 20px;
+                padding-left: 20px;
+            }
+        }
+
+        @media (min-width: 768px) {
+
+            .technologies__sample {
+                padding-left: 40px;
+                padding-right: 40px;
+            }
+        }
+
+        @media (max-width: 767px) {
+
+            .technologies__sample {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+
+        .technologies__text {
+            transform: translateX(-100px);
+
+            width: 38.12%;
+            width: calc((100% / 21) * 8);
+        }
+
+        @media (min-width: 768px) and (max-width: 1023px) {
+
+            .technologies__text {
+                width: 50%;
+            }
+        }
+
+        @media (max-width: 767px) {
+
+            .technologies__text {
+                width: 100%;
+                width: calc(100% - 40px);
+                padding-right: 52px;
+                padding-right: calc(12px);
+            }
+
+            .technologies--show-sample .technologies__text {
+                filter: blur(2px) saturate(80%);
+            }
+
+            .performance--low .technologies__text {
+                filter: none;
+            }
+        }
+
+        .technologies__sample {
+            transform: translateX(100px);
+
+            width: 61.88%;
+            width: calc((100% / 21) * 13);
+        }
+
+        @media (min-width: 768px) and (max-width: 1023px) {
+
+            .technologies__sample {
+                width: 50%;
+            }
+        }
+
+        @media (max-width: 767px) {
+
+            .technologies__sample {
+                position: absolute;
+                top: 0;
+                right: 0px;
+                z-index: 1;
+
+                width: 40px;
+                padding-right: 20px;
+
+                background-color: transparent;
+            }
+
+            .no-js #html:target ~ .technologies .technologies__technology--html .technologies__sample,
+            .no-js #css:target ~ .technologies .technologies__technology--css .technologies__sample,
+            .no-js #js:target ~ .technologies .technologies__technology--js .technologies__sample,
+            .technologies__technology--active .technologies__sample {
+                background-color: rgba(17, 17, 17, 0.92);
+            }
+
+            .technologies--show-sample .technologies__sample {
+                width: 100%;
+                padding-left: 48px;
+            }
+
+            .no-js .technologies__sample:hover,
+            .no-js .technologies__sample:focus {
+                width: 87.5%;
+                width: calc(100% - 40px);
+                padding-left: 48px;
+            }
+        }
+
+        .no-js #html:target ~ .technologies .technologies__text,
+        .no-js #css:target ~ .technologies .technologies__text,
+        .no-js #js:target ~ .technologies .technologies__text,
+        .no-js #html:target ~ .technologies .technologies__sample,
+        .no-js #css:target ~ .technologies .technologies__sample,
+        .no-js #js:target ~ .technologies .technologies__sample,
+        .ui__content--technologies .technologies__text,
+        .ui__content--technologies .technologies__sample {
+            transform: translateX(0px);
+
+            opacity: 1;
+
+            transition: transform 0.75s cubic-bezier(.15, .75, .25, 1) 0.1s,
+                opacity 0.75s ease-out 0.1s,
+                width 0.75s cubic-bezier(.15, .75, .25, 1) 0s,
+                background 0s linear 0.2s,
+                padding-left 0.75s cubic-bezier(.15, .75, .25, 1) 0s,
+                padding-right 0.75s cubic-bezier(.15, .75, .25, 1) 0s,
+                box-shadow 0.75s cubic-bezier(.15, .75, .25, 1) 0s,
+                filter 0.75s cubic-bezier(.15, .75, .25, 1) 0s;
+        }
+
+        .no-js #html:target ~ .technologies .technologies__technology--html .technologies__text,
+        .no-js #css:target ~ .technologies .technologies__technology--css .technologies__text,
+        .no-js #js:target ~ .technologies .technologies__technology--js .technologies__text,
+        .no-js #html:target ~ .technologies .technologies__technology--html .technologies__sample,
+        .no-js #css:target ~ .technologies .technologies__technology--css .technologies__sample,
+        .no-js #js:target ~ .technologies .technologies__technology--js .technologies__sample,
+        .js .ui__content--technologies .technologies__technology--active .technologies__text,
+        .js .ui__content--technologies .technologies__technology--active .technologies__sample {
+            transition: transform 0.75s cubic-bezier(.15, .75, .25, 1) 0.1s,
+                opacity 0.75s ease-out 0.1s,
+                width 0.75s cubic-bezier(.15, .75, .25, 1) 0s,
+                background 0s linear 0.2s,
+                padding-left 0.75s cubic-bezier(.15, .75, .25, 1) 0s,
+                padding-right 0.75s cubic-bezier(.15, .75, .25, 1) 0s,
+                box-shadow 0.75s cubic-bezier(.15, .75, .25, 1) 0s,
+                filter 0.75s cubic-bezier(.15, .75, .25, 1) 0s;
+        }
+
+            .technologies__text-content-wrapper,
+            .technologies__sample-content-wrapper {
+                transform: translateX(0px);
+
+                display: block;
+                height: 100%;
+
+                opacity: 0;
+
+                transition: transform 0.45s cubic-bezier(0, 0, .2, 1) 0s,
+                    opacity 0.45s cubic-bezier(0, 0, .2, 1) 0s;
+                will-change: transform, opacity;
+            }
+
+            .no-js .technologies__text-content-wrapper,
+            .no-js .technologies__sample-content-wrapper {
+                overflow: auto;
+            }
+
+            .js .technologies__text-content-wrapper,
+            .js .technologies__sample-content-wrapper {
+                overflow: hidden;
+            }
+
+            @supports (-webkit-overflow-scrolling: touch) {
+
+                .js .technologies__text-content-wrapper,
+                .js .technologies__sample-content-wrapper,
+                .no-js .technologies__text-content-wrapper,
+                .no-js .technologies__sample-content-wrapper {
+                    overflow: auto;
+                    -webkit-overflow-scrolling: touch;
+                }
+            }
+
+            .technologies__technology--from-left .technologies__text-content-wrapper,
+            .technologies__technology--from-left .technologies__sample-content-wrapper {
+                transform: translateX(-20px);
+            }
+
+            .technologies__technology--from-right .technologies__text-content-wrapper,
+            .technologies__technology--from-right .technologies__sample-content-wrapper {
+                transform: translateX(20px);
+            }
+
+            .no-js #html:target ~ .technologies .technologies__technology--html .technologies__text-content-wrapper,
+            .no-js #css:target ~ .technologies .technologies__technology--css .technologies__text-content-wrapper,
+            .no-js #js:target ~ .technologies .technologies__technology--js .technologies__text-content-wrapper,
+            .no-js #html:target ~ .technologies .technologies__technology--html .technologies__sample-content-wrapper,
+            .no-js #css:target ~ .technologies .technologies__technology--css .technologies__sample-content-wrapper,
+            .no-js #js:target ~ .technologies .technologies__technology--js .technologies__sample-content-wrapper,
+            .js .technologies__technology--active .technologies__text-content-wrapper,
+            .js .technologies__technology--active .technologies__sample-content-wrapper {
+                transform: translateX(0px);
+
+                opacity: 1;
+
+                transition: transform 0.45s cubic-bezier(0, 0, .2, 1) 0.2s,
+                    opacity 0.45s cubic-bezier(0, 0, .2, 1) 0.2s;
+            }
+
+                @media (min-width: 768px) {
+
+                    .technologies__text  .mCSB_scrollTools.mCSB_scrollTools.mCSB_scrollTools {
+                        right: -16px;
+                    }
+                }
+
+                @media (max-width: 767px) {
+
+                    .technologies__sample .mCSB_scrollTools.mCSB_scrollTools.mCSB_scrollTools {
+                        right: -16px;
+                    }
+
+                    .technologies__text .mCSB_scrollTools.mCSB_scrollTools.mCSB_scrollTools {
+                        right: -12px;
+                    }
+                }
+
+                .technologies__text-content,
+                .technologies__sample-content {
+                    display: block;
+                }
+
+                .technologies__text-content {
+                    font-size: 1.0625rem;
+                    line-height: 1.6875rem;
+                }
+
+                @media (min-width: 640px) and (max-width: 767px) {
+
+                    .technologies__text-content {
+                        max-width: 75%;
+                    }
+                }
+
+                    .technologies__text-content p {
+                        margin-bottom: 1.6875rem;
+                    }
+
+                    .technologies__text-content .small {
+                        font-size: 0.823529em;
+                    }
+
+                    .technologies__text-content code {
+                        font-family: "PT Mono", monospace;
+                        font-size: 0.823529em;
+                    }
+
+                    .technologies__text-content abbr {
+                        position: relative;
+
+                        text-decoration: none;
+                    }
+
+                    .technologies__text-content abbr::after {
+                        content: "";
+
+                        position: absolute;
+                        bottom: -2px;
+                        left: 0px;
+
+                        width: 100%;
+                        height: 0px;
+
+                        border-bottom: 1px dotted rgba(231, 231, 231, 1);
+                    }
+
+                .technologies__sample-content {
+                    font-family: "PT Mono", monospace;
+                    font-size: 0.875rem;
+                    line-height: 1.6875rem;
+                }
+
+/*---------------------------- SHOW-SAMPLE ----------------------------*/
+
+            .technologies__show-sample {
+                position: absolute;
+                top: -40px;
+                left: 0;
+                z-index: 10;
+
+                transform-origin: left bottom;
+                transform: rotate(90deg);
+
+                height: 40px;
+                width: 100vh;
+
+                font-family: "Caudex";
+                font-size: 1.25rem;
+                line-height: 37px;
+                letter-spacing: 0.075em;
+                white-space: nowrap;
+
+                text-shadow: 0px 0px 5px rgba(17, 17, 17, 1);
+                background: none;
+                border: none;
+                border-radius: 0;
+                outline: none;
+                cursor: pointer;
+                visibility: hidden;
+                -webkit-appearance: none;
+                   -moz-appearance: none;
+
+                transition: visibility 0s linear 0s;
+            }
+
+            .no-js #html:target ~ .technologies .technologies__technology--html .technologies__show-sample,
+            .no-js #css:target ~ .technologies .technologies__technology--css .technologies__show-sample,
+            .no-js #js:target ~ .technologies .technologies__technology--js .technologies__show-sample,
+            .technologies__technology--active .technologies__show-sample {
+                visibility: visible;
+
+                transition: visibility 0s linear 0.2s;
+            }
+
+            .no-js #html:target ~ .technologies .technologies__show-sample,
+            .no-js #css:target ~ .technologies .technologies__show-sample,
+            .no-js #js:target ~ .technologies .technologies__show-sample {
+                pointer-events: none;
+            }
+
+            .no-js #html:target ~ .technologies .technologies__sample:focus .technologies__show-sample,
+            .no-js #css:target ~ .technologies .technologies__sample:focus .technologies__show-sample,
+            .no-js #js:target ~ .technologies .technologies__sample:focus .technologies__show-sample,
+            .no-js #html:target ~ .technologies .technologies__sample:hover .technologies__show-sample,
+            .no-js #css:target ~ .technologies .technologies__sample:hover .technologies__show-sample,
+            .no-js #js:target ~ .technologies .technologies__sample:hover .technologies__show-sample {
+                left: -40px;
+
+                backdrop-filter: brightness(12.5%);
+            }
+
+            .no-js .technologies__sample:focus .technologies__show-sample,
+            .no-js .technologies__sample:hover .technologies__show-sample,
+            .technologies--show-sample .technologies__show-sample {
+                backdrop-filter: brightness(50%);
+            }
+
+                .technologies__show-sample .text {
+                    color: #CEB77E;
+                }
+
+                @media (min-height: 640px) {
+
+                    .technologies__show-sample .text--short {
+                        display: none;
+                    }
+                }
+
+                @media (max-height: 639px) {
+
+                    .technologies__show-sample .text--full {
+                        display: none;
+                    }
+                }
+
+                .technologies__show-sample:hover .text,
+                .technologies__show-sample:focus .text {
+                    color: #79A9BD;
+                }
+
+                .technologies__show-sample .hide {
+                    display: none;
+                }
+
+                .no-js .technologies__sample:focus .technologies__show-sample .hide,
+                .no-js .technologies__sample:hover .technologies__show-sample .hide,
+                .technologies--show-sample .technologies__show-sample .hide {
+                    display: inline;
+                }
+
+                .no-js .technologies__sample:focus .technologies__show-sample .show,
+                .no-js .technologies__sample:hover .technologies__show-sample .show,
+                .technologies--show-sample .technologies__show-sample .show {
+                    display: none;
+                }
+
+/*--------------------------------------------------------------------*/
+/*---------------------------- NAVIGATION ----------------------------*/
+/*--------------------------------------------------------------------*/
+
+.technologies__nav {
+    position: absolute;
+    left: 50%;
+    z-index: 9;
+
+    transform: translateX(-50%);
+
+    width: 100%;
+    padding: 0;
+
+    font-size: 0;
+
+    outline: none;
+}
+
+@media (min-height: 768px) {
+
+    .technologies__nav {
+        top: 80px;
+    }
+}
+
+@media (min-height: 640px) and (max-height: 767px) {
+
+    .technologies__nav {
+        top: 64px;
+    }
+}
+
+@media (max-height: 639px) {
+
+    .technologies__nav {
+        top: 32px;
+    }
+}
+
+    .technologies__nav-items {
+        display: flex;
+        width: 100%;
+
+        white-space: nowrap;
+    }
+
+        .technologies__nav-item {
+            order: 3;
+            flex: none;
+            display: inline-block;
+            min-width: 38.12%;
+            min-width: calc((100% / 21) * 8);
+        }
+
+            .no-js #html:target ~ .technologies .technologies__nav-item:nth-child(1),
+            .no-js #css:target ~ .technologies .technologies__nav-item:nth-child(2),
+            .no-js #js:target ~ .technologies .technologies__nav-item:nth-child(3) {
+                order: 0;
+            }
+
+            .no-js #html:target ~ .technologies .technologies__nav-item:nth-child(2),
+            .no-js #css:target ~ .technologies .technologies__nav-item:nth-child(3),
+            .no-js #js:target ~ .technologies .technologies__nav-item:nth-child(1) {
+                order: 1;
+            }
+
+            .no-js #html:target ~ .technologies .technologies__nav-item:nth-child(3),
+            .no-js #css:target ~ .technologies .technologies__nav-item:nth-child(1),
+            .no-js #js:target ~ .technologies .technologies__nav-item:nth-child(2) {
+                order: 2;
+            }
+
+            .technologies__nav-link {
+                transform: translateX(100px);
+
+                display: block;
+
+                font-family: "Caudex";
+                text-decoration: none;
+                letter-spacing: 0.02em;
+
+                color: #b4b4b4;
+                opacity: 0;
+
+                transition: transform 0.5s cubic-bezier(.5, .2, .8, .5) 0s,
+                    opacity 0.5s ease-in 0s;
+            }
+
+            @media (min-height: 768px) {
+
+                .technologies__nav-link {
+                    font-size: 2rem;
+                }
+            }
+
+            @media (max-height: 767px) {
+
+                .technologies__nav-link {
+                    font-size: 1.6875rem;
+                }
+            }
+
+            @media (min-width: 1024px) {
+
+                .technologies__nav-link {
+                    padding-right: 40px;
+                    padding-left: 40px;
+                }
+            }
+
+            @media (min-width: 768px) and (max-width: 1023px) {
+
+                .technologies__nav-link {
+                    padding-right: 40px;
+                    padding-left: 40px;
+                }
+            }
+
+            @media (max-width: 767px) {
+
+                .technologies__nav-link {
+                    padding-right: 40px;
+                    padding-left: 20px;
+                }
+            }
+
+            .infinitum__item--current .technologies__nav-link {
+                transform: translateX(-100px);
+            }
+
+            .technologies__nav-items:not(.infinitum__track--moving) .technologies__nav-item:hover .technologies__nav-link {
+                color: #6196AC;
+            }
+
+            .js .infinitum__item--possible-current .technologies__nav-link,
+            .js .technologies__nav-items:not(.infinitum__track--dragging) .infinitum__item--current .technologies__nav-link  {
+                color: #6196AC;
+            }
+
+            .no-js #html:target ~ .technologies .technologies__nav-link[href$="#html"],
+            .no-js #css:target ~ .technologies .technologies__nav-link[href$="#css"],
+            .no-js #js:target ~ .technologies .technologies__nav-link[href$="#js"] {
+                color: #6196AC;
+            }
+
+            .no-js #html:target ~ .technologies .technologies__nav-link,
+            .no-js #css:target ~ .technologies .technologies__nav-link,
+            .no-js #js:target ~ .technologies .technologies__nav-link,
+            .ui__content--technologies .technologies__nav-link,
+            .ui__content--technologies .infinitum__item--current .technologies__nav-link {
+                transform: translateX(0px);
+
+                opacity: 1;
+
+                transition: transform 0.75s cubic-bezier(.15, .75, .25, 1) 0.1s,
+                    opacity 0.75s ease-out 0.1s;
+            }
+
+                .technologies__nav-link .text {
+                    position: relative;
+
+                    padding-bottom: 14px;
+                }
+
+                .technologies__nav-item:first-child .text span:last-child {
+                    margin-left: -0.03em;
+                }
+
+                .technologies__nav-item:first-child .text span:first-child {
+                    margin-right: 0.015em;
+                }
+
+                .technologies__nav-item:last-child .text span:first-child {
+                    margin-right: -0.025em;
+                }
+
+
+    .technologies__nav-active-indicator {
+        position: absolute;
+        bottom: -14px;
+        left: 40px;
+
+        transform: translateX(-100px);
+
+        width: 100px;
+        height: 2px;
+
+        background-color: #6196ac;
+        opacity: 0;
+
+        transition: transform 0.5s cubic-bezier(.5, .2, .8, .5) 0s,
+            opacity 0.5s ease-in 0s,
+            width 0.5s cubic-bezier(.1, .4, .2, 1) 0s;
+    }
+
+    .ui__content--technologies .technologies__nav-active-indicator {
+        transform: translateX(0px);
+
+        opacity: 1;
+
+        transition: transform 0.75s cubic-bezier(.15, .75, .25, 1) 0.1s,
+            opacity 0.75s ease-out 0.1s,
+            width 0.5s cubic-bezier(.1, .4, .2, 1) 0s;
+    }
+
+    .ui__content--technologies .infinitum__track--dragging:active ~ .technologies__nav-active-indicator {
+        transition: transform 0.75s cubic-bezier(.15, .75, .25, 1) 0.1s,
+            opacity 0.75s ease-out 0.1s,
+            width 0.2s cubic-bezier(.1, .4, .2, 1) 0.15s;
+    }
+
+    .no-js #html:target ~ .technologies .technologies__nav-active-indicator,
+    .no-js #css:target ~ .technologies .technologies__nav-active-indicator,
+    .no-js #js:target ~ .technologies .technologies__nav-active-indicator {
+        display: none;
+    }
+
+    @media (min-width: 768px) {
+
+        .technologies__nav-active-indicator {
+            left: 40px;
+        }
+    }
+
+    @media (max-width: 767px) {
+
+        .technologies__nav-active-indicator {
+            left: 20px;
+        }
+    }
+
+/*//////////////////////////// NAVIGATION ////////////////////////////*/
 
 @media (min-width: 1024px) {
 }

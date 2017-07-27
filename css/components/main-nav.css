@@ -9,7 +9,6 @@
     z-index: 999;
 
     transform: translateY(0%);
-
     width: 100%;
 
     background-color: transparent;
@@ -22,10 +21,32 @@
         border-color 1.5s cubic-bezier(.25, .65, .2, 1) 0s,
         box-shadow 1.5s cubic-bezier(.25, .65, .2, 1) 0s,
         transform 1.5s cubic-bezier(.25, .65, .2, 1) 0s,
-        opacity 0.5s ease 0s;
+        opacity 0.5s ease 0s,
+        filter 0.5s cubic-bezier(.5, 0, .6, 0.9) 0.25s;
     animation: show--init 2s linear 0s 1 backwards,
         show 1.75s ease-out 2s 1 backwards;
     will-change: opacity, transform, box-shadow;
+}
+
+.ui__content--technologies .main-nav {
+    filter: blur(1px) saturate(90%);
+
+    transition: background-color 1.5s cubic-bezier(.25, .65, .2, 1) 0s,
+        border-color 1.5s cubic-bezier(.25, .65, .2, 1) 0s,
+        box-shadow 1.5s cubic-bezier(.25, .65, .2, 1) 0s,
+        transform 1.5s cubic-bezier(.25, .65, .2, 1) 0s,
+        opacity 0.5s ease 0s,
+        filter 0.35s cubic-bezier(.2, .7, .3, 1) 0s;
+}
+
+.no-js .main-nav,
+.edge .main-nav,
+.performance--low .main-nav {
+    filter: none;
+}
+
+.performance--very-low .main-nav {
+    box-shadow: none;
 }
 
 .main-nav--stop-anim {
@@ -48,9 +69,20 @@
         box-shadow 0.3s ease-out 0s,
         transform 0.75s cubic-bezier(.2, .55, .25, 1) 0s,
         opacity 0.75s ease-out 0s,
-        z-index 0.75s ease-out 0s;
+        z-index 0.75s ease-out 0s,
+        filter 0.5s cubic-bezier(.5, 0, .6, 0.9) 0.25s;
     animation-delay: 0s, 0s;
     animation-duration: 0s, 0s;
+}
+
+.ui__content--technologies .main-nav--fixed {
+    transition: background-color 0.3s ease-out 0s,
+        border-color 0.3s ease-out 0s,
+        box-shadow 0.3s ease-out 0s,
+        transform 0.75s cubic-bezier(.2, .55, .25, 1) 0s,
+        opacity 0.75s ease-out 0s,
+        z-index 0.75s ease-out 0s,
+        filter 0.35s cubic-bezier(.2, .7, .3, 1) 0s;
 }
 
 .main-nav--fixed.main-nav--hidden {

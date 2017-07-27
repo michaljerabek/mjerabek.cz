@@ -64,6 +64,15 @@
 
                 //ie fix
                 setTimeout(checkScrollTop, 50);
+
+                var $perspective = $(".ui__perspective");
+
+                ns.$win.on("scroll." + ns, function () {
+
+                    var windowCenter = ns.$win.scrollTop() + (window.innerHeight / 2);
+
+                    $perspective.css("perspective-origin", "50% " + windowCenter + "px");
+                });
             };
 
         return {

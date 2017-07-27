@@ -21,6 +21,15 @@ a:not(.btn):focus {
     background: rgba(125, 105, 55, 0.85);
 }
 
+.ui__target {
+	position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 0;
+}
+
 /*---------------------------- TRANSITION ----------------------------*/
 
 /* Univerzální transition.
@@ -193,7 +202,72 @@ a:active .transition-hideable {
     transition: all 0.05s ease-out 0s;
 }
 
-/*//////////////////////////// ICONS ////////////////////////////*/
+/*---------------------------- ZOOM ----------------------------*/
+
+.ui__perspective {
+    perspective: 100px;
+    perspective-origin: 50% 150vh;
+}
+
+    .ui__zoom-out {
+        transition: 0.5s cubic-bezier(.5, 0, .6, 0.9) 0.25s;
+        will-change: transform;
+    }
+
+    .no-js #html:target ~ .ui__perspective .ui__zoom-out,
+    .no-js #css:target ~ .ui__perspective .ui__zoom-out,
+    .no-js #js:target ~ .ui__perspective .ui__zoom-out,
+    .ui__content--technologies .ui__zoom-out {
+        transform: translateZ(-8px);
+
+        filter: blur(2px) saturate(80%);
+
+        transition: 0.35s cubic-bezier(.2, .7, .3, 1) 0s;
+    }
+
+    .no-js #html:target ~ .ui__perspective .ui__zoom-out,
+    .no-js #css:target ~ .ui__perspective .ui__zoom-out,
+    .no-js #js:target ~ .ui__perspective .ui__zoom-out,
+    .edge .ui__zoom-out,
+    .performance--low .ui__zoom-out {
+        filter: none;
+    }
+
+    .performance--very-low .ui__zoom-out {
+        transform: none;
+
+        transition: none;
+    }
+
+    .ui__zoom-out::after {
+        content: "";
+
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: 1000;
+
+        transform: translateZ(8px);
+
+        width: 100%;
+        height: 100%;
+
+        background-color: #000;
+        opacity: 0;
+
+        pointer-events: none;
+
+        transition: opacity 0.5s cubic-bezier(0, 0, .8, 0) 0s;
+    }
+
+    .no-js #html:target ~ .ui__perspective .ui__zoom-out,
+    .no-js #css:target ~ .ui__perspective .ui__zoom-out,
+    .no-js #js:target ~ .ui__perspective .ui__zoom-out,
+    .ui__content--technologies .ui__zoom-out::after {
+        opacity: 0.5;
+
+        transition: opacity 0.5s cubic-bezier(.15, .75, .25, 1) 0.1s;
+    }
 
 /*--------------------------------------------------------------------*/
 /*------------------------------ INPUTS ------------------------------*/

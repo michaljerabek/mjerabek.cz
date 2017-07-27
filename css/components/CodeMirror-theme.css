@@ -1,0 +1,28 @@
+[data-codemirror-mimemode] { color: #d5d5d5; }
+.cm-keyword        { color: #6196AC; }
+.cm-atom           { color: #C06C47; }
+.cm-number         { color: #B19653; }
+.cm-def            { color: #d5d5d5; }
+.cm-variable       { color: #B19653; }
+.cm-variable-2     { color: #d5d5d5; }
+.cm-variable-3     { color: #6196AC; }
+.cm-operator       { color: #d5d5d5; }
+.cm-comment        { color: #878787; }
+.cm-string         { color: #C06C47; }
+.cm-string-2       { color: #79A9BD; }
+.cm-meta           { color: #C06C47; }
+.cm-qualifier      { color: #d5d5d5; }
+.cm-builtin        { color: #B19653; }
+.cm-bracket        { color: #d5d5d5; }
+.cm-tag            { color: #CEB77E; }
+.cm-bracket.cm-tag { color: hsl(43, 31%, 35%); }
+.cm-attribute      { color: #B19653; }
+.cm-property       { color: #CEB77E; }
+.cm-quote          { color: #d5d5d5; }
+.cm-header         { color: #6196AC; }
+.cm-link           { color: #CEB77E; }
+.cm-em             { color: #D07E5B; font-style: italic; }
+.cm-strong         { color: #6196AC; }
+.cm-strikethrough  { color: #C06C47; }
+.cm-hr             { color: #B19653; }
+.cm-error          { color: #D07E5B; }
