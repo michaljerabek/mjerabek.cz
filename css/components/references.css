@@ -6,51 +6,51 @@
     background-color: #f0f0f0;
 }
 
-.references .layout__center {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-    .references__title {
-        color: #7D6937;
+    .references .layout__center {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
     }
 
-        /*kerning*/
-        .references__title .letter1 {
-            margin-right: -0.005em;
+        .references__title {
+            color: #7D6937;
         }
 
-        .references__title .letter2 {
-            margin-right: -0.015em;
-        }
+            /*kerning*/
+            .references__title .letter1 {
+                margin-right: -0.005em;
+            }
 
-        .references__title .letter3 {
-            margin-right: -0.005em;
-        }
+            .references__title .letter2 {
+                margin-right: -0.015em;
+            }
 
-        .references__title .letter4 {
-            margin-right: -0.015em;
-        }
+            .references__title .letter3 {
+                margin-right: -0.005em;
+            }
 
-        .references__title .letter5 {
-            margin-right: -0.025em;
-        }
+            .references__title .letter4 {
+                margin-right: -0.015em;
+            }
 
-        .references__title .letter6 {
-            margin-right: -0.025em;
-        }
+            .references__title .letter5 {
+                margin-right: -0.025em;
+            }
 
-        .references__title .letter7 {
-            margin-right: -0.0125em;
-        }
+            .references__title .letter6 {
+                margin-right: -0.025em;
+            }
 
-        .references__title .letter8 {
-            margin-right: -0.025em;
-        }
-        /*/kerning*/
+            .references__title .letter7 {
+                margin-right: -0.0125em;
+            }
+
+            .references__title .letter8 {
+                margin-right: -0.025em;
+            }
+            /*/kerning*/
 
 /*--------------------------------------------------------------------*/
 /*---------------------------- NAVIGATION ----------------------------*/
@@ -335,9 +335,6 @@
             width: 100%;
         }
 
-            .references__project-info {
-            }
-
             @media (min-width: 640px) {
 
                 .references__project-info {
@@ -351,9 +348,6 @@
                 .references__project-info {
                     width: 100%;
                 }
-            }
-
-            .references__project-preview {
             }
 
             @media (min-width: 640px) {
@@ -462,7 +456,7 @@
                     }
 
                     .references__image-wrapper {
-                        padding-top: 10px;
+                        margin-top: 10px;
                     }
                 }
 

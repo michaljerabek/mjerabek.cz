@@ -23,6 +23,11 @@ jQuery(function () {
         window.MJNS.BreakText.init();
     }
 
+    if (window.MJNS.MainNav) {
+
+        window.MJNS.MainNav.init();
+    }
+
     if (window.MJNS.Intro) {
 
         window.MJNS.Intro.init();
@@ -31,11 +36,6 @@ jQuery(function () {
     if (window.MJNS.SmallCaps) {
 
         window.MJNS.SmallCaps.init();
-    }
-
-    if (window.MJNS.MainNav) {
-
-        window.MJNS.MainNav.init();
     }
 
     if (window.MJNS.Offer) {

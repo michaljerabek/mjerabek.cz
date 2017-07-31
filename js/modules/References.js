@@ -18,6 +18,7 @@
                 self: ".references",
 
                 nav: ".references__nav",
+                navLink: ".references__nav-link",
 
                 tabs: ".references__references",
                 tab: ".references__reference",
@@ -165,7 +166,8 @@
 
                 ns.$temp[0] = event.target;
 
-                var isIndex = $activeTab.index(),
+                var href = ns.$temp.find(SELECTOR.navLink)[0].href,
+                    isIndex = $activeTab.index(),
                     willIndex = ns.$temp.index(),
 
                     $tabToShow = $self.find(SELECTOR.tab).eq(willIndex),
@@ -177,6 +179,8 @@
                 buildSwitchAnimation($tabToShow, $queueEl);
 
                 $activeTab = $tabToShow.addClass(CLASS.activeTab);
+
+                window.history.replaceState(href, "", href);
 
                 $queueEl.dequeue(TAB_SWITCH_QUEUE + isIndex)
                     .dequeue(TAB_SWITCH_QUEUE + willIndex);
@@ -207,6 +211,18 @@
 
                     tapped = false;
                 });
+
+                if (window.location.hash) {
+
+                    var $activeLink = infinitum.$items.find("[href*='" + window.location.hash + "']");
+
+                    if ($activeLink.length) {
+
+                        infinitum.setCurrent($activeLink.parent());
+
+                        ns.MainNav.scrollTo($self, true);
+                    }
+                }
             },
 
             initTabs = function () {

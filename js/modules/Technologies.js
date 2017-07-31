@@ -113,9 +113,13 @@
                 $inertEl.prop("inert", false);
                 $self.prop("inert", true);
 
-                event.preventDefault();
-
                 openedByEl.focus();
+
+                var hash = "#" + ns.Offer.getSelf()[0].id;
+
+                window.history.replaceState(hash, "", hash);
+
+                event.preventDefault();
             },
 
             listenESC = function () {
@@ -277,6 +281,8 @@
 
                 highlightCode(currentIndex);
 
+                var $link = ns.$temp.find(SELECTOR.navLink);
+
                 switchTabsTimeout = setTimeout(function() {
 
                     $tabs.removeClass(CLASS.activeTechnology)
@@ -285,30 +291,9 @@
 
                     $contentWrappers.css("transition", "");
 
+                    window.history.replaceState($link[0].href, "", $link[0].href);
+
                 }, 0);
-            },
-
-            watchNavSize = function () {
-
-//                var lastWidth = $nav.outerWidth(),
-//                    lastHeight = $nav.outerHeight();
-//
-//                setInterval(function () {
-//
-//                    var currentWidth = $nav.outerWidth(),
-//                        currentHeight = $nav.outerHeight();
-//
-//                    if (currentWidth !== lastWidth || currentHeight !== lastHeight) {
-//
-//                        infinitum.refresh({
-//                            current: infinitum.$currentItem.index()
-//                        }, true);
-//                    }
-//
-//                    lastWidth = currentWidth;
-//                    lastHeight = currentHeight;
-//
-//                }, 100);
             },
 
             initNav = function () {
@@ -330,8 +315,6 @@
                 infinitum.on("change." + ns, switchTabs);
 
                 infinitum.on("change." + ns + " dragging." + ns + " dragend." + ns, setIndicatorWidth);
-
-                watchNavSize();
             },
 
             initButtons = function () {
@@ -397,6 +380,11 @@
                 $self = $(SELECTOR.self);
 
                 $self.prop("inert", true);
+
+                if (window.location.hash) {
+
+                    ns.Offer.find("[href*='" + window.location.hash + "']").click();
+                }
             };
 
         return {

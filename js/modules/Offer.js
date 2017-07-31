@@ -76,7 +76,17 @@
             };
 
         return {
-            init: init
+            init: init,
+
+            find: function (selector) {
+
+                return $self.find(selector);
+            },
+
+            getSelf: function () {
+
+                return $self;
+            }
         };
 
     }());

@@ -80,6 +80,8 @@
             skipFindItemToActivate,
             skipFindItemToActivateTimeout,
 
+            preserveHistory,
+
             getFixPosition = function () {
 
                 var styles = window.getComputedStyle($self[0]);
@@ -93,6 +95,11 @@
             },
 
             updateHistory = function ($link) {
+
+                if (preserveHistory) {
+
+                    return;
+                }
 
                 var linkHref = $link[0].getAttribute("href");
 
@@ -236,6 +243,8 @@
 
             animate = function (scrollTop, scrollDuration, onComplete) {
 
+                var blockHistory = preserveHistory;
+
                 $scrollingElement.animate({ scrollTop: scrollTop }, {
 
                     duration: scrollDuration,
@@ -244,9 +253,16 @@
 
                     step: function () {
 
+                        preserveHistory = blockHistory;
+
                         hideNav = scrollTop > 0;
                     },
-                    complete: onComplete
+                    complete: function () {
+
+                        onComplete();
+
+                        preserveHistory = false;
+                    }
                 });
             },
 
@@ -530,17 +546,38 @@
                 $scrollTargets = $(SELECTOR.scrollTarget);
             },
 
+            scrollTo = function (target, history) {
+
+                if (typeof target !== "string") {
+
+                    target = "#" + (target.jquery ? target[0].id : target.id);
+                }
+
+                preserveHistory = history;
+
+                $self.find("[href*='" + target + "']").click();
+            },
+
             init = function () {
+
+                if (window.location.hash) {
+
+                    preserveHistory = true;
+                }
 
                 initElements();
 
                 initEvents();
 
                 initialized = true;
+
+                preserveHistory = false;
             };
 
         return {
-           init: init
+            init: init,
+
+            scrollTo: scrollTo
         };
 
     }());
