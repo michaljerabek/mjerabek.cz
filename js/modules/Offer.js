@@ -27,7 +27,7 @@
 
             checkScrollTop = function  () {
 
-                if (ns.$win.scrollTop()) {
+                if (window.innerWidth >= window.innerHeight || ns.$win.scrollTop()) {
 
                     $self.removeClass(CLASS.initFadeIn);
                 }

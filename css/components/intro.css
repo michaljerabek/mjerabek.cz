@@ -330,148 +330,147 @@
                 opacity: 0;
             }
 
-            .intro__title .text > span {
+            .intro__title [class*="letter"] {
                 position: relative;
             }
 
-            /*.intro__title animation*/
+            /*animation*/
             @supports (animation: show) {
 
-                .intro__title .text > span {
+                .intro__title [class^="letter"] {
                     opacity: 0;
                 }
             }
 
-            .intro__title .text > span:nth-child(1) {
+            .intro__title .word1 .letter1 {
                 animation: show--init 0.5s linear 0s 1 forwards,
                     show 2.5s ease-out 0.5s 1 forwards;
             }
 
-            .intro__title .text > span:nth-child(2) {
+            .intro__title .word1 .letter2 {
                 animation: show--init 0.1s linear 0s 1 forwards,
                     show 2.5s ease-out 0.1s 1 forwards;
             }
 
-            .intro__title .text > span:nth-child(3) {
+            .intro__title .word1 .letter3 {
                 animation: show--init 0.0s linear 0s 1 forwards,
                     show 2.5s ease-out 0.0s 1 forwards;
             }
 
-            .intro__title .text > span:nth-child(4) {
+            .intro__title .word1 .letter4 {
                 animation: show--init 1.3s linear 0s 1 forwards,
                     show 2.5s ease-out 1.3s 1 forwards;
             }
 
-            .intro__title .text > span:nth-child(5) {
+            .intro__title .word1 .letter5 {
                 animation: show--init 0.8s linear 0s 1 forwards,
                     show 2.5s ease-out 0.8s 1 forwards;
             }
 
-            .intro__title .text > span:nth-child(6) {
+            .intro__title .word1 .letter6 {
                 animation: show--init 0.6s linear 0s 1 forwards,
                     show 2.5s ease-out 0.6s 1 forwards;
             }
 
-            .intro__title .text > span:nth-child(7) {
+            .intro__title .word1 .letter7 {
                 animation: show--init 1.2s linear 0s 1 forwards,
                     show 2.5s ease-out 1.2s 1 forwards;
             }
 
-            .intro__title .text > span:nth-child(8) {
+            .intro__title .word1 .letter8 {
                 animation: show--init 0.2s linear 0s 1 forwards,
                     show 2.5s ease-out 0.2s 1 forwards;
             }
 
-            .intro__title .text > span:nth-child(9) {
+            .intro__title .word1 .letter9 {
                 animation: show--init 1.0s linear 0s 1 forwards,
                     show 2.5s ease-out 1.0s 1 forwards;
             }
 
-            .intro__title .text > span:nth-child(11) {
+            .intro__title .word2 .letter1 {
                 animation: show--init 1.1s linear 0s 1 forwards,
                     show 2.5s ease-out 1.1s 1 forwards;
             }
 
-            .intro__title .text > span:nth-child(12) {
+            .intro__title .word2 .letter2 {
                 animation: show--init 0.7s linear 0s 1 forwards,
                     show 2.5s ease-out 0.7s 1 forwards;
             }
 
-            .intro__title .text > span:nth-child(13) {
+            .intro__title .word2 .letter3 {
                 animation: show--init 0.4s linear 0s 1 forwards,
                     show 2.5s ease-out 0.4s 1 forwards;
             }
 
-            .intro__title .text > span:nth-child(14) {
+            .intro__title .word2 .letter4 {
                 animation: show--init 0.9s linear 0s 1 forwards,
                     show 2.5s ease-out 0.9s 1 forwards;
             }
 
-            .intro__title .text > span:nth-child(15) {
+            .intro__title .word2 .letter5 {
                 animation: show--init 0.3s linear 0s 1 forwards,
                     show 2.5s ease-out 0.3s 1 forwards;
             }
-            /*/.intro__title animation*/
+            /*/animation*/
 
-            /*.intro__title kerning*/
-            .intro__title .text > span:nth-child(1) {
+            /*kerning*/
+            .intro__title .word1 .letter1 {
                 margin-right: -0.045em;
             }
 
-            .intro__title .text > span:nth-child(2) {
+            .intro__title .word1 .letter2 {
             }
 
-            .intro__title .text > span:nth-child(3) {
+            .intro__title .word1 .letter3 {
             }
 
-            .intro__title .text > span:nth-child(4) {
-                margin-right: 0.025em;
+            .intro__title .word1 .letter4 {
+                margin-right: 0.03em;
             }
 
-            .intro__title .text > span:nth-child(5) {
+            .intro__title .word1 .letter5 {
             }
 
-            .intro__title .text > span:nth-child(6) {
+            .intro__title .word1 .letter6 {
                 top: 0.075em;
 
                 margin-left: -0.06em;
                 margin-right: -0.065em;
             }
 
-            .intro__title .text > span:nth-child(7) {
-                margin-right: -0.015em;
+            .intro__title .word1 .letter7 {
+                margin-right: -0.025em;
             }
 
-            .intro__title .text > span:nth-child(8) {
-                margin-right: -0.005em;
+            .intro__title .word1 .letter8 {
             }
 
-            .intro__title .text > span:nth-child(9) {
+            .intro__title .word1 .letter9 {
             }
 
-            .intro__title .text > span:nth-child(10) {
+            .intro__title .space1 {
                 margin-right: -0.05em;
             }
 
-            .intro__title .text > span:nth-child(11) {
-                margin-right: -0.01em;
+            .intro__title .word2 .letter1 {
+                margin-right: -0.015em;
             }
 
-            .intro__title .text > span:nth-child(12) {
+            .intro__title .word2 .letter2 {
                 margin-right: 0.005em;
             }
 
-            .intro__title .text > span:nth-child(13) {
-                margin-right: -0.0075em;
+            .intro__title .word2 .letter3 {
+                margin-right: -0.015em;
             }
 
-            .intro__title .text > span:nth-child(14) {
-                margin-right: -0.01em;
+            .intro__title .word2 .letter4 {
+                margin-right: 0.01em;
             }
 
-            .intro__title .text > span:nth-child(15) {
+            .intro__title .word2 .letter5 {
             }
-            /*/.intro__title kerning*/
+            /*/kerning*/
 
         .intro__claim {
             display: table;
@@ -610,6 +609,7 @@
             opacity 1.5s ease 0s;
     }
 
+    .no-js .intro__background-layer .square:not(:hover),
     .intro__background-layer.section__background-layer--stop-animation .square:not(:hover) {
         border-color: rgba(206, 183, 126, 0.4);
     }

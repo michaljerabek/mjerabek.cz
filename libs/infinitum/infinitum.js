@@ -315,6 +315,14 @@
          */
         wheelThrottle: 40,
 
+        /* Number - sledovat změny velikosti widgetu
+         */
+        watchContainer: 0,
+
+        /* Number - sledovat změny velikosti položek
+         */
+        watchItems: 0,
+
         debug: false
     };
 
@@ -385,7 +393,7 @@
 
     Infinitum.FAKE_TRANSITION_TIMEOUT = 700;
 
-    Infinitum.CAPTURE_WHEEL_TIMEOUT = 350;
+    Infinitum.CAPTURE_WHEEL_TIMEOUT = 375;
 
 
     Infinitum.prototype.init = function (options /*Object?*/, destroy /*Boolean?*/) {
@@ -753,16 +761,26 @@
         this._generateSelfRect();
     };
 
-    Infinitum.prototype._generateSelfRect = function () {
+    Infinitum.prototype._generateSelfRect = function (getValue) {
 
-        this._selfRect = {};
-        this._origSelfRect = this.$self[0].getBoundingClientRect();
+        this._origSelfRect = getRect(this.$self);
 
-        var box = this.$self.css(["padding-left", "padding-right", "border-left-width", "border-right-width"]);
+        var box = this.$self.css(["padding-left", "padding-right", "border-left-width", "border-right-width"]),
 
-        this._selfRect.left = this._origSelfRect.left + parseFloat(box["padding-left"]) + parseFloat(box["border-left-width"]);
-        this._selfRect.right = this._origSelfRect.right - parseFloat(box["padding-right"]) - parseFloat(box["border-right-width"]);
-        this._selfRect.center = this._origSelfRect.left + ((this._origSelfRect.right - this._origSelfRect.left) / 2);
+            rect = {};
+
+        rect.left = this._origSelfRect.left + parseFloat(box["padding-left"]) + parseFloat(box["border-left-width"]);
+        rect.right = this._origSelfRect.right - parseFloat(box["padding-right"]) - parseFloat(box["border-right-width"]);
+        rect.center = this._origSelfRect.left + ((this._origSelfRect.right - this._origSelfRect.left) / 2);
+        rect.width = this._origSelfRect.width;
+        rect.height = this._origSelfRect.height;
+
+        if (getValue) {
+
+            return rect;
+        }
+
+        this._selfRect = rect;
     };
 
     Infinitum.prototype._prepareTrack = function () {
@@ -828,6 +846,14 @@
             totalWidth = lastLeft;
 
         }.bind(this));
+
+        if (this.options.watchItems) {
+
+            this._lastSizes = this.$items.map(function () {
+
+                return getRect(this);
+            });
+        }
 
         this._sortItems();
 
@@ -974,27 +1000,69 @@
 
         }.bind(this));
 
+        if (this.options.watchContainer) {
+
+            this._containerWatcher = setInterval(function () {
+
+                var currentSelfRect = this._generateSelfRect(true);
+
+                if (currentSelfRect.width.toFixed(2) !== this._selfRect.width.toFixed(2) || currentSelfRect.height.toFixed(2) !== this._selfRect.height.toFixed(2)) {
+
+                    this.softRefresh();
+                }
+            }.bind(this), this.options.watchContainer);
+        }
+
+        if (this.options.watchItems) {
+
+            this._itemsWatcher = setInterval(function () {
+
+                var currentSizes = this.$items.map(function () {
+
+                        return getRect(this);
+                    }),
+
+                    l = 0;
+
+                for (l; l < this._lastSizes.length; l++) {
+
+                    if (currentSizes[l].width.toFixed(2) !== this._lastSizes[l].width.toFixed(2) || currentSizes[l].height.toFixed(2) !== this._lastSizes[l].height.toFixed(2)) {
+
+                        this.softRefresh();
+
+                        return;
+                    }
+                }
+            }.bind(this), this.options.watchItems);
+        }
+    };
+
+    Infinitum.prototype._initGlobalEvents = function () {
+
         var resizeDebounce = null,
 
             lastDocHeight = document.documentElement.clientHeight,
             lastDocWidth = document.documentElement.clientWidth;
 
-        $win.on("resize" + this.NS, function () {
+        $win.on("resize." + NS, function () {
 
             if (lastDocWidth !== document.documentElement.clientWidth || lastDocHeight !== document.documentElement.clientHeight) {
 
                 clearTimeout(resizeDebounce);
 
-                resizeDebounce = setTimeout(this.softRefresh.bind(this), 50);
+                resizeDebounce = setTimeout(function () {
+
+                    instances.forEach(function (instance) {
+                        instance.softRefresh();
+                    });
+                }, 50);
 
                 lastDocHeight = document.documentElement.clientHeight;
                 lastDocWidth = document.documentElement.clientWidth;
             }
 
         }.bind(this));
-    };
 
-    Infinitum.prototype._initGlobalEvents = function () {
 
         $win.on("touchmove." + NS, function (event) {
 
@@ -1023,6 +1091,9 @@
 
     Infinitum.prototype._destroyEvents = function () {
 
+        clearInterval(this._containerWatcher);
+        clearInterval(this._itemsWatcher);
+
         this.$self.off(this.NS);
 
         $win.on(this.NS);
@@ -1030,7 +1101,8 @@
         if (!instances.length) {
 
             $win.off("touchstart." + NS)
-                .off("scroll." + NS);
+                .off("scroll." + NS)
+                .off("resize." + NS);
         }
     };
 

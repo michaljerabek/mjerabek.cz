@@ -201,6 +201,44 @@
                     color: #3c6778;
                 }
 
+                /*kerning*/
+                .main-nav__item:nth-child(2) .letter1 {
+                    margin-right: -0.045em;
+                }
+
+                .main-nav__item:nth-child(2) .letter2 {
+                    margin-right: 0.02em;
+                }
+
+                .main-nav__item:nth-child(2) .letter3 {
+                    margin-right: 0.01em;
+                }
+
+                .main-nav__item:nth-child(3) .word2 .letter3 {
+                    margin-right: -0.005em;
+                }
+
+                .main-nav__item:nth-child(3) .word2 .letter4 {
+                    margin-right: -0.005em;
+                }
+
+                .main-nav__item:nth-child(5) .word2 .letter3 {
+                    margin-right: -0.01em;
+                }
+
+                .main-nav__item:nth-child(7) .text > span:nth-child(4) {
+                    margin-right: -0.035em;
+                }
+
+                .main-nav__item:nth-child(7) .letter5 {
+                    margin-right: -0.0225em;
+                }
+
+                .main-nav__item:nth-child(7) .letter6 {
+                    margin-right: 0.0125em;
+                }
+                /*/kerning*/
+
             .main-nav__mobile-logo-svg,
             .main-nav__item--logo  .main-nav__item-svg {
                 transform: scale(1) translate(0px, 0px);

@@ -42,4 +42,9 @@ jQuery(function () {
 
         window.MJNS.Technologies.init();
     }
+
+    if (window.MJNS.References) {
+
+        window.MJNS.References.init();
+    }
 });

@@ -290,25 +290,25 @@
 
             watchNavSize = function () {
 
-                var lastWidth = $nav.outerWidth(),
-                    lastHeight = $nav.outerHeight();
-
-                setInterval(function () {
-
-                    var currentWidth = $nav.outerWidth(),
-                        currentHeight = $nav.outerHeight();
-
-                    if (currentWidth !== lastWidth || currentHeight !== lastHeight) {
-
-                        infinitum.refresh({
-                            current: infinitum.$currentItem.index()
-                        }, true);
-                    }
-
-                    lastWidth = currentWidth;
-                    lastHeight = currentHeight;
-
-                }, 100);
+//                var lastWidth = $nav.outerWidth(),
+//                    lastHeight = $nav.outerHeight();
+//
+//                setInterval(function () {
+//
+//                    var currentWidth = $nav.outerWidth(),
+//                        currentHeight = $nav.outerHeight();
+//
+//                    if (currentWidth !== lastWidth || currentHeight !== lastHeight) {
+//
+//                        infinitum.refresh({
+//                            current: infinitum.$currentItem.index()
+//                        }, true);
+//                    }
+//
+//                    lastWidth = currentWidth;
+//                    lastHeight = currentHeight;
+//
+//                }, 100);
             },
 
             initNav = function () {
@@ -321,7 +321,8 @@
 
                 infinitum = new Infinitum({
                     el: $nav,
-                    startBreak: Infinitum.POSITION.START
+                    startBreak: Infinitum.POSITION.START,
+                    watchContainer: 100
                 });
 
                 setIndicatorWidth({ type: "init" });

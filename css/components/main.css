@@ -2,6 +2,11 @@
 /*-------------------------- GENERAL STYLES --------------------------*/
 /*====================================================================*/
 
+.__brackets-ld-highlight {
+    border-style: solid !important;
+    border-width: 1px !important;
+}
+
 html,
 body {
     height: 100%;

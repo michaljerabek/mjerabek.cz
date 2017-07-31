@@ -946,15 +946,15 @@
                     padding-bottom: 14px;
                 }
 
-                .technologies__nav-item:first-child .text span:last-child {
-                    margin-left: -0.03em;
-                }
-
-                .technologies__nav-item:first-child .text span:first-child {
+                .technologies__nav-item:first-child .letter1 {
                     margin-right: 0.015em;
                 }
 
-                .technologies__nav-item:last-child .text span:first-child {
+                .technologies__nav-item:first-child .letter4 {
+                    margin-left: -0.03em;
+                }
+
+                .technologies__nav-item:last-child .letter1{
                     margin-right: -0.025em;
                 }
 

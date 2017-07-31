@@ -7,49 +7,89 @@
 
     ns.BreakText = (function () {
 
-        var SELECTOR = {
+        var CLASS = {
+                word: "word",
+                letter: "letter",
+                space: "space"
+            },
+
+            SELECTOR = {
                 items: "[data-break-text='true']"
             },
 
-            wrapLetter = function (letter, smallCaps) {
+            wrapLetter = function (letter, num, smallCaps) {
 
                 var attrs = [
-                    "style=\"display: inline-block;", letter.match(/\s/) ? "white-space: pre;\"" : "\"",
-                    smallCaps ? ns.SmallCaps.getAttr(true) : ""
-                ].join("");
+                        "class=\"", CLASS.letter + num, "\"",
+                        "style=\"display: inline-block;\"",
+                        smallCaps ? ns.SmallCaps.getAttr(true) : ""
+                    ].join(" ");
 
                 return "<span " + attrs + ">" + letter + "</span>";
             },
 
-            breakText = function (item) {
+            getWhiteSpace = function (num) {
 
-                ns.$temp[0] = item;
+                return "<span class=\"" + (CLASS.space + num) + "\" style=\"white-space: pre;\"> </span>";
+            },
 
-                var text = ns.$temp.text(),
-                    hasSmallCaps = ns.SmallCaps.isItem(ns.$temp),
+            breakWord = function (word, num, hasSmallCaps) {
 
-                    l = 0,
-                    newText = [];
+                var wordData = [],
+                    l = 0;
 
-                for (l; l < text.length; l++) {
+                wordData.push("<span class=\"" + (CLASS.word + num) + "\" style=\"display: inline-block;\">");
 
-                    newText.push(wrapLetter(text[l], hasSmallCaps));
+                for (l; l < word.length; l++) {
+
+                    wordData.push(wrapLetter(word[l], l + 1, hasSmallCaps));
                 }
+
+                wordData.push("</span>");
+
+                return wordData;
+            },
+
+            breakText = function ($item, hasSmallCaps) {
+
+                var text = $item.text().trim(),
+                    words = text.split(/\s/),
+
+                    w = 0,
+                    textData = [];
+
+                for (w; w < words.length; w++) {
+
+                    textData = textData.concat(breakWord(words[w], w + 1, hasSmallCaps));
+
+                    if (w < words.length - 1) {
+
+                        textData.push(getWhiteSpace(w + 1));
+                    }
+                }
+
+                return textData;
+            },
+
+            processElement = function (i, el) {
+
+                ns.$temp[0] = el;
+
+                var hasSmallCaps = ns.SmallCaps.isItem(ns.$temp),
+
+                    result = breakText(ns.$temp, hasSmallCaps);
 
                 if (hasSmallCaps) {
 
                     ns.SmallCaps.removeItem(ns.$temp);
                 }
 
-                ns.$temp.html(newText.join(""));
+                ns.$temp.html(result.join(""));
             },
 
             init = function () {
 
-                $(SELECTOR.items).each(function (i, item) {
-
-                    breakText(item);
-                });
+                $(SELECTOR.items).each(processElement);
             };
 
         return {

@@ -27,12 +27,9 @@
     <link rel="stylesheet" href="css/components/main-nav.css">
     <link rel="stylesheet" href="css/components/offer.css">
     <link rel="stylesheet" href="css/components/technologies.css">
+    <link rel="stylesheet" href="css/components/references.css">
 
     <link rel="stylesheet" href="css/components/CodeMirror-theme.css">
-
-    <link rel="stylesheet" href="libs/prism.css">
-    <link rel="stylesheet" href="libs/rainbow.css">
-
 
     <!--SUPPORT-->
     <!--[if IE]>
@@ -81,7 +78,7 @@
             <ul class="main-nav__items" tabindex="-1">
 
                 <li class="main-nav__item main-nav__item--logo x-mobile">
-                    <a href="#uvod" class="main-nav__link" title="Úvod">
+                    <a class="main-nav__link" href="#uvod" title="Úvod">
                         <svg class="main-nav__item-svg transition" width="48" height="48" viewBox="0 0 100 100">
                             <path d="M16.809,38.718c-0.162,-0.227 -0.244,-0.488 -0.244,-0.781c0,-0.097 0,-0.195 0,-0.293c0.065,-0.488 0.537,-1.074 1.416,-1.758c0,0 38.395,-30.371 38.916,-30.371l-31.396,32.032l20.849,26.269c0.391,0.586 0.554,1.188 0.489,1.807c-0.065,0.358 -0.277,0.7 -0.635,1.025l-2.881,2.344c-0.391,0.325 -0.781,0.488 -1.172,0.488c-0.521,0 -1.041,-0.309 -1.562,-0.928l-23.78,-29.834Z" fill="#111111"/>
                             <path d="M82.65,63.6c0,0 -39.137,30.885 -39.66,30.885l31.523,-32.062l-20.983,-26.423c-0.457,-0.654 -0.62,-1.242 -0.49,-1.765c0.131,-0.425 0.36,-0.785 0.687,-1.079l2.892,-2.402c0.392,-0.327 0.784,-0.49 1.177,-0.49c0.522,0 1.045,0.31 1.568,0.931l23.482,29.562c0.393,0.49 0.589,0.931 0.589,1.323c0,0.196 -0.017,0.343 -0.049,0.441c-0.131,0.425 -0.376,0.785 -0.736,1.079Z" fill="#b19653"/>
@@ -91,13 +88,13 @@
 
                 <li class="main-nav__item main-nav__item--active">
                     <a class="main-nav__link" href="#uvod">
-                        <span class="text transition" data-small-caps="true">Úvod</span>
+                        <span class="text transition" data-break-text="true" data-small-caps="true">Úvod</span>
                     </a>
                 </li>
 
                 <li class="main-nav__item">
                     <a class="main-nav__link" href="#co-delam">
-                        <span class="text transition" data-small-caps="true">Co dělám</span>
+                        <span class="text transition" data-break-text="true" data-small-caps="true">Co dělám</span>
                     </a>
                 </li>
 
@@ -109,7 +106,7 @@
 
                 <li class="main-nav__item">
                     <a class="main-nav__link" href="#kdo-jsem">
-                        <span class="text transition" data-small-caps="true">Kdo jsem</span>
+                        <span class="text transition" data-break-text="true" data-small-caps="true">Kdo jsem</span>
                     </a>
                 </li>
 
@@ -121,7 +118,7 @@
 
                 <li class="main-nav__item">
                     <a class="main-nav__link" href="#kontakt">
-                        <span class="text transition" data-small-caps="true">Kontakt</span>
+                        <span class="text transition" data-break-text="true" data-small-caps="true">Kontakt</span>
                     </a>
                 </li>
 
@@ -230,7 +227,7 @@
 
                 <!--–––––––– ** OFFER | SECTION ** –––––––––-->
 
-                <article class="offer offer--init-fade-in section" id="co-delam" data-main-nav-target="true">
+                <article class="offer offer--init-fade-in section section--dark" id="co-delam" data-main-nav-target="true">
 
                     <div class="section__background offer__background">
                         <div class="section__background-layer offer__background-layer">
@@ -245,18 +242,18 @@
                     <div class="layout__center">
 
                         <h2 class="section__title offer__title">
-                            <span class="text" data-small-caps="true">Co vám mohu nabídnout?</span>
+                            <span class="text" data-break-text="true" data-small-caps="true">Co vám mohu nabídnout?</span>
                         </h2>
 
                         <p class="offer__description">
-                            <span class="text">Kóduji grafické návrhy webů do <span class="layout__br--mobile-m layout__br--mobile-s"><span class="small">HTML</span>, <span class="small">CSS</span> a JavaScriptu.</span></span>
+                            <span class="text">Kóduji grafické návrhy webů do <span class="layout__br--mobile-m layout__br--mobile-s"><span class="small">HTML</span>, <span class="small">CSS</span> a&nbsp;JavaScriptu.</span></span>
                         </p>
 
                         <ul class="offer__technologies">
 
                             <li class="offer__technology offer__technology--html">
 
-                                <a href="#html" class="offer__technology-link" data-technologies-tab="0" data-main-nav-ignore="true">
+                                <a class="offer__technology-link" href="#html" data-technologies-tab="0" data-main-nav-ignore="true">
                                     <h3 class="offer__technology-name transition">
                                         <span class="text transition" data-break-text="true">HTML</span>
                                     </h3>
@@ -269,7 +266,7 @@
 
                             <li class="offer__technology offer__technology--css">
 
-                                <a href="#css" class="offer__technology-link" data-technologies-tab="1">
+                                <a class="offer__technology-link" href="#css" data-technologies-tab="1" data-main-nav-ignore="true">
                                     <h3 class="offer__technology-name transition">
                                         <span class="text transition">CSS</span>
                                     </h3>
@@ -282,7 +279,7 @@
 
                             <li class="offer__technology offer__technology--js">
 
-                                <a href="#js" class="offer__technology-link" data-technologies-tab="2">
+                                <a class="offer__technology-link" href="#js" data-technologies-tab="2" data-main-nav-ignore="true">
                                     <h3 class="offer__technology-name transition">
                                         <span class="text transition">JS</span>
                                     </h3>
@@ -304,7 +301,7 @@
                         </p>
 
                         <div class="offer__btn-wrapper">
-                            <a href="#kontakt" class="btn btn--light offer__btn">
+                            <a class="btn btn--light offer__btn" href="#kontakt">
                                 <span class="text">kontaktovat</span>
                             </a>
                         </div>
@@ -320,12 +317,389 @@
 
                 <!--–––––––– ** REFERENCE | SECTION ** –––––––––-->
 
-                <article class="reference section" id="reference" data-main-nav-target="true">
+                <article class="references section" id="reference" data-main-nav-target="true">
 
+                    <div class="section__background references__background">
+                        <div class="section__background-layer references__background-layer" data-parallax-reverse="scroll">
+                            <div class="square"><!-- css --></div>
+                        </div>
+                        <div class="section__background-layer references__background-layer" >
+                            <div class="square"><!-- css --></div>
+                        </div>
+                    </div>
+                    <!-- /.section__background references__background -->
 
+                    <div class="layout__center">
+
+                        <h2 class="section__title references__title">
+                            <span class="text" data-break-text="true" data-small-caps="true">Reference</span>
+                        </h2>
+
+                        <nav class="references__nav">
+
+                            <ul class="references__nav-items">
+
+                                <li class="references__nav-item infinitum__item--current">
+                                    <a class="references__nav-link" href="#reference-beemedia" data-main-nav-ignore="true">
+                                        <span class="reference__project-name" data-small-caps="true">BeeMedia</span>
+                                        <span class="reference__project-type">microsite</span>
+                                    </a>
+                                </li>
+
+                                <li class="references__nav-item">
+                                    <a class="references__nav-link" href="#reference-hotel-jewel" data-main-nav-ignore="true">
+                                        <span class="reference__project-name" data-small-caps="true">Hotel Jewel</span>
+                                        <span class="reference__project-type">prezentace</span>
+                                    </a>
+                                </li>
+
+                                <li class="references__nav-item">
+                                    <a class="references__nav-link" href="#reference-express-alarm" data-main-nav-ignore="true">
+                                        <span class="reference__project-name" data-small-caps="true">Express Alarm</span>
+                                        <span class="reference__project-type">e-shop</span>
+                                    </a>
+                                </li>
+
+                                <li class="references__nav-item">
+                                    <a class="references__nav-link" href="#reference-venue" data-main-nav-ignore="true">
+                                        <span class="reference__project-name" data-small-caps="true">Venue</span>
+                                        <span class="reference__project-type">prezentace</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                            <!-- /.references__nav-items -->
+
+                        </nav>
+                        <!-- /.references__nav -->
+
+                        <ul class="references__references">
+
+                            <li class="references__reference references__reference--active" id="reference-beemedia">
+
+                                <article class="references__wrapper">
+
+                                    <h3 class="visually-hidden">BeeMedia — microsite</h3>
+
+                                    <div class="references__project-info">
+
+                                        <dl class="references__project-info-list cf">
+
+                                            <dt class="references__project-info-item fade-in">Rok:</dt>
+                                            <dd class="references__project-info-content fade-in">
+                                                <span class="small">2017</span>
+                                            </dd>
+
+                                            <dt class="references__project-info-item fade-in">Čas:</dt>
+                                            <dd class="references__project-info-content fade-in">
+                                                <span class="small">30</span> hodin
+                                            </dd>
+
+                                            <dt class="references__project-info-item fade-in">Web:</dt>
+                                            <dd class="references__project-info-content fade-in">
+                                                <a href="beemedia.cz">beemedia.cz</a>
+                                            </dd>
+
+                                            <dt class="references__project-info-item fade-in">Kód:</dt>
+                                            <dd class="references__project-info-content fade-in">
+                                                <a href="github.com">github.com</a>
+                                            </dd>
+
+                                        </dl>
+                                        <!-- /.references__project-info-list -->
+
+                                        <p class="references__project-more-info fade-in">jQuery, Slick.js, Google Maps, Gulp</p>
+
+                                    </div>
+                                    <!-- /.references__project-info -->
+
+                                    <figure class="references__project-preview">
+
+                                        <figcaption class="visually-hidden">BeeMedia — ukázka projektu</figcaption>
+
+                                        <div class="references__image-wrapper fade-in">
+
+                                            <img class="references__image" src="img/references__img--beemediaX1.jpg" srcset="img/references__img--beemediaX1.jpg 1x, img/references__img--beemediaX2.jpg 2x, img/references__img--beemediaX3.jpg 3x" alt="BeeMedia.cz">
+
+                                            <div class="references__image-overlay">
+
+                                                <span class="references__image-web">
+                                                    <a class="references__image-web-link" href="http://beemedia.cz">beemedia.cz</a>
+                                                </span>
+
+                                                <span class="references__image-code">
+                                                    kód: <a class="references__image-code-link" href="https://github.com">github.com</a>
+                                                </span>
+
+                                            </div>
+
+                                        </div>
+                                        <!-- /.references__image-wrapper -->
+
+                                    </figure>
+                                    <!-- /.references__project-preview -->
+
+                                </article>
+                                <!-- /.references__wrapper -->
+
+                            </li>
+                            <!-- /.references__reference -->
+
+                            <li class="references__reference" id="reference-hotel-jewel">
+
+                                <article class="references__wrapper">
+
+                                    <h3 class="visually-hidden">Hotel Jewel — prezentace</h3>
+
+                                    <div class="references__project-info">
+
+                                        <dl class="references__project-info-list cf">
+
+                                            <dt class="references__project-info-item">Rok:</dt>
+                                            <dd class="references__project-info-content">
+                                                <span class="small">2017</span>
+                                            </dd>
+
+                                            <dt class="references__project-info-item">Čas:</dt>
+                                            <dd class="references__project-info-content">
+                                                <span class="small">27</span> hodin
+                                            </dd>
+
+                                            <dt class="references__project-info-item">Web:</dt>
+                                            <dd class="references__project-info-content">
+                                                <a href="hoteljewelprague.com">hoteljewelprague.com</a>
+                                            </dd>
+
+                                            <dt class="references__project-info-item">Kód:</dt>
+                                            <dd class="references__project-info-content">
+                                                <a href="github.com">github.com</a>
+                                            </dd>
+
+                                        </dl>
+                                        <!-- /.references__project-info-list -->
+
+                                        <p class="references__project-more-info">jQuery, Slick.js, Google Maps, Gulp</p>
+
+                                    </div>
+                                    <!-- /.references__project-info -->
+
+                                    <figure class="references__project-preview">
+
+                                        <figcaption class="visually-hidden">Hotel Jewel — ukázka projektu</figcaption>
+
+                                        <div class="references__image-wrapper">
+
+                                            <img class="references__image" src="img/references__img--hotel-jewelX1.jpg" srcset="img/references__img--hotel-jewelX1.jpg 1x, img/references__img--hotel-jewelX2.jpg 2x" alt="Hotel Jewel">
+
+                                            <div class="references__image-overlay">
+
+                                                <span class="references__image-web">
+                                                    <a class="references__image-web-link" href="http://hoteljewelprague.com">hoteljewelprague.com</a>
+                                                </span>
+
+                                                <span class="references__image-code">
+                                                    kód: <a class="references__image-code-link" href="https://github.com">github.com</a>
+                                                </span>
+
+                                            </div>
+
+                                        </div>
+                                        <!-- /.references__image-wrapper -->
+
+                                    </figure>
+                                    <!-- /.references__project-preview -->
+
+                                </article>
+                                <!-- /.references__wrapper -->
+
+                            </li>
+                            <!-- /.references__reference -->
+
+                            <li class="references__reference" id="reference-express-alarm">
+
+                                <article class="references__wrapper">
+
+                                    <h3 class="visually-hidden">Express Alarm — e-shop</h3>
+
+                                    <div class="references__project-info">
+
+                                        <dl class="references__project-info-list cf">
+
+                                            <dt class="references__project-info-item">Rok:</dt>
+                                            <dd class="references__project-info-content">
+                                                <span class="small">2017</span>
+                                            </dd>
+
+                                            <dt class="references__project-info-item">Čas:</dt>
+                                            <dd class="references__project-info-content">
+                                                <span class="small">50</span> hodin
+                                            </dd>
+
+                                            <dt class="references__project-info-item">Web:</dt>
+                                            <dd class="references__project-info-content">
+                                                <a href="express-alarm.cz">express-alarm.cz</a>
+                                            </dd>
+
+                                            <dt class="references__project-info-item">Kód:</dt>
+                                            <dd class="references__project-info-content">
+                                                <a href="github.com">github.com</a>
+                                            </dd>
+
+                                        </dl>
+                                        <!-- /.references__project-info-list -->
+
+                                        <p class="references__project-more-info">jQuery, Slick.js, Google Maps, Gulp</p>
+
+                                    </div>
+                                    <!-- /.references__project-info -->
+
+                                    <figure class="references__project-preview">
+
+                                        <figcaption class="visually-hidden">Express Alarm — ukázka projektu</figcaption>
+
+                                        <div class="references__image-wrapper">
+
+                                            <img class="references__image" src="img/references__img--express-alarmX1.jpg" srcset="img/references__img--express-alarmX1.jpg 1x, img/references__img--express-alarmX2.jpg 2x" alt="Express Alarm">
+
+                                            <div class="references__image-overlay">
+
+                                                <span class="references__image-web">
+                                                    <a class="references__image-web-link" href="http://exrepss-alarm.cz">exrepss-alarm.cz</a>
+                                                </span>
+
+                                                <span class="references__image-code">
+                                                    kód: <a class="references__image-code-link" href="https://github.com">github.com</a>
+                                                </span>
+
+                                            </div>
+
+                                        </div>
+                                        <!-- /.references__image-wrapper -->
+
+                                    </figure>
+                                    <!-- /.references__project-preview -->
+
+                                </article>
+                                <!-- /.references__wrapper -->
+
+                            </li>
+                            <!-- /.references__reference -->
+
+                            <li class="references__reference" id="reference-venue">
+
+                                <article class="references__wrapper">
+
+                                    <h3 class="visually-hidden">VENUE — prezentace</h3>
+
+                                    <div class="references__project-info">
+
+                                        <dl class="references__project-info-list cf">
+
+                                            <dt class="references__project-info-item">Rok:</dt>
+                                            <dd class="references__project-info-content">
+                                                <span class="small">2017</span>
+                                            </dd>
+
+                                            <dt class="references__project-info-item">Čas:</dt>
+                                            <dd class="references__project-info-content">
+                                                <span class="small">20</span> hodin
+                                            </dd>
+
+                                            <dt class="references__project-info-item">Web:</dt>
+                                            <dd class="references__project-info-content">
+                                                <a href="venuepraha.cz">venuepraha.cz</a>
+                                            </dd>
+
+                                            <dt class="references__project-info-item">Kód:</dt>
+                                            <dd class="references__project-info-content">
+                                                <a href="github.com">github.com</a>
+                                            </dd>
+
+                                        </dl>
+                                        <!-- /.references__project-info-list -->
+
+                                        <p class="references__project-more-info">jQuery, Slick.js, Google Maps, Gulp</p>
+
+                                    </div>
+                                    <!-- /.references__project-info -->
+
+                                    <figure class="references__project-preview">
+
+                                        <figcaption class="visually-hidden">VENUE — ukázka projektu</figcaption>
+
+                                        <div class="references__image-wrapper">
+
+                                            <img class="references__image" src="img/references__img--venueX1.jpg" srcset="img/references__img--venueX1.jpg 1x, img/references__img--venueX2.jpg 2x, img/references__img--venueX3.jpg 3x" alt="VENUE">
+
+                                            <div class="references__image-overlay">
+
+                                                <span class="references__image-web">
+                                                    <a class="references__image-web-link" href="http://venuepraha.cz">venuepraha.cz</a>
+                                                </span>
+
+                                                <span class="references__image-code">
+                                                    kód: <a class="references__image-code-link" href="https://github.com">github.com</a>
+                                                </span>
+
+                                            </div>
+
+                                        </div>
+                                        <!-- /.references__image-wrapper -->
+
+                                    </figure>
+                                    <!-- /.references__project-preview -->
+
+                                </article>
+                                <!-- /.references__wrapper -->
+
+                            </li>
+                            <!-- /.references__reference -->
+
+                        </ul>
+                        <!-- /.references__references -->
+
+                        <div class="references__more-references">
+
+                            <h3 class="references__more-references-title">Další reference:</h3>
+
+                            <ul class="references__more-projects">
+                                <li class="references__more-projects-project" data-after=",">Marketing With Love</li>
+                                <li class="references__more-projects-project" data-after=",">Kanceláře roku</li>
+                                <li class="references__more-projects-project" data-after=", &hellip;">Nejlevnější Půjčovna Vozů</li>
+                            </ul>
+
+                        </div>
+                        <!-- /.references__more-references -->
+
+                        <div class="references__other-projects">
+
+                            <h3 class="references__other-projects-title">Ostatní projekty:</h3>
+
+                            <ul class="references__other-projects-projects">
+
+                                <li class="references__other-projects-project">
+                                    <a href="https://github.com/michaljerabek/mjGallery" title="JS plugin — galerie obrázků, videí, iframů, ..." data-after=",">mjGallery</a>
+                                </li>
+
+                                <li class="references__other-projects-project">
+                                    <a href="https://github.com/michaljerabek/Infinitum" title="JS plugin — nekonečná smyčka HTML elementů" data-after=",">Infinitum</a>
+                                </li>
+
+                                <li class="references__other-projects-project">
+                                    <a href="https://github.com/michaljerabek/UXN" title="JS plugin — uživatelsky přívětivé navigace"><span class="small">UXN</span></a>
+                                </li>
+
+                            </ul>
+                            <!-- /.references__other-projects-projects -->
+
+                        </div>
+                        <!-- /.references__other-projects -->
+
+                    </div>
+                    <!-- /.layout__center -->
 
                 </article>
-                <!-- /.reference section -->
+                <!-- /.references section -->
 
                 <!--–––––––– // REFERENCE | SECTION // –––––––––-->
 
@@ -395,19 +769,19 @@
             <ul class="technologies__nav-items">
 
                 <li class="technologies__nav-item infinitum__item--current">
-                    <a href="#html" class="technologies__nav-link">
+                    <a class="technologies__nav-link" href="#html">
                         <span class="text transition" data-break-text="true">HTML</span>
                     </a>
                 </li>
 
                 <li class="technologies__nav-item">
-                    <a href="#css" class="technologies__nav-link">
+                    <a class="technologies__nav-link" href="#css">
                         <span class="text transition">CSS</span>
                     </a>
                 </li>
 
                 <li class="technologies__nav-item">
-                    <a href="#js" class="technologies__nav-link">
+                    <a class="technologies__nav-link" href="#js">
                         <span class="text transition" data-break-text="true">JS</span>
                     </a>
                 </li>
@@ -644,6 +1018,7 @@
     <script src="js/modules/MainNav.js"></script>
     <script src="js/modules/Offer.js"></script>
     <script src="js/modules/Technologies.js"></script>
+    <script src="js/modules/References.js"></script>
 
     <script src="js/init.js"></script>
 
