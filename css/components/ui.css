@@ -145,6 +145,24 @@ a:active .transition-hideable {
     }
 }
 
+@keyframes fake-visible {
+    from {
+        max-height: 0;
+    }
+    to {
+        max-height: 100%;
+    }
+}
+
+@keyframes fake-hidden {
+    from {
+        max-height: 100%;
+    }
+    to {
+        max-height: 0;
+    }
+}
+
 /*//////////////////////////// ANIMATIONS ////////////////////////////*/
 
 

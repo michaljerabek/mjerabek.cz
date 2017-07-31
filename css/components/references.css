@@ -97,7 +97,9 @@
     }
 }
 
-.references__nav::after {
+.js .references__nav::after {
+    content: "\2192";
+
     position: absolute;
     bottom: 2px;
 
@@ -107,27 +109,23 @@
     color: #bdbdbd;
 }
 
-.references__nav::after {
-    content: "\2192";
-}
-
 @media (min-width: 1680px) {
 
-    .references__nav::after {
+    .js .references__nav::after {
         display: none;
     }
 }
 
 @media (min-width: 768px) {
 
-    .references__nav::after {
+    .js .references__nav::after {
         right: 40px;
     }
 }
 
 @media (max-width: 767px) {
 
-    .references__nav::after {
+    .js .references__nav::after {
         right: 20px;
     }
 }
@@ -137,6 +135,10 @@
 
         font-size: 0;
         white-space: nowrap;
+    }
+
+    .no-js .references__nav-items {
+        overflow: auto;
     }
 
         .references__nav-item {
@@ -173,10 +175,13 @@
                 }
             }
 
-            .references__nav-items:not(.infinitum__track--moving) .references__nav-link:focus,
-            .references__nav-items:not(.infinitum__track--moving) .references__nav-link:hover,
-            .infinitum__item--possible-current .references__nav-link,
-            .references__nav-items:not(.infinitum__track--dragging) .infinitum__item--current .references__nav-link {
+            .no-js .references__nav-link:hover,
+            .no-js .references__nav-link:active,
+            .no-js .references__nav-link:focus,
+            .js .references__nav-items:not(.infinitum__track--moving) .references__nav-link:focus,
+            .js .references__nav-items:not(.infinitum__track--moving) .references__nav-link:hover,
+            .js .infinitum__item--possible-current .references__nav-link,
+            .js .references__nav-items:not(.infinitum__track--dragging) .infinitum__item--current .references__nav-link {
                 color: #3C6778;
             }
 
@@ -184,6 +189,7 @@
                     display: block;
 
                     font-family: "Caudex";
+                    font-variant: small-caps;
                     text-indent: -0.05em;
                     letter-spacing: 0.015em;
                 }
@@ -229,7 +235,7 @@
 /*---------------------------- REFERENCES ----------------------------*/
 /*--------------------------------------------------------------------*/
 
-.references .fade-in {
+.js .references .fade-in {
     transform: translateX(0px) translateY(0px);
 
     opacity: 1;
@@ -253,6 +259,10 @@
     transition: height 0.35s cubic-bezier(.05, .2, .25, .95) 0s;
 }
 
+.no-js .references__references {
+    padding-bottom: calc(4vh - 20px + 40px);
+}
+
     .references .small {
         font-size: 1.0625rem;
     }
@@ -271,14 +281,36 @@
     .references__reference {
         z-index: 1;
 
-        padding-bottom: calc(4vh - 20px);
-        margin-bottom: 40px;
-
         pointer-events: none;
     }
 
-    .no-js .references__reference + .references__reference {
-        display: none;
+    .js .references__reference {
+        padding-bottom: calc(4vh - 20px);
+        margin-bottom: 40px;
+    }
+
+    .no-js .references__reference:target ~ .references__reference:last-child,
+    .no-js .references__reference {
+        z-index: 1;
+
+        max-height: 0;
+
+        overflow: hidden;
+
+        animation: fake-hidden 0.35s steps(1) 0s 1 forwards,
+            hide 0.35s linear 0s 1 forwards;
+    }
+
+    .no-js .references__reference:last-child,
+    .no-js .references__reference:target {
+        z-index: 2;
+
+        max-height: 100%;
+
+        pointer-events: auto;
+
+        animation: fake-visible 0.35s steps(1) 0s 1 forwards,
+            show 0.35s linear 0.35s 1 forwards;
     }
 
     .js .references__reference {
@@ -289,7 +321,7 @@
         width: 100%;
     }
 
-    .references__reference--active {
+    .js .references__reference--active {
         z-index: 2;
 
         display: block;
@@ -346,17 +378,20 @@
                 }
 
                     .references__project-info-item {
-                        transform: translateY(20px);
-
                         clear: left;
                         float: left;
 
                         font-weight: 600;
 
                         color: #474747;
-                        opacity: 0;
 
                         transition: 0.2s cubic-bezier(.45, .25, .4, .9);
+                    }
+
+                    .js .references__project-info-item {
+                        transform: translateY(20px);
+
+                        opacity: 0;
                     }
 
                     .references__project-info-item::after {
@@ -366,27 +401,31 @@
                     }
 
                     .references__project-info-content {
-                        transform: translateY(20px);
-
                         float: left;
                         margin-bottom: 0.4375rem;
-
-                        opacity: 0;
 
                         transition: 0.2s cubic-bezier(.45, .25, .4, .9);
                     }
 
-                .references__project-more-info {
-                    transform: translateY(20px);
+                    .js .references__project-info-content {
+                        transform: translateY(20px);
 
+                        opacity: 0;
+                    }
+
+                .references__project-more-info {
                     clear: both;
                     max-width: 13.75rem;
                     padding-right: 40px;
                     margin-bottom: 0.4375rem;
 
-                    opacity: 0;
-
                     transition: 0.2s cubic-bezier(.45, .25, .4, .9);
+                }
+
+                .js .references__project-more-info {
+                    transform: translateY(20px);
+
+                    opacity: 0;
                 }
 
                 .references__image-wrapper {
@@ -398,7 +437,6 @@
                     font-size: 0;
 
                     box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.1);
-                    opacity: 0;
 
                     overflow: hidden;
 
@@ -406,18 +444,24 @@
                     will-change: transform;
                 }
 
+                .js .references__image-wrapper {
+                    opacity: 0;
+                }
+
                 @media (min-width: 640px) {
 
-                    .references__image-wrapper {
+                    .js .references__image-wrapper {
                         transform: translateX(20px);
                     }
                 }
 
                 @media (max-width: 639px) {
 
-                    .references__image-wrapper {
+                    .js .references__image-wrapper {
                         transform: translateY(20px);
+                    }
 
+                    .references__image-wrapper {
                         padding-top: 10px;
                     }
                 }
