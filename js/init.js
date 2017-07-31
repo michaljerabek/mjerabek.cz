@@ -13,6 +13,11 @@ jQuery(function () {
         window.MJNS.Performance.init();
     }
 
+    if (window.MJNS.JSHover) {
+
+        window.MJNS.JSHover.init();
+    }
+
     if (window.MJNS.BreakText) {
 
         window.MJNS.BreakText.init();

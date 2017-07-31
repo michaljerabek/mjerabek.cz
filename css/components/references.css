@@ -436,7 +436,8 @@
                         transition: filter 0.65s cubic-bezier(0, 0, .2, 1) 0s;
                     }
 
-                    .references__image-wrapper:hover .references__image {
+                    .references__image-wrapper.hover .references__image,
+                    .no-js .references__image-wrapper:hover .references__image {
                         filter: blur(4px);
 
                         transition: filter 0.5s cubic-bezier(.3, .8, .4, .95) 0s;
@@ -448,8 +449,10 @@
                         transition: filter 0.5s cubic-bezier(.3, .8, .4, .95) 0s;
                     }
 
-                    .edge .references__image-wrapper:hover .references__image,
-                    .performance--low .references__image-wrapper:hover .references__image {
+                    .edge .references__image-wrapper.hover .references__image,
+                    .no-js.edge .references__image-wrapper:hover .references__image,
+                    .performance--low .references__image-wrapper.hover .references__image,
+                    .no-js .performance--low .references__image-wrapper:hover .references__image {
                         filter: none;
                     }
 
@@ -481,7 +484,8 @@
                             visibility 0s linear 0.65s;
                     }
 
-                    .references__image-wrapper:hover .references__image-overlay {
+                    .references__image-wrapper.hover .references__image-overlay,
+                    .no-js .references__image-wrapper:hover .references__image-overlay {
                         opacity: 1;
                         visibility: visible;
 
@@ -503,7 +507,8 @@
                             transition: transform 0.65s cubic-bezier(0, 0, .2, 1) 0s;
                         }
 
-                        .references__image-wrapper:hover .references__image-web {
+                        .references__image-wrapper.hover .references__image-web,
+                        .no-js .references__image-wrapper:hover .references__image-web {
                             transform: translateY(0px);
 
                             transition: transform 0.5s cubic-bezier(.3, .8, .4, .95) 0s;
@@ -563,7 +568,8 @@
                             transition: transform 0.65s cubic-bezier(0, 0, .2, 1) 0s;
                         }
 
-                        .references__image-wrapper:hover .references__image-code {
+                        .references__image-wrapper.hover .references__image-code,
+                        .no-js .references__image-wrapper:hover .references__image-code {
                             transform: translateY(0px);
 
                             transition: transform 0.5s cubic-bezier(.3, .8, .4, .95) 0s;
