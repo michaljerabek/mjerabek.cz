@@ -12,10 +12,18 @@
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
+
+        pointer-events: none;
     }
 
         .references__title {
             color: #7D6937;
+
+            pointer-events: none;
+        }
+
+        .references__title .text {
+            pointer-events: auto;
         }
 
             /*kerning*/
@@ -256,6 +264,8 @@
 
     color: #111;
 
+    pointer-events: none;
+
     transition: height 0.35s cubic-bezier(.05, .2, .25, .95) 0s;
 }
 
@@ -325,8 +335,6 @@
         z-index: 2;
 
         display: block;
-
-        pointer-events: auto;
     }
 
         .references__wrapper {
@@ -379,6 +387,8 @@
 
                         color: #474747;
 
+                        pointer-events: auto;
+
                         transition: 0.2s cubic-bezier(.45, .25, .4, .9);
                     }
 
@@ -398,6 +408,8 @@
                         float: left;
                         margin-bottom: 0.4375rem;
 
+                        pointer-events: auto;
+
                         transition: 0.2s cubic-bezier(.45, .25, .4, .9);
                     }
 
@@ -412,6 +424,8 @@
                     max-width: 13.75rem;
                     padding-right: 40px;
                     margin-bottom: 0.4375rem;
+
+                    pointer-events: auto;
 
                     transition: 0.2s cubic-bezier(.45, .25, .4, .9);
                 }
@@ -433,6 +447,8 @@
                     box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.1);
 
                     overflow: hidden;
+
+                    pointer-events: auto;
 
                     transition: 0.325s cubic-bezier(.45, .25, .4, .9);
                     will-change: transform;
@@ -685,6 +701,8 @@
 
 .references__more-references,
 .references__other-projects {
+    position: relative;
+
     width: 100%;
     margin-right: auto;
 
@@ -710,11 +728,15 @@
 
     .references__more-references-title,
     .references__other-projects-title {
+        position: relative;
+
         display: inline;
 
         font-weight: 600;
 
         color: #474747;
+
+        pointer-events: auto;
     }
 
         .references__more-projects,
@@ -724,7 +746,11 @@
 
             .references__more-projects-project,
             .references__other-projects-project {
+                position: relative;
+
                 display: inline-block;
+
+                pointer-events: auto;
             }
 
 /*--------------------------------------------------------------------*/
