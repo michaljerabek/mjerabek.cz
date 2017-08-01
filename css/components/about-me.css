@@ -1,0 +1,209 @@
+/*====================================================================*/
+/*------------------------------ ABOUT-ME ----------------------------*/
+/*====================================================================*/
+
+.about-me {
+}
+
+    .about-me__photo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        transform: translate(-50%, -50%);
+
+        width: 100%;
+        height: 100%;
+        width: calc(100% + 60px);
+        height: calc(100% + 60px + 200px);
+
+        will-change: transform;
+    }
+
+        .about-me__img {
+            position: absolute;
+            bottom: 0%;
+            right: 0%;
+            right: calc((-1080px + 100%) / -4);
+
+            height: calc(100% - ((10vh + 10vw) / 2));
+
+            opacity: 0.85;
+        }
+
+        @media (min-width: 1080px) {
+
+            .about-me__img {
+                right: calc((-1080px + 100%) / 4);
+            }
+        }
+
+        @media (max-width: 1023px) {
+
+            .about-me__img {
+                right: calc((-1080px + 100%) / 6);
+
+                transform: translateY(-10%);
+
+                height: calc(100% - ((20vh + 20vw) / 2));
+            }
+        }
+
+        @media (max-width: 767px) {
+
+            .about-me__img {
+                right: calc((-1080px + 100%) / 8);
+
+                height: auto;
+                width: calc(540px + 50vw);
+            }
+        }
+
+    .about-me > .layout__center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+    }
+
+        .about-me__title .text {
+            color: #e7e7e7;
+        }
+
+        .about-me__content {
+            transform: translateZ(0);
+
+            padding-top: 3vmin;
+            padding-top: 2vmax;
+            margin-right: auto;
+            margin-bottom: 80px;
+
+            font-size: 1.0625rem;
+            line-height: 1.6875rem;
+            letter-spacing: 0.004em;
+
+	        color: #e7e7e7;
+            text-shadow: -1px 1px 5px rgba(0, 0, 0, 1);
+        }
+
+        @media (min-width: 1024px) {
+
+            .about-me__content {
+                max-width: 76.16%;
+                max-width: calc(((100% / 21) * 8) * 2);
+
+                -webkit-column-count: 2;
+                -moz-column-count: 2;
+                column-count: 2;
+                -webkit-column-gap: 0;
+                -moz-column-gap: 0;
+                column-gap: 0;
+            }
+        }
+
+        @media (min-width: 1024px) and (max-width: 1259px) {
+
+            .about-me__content {
+                padding: 0 20px;
+            }
+        }
+
+        @media (min-width: 640px) and (max-width: 1023px) {
+
+            .about-me__content {
+                max-width: 61.88%;
+                max-width: calc((100% / 21) * 13);
+            }
+        }
+
+        @media (max-width: 767px) {
+
+            .about-me__content {
+                max-width: 75%;
+            }
+        }
+
+        @media (max-width: 479px) {
+
+            .about-me__content {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-height: 767px) {
+
+            .about-me__content {
+                padding-bottom: 24vmin;
+            }
+        }
+
+        @media (max-width: 767px) {
+
+            .about-me__content {
+                padding-bottom: 40vmin;
+            }
+        }
+
+            @media (min-width: 1260px) {
+
+                .about-me__content .column {
+                    padding: 0 40px;
+                }
+            }
+
+            @media (min-width: 1024px) and (max-width: 1259px) {
+
+                .about-me__content .column {
+                    padding: 0 20px;
+                }
+            }
+
+            @media (min-width: 768px) and (max-width: 1023px) {
+
+                .about-me__content .column {
+                    padding: 0 40px;
+                }
+            }
+
+            @media (max-width: 767px) {
+
+                .about-me__content .column {
+                    padding: 0 20px;
+                }
+            }
+
+            .about-me__content p {
+                margin-bottom: 1.6875rem;
+            }
+
+            .about-me__content .small {
+                font-size: 0.875rem;
+            }
+
+            .about-me__content .liberec-symbol {
+                position: relative;
+                top: 0.175rem;
+
+                margin-left: -0.125rem;
+                margin-right: -0.0625rem;
+
+                font-size: 1.6875rem;
+                vertical-align: bottom;
+            }
+
+        .about-me__btn-wrapper {
+	        margin-top: auto;
+        }
+
+.about-me + .section {
+	background-color: #fff;
+}
+
+@media (min-width: 1024px) {
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+}
+
+@media (max-width: 767px) {
+}

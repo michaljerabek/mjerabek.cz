@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="css/components/offer.css">
     <link rel="stylesheet" href="css/components/technologies.css">
     <link rel="stylesheet" href="css/components/references.css">
+    <link rel="stylesheet" href="css/components/about-me.css">
 
     <link rel="stylesheet" href="css/components/CodeMirror-theme.css">
 
@@ -708,7 +709,37 @@
 
                 <article class="about-me section" id="kdo-jsem" data-main-nav-target="true">
 
+                    <div class="about-me__photo">
+                        <img class="about-me__img" src="img/about-me__photo--square.jpg" alt="Moje fotka">
+                    </div>
 
+                   <div class="layout__center">
+
+                        <h2 class="section__title about-me__title">
+                            <span class="text"><span data-break-text="true" data-small-caps="true">Něco málo</span> <span class="layout__br--mobile-xs" data-break-text="true" data-small-caps="true">o mně</span></span>
+                        </h2>
+
+                        <div class="about-me__content">
+
+                            <p class="column column--1">Jmenuji se Michal Jeřábek, jsem z&nbsp;<span class="liberec-symbol">^</span>Liberce a&nbsp;kódování webů se věnuji více jak <span class="small">5</span>&nbsp;let. Během této doby jsem pracoval na několika desítkách webových projektů.</p>
+
+                            <p class="column column--1">Zaměřuji se spíše na vysokou kvalitu než maximální rychlost, což vám i&nbsp;mně ušetří čas v&nbsp;budoucnu. K&nbsp;práci přistupuji tak, že se snažím s&nbsp;každým dalším projektem něco posunout o&nbsp;kousek dál.</p>
+
+                            <p class="column column--2">Ve volných chvílích se také zajímám o&nbsp;další obory týkající se webu, které mohu využít při své práci. Jde například o&nbsp;grafický design, <span class="small">UX</span> nebo vývoj back-endu.</p>
+
+                            <p class="column column--2">A&nbsp;když se mi podaří opustit prostor webu, tak třeba skládám hudbu nebo si přečtu nějakou (chytrou) knihu.</p>
+
+                        </div>
+                        <!-- /.about-me__content -->
+
+                       <div class="about-me__btn-wrapper">
+                           <a class="btn btn--light about-me__btn" href="#kontakt">
+                               <span class="text">kontaktovat</span>
+                           </a>
+                       </div>
+
+                   </div>
+                   <!-- /.layout__center -->
 
                 </article>
                 <!-- /.about-me section -->
@@ -805,9 +836,13 @@
                     <div class="technologies__text-content-wrapper">
 
                         <div class="technologies__text-content">
+
                             <p>Základem výstupu práce s <span class="small">HTML</span> musí být <strong>validní&nbsp;a sémantický kód</strong>. Musí tedy odpovídat standardům&nbsp;a značky (tagy) musí <strong>správně označovat význam obsahu</strong>. Jedině tak může být výsledkem logicky strukturovaný&nbsp;a přístupný (accessible) kód. (Častou chybou například bývá špatné seskupování formulářových prvků — kodéři nepoužívají značky <code>fieldset</code> a&nbsp;<code>legend</code> a&nbsp;vymýšlí pochybné způsoby, jak seskupit checkboxy apod.)</p>
+
                             <p>Výstup, který ode mne dostanete, bude velmi <strong>přehledný</strong> — písma, styly, JavaScript a&nbsp;další součásti dokumentu jsou <strong>seskupeny a&nbsp;označeny komentáři</strong>, stejně tak jednotilivé sekce (každá taková sekce má vlastní <span class="small">CSS</span> soubor) a&nbsp;konce významných bloků kódu.</p>
+
                             <p>V dokumentu budou vložené <strong>minifikované styly i&nbsp;JavaScript</strong>.</p>
+
                         </div>
                         <!-- /.technologies__text-content -->
 
@@ -865,13 +900,21 @@
                     <div class="technologies__text-content-wrapper">
 
                         <div class="technologies__text-content">
+
                             <p>Soubory stylů mohou být velmi náročné na udržování — změna jednoho stylu může způsobit změny na dalších nečekaných místech nebo naopak selektory mohou být tak specifické, že je skoro nemožné je přepsat.</p>
+
                             <p>Proto používám <strong>metodologii <span class="small"><abbr title="Block Element Modifier">BEM</abbr></span>, pravidla řadím vždy podle stejného systému</strong>, pořadí a&nbsp;zarovnání seznamů pravidel vychází ze struktury <span class="small">HTML</span> (ale zároveň <span class="small">CSS</span> obsahuje co nejméně konkrétního <span class="small">HTML</span> kódu) a&nbsp;styly rozděluji podle sekcí na stránce do samostatných souborů.</p>
+
                             <p>Nepoužívám žádné preprocesory, takže <strong>kód je ručně vyladěný</strong> a&nbsp;nebsahuje žádné magické funkce.</p>
+
                             <p>Layout stránky také musí být <strong>stabilní při jakékoliv velikosti prohlížeče a&nbsp;při jakémkoliv obsahu</strong>. (Kodéři často napřklad nepočítají s&nbsp;víceřádkovým obsahem apod.)</p>
+
                             <p>Pro zajištění podpory starších prohlížečů postupuji podle principů <strong>progressive enhancement</strong> a&nbsp;<strong>gracefull degradation</strong>.</p>
+
                             <p>Zejména při kódování responzivních designů, animací nebo interaktivních prvků je potřeba mít i&nbsp;jistý <strong>grafický cit</strong>, aby výsledek vypadal vždy dobře. (Tato stránka je můj vlastní návrh.)</p>
+
                             <p>Jako výstup mé práce dostanete vždy <strong>soubory spojené do jednoho a&nbsp;jeho minifikovanou variantu</strong>.</p>
+
                         </div>
                         <!-- /.technologies__text-content -->
 
@@ -929,10 +972,15 @@
                     <div class="technologies__text-content-wrapper">
 
                         <div class="technologies__text-content">
+
                             <p>Kvalita JavaScriptu bývá na většině webů nejslabší — kód je nepřehledný, neefektivní a&nbsp;těžko upravitelný.</p>
+
                             <p>Proto související funkcionalitu uzavírám do <strong>samostatných modulů</strong>, které přiřazuji ke <strong>jmennému prostoru</strong>, aby nekolidovaly s&nbsp;kódem třetích stran. Snažím se psát funkce co nejkratší a&nbsp;používám <strong>princip <span class="small"><abbr title="Don't repeat yourself">DRY</abbr></span></strong> — názvy selektorů a&nbsp;různá nastavení tak <strong>stačí změnit pouze na jednom místě</strong> (na začátku modulu).</p>
+
                             <p>Čitelnost kódu je sice většinou důležitější než jeho efektivita, ale mnohdy je na stránkách vidět, že programátor neví, jak fungují knihovy jako jQuery, přitom jejich efektivní použití čitelnosti neuškodí — selektory elementů bývají příliš komplikované a&nbsp;navíc obsahují přesnou strukturu <span class="small">HTML</span>; v&nbsp;cyklech či animacích se neustále vytvářejí nové jQuery objekty; při načítání se desetkrát vytvoří jQuery objekt s&nbsp;window...</p>
+
                             <p>Jako výstup dostanete <strong>moduly spojené do jednoho souboru včetně jeho minifikované verze</strong>.</p>
+
                         </div>
                         <!-- /.technologies__text-content -->
 

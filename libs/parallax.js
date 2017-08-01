@@ -107,9 +107,9 @@
                 });
             },
 
-            refresh = function () {
+            refresh = function (force) {
 
-                if ($win.height() === winHeight && $win.width() === winWidth) {
+                if (($win.height() === winHeight && $win.width() === winWidth) && force !== true) {
 
                     return;
                 }
@@ -201,7 +201,7 @@
                         updateParallaxes.call(this, TYPE_TILT);
                     });
 
-                    refresh();
+                    refresh(true);
                 });
             },
 

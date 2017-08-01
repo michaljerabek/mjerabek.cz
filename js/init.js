@@ -52,4 +52,9 @@ jQuery(function () {
 
         window.MJNS.References.init();
     }
+
+    if (window.MJNS.AboutMe) {
+
+        window.MJNS.AboutMe.init();
+    }
 });

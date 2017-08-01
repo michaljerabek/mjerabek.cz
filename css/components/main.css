@@ -224,6 +224,17 @@ html.js .x-js,
     }
 }
 
+@media (max-width: 399px) {
+
+    .layout__br--mobile-xs:before {
+        content: "\A";
+
+        display: block;
+
+        white-space: nowrap;
+    }
+}
+
 
 
 
