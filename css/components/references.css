@@ -783,16 +783,11 @@
     .references__background-layer:nth-child(1) .square {
         margin-top: calc(-763.5px - 320px);
         margin-left: calc(-1527px - 190px);
-
-        animation: references__square--fade-in 2s ease-out 0s 1 backwards;
     }
 
     .references__background-layer:nth-child(2) .square {
         margin-top: 160px;
         margin-left: calc(-763.5px - 340px);
-
-        animation: references__square--init 0.25s linear 0s 1 backwards,
-            references__square--fade-in 2s ease-out 0.25s 1 backwards;
     }
 
     @media (max-width: 1259px) {
@@ -805,21 +800,6 @@
         .references__background-layer:nth-child(2) .square {
             margin-top: calc(160px - 140px);
             margin-left: calc(-763.5px - 340px + 310px);
-        }
-    }
-
-    @keyframes references__square--init {
-        from {
-            border-color: transparent;
-        }
-        to {
-            border-color: transparent;
-        }
-    }
-
-    @keyframes references__square--fade-in {
-        from {
-            border-color: transparent;
         }
     }
 

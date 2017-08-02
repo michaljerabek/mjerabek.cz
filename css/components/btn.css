@@ -104,3 +104,22 @@
     background-color: transparent;
     border-color: #79a9bd;
 }
+
+.btn--dark {
+    font-weight: 400;
+
+    color: #7D6937;
+}
+
+.btn--dark:hover,
+.btn--dark:focus {
+    color: #fff;
+    background-color: #498095;
+    border-color: #498095;
+}
+
+.btn--dark:active {
+    color: #3C6778;
+    background-color: transparent;
+    border-color: #3C6778;
+}

@@ -55,12 +55,20 @@
         }
 
         /*kerning*/
+        .offer__title .word1 .letter1 {
+            margin-right: 0.005em;
+        }
+
         .offer__title .word1 .letter2 {
             margin-right: -0.025em;
         }
 
         .offer__title .word2 .letter1 {
-            margin-right: -0.05em;
+            margin-right: -0.055em;
+        }
+
+        .offer__title .word2 .letter2 {
+            margin-right: -0.01em;
         }
 
         .offer__title .word2 .letter3 {
@@ -76,7 +84,7 @@
         }
 
         .offer__title .word3 .letter3 {
-            margin-right: -0.01em;
+            margin-right: -0.015em;
         }
 
         .offer__title .word3 .letter4 {
@@ -84,11 +92,11 @@
         }
 
         .offer__title .word4 .letter1 {
-            margin-right: -0.005em;
+            margin-right: -0.015em;
         }
 
         .offer__title .word4 .letter2 {
-            margin-right: -0.005em;
+            margin-right: -0.025em;
         }
 
         .offer__title .word4 .letter3 {
@@ -100,19 +108,23 @@
         }
 
         .offer__title .word4 .letter5 {
-            margin-right: 0.005em;
+            margin-right: -0.01em;
         }
 
         .offer__title .word4 .letter6 {
-            margin-right: 0.015em;
+            margin-right: 0.01em;
         }
 
         .offer__title .word4 .letter7 {
-            margin-right: -0.005em;
+            margin-right: -0.015em;
+        }
+
+        .offer__title .word4 .letter8 {
+            margin-right: 0.015em;
         }
 
         .offer__title .word4 .letter9 {
-            margin-right: 0.01em;
+            margin-right: -0.005em;
         }
         /*/kerning*/
 

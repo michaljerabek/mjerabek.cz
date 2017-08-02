@@ -16,14 +16,14 @@
             },
 
             SELECTOR = {
-                item: "[data-js-hover='true']",
-
-                isHover: "." + CLASS.isHover
+                item: "[data-js-hover='true']"
             },
 
             DATA = {
                 preventClick: "js-hover-prevent-click"
             },
+
+            hoverEl,
 
             byTouch = false,
 
@@ -31,35 +31,62 @@
 
             init = function () {
 
-                ns.$doc.on("touchstart." + ns, SELECTOR.item, function (e) {
+                var preventClick = null;
+
+                ns.$doc.on("touchstart." + ns, SELECTOR.item, function (event) {
 
                     byTouch = true;
 
                     onItem = true;
 
-                    ns.$temp[0] = e.currentTarget;
+                    preventClick = null;
 
-                    if (!ns.$temp.hasClass(CLASS.isHover) && ns.$temp.data(DATA.preventClick)) {
+                    if (hoverEl !== event.currentTarget) {
 
-                        e.preventDefault();
+                        ns.$temp[0] = event.currentTarget;
+
+                        if (ns.$temp.data(DATA.preventClick)) {
+
+                            preventClick = event.currentTarget;
+                        }
+
+                        ns.$temp.addClass(CLASS.isHover);
+
+                        ns.$temp[0] = hoverEl;
+
+                        ns.$temp.removeClass(CLASS.isHover);
+
+                        hoverEl = event.currentTarget;
+                    }
+                });
+
+                ns.$doc.on("click." + ns, SELECTOR.item, function (event) {
+
+                    if (preventClick === event.currentTarget) {
+
+                        event.preventDefault();
                     }
 
-                    $(SELECTOR.isHover).removeClass(CLASS.isHover);
-
-                    ns.$temp.addClass(CLASS.isHover);
+                    preventClick = null;
                 });
 
                 ns.$doc.on("touchstart." + ns, function () {
 
                     if (!onItem) {
 
-                        $(SELECTOR.isHover).removeClass(CLASS.isHover);
+                        ns.$temp[0] = hoverEl;
+
+                        ns.$temp.removeClass(CLASS.isHover);
+
+                        hoverEl = null;
+
+                        preventClick = null;
                     }
 
                     onItem = false;
                 });
 
-                ns.$doc.on("mouseenter." + ns + " mouseleave." + ns, SELECTOR.item, function (e) {
+                ns.$doc.on("mouseenter." + ns + " mouseleave." + ns, SELECTOR.item, function (event) {
 
                     if (byTouch) {
 
@@ -68,9 +95,13 @@
                         return;
                     }
 
-                    ns.$temp[0] = e.currentTarget;
+                    var mouseenter = event.type.match(/enter/);
 
-                    ns.$temp[e.type.match(/enter/) ? "addClass" : "removeClass"](CLASS.isHover);
+                    ns.$temp[0] = event.currentTarget;
+
+                    ns.$temp[mouseenter ? "addClass" : "removeClass"](CLASS.isHover);
+
+                    hoverEl = mouseenter ? event.currentTarget: null;
                 });
             };
 

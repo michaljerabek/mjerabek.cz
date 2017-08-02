@@ -57,4 +57,9 @@ jQuery(function () {
 
         window.MJNS.AboutMe.init();
     }
+
+    if (window.MJNS.Pricelist) {
+
+        window.MJNS.Pricelist.init();
+    }
 });
