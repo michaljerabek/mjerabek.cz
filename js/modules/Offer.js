@@ -9,7 +9,8 @@
     ns.Offer = (function () {
 
         var CLASS = {
-                initFadeIn: "offer--init-fade-in"
+                initFadeIn: "offer--init-fade-in",
+                parallaxDestroyed: "offer--no-parallax"
             },
 
             SELECTOR = {
@@ -35,7 +36,7 @@
 
             initBackground = function () {
 
-                $bgLayers = $(SELECTOR.backgroundLayers);
+                $bgLayers = $self.find(SELECTOR.backgroundLayers);
 
                 parallax = new Parallax({
                     parallax: SELECTOR.background,
@@ -43,12 +44,11 @@
                     fakeTilt: false
                 });
 
-                setTimeout(function() {
-                    parallax.refresh();
-                }, 200);
-
                 ns.$win.on("verylowperformance." + ns, function () {
+
                     parallax.destroy();
+
+                    $self.addClass(CLASS.parallaxDestroyed);
                 });
 
                 ns.BGObjectsOpacityAnimation.add($bgLayers, SELECTOR.findSquare);
@@ -56,9 +56,9 @@
 
             init = function () {
 
-                initBackground();
-
                 $self = $(SELECTOR.self);
+
+                initBackground();
 
                 checkScrollTop();
 

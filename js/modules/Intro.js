@@ -8,10 +8,14 @@
     ns.Intro = (function () {
 
         var CLASS = {
-                hidden: "intro__title--hidden"
+                hidden: "intro__title--hidden",
+
+                parallaxDestroyed: "intro--no-parallax"
             },
 
             SELECTOR = {
+                self: ".intro",
+
                 title: ".intro__title",
 
                 background: ".intro__background",
@@ -19,6 +23,7 @@
                 findSquare: ".square"
             },
 
+            $self,
             $title,
 
             $bgLayers,
@@ -26,7 +31,7 @@
 
             initBackground = function () {
 
-                $bgLayers = $(SELECTOR.backgroundLayers);
+                $bgLayers = $self.find(SELECTOR.backgroundLayers);
 
                 parallax = new Parallax({
                     parallax: SELECTOR.background,
@@ -35,7 +40,10 @@
                 });
 
                 ns.$win.on("verylowperformance." + ns, function () {
+
                     parallax.destroy();
+
+                    $self.addClass(CLASS.parallaxDestroyed);
                 });
 
                 ns.BGObjectsOpacityAnimation.add($bgLayers, SELECTOR.findSquare);
@@ -43,7 +51,9 @@
 
             init = function () {
 
-                $title = $(SELECTOR.title);
+                $self = $(SELECTOR.self);
+
+                $title = $self.find(SELECTOR.title);
 
                 //text je skrytý kvůli animaci
                 $title.removeClass(CLASS.hidden);

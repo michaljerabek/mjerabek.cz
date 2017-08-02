@@ -601,6 +601,11 @@
     height: calc(100% + 360px);
 }
 
+.intro--no-parallax .intro__background-layer:nth-child(1n) {
+    width: 100%;
+    height: 100%;
+}
+
     .intro__background-layer .square {
         border-color: rgba(206, 183, 126, 0.5);
 

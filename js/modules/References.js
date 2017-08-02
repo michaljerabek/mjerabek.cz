@@ -9,6 +9,9 @@
     ns.References = (function () {
 
         var CLASS = {
+                parallaxDestroyed: "references--no-parallax",
+
+
                 activeTab: "references__reference--active",
 
                 fadeIn: "fade-in"
@@ -244,7 +247,7 @@
 
             initBackground = function () {
 
-                $bgLayers = $(SELECTOR.backgroundLayers);
+                $bgLayers = $self.find(SELECTOR.backgroundLayers);
 
                 parallax = new Parallax({
                     parallax: SELECTOR.background,
@@ -253,7 +256,10 @@
                 });
 
                 ns.$win.on("verylowperformance." + ns, function () {
+
                     parallax.destroy();
+
+                    $self.addClass(CLASS.parallaxDestroyed);
                 });
 
                 ns.BGObjectsOpacityAnimation.add($bgLayers, SELECTOR.findSquare);

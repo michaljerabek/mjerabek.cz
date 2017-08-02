@@ -75,6 +75,8 @@
             right: 0%;
             right: calc((-1080px + 100%) / -4);
 
+            transform: scale(0.85);
+
             height: calc(100% - ((10vh + 10vw) / 2));
 
             opacity: 0.85;
@@ -92,7 +94,7 @@
             .about-me__img {
                 right: calc((-1080px + 100%) / 6);
 
-                transform: translateY(-10%);
+                transform: translateY(-8%) scale(0.85);
 
                 height: calc(100% - ((20vh + 20vw) / 2));
             }
@@ -193,6 +195,10 @@
             }
         }
 
+            .about-me__content p {
+                margin-bottom: 1.6875rem;
+            }
+
             @media (min-width: 1260px) {
 
                 .about-me__content p {
@@ -219,10 +225,6 @@
                 .about-me__content p {
                     padding: 0 20px;
                 }
-            }
-
-            .about-me__content p {
-                margin-bottom: 1.6875rem;
             }
 
             .about-me__content .small {

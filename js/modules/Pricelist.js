@@ -8,10 +8,14 @@
     ns.Pricelist = (function () {
 
         var CLASS = {
-            showTermsAndConditions: "pricelist__terms-and-conditions--show"
+                parallaxDestroyed: "pricelist--no-parallax",
+
+                showTermsAndConditions: "pricelist__terms-and-conditions--show"
             },
 
             SELECTOR = {
+                self: ".pricelist",
+
                 termsAndConditions: ".pricelist__terms-and-conditions",
                 termsAndConditionsLink: ".pricelist__terms-and-conditions-link",
 
@@ -20,6 +24,7 @@
                 findSquare: ".square"
             },
 
+            $self,
             $termsAndConditions,
 
             $bgLayers,
@@ -34,7 +39,7 @@
 
             initBackground = function () {
 
-                $bgLayers = $(SELECTOR.backgroundLayers);
+                $bgLayers = $self.find(SELECTOR.backgroundLayers);
 
                 parallax = new Parallax({
                     parallax: SELECTOR.background,
@@ -43,7 +48,10 @@
                 });
 
                 ns.$win.on("verylowperformance." + ns, function () {
+
                     parallax.destroy();
+
+                    $self.addClass(CLASS.parallaxDestroyed);
                 });
 
                 ns.BGObjectsOpacityAnimation.add($bgLayers, SELECTOR.findSquare);
@@ -51,9 +59,12 @@
 
             init = function () {
 
-                $termsAndConditions = $(SELECTOR.termsAndConditions);
+                $self = $(SELECTOR.self);
 
-                $(SELECTOR.termsAndConditionsLink).on("click." + ns, showTermsAndConditions);
+                $termsAndConditions = $self.find(SELECTOR.termsAndConditions);
+
+                $self.find(SELECTOR.termsAndConditionsLink)
+                    .on("click." + ns, showTermsAndConditions);
 
                 initBackground();
             };
