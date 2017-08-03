@@ -3,10 +3,13 @@
 /*====================================================================*/
 
 .about-me {
+    pointer-events: none;
 }
 
     .about-me__title {
         color: #e7e7e7;
+
+        pointer-events: auto;
     }
 
         /*kerning*/
@@ -66,7 +69,16 @@
         width: calc(100% + 60px);
         height: calc(100% + 60px + 200px);
 
+        pointer-events: auto;
+
+        transition: filter 1s linear 0s;
         will-change: transform;
+    }
+
+    .about-me__photo:active {
+        filter: blur(10px);
+
+        transition: filter 1s linear 0.25s;
     }
 
         .about-me__img {
@@ -80,6 +92,8 @@
             height: calc(100% - ((10vh + 10vw) / 2));
 
             opacity: 0.85;
+
+            pointer-events: none;
         }
 
         @media (min-width: 1080px) {
@@ -94,7 +108,7 @@
             .about-me__img {
                 right: calc((-1080px + 100%) / 6);
 
-                transform: translateY(-8%) scale(0.85);
+                transform: translateY(-6%) scale(0.85);
 
                 height: calc(100% - ((20vh + 20vw) / 2));
             }
@@ -116,10 +130,6 @@
         align-items: center;
         padding: 0;
     }
-
-        .about-me__title .text {
-            color: #e7e7e7;
-        }
 
         .about-me__content {
             transform: translateZ(0);
@@ -197,6 +207,8 @@
 
             .about-me__content p {
                 margin-bottom: 1.6875rem;
+
+                pointer-events: auto;
             }
 
             @media (min-width: 1260px) {

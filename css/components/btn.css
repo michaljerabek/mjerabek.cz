@@ -20,6 +20,7 @@
     -webkit-appearance: none;
        -moz-appearance: none;
 
+    pointer-events: auto;
     touch-action: manipulation;
 
     transition: all 0.275s cubic-bezier(.5, .25, .5, 1) 0s;
