@@ -11,191 +11,187 @@
     background-color: #111111;
 }
 
-.offer .layout__center {
-    position: relative;
-    z-index: 2;
+    .offer .layout__center {
+        position: relative;
+        z-index: 2;
 
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
 
-    opacity: 1;
+        opacity: 1;
 
-    pointer-events: none;
+        pointer-events: none;
 
-    animation: none;
-}
+        animation: none;
+    }
 
-.js .offer--init-fade-in .layout__center {
-    animation: show--init 2s linear 0s 1 forwards,
-        show 1.75s ease-out 2s 1 forwards;
-}
+    .js .offer--init-fade-in .layout__center {
+        animation: show--init 2s linear 0s 1 forwards,
+            show 1.75s ease-out 2s 1 forwards;
+    }
 
-/*bug v iOS - vynucení překreslení*/
-.js .offer:not(.offer--init-fade-in) {
-    display: inline-flex;
-    width: 100%;
-
-    animation: none;
-}
-
-    .offer__title {
+    /*bug v iOS - vynucení překreslení*/
+    .js .offer:not(.offer--init-fade-in) {
+        display: inline-flex;
         width: 100%;
 
-        color: #e7e7e7;
+        animation: none;
     }
 
-        .offer__title .text {
-            position: relative;
-            z-index: 2;
-
-            pointer-events: auto;
+        .offer__title {
+            color: #e7e7e7;
         }
 
-        /*kerning*/
-        .offer__title .word1 .letter1 {
-            margin-right: 0.005em;
-        }
+            .offer__title .text {
+                pointer-events: auto;
+            }
 
-        .offer__title .word1 .letter2 {
-            margin-right: -0.025em;
-        }
+            /*kerning*/
+            .offer__title .word1 .letter1 {
+                margin-right: 0.005em;
+            }
 
-        .offer__title .word2 .letter1 {
-            margin-right: -0.055em;
-        }
+            .offer__title .word1 .letter2 {
+                margin-right: -0.025em;
+            }
 
-        .offer__title .word2 .letter2 {
-            margin-right: -0.01em;
-        }
+            .offer__title .word2 .letter1 {
+                margin-right: -0.055em;
+            }
 
-        .offer__title .word2 .letter3 {
-            margin-right: -0.025em;
-        }
+            .offer__title .word2 .letter2 {
+                margin-right: -0.01em;
+            }
 
-        .offer__title .word3 .letter1 {
-            margin-right: 0.005em;
-        }
+            .offer__title .word2 .letter3 {
+                margin-right: -0.025em;
+            }
 
-        .offer__title .word3 .letter2 {
-            margin-right: -0.01em;
-        }
+            .offer__title .word3 .letter1 {
+                margin-right: 0.005em;
+            }
 
-        .offer__title .word3 .letter3 {
-            margin-right: -0.015em;
-        }
+            .offer__title .word3 .letter2 {
+                margin-right: -0.01em;
+            }
 
-        .offer__title .word3 .letter4 {
-            margin-right: -0.025em;
-        }
+            .offer__title .word3 .letter3 {
+                margin-right: -0.015em;
+            }
 
-        .offer__title .word4 .letter1 {
-            margin-right: -0.015em;
-        }
+            .offer__title .word3 .letter4 {
+                margin-right: -0.025em;
+            }
 
-        .offer__title .word4 .letter2 {
-            margin-right: -0.025em;
-        }
+            .offer__title .word4 .letter1 {
+                margin-right: -0.015em;
+            }
 
-        .offer__title .word4 .letter3 {
-            margin-right: 0.035em;
-        }
+            .offer__title .word4 .letter2 {
+                margin-right: -0.025em;
+            }
 
-        .offer__title .word4 .letter4 {
-            margin-right: 0.005em;
-        }
+            .offer__title .word4 .letter3 {
+                margin-right: 0.035em;
+            }
 
-        .offer__title .word4 .letter5 {
-            margin-right: -0.01em;
-        }
+            .offer__title .word4 .letter4 {
+                margin-right: 0.005em;
+            }
 
-        .offer__title .word4 .letter6 {
-            margin-right: 0.01em;
-        }
+            .offer__title .word4 .letter5 {
+                margin-right: -0.01em;
+            }
 
-        .offer__title .word4 .letter7 {
-            margin-right: -0.015em;
-        }
+            .offer__title .word4 .letter6 {
+                margin-right: 0.01em;
+            }
 
-        .offer__title .word4 .letter8 {
-            margin-right: 0.015em;
-        }
+            .offer__title .word4 .letter7 {
+                margin-right: -0.015em;
+            }
 
-        .offer__title .word4 .letter9 {
-            margin-right: -0.005em;
-        }
-        /*/kerning*/
+            .offer__title .word4 .letter8 {
+                margin-right: 0.015em;
+            }
 
-    .offer__description {
-        width: 100%;
-
-        font-style: italic;
-        font-weight: 300;
-
-        color: #ceb77e;
-    }
-
-        .offer__description .text {
-            position: relative;
-            z-index: 2;
-
-            pointer-events: auto;
-        }
-
-    @media (min-width: 1200px) {
+            .offer__title .word4 .letter9 {
+                margin-right: -0.005em;
+            }
+            /*/kerning*/
 
         .offer__description {
-            font-size: 2rem;
-            line-height: 3rem;
-            letter-spacing: 0.01em;
+            width: 100%;
+
+            font-style: italic;
+            font-weight: 300;
+
+            color: #ceb77e;
         }
-    }
 
-    @media (min-width: 1024px) and (max-width: 1199px) {
+            .offer__description .text {
+                position: relative;
+                z-index: 2;
 
-        .offer__description {
-            font-size: 1.875rem;
-            line-height: 2.75rem;
+                pointer-events: auto;
+            }
+
+        @media (min-width: 1200px) {
+
+            .offer__description {
+                font-size: 2rem;
+                line-height: 3rem;
+                letter-spacing: 0.01em;
+            }
         }
-    }
 
-    @media (min-width: 768px) and (max-width: 1023px) {
+        @media (min-width: 1024px) and (max-width: 1199px) {
 
-        .offer__description {
-            font-size: 1.6875rem;
-            line-height: 2.5rem;
+            .offer__description {
+                font-size: 1.875rem;
+                line-height: 2.75rem;
+            }
         }
-    }
 
-    @media (min-width: 640px) and (max-width: 767px) {
+        @media (min-width: 768px) and (max-width: 1023px) {
 
-        .offer__description {
-            font-size: 1.6875rem;
-            line-height: 2.5rem;
+            .offer__description {
+                font-size: 1.6875rem;
+                line-height: 2.5rem;
+            }
         }
-    }
 
-    @media (min-width: 480px) and (max-width: 639px) {
+        @media (min-width: 640px) and (max-width: 767px) {
 
-        .offer__description {
-            font-size: 1.5625rem;
-            line-height: 2.5rem;
+            .offer__description {
+                font-size: 1.6875rem;
+                line-height: 2.5rem;
+            }
         }
-    }
 
-    @media (max-width: 479px) {
+        @media (min-width: 480px) and (max-width: 639px) {
 
-        .offer__description {
-            font-size: 1.4375rem;
-            line-height: 2rem;
+            .offer__description {
+                font-size: 1.5625rem;
+                line-height: 2.5rem;
+            }
         }
-    }
 
-    .offer__description .small {
-        font-size: 0.84375em;
-    }
+        @media (max-width: 479px) {
+
+            .offer__description {
+                font-size: 1.4375rem;
+                line-height: 2rem;
+            }
+        }
+
+        .offer__description .small {
+            font-size: 0.84375em;
+            line-height: 1;
+        }
 
 /*--------------------------------------------------------------------*/
 /*--------------------------- TECHNOLOGIES ---------------------------*/
@@ -516,7 +512,7 @@
         }
 
     .offer__info .small {
-        font-size: 0.823529em;
+        font-size: 0.875rem;
     }
 
     .offer__btn-wrapper {

@@ -89,7 +89,15 @@
 
             init = function () {
 
-                $(SELECTOR.items).each(processElement);
+                var items = document.querySelectorAll(SELECTOR.items),
+
+                    i = 0,
+                    l = items.length;
+
+                for (i; i < l; i++) {
+
+                    processElement(i, items[i]);
+                }
             };
 
         return {

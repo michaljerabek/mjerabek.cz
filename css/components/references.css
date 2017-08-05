@@ -22,6 +22,10 @@
             pointer-events: none;
         }
 
+        .ios .references__title {
+            letter-spacing: 0;
+        }
+
         .references__title .text {
             pointer-events: auto;
         }
@@ -199,7 +203,12 @@
                     font-family: "Caudex";
                     font-variant: small-caps;
                     text-indent: -0.05em;
-                    letter-spacing: 0.015em;
+                    letter-spacing: 0.01em;
+                }
+
+                .ios .reference__project-name {
+                    text-indent: 0;
+                    letter-spacing: 0;
                 }
 
                 @media (min-width: 768px) {
@@ -476,7 +485,7 @@
                     }
                 }
 
-                .references__image-wrapper.fade-in {
+                .js .references__image-wrapper.fade-in {
                     transition: 0.5s cubic-bezier(.45, .25, .4, .9);
                 }
 
@@ -488,6 +497,7 @@
                         width: 100%;
 
                         transition: filter 0.65s cubic-bezier(0, 0, .2, 1) 0s;
+                        will-change: transform, filter;
                     }
 
                     .references__image-wrapper.hover .references__image,

@@ -645,6 +645,7 @@
 
                     .technologies__text-content .small {
                         font-size: 0.823529em;
+                        line-height: 1;
                     }
 
                     .technologies__text-content code {

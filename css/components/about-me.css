@@ -71,14 +71,14 @@
 
         pointer-events: auto;
 
-        transition: filter 1s linear 0s;
+/*        transition: filter 1s linear 0s;*/
         will-change: transform;
     }
 
     .about-me__photo:active {
         filter: blur(10px);
 
-        transition: filter 1s linear 0.25s;
+/*        transition: filter 1s linear 0.25s;*/
     }
 
         .about-me__img {
@@ -241,6 +241,7 @@
 
             .about-me__content .small {
                 font-size: 0.875rem;
+                line-height: 1;
             }
 
             .about-me__content .liberec-symbol {

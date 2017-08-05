@@ -76,7 +76,6 @@ a .transition-hideable {
         border-radius  0.275s cubic-bezier(.5, .25, .5, 1)  0s,
         border-color   0.275s cubic-bezier(.5, .25, .5, 1)  0s,
         filter         0.275s cubic-bezier(.5, .25, .5, 1)  0s,
-        -webkit-filter 0.275s cubic-bezier(.5, .25, .5, 1)  0s,
         background     0.275s cubic-bezier(.5, .25, .5, 1)  0s;
 }
 
@@ -95,7 +94,6 @@ a:focus .transition-hideable {
         border-radius  0.125s ease-out 0s,
         border-color   0.125s ease-out 0s,
         filter         0.125s ease-out 0s,
-        -webkit-filter 0.125s ease-out 0s,
         background     0.125s ease-out 0s;
 }
 
@@ -110,7 +108,6 @@ a:active .transition-hideable {
         border-radius  0.05s ease-out 0s,
         border-color   0.05s ease-out 0s,
         filter         0.05s ease-out 0s,
-        -webkit-filter 0.05s ease-out 0s,
         background     0.05s ease-out 0s;
 }
 
@@ -318,15 +315,14 @@ input[type="time"] {
     -webkit-appearance: none;
        -moz-appearance: none;
 
+    pointer-events: auto;
+
     transition:
         color            0.275s cubic-bezier(.5, .25, .5, 1) 0s,
         border-color     0.275s cubic-bezier(.5, .25, .5, 1) 0s,
         opacity          0.275s cubic-bezier(.5, .25, .5, 1) 0s,
         background-color 0.275s cubic-bezier(.5, .25, .5, 1) 0s,
         filter           0.275s cubic-bezier(.5, .25, .5, 1) 0s,
-        -webkit-filter   0.275s cubic-bezier(.5, .25, .5, 1) 0s,
-        height           0.3s   ease                         0s,
-        width            0.3s   ease                         0s,
         border-width     0.3s   ease                         0s,
         margin           0.3s   ease                         0s,
         padding          0.3s   ease                         0s,
@@ -376,11 +372,160 @@ input[type="time"]:focus {
         opacity          0.125s ease-out 0s,
         background-color 0.125s ease-out 0s,
         filter           0.125s ease-out 0s,
-        -webkit-filter   0.125s ease-out 0s,
-        height           0.3s   ease     0s,
-        width            0.3s   ease     0s,
         border-width     0.3s   ease     0s,
         margin           0.3s   ease     0s,
         padding          0.3s   ease     0s,
         line-height      0.3s   ease     0s;
 }
+
+/*---------------------------- UI FORM ----------------------------*/
+
+.ui__form-item {
+	margin-bottom: 1.4375rem;
+}
+
+    select.ui__form-field,
+    textarea.ui__form-field,
+    input[type="text"].ui__form-field,
+    input[type="password"].ui__form-field,
+    input[type="search"].ui__form-field,
+    input[type="tel"].ui__form-field,
+    input[type="email"].ui__form-field,
+    input[type="number"].ui__form-field,
+    input[type="step"].ui__form-field,
+    input[type^="date"].ui__form-field,
+    input[type="time"].ui__form-field {
+        width: 100%;
+        height: 3.25rem;
+        padding: 0 20px;
+
+        font-family: inherit;
+        font-size: 1.25rem;
+        font-weight: 400;
+        line-height: 3.125rem;
+
+        border: 1px solid;
+        box-shadow: none;
+        outline: none;
+    }
+
+    @media (max-width: 479px) {
+
+        select.ui__form-field,
+        textarea.ui__form-field,
+        input[type="text"].ui__form-field,
+        input[type="password"].ui__form-field,
+        input[type="search"].ui__form-field,
+        input[type="tel"].ui__form-field,
+        input[type="email"].ui__form-field,
+        input[type="number"].ui__form-field,
+        input[type="step"].ui__form-field,
+        input[type^="date"].ui__form-field,
+        input[type="time"].ui__form-field {
+            width: 100%;
+            height: 3rem;
+            padding: 0 17px;
+
+            font-size: 1.0625rem;
+            line-height: 2.875rem;
+        }
+    }
+
+    textarea.ui__form-field {
+        min-width: 100%;
+        height: auto;
+        min-height: 9.75rem;
+        padding-top: 14px;
+        padding-bottom: 14px;
+
+        font-size: 1.0625rem;
+        line-height: 1.6875rem;
+    }
+
+    @media (max-width: 479px) {
+
+        textarea.ui__form-field {
+            min-height: 9rem;
+            padding-top: 12px;
+            padding-bottom: 12px;
+        }
+    }
+
+    .ui__form--dark select.ui__form-field,
+    .ui__form--dark textarea.ui__form-field,
+    .ui__form--dark input[type="text"].ui__form-field,
+    .ui__form--dark input[type="password"].ui__form-field,
+    .ui__form--dark input[type="search"].ui__form-field,
+    .ui__form--dark input[type="tel"].ui__form-field,
+    .ui__form--dark input[type="email"].ui__form-field,
+    .ui__form--dark input[type="number"].ui__form-field,
+    .ui__form--dark input[type="step"].ui__form-field,
+    .ui__form--dark input[type^="date"].ui__form-field,
+    .ui__form--dark input[type="time"].ui__form-field {
+        color: #e7e7e7;
+        border-color: rgba(189, 189, 189, 0.5);
+    }
+
+    .ui__form--dark select.ui__form-field:hover,
+    .ui__form--dark textarea.ui__form-field:hover,
+    .ui__form--dark input[type="text"].ui__form-field:hover,
+    .ui__form--dark input[type="password"].ui__form-field:hover,
+    .ui__form--dark input[type="search"].ui__form-field:hover,
+    .ui__form--dark input[type="tel"].ui__form-field:hover,
+    .ui__form--dark input[type="email"].ui__form-field:hover,
+    .ui__form--dark input[type="number"].ui__form-field:hover,
+    .ui__form--dark input[type="step"].ui__form-field:hover,
+    .ui__form--dark input[type^="date"].ui__form-field:hover,
+    .ui__form--dark input[type="time"].ui__form-field:hover {
+        border-color: #CEB77E;
+    }
+
+    .ui__form--dark select.ui__form-field:focus,
+    .ui__form--dark textarea.ui__form-field:focus,
+    .ui__form--dark input[type="text"].ui__form-field:focus,
+    .ui__form--dark input[type="password"].ui__form-field:focus,
+    .ui__form--dark input[type="search"].ui__form-field:focus,
+    .ui__form--dark input[type="tel"].ui__form-field:focus,
+    .ui__form--dark input[type="email"].ui__form-field:focus,
+    .ui__form--dark input[type="number"].ui__form-field:focus,
+    .ui__form--dark input[type="step"].ui__form-field:focus,
+    .ui__form--dark input[type^="date"].ui__form-field:focus,
+    .ui__form--dark input[type="time"].ui__form-field:focus {
+        border-color: #79A9BD;
+    }
+
+/*
+    .ui__form--dark select.ui__form-field:invalid:not(:focus),
+    .ui__form--dark textarea.ui__form-field:invalid:not(:focus),
+    .ui__form--dark input[type="text"].ui__form-field:invalid:not(:focus),
+    .ui__form--dark input[type="password"].ui__form-field:invalid:not(:focus),
+    .ui__form--dark input[type="search"].ui__form-field:invalid:not(:focus),
+    .ui__form--dark input[type="tel"].ui__form-field:invalid:not(:focus),
+    .ui__form--dark input[type="email"].ui__form-field:invalid:not(:focus),
+    .ui__form--dark input[type="number"].ui__form-field:invalid:not(:focus),
+    .ui__form--dark input[type="step"].ui__form-field:invalid:not(:focus),
+    .ui__form--dark input[type^="date"].ui__form-field:invalid:not(:focus),
+    .ui__form--dark input[type="time"].ui__form-field:invalid:not(:focus) {
+        border-color: #D07E5B;
+    }
+*/
+
+    .ui__form-label {
+        display: block;
+        margin-bottom: 0.25rem;
+
+        font-size: 1.25rem;
+        font-weight: 300;
+        font-style: italic;
+    }
+
+    @media (max-width: 479px) {
+
+        .ui__form-label {
+            font-size: 1.0625rem;
+        }
+    }
+
+    .ui__form--dark .ui__form-label {
+        color: #e7e7e7;
+    }

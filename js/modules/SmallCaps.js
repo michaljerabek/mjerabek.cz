@@ -20,19 +20,21 @@
 
             removeItem = function ($el) {
 
-                return $el.removeAttr(ATTR.item);
+                return $el[0].removeAttribute(ATTR.item);
             },
 
             isItem = function ($el) {
 
-                return $el.is(SELECTOR.items);
+                return !!$el[0].getAttribute(ATTR.item);
             },
 
             init = function () {
 
                 if (typeof $.fn.smallCaps === "function") {
 
-                    $(SELECTOR.items).smallCaps();
+                    var items = document.querySelectorAll(SELECTOR.items);
+
+                    $(items).smallCaps();
                 }
             };
 

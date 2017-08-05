@@ -62,4 +62,10 @@ jQuery(function () {
 
         window.MJNS.Pricelist.init();
     }
+
+    if (window.MJNS.Contact) {
+
+        window.MJNS.Contact.init();
+    }
+
 });
