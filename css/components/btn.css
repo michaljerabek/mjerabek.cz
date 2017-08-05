@@ -44,7 +44,7 @@
 
     .btn .text {
         font-size: 1.4375rem;
-        line-height: 1.173913;
+        line-height: 1.4375rem;
     }
 }
 
@@ -65,7 +65,17 @@
 
     .btn .text {
         font-size: 1.25rem;
-        line-height: 1.15;
+        line-height: 1.4375rem;
+    }
+}
+
+@-moz-document url-prefix() {
+
+    input[type="submit"].btn,
+    input[type="reset"].btn,
+    input[type="button"].btn,
+    button.btn {
+        padding-top: 6px;
     }
 }
 

@@ -783,7 +783,7 @@
 }
 
     .references__background-layer .square {
-        border-color: rgba(177, 150, 83, 0.475);
+        border-color: rgba(177, 150, 83, 0.45);
 
         transition: background-color 2s ease 1s,
             border-color 2s ease 1s,
@@ -792,7 +792,7 @@
 
     .no-js .references__background-layer .square:not(:hover),
     .references__background-layer.section__background-layer--stop-animation .square:not(:hover) {
-        border-color: rgba(177, 150, 83, 0.375);
+        border-color: rgba(177, 150, 83, 0.325);
     }
 
     .references__background-layer:nth-child(1) .square {
@@ -805,7 +805,7 @@
         margin-left: calc(-763.5px - 340px);
     }
 
-    @media (max-width: 1259px) {
+    @media (max-width: 1219px) {
 
         .references__background-layer:nth-child(1) .square {
             margin-top: calc(-763.5px - 320px - 80px);

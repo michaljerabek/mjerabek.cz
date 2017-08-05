@@ -909,9 +909,9 @@
                                         <span class="small">460 06</span> Liberec
                                     </p>
 
-                                    <p class="contact__address-id"><b><span class="small">IČ</span>:</b> <span class="small">12345678</span></p>
+                                    <p class="contact__address-id"><b><span class="small">IČ</span>: </b> <span class="small">12345678</span></p>
 
-                                    <p class="contact__address-bank"><b>Účet:</b> <span class="small" title="Air Bank">1271497017/3030</span></p>
+                                    <p class="contact__address-bank"><b>Účet: </b><span class="small" title="Air Bank">1271497017/3030</span></p>
 
                                 </address>
                                 <!-- /.contact__address -->
@@ -928,7 +928,9 @@
 
                                     <label class="ui__form-label" for="name">Jméno</label>
 
-                                    <input class="ui__form-field" id="name" type="text" required>
+                                    <input class="ui__form-field" id="name" type="text" name="name" required>
+
+                                    <p class="ui__form-error ui__form-error--required">Toto pole je povinné.</p>
 
                                 </div>
 
@@ -936,7 +938,11 @@
 
                                     <label class="ui__form-label" for="email">Email</label>
 
-                                    <input class="ui__form-field" id="email" type="email" required>
+                                    <input class="ui__form-field" id="email" type="email" name="email" required>
+
+                                    <p class="ui__form-error ui__form-error--required">Toto pole je povinné.</p>
+
+                                    <p class="ui__form-error ui__form-error--type">Nesprávný formát. Zadejte validní email.</p>
 
                                 </div>
 
@@ -944,7 +950,9 @@
 
                                     <label class="ui__form-label" for="msg">Zpráva</label>
 
-                                    <textarea class="ui__form-field" id="msg" required></textarea>
+                                    <textarea class="ui__form-field" id="msg" name="msg" required></textarea>
+
+                                    <p class="ui__form-error ui__form-error--required">Toto pole je povinné.</p>
 
                                     <a class="contact__form-info-link" href="#kontakt-zprava" data-main-nav-ignore="true">Co napsat do zprávy?</a>
 
@@ -965,8 +973,11 @@
 
                                 <div class="contact__form-item contact__form-item--btn ui__form-item">
 
-                                    <button class="btn btn--light contact__form-btn" type="submit">
+                                    <button class="btn btn--light contact__form-btn" type="submit" data-ui-form-ok="zpráva odeslána" data-ui-form-error="neodesláno">
                                         <span class="text">odeslat zprávu</span>
+                                        <span class="send-animation" role="presentation" aria-hidden="true">
+                                            <span class="numbers">1011100011001011101011001101010010010100100010110001010100110111000110010111010110011010100100101001000101100010101001</span>
+                                        </span>
                                     </button>
 
                                 </div>

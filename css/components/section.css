@@ -170,7 +170,7 @@
     }
 
         .section__title {
-            font-family: "Caudex";
+            font-family: "Caudex", "Georgia", serif;
             font-variant: small-caps;
             text-align: center;
             line-height: 1;

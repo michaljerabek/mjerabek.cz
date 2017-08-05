@@ -13,9 +13,9 @@
             },
 
             TRASHHOLD = 40,
-            TRASHHOLD2 = 30,
+            TRASHHOLD2 = 25,
 
-            fps = [60, 60, 60, 60],
+            fps = [60, 60, 60, 60, 60],
             fpsCounter = 0,
 
             lastTime,

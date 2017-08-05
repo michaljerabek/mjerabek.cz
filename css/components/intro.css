@@ -129,6 +129,17 @@
             }
         }
 
+        @media (min-width: 1024px) and (max-width: 1219px) {
+
+            .intro__logo-svg {
+                width: 96px;
+            }
+
+            .intro__logo-svg + .intro__logo-svg {
+                margin-left: -96px;
+            }
+        }
+
         @media (min-width: 768px) and (max-width: 1023px) {
 
             .intro__logo-svg {
@@ -259,7 +270,7 @@
 
     .intro__content {
         width: 100%;
-        margin-top: calc(-44px + 2vh);
+        margin-top: calc(-48px + 2vh);
     }
 
     @media (min-height: 768px) {
@@ -277,12 +288,12 @@
     }
 
         .intro__title {
-            padding-bottom: 17px;
+            padding-bottom: 0.26154em;
 
             display: table;
             margin: 0px auto;
 
-            font-family: "Caudex";
+            font-family: "Caudex", "Georgia", serif;
             font-size: 4.0625rem;
             font-style: normal;
             font-variant: small-caps;
@@ -293,6 +304,13 @@
             color: #111;
 
             pointer-events: auto;
+        }
+
+        @media (min-width: 1024px) and (max-width: 1219px) {
+
+            .intro__title {
+                font-size: 3.625rem;
+            }
         }
 
         @media (min-width: 768px) and (max-width: 1023px) {
@@ -321,7 +339,7 @@
         @media (max-width: 479px) {
 
             .intro__title {
-                font-size: 2rem;
+                font-size: 2.125rem;
                 font-weight: bold;
             }
         }
@@ -415,17 +433,19 @@
 
             /*kerning*/
             .intro__title .word1 .letter1 {
-                margin-right: -0.045em;
+                margin-right: -0.035em;
             }
 
             .intro__title .word1 .letter2 {
+                margin-right: 0.0em;
             }
 
             .intro__title .word1 .letter3 {
+                margin-right: -0.015em;
             }
 
             .intro__title .word1 .letter4 {
-                margin-right: 0.03em;
+                margin-right: 0.02em;
             }
 
             .intro__title .word1 .letter5 {
@@ -443,29 +463,30 @@
             }
 
             .intro__title .word1 .letter8 {
+                margin-right: -0.0175em;
             }
 
             .intro__title .word1 .letter9 {
             }
 
             .intro__title .space1 {
-                margin-right: -0.05em;
+                margin-right: -0.055em;
             }
 
             .intro__title .word2 .letter1 {
-                margin-right: -0.015em;
+                margin-right: -0.005em;
             }
 
             .intro__title .word2 .letter2 {
-                margin-right: 0.005em;
+                margin-right: -0.0em;
             }
 
             .intro__title .word2 .letter3 {
-                margin-right: -0.015em;
+                margin-right: -0.02em;
             }
 
             .intro__title .word2 .letter4 {
-                margin-right: 0.01em;
+                margin-right: 0.005em;
             }
 
             .intro__title .word2 .letter5 {
@@ -511,6 +532,13 @@
             }
         }
 
+        @media (min-width: 1024px) and (max-width: 1219px) {
+
+            .intro__claim {
+                font-size: 1.5625rem;
+            }
+        }
+
         @media (min-width: 768px) and (max-width: 1023px) {
 
             .intro__claim {
@@ -522,6 +550,13 @@
 
             .intro__claim {
                 font-size: 1.4375rem;
+            }
+        }
+
+        @media (max-width: 479px) {
+
+            .intro__claim {
+                font-size: 1.25rem;
             }
         }
 
@@ -580,25 +615,25 @@
 .intro__background-layer:nth-child(1) {
     z-index: 2;
 
-    width: calc(100% + 60px);
-    height: calc(100% + 180px);
+    width: calc(100% + 40px);
+    height: calc(100% + 120px);
 }
 
 .intro__background-layer:nth-child(2) {
-    width: calc(100% + 140px);
-    height: calc(100% + 420px);
+    width: calc(100% + 100px);
+    height: calc(100% + 300px);
 }
 
 .intro__background-layer:nth-child(3) {
     z-index: 3;
 
-    width: calc(100% + 100px);
-    height: calc(100% + 300px);
+    width: calc(100% + 80px);
+    height: calc(100% + 240px);
 }
 
 .intro__background-layer:nth-child(4) {
-    width: calc(100% + 40px);
-    height: calc(100% + 120px);
+    width: calc(100% + 60px);
+    height: calc(100% + 180px);
 }
 
 .intro--no-parallax .intro__background-layer:nth-child(1n) {
@@ -616,19 +651,19 @@
 
     .no-js .intro__background-layer .square:not(:hover),
     .intro__background-layer.section__background-layer--stop-animation .square:not(:hover) {
-        border-color: rgba(206, 183, 126, 0.4);
+        border-color: rgba(206, 183, 126, 0.35);
     }
 
     .intro__background-layer:nth-child(1) .square {
-        margin-top: -223.5px;
-        margin-left: 190px;
+        margin-top: -203.5px;
+        margin-left: 180px;
 
         animation: intro__square--fade-in 2s ease-out 0s 1 backwards;
     }
 
     .intro__background-layer:nth-child(2) .square {
-        margin-top: calc(-1527px + 390px);
-        margin-left: -190px;
+        margin-top: calc(-1527px + 410px);
+        margin-left: -200px;
 
         animation: intro__square--init 0.25s linear 0s 1 backwards,
             intro__square--fade-in 2s ease-out 0.25s 1 backwards;
@@ -636,15 +671,15 @@
 
     .intro__background-layer:nth-child(3) .square {
         margin-top: calc(-1527px + 315px);
-        margin-left: calc(-1527px + 150px);
+        margin-left: calc(-1527px + 160px);
 
         animation: intro__square--init 0.5s linear 0s 1 backwards,
             intro__square--fade-in 2s ease-out 0.5s 1 backwards;
     }
 
     .intro__background-layer:nth-child(4) .square {
-        margin-top: -530px;
-        margin-left: calc(-1527px + 40px);
+        margin-top: -510px;
+        margin-left: calc(-1527px + 30px);
 
         animation: intro__square--init 0.75s linear 0s 1 backwards,
             intro__square--fade-in 2s ease-out .75s 1 backwards;

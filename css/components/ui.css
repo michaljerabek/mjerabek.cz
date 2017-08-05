@@ -382,6 +382,8 @@ input[type="time"]:focus {
 
 .ui__form-item {
 	margin-bottom: 1.4375rem;
+
+    font-size: 0;
 }
 
     select.ui__form-field,
@@ -402,12 +404,38 @@ input[type="time"]:focus {
         font-family: inherit;
         font-size: 1.25rem;
         font-weight: 400;
+        vertical-align: top;
         line-height: 3.125rem;
 
         border: 1px solid;
         box-shadow: none;
         outline: none;
     }
+
+    /*odstraní zabarvení automaticky vyplněných polí v Chromu*/
+    @supports (animation-name: ui__form--clear-autofill) {
+
+        input[type="text"].ui__form-field:-webkit-autofill,
+        input[type="password"].ui__form-field:-webkit-autofill,
+        input[type="search"].ui__form-field:-webkit-autofill,
+        input[type="tel"].ui__form-field:-webkit-autofill,
+        input[type="email"].ui__form-field:-webkit-autofill,
+        input[type="number"].ui__form-field:-webkit-autofill,
+        input[type="step"].ui__form-field:-webkit-autofill,
+        input[type^="date"].ui__form-field:-webkit-autofill,
+        input[type="time"].ui__form-field:-webkit-autofill {
+            -webkit-text-fill-color: #e7e7e7;
+            animation-name: ui__form--clear-autofill;
+            animation-fill-mode: both;
+        }
+    }
+
+    @keyframes ui__form--clear-autofill {
+        to {
+            background: transparent;
+        }
+    }
+    /*/*/
 
     @media (max-width: 479px) {
 
@@ -494,21 +522,19 @@ input[type="time"]:focus {
         border-color: #79A9BD;
     }
 
-/*
-    .ui__form--dark select.ui__form-field:invalid:not(:focus),
-    .ui__form--dark textarea.ui__form-field:invalid:not(:focus),
-    .ui__form--dark input[type="text"].ui__form-field:invalid:not(:focus),
-    .ui__form--dark input[type="password"].ui__form-field:invalid:not(:focus),
-    .ui__form--dark input[type="search"].ui__form-field:invalid:not(:focus),
-    .ui__form--dark input[type="tel"].ui__form-field:invalid:not(:focus),
-    .ui__form--dark input[type="email"].ui__form-field:invalid:not(:focus),
-    .ui__form--dark input[type="number"].ui__form-field:invalid:not(:focus),
-    .ui__form--dark input[type="step"].ui__form-field:invalid:not(:focus),
-    .ui__form--dark input[type^="date"].ui__form-field:invalid:not(:focus),
-    .ui__form--dark input[type="time"].ui__form-field:invalid:not(:focus) {
+    .ui__form--dark .ui__form-item--error select.ui__form-field:invalid:not(:focus):not(:hover),
+    .ui__form--dark .ui__form-item--error textarea.ui__form-field:invalid:not(:focus):not(:hover),
+    .ui__form--dark .ui__form-item--error input[type="text"].ui__form-field:invalid:not(:focus):not(:hover),
+    .ui__form--dark .ui__form-item--error input[type="password"].ui__form-field:invalid:not(:focus):not(:hover),
+    .ui__form--dark .ui__form-item--error input[type="search"].ui__form-field:invalid:not(:focus):not(:hover),
+    .ui__form--dark .ui__form-item--error input[type="tel"].ui__form-field:invalid:not(:focus):not(:hover),
+    .ui__form--dark .ui__form-item--error input[type="email"].ui__form-field:invalid:not(:focus):not(:hover),
+    .ui__form--dark .ui__form-item--error input[type="number"].ui__form-field:invalid:not(:focus):not(:hover),
+    .ui__form--dark .ui__form-item--error input[type="step"].ui__form-field:invalid:not(:focus):not(:hover),
+    .ui__form--dark .ui__form-item--error input[type^="date"].ui__form-field:invalid:not(:focus):not(:hover),
+    .ui__form--dark .ui__form-item--error input[type="time"].ui__form-field:invalid:not(:focus):not(:hover) {
         border-color: #D07E5B;
     }
-*/
 
     .ui__form-label {
         display: block;
@@ -517,6 +543,9 @@ input[type="time"]:focus {
         font-size: 1.25rem;
         font-weight: 300;
         font-style: italic;
+        letter-spacing: 0.02em;
+
+        pointer-events: auto;
     }
 
     @media (max-width: 479px) {
@@ -528,4 +557,55 @@ input[type="time"]:focus {
 
     .ui__form--dark .ui__form-label {
         color: #e7e7e7;
+    }
+
+    .ui__form-error {
+        padding: 0;
+
+	    font-size: 0.875rem;
+        font-style: italic;
+        line-height: 0rem;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+
+        color: #D07E5B;
+        opacity: 0;
+        visibility: hidden;
+
+        overflow: hidden;
+
+        pointer-events: auto;
+
+        transition: opacity 0.25s ease 0s,
+            line-height 0.25s ease 0.125s,
+            padding 0.25s ease 0.125s,
+            visibility 0s linear 0.375s;
+    }
+
+    .ui__form-item--error-type .ui__form-error--type,
+    .ui__form-item--error-general .ui__form-error--general,
+    .ui__form-item--error-required .ui__form-error--required {
+        padding: 4px 0;
+
+        line-height: 1.25rem;
+
+        opacity: 1;
+        visibility: visible;
+
+        transition: opacity 0.25s ease 0.125s,
+            line-height 0.25s ease 0s,
+            padding 0.25s ease 0s;
+    }
+
+    .ui__form--dark:not(.ui__form--ok):not(.ui__form--error):invalid .btn:hover,
+    .ui__form--dark:not(.ui__form--ok):not(.ui__form--error):invalid .btn:focus {
+        color: #fff;
+        background-color: #C06C47;
+        border-color: #C06C47;
+    }
+
+    .ui__form--dark:not(.ui__form--ok):not(.ui__form--error):invalid .btn:active {
+        color: #D07E5B;
+        background-color: transparent;
+        border-color: #D07E5B;
     }

@@ -18,7 +18,7 @@
             ANIM_POSTFIX = "--fade-in",
             OPACITY_DURATION = 1500,
             MAX_OPACITY = 1,
-            MIN_OPACITY = 0.35,
+            MIN_OPACITY = 0.25,
             MIN_CHANGE = 0.25,
 
             events = false,
@@ -52,32 +52,37 @@
                 setTimeout(animate.bind(null, elSquare), OPACITY_DURATION);
             },
 
+            initPerformanceEvents = function () {
+
+                ns.$win.on("lowperformance." + ns, function () {
+
+                    stopAnimation = true;
+
+                    $layers.forEach(function ($bgLayers) {
+                        $bgLayers.addClass(CLASS.stopAnimation);
+                    });
+                });
+
+                ns.$win.on("verylowperformance." + ns, function () {
+
+                    $layers.forEach(function ($bgLayers) {
+                        $bgLayers.addClass(CLASS.stopHover);
+                    });
+                });
+
+                events = true;
+            },
+
             add = function ($bgLayers, objectSelector) {
 
                 $layers.push($bgLayers);
 
                 if (!events) {
 
-                    ns.$win.on("lowperformance." + ns, function () {
-
-                        stopAnimation = true;
-
-                        $layers.forEach(function ($bgLayers) {
-                            $bgLayers.addClass(CLASS.stopAnimation);
-                        });
-                    });
-
-                    ns.$win.on("verylowperformance." + ns, function () {
-
-                        $layers.forEach(function ($bgLayers) {
-                            $bgLayers.addClass(CLASS.stopHover);
-                        });
-                    });
-
-                    events = true;
+                    initPerformanceEvents();
                 }
 
-                if (!SUPPORTS_CSS_ANIMATIONS) {
+                if (!SUPPORTS_CSS_ANIMATIONS || $bgLayers.find(objectSelector).css("animation-name") === "none") {
 
                     $bgLayers.each(function (i) {
 
