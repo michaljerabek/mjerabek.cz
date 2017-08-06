@@ -568,6 +568,7 @@
             transition: inherit;
         }
 
+        .no-js .contact__form-item--msg:target .contact__form-info-link::after,
         .contact__form--show-info .contact__form-info-link::after,
         .contact__form-info-link:hover::after,
         .contact__form-info-link:focus::after {
@@ -663,6 +664,12 @@
     position: relative;
 }
 
+.ui__form--ok .contact__form-btn,
+.ui__form--error .contact__form-btn,
+.ui__form--progress .contact__form-btn {
+    pointer-events: none;
+}
+
 .ui__form--progress .contact__form-btn:hover,
 .ui__form--progress .contact__form-btn:active,
 .ui__form--progress .contact__form-btn:focus {
@@ -671,6 +678,10 @@
     background-color: transparent;
 }
 
+.ui__form--validation-error .contact__form-btn,
+.ui__form--validation-error .contact__form-btn:hover,
+.ui__form--validation-error .contact__form-btn:active,
+.ui__form--validation-error .contact__form-btn:focus,
 .ui__form--error .contact__form-btn,
 .ui__form--error .contact__form-btn:hover,
 .ui__form--error .contact__form-btn:active,

@@ -14,10 +14,7 @@
 
                 showFormInfo: "contact__form--show-info",
 
-                hideText: "contact__form-btn--hide-text",
-                sending: "ui__form--progress",
-                ok: "ui__form--ok",
-                error: "ui__form--error"
+                hideText: "contact__form-btn--hide-text"
             },
 
             SELECTOR = {
@@ -35,8 +32,8 @@
             },
 
             DATA = {
-                okMsg: "ui-form-ok",
-                errorMsg: "ui-form-error"
+                okMsg: "contact-ok",
+                errorMsg: "contact-error"
             },
 
             SCROLL_OPTIONS = {
@@ -49,7 +46,7 @@
                 }
             },
 
-            MSG_DURATION = 5000,
+            MSG_DURATION = 4000,
             MSG_FADE_DURATION = 250,
             MSG_QUEUE = "Contact.msg." + ns,
 
@@ -59,10 +56,6 @@
             $formInfoLink,
             $formSubmit,
             $formBtnText,
-
-            errors,
-
-            isFormDisabled = false,
 
             $bgLayers,
             parallax,
@@ -119,61 +112,6 @@
                 }
             },
 
-            clearFormElements = function (formElements) {
-
-                $.each(formElements, function (i, el) {
-
-                    if (el !== $formSubmit[0]) {
-
-                        ns.$temp[0] = el;
-
-                        ns.$temp.val("");
-                    }
-                });
-            },
-
-            validate = function (formElements) {
-
-                formElements = formElements instanceof HTMLElement ? [formElements] : formElements;
-
-                errors = null;
-
-                var elements = [];
-
-                $.each(formElements, function (i, el) {
-
-                    if (el !== $formSubmit[0]) {
-
-                        elements.push(el);
-                    }
-                });
-
-                elements.forEach(function (el) {
-
-                    if (el.validity.valid) {
-
-                        return;
-                    }
-
-                    errors = errors || {};
-
-                    if (el.validity.valueMissing) {
-
-                        errors[el.name] = "ui__form-item--error-required";
-
-                    } else if (el.validity.typeMismatch) {
-
-                        errors[el.name] = "ui__form-item--error-type";
-
-                    } else {
-
-                        errors[el.name] = "ui__form-item--error-general";
-                    }
-                });
-
-                return !errors;
-            },
-
             send = function () {
 
                 var $deffered = $.Deferred();
@@ -187,77 +125,58 @@
                 return $deffered;
             },
 
-            showMsg = function (ok) {
+            showMsg = function (ok, onBackToInitState) {
 
                 var originalMsg = $formBtnText.text();
 
-                $formBtnText.text(
-                    $formSubmit.data(DATA[ok ? "okMsg" : "errorMsg"])
-                );
+                $formSubmit.addClass(CLASS.hideText)
+                    .delay(MSG_FADE_DURATION, MSG_QUEUE)
+                    .queue(MSG_QUEUE, function (next) {
 
-                $form.removeClass(CLASS.sending);
+                        $formBtnText.text(
+                            $formSubmit.data(DATA[ok ? "okMsg" : "errorMsg"])
+                        );
 
-                $form.addClass(ok ? CLASS.ok : CLASS.error);
+                        $formSubmit.removeClass(CLASS.hideText);
 
-                setTimeout(function() {
+                        setTimeout(function() {
 
-                    $formSubmit.addClass(CLASS.hideText)
-                        .delay(MSG_FADE_DURATION, MSG_QUEUE)
-                        .queue(MSG_QUEUE, function (next) {
-
-                            $formBtnText.css("transition-delay", "0s")
-                                .text(originalMsg);
-
-                            $formSubmit.removeClass(CLASS.hideText);
-
-                            $formSubmit.delay(MSG_FADE_DURATION, MSG_QUEUE)
+                            $formSubmit.addClass(CLASS.hideText)
+                                .delay(MSG_FADE_DURATION, MSG_QUEUE)
                                 .queue(MSG_QUEUE, function (next) {
 
-                                    $formBtnText.css("transition-delay", "");
+                                    $formBtnText.css("transition-delay", "0s")
+                                        .text(originalMsg);
+
+                                    $formSubmit.removeClass(CLASS.hideText);
+
+                                    $formSubmit.delay(MSG_FADE_DURATION, MSG_QUEUE)
+                                        .queue(MSG_QUEUE, function (next) {
+
+                                            $formBtnText.css("transition-delay", "");
+
+                                            if (onBackToInitState) {
+
+                                                onBackToInitState();
+                                            }
+
+                                            next();
+                                        });
 
                                     next();
-                                });
 
-                            next();
+                            }).dequeue(MSG_QUEUE);
 
-                        }).dequeue(MSG_QUEUE);
+                        }, MSG_DURATION);
 
-                    $form.removeClass(ok ? CLASS.ok : CLASS.error);
+                        next();
 
-                }, MSG_DURATION);
-            },
-
-            showErrors = function () {
-
-                $.each(errors, function (name, type) {
-
-                    $form.find("[name='" + name + "']")
-                        .data("error.UIForm", type)
-                        .closest(".ui__form-item")
-                        .addClass("ui__form-item--error")
-                        .addClass(type);
-                });
-            },
-
-            removeError = function (formElement) {
-
-                ns.$temp[0] = formElement;
-
-                ns.$temp.closest(".ui__form-item")
-                    .removeClass("ui__form-item--error")
-                    .removeClass(ns.$temp.data("error.UIForm"))
-                    .data("error.UIForm", "");
-            },
-
-            removeErrors = function () {
-
-                $.each(errors, function (name) {
-
-                    removeError($form.find("[name='" + name + "']")[0]);
-                });
+                }).dequeue(MSG_QUEUE);
             },
 
             initForm = function () {
+
+                $form = $self.find(SELECTOR.form);
 
                 initFormInfo();
 
@@ -265,82 +184,48 @@
 
                 $formBtnText = $formSubmit.find(SELECTOR.findBtnText);
 
-                $form.on("blur." + ns, ".ui__form-field", function (event) {
+                ns.UIForm.on($form, "submit", function (event, $deferred, errors) {
 
-                    removeError(event.target);
-
-                    if (!validate(event.target)) {
-
-                        showErrors();
-                    }
-                });
-
-                $form.on("focusin." + ns, ".ui__form-field", function (event) {
-
-                    removeError(event.target);
-                });
-
-                $form.on("submit." + ns, function (event) {
-
-                    if (isFormDisabled) {
-
-                        return false;
-                    }
-
-                    isFormDisabled = true;
-
-                    removeErrors();
+                    ns.UIForm.disable($form);
 
                     $formSubmit.dequeue(MSG_QUEUE)
                         .blur()
                         .prop("disabled", true);
 
-                    if (validate(event.target.elements)) {
+                    if (errors) {
 
-                        $form.addClass(CLASS.sending);
-
-                        send().then(function (ok) {
-
-                            showMsg(ok);
-
-                            if (ok) {
-
-                                clearFormElements(event.target.elements);
-                            }
-
-                            setTimeout(function() {
-
-                                $formSubmit.prop("disabled", false);
-
-                                isFormDisabled = false;
-
-                            }, MSG_DURATION);
-                        });
-
-                    } else {
-
-                        showErrors();
-
-                        showMsg(false);
-
-                        setTimeout(function() {
+                        showMsg(false, function() {
 
                             $formSubmit.prop("disabled", false);
 
-                            isFormDisabled = false;
+                            ns.UIForm.enable($form);
 
-                        }, MSG_DURATION);
+                            ns.UIForm.clearState($form);
+                        });
+
+                        return;
                     }
 
-                    event.preventDefault();
+                    send().then(function (ok) {
+
+                        $deferred[ok ? "resolve" : "reject"]();
+
+                        showMsg(ok, function() {
+
+                            $formSubmit.prop("disabled", false);
+
+                            ns.UIForm.enable($form);
+
+                            ns.UIForm.clearState($form);
+                        });
+                    });
                 });
+
             },
 
             init = function () {
 
                 $self = $(SELECTOR.self);
-
-                $form = $self.find(SELECTOR.form);
 
                 initForm();
 

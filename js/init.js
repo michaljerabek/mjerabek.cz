@@ -63,6 +63,11 @@ jQuery(function () {
         window.MJNS.Pricelist.init();
     }
 
+    if (window.MJNS.UIForm) {
+
+        window.MJNS.UIForm.init();
+    }
+
     if (window.MJNS.Contact) {
 
         window.MJNS.Contact.init();

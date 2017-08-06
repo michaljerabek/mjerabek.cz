@@ -69,14 +69,11 @@
     }
 }
 
-@-moz-document url-prefix() {
-
-    input[type="submit"].btn,
-    input[type="reset"].btn,
-    input[type="button"].btn,
-    button.btn {
-        padding-top: 6px;
-    }
+input[type="submit"].btn,
+input[type="reset"].btn,
+input[type="button"].btn,
+button.btn {
+    padding-top: 6px;
 }
 
 .btn .text {

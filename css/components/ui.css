@@ -582,6 +582,16 @@ input[type="time"]:focus {
             visibility 0s linear 0.375s;
     }
 
+    .ui__form-item--error-required .ui__form-error--required,
+    .ui__form-item--error-type .ui__form-error--type,
+    .ui__form-item--error-pattern .ui__form-error--pattern,
+    .ui__form-item--error-bad-input .ui__form-error--bad-input,
+    .ui__form-item--error-overflow .ui__form-error--overflow,
+    .ui__form-item--error-underflow .ui__form-error--underflow,
+    .ui__form-item--error-step .ui__form-error--step,
+    .ui__form-item--error-long .ui__form-error--long,
+    .ui__form-item--error-short .ui__form-error--short,
+    .ui__form-item--error-general .ui__form-error--general,
     .ui__form-item--error-type .ui__form-error--type,
     .ui__form-item--error-general .ui__form-error--general,
     .ui__form-item--error-required .ui__form-error--required {
