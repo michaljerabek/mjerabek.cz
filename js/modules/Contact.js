@@ -184,9 +184,9 @@
 
                 $formBtnText = $formSubmit.find(SELECTOR.findBtnText);
 
-                ns.UIForm.on($form, "submit", function (event, $deferred, errors) {
+                ns.Form.on($form, "submit", function (event, $deferred, errors) {
 
-                    ns.UIForm.disable($form);
+                    ns.Form.disable($form);
 
                     $formSubmit.dequeue(MSG_QUEUE)
                         .blur()
@@ -198,9 +198,9 @@
 
                             $formSubmit.prop("disabled", false);
 
-                            ns.UIForm.enable($form);
+                            ns.Form.enable($form);
 
-                            ns.UIForm.clearState($form);
+                            ns.Form.clearState($form);
                         });
 
                         return;
@@ -214,9 +214,9 @@
 
                             $formSubmit.prop("disabled", false);
 
-                            ns.UIForm.enable($form);
+                            ns.Form.enable($form);
 
-                            ns.UIForm.clearState($form);
+                            ns.Form.clearState($form);
                         });
                     });
                 });

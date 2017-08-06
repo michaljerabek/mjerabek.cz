@@ -6,32 +6,32 @@
     ns.$temp = ns.$temp || $([null]);
     ns.$win = ns.$win || $(window);
 
-    ns.UIForm = (function () {
+    ns.Form = (function () {
 
         var CLASS = {
-                item: "ui__form-item",
-                itemError: "ui__form-item--error",
-                itemErrorRequired: "ui__form-item--error-required",
-                itemErrorRype: "ui__form-item--error-type",
-                itemErrorPattern: "ui__form-item--error-pattern",
-                itemErrorBadInput: "ui__form-item--error-bad-input",
-                itemErrorOverflow: "ui__form-item--error-overflow",
-                itemErrorUnderflow: "ui__form-item--error-underflow",
-                itemErrorStep: "ui__form-item--error-step",
-                itemErrorLong: "ui__form-item--error-long",
-                itemErrorShort: "ui__form-item--error-short",
-                itemErrorGeneral: "ui__form-item--error-general",
+                item: "form__item",
+                itemError: "form__item--error",
+                itemErrorRequired: "form__item--error-required",
+                itemErrorRype: "form__item--error-type",
+                itemErrorPattern: "form__item--error-pattern",
+                itemErrorBadInput: "form__item--error-bad-input",
+                itemErrorOverflow: "form__item--error-overflow",
+                itemErrorUnderflow: "form__item--error-underflow",
+                itemErrorStep: "form__item--error-step",
+                itemErrorLong: "form__item--error-long",
+                itemErrorShort: "form__item--error-short",
+                itemErrorGeneral: "form__item--error-general",
 
-                field: "ui__form-field",
+                field: "form__field",
 
-                progress: "ui__form--progress",
-                ok: "ui__form--ok",
-                error: "ui__form--error",
-                validationError: "ui__form--validation-error"
+                progress: "form--progress",
+                ok: "form--ok",
+                error: "form--error",
+                validationError: "form--validation-error"
             },
 
             SELECTOR = {
-                forms: ".ui__form:not(.ui__form--no-js)",
+                forms: ".form:not(.form--no-js)",
 
                 item: "." + CLASS.item,
                 itemError: "." + CLASS.itemError,
@@ -39,10 +39,10 @@
             },
 
             DATA = {
-                events: "events.UIForm",
+                events: "events.Form",
 
-                disabled: "disabled.UIForm",
-                error: "error.UIForm"
+                disabled: "disabled.Form",
+                error: "error.Form"
             },
 
             $forms,
@@ -242,7 +242,7 @@
 
             initForms = function () {
 
-                $forms.on("blur.UIForm." + ns, SELECTOR.field, function (event) {
+                $forms.on("blur.Form." + ns, SELECTOR.field, function (event) {
 
                     removeError(event.target);
 
@@ -254,7 +254,7 @@
                     }
                 });
 
-                $forms.on("submit.UIForm." + ns, function (event) {
+                $forms.on("submit.Form." + ns, function (event) {
 
                     var $form = $forms.filter(function () {
                         return this === event.target;

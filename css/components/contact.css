@@ -520,7 +520,7 @@
 
         @media (max-width: 479px) {
 
-            .contact__form-item--msg textarea.ui__form-field {
+            .contact__form__item--msg textarea.form__field {
                 min-height: 6rem;
             }
         }
@@ -568,21 +568,21 @@
             transition: inherit;
         }
 
-        .no-js .contact__form-item--msg:target .contact__form-info-link::after,
+        .no-js .contact__form__item--msg:target .contact__form-info-link::after,
         .contact__form--show-info .contact__form-info-link::after,
         .contact__form-info-link:hover::after,
         .contact__form-info-link:focus::after {
             border-top-color: #79A9BD;
         }
 
-        .no-js .contact__form-item--msg:target .contact__form-info-link,
+        .no-js .contact__form__item--msg:target .contact__form-info-link,
         .contact__form--show-info .contact__form-info-link,
         .contact__form-info-link:hover,
         .contact__form-info-link:focus {
             color: #79A9BD;
         }
 
-        .no-js .contact__form-item--msg:target .contact__form-info-link::after,
+        .no-js .contact__form__item--msg:target .contact__form-info-link::after,
         .contact__form--show-info .contact__form-info-link::after {
             transform: rotate(180deg);
         }
@@ -640,20 +640,20 @@
             }
 
         .contact__form--show-info .contact__form-info-link + .contact__form-info,
-        .no-js .contact__form-item--msg:target .contact__form-info-link + .contact__form-info {
+        .no-js .contact__form__item--msg:target .contact__form-info-link + .contact__form-info {
             height: 13rem;
 
             opacity: 1;
         }
 
-    .contact__form-item--btn {
+    .contact__form__item--btn {
         margin-top: 10px;
         margin-bottom: auto;
     }
 
     @media (max-width: 479px) {
 
-        .contact__form-item--btn {
+        .contact__form__item--btn {
             text-align: center;
         }
     }
@@ -664,37 +664,37 @@
     position: relative;
 }
 
-.ui__form--ok .contact__form-btn,
-.ui__form--error .contact__form-btn,
-.ui__form--progress .contact__form-btn {
+.form--ok .contact__form-btn,
+.form--error .contact__form-btn,
+.form--progress .contact__form-btn {
     pointer-events: none;
 }
 
-.ui__form--progress .contact__form-btn:hover,
-.ui__form--progress .contact__form-btn:active,
-.ui__form--progress .contact__form-btn:focus {
+.form--progress .contact__form-btn:hover,
+.form--progress .contact__form-btn:active,
+.form--progress .contact__form-btn:focus {
     color: #CEB77E;
     border-color: #CEB77E;
     background-color: transparent;
 }
 
-.ui__form--validation-error .contact__form-btn,
-.ui__form--validation-error .contact__form-btn:hover,
-.ui__form--validation-error .contact__form-btn:active,
-.ui__form--validation-error .contact__form-btn:focus,
-.ui__form--error .contact__form-btn,
-.ui__form--error .contact__form-btn:hover,
-.ui__form--error .contact__form-btn:active,
-.ui__form--error .contact__form-btn:focus {
+.form--validation-error .contact__form-btn,
+.form--validation-error .contact__form-btn:hover,
+.form--validation-error .contact__form-btn:active,
+.form--validation-error .contact__form-btn:focus,
+.form--error .contact__form-btn,
+.form--error .contact__form-btn:hover,
+.form--error .contact__form-btn:active,
+.form--error .contact__form-btn:focus {
     color: #D07E5B;
     border-color: #D07E5B;
     background-color: transparent;
 }
 
-.ui__form--ok .contact__form-btn,
-.ui__form--ok .contact__form-btn:hover,
-.ui__form--ok .contact__form-btn:active,
-.ui__form--ok .contact__form-btn:focus {
+.form--ok .contact__form-btn,
+.form--ok .contact__form-btn:hover,
+.form--ok .contact__form-btn:active,
+.form--ok .contact__form-btn:focus {
     color: #79A9BD;
     border-color: #79A9BD;
     background-color: transparent;
@@ -705,7 +705,7 @@
     }
 
     .contact__form-btn--hide-text .text,
-    .ui__form--progress .text {
+    .form--progress .text {
         opacity: 0;
 
         transition: opacity 0.25s linear 0s;
@@ -746,13 +746,13 @@
             top: 2px;
         }
 
-    .ui__form--progress .send-animation {
+    .form--progress .send-animation {
         opacity: 1;
 
         transition: opacity 0.25s linear 0.25s;
     }
 
-        .ui__form--progress .numbers {
+        .form--progress .numbers {
             transition: opacity 0.25s linear 0.25s;
             animation: contact__send-msg--move 3s linear 0s infinite forwards;
         }

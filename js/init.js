@@ -63,9 +63,9 @@ jQuery(function () {
         window.MJNS.Pricelist.init();
     }
 
-    if (window.MJNS.UIForm) {
+    if (window.MJNS.Form) {
 
-        window.MJNS.UIForm.init();
+        window.MJNS.Form.init();
     }
 
     if (window.MJNS.Contact) {
