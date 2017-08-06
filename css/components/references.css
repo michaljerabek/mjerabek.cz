@@ -151,6 +151,8 @@
 
     .no-js .references__nav-items {
         overflow: auto;
+
+        pointer-events: auto;
     }
 
         .references__nav-item {
@@ -169,6 +171,8 @@
                 line-height: 1;
 
                 color: #474747;
+
+                pointer-events: auto;
 
                 transition-property: color;
             }

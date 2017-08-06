@@ -150,15 +150,15 @@
 
                                     $formSubmit.removeClass(CLASS.hideText);
 
+                                    if (onBackToInitState) {
+
+                                        onBackToInitState();
+                                    }
+
                                     $formSubmit.delay(MSG_FADE_DURATION, MSG_QUEUE)
                                         .queue(MSG_QUEUE, function (next) {
 
                                             $formBtnText.css("transition-delay", "");
-
-                                            if (onBackToInitState) {
-
-                                                onBackToInitState();
-                                            }
 
                                             next();
                                         });
@@ -194,13 +194,15 @@
 
                     if (errors) {
 
+                        $deferred.reject();
+
                         showMsg(false, function() {
 
                             $formSubmit.prop("disabled", false);
 
                             ns.Form.enable($form);
 
-                            ns.Form.clearState($form);
+                            ns.Form.clearState($form, true);
                         });
 
                         return;

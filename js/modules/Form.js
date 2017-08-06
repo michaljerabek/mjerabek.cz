@@ -200,18 +200,26 @@
                 return !isEnabled($form);
             },
 
-            clearState = function ($form) {
+            clearState = function ($form, preserveValidationError) {
 
                 $form.removeClass(CLASS.error)
-                    .removeClass(CLASS.ok)
-                    .removeClass(CLASS.validationError);
+                    .removeClass(CLASS.ok);
+
+                if (!preserveValidationError) {
+
+                    $form.removeClass(CLASS.validationError);
+                }
             },
 
-            setResultState = function ($form, ok) {
+            setResultState = function ($form, ok, preserveValidationError) {
 
                 $form.addClass(ok ? CLASS.ok: CLASS.error)
-                    .removeClass(ok ? CLASS.error: CLASS.ok)
-                    .removeClass(CLASS.validationError);
+                    .removeClass(ok ? CLASS.error: CLASS.ok);
+
+                if (!preserveValidationError) {
+
+                    $form.removeClass(CLASS.validationError);
+                }
             },
 
             onDone = function () {
@@ -221,17 +229,17 @@
                 clearFormElements(this[0].elements);
             },
 
-            onFail = function () {
+            onFail = function (validationFailed) {
 
-                setResultState(this, false);
+                setResultState(this, false, validationFailed);
             },
 
-            createDeferred = function ($form) {
+            createDeferred = function ($form, validationErrors) {
 
                 var $deferred = $.Deferred();
 
                 $deferred.done(onDone.bind($form))
-                    .fail(onFail.bind($form))
+                    .fail(onFail.bind($form, validationErrors))
                     .always(function () {
 
                         $form.removeClass(CLASS.progress);
@@ -273,7 +281,9 @@
 
                         removeErrors($form);
 
-                        if (events[event.type].call(this, event, createDeferred($form), validationErrors) !== false) {
+                        var $deferred = createDeferred($form, validationErrors);
+
+                        if (events[event.type].call(this, event, $deferred, validationErrors) !== false) {
 
                             if (validationErrors) {
 
