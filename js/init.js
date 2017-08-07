@@ -74,8 +74,8 @@ jQuery(function () {
     }
 
     Array.prototype.slice.call(document.head.childNodes).forEach(function (node) {
-
-        if (node.nodeType === 8 && node.textContent.match(/^ /)) {
+        node.nodeType === 8   && log( node.textContent.match(" "));
+        if (node.nodeType === 8 && node.textContent.match(/^-/)) {
 
             var message = node.textContent.replace(/\s+/g, " ").trim();
 
