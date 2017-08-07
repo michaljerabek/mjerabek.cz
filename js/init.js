@@ -74,10 +74,10 @@ jQuery(function () {
     }
 
     Array.prototype.slice.call(document.head.childNodes).forEach(function (node) {
-        node.nodeType === 8   && log( node.textContent.match(" "));
-        if (node.nodeType === 8 && node.textContent.match(/^-/)) {
 
-            var message = node.textContent.replace(/\s+/g, " ").trim();
+        if (node.nodeType === 8 && node.textContent.match(new RegExp("^-"))) {
+
+            var message = node.textContent.replace(new RegExp("^-"), "").replace(/\s+/g, " ").trim();
 
             if (navigator.userAgent.match(/firefox|chrome/i)) {
 
