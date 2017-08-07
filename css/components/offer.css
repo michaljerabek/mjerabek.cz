@@ -11,7 +11,7 @@
     background-color: #111111;
 }
 
-    .offer .layout__center {
+    .offer > .layout__center {
         position: relative;
         z-index: 2;
 
@@ -20,6 +20,7 @@
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
+        padding-top: 10px;
 
         opacity: 1;
 
@@ -28,7 +29,21 @@
         animation: none;
     }
 
-    .js .offer--init-fade-in .layout__center {
+    @media (max-width: 1219px) {
+
+        .offer > .layout__center {
+            padding-top: 1vw;
+        }
+    }
+
+    @media (max-width: 1023px) {
+
+        .offer > .layout__center {
+            padding-top: 2vw;
+        }
+    }
+
+    .js .offer--init-fade-in > .layout__center {
         animation: show--init 2s linear 0s 1 forwards,
             show 1.75s ease-out 2s 1 forwards;
     }
@@ -262,7 +277,7 @@
                 min-height: 180px;
                 min-width: 180px;
 
-                font-family: "Caudex";
+                font-family: "Caudex", "Georgia", serif;
                 font-size: 1.6875rem;
                 text-decoration: none;
                 text-transform: uppercase;

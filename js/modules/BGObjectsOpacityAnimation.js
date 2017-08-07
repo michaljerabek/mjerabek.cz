@@ -16,6 +16,7 @@
             SUPPORTS_CSS_ANIMATIONS = typeof document.body.style.animation !== "undefined",
 
             ANIM_POSTFIX = "--fade-in",
+
             OPACITY_DURATION = 1500,
             MAX_OPACITY = 1,
             MIN_OPACITY = 0.25,

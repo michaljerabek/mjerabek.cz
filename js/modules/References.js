@@ -11,7 +11,6 @@
         var CLASS = {
                 parallaxDestroyed: "references--no-parallax",
 
-
                 activeTab: "references__reference--active",
 
                 fadeIn: "fade-in"

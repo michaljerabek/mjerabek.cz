@@ -8,7 +8,7 @@
     text-align: center;
 }
 
-    .pricelist .layout__center {
+    .pricelist > .layout__center {
 	    display: flex;
         flex-direction: column;
 
@@ -83,13 +83,13 @@
             }
             /*/kerning*/
 
-    .pricelist__content {
-        padding-top: 3vmin;
-        padding-top: 2vmax;
-        margin-bottom: 40px;
+        .pricelist__content {
+            padding-top: 3vmin;
+            padding-top: 2vmax;
+            margin-bottom: 40px;
 
-        font-size: 0;
-    }
+            font-size: 0;
+        }
 
             .pricelist__pricelist,
             .pricelist__terms-and-conditions {
@@ -194,7 +194,6 @@
                     font-family: "Caudex", serif;
                     font-size: 3.25rem;
                     text-align: right;
-
                     line-height: 3.3750rem;
 
                     color: #111;

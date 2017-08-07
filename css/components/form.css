@@ -144,17 +144,28 @@
         border-color: #79A9BD;
     }
 
-    .form--dark .form__item--error select.form__field:invalid:not(:focus):not(:hover),
-    .form--dark .form__item--error textarea.form__field:invalid:not(:focus):not(:hover),
-    .form--dark .form__item--error input[type="text"].form__field:invalid:not(:focus):not(:hover),
-    .form--dark .form__item--error input[type="password"].form__field:invalid:not(:focus):not(:hover),
-    .form--dark .form__item--error input[type="search"].form__field:invalid:not(:focus):not(:hover),
-    .form--dark .form__item--error input[type="tel"].form__field:invalid:not(:focus):not(:hover),
-    .form--dark .form__item--error input[type="email"].form__field:invalid:not(:focus):not(:hover),
-    .form--dark .form__item--error input[type="number"].form__field:invalid:not(:focus):not(:hover),
-    .form--dark .form__item--error input[type="step"].form__field:invalid:not(:focus):not(:hover),
-    .form--dark .form__item--error input[type^="date"].form__field:invalid:not(:focus):not(:hover),
-    .form--dark .form__item--error input[type="time"].form__field:invalid:not(:focus):not(:hover) {
+    .form--dark .form__item--error select.form__field:not(:focus):not(:hover),
+    .form--dark .form__item--error textarea.form__field:not(:focus):not(:hover),
+    .form--dark .form__item--error input[type="text"].form__field:not(:focus):not(:hover),
+    .form--dark .form__item--error input[type="password"].form__field:not(:focus):not(:hover),
+    .form--dark .form__item--error input[type="search"].form__field:not(:focus):not(:hover),
+    .form--dark .form__item--error input[type="tel"].form__field:not(:focus):not(:hover),
+    .form--dark .form__item--error input[type="email"].form__field:not(:focus):not(:hover),
+    .form--dark .form__item--error input[type="number"].form__field:not(:focus):not(:hover),
+    .form--dark .form__item--error input[type="step"].form__field:not(:focus):not(:hover),
+    .form--dark .form__item--error input[type^="date"].form__field:not(:focus):not(:hover),
+    .form--dark .form__item--error input[type="time"].form__field:not(:focus):not(:hover),
+    .no-js .form--dark select.form__field:invalid:not(:focus):not(:hover),
+    .no-js .form--dark textarea.form__field:invalid:not(:focus):not(:hover),
+    .no-js .form--dark input[type="text"].form__field:invalid:not(:focus):not(:hover),
+    .no-js .form--dark input[type="password"].form__field:invalid:not(:focus):not(:hover),
+    .no-js .form--dark input[type="search"].form__field:invalid:not(:focus):not(:hover),
+    .no-js .form--dark input[type="tel"].form__field:invalid:not(:focus):not(:hover),
+    .no-js .form--dark input[type="email"].form__field:invalid:not(:focus):not(:hover),
+    .no-js .form--dark input[type="number"].form__field:invalid:not(:focus):not(:hover),
+    .no-js .form--dark input[type="step"].form__field:invalid:not(:focus):not(:hover),
+    .no-js .form--dark input[type^="date"].form__field:invalid:not(:focus):not(:hover),
+    .no-js .form--dark input[type="time"].form__field:invalid:not(:focus):not(:hover) {
         border-color: #D07E5B;
     }
 

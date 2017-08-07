@@ -120,31 +120,6 @@ html.js .x-js,
     display: block;
 }
 
-.layout__half {
-    width: 50%;
-}
-
-.layout__third {
-    width: 33.3333%;
-    width: calc(100% / 3);
-}
-
-.layout__quarter {
-    width: 25%;
-}
-
-.layout__left {
-    float: left;
-}
-
-.layout__right {
-    float: right;
-}
-
-.layout__clear {
-    clear: both;
-}
-
 /* Zarovná osbah do středu stránky. */
 .layout__center {
     max-width: 1200px;

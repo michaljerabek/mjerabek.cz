@@ -16,36 +16,37 @@
             PHOTO_FILTER = 20,
 
             parallax,
+            useFilter = true,
+
+            applyPhotoFilter = function ($el, progress) {
+
+                if (!useFilter) {
+
+                    return;
+                }
+
+                var recalc = progress > 0 ? Math.max(-1 + (progress * 2), 0) : Math.min(1 + (progress * 2), 0);
+
+                recalc = Math.abs(recalc);
+
+                var filter = (recalc * PHOTO_FILTER).toFixed(3);
+
+                $el.css("filter", "blur(" + filter + "px)");
+            },
 
             init = function (debug) {
-
-                var useBlur = true;
 
                 parallax = new Parallax({
                     parallax: SELECTOR.self,
                     layers: SELECTOR.photo,
                     fakeTilt: false,
 
-                    onTransform: function ($el, progress) {
-
-                        if (!useBlur) {
-
-                            return;
-                        }
-
-                        var recalc = progress > 0 ? Math.max(-1 + (progress * 2), 0) : Math.min(1 + (progress * 2), 0);
-
-                        recalc = Math.abs(recalc);
-
-                        var filter = (recalc * PHOTO_FILTER).toFixed(3);
-
-                        $el.css("filter", "blur(" + filter + "px)");
-                    }
+                    onTransform: applyPhotoFilter
                 });
 
                 ns.$win.on("lowperformance." + ns, function () {
 
-                    useBlur = false;
+                    useFilter = false;
 
                     parallax.$layers.css("filter", "none");
                 });
