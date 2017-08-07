@@ -32,7 +32,7 @@
 
             el.style[TRANSFORM_PROP] = "translate3d(0,0,0)";
 
-            return !!el.style[TRANSFORM_PROP];
+            return !!el.style[TRANSFORM_PROP] && !window.navigator.userAgent.match(/Trident/);
         }()),
 
         SUPPORTS_TRANSFORM = document.body.style[TRANSFORM_PROP] !== undefined;

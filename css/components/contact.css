@@ -204,8 +204,6 @@
                 .contact__form {
                     width: 100%;
                     max-width: 75%;
-                    margin-left: auto;
-                    margin-right: auto;
                 }
 
                 .contact__contact-info {
@@ -360,6 +358,13 @@
 .contact__address {
     font-size: 1.25rem;
     line-height: 2rem;
+}
+
+@media (max-width: 767px) {
+
+    .contact__address {
+        margin-bottom: 17px;
+    }
 }
 
 @supports (display: contents) {

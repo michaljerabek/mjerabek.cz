@@ -18,8 +18,10 @@ body {
     font-family: "Josefin Sans", sans-serif;
 
     background-color: #000;
+}
 
-    overflow-x: hidden;
+main {
+    display: block;
 }
 
 b,

@@ -199,6 +199,13 @@
                     color: #111;
                 }
 
+                @-moz-document url-prefix() {
+
+                    .pricelist__price {
+                        margin-bottom: calc(1.6875rem + 1px);
+                    }
+                }
+
                     .pricelist__price .price {
                         pointer-events: auto;
                     }
