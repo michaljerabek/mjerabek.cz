@@ -251,7 +251,16 @@
                 parallax = new Parallax({
                     parallax: SELECTOR.background,
                     layers: $bgLayers,
-                    fakeTilt: false
+                    fakeTilt: false,
+
+                    onBeforeTransform: function ($el, progress, tX, tY, transform) {
+
+                        var layer = this.layers[0].$el === $el ? this.layers[0] : this.layers[1],
+
+                            extention = layer.parallaxYExtention;
+
+                        transform.x += extention * progress;
+                    }
                 });
 
                 ns.$win.on("verylowperformance." + ns, function () {

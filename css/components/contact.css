@@ -832,7 +832,7 @@
 
         .contact__background-layer .speach path {
             fill: rgba(206, 183, 126, 0);
-            stroke: rgba(206, 183, 126, 0.45);
+            stroke: rgba(206, 183, 126, 0.4);
             stroke-width: 1px;
 
             transition: fill 2s ease 1s,
@@ -842,7 +842,7 @@
 
         .no-js .contact__background-layer .speach:not(:hover) path,
         .contact__background-layer.section__background-layer--stop-animation .speach:not(:hover) path {
-            stroke: rgba(206, 183, 126, 0.375);
+            stroke: rgba(206, 183, 126, 0.325);
         }
 
         .contact__background-layer:nth-child(1) .speach path {
@@ -886,7 +886,7 @@
         }
 
         .contact__background-layer:not(.section__background-layer--stop-hover) .speach path:hover {
-            fill: rgba(206, 183, 126, 0.1);
+            fill: rgba(206, 183, 126, 0.05);
             stroke: rgba(206, 183, 126, 0);
 
             transition: fill 1s ease 0s,

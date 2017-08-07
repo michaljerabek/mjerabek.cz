@@ -562,7 +562,7 @@
 }
 
     .offer__background-layer .square {
-        border-color: rgba(192, 108, 71, 0.45);
+        border-color: rgba(192, 108, 71, 0.4);
 
         transition: background-color 2s ease 1s,
             border-color 2s ease 1s,
@@ -571,7 +571,7 @@
 
     .no-js .section__background-layer--stop-animation .square:not(:hover),
     .offer__background-layer.section__background-layer--stop-animation .square:not(:hover) {
-        border-color: rgba(192, 108, 71, 0.35);
+        border-color: rgba(192, 108, 71, 0.3);
     }
 
     .offer__background-layer:nth-child(1) .square {
@@ -618,7 +618,7 @@
 }
 
     .offer__background-layer:not(.section__background-layer--stop-hover) .square:hover {
-        background-color: rgba(192, 108, 71, 0.1);
+        background-color: rgba(192, 108, 71, 0.085);
         border-color: rgba(192, 108, 71, 0);
 
         transition: background-color 1s ease 0s,

@@ -601,8 +601,7 @@
             return;
         }
 
-        var transformX = 0,
-            transformY = 0,
+        var transform = { x: 0, y: 0 },
 
             //tilt
             tilt = ParallaxController.getTilt(),
@@ -638,30 +637,39 @@
             layerProgressionFromCenter = layer.reverseScroll ? progressionFromCenter * -1 : progressionFromCenter;
 
             //tilt
-            transformY = ((layer.parallaxTiltYExtention || 0) * layerYPerc);
-            transformX = ((layer.parallaxXExtention * layerXPerc) - (this.parallaxWidth / 2) - layer.parallaxXExtention);
+            transform.y = ((layer.parallaxTiltYExtention || 0) * layerYPerc);
+            transform.x = ((layer.parallaxXExtention * layerXPerc) - (this.parallaxWidth / 2) - layer.parallaxXExtention);
 
             //scroll
             //odčítá se (this.parallaxHeight / 2), protože obrázek má top: 50%.
 
             if (layer.mode === Layer.DATA.MODE.VAL.SCROLL) {
                 //            transformY = (transformY - (layer.parallaxTiltYExtention || 0) + (layer.parallaxYExtention * layerProgressionFromCenter) - layer.parallaxYExtention - (this.parallaxHeight / 2));
-                transformY = (transformY + (layer.parallaxYExtention * layerProgressionFromCenter) - (layer.layerHeight / 2));
+                transform.y = (transform.y + (layer.parallaxYExtention * layerProgressionFromCenter) - (layer.layerHeight / 2));
 
             } else {
 
-                transformY = transformY + (layer.parallaxYExtention * -layerProgressionFromCenter) + (((ParallaxController.getRealWinHeight() + this.parallaxHeight) / 2) * (layer.reverseScroll ? -layerProgressionFromCenter : layerProgressionFromCenter)) - (layer.layerHeight / 2);
+                transform.y = transform.y + (layer.parallaxYExtention * -layerProgressionFromCenter) + (((ParallaxController.getRealWinHeight() + this.parallaxHeight) / 2) * (layer.reverseScroll ? -layerProgressionFromCenter : layerProgressionFromCenter)) - (layer.layerHeight / 2);
             }
 
-            layer.transform(transformX, transformY);
+            if (typeof this.options.onBeforeTransform === "function") {
+
+                this.options.onBeforeTransform.call(this, layer.$el, layerProgressionFromCenter, layerXPerc, layerYPerc, transform);
+
+            } else if (this.options.onBeforeTransform instanceof Array && this.options.onTransform[l]) {
+
+                this.options.onBeforeTransform[l].call(this, layer.$el, layerProgressionFromCenter, layerXPerc, layerYPerc, transform);
+            }
+
+            layer.transform(transform.x, transform.y);
 
             if (typeof this.options.onTransform === "function") {
 
-                this.options.onTransform(layer.$el, layerProgressionFromCenter, layerXPerc, layerYPerc);
+                this.options.onTransform.call(this, layer.$el, layerProgressionFromCenter, layerXPerc, layerYPerc, transform);
 
             } else if (this.options.onTransform instanceof Array && this.options.onTransform[l]) {
 
-                this.options.onTransform[l](layer.$el, layerProgressionFromCenter, layerXPerc, layerYPerc);
+                this.options.onTransform[l].call(this, layer.$el, layerProgressionFromCenter, layerXPerc, layerYPerc, transform);
             }
         }
     };
