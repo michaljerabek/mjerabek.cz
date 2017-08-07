@@ -75,6 +75,8 @@
     margin-bottom: 28px;
 
     outline: none;
+
+    pointer-events: auto;
 }
 
 @media (min-width: 1680px), (min-height: 1050px) {

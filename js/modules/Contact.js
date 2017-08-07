@@ -77,7 +77,7 @@
                     $self.addClass(CLASS.parallaxDestroyed);
                 });
 
-                ns.BGObjectsOpacityAnimation.add($bgLayers, SELECTOR.findSpeechBubble);
+                ns.BGObjectsOpacityAnimation.add($bgLayers, SELECTOR.findSpeechBubble, "--slide-in");
 
                 ns.$win.on("scroll.Contact." + ns, function () {
 
@@ -188,21 +188,14 @@
 
                     ns.Form.disable($form);
 
-                    $formSubmit.dequeue(MSG_QUEUE)
-                        .blur()
-                        .prop("disabled", true);
+                    $formSubmit.blur()
+                        .dequeue(MSG_QUEUE);
 
                     if (errors) {
 
-                        $deferred.reject();
-
                         showMsg(false, function() {
 
-                            $formSubmit.prop("disabled", false);
-
                             ns.Form.enable($form);
-
-                            ns.Form.clearState($form, true);
                         });
 
                         return;
@@ -213,8 +206,6 @@
                         $deferred[ok ? "resolve" : "reject"]();
 
                         showMsg(ok, function() {
-
-                            $formSubmit.prop("disabled", false);
 
                             ns.Form.enable($form);
 

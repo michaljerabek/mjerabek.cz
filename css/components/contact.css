@@ -664,6 +664,7 @@
     position: relative;
 }
 
+.form--disabled .contact__form-btn,
 .form--ok .contact__form-btn,
 .form--error .contact__form-btn,
 .form--progress .contact__form-btn {
@@ -790,16 +791,12 @@
         transform-origin: top left;
         transform: translateY(0%);
 
-        fill: rgba(206, 183, 126, 0);
-        stroke: rgba(206, 183, 126, 0.45);
-        stroke-width: 1px;
+        opacity: 1;
 
         pointer-events: auto;
 
-        transition: fill 2s ease 1s,
-            stroke 2s ease 1s,
-            opacity 1.5s ease 0s;
-        will-change: opacity, fill, stroke;
+        transition: opacity 1.5s ease 0s;
+        will-change: opacity;
     }
 
     .js .contact__background-layer .speach:not(.speach--visible) {
@@ -813,18 +810,11 @@
         }
     }
 
-    .no-js .contact__background-layer .speach:not(:hover),
-    .contact__background-layer.section__background-layer--stop-animation .speach:not(:hover) {
-        stroke: rgba(206, 183, 126, 0.375);
-    }
-
     .contact__background-layer:nth-child(1) .speach {
         margin-bottom: 295px;
         margin-left: -830px;
 
-        animation: contact__speach--fade-in-init 0.25s linear 0s 1 backwards,
-            contact__speach--slide-in-init 0.25s linear 0s 1 backwards,
-            contact__speach--fade-in 0.65s ease-out 0.25s 1 backwards,
+        animation: contact__speach--slide-in-init 0.25s linear 0s 1 backwards,
             contact__speach--slide-in 4s cubic-bezier(0.125, 1.75, .0, 1) 0.25s 1 backwards;
     }
 
@@ -832,50 +822,73 @@
         margin-bottom: 60px;
         margin-left: -420px;
 
-        animation: contact__speach--fade-in-init 0.5s linear 0s 1 backwards,
-            contact__speach--slide-in-init 0.5s linear 0s 1 backwards,
-            contact__speach--fade-in 0.65s ease-out 0.5s 1 backwards,
+        animation: contact__speach--slide-in-init 0.5s linear 0s 1 backwards,
             contact__speach--slide-in 4s cubic-bezier(0.125, 1.75, .0, 1) 0.5s 1 backwards;
     }
 
-    @keyframes contact__speach--slide-in-init {
-        from {
-            transform: translateY(20%);
-        }
-        to {
-            transform: translateY(20%);
-        }
-    }
+        .contact__background-layer .speach path {
+            fill: rgba(206, 183, 126, 0);
+            stroke: rgba(206, 183, 126, 0.45);
+            stroke-width: 1px;
 
-    @keyframes contact__speach--slide-in {
-        from {
-            transform: translateY(20%);
+            transition: fill 2s ease 1s,
+                stroke 2s ease 1s;
+            will-change: fill, stroke;
         }
-    }
 
-    @keyframes contact__speach--fade-in-init {
-        from {
+        .no-js .contact__background-layer .speach:not(:hover) path,
+        .contact__background-layer.section__background-layer--stop-animation .speach:not(:hover) path {
+            stroke: rgba(206, 183, 126, 0.375);
+        }
+
+        .contact__background-layer:nth-child(1) .speach path {
+            animation: contact__speach--fade-in-init 0.25s linear 0s 1 backwards,
+                contact__speach--fade-in 0.65s ease-out 0.25s 1 backwards;
+        }
+
+        .contact__background-layer:nth-child(2) .speach path {
+            animation: contact__speach--fade-in-init 0.5s linear 0s 1 backwards,
+                contact__speach--fade-in 0.65s ease-out 0.5s 1 backwards;
+        }
+
+        @keyframes contact__speach--slide-in-init {
+            from {
+                transform: translateY(20%);
+            }
+            to {
+                transform: translateY(20%);
+            }
+        }
+
+        @keyframes contact__speach--slide-in {
+            from {
+                transform: translateY(20%);
+            }
+        }
+
+        @keyframes contact__speach--fade-in-init {
+            from {
+                stroke: rgba(206, 183, 126, 0);
+            }
+            to {
+                stroke: rgba(206, 183, 126, 0);
+            }
+        }
+
+        @keyframes contact__speach--fade-in {
+            from {
+                stroke: rgba(206, 183, 126, 0);
+            }
+        }
+
+        .contact__background-layer:not(.section__background-layer--stop-hover) .speach path:hover {
+            fill: rgba(206, 183, 126, 0.1);
             stroke: rgba(206, 183, 126, 0);
-        }
-        to {
-            stroke: rgba(206, 183, 126, 0);
-        }
-    }
 
-    @keyframes contact__speach--fade-in {
-        from {
-            stroke: rgba(206, 183, 126, 0);
+            transition: fill 1s ease 0s,
+                stroke 1s ease 0s;
         }
-    }
 
-    .contact__background-layer:not(.section__background-layer--stop-hover) .speach:hover {
-        fill: rgba(206, 183, 126, 0.1);
-        stroke: rgba(206, 183, 126, 0);
-
-        transition: fill 1s ease 0s,
-            stroke 1s ease 0s,
-            opacity 1.5s ease 0s;
-    }
 
 @media (min-width: 1024px) {
 }

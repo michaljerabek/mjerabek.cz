@@ -73,7 +73,7 @@
                 events = true;
             },
 
-            add = function ($bgLayers, objectSelector) {
+            add = function ($bgLayers, objectSelector, animPostfix) {
 
                 $layers.push($bgLayers);
 
@@ -99,7 +99,7 @@
 
                 $bgLayers.on("animationend." + ns, function (event) {
 
-                    if (event.originalEvent.animationName.match(new RegExp(ANIM_POSTFIX + "$"))) {
+                    if (event.originalEvent.animationName.match(new RegExp((animPostfix || ANIM_POSTFIX) + "$"))) {
 
                         animate(event.originalEvent.target);
 
