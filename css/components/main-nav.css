@@ -26,6 +26,7 @@
     animation: show--init 2s linear 0s 1 backwards,
         show 1.75s ease-out 2s 1 backwards;
     will-change: opacity, transform, box-shadow;
+    contain: layout;
 }
 
 .ui__content--technologies .main-nav {

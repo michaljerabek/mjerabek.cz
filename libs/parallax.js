@@ -74,37 +74,44 @@
 
                 winScrollTop = $win.scrollTop();
 
-                $.each(parallaxInstances, function (i, parallax) {
+                var p, parallax;
 
-                    if (typeof parallaxId === "string" || typeof parallaxId === "number") {
+                for (p in parallaxInstances) {
 
-                        if (parallax.id !== parallaxId) {
+                    if (parallaxInstances.hasOwnProperty(p)) {
+
+                        parallax = parallaxInstances[p];
+
+                        if (typeof parallaxId === "string" || typeof parallaxId === "number") {
+
+                            if (parallax.id !== parallaxId) {
+
+                                return;
+                            }
+                        }
+
+                        if (type === TYPE_TILT && !parallax.useTilt) {
 
                             return;
                         }
+
+                        //použít fake-tilt pouze v případě, že zařízení nepodporuje tilt a tilt má být použit
+                        if (type === TYPE_FAKE_TILT && ((parallax.useFakeTilt && watchingTilt) || !parallax.useFakeTilt || !parallax.useTilt)) {
+
+                            return;
+                        }
+
+                        var parallaxOffsetTop = parallax.getOffset(),
+                            parallaxBottom = parallaxOffsetTop + parallax.getParallaxHeight(),
+
+                            winBottom = winScrollTop + winHeight;
+
+                        if (winBottom > parallaxOffsetTop && winScrollTop < parallaxBottom) {
+
+                            parallax.transform(lastTiltWasFake);
+                        }
                     }
-
-                    if (type === TYPE_TILT && !parallax.useTilt) {
-
-                        return;
-                    }
-
-                    //použít fake-tilt pouze v případě, že zařízení nepodporuje tilt a tilt má být použit
-                    if (type === TYPE_FAKE_TILT && ((parallax.useFakeTilt && watchingTilt) || !parallax.useFakeTilt || !parallax.useTilt)) {
-
-                        return;
-                    }
-
-                    var parallaxOffsetTop = parallax.getOffset(),
-                        parallaxBottom = parallaxOffsetTop + parallax.getParallaxHeight(),
-
-                        winBottom = winScrollTop + winHeight;
-
-                    if (winBottom > parallaxOffsetTop && winScrollTop < parallaxBottom) {
-
-                        parallax.transform(lastTiltWasFake);
-                    }
-                });
+                }
             },
 
             refresh = function (force) {
@@ -418,15 +425,14 @@
 
             return function (x, y) {
 
-                this.$el.css(TRANSFORM_PROP, x === true ? "translate3d(-50%, -50%, 0)" : x === false ? "" : "translate3d(" + x + "px, " + y + "px, 0)");
+                this.$el[0].style[TRANSFORM_PROP] = x === true ? "translate3d(-50%, -50%, 0)" : x === false ? "" : "translate3d(" + x + "px, " + y + "px, 0)";
             };
         }
 
         return function (x, y) {
 
-            this.$el.css(TRANSFORM_PROP, x === true ? "translate(-50%, -50%)" : x === false ? "" : "translate(" + x + "px, " + y + "px)");
+            this.$el[0].style[TRANSFORM_PROP] = x === true ? "translate(-50%, -50%)" : x === false ? "" : "translate(" + x + "px, " + y + "px)";
         };
-
     }());
 
     var instanceCounter = 0,
@@ -443,7 +449,9 @@
             fakeTilt: true,
             debounce: 0,
             removeIfNotSupported: false,
-            preserveStyles: false
+            preserveStyles: false,
+            onTransform: null,
+            onBeforeTransform: null
         },
 
         loadElements = function (options) {

@@ -77,6 +77,8 @@
     outline: none;
 
     pointer-events: auto;
+
+    contain: content;
 }
 
 @media (min-width: 1680px), (min-height: 1050px) {
@@ -307,6 +309,8 @@
         z-index: 1;
 
         pointer-events: none;
+
+        contain: content;
     }
 
     .js .references__reference {
@@ -389,9 +393,21 @@
             }
 
                 .references__project-info-list {
-                    word-break: break-all;
-
                     padding-right: 40px;
+                    margin-bottom: 0.4375rem;
+
+                    word-break: break-all;
+                    line-height: 2rem;
+                }
+
+                @media (max-width: 799px) {
+
+                    .references__project-info-list {
+                        margin-bottom: 0.25rem;
+
+                        font-size: 1.0625rem;
+                        line-height: 1.6875rem;
+                    }
                 }
 
                     .references__project-info-item {
@@ -421,7 +437,7 @@
 
                     .references__project-info-content {
                         float: left;
-                        margin-bottom: 0.4375rem;
+                        margin-bottom: 0.25rem;
 
                         pointer-events: auto;
 
@@ -436,13 +452,23 @@
 
                 .references__project-more-info {
                     clear: both;
-                    max-width: 13.75rem;
+                    max-width: 320px;
                     padding-right: 40px;
                     margin-bottom: 0.4375rem;
+
+                    line-height: 2rem;
 
                     pointer-events: auto;
 
                     transition: 0.2s cubic-bezier(.45, .25, .4, .9);
+                }
+
+                @media (max-width: 799px) {
+
+                    .references__project-more-info {
+                        font-size: 1.0625rem;
+                        line-height: 1.6875rem;
+                    }
                 }
 
                 .js .references__project-more-info {
@@ -724,13 +750,30 @@
 
             font-size: 1.25rem;
             line-height: 1.6875rem;
+            line-height: 2rem;
             font-weight: 300;
 
             color: #111;
         }
 
+        @media (max-width: 767px) {
+
+            .references__more-references,
+            .references__other-projects {
+                font-size: 1.0625rem;
+                line-height: 1.6875rem;
+            }
+        }
+
         .references__more-references {
             margin-bottom: 0.4375rem;
+        }
+
+        @media (max-width: 767px) {
+
+            .references__more-references {
+                margin-bottom: 0.25rem;
+            }
         }
 
         @media (min-width: 768px) {

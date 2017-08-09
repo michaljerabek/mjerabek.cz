@@ -241,7 +241,14 @@
 
                 correctWrapperHeight();
 
-                ns.$win.on("resize." + ns, correctWrapperHeight);
+                ns.$win.on("resize." + ns + " resize.References." + ns, correctWrapperHeight);
+
+                //iOS fix (špatná výška)
+                setTimeout(function() {
+
+                    ns.$win.trigger("resize.References." + ns);
+
+                }, 50);
             },
 
             initBackground = function () {

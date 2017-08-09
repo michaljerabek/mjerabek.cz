@@ -10,6 +10,8 @@
 	min-height: 100vmin;
 
     overflow: hidden;
+
+    contain: content;
 }
 
 @media (min-height: 1024px) and (min-width: 1024px) {
@@ -261,6 +263,8 @@
     overflow: hidden;
 
     pointer-events: none;
+
+    contain: strict;
 }
 
     .section__background-layer {
@@ -275,6 +279,7 @@
         height: 100%;
 
         will-change: transform;
+        contain: layout size style;
     }
 
         .section__background-layer .square {
@@ -294,7 +299,8 @@
             pointer-events: auto;
 
             will-change: opacity;
-        }
+            contain: layout size style;
+    }
 
 /*//////////////////////////// BACKGROUND ////////////////////////////*/
 

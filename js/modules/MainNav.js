@@ -518,8 +518,7 @@
 
                 ns.$doc.on("click." + ns, SELECTOR.localLink, scrollToTarget);
 
-                ns.$win.on("scroll." + ns, findLinkToActivate)
-                    .on("scroll." + ns, fixNav);
+                ns.$win.on("scroll." + ns + " scroll.MainNav." + ns, findLinkToActivate, fixNav);
 
                 ns.$win.on("mousewheel." + ns + " DOMMouseScroll", onScroll);
 
@@ -528,7 +527,7 @@
 
                 $opener.on("change." + ns, onOpenerToggle);
 
-                ns.$win.scroll();
+                ns.$win.trigger("scroll.MainNav." + ns);
             },
 
             initElements = function () {

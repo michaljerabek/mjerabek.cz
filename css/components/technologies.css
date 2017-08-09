@@ -19,6 +19,7 @@
     transition: visibility 0s linear 0.5s,
         height 0s linear 0.5s,
         z-index 0s linear 0.5s;
+    contain: strict;
 }
 
 .no-js #html:target ~ .technologies,
@@ -798,6 +799,8 @@
     font-size: 0;
 
     outline: none;
+
+    contain: layout styles;
 }
 
 @media (min-height: 768px) {

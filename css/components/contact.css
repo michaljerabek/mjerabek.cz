@@ -350,8 +350,8 @@
                 stroke-width: 0.75px;
             }
 
-            .contact__social-site:hover svg,
-            .contact__social-site:focus svg {
+            .contact__social-site-link:hover svg,
+            .contact__social-site-link:focus svg {
                 stroke: #79A9BD;
             }
 
