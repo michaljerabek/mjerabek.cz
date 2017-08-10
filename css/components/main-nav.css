@@ -635,14 +635,14 @@
             }
         }
 
-        @media (max-height: 767px) and (min-width: 480px) and (max-width: 767px), (max-height: 767px) and (min-height: 480px) and (max-width: 767px) {
+        @media (max-height: 767px) and (min-width: 700px) and (max-width: 767px), (max-height: 767px) and (min-height: 700px) and (max-width: 767px) {
 
             .main-nav__mobile-logo {
                 height: 92px;
             }
         }
 
-        @media (max-height: 479px) and (max-width: 479px) {
+        @media (max-height: 699px) and (max-width: 699px) {
 
             .main-nav__mobile-logo {
                 height: 72px;
@@ -662,6 +662,7 @@
                 position: absolute;
                 right: 0;
                 top: 100%;
+                z-index: 2;
 
                 transform: translateZ(0);
 
@@ -723,14 +724,14 @@
                 }
             }
 
-            @media (max-height: 767px) and (min-width: 480px) and (max-width: 767px), (max-height: 767px) and (min-height: 480px) and (max-width: 767px) {
+            @media (max-height: 767px) and (min-width: 700px) and (max-width: 767px), (max-height: 767px) and (min-height: 700px) and (max-width: 767px) {
 
                 .main-nav__items {
                     max-height: calc(100vh - 92px);
                 }
             }
 
-            @media (max-height: 479px) and (max-width: 479px) {
+            @media (max-height: 699px) and (max-width: 699px) {
 
                 .main-nav__items {
                     max-height: calc(100vh - 72px);
@@ -1102,7 +1103,7 @@
     }
 }
 
-@media (max-height: 767px) and (min-width: 480px) and (max-width: 767px),  (max-height: 767px) and (min-height: 480px) and (max-width: 767px) {
+@media (max-height: 767px) and (min-width: 700px) and (max-width: 767px), (max-height: 767px) and (min-height: 700px) and (max-width: 767px) {
 
     .main-nav__mobile-opener {
         height: 92px;
@@ -1111,7 +1112,7 @@
     }
 }
 
-@media (max-height: 479px) and (max-width: 479px) {
+@media (max-height: 699px) and (max-width: 699px) {
 
     .main-nav__mobile-opener {
         height: 72px;
@@ -1144,7 +1145,7 @@
     }
 }
 
-@media (max-height: 767px) and (min-width: 480px) and (max-width: 767px),  (max-height: 767px) and (min-height: 480px) and (max-width: 767px) {
+@media (max-height: 767px) and (min-width: 700px) and (max-width: 767px),  (max-height: 767px) and (min-height: 700px) and (max-width: 767px) {
 
     .main-nav__mobile-opener:before {
         top: 38px;
@@ -1159,7 +1160,7 @@
     }
 }
 
-@media (max-height: 479px) and (max-width: 479px) {
+@media (max-height: 699px) and (max-width: 699px) {
 
     .main-nav__mobile-opener:before {
         top: 29px;

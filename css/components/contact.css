@@ -427,7 +427,7 @@
         pointer-events: auto;
     }
 
-    .ios .contact__form-title {
+    .apple .contact__form-title {
         letter-spacing: 0.01em;
     }
 
@@ -748,7 +748,7 @@
             margin: auto;
         }
 
-        .ios .contact__form-btn .numbers {
+        .apple .contact__form-btn .numbers {
             top: 2px;
         }
 

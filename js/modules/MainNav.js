@@ -307,7 +307,7 @@
                         var linkInsideNav = $link.closest(SELECTOR.self).length;
 
                         activateItem(
-                            linkInsideNav ? $link : $self.find("[href*='#" + targetId + "']")
+                            linkInsideNav ? $link : $self.find("[href$='#" + targetId + "']")
                         );
                     }
 
@@ -372,7 +372,7 @@
 
                     var activeSelector = ns.$temp.attr("data-" + DATA.active),
 
-                        $link = activeSelector ? $(activeSelector) : $self.find("[href*='#" + currentScrollTarget.id + "']");
+                        $link = activeSelector ? $(activeSelector) : $self.find("[href$='#" + currentScrollTarget.id + "']");
 
                     activateItem($link, true);
 
@@ -518,7 +518,8 @@
 
                 ns.$doc.on("click." + ns, SELECTOR.localLink, scrollToTarget);
 
-                ns.$win.on("scroll." + ns + " scroll.MainNav." + ns, findLinkToActivate, fixNav);
+                ns.$win.on("scroll." + ns + " scroll.MainNav." + ns, findLinkToActivate)
+                    .on("scroll." + ns + " scroll.MainNav." + ns, fixNav);
 
                 ns.$win.on("mousewheel." + ns + " DOMMouseScroll", onScroll);
 

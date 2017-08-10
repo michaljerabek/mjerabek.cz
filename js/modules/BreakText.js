@@ -20,8 +20,7 @@
             wrapLetter = function (letter, num, smallCaps) {
 
                 var attrs = [
-                        "class=\"", CLASS.letter + num, "\"",
-                        "style=\"display: inline-block;\"",
+                        "class=\"", CLASS.letter + num, "\" style=\"display: inline-block;\"",
                         smallCaps ? ns.SmallCaps.getAttr(true) : ""
                     ].join(" ");
 
@@ -55,8 +54,8 @@
                 var text = $item.text().trim(),
                     words = text.split(/\s/),
 
-                    w = 0,
-                    textData = [];
+                    textData = [],
+                    w = 0;
 
                 for (w; w < words.length; w++) {
 
@@ -91,10 +90,10 @@
 
                 var items = document.querySelectorAll(SELECTOR.items),
 
-                    i = 0,
-                    l = items.length;
+                    length = items.length,
+                    i = 0;
 
-                for (i; i < l; i++) {
+                for (i; i < length; i++) {
 
                     processElement(i, items[i]);
                 }

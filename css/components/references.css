@@ -22,7 +22,7 @@
             pointer-events: none;
         }
 
-        .ios .references__title {
+        .apple .references__title {
             letter-spacing: 0;
         }
 
@@ -214,7 +214,7 @@
                     letter-spacing: 0.01em;
                 }
 
-                .ios .reference__project-name {
+                .apple .reference__project-name {
                     text-indent: 0;
                     letter-spacing: 0;
                 }

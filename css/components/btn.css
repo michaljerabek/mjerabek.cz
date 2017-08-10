@@ -7,7 +7,10 @@
 
     flex-grow: 0;
     flex-shrink: 0;
-    display: inline-block;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1px; /*Android nezobrazuje border*/
 
     font-family: inherit;
     text-decoration: none;
@@ -34,12 +37,11 @@
         min-height: 52px;
         padding: 8px 40px;
 
-        line-height: 1.875rem;
-        line-height: calc(1.875rem - 1px);
     }
 
-    .ios .btn {
-        padding-top: 11px;
+    .android .btn,
+    .apple .btn {
+        padding-top: 12px;
     }
 
     .btn .text {
@@ -54,31 +56,25 @@
         min-width: 224px;
         min-height: 48px;
         padding: 8px 32px;
-
-        line-height: 1.625rem;
-        line-height: calc(1.625rem - 1px);
     }
 
-    .ios .btn {
-        padding-top: 10px;
+    .android .btn,
+    .apple .btn {
+        padding-top: 11px;
     }
 
     .btn .text {
+        margin-top: 1px;
+
         font-size: 1.25rem;
         line-height: 1.4375rem;
     }
 }
 
-input[type="submit"].btn,
-input[type="reset"].btn,
-input[type="button"].btn,
-button.btn {
-    padding-top: 6px;
-}
-
 .btn .text {
+    margin: auto;
+
     font-weight: inherit;
-	vertical-align: middle;
 }
 
 .btn::-moz-focus-inner {
