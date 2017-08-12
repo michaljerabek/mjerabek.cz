@@ -52,8 +52,7 @@
 
             correctWrapperHeight = function () {
 
-                $tabsWrapper.css("height", "auto")
-                    .css("height", $activeTab.outerHeight(true));
+                $tabsWrapper.css("height", $activeTab.outerHeight(true));
             },
 
             getNextTabHeight = function ($tabToShow) {
@@ -62,9 +61,9 @@
 
                 var toHeight = $tabsWrapper.css("height", "auto").outerHeight();
 
-                $tabToShow.css("position", "");
-
                 correctWrapperHeight();
+
+                $tabToShow.css("position", "");
 
                 return toHeight;
             },
@@ -200,7 +199,7 @@
 
                     tapped = false;
 
-                infinitum.on("tap." + ns + " dragging." + ns, function () {
+                infinitum.on("tap." + ns + " dragging." + ns, function (event) {
 
                     tapped = true;
                 });

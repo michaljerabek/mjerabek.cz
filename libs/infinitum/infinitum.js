@@ -350,6 +350,8 @@
 
         this.initialized = false;
 
+        this._hasPointer = false;
+
         this._animate = this._animate.bind(this);
 
         this._shouldCancelRAF = true;
@@ -678,7 +680,7 @@
      */
     Infinitum.prototype.dragging = function () {
 
-        return this._hasPointer;
+        return this._hasPointer !== false;
     };
 
     Infinitum.prototype._initOptions = function (options) {
@@ -1116,7 +1118,7 @@
         this._byMouse = !!event.type.match(/mouse/);
         this._byTouch = !!event.type.match(/touch/);
 
-        if (this._hasPointer || (this._byMouse && event.button !== 0)) {
+        if (this._hasPointer !== false || (this._byMouse && event.button !== 0)) {
 
             event.preventDefault();
 
@@ -1168,7 +1170,7 @@
 
     Infinitum.prototype._onPointerMove = function (event) {
 
-        if (!this._hasPointer) {
+        if (this._hasPointer === false) {
 
             event.preventDefault();
 
@@ -1186,7 +1188,7 @@
             diffX = clientX - this._lastClientX;
 
         //vertikální posun na dotykových zařízeních?
-        if (this._byTouch && this._fixVertical === null) {
+        if (this._byTouch && this._fixVertical === null && event.originalEvent.touches.length === 1) {
 
             this._fixVertical = Math.abs(clientY - this._lastClientY) + 1 > Math.abs(diffX);
         }
@@ -1261,7 +1263,7 @@
 
     Infinitum.prototype._onPointerEnd = function (event) {
 
-        if ((this._byMouse && event.button !== 0) || (!this._hasPointer && event.type !== "click")) {
+        if ((this._byMouse && event.button !== 0) || (this._hasPointer === false && event.type !== "click")) {
 
             return;
         }

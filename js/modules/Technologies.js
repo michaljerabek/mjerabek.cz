@@ -43,7 +43,9 @@
                 closeBtn: ".technologies__close",
                 sampleBtns: ".technologies__show-sample",
 
-                inertEl: ".main-nav, .ui__perspective"
+                inertEl: ".main-nav, .ui__perspective",
+
+                metaThemeColor: "meta[name='theme-color']"
             },
 
             SCROLL_OPTIONS = {
@@ -54,6 +56,8 @@
                     deltaFactor: 27
                 }
             },
+
+            THEME_COLOR = "#ceb77e",
 
             initialized,
 
@@ -80,6 +84,28 @@
             highlightCodeTimeout,
 
             highlighted = [],
+
+            $metaThemeColor,
+            savedThemeColor,
+
+            fixCodeMirrorCSS = function () {
+
+                var mode = CodeMirror.mimeModes["text/css"],
+
+                    valueKeywords = Object.keys(mode.valueKeywords),
+
+                    addValueKeywords = [
+                        "line-height", "width", "cubic-bezier"
+                    ];
+
+                addValueKeywords.forEach(function (keyword) {
+
+                    if (valueKeywords.indexOf(keyword) === -1) {
+
+                        mode.valueKeywords[keyword] = true;
+                    }
+                });
+            },
 
             cancelPreventScroll = function () {
 
@@ -114,6 +140,8 @@
                 $self.prop("inert", true);
 
                 openedByEl.focus();
+
+                $metaThemeColor.attr("content", savedThemeColor);
 
                 var hash = "#" + ns.Offer.getSelf()[0].id;
 
@@ -172,6 +200,8 @@
                     current: getTabIndexFrom$El(ns.$temp)
                 }, true);
 
+                savedThemeColor = $metaThemeColor.attr("content");
+
                 openTimeout = setTimeout(function() {
 
                     $toggleEl.addClass(CLASS.toggle);
@@ -180,6 +210,8 @@
                     $contentWrappers.css("transition", "");
 
                     $nav.focus();
+
+                    $metaThemeColor.attr("content", THEME_COLOR);
 
                 }, 0);
 
@@ -336,7 +368,7 @@
                 $tabs = $self.find(SELECTOR.tab);
                 $contentWrappers = $tabs.find(SELECTOR.contentWrappers);
 
-                if (typeof document.body.style.webkitOverflowScrolling === "undefined") {
+                if (typeof document.body.style.webkitOverflowScrolling === "undefined" && !document.documentElement.className.match(/android/)) {
 
                     SCROLL_OPTIONS.axis = "y";
 
@@ -347,6 +379,8 @@
                     $contentWrappers.filter(SELECTOR.sampleWrapper).mCustomScrollbar(SCROLL_OPTIONS);
                 }
 
+                fixCodeMirrorCSS();
+
                 highlightCode(tab, true);
             },
 
@@ -355,6 +389,8 @@
                 $inertEl = $(SELECTOR.inertEl);
 
                 $toggleEl = $(SELECTOR.toggleEl);
+
+                $metaThemeColor = $(SELECTOR.metaThemeColor);
 
                 initNav();
 

@@ -98,9 +98,6 @@
             left: 50%;
 
             color: #C06C47;
-            box-shadow: -1px 1px 2px rgba(17, 17, 17, 0.325),
-                -1px 1px 4px rgba(17, 17, 17, 0.25),
-                -1px 1px 6px rgba(17, 17, 17, 0.175);
         }
 
         .technologies__close .x::before,
@@ -116,7 +113,9 @@
             width: 27px;
 
             background: currentColor;
-            box-shadow: inherit;
+            box-shadow: -1px 1px 2px rgba(17, 17, 17, 0.325),
+                -1px 1px 4px rgba(17, 17, 17, 0.25),
+                -1px 1px 6px rgba(17, 17, 17, 0.175);
         }
 
         .technologies__close .x::after {
@@ -555,6 +554,11 @@
             .js .technologies__text-content-wrapper,
             .js .technologies__sample-content-wrapper {
                 overflow: hidden;
+            }
+
+            .android .technologies__text-content-wrapper,
+            .android .technologies__sample-content-wrapper {
+                overflow: auto;
             }
 
             @supports (-webkit-overflow-scrolling: touch) {

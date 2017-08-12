@@ -83,7 +83,7 @@
 
                     var selfRect = $self[0].getBoundingClientRect();
 
-                    if (selfRect.top + (selfRect.height / 2) < window.innerHeight) {
+                    if (selfRect.bottom - window.innerHeight <= window.innerHeight / 2) {
 
                         $bgLayers.find(SELECTOR.findSpeechBubble)
                             .addClass(CLASS.speachBubbleVisible);
@@ -106,7 +106,7 @@
                     event.preventDefault();
                 });
 
-                if (typeof document.body.style.webkitOverflowScrolling === "undefined") {
+                if (typeof document.body.style.webkitOverflowScrolling === "undefined" && !document.documentElement.className.match(/android/)) {
 
                     $formInfo.mCustomScrollbar(SCROLL_OPTIONS);
                 }

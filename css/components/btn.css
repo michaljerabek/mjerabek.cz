@@ -8,7 +8,6 @@
     flex-grow: 0;
     flex-shrink: 0;
     display: inline-flex;
-    justify-content: center;
     align-items: center;
     margin-bottom: 1px; /*Android nezobrazuje border*/
 
@@ -44,6 +43,10 @@
         padding-top: 12px;
     }
 
+    _:-ms-fullscreen, :root .btn {
+        padding-top: 13px;
+    }
+
     .btn .text {
         font-size: 1.4375rem;
         line-height: 1.4375rem;
@@ -61,6 +64,10 @@
     .android .btn,
     .apple .btn {
         padding-top: 11px;
+    }
+
+    _:-ms-fullscreen, :root .btn {
+        padding-top: 12px;
     }
 
     .btn .text {

@@ -10,7 +10,7 @@
     ns.MainNav = (function () {
 
         $.easing["mainNav." + ns] = function (x) {
-            return 1 - Math.pow(1 - x, 3);
+            return 1 - Math.pow(1 - x, 4);
         };
 
         var CLASS = {
@@ -28,7 +28,8 @@
                 focus: "main-nav-focus",
                 active: "main-nav-active",
                 scrollTo: "main-nav-scroll-to",
-                ignore: "main-nav-ignore"
+                ignore: "main-nav-ignore",
+                theme: "main-nav-theme"
             },
 
             SELECTOR = {
@@ -45,10 +46,12 @@
 
                 localLink: "a[href^='#']:not([href='#']):not([data-" + DATA.ignore + "='true'])",
 
-                scrollTarget: "[data-main-nav-target='true']"
+                scrollTarget: "[data-main-nav-target='true']",
+
+                metaThemeColor: "meta[name='theme-color']"
             },
 
-            SCROLL_DURATION_BASE = 425,
+            SCROLL_DURATION_BASE = 500,
 
             AUTOHIDE = 10000,
 
@@ -73,6 +76,7 @@
             $fixedElement,
             $scrollTargets,
             $lastAcitvateItem$link,
+            $metaThemeColor,
 
             $opener,
             onOpenerToggleTimeout,
@@ -150,6 +154,16 @@
                 isFixed = state;
 
                 $self[state ? "addClass" : "removeClass"](CLASS.fixableFixed);
+            },
+
+            changeTheme = function ($target) {
+
+                var themeColor = $target.data(DATA.theme);
+
+                if (themeColor) {
+
+                    $metaThemeColor.attr("content", themeColor);
+                }
             },
 
             setScrollableState = function () {
@@ -319,6 +333,8 @@
 
                     $scrollTarget.attr("id", targetId);
 
+                    changeTheme($scrollTarget);
+
                     event.preventDefault();
                 }
             },
@@ -348,7 +364,7 @@
                 return currentScrollTarget;
             },
 
-            findLinkToActivate = function () {
+            activateByScroll = function () {
 
                 //nevyhledávat aktivní odkaz, pokud se stránka posouvá kliknutím na odkaz v menu
                 if (skipFindItemToActivate) {
@@ -377,6 +393,8 @@
                     activateItem($link, true);
 
                     updateHistory($link);
+
+                    changeTheme(ns.$temp);
                 }
             },
 
@@ -518,10 +536,15 @@
 
                 ns.$doc.on("click." + ns, SELECTOR.localLink, scrollToTarget);
 
-                ns.$win.on("scroll." + ns + " scroll.MainNav." + ns, findLinkToActivate)
+                ns.$win.on("scroll." + ns + " scroll.MainNav." + ns, activateByScroll)
                     .on("scroll." + ns + " scroll.MainNav." + ns, fixNav);
 
                 ns.$win.on("mousewheel." + ns + " DOMMouseScroll", onScroll);
+
+                $self.on("focusin." + ns, function () {
+
+                    toggleVisibility(true, true);
+                });
 
                 $itemsWrapper.on("mouseover." + ns, onMouseoverItemsWrapper)
                     .on("scroll." + ns, setScrollableState);
@@ -544,6 +567,8 @@
                 $opener = $self.find(SELECTOR.opener);
 
                 $scrollTargets = $(SELECTOR.scrollTarget);
+
+                $metaThemeColor = $(SELECTOR.metaThemeColor);
             },
 
             scrollTo = function (target, history) {

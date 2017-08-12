@@ -619,6 +619,7 @@
             }
         }
 
+        .android .contact__form-info,
         .no-js .contact__form-info {
             overflow: auto;
         }
@@ -810,7 +811,7 @@
     @media (max-width: 767px) {
 
         .contact__background-layer .speach {
-            left: 115%;
+            left: 125%;
         }
     }
 
@@ -830,6 +831,18 @@
             contact__speach--slide-in 4s cubic-bezier(0.125, 1.75, .0, 1) 0.5s 1 backwards;
     }
 
+    @media (max-width: 767px) {
+
+        .contact__background-layer .speach.speach--big {
+            margin-bottom: 335px;
+        }
+
+        .contact__background-layer .speach.speach--small {
+            margin-bottom: 80px;
+            margin-left: -495px;
+        }
+    }
+
         .contact__background-layer .speach path {
             fill: rgba(206, 183, 126, 0);
             stroke: rgba(206, 183, 126, 0.4);
@@ -838,6 +851,14 @@
             transition: fill 2s ease 1s,
                 stroke 2s ease 1s;
             will-change: fill, stroke;
+        }
+
+        @media (max-width: 767px) {
+
+            .contact__background-layer .speach path {
+                transform-origin: bottom left;
+                transform: scale(0.8);
+            }
         }
 
         .no-js .contact__background-layer .speach:not(:hover) path,
