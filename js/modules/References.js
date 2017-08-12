@@ -199,7 +199,7 @@
 
                     tapped = false;
 
-                infinitum.on("tap." + ns + " dragging." + ns, function (event) {
+                infinitum.on("tap." + ns + " dragging." + ns, function () {
 
                     tapped = true;
                 });
@@ -221,7 +221,7 @@
 
                         infinitum.setCurrent($activeLink.parent());
 
-                        ns.MainNav.scrollTo($self, true);
+                        ns.$win.trigger("main-nav-scroll-to." + ns, $self, true);
                     }
                 }
             },
@@ -274,6 +274,11 @@
                     parallax.destroy();
 
                     $self.addClass(CLASS.parallaxDestroyed);
+                });
+
+                ns.$win.on("technologies-opened." + ns + " technologies-closed." + ns, function (event) {
+
+                    parallax[event.type.match(/opened/) ? "disable" : "enable"]();
                 });
 
                 ns.BGObjectsOpacityAnimation.add($bgLayers, SELECTOR.findSquare);

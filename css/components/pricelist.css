@@ -429,6 +429,7 @@
                             transition: inherit;
                         }
 
+                        .pricelist__terms-and-conditions--show .pricelist__terms-and-conditions-link::after,
                         .pricelist__terms-and-conditions-link:hover::after,
                         .pricelist__terms-and-conditions-link:focus::after {
                             border-top-color: #3C6778;

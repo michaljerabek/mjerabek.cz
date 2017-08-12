@@ -51,13 +51,15 @@
                 metaThemeColor: "meta[name='theme-color']"
             },
 
+            EVENT = {
+                scrollTo: "main-nav-scroll-to." + ns
+            },
+
             SCROLL_DURATION_BASE = 500,
 
             AUTOHIDE = 10000,
 
             initialized = false,
-
-            byTouch = false,
 
             $scrollingElement,
             lastScrollTop = null,
@@ -285,18 +287,16 @@
                 return SCROLL_DURATION_BASE + (SCROLL_DURATION_BASE * Math.abs(ns.$win.scrollTop() - targetScrollTop) / getScrollableHeight());
             },
 
-            scrollToTarget = function (event) {
+            scrollToTarget = function (navLink) {
 
-                if (!isLocalLink(event.currentTarget)) {
+                if (!isLocalLink(navLink)) {
 
-                    return;
+                    return false;
                 }
 
-                byTouch = event.type.match(/touch/);
+                var targetId = (navLink.href || "").split("#")[1],
 
-                var targetId = (event.currentTarget.href || "").split("#")[1],
-
-                    $link = $(event.currentTarget),
+                    $link = $(navLink),
 
                     $scrollTarget = $("#" + targetId);
 
@@ -335,8 +335,10 @@
 
                     changeTheme($scrollTarget);
 
-                    event.preventDefault();
+                    return true;
                 }
+
+                return false;
             },
 
             isTargetInView = function (rect) {
@@ -532,9 +534,32 @@
                 $opener.blur();
             },
 
+            scrollToHandler = function (event, target, history) {
+
+                if (typeof target !== "string") {
+
+                    target = "#" + (target.jquery ? target[0].id : target.id);
+                }
+
+                if (target.indexOf("#") !== 0) {
+
+                    target = "#" + target;
+                }
+
+                preserveHistory = history;
+
+                scrollToTarget($self.find("[href*='" + target + "']")[0]);
+            },
+
             initEvents = function () {
 
-                ns.$doc.on("click." + ns, SELECTOR.localLink, scrollToTarget);
+                ns.$doc.on("click." + ns, SELECTOR.localLink, function (event) {
+
+                    if (scrollToTarget(event.currentTarget)) {
+
+                        event.preventDefault();
+                    }
+                });
 
                 ns.$win.on("scroll." + ns + " scroll.MainNav." + ns, activateByScroll)
                     .on("scroll." + ns + " scroll.MainNav." + ns, fixNav);
@@ -550,6 +575,8 @@
                     .on("scroll." + ns, setScrollableState);
 
                 $opener.on("change." + ns, onOpenerToggle);
+
+                ns.$win.on(EVENT.scrollTo, scrollToHandler);
 
                 ns.$win.trigger("scroll.MainNav." + ns);
             },
@@ -571,18 +598,6 @@
                 $metaThemeColor = $(SELECTOR.metaThemeColor);
             },
 
-            scrollTo = function (target, history) {
-
-                if (typeof target !== "string") {
-
-                    target = "#" + (target.jquery ? target[0].id : target.id);
-                }
-
-                preserveHistory = history;
-
-                $self.find("[href*='" + target + "']").click();
-            },
-
             init = function () {
 
                 if (window.location.hash) {
@@ -600,9 +615,7 @@
             };
 
         return {
-            init: init,
-
-            scrollTo: scrollTo
+            init: init
         };
 
     }());

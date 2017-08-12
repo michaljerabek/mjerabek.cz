@@ -666,6 +666,13 @@
                         border-bottom: 1px dotted rgba(231, 231, 231, 1);
                     }
 
+                    @media (pointer: coarse) {
+
+                        .technologies__text-content abbr::after {
+                            display: none;
+                        }
+                    }
+
                 .technologies__sample-content {
                     font-family: "PT Mono", monospace;
                     font-size: 0.875rem;

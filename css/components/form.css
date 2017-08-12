@@ -34,6 +34,29 @@
         outline: none;
     }
 
+    .apple select.form__field,
+    .apple input[type="text"].form__field,
+    .apple input[type="password"].form__field,
+    .apple input[type="search"].form__field,
+    .apple input[type="tel"].form__field,
+    .apple input[type="email"].form__field,
+    .apple input[type="number"].form__field,
+    .apple input[type="step"].form__field,
+    .apple input[type^="date"].form__field,
+    .apple input[type="time"].form__field,
+    .android select.form__field,
+    .android input[type="text"].form__field,
+    .android input[type="password"].form__field,
+    .android input[type="search"].form__field,
+    .android input[type="tel"].form__field,
+    .android input[type="email"].form__field,
+    .android input[type="number"].form__field,
+    .android input[type="step"].form__field,
+    .android input[type^="date"].form__field,
+    .android input[type="time"].form__field {
+        padding-top: 4px;
+    }
+
     /*odstraní zabarvení automaticky vyplněných polí v Chromu*/
     @supports (animation-name: form--clear-autofill) {
 
@@ -79,8 +102,32 @@
             font-size: 1.0625rem;
             line-height: 2.875rem;
         }
+
+        .apple select.form__field,
+        .apple input[type="text"].form__field,
+        .apple input[type="password"].form__field,
+        .apple input[type="search"].form__field,
+        .apple input[type="tel"].form__field,
+        .apple input[type="email"].form__field,
+        .apple input[type="number"].form__field,
+        .apple input[type="step"].form__field,
+        .apple input[type^="date"].form__field,
+        .apple input[type="time"].form__field,
+        .android select.form__field,
+        .android input[type="text"].form__field,
+        .android input[type="password"].form__field,
+        .android input[type="search"].form__field,
+        .android input[type="tel"].form__field,
+        .android input[type="email"].form__field,
+        .android input[type="number"].form__field,
+        .android input[type="step"].form__field,
+        .android input[type^="date"].form__field,
+        .android input[type="time"].form__field {
+            padding-top: 3px;
+        }
     }
 
+    .apple textarea.form__field,
     textarea.form__field {
         min-width: 100%;
         height: auto;

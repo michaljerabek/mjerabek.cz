@@ -48,6 +48,11 @@
                 metaThemeColor: "meta[name='theme-color']"
             },
 
+            EVENT = {
+                opened: "technologies-opened." + ns,
+                closed: "technologies-closed." + ns
+            },
+
             SCROLL_OPTIONS = {
                 theme: "minimal",
                 scrollInertia: 500,
@@ -147,6 +152,8 @@
 
                 window.history.replaceState(hash, "", hash);
 
+                ns.$win.trigger(EVENT.closed);
+
                 event.preventDefault();
             },
 
@@ -212,6 +219,8 @@
                     $nav.focus();
 
                     $metaThemeColor.attr("content", THEME_COLOR);
+
+                    ns.$win.trigger(EVENT.opened);
 
                 }, 0);
 

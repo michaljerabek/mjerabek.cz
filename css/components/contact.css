@@ -749,8 +749,9 @@
             margin: auto;
         }
 
+        .android .contact__form-btn .numbers,
         .apple .contact__form-btn .numbers {
-            top: 2px;
+            top: 3px;
         }
 
     .form--progress .send-animation {

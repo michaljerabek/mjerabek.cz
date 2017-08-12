@@ -82,6 +82,11 @@
 
                         parallax = parallaxInstances[p];
 
+                        if (parallax.disabled) {
+
+                            return;
+                        }
+
                         if (typeof parallaxId === "string" || typeof parallaxId === "number") {
 
                             if (parallax.id !== parallaxId) {
@@ -487,6 +492,8 @@
 
             this.options = typeof options === "string" ? { parallax: options } : options;
 
+            this.disabled = false;
+
             this.refresh(this.options || DEFAULTS, true);
         };
 
@@ -690,6 +697,16 @@
     Parallax.prototype.getParallaxWidth = function () {
 
         return this.parallaxWidth;
+    };
+
+    Parallax.prototype.enable = function () {
+
+        this.disabled = false;
+    };
+
+    Parallax.prototype.disable = function () {
+
+        this.disabled = true;
     };
 
 }());

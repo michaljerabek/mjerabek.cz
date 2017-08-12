@@ -13,6 +13,10 @@
                 stopHover: "section__background-layer--stop-hover"
             },
 
+            DATA = {
+                objectSelector: "object-selector." + ns
+            },
+
             SUPPORTS_CSS_ANIMATIONS = typeof document.body.style.animation !== "undefined",
 
             ANIM_POSTFIX = "--fade-in",
@@ -27,6 +31,8 @@
             $layers = [],
 
             stopAnimation = false,
+
+            lowPerf = false,
 
             animate = function (elSquare) {
 
@@ -53,9 +59,26 @@
                 setTimeout(animate.bind(null, elSquare), OPACITY_DURATION);
             },
 
+            manualInitAnimations = function ($bgLayers, objectSelector) {
+
+                $bgLayers.each(function (i) {
+
+                    ns.$temp[0] = this;
+
+                    objectSelector = objectSelector || ns.$temp.data(DATA.objectSelector);
+
+                    setTimeout(
+                        animate.bind(null, ns.$temp.find(objectSelector)[0]),
+                        OPACITY_DURATION * (i / ($bgLayers.length - 1))
+                    );
+                });
+            },
+
             initPerformanceEvents = function () {
 
                 ns.$win.on("lowperformance." + ns, function () {
+
+                    lowPerf = true;
 
                     stopAnimation = true;
 
@@ -71,12 +94,29 @@
                     });
                 });
 
+                ns.$win.on("technologies-opened." + ns + " technologies-closed." + ns, function (event) {
+
+                    if (!lowPerf) {
+
+                        stopAnimation = !!event.type.match(/opened/);
+
+                        $layers.forEach(function ($bgLayers) {
+
+                            $bgLayers[stopAnimation ? "addClass" : "removeClass"](CLASS.stopAnimation);
+
+                            manualInitAnimations($bgLayers);
+                        });
+                    }
+                });
+
                 events = true;
             },
 
             add = function ($bgLayers, objectSelector, animPostfix) {
 
                 $layers.push($bgLayers);
+
+                $bgLayers.data(DATA.objectSelector, objectSelector);
 
                 if (!events) {
 
@@ -85,15 +125,7 @@
 
                 if (!SUPPORTS_CSS_ANIMATIONS || $bgLayers.find(objectSelector).css("animation-name") === "none") {
 
-                    $bgLayers.each(function (i) {
-
-                        ns.$temp[0] = this;
-
-                        setTimeout(
-                            animate.bind(null, ns.$temp.find(objectSelector)[0]),
-                            OPACITY_DURATION * (i / ($bgLayers.length - 1))
-                        );
-                    });
+                    manualInitAnimations($bgLayers, objectSelector);
 
                     return;
                 }

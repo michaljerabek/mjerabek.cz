@@ -60,6 +60,11 @@
                     $self.addClass(CLASS.parallaxDestroyed);
                 });
 
+                ns.$win.on("technologies-opened." + ns + " technologies-closed." + ns, function (event) {
+
+                    parallax[event.type.match(/opened/) ? "disable" : "enable"]();
+                });
+
                 ns.BGObjectsOpacityAnimation.add($bgLayers, SELECTOR.findSquare);
             },
 
