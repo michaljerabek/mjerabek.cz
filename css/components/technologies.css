@@ -713,20 +713,22 @@
                 border-radius: 0;
                 outline: none;
                 cursor: pointer;
-                visibility: hidden;
+                opacity: 0;
                 -webkit-appearance: none;
                    -moz-appearance: none;
 
-                transition: visibility 0s linear 0s;
+                transition: opacity 0.75s cubic-bezier(.15, .75, .25, 1) 0s;
             }
 
             .no-js #html:target ~ .technologies .technologies__technology--html .technologies__show-sample,
             .no-js #css:target ~ .technologies .technologies__technology--css .technologies__show-sample,
             .no-js #js:target ~ .technologies .technologies__technology--js .technologies__show-sample,
             .technologies__technology--active .technologies__show-sample {
-                visibility: visible;
+                z-index: 11;
 
-                transition: visibility 0s linear 0.2s;
+                opacity: 1;
+
+                transition: opacity 0.75s cubic-bezier(.15, .75, .25, 1) 0.2s;
             }
 
             .no-js #html:target ~ .technologies .technologies__show-sample,
@@ -742,14 +744,38 @@
             .no-js #css:target ~ .technologies .technologies__sample:hover .technologies__show-sample,
             .no-js #js:target ~ .technologies .technologies__sample:hover .technologies__show-sample {
                 left: -40px;
-
-                backdrop-filter: brightness(12.5%);
             }
 
-            .no-js .technologies__sample:focus .technologies__show-sample,
-            .no-js .technologies__sample:hover .technologies__show-sample,
-            .technologies--show-sample .technologies__show-sample {
-                backdrop-filter: brightness(50%);
+            .technologies__show-sample::after {
+                content: "";
+
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                z-index: -1;
+
+                width: 100%;
+                height: 100%;
+
+                background-color: #000;
+                opacity: 0;
+
+                transition: opacity 0.75s cubic-bezier(.15, .75, .25, 1) 0s;
+            }
+
+            .no-js .technologies__sample:focus .technologies__show-sample::after,
+            .no-js .technologies__sample:hover .technologies__show-sample::after,
+            .technologies--show-sample .technologies__show-sample::after {
+                opacity: 0.5;
+            }
+
+            .no-js #html:target ~ .technologies .technologies__sample:focus .technologies__show-sample::after,
+            .no-js #css:target ~ .technologies .technologies__sample:focus .technologies__show-sample::after,
+            .no-js #js:target ~ .technologies .technologies__sample:focus .technologies__show-sample::after,
+            .no-js #html:target ~ .technologies .technologies__sample:hover .technologies__show-sample::after,
+            .no-js #css:target ~ .technologies .technologies__sample:hover .technologies__show-sample::after,
+            .no-js #js:target ~ .technologies .technologies__sample:hover .technologies__show-sample::after {
+                opacity: 0.9;
             }
 
                 .technologies__show-sample .text {

@@ -137,6 +137,8 @@
 
         font-size: 1.0625rem;
         line-height: 1.6875rem;
+
+        -ms-overflow-style: -ms-autohiding-scrollbar;
     }
 
     @media (max-width: 479px) {
