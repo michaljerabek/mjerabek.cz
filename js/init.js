@@ -73,22 +73,9 @@ jQuery(function () {
         window.MJNS.Contact.init();
     }
 
-    Array.prototype.slice.call(document.head.childNodes).forEach(function (node) {
+    if (window.MJNS.ConsoleMessage) {
 
-        if (node.nodeType === 8 && node.textContent.match(new RegExp("^-"))) {
+        window.MJNS.ConsoleMessage.init();
+    }
 
-            var message = node.textContent.replace(new RegExp("^-"), "").replace(/\s+/g, " ").trim();
-
-            if (navigator.userAgent.match(/firefox|chrome/i)) {
-
-                console.log("%c" + message, "font-family: 'Josefin Sans'; font-size: 17px; font-weight: 400; line-height: 27px; color: #7D6937;");
-
-                return false;
-            }
-
-            console.log(message);
-
-            return false;
-        }
-    });
 });

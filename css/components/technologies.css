@@ -561,6 +561,11 @@
                 overflow: auto;
             }
 
+            .technologies__text-content-wrapper,
+            .technologies__sample-content-wrapper {
+                overflow: auto;
+            }
+
             @supports (-webkit-overflow-scrolling: touch) {
 
                 .js .technologies__text-content-wrapper,
