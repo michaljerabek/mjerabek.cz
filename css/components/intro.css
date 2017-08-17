@@ -164,18 +164,18 @@
             will-change: transform;
         }
 
-        @supports (animation: show) {
-
-            .intro__logo-svg {
-                opacity: 0;
-            }
-        }
-
         .intro__logo-svg + .intro__logo-svg {
             margin-left: -100px;
 
             animation: show--init 0.7s linear 0s 1 forwards,
                 intro__show-logo-svg 3s cubic-bezier(.2, .7, .5, 1) 0.7s 1 forwards;
+        }
+
+        @supports (animation: show) {
+
+            .intro__logo-svg {
+                opacity: 0;
+            }
         }
 
         @keyframes intro__show-logo-svg {
@@ -703,7 +703,7 @@
                 display: table;
                 margin: 0px auto;
 
-                font-family: "Josefin Sans";
+                font-family: "Josefin Sans", sans-serif;
                 font-size: 1.6875rem;
                 font-style: italic;
                 font-weight: 300;
