@@ -52,7 +52,7 @@
             },
 
             EVENT = {
-                scrollTo: "main-nav-scroll-to." + ns
+                scrollTo: "main-nav__scroll-to." + ns
             },
 
             SCROLL_DURATION_BASE = 500,

@@ -49,8 +49,8 @@
             },
 
             EVENT = {
-                opened: "technologies-opened." + ns,
-                closed: "technologies-closed." + ns
+                opened: "technologies__opened." + ns,
+                closed: "technologies__closed." + ns
             },
 
             SCROLL_OPTIONS = {

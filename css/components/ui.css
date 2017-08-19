@@ -223,6 +223,8 @@ a:active .transition-hideable {
     perspective: 100px;
     perspective-origin: 50% 150vh;
 
+    width: 100%;
+
     overflow: hidden;
 }
 

@@ -261,7 +261,7 @@
 /*--------------------------------------------------------------------*/
 
 .js .references .fade-in {
-    transform: translateX(0px) translateY(0px);
+    transform: translateX(0px) translateY(0px) translateZ(0);
 
     opacity: 1;
 
@@ -309,8 +309,6 @@
         z-index: 1;
 
         pointer-events: none;
-
-        contain: content;
     }
 
     .js .references__reference {
@@ -839,8 +837,8 @@
             opacity 1.5s ease 0s;
     }
 
-    .no-js .references__background-layer .square:not(:hover),
-    .references__background-layer.section__background-layer--stop-animation .square:not(:hover) {
+    .no-js .references__background-layer .square:not(:hover):not(:active),
+    .references__background-layer.section__background-layer--stop-animation .square:not(:hover):not(:active) {
         border-color: rgba(177, 150, 83, 0.325);
     }
 
@@ -867,6 +865,7 @@
         }
     }
 
+    .references__background-layer:not(.section__background-layer--stop-hover) .square:active,
     .references__background-layer:not(.section__background-layer--stop-hover) .square:hover {
         background-color: rgba(177, 150, 83, 0.15);
         border-color: rgba(177, 150, 83, 0);

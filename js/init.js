@@ -23,6 +23,11 @@ jQuery(function () {
         window.MJNS.BreakText.init();
     }
 
+    if (window.MJNS.BGObjectsOpacityAnimation) {
+
+        window.MJNS.BGObjectsOpacityAnimation.init();
+    }
+
     if (window.MJNS.MainNav) {
 
         window.MJNS.MainNav.init();

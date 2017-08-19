@@ -902,8 +902,8 @@
             opacity 1.5s ease 0s;
     }
 
-    .no-js .intro__background-layer .square:not(:hover),
-    .intro__background-layer.section__background-layer--stop-animation .square:not(:hover) {
+    .no-js .intro__background-layer .square:not(:hover):not(:active),
+    .intro__background-layer.section__background-layer--stop-animation .square:not(:hover):not(:active) {
         border-color: rgba(206, 183, 126, 0.35);
     }
 
@@ -953,6 +953,7 @@
         }
     }
 
+    .intro__background-layer:not(.section__background-layer--stop-hover) .square:active,
     .intro__background-layer:not(.section__background-layer--stop-hover) .square:hover {
         background-color: rgba(206, 183, 126, 0.175);
         border-color: rgba(206, 183, 126, 0);

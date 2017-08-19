@@ -414,6 +414,7 @@
 /*---------------------------- FORM ----------------------------*/
 
 .contact__form {
+    pointer-events: none;
 }
 
     .contact__form-title {
@@ -615,7 +616,7 @@
                 font-size: 0.875rem;
                 font-weight: 400;
                 line-height: 1.4375rem;
-                letter-spacing: 0.02em;
+                letter-spacing: 0.015em;
             }
         }
 
@@ -799,8 +800,6 @@
 
         opacity: 1;
 
-        pointer-events: auto;
-
         transition: opacity 1.5s ease 0s;
         will-change: opacity;
     }
@@ -849,6 +848,8 @@
             stroke: rgba(206, 183, 126, 0.4);
             stroke-width: 1px;
 
+            pointer-events: auto;
+
             transition: fill 2s ease 1s,
                 stroke 2s ease 1s;
             will-change: fill, stroke;
@@ -862,8 +863,8 @@
             }
         }
 
-        .no-js .contact__background-layer .speach:not(:hover) path,
-        .contact__background-layer.section__background-layer--stop-animation .speach:not(:hover) path {
+        .no-js .contact__background-layer .speach:not(:hover):not(:active) path,
+        .contact__background-layer.section__background-layer--stop-animation .speach:not(:hover):not(:active) path {
             stroke: rgba(206, 183, 126, 0.325);
         }
 
@@ -907,6 +908,7 @@
             }
         }
 
+        .contact__background-layer:not(.section__background-layer--stop-hover) .speach path:active,
         .contact__background-layer:not(.section__background-layer--stop-hover) .speach path:hover {
             fill: rgba(206, 183, 126, 0.05);
             stroke: rgba(206, 183, 126, 0);

@@ -17,6 +17,10 @@
                 objectSelector: "object-selector." + ns
             },
 
+            EVENT = {
+                add: "bg-object-opacity-animation__add." + ns
+            },
+
             SUPPORTS_CSS_ANIMATIONS = typeof document.body.style.animation !== "undefined",
 
             ANIM_POSTFIX = "--fade-in",
@@ -94,7 +98,7 @@
                     });
                 });
 
-                ns.$win.on("technologies-opened." + ns + " technologies-closed." + ns, function (event) {
+                ns.$win.on("technologies__opened." + ns + " technologies__closed." + ns, function (event) {
 
                     if (!lowPerf) {
 
@@ -112,7 +116,7 @@
                 events = true;
             },
 
-            add = function ($bgLayers, objectSelector, animPostfix) {
+            add = function (event, $bgLayers, objectSelector, animPostfix) {
 
                 $layers.push($bgLayers);
 
@@ -141,10 +145,15 @@
                         ns.$temp.off("animationend." + ns);
                     }
                 });
+            },
+
+            init = function () {
+
+                ns.$win.on(EVENT.add, add);
             };
 
         return {
-            add: add
+            init: init
         };
 
     }());

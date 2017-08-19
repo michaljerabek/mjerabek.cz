@@ -60,12 +60,12 @@
                     $self.addClass(CLASS.parallaxDestroyed);
                 });
 
-                ns.$win.on("technologies-opened." + ns + " technologies-closed." + ns, function (event) {
+                ns.$win.on("technologies__opened." + ns + " technologies__closed." + ns, function (event) {
 
                     parallax[event.type.match(/opened/) ? "disable" : "enable"]();
                 });
 
-                ns.BGObjectsOpacityAnimation.add($bgLayers, SELECTOR.findSquare);
+                ns.$win.trigger("bg-object-opacity-animation__add." + ns, [$bgLayers, SELECTOR.findSquare]);
             },
 
             init = function () {

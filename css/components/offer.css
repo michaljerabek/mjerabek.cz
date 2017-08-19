@@ -50,7 +50,7 @@
 
     /*bug v iOS - vynucení překreslení*/
     .js .offer:not(.offer--init-fade-in) {
-        display: inline-flex;
+        display: block;
         width: 100%;
 
         animation: none;
@@ -272,6 +272,8 @@
 
             .offer__technology-link {
                 position: relative;
+
+                transform: translateZ(0);
 
                 display: block;
                 min-height: 180px;
@@ -578,8 +580,8 @@
             opacity 1.5s ease 0s;
     }
 
-    .no-js .section__background-layer--stop-animation .square:not(:hover),
-    .offer__background-layer.section__background-layer--stop-animation .square:not(:hover) {
+    .no-js .section__background-layer--stop-animation .square:not(:hover):not(:active),
+    .offer__background-layer.section__background-layer--stop-animation .square:not(:hover):not(:active) {
         border-color: rgba(192, 108, 71, 0.325);
     }
 
@@ -626,6 +628,7 @@
     }
 }
 
+    .offer__background-layer:not(.section__background-layer--stop-hover) .square:active,
     .offer__background-layer:not(.section__background-layer--stop-hover) .square:hover {
         background-color: rgba(192, 108, 71, 0.1);
         border-color: rgba(192, 108, 71, 0);
