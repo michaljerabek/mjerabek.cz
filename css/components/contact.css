@@ -526,7 +526,7 @@
 
         @media (max-width: 479px) {
 
-            .contact__form__item--msg textarea.form__field {
+            .contact__form-item--msg textarea.form__field {
                 min-height: 6rem;
             }
         }
@@ -574,21 +574,21 @@
             transition: inherit;
         }
 
-        .no-js .contact__form__item--msg:target .contact__form-info-link::after,
+        .no-js .contact__form-item--msg:target .contact__form-info-link::after,
         .contact__form--show-info .contact__form-info-link::after,
         .contact__form-info-link:hover::after,
         .contact__form-info-link:focus::after {
             border-top-color: #79A9BD;
         }
 
-        .no-js .contact__form__item--msg:target .contact__form-info-link,
+        .no-js .contact__form-item--msg:target .contact__form-info-link,
         .contact__form--show-info .contact__form-info-link,
         .contact__form-info-link:hover,
         .contact__form-info-link:focus {
             color: #79A9BD;
         }
 
-        .no-js .contact__form__item--msg:target .contact__form-info-link::after,
+        .no-js .contact__form-item--msg:target .contact__form-info-link::after,
         .contact__form--show-info .contact__form-info-link::after {
             transform: rotate(180deg);
         }
@@ -647,20 +647,61 @@
             }
 
         .contact__form--show-info .contact__form-info-link + .contact__form-info,
-        .no-js .contact__form__item--msg:target .contact__form-info-link + .contact__form-info {
+        .no-js .contact__form-item--msg:target .contact__form-info-link + .contact__form-info {
             height: 13rem;
 
             opacity: 1;
         }
 
-    .contact__form__item--btn {
+    .contact__form-send-error {
+        margin-bottom: 0px;
+        margin-top: 0px;
+
+	    font-size: 0.875rem;
+        line-height: 0rem;
+        font-weight: 600;
+        font-style: italic;
+        letter-spacing: 0.01em;
+
+        color: #D07E5B;
+        opacity: 0;
+        visibility: hidden;
+
+        transition: opacity 0.25s ease 0s,
+            line-height 0.25s ease 0.125s,
+            margin 0.25s ease 0.125s,
+            padding 0.25s ease 0.125s,
+            visibility 0s linear 0.375s;
+    }
+
+    .contact__form-send-error--active {
+        margin-bottom: 22px;
+        margin-top: -14px;
+
+        line-height: 1.25rem;
+
+        opacity: 1;
+        visibility: visible;
+
+        transition: opacity 0.25s ease 0.125s,
+            line-height 0.25s ease 0s,
+            margin 0.25s ease 0s,
+            padding 0.25s ease 0s;
+    }
+
+    .no-js .contact__form-item--msg:target .contact__form-send-error,
+    .contact__form--show-info .contact__form-send-error {
+        margin-top: -4px;
+    }
+
+    .contact__form-item--btn {
         margin-top: 10px;
         margin-bottom: auto;
     }
 
     @media (max-width: 479px) {
 
-        .contact__form__item--btn {
+        .contact__form-item--btn {
             text-align: center;
         }
     }

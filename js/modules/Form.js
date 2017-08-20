@@ -279,7 +279,7 @@
                     showErrors(this, customErrors);
                 }
 
-                setResultState(this, false, validationFailed || customErrors);
+                setResultState(this, false, validationFailed || (customErrors && !$.isEmptyObject(customErrors)));
             },
 
             createDeferred = function ($form, validationErrors) {

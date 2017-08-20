@@ -14,6 +14,8 @@
 
                 showFormInfo: "contact__form--show-info",
 
+                sendErrorActive: "contact__form-send-error--active",
+
                 hideText: "contact__form-btn--hide-text"
             },
 
@@ -28,7 +30,9 @@
                 formInfo: ".contact__form-info",
                 formInfoLink: ".contact__form-info-link",
                 formSubmit: ".contact__form-btn",
-                findBtnText: ".text"
+                findBtnText: ".text",
+
+                sendError: ".contact__form-send-error"
             },
 
             DATA = {
@@ -56,6 +60,7 @@
             $formInfoLink,
             $formSubmit,
             $formBtnText,
+            $sendError,
 
             $bgLayers,
             parallax,
@@ -138,9 +143,16 @@
                 return $.post("main.php", data, "json");
             },
 
-            showMsg = function (ok, onBackToInitState) {
+            showMsg = function (ok, sendError, onBackToInitState) {
 
                 var originalMsg = $formBtnText.text();
+
+                if (sendError) {
+
+                    $sendError = $sendError || $form.find(SELECTOR.sendError);
+
+                    $sendError.addClass(CLASS.sendErrorActive);
+                }
 
                 $formSubmit.addClass(CLASS.hideText)
                     .delay(MSG_FADE_DURATION, MSG_QUEUE)
@@ -204,9 +216,14 @@
                     $formSubmit.blur()
                         .dequeue(MSG_QUEUE);
 
+                    if ($sendError) {
+
+                        $sendError.removeClass(CLASS.sendErrorActive);
+                    }
+
                     if (errors) {
 
-                        showMsg(false, function() {
+                        showMsg(false, false, function() {
 
                             ns.Form.enable($form);
                         });
@@ -216,9 +233,9 @@
 
                     send().then(function (result) {
 
-                        $deferred[result.ok ? "resolve" : "reject"](result.errors);
+                        $deferred[result.ok ? "resolve" : "reject"](result.validationErrors);
 
-                        showMsg(result.ok, function() {
+                        showMsg(result.ok, !result.ok && !result.validationErrors, function() {
 
                             ns.Form.enable($form);
 

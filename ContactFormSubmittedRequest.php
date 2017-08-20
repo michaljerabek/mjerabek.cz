@@ -4,8 +4,6 @@ include "ContactFormSubmitted.php";
 
 class ContactFormSubmittedRequest {
 
-    protected $errors = null;
-
     protected $formSubmit;
 
     public function __construct() {
@@ -19,9 +17,19 @@ class ContactFormSubmittedRequest {
         } else {
 
             $this->sendError(
+                null,
                 $this->formSubmit->getErrors()
             );
         }
+    }
+
+    protected function getResponse($ok, $errors = null, $validationErrors = null) {
+
+        return json_encode([
+            "ok" => $ok,
+            "errors" => $errors ? $errors : $validationErrors,
+            "validationErrors" => $validationErrors
+        ]);
     }
 
     protected function sendOk() {
@@ -30,10 +38,7 @@ class ContactFormSubmittedRequest {
 
             header("Content-Type: application/json");
 
-            echo json_encode([
-                "ok" => true,
-                "errors" => null
-            ]);
+            echo $this->getResponse(true);
 
             return;
         }
@@ -41,16 +46,17 @@ class ContactFormSubmittedRequest {
         header("Location: {$_SERVER["HTTP_REFERER"]}#kontakt");
     }
 
-    protected function sendError($errors = null) {
+    protected function sendError($errors, $validationErrors) {
 
         if (isset($_POST["ajax"])) {
 
             header("Content-Type: application/json");
 
-            echo json_encode([
-                "ok" => false,
-                "errors" => $errors
-            ]);
+            echo $this->getResponse(
+                false,
+                count($errors) ? $errors: null,
+                count($validationErrors) ? $validationErrors: null
+            );
 
             return;
         }
