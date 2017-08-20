@@ -963,7 +963,7 @@
 
                             <!--–––––––– ** FORM ** –––––––––-->
 
-                            <form class="contact__form form form--dark" method="post" action="">
+                            <form class="contact__form form form--dark" method="post" action="main.php">
 
                                 <h3 class="visually-hidden x-mobile">Kontaktní formulář</h3>
                                 <h3 class="contact__form-title x-desktop x-tablet" data-break-text="true" data-small-caps="true">Nebo mi napište zprávu</h3>
@@ -972,7 +972,7 @@
 
                                     <label class="form__label" for="name">Jméno</label>
 
-                                    <input class="form__field" id="name" type="text" name="name" required>
+                                    <input class="form__field" id="name" type="text" name="name" value="dafsdf" required>
 
                                     <p class="form__error form__error--required">Toto pole je povinné.</p>
 
@@ -982,7 +982,7 @@
 
                                     <label class="form__label" for="email">Email</label>
 
-                                    <input class="form__field" id="email" type="email" name="email" required>
+                                    <input class="form__field" id="email" type="email" name="email" value="dsfad@sdf.ch" required>
 
                                     <p class="form__error form__error--required">Toto pole je povinné.</p>
 
@@ -994,7 +994,7 @@
 
                                     <label class="form__label" for="msg">Zpráva</label>
 
-                                    <textarea class="form__field" id="msg" name="msg" required></textarea>
+                                    <textarea class="form__field" id="msg" name="msg" required>zpráva</textarea>
 
                                     <p class="form__error form__error--required">Toto pole je povinné.</p>
 
@@ -1017,7 +1017,7 @@
 
                                 <div class="contact__form__item contact__form__item--btn form__item">
 
-                                    <button class="form__submit btn btn--light contact__form-btn" type="submit" data-contact-ok="zpráva odeslána" data-contact-error="neodesláno">
+                                    <button class="form__submit btn btn--light contact__form-btn" type="submit" name="form-submit" value="ContactFormSubmitted" data-contact-ok="zpráva odeslána" data-contact-error="neodesláno">
                                         <span class="text">odeslat zprávu</span>
                                         <span class="send-animation" role="presentation" aria-hidden="true">
                                             <span class="numbers">1011100011001011101011001101010010010100100010110001010100110111000110010111010110011010100100101001000101100010101001</span>
@@ -1059,7 +1059,7 @@
 
         <h2 class="visually-hidden">Podrobnosti o HTML, CSS a JavaScriptu</h2>
 
-        <a class="technologies__close transition" href="#no-target">
+        <a class="technologies__close transition" href="#no-target" title="Zavřít">
             <span class="x transition"><!-- css --></span>
         </a>
 

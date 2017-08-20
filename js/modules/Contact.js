@@ -117,17 +117,25 @@
                 }
             },
 
+            getFormData = function () {
+
+                var data = {};
+
+                $.each($form[0].elements, function (i, element) {
+
+                    data[element.name] = element.value;
+                });
+
+                return data;
+            },
+
             send = function () {
 
-                var $deffered = $.Deferred();
+                var data = getFormData();
 
-                setTimeout(function() {
+                data.ajax = true;
 
-                    $deffered.resolve(!!Math.round(Math.random()));
-
-                }, (Math.random() * 2000) + 100);
-
-                return $deffered;
+                return $.post("main.php", data, "json");
             },
 
             showMsg = function (ok, onBackToInitState) {
@@ -206,11 +214,11 @@
                         return;
                     }
 
-                    send().then(function (ok) {
+                    send().then(function (result) {
 
-                        $deferred[ok ? "resolve" : "reject"]();
+                        $deferred[result.ok ? "resolve" : "reject"](result.errors);
 
-                        showMsg(ok, function() {
+                        showMsg(result.ok, function() {
 
                             ns.Form.enable($form);
 
