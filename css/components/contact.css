@@ -601,13 +601,15 @@
             letter-spacing: 0.01em;
 
             opacity: 0;
+            visibility: hidden;
 
             overflow: hidden;
 
             pointer-events: auto;
 
             transition: height 0.425s cubic-bezier(0.3, 0.15, .3, 1) 0s,
-                opacity 0.425s cubic-bezier(0.3, 0.15, .3, 1) 0s;
+                opacity 0.425s cubic-bezier(0.3, 0.15, .3, 1) 0s,
+                visibility 0s linear 0.425s;
         }
 
         @media (max-width: 479px) {
@@ -651,48 +653,67 @@
             height: 13rem;
 
             opacity: 1;
+            visibility: visible;
+
+            transition: height 0.425s cubic-bezier(0.3, 0.15, .3, 1) 0s,
+                opacity 0.425s cubic-bezier(0.3, 0.15, .3, 1) 0s;
         }
 
-    .contact__form-send-error {
-        margin-bottom: 0px;
-        margin-top: 0px;
-
-	    font-size: 0.875rem;
-        line-height: 0rem;
-        font-weight: 600;
-        font-style: italic;
-        letter-spacing: 0.01em;
-
-        color: #D07E5B;
-        opacity: 0;
-        visibility: hidden;
-
-        transition: opacity 0.25s ease 0s,
-            line-height 0.25s ease 0.125s,
-            margin 0.25s ease 0.125s,
-            padding 0.25s ease 0.125s,
-            visibility 0s linear 0.375s;
+    .contact__form-send-msgs {
+        display: flex;
+        flex-direction: column;
     }
 
-    .contact__form-send-error--active {
-        margin-bottom: 22px;
-        margin-top: -14px;
+        .contact__form-send-ok,
+        .contact__form-send-error {
+            padding-bottom: 0;
+            margin-top: 0;
 
-        line-height: 1.25rem;
+            font-size: 0.875rem;
+            line-height: 0rem;
+            font-weight: 600;
+            font-style: italic;
+            letter-spacing: 0.01em;
 
-        opacity: 1;
-        visibility: visible;
+            color: #D07E5B;
+            opacity: 0;
+            visibility: hidden;
 
-        transition: opacity 0.25s ease 0.125s,
-            line-height 0.25s ease 0s,
-            margin 0.25s ease 0s,
-            padding 0.25s ease 0s;
-    }
+            overflow: hidden;
 
-    .no-js .contact__form-item--msg:target .contact__form-send-error,
-    .contact__form--show-info .contact__form-send-error {
-        margin-top: -4px;
-    }
+            pointer-events: auto;
+
+            transition: opacity 0.25s ease 0s,
+                line-height 0.25s ease 0.125s,
+                margin 0.25s ease 0.125s,
+                padding 0.25s ease 0.125s,
+                visibility 0s linear 0.375s;
+        }
+
+        .contact__form-send-ok {
+            color: #79A9BD;
+        }
+
+        .contact__form-send-ok--active,
+        .contact__form-send-error--active {
+            padding-bottom: 17px;
+            margin-top: -10px;
+
+            line-height: 1.25rem;
+
+            opacity: 1;
+            visibility: visible;
+
+            transition: opacity 0.25s ease 0.125s,
+                line-height 0.25s ease 0s,
+                margin 0.25s ease 0s,
+                padding 0.25s ease 0s;
+        }
+
+        .no-js .contact__form-item--msg:target .contact__form-send-error--active,
+        .contact__form--show-info .contact__form-send-error--active {
+            margin-top: -4px;
+        }
 
     .contact__form-item--btn {
         margin-top: 10px;
@@ -713,8 +734,8 @@
 }
 
 .form--disabled .contact__form-btn,
-.form--ok .contact__form-btn,
-.form--error .contact__form-btn,
+.js .form--ok .contact__form-btn,
+.js .form--error .contact__form-btn,
 .form--progress .contact__form-btn {
     pointer-events: none;
 }
@@ -727,23 +748,26 @@
     background-color: transparent;
 }
 
-.form--validation-error .contact__form-btn,
-.form--validation-error .contact__form-btn:hover,
-.form--validation-error .contact__form-btn:active,
-.form--validation-error .contact__form-btn:focus,
+.js .form--validation-error .contact__form-btn,
+.no-js .form--validation-error .contact__form-btn:not(:hover):not(:focus):not(:active),
+.js .form--validation-error .contact__form-btn:hover,
+.js .form--validation-error .contact__form-btn:active,
+.js .form--validation-error .contact__form-btn:focus,
 .form--error .contact__form-btn,
-.form--error .contact__form-btn:hover,
-.form--error .contact__form-btn:active,
-.form--error .contact__form-btn:focus {
+.no-js .form--error .contact__form-btn:not(:hover):not(:focus):not(:active),
+.js .form--error .contact__form-btn:hover,
+.js .form--error .contact__form-btn:active,
+.js .form--error .contact__form-btn:focus {
     color: #D07E5B;
     border-color: #D07E5B;
     background-color: transparent;
 }
 
-.form--ok .contact__form-btn,
-.form--ok .contact__form-btn:hover,
-.form--ok .contact__form-btn:active,
-.form--ok .contact__form-btn:focus {
+.js .form--ok .contact__form-btn,
+.no-js .form--ok .contact__form-btn:not(:hover):not(:focus):not(:active),
+.js .form--ok .contact__form-btn:hover,
+.js .form--ok .contact__form-btn:active,
+.js .form--ok .contact__form-btn:focus {
     color: #79A9BD;
     border-color: #79A9BD;
     background-color: transparent;
@@ -884,7 +908,7 @@
         }
     }
 
-        .contact__background-layer .speach path {
+        .contact__background-layer path {
             fill: rgba(206, 183, 126, 0);
             stroke: rgba(206, 183, 126, 0.4);
             stroke-width: 1px;
@@ -898,23 +922,23 @@
 
         @media (max-width: 767px) {
 
-            .contact__background-layer .speach path {
+            .contact__background-layer path {
                 transform-origin: bottom left;
                 transform: scale(0.8);
             }
         }
 
-        .no-js .contact__background-layer .speach:not(:hover):not(:active) path,
-        .contact__background-layer.section__background-layer--stop-animation .speach:not(:hover):not(:active) path {
+        .no-js .contact__background-layer path:not(:hover),
+        .js .contact__background-layer.section__background-layer--stop-animation path:not(.hover) {
             stroke: rgba(206, 183, 126, 0.325);
         }
 
-        .contact__background-layer:nth-child(1) .speach path {
+        .contact__background-layer:nth-child(1) path {
             animation: contact__speach--fade-in-init 0.25s linear 0s 1 backwards,
                 contact__speach--fade-in 0.65s ease-out 0.25s 1 backwards;
         }
 
-        .contact__background-layer:nth-child(2) .speach path {
+        .contact__background-layer:nth-child(2) path {
             animation: contact__speach--fade-in-init 0.5s linear 0s 1 backwards,
                 contact__speach--fade-in 0.65s ease-out 0.5s 1 backwards;
         }
@@ -949,8 +973,8 @@
             }
         }
 
-        .contact__background-layer:not(.section__background-layer--stop-hover) .speach path:active,
-        .contact__background-layer:not(.section__background-layer--stop-hover) .speach path:hover {
+        .js .contact__background-layer:not(.section__background-layer--stop-hover) path.hover,
+        .no-js .contact__background-layer:not(.section__background-layer--stop-hover) path:hover {
             fill: rgba(206, 183, 126, 0.05);
             stroke: rgba(206, 183, 126, 0);
 

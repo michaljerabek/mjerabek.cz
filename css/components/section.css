@@ -234,6 +234,7 @@
         height: 100%;
 
         will-change: transform;
+
         contain: layout size style;
     }
 
@@ -254,6 +255,7 @@
             pointer-events: auto;
 
             will-change: opacity;
+
             contain: layout size style;
     }
 

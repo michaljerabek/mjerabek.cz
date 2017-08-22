@@ -1,5 +1,12 @@
 <?php
 
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+
+    header("Location: " . $_SERVER["PHP_SELF"]);
+
+    exit;
+}
+
 $formSubmitName = $_POST["form-submit"];
 
 if ($formSubmitName) {
@@ -13,6 +20,6 @@ if ($formSubmitName) {
     exit;
 }
 
-header("Location: {$_SERVER["HTTP_REFERER"]}");
+header("Location: " . $_SERVER["PHP_SELF"]);
 
 exit;

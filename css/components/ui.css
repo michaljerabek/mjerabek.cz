@@ -21,15 +21,6 @@ a:not(.btn):focus {
     background: rgba(125, 105, 55, 0.85);
 }
 
-.ui__target {
-	position: fixed;
-    top: 0;
-    left: 0;
-
-    width: 0;
-    height: 0;
-}
-
 /*---------------------------- TRANSITION ----------------------------*/
 
 /* Univerzální transition.

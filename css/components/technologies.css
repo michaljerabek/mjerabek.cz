@@ -19,12 +19,13 @@
     transition: visibility 0s linear 0.5s,
         height 0s linear 0.5s,
         z-index 0s linear 0.5s;
+
     contain: strict;
 }
 
-.no-js #html:target ~ .technologies,
-.no-js #css:target ~ .technologies,
-.no-js #js:target ~ .technologies,
+.no-js #html:target .technologies,
+.no-js #css:target .technologies,
+.no-js #js:target .technologies,
 .ui__content--technologies .technologies {
     z-index: 9999;
 
@@ -86,9 +87,9 @@
         }
     }
 
-    .no-js #html:target ~ .technologies .technologies__close,
-    .no-js #css:target ~ .technologies .technologies__close,
-    .no-js #js:target ~ .technologies .technologies__close,
+    .no-js #html:target .technologies__close,
+    .no-js #css:target .technologies__close,
+    .no-js #js:target .technologies__close,
     .ui__content--technologies .technologies__close {
         opacity: 1;
 
@@ -170,9 +171,9 @@
         will-change: transform, opacity;
     }
 
-    .no-js #html:target ~ .technologies .technologies__background-layer,
-    .no-js #css:target ~ .technologies .technologies__background-layer,
-    .no-js #js:target ~ .technologies .technologies__background-layer,
+    .no-js #html:target .technologies__background-layer,
+    .no-js #css:target .technologies__background-layer,
+    .no-js #js:target .technologies__background-layer,
     .ui__content--technologies .technologies__background-layer {
         transform: translateX(0px);
 
@@ -299,9 +300,9 @@
     margin-top: -100vh;
 }
 
-.no-js #html:target ~ .technologies .technologies__technology--html,
-.no-js #css:target ~ .technologies .technologies__technology--css,
-.no-js #js:target ~ .technologies .technologies__technology--js,
+.no-js #html:target .technologies__technology--html,
+.no-js #css:target .technologies__technology--css,
+.no-js #js:target .technologies__technology--js,
 .js .technologies__technology--active {
     visibility: visible;
 
@@ -339,12 +340,12 @@
             will-change: transform, opacity;
         }
 
-        .no-js #html:target ~ .technologies .technologies__technology--html .technologies__text,
-        .no-js #css:target ~ .technologies .technologies__technology--css .technologies__text,
-        .no-js #js:target ~ .technologies .technologies__technology--js .technologies__text,
-        .no-js #html:target ~ .technologies .technologies__technology--html .technologies__sample,
-        .no-js #css:target ~ .technologies .technologies__technology--css .technologies__sample,
-        .no-js #js:target ~ .technologies .technologies__technology--js .technologies__sample,
+        .no-js #html:target .technologies__technology--html .technologies__text,
+        .no-js #css:target .technologies__technology--css .technologies__text,
+        .no-js #js:target .technologies__technology--js .technologies__text,
+        .no-js #html:target .technologies__technology--html .technologies__sample,
+        .no-js #css:target .technologies__technology--css .technologies__sample,
+        .no-js #js:target .technologies__technology--js .technologies__sample,
         .technologies__technology--active .technologies__text,
         .technologies__technology--active .technologies__sample {
             transition: transform 0.5s cubic-bezier(.5, .2, .8, .5) 0s,
@@ -475,9 +476,9 @@
                 background-color: transparent;
             }
 
-            .no-js #html:target ~ .technologies .technologies__technology--html .technologies__sample,
-            .no-js #css:target ~ .technologies .technologies__technology--css .technologies__sample,
-            .no-js #js:target ~ .technologies .technologies__technology--js .technologies__sample,
+            .no-js #html:target .technologies__technology--html .technologies__sample,
+            .no-js #css:target .technologies__technology--css .technologies__sample,
+            .no-js #js:target .technologies__technology--js .technologies__sample,
             .technologies__technology--active .technologies__sample {
                 background-color: rgba(17, 17, 17, 0.92);
             }
@@ -495,12 +496,12 @@
             }
         }
 
-        .no-js #html:target ~ .technologies .technologies__text,
-        .no-js #css:target ~ .technologies .technologies__text,
-        .no-js #js:target ~ .technologies .technologies__text,
-        .no-js #html:target ~ .technologies .technologies__sample,
-        .no-js #css:target ~ .technologies .technologies__sample,
-        .no-js #js:target ~ .technologies .technologies__sample,
+        .no-js #html:target .technologies__text,
+        .no-js #css:target .technologies__text,
+        .no-js #js:target .technologies__text,
+        .no-js #html:target .technologies__sample,
+        .no-js #css:target .technologies__sample,
+        .no-js #js:target .technologies__sample,
         .ui__content--technologies .technologies__text,
         .ui__content--technologies .technologies__sample {
             transform: translateX(0px);
@@ -517,12 +518,12 @@
                 filter 0.75s cubic-bezier(.15, .75, .25, 1) 0s;
         }
 
-        .no-js #html:target ~ .technologies .technologies__technology--html .technologies__text,
-        .no-js #css:target ~ .technologies .technologies__technology--css .technologies__text,
-        .no-js #js:target ~ .technologies .technologies__technology--js .technologies__text,
-        .no-js #html:target ~ .technologies .technologies__technology--html .technologies__sample,
-        .no-js #css:target ~ .technologies .technologies__technology--css .technologies__sample,
-        .no-js #js:target ~ .technologies .technologies__technology--js .technologies__sample,
+        .no-js #html:target .technologies__technology--html .technologies__text,
+        .no-js #css:target .technologies__technology--css .technologies__text,
+        .no-js #js:target .technologies__technology--js .technologies__text,
+        .no-js #html:target .technologies__technology--html .technologies__sample,
+        .no-js #css:target .technologies__technology--css .technologies__sample,
+        .no-js #js:target .technologies__technology--js .technologies__sample,
         .js .ui__content--technologies .technologies__technology--active .technologies__text,
         .js .ui__content--technologies .technologies__technology--active .technologies__sample {
             transition: transform 0.75s cubic-bezier(.15, .75, .25, 1) 0.1s,
@@ -590,12 +591,12 @@
                 transform: translateX(20px);
             }
 
-            .no-js #html:target ~ .technologies .technologies__technology--html .technologies__text-content-wrapper,
-            .no-js #css:target ~ .technologies .technologies__technology--css .technologies__text-content-wrapper,
-            .no-js #js:target ~ .technologies .technologies__technology--js .technologies__text-content-wrapper,
-            .no-js #html:target ~ .technologies .technologies__technology--html .technologies__sample-content-wrapper,
-            .no-js #css:target ~ .technologies .technologies__technology--css .technologies__sample-content-wrapper,
-            .no-js #js:target ~ .technologies .technologies__technology--js .technologies__sample-content-wrapper,
+            .no-js #html:target .technologies__technology--html .technologies__text-content-wrapper,
+            .no-js #css:target .technologies__technology--css .technologies__text-content-wrapper,
+            .no-js #js:target .technologies__technology--js .technologies__text-content-wrapper,
+            .no-js #html:target .technologies__technology--html .technologies__sample-content-wrapper,
+            .no-js #css:target .technologies__technology--css .technologies__sample-content-wrapper,
+            .no-js #js:target .technologies__technology--js .technologies__sample-content-wrapper,
             .js .technologies__technology--active .technologies__text-content-wrapper,
             .js .technologies__technology--active .technologies__sample-content-wrapper {
                 transform: translateX(0px);
@@ -728,9 +729,9 @@
                 transition: opacity 0.75s cubic-bezier(.15, .75, .25, 1) 0s;
             }
 
-            .no-js #html:target ~ .technologies .technologies__technology--html .technologies__show-sample,
-            .no-js #css:target ~ .technologies .technologies__technology--css .technologies__show-sample,
-            .no-js #js:target ~ .technologies .technologies__technology--js .technologies__show-sample,
+            .no-js #html:target .technologies__technology--html .technologies__show-sample,
+            .no-js #css:target .technologies__technology--css .technologies__show-sample,
+            .no-js #js:target .technologies__technology--js .technologies__show-sample,
             .technologies__technology--active .technologies__show-sample {
                 z-index: 11;
 
@@ -739,18 +740,18 @@
                 transition: opacity 0.75s cubic-bezier(.15, .75, .25, 1) 0.2s;
             }
 
-            .no-js #html:target ~ .technologies .technologies__show-sample,
-            .no-js #css:target ~ .technologies .technologies__show-sample,
-            .no-js #js:target ~ .technologies .technologies__show-sample {
+            .no-js #html:target .technologies__show-sample,
+            .no-js #css:target .technologies__show-sample,
+            .no-js #js:target .technologies__show-sample {
                 pointer-events: none;
             }
 
-            .no-js #html:target ~ .technologies .technologies__sample:focus .technologies__show-sample,
-            .no-js #css:target ~ .technologies .technologies__sample:focus .technologies__show-sample,
-            .no-js #js:target ~ .technologies .technologies__sample:focus .technologies__show-sample,
-            .no-js #html:target ~ .technologies .technologies__sample:hover .technologies__show-sample,
-            .no-js #css:target ~ .technologies .technologies__sample:hover .technologies__show-sample,
-            .no-js #js:target ~ .technologies .technologies__sample:hover .technologies__show-sample {
+            .no-js #html:target .technologies__sample:focus .technologies__show-sample,
+            .no-js #css:target .technologies__sample:focus .technologies__show-sample,
+            .no-js #js:target .technologies__sample:focus .technologies__show-sample,
+            .no-js #html:target .technologies__sample:hover .technologies__show-sample,
+            .no-js #css:target .technologies__sample:hover .technologies__show-sample,
+            .no-js #js:target .technologies__sample:hover .technologies__show-sample {
                 left: -40px;
             }
 
@@ -777,12 +778,12 @@
                 opacity: 0.5;
             }
 
-            .no-js #html:target ~ .technologies .technologies__sample:focus .technologies__show-sample::after,
-            .no-js #css:target ~ .technologies .technologies__sample:focus .technologies__show-sample::after,
-            .no-js #js:target ~ .technologies .technologies__sample:focus .technologies__show-sample::after,
-            .no-js #html:target ~ .technologies .technologies__sample:hover .technologies__show-sample::after,
-            .no-js #css:target ~ .technologies .technologies__sample:hover .technologies__show-sample::after,
-            .no-js #js:target ~ .technologies .technologies__sample:hover .technologies__show-sample::after {
+            .no-js #html:target .technologies__sample:focus .technologies__show-sample::after,
+            .no-js #css:target .technologies__sample:focus .technologies__show-sample::after,
+            .no-js #js:target .technologies__sample:focus .technologies__show-sample::after,
+            .no-js #html:target .technologies__sample:hover .technologies__show-sample::after,
+            .no-js #css:target .technologies__sample:hover .technologies__show-sample::after,
+            .no-js #js:target .technologies__sample:hover .technologies__show-sample::after {
                 opacity: 0.9;
             }
 
@@ -882,21 +883,21 @@
             min-width: calc((100% / 21) * 8);
         }
 
-            .no-js #html:target ~ .technologies .technologies__nav-item:nth-child(1),
-            .no-js #css:target ~ .technologies .technologies__nav-item:nth-child(2),
-            .no-js #js:target ~ .technologies .technologies__nav-item:nth-child(3) {
+            .no-js #html:target .technologies__nav-item:nth-child(1),
+            .no-js #css:target .technologies__nav-item:nth-child(2),
+            .no-js #js:target .technologies__nav-item:nth-child(3) {
                 order: 0;
             }
 
-            .no-js #html:target ~ .technologies .technologies__nav-item:nth-child(2),
-            .no-js #css:target ~ .technologies .technologies__nav-item:nth-child(3),
-            .no-js #js:target ~ .technologies .technologies__nav-item:nth-child(1) {
+            .no-js #html:target .technologies__nav-item:nth-child(2),
+            .no-js #css:target .technologies__nav-item:nth-child(3),
+            .no-js #js:target .technologies__nav-item:nth-child(1) {
                 order: 1;
             }
 
-            .no-js #html:target ~ .technologies .technologies__nav-item:nth-child(3),
-            .no-js #css:target ~ .technologies .technologies__nav-item:nth-child(1),
-            .no-js #js:target ~ .technologies .technologies__nav-item:nth-child(2) {
+            .no-js #html:target .technologies__nav-item:nth-child(3),
+            .no-js #css:target .technologies__nav-item:nth-child(1),
+            .no-js #js:target .technologies__nav-item:nth-child(2) {
                 order: 2;
             }
 
@@ -967,15 +968,15 @@
                 color: #6196AC;
             }
 
-            .no-js #html:target ~ .technologies .technologies__nav-link[href$="#html"],
-            .no-js #css:target ~ .technologies .technologies__nav-link[href$="#css"],
-            .no-js #js:target ~ .technologies .technologies__nav-link[href$="#js"] {
+            .no-js #html:target .technologies__nav-link[href$="#html"],
+            .no-js #css:target .technologies__nav-link[href$="#css"],
+            .no-js #js:target .technologies__nav-link[href$="#js"] {
                 color: #6196AC;
             }
 
-            .no-js #html:target ~ .technologies .technologies__nav-link,
-            .no-js #css:target ~ .technologies .technologies__nav-link,
-            .no-js #js:target ~ .technologies .technologies__nav-link,
+            .no-js #html:target .technologies__nav-link,
+            .no-js #css:target .technologies__nav-link,
+            .no-js #js:target .technologies__nav-link,
             .ui__content--technologies .technologies__nav-link,
             .ui__content--technologies .infinitum__item--current .technologies__nav-link {
                 transform: translateX(0px);
@@ -1038,9 +1039,9 @@
             width 0.2s cubic-bezier(.1, .4, .2, 1) 0.15s;
     }
 
-    .no-js #html:target ~ .technologies .technologies__nav-active-indicator,
-    .no-js #css:target ~ .technologies .technologies__nav-active-indicator,
-    .no-js #js:target ~ .technologies .technologies__nav-active-indicator {
+    .no-js #html:target .technologies__nav-active-indicator,
+    .no-js #css:target .technologies__nav-active-indicator,
+    .no-js #js:target .technologies__nav-active-indicator {
         display: none;
     }
 

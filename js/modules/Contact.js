@@ -62,6 +62,8 @@
             $formBtnText,
             $sendError,
 
+            sendErrorMsgType = 0,
+
             $bgLayers,
             parallax,
 
@@ -140,7 +142,7 @@
 
                 data.ajax = true;
 
-                return $.post("main.php", data, "json");
+                return $.post($form.attr("action"), data, "json");
             },
 
             showMsg = function (ok, sendError, onBackToInitState) {
@@ -151,7 +153,8 @@
 
                     $sendError = $sendError || $form.find(SELECTOR.sendError);
 
-                    $sendError.addClass(CLASS.sendErrorActive);
+                    $sendError.eq(Math.min(sendErrorMsgType++, $sendError.length - 1))
+                        .addClass(CLASS.sendErrorActive);
                 }
 
                 $formSubmit.addClass(CLASS.hideText)

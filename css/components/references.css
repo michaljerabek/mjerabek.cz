@@ -78,7 +78,7 @@
 
     pointer-events: auto;
 
-    contain: content;
+    contain: layout;
 }
 
 @media (min-width: 1680px), (min-height: 1050px) {
@@ -147,6 +147,7 @@
 }
 
     .references__nav-items {
+        display: flex;
         width: 100%;
 
         font-size: 0;
@@ -160,7 +161,7 @@
     }
 
         .references__nav-item {
-            display: inline-block;
+            flex: none;
             min-width: 38.08%;
             min-width: calc((100% / 21) * 8);
         }
@@ -837,8 +838,8 @@
             opacity 1.5s ease 0s;
     }
 
-    .no-js .references__background-layer .square:not(:hover):not(:active),
-    .references__background-layer.section__background-layer--stop-animation .square:not(:hover):not(:active) {
+    .no-js .references__background-layer .square:not(:hover),
+    .js .references__background-layer.section__background-layer--stop-animation .square:not(.hover) {
         border-color: rgba(177, 150, 83, 0.325);
     }
 
@@ -865,8 +866,8 @@
         }
     }
 
-    .references__background-layer:not(.section__background-layer--stop-hover) .square:active,
-    .references__background-layer:not(.section__background-layer--stop-hover) .square:hover {
+    .js .references__background-layer:not(.section__background-layer--stop-hover) .square.hover,
+    .no-js .references__background-layer:not(.section__background-layer--stop-hover) .square:hover {
         background-color: rgba(177, 150, 83, 0.15);
         border-color: rgba(177, 150, 83, 0);
 

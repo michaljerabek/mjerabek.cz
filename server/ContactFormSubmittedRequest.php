@@ -25,42 +25,59 @@ class ContactFormSubmittedRequest {
 
     protected function getResponse($ok, $errors = null, $validationErrors = null) {
 
-        return json_encode([
+        return [
             "ok" => $ok,
             "errors" => $errors ? $errors : $validationErrors,
             "validationErrors" => $validationErrors
-        ]);
+        ];
+    }
+
+    protected function responseToSession($response) {
+
+        $_SESSION["ok"] = $response["ok"];
+        $_SESSION["errors"] = $response["errors"];
+        $_SESSION["validationErrors"] = $response["validationErrors"];
     }
 
     protected function sendOk() {
 
+        $response = $this->getResponse(true);
+
         if (isset($_POST["ajax"])) {
 
             header("Content-Type: application/json");
 
-            echo $this->getResponse(true);
+            echo json_encode($response);
 
             return;
         }
 
-        header("Location: {$_SERVER["HTTP_REFERER"]}#kontakt");
+        $this->responseToSession($response);
+
+        header("Location: " . $_SERVER["PHP_SELF"] . "#kontakt");
     }
 
     protected function sendError($errors, $validationErrors) {
 
+        $response = $this->getResponse(
+            false,
+            count($errors) ? $errors: null,
+            count($validationErrors) ? $validationErrors: null
+        );
+
         if (isset($_POST["ajax"])) {
 
             header("Content-Type: application/json");
 
-            echo $this->getResponse(
-                false,
-                count($errors) ? $errors: null,
-                count($validationErrors) ? $validationErrors: null
-            );
+            echo json_encode($response);
 
             return;
         }
 
-        header("Location: {$_SERVER["HTTP_REFERER"]}#kontakt");
+        $_SESSION["old_input"] = $_POST;
+
+        $this->responseToSession($response);
+
+        header("Location: " . $_SERVER["PHP_SELF"] . "#kontakt");
     }
 }

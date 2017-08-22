@@ -1,5 +1,7 @@
 <?php
 
+require("libs/PHPMailer/PHPMailerAutoload.php");
+
 class ContactFormSubmitted {
 
     protected $errors = [];
@@ -71,8 +73,22 @@ class ContactFormSubmitted {
 
     public function sendEmail() {
 
-        $headers = "From: ". $_POST["name"] . " <" . $_POST["email"] . ">\r\n";
+        $mail = new PHPMailer;
 
-        return @mail("mjerabek@seznam.cz", "mjerabek.cz: Kontaktní formulář", $_POST["msg"], $headers);
+        $mail->isSMTP();
+//        $mail->Host = "smtp.gmail.com";
+//        $mail->SMTPAuth = true;
+//        $mail->Username = "user@example.com";
+//        $mail->Password = "secret";
+//        $mail->SMTPSecure = "ssl";
+//        $mail->Port = 465;
+
+        $mail->setFrom($_POST["email"], $_POST["name"]);
+        $mail->addAddress("mjerabek@seznam.cz");
+
+        $mail->Subject = "mjerabek.cz: Kontaktní formulář";
+        $mail->Body = $_POST["msg"];
+
+        return $mail->send();
     }
 }

@@ -300,7 +300,7 @@
 
                     $scrollTarget = $("#" + targetId);
 
-                if ($scrollTarget.length) {
+                if ($scrollTarget.length && $scrollTarget.is(SELECTOR.scrollTarget)) {
 
                     $link.blur();
 
