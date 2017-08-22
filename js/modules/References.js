@@ -12,6 +12,8 @@
                 parallaxDestroyed: "references--no-parallax",
 
                 activeTab: "references__reference--active",
+                imageLoaded: "references__reference--image-loaded",
+                imageLoading: "references__reference--image-loading",
 
                 fadeIn: "fade-in"
             },
@@ -27,6 +29,7 @@
                 activeTab: "." + CLASS.activeTab,
 
                 imageWrapper: ".references__image-wrapper",
+                imageTemplate: ".references__image-template",
                 infoItem: ".references__project-info-item",
                 infoContent: ".references__project-info-content",
                 moreInfo: ".references__project-more-info",
@@ -163,6 +166,27 @@
                 });
             },
 
+            loadImage = function ($tabToShow) {
+
+                if ($tabToShow.hasClass(CLASS.imageLoaded) || $tabToShow.hasClass(CLASS.imageLoading)) {
+
+                    return;
+                }
+
+                var $template = $tabToShow.find(SELECTOR.imageTemplate),
+                    $image = $($template.text());
+
+                $image.one("load." + ns, function () {
+
+                    $tabToShow.addClass(CLASS.imageLoaded)
+                        .removeClass(CLASS.imageLoading);
+                });
+
+                $tabToShow.addClass(CLASS.imageLoading);
+
+                $template.replaceWith($image);
+            },
+
             switchTabs = function (event) {
 
                 ns.$temp[0] = event.target;
@@ -176,6 +200,8 @@
                     $queueEl = $self.stop(TAB_SWITCH_QUEUE + willIndex, true, false);
 
                 $activeTab.removeClass(CLASS.activeTab);
+
+                loadImage($tabToShow);
 
                 buildSwitchAnimation($tabToShow, $queueEl);
 

@@ -484,13 +484,16 @@
 
                     font-size: 0;
 
-                    box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.1);
+                    background-color: rgba(240, 240, 240, 0.5);
+                    box-shadow: -1px 1px 10px 0px rgba(0, 0, 0, 0.1);
 
                     overflow: hidden;
 
                     pointer-events: auto;
 
-                    transition: 0.325s cubic-bezier(.45, .25, .4, .9);
+                    transition: transform 0.325s cubic-bezier(.45, .25, .4, .9) 0s,
+                        opacity 0.325s cubic-bezier(.45, .25, .4, .9) 0s,
+                        box-shadow 0.65s cubic-bezier(0, 0, .2, 1) 0s;
                     will-change: transform;
                 }
 
@@ -517,7 +520,148 @@
                 }
 
                 .js .references__image-wrapper.fade-in {
-                    transition: 0.5s cubic-bezier(.45, .25, .4, .9);
+                    transition: transform 0.5s cubic-bezier(.45, .25, .4, .9) 0s,
+                        opacity 0.5s cubic-bezier(.45, .25, .4, .9) 0s,
+                        box-shadow 0.65s cubic-bezier(0, 0, .2, 1) 0s;
+                }
+
+                .js .references__image-wrapper {
+                    box-shadow: -1px 1px 4px 0px rgba(0, 0, 0, 0.1);
+                }
+
+                .js .references__reference--image-loaded .references__image-wrapper {
+                    box-shadow: -1px 1px 10px 0px rgba(0, 0, 0, 0.1);
+                }
+
+                .js .references__image-wrapper::before,
+                .js .references__image-wrapper::after {
+                    content: "";
+
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    z-index: -1;
+
+                    width: 40px;
+                    height: 40px;
+                    margin-left: -20px;
+                    margin-top: -20px;
+
+                    border: 1px solid;
+                    opacity: 0;
+
+                    animation-duration: 1.5s;
+                    animation-timing-function: cubic-bezier(0, .8, .75, 1);
+                    animation-iteration-count: 0;
+                }
+
+                .js .references__image-wrapper::after {
+                    transform: rotate(-180deg) translateX(-40px) scale(0.8);
+
+                    border-color: #ceb77e;
+
+                    animation-name: references__image-wrapper-loading;
+                }
+
+                .js .references__image-wrapper::before {
+                    transform: rotate(-180deg) translateX(40px) scale(0.8);
+
+                    border-color: #D07E5B;
+
+                    animation-name: references__image-wrapper-loading2;
+                }
+
+                @media (max-width: 479px), (min-width: 640px) and (max-width: 767px) {
+
+                    .js .references__image-wrapper::after {
+                        transform: rotate(-180deg) translateX(-40px) scale(0.8);
+
+                        animation-name: references__image-wrapper-loading--small;
+                    }
+
+                    .js .references__image-wrapper::before {
+                        transform: rotate(-180deg) translateX(40px) scale(0.8);
+
+                        animation-name: references__image-wrapper-loading2--small;
+                    }
+                }
+
+                .js .references__reference--image-loading .references__image-wrapper::after,
+                .js .references__reference--image-loading .references__image-wrapper::before {
+                    animation-iteration-count: infinite;
+                }
+
+                .js .references__reference--image-loaded .references__image-wrapper::after,
+                .js .references__reference--image-loaded .references__image-wrapper::before {
+                    animation-iteration-count: 1;
+                }
+
+                @keyframes references__image-wrapper-loading {
+                    0% {
+                        border-color: #ceb77e;
+                        opacity: 0;
+                    }
+                    50% {
+                        border-color: #ceb77e;
+                        opacity: 1;
+                    }
+                    100% {
+                        transform: translateX(-6px) rotate(45deg);
+
+                        border-color: #79A9BD;
+                        opacity: 0;
+                    }
+                }
+
+                @keyframes references__image-wrapper-loading2 {
+                    0% {
+                        border-color: #D07E5B;
+                        opacity: 0;
+                    }
+                    50% {
+                        border-color: #D07E5B;
+                        opacity: 1;
+                    }
+                    100% {
+                        transform: translateX(6px) rotate(45deg);
+
+                        border-color: #79A9BD;
+                        opacity: 0;
+                    }
+                }
+
+                @keyframes references__image-wrapper-loading--small {
+                    0% {
+                        border-color: #ceb77e;
+                        opacity: 0;
+                    }
+                    50% {
+                        border-color: #ceb77e;
+                        opacity: 1;
+                    }
+                    100% {
+                        transform: translateX(-6px) rotate(45deg) scale(0.8);
+
+                        border-color: #79A9BD;
+                        opacity: 0;
+                    }
+                }
+
+                @keyframes references__image-wrapper-loading2--small {
+                    0% {
+                        border-color: #D07E5B;
+                        opacity: 0;
+                    }
+                    50% {
+                        border-color: #D07E5B;
+                        opacity: 1;
+                    }
+                    100% {
+                        transform: translateX(6px) rotate(45deg) scale(0.8);
+
+                        border-color: #79A9BD;
+                        opacity: 0;
+                    }
                 }
 
                     .references__image {
@@ -527,8 +671,22 @@
 
                         width: 100%;
 
-                        transition: filter 0.65s cubic-bezier(0, 0, .2, 1) 0s;
+                        transition: filter 0.65s cubic-bezier(0, 0, .2, 1) 0s,
+                            transform 0.65s cubic-bezier(0, 0, .2, 1) 0s,
+                            opacity 0.65s cubic-bezier(0, 0, .2, 1) 0s;
                         will-change: transform, filter;
+                    }
+
+                    .js .references__image {
+                        transform: scale(1.1);
+
+                        opacity: 0;
+                    }
+
+                    .js .references__reference--image-loaded .references__image {
+                        transform: scale(1);
+
+                        opacity: 1;
                     }
 
                     .references__image-wrapper.hover .references__image,
