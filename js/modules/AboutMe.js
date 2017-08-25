@@ -36,28 +36,31 @@
 
             init = function (debug) {
 
-                parallax = new Parallax({
-                    parallax: SELECTOR.self,
-                    layers: SELECTOR.photo,
-                    fakeTilt: false,
+                setTimeout(function() {
 
-                    onTransform: applyPhotoFilter
-                });
+                    parallax = new Parallax({
+                        parallax: SELECTOR.self,
+                        layers: SELECTOR.photo,
+                        fakeTilt: false,
 
-                ns.$win.on("lowperformance." + ns, function () {
-
-                    useFilter = false;
-
-                    parallax.$layers.css("filter", "none");
-                });
-
-                if (debug) {
-
-                    ns.$win.on("resize", function () {
-
-                        ns.$win.scrollTop($(SELECTOR.self).offset().top);
+                        onTransform: applyPhotoFilter
                     });
-                }
+
+                    ns.$win.on("lowperformance." + ns, function () {
+
+                        useFilter = false;
+
+                        parallax.$layers.css("filter", "none");
+                    });
+
+                    if (debug) {
+
+                        ns.$win.on("resize", function () {
+
+                            ns.$win.scrollTop($(SELECTOR.self).offset().top);
+                        });
+                    }
+                }, 100);
             };
 
         return {

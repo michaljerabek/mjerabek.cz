@@ -307,18 +307,21 @@
                     parallax[event.type.match(/opened/) ? "disable" : "enable"]();
                 });
 
-                ns.$win.trigger("bg-object-opacity-animation__add." + ns, [$bgLayers, SELECTOR.findSquare]);
+                setTimeout(function() {
+
+                    ns.$win.trigger("bg-object-opacity-animation__add." + ns, [$bgLayers, SELECTOR.findSquare]);
+                }, 150);
             },
 
             init = function () {
 
                 $self = $(SELECTOR.self);
 
-                initBackground();
-
                 initNav();
 
                 initTabs();
+
+                setTimeout(initBackground, 100);
             };
 
         return {

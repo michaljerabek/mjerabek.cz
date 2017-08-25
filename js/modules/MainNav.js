@@ -88,6 +88,8 @@
 
             preserveHistory,
 
+            currentScrollTarget,
+
             getFixPosition = function () {
 
                 var styles = window.getComputedStyle($self[0]);
@@ -349,11 +351,17 @@
             findCurrentScrollTarget = function () {
 
                 var currentScrollTarget,
-                    currentScrollTargetTop = null;
+                    currentScrollTargetTop = null,
 
-                $scrollTargets.each(function (i, target) {
+                    rect,
+                    target,
+                    t = 0;
 
-                    var rect = target.getBoundingClientRect();
+                for (t; t < $scrollTargets.length; t++) {
+
+                    target = $scrollTargets[t];
+
+                    rect = target.getBoundingClientRect();
 
                     if (isTargetInView(rect) && (rect.top > currentScrollTargetTop || currentScrollTargetTop === null)) {
 
@@ -361,7 +369,7 @@
 
                         currentScrollTargetTop = rect.top;
                     }
-                });
+                }
 
                 return currentScrollTarget;
             },
@@ -382,9 +390,11 @@
                     return;
                 }
 
-                var currentScrollTarget = findCurrentScrollTarget();
+                var _currentScrollTarget = findCurrentScrollTarget();
 
-                if (currentScrollTarget) {
+                if (currentScrollTarget !== _currentScrollTarget) {
+
+                    currentScrollTarget = _currentScrollTarget;
 
                     ns.$temp[0] = currentScrollTarget;
 

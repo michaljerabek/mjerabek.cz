@@ -52,7 +52,10 @@
                     parallax[event.type.match(/opened/) ? "disable" : "enable"]();
                 });
 
-                ns.$win.trigger("bg-object-opacity-animation__add." + ns, [$bgLayers, SELECTOR.findSquare]);
+                setTimeout(function() {
+
+                    ns.$win.trigger("bg-object-opacity-animation__add." + ns, [$bgLayers, SELECTOR.findSquare]);
+                }, 100);
             },
 
             init = function () {
@@ -64,7 +67,7 @@
                 //text je skrytý kvůli animaci
                 $title.removeClass(CLASS.hidden);
 
-                initBackground();
+                setTimeout(initBackground, 0);
             };
 
         return {

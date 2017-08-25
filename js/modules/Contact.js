@@ -89,19 +89,29 @@
                     parallax[event.type.match(/opened/) ? "disable" : "enable"]();
                 });
 
-                ns.$win.trigger("bg-object-opacity-animation__add." + ns, [$bgLayers, SELECTOR.findSpeechBubble, "--slide-in"]);
+                setTimeout(function() {
+
+                    ns.$win.trigger("bg-object-opacity-animation__add." + ns, [$bgLayers, SELECTOR.findSpeechBubble, "--slide-in"]);
+                }, 200);
+
+                var scrollDebounce = null;
 
                 ns.$win.on("scroll.Contact." + ns, function () {
 
-                    var selfRect = $self[0].getBoundingClientRect();
+                    clearTimeout(scrollDebounce);
 
-                    if (selfRect.bottom - window.innerHeight <= window.innerHeight / 2) {
+                    scrollDebounce = setTimeout(function() {
 
-                        $bgLayers.find(SELECTOR.findSpeechBubble)
-                            .addClass(CLASS.speachBubbleVisible);
+                        var selfRect = $self[0].getBoundingClientRect();
 
-                        ns.$win.off("scroll.Contact." + ns);
-                    }
+                        if (selfRect.bottom - window.innerHeight <= window.innerHeight / 2) {
+
+                            $bgLayers.find(SELECTOR.findSpeechBubble)
+                                .addClass(CLASS.speachBubbleVisible);
+
+                            ns.$win.off("scroll.Contact." + ns);
+                        }
+                    }, 50);
                 });
             },
 
@@ -254,7 +264,7 @@
 
                 initForm();
 
-                initBackground();
+                setTimeout(initBackground, 200);
             };
 
         return {

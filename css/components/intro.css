@@ -712,31 +712,55 @@
                 color: #7D6937;
 
                 pointer-events: auto;
-
-                animation: show--init 0.85s linear 0s 1 forwards,
-                    intro__show-claim 1.5s ease-out 0.85s 1 forwards;
-                will-change: transform, opacity;
             }
 
-            @supports (animation: show) {
+                .intro__claim .first-line,
+                .intro__claim .second-line {
+                    position: relative;
 
-                .intro__claim {
-                    opacity: 0;
+                    display: inline-block;
+
+                    will-change: transform, opacity;
                 }
-            }
 
-            @keyframes intro__show-claim {
-                from {
-                    transform: translateY(10px);
-
-                    opacity: 0;
+                .intro__claim .first-line {
+                    animation: show--init 0.9s linear 0s 1 forwards,
+                        intro__show-claim 1.65s cubic-bezier(0, 0, .35, 1) 0.9s 1 forwards;
                 }
-                to {
-                    transform: translateY(0px);
 
-                    opacity: 1;
+                .intro__claim .second-line {
+                    animation: show--init 0.9s linear 0s 1 forwards,
+                        intro__show-claim 1.65s cubic-bezier(0, 0, .35, 1) 0.9s 1 forwards;
                 }
-            }
+
+                @media (max-width: 639px) {
+
+                    .intro__claim .second-line {
+                        animation: show--init 1.05s linear 0s 1 forwards,
+                            intro__show-claim 1.65s cubic-bezier(0, 0, .35, 1) 1.05s 1 forwards;
+                    }
+                }
+
+                @supports (animation: show) {
+
+                    .intro__claim .first-line,
+                    .intro__claim .second-line {
+                        opacity: 0;
+                    }
+                }
+
+                @keyframes intro__show-claim {
+                    from {
+                        transform: translateY(10px);
+
+                        opacity: 0;
+                    }
+                    to {
+                        transform: translateY(0px);
+
+                        opacity: 1;
+                    }
+                }
 
             @media (min-height: 480px) and (min-width: 1024px) and (max-width: 1219px) {
 

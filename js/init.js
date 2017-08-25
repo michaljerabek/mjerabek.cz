@@ -80,7 +80,7 @@ jQuery(function () {
 
     if (window.MJNS.ConsoleMessage) {
 
-        window.MJNS.ConsoleMessage.init();
+        setTimeout(window.MJNS.ConsoleMessage.init, 2000);
     }
 
 });

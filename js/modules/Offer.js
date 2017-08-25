@@ -65,28 +65,46 @@
                     parallax[event.type.match(/opened/) ? "disable" : "enable"]();
                 });
 
-                ns.$win.trigger("bg-object-opacity-animation__add." + ns, [$bgLayers, SELECTOR.findSquare]);
+                setTimeout(function() {
+
+                    ns.$win.trigger("bg-object-opacity-animation__add." + ns, [$bgLayers, SELECTOR.findSquare]);
+                }, 100);
+            },
+
+            initPerspecitve = function () {
+
+                var $perspective = $(".ui__perspective"),
+
+                    perspectiveDebounce = null;
+
+                ns.$win.on("scroll." + ns + " scroll.Offer." + ns, function () {
+
+                    clearTimeout(perspectiveDebounce);
+
+                    perspectiveDebounce = setTimeout(function() {
+
+                        var windowCenter = ns.$win.scrollTop() + (window.innerHeight / 2);
+
+                        $perspective.css("perspective-origin", "50% " + windowCenter + "px");
+
+                    }, 100);
+                });
+
+                ns.$win.trigger("scroll.Offer." + ns);
             },
 
             init = function () {
 
                 $self = $(SELECTOR.self);
 
-                initBackground();
-
                 checkScrollTop();
 
                 //ie fix
                 setTimeout(checkScrollTop, 50);
 
-                var $perspective = $(".ui__perspective");
+                setTimeout(initBackground, 0);
 
-                ns.$win.on("scroll." + ns, function () {
-
-                    var windowCenter = ns.$win.scrollTop() + (window.innerHeight / 2);
-
-                    $perspective.css("perspective-origin", "50% " + windowCenter + "px");
-                });
+                setTimeout(initPerspecitve, 0);
             };
 
         return {

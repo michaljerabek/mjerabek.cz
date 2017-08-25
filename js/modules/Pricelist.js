@@ -59,7 +59,10 @@
                     parallax[event.type.match(/opened/) ? "disable" : "enable"]();
                 });
 
-                ns.$win.trigger("bg-object-opacity-animation__add." + ns, [$bgLayers, SELECTOR.findSquare]);
+                setTimeout(function() {
+
+                    ns.$win.trigger("bg-object-opacity-animation__add." + ns, [$bgLayers, SELECTOR.findSquare]);
+                }, 150);
             },
 
             init = function () {
@@ -71,7 +74,7 @@
                 $self.find(SELECTOR.termsAndConditionsLink)
                     .on("click." + ns, showTermsAndConditions);
 
-                initBackground();
+                setTimeout(initBackground, 150);
             };
 
         return {

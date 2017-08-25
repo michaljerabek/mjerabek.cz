@@ -116,6 +116,30 @@
                 events = true;
             },
 
+            hasNoAnimation = function ($bgLayers, objectSelector, animPostfix) {
+
+                if (!SUPPORTS_CSS_ANIMATIONS) {
+
+                    return true;
+                }
+
+                var $objects = $bgLayers.find(objectSelector);
+
+                if ($objects.css("animation-name") === "none") {
+
+                    return true;
+                }
+
+                var animations = $objects[0] && $objects[0].getAnimations ? $objects[0].getAnimations() : [];
+
+                animations = animations.filter(function (animation) {
+
+                    return !!animation.id.match(new RegExp(animPostfix + "$"));
+                });
+
+                return animations.length && animations[0].playState === "finished";
+            },
+
             add = function (event, $bgLayers, objectSelector, animPostfix) {
 
                 $layers.push($bgLayers);
@@ -127,7 +151,7 @@
                     initPerformanceEvents();
                 }
 
-                if (!SUPPORTS_CSS_ANIMATIONS || $bgLayers.find(objectSelector).css("animation-name") === "none") {
+                if (hasNoAnimation($bgLayers, objectSelector, animPostfix || ANIM_POSTFIX)) {
 
                     manualInitAnimations($bgLayers, objectSelector);
 
