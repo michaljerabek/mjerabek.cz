@@ -1130,7 +1130,7 @@
 
                             <div class="technologies__text-content">
 
-                                <p>Základem výstupu práce s <span class="small">HTML</span> musí být <strong>validní&nbsp;a sémantický kód</strong>. Musí tedy odpovídat standardům&nbsp;a značky (tagy) musí <strong>správně označovat význam obsahu</strong>. Jedině tak může být výsledkem logicky strukturovaný&nbsp;a přístupný (accessible) kód. (Častou chybou například bývá špatné seskupování formulářových prvků — značky <code>fieldset</code> a&nbsp;<code>legend</code> bývají ignorovány a&nbsp;checkboxy se pak seskupují pochybnými způsoby apod.)</p>
+                                <p>Základem výstupu práce s <span class="small">HTML</span> musí být <strong>validní&nbsp;a sémantický kód</strong>. Musí tedy odpovídat standardům&nbsp;a značky (tagy) musí <strong>správně označovat význam obsahu</strong>. Jedině tak může být výsledkem logicky strukturovaný&nbsp;a přístupný (accessible) kód. Proto jsem četl celou specifikaci <span class="small">HTML5</span>. (Častou chybou například bývá špatné seskupování formulářových prvků — značky <code>fieldset</code> a&nbsp;<code>legend</code> bývají ignorovány a&nbsp;checkboxy se pak seskupují pochybnými způsoby apod.)</p>
 
                                 <p>Výstup, který ode mne dostanete, bude velmi <strong>přehledný</strong> — písma, styly, JavaScript a&nbsp;další součásti dokumentu jsou <strong>seskupeny a&nbsp;označeny komentáři</strong>, stejně tak jednotilivé sekce (každá taková sekce má vlastní <span class="small">CSS</span> soubor) a&nbsp;konce významných bloků kódu.</p>
 
@@ -1202,13 +1202,13 @@
 
                                 <p>Nepoužívám žádné generátory kódu (preprocesory), takže <strong>kód je ručně vyladěný</strong>.</p>
 
-                                <p>Layout stránky také musí být <strong>stabilní při jakékoliv velikosti prohlížeče a&nbsp;při jakémkoliv obsahu</strong>. (Často se například nepočítá s&nbsp;víceřádkovým obsahem apod.)</p>
+                                <p>Při práci také myslím na to, že layout stránky musí být <strong>stabilní při jakékoliv velikosti prohlížeče a&nbsp;při jakémkoliv obsahu</strong>. (Často se například nepočítá s&nbsp;víceřádkovým obsahem apod.)</p>
 
                                 <p>Pro zajištění podpory starších prohlížečů postupuji podle principů <strong>progressive enhancement</strong> a&nbsp;<strong>gracefull degradation</strong>.</p>
 
                                 <p>Zejména při kódování responzivních designů, animací nebo interaktivních prvků je potřeba mít i&nbsp;jistý <strong>grafický cit</strong>, aby výsledek vypadal vždy dobře. (Tato stránka je můj vlastní návrh.)</p>
 
-                                <p>Jako výstup mé práce dostanete vždy <strong>soubory spojené do jednoho a&nbsp;jeho minifikovanou variantu</strong>.</p>
+                                <p>Jako výstup mé práce dostanete vždy <strong>soubory spojené do jednoho a&nbsp;jeho minifikovanou variantu</strong>. (Včetně Gulp-tasku pro další specializovaná spojení. V případě optimalizace pro <span class="small">HTTP/2</span> toto platit nemusí.)</p>
 
                                 <p>Ukázka kódu vpravo je sekce s&nbsp;referencemi z&nbsp;projektu BeeMedia. (Pořadí <span class="small">CSS</span> pravidel neodpovídá aktuálnímu řazení.)</p>
 
@@ -1276,7 +1276,7 @@
 
                                 <p>Čitelnost kódu je sice většinou důležitější než jeho efektivita, ale mnohdy je na stránkách vidět nedostatečná znalost toho, jak fungují knihovy jako jQuery, přitom jejich efektivní použití čitelnosti neuškodí — selektory elementů bývají příliš komplikované a&nbsp;navíc obsahují přesnou strukturu <span class="small">HTML</span>; v&nbsp;cyklech či animacích se neustále vytvářejí nové jQuery objekty; při načítání se desetkrát vytvoří jQuery objekt s&nbsp;<code>window</code>&hellip;</p>
 
-                                <p>Jako výstup dostanete <strong>moduly spojené do jednoho souboru včetně jeho minifikované verze</strong>.</p>
+                                <p>Jako výstup dostanete <strong>moduly spojené do jednoho souboru včetně jeho minifikované verze</strong>. (Včetně Gulp-tasku pro další specializovaná spojení. V případě optimalizace pro <span class="small">HTTP/2</span> toto platit nemusí.)</p>
 
                                 <p>V&nbsp;ukázce vpravo se můžete podívat na modul <code>BreakText</code> použitý na této stránce. Modul slouží k&nbsp;rozdělení textu po písmenech, což se hodí například pro kerning nebo&nbsp;animace.</p>
 
