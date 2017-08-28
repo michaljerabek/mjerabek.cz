@@ -294,7 +294,7 @@
                         margin-top: 0.125rem;
                     }
 
-                    @media (max-width: 767px) {
+                    @media screen and (max-width: 767px) {
 
                         .js .pricelist__terms-and-conditions .small,
                         .js .pricelist__terms-and-conditions p {

@@ -48,6 +48,10 @@ if (isset($_SESSION["ok"])) {
 
 $replace("[^{}]+", "");
 
+unset($_SESSION["ok"]);
+unset($_SESSION["old_input"]);
+unset($_SESSION["validationErrors"]);
+
 echo $content;
 
 exit;

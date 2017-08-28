@@ -1,0 +1,385 @@
+/*////////////////////////////////////////////////////////////////////*/
+/*------------------------------- PRINT ------------------------------*/
+/*////////////////////////////////////////////////////////////////////*/
+
+@media print {
+
+    * {
+        text-shadow: none;
+        box-shadow: none;
+        filter: none;
+    }
+
+    body {
+        padding: 40px;
+
+        background: none;
+    }
+
+    a:not(.print__hide-href)::after {
+        content: " (" attr(href) ")";
+
+        font-style: italic;
+    }
+
+    .print__replace-with-href:not(.print__hide-href)::after {
+        content: attr(href);
+
+        font-style: inherit;
+    }
+}
+
+/*====================================================================*/
+/*------------------------------ SECTION -----------------------------*/
+/*====================================================================*/
+
+@media print {
+
+    .section {
+        height: auto;
+        min-height: 0;
+        padding: 0;
+
+        font-size: 14pt;
+
+        color: #111111;
+        background: none;
+    }
+
+        .section * {
+            color: #111111;
+        }
+
+        .section > .layout__center {
+            padding: 20px 0;
+        }
+
+            .section__title {
+                font-size: 23pt;
+
+                color: #111111;
+            }
+}
+
+/*====================================================================*/
+/*------------------------------- INTRO ------------------------------*/
+/*====================================================================*/
+
+@media print {
+
+    .intro > .layout__center {
+        height: auto;
+        min-height: 0;
+    }
+
+        .intro__content-wrapper {
+            padding: 0;
+        }
+
+        .intro__logo {
+            padding: 20px 0 10px 0;
+            margin: 0;
+        }
+
+        .intro__name {
+	        margin-top: 0px;
+            margin-bottom: 17px;
+        }
+}
+
+/*====================================================================*/
+/*------------------------------- OFFER ------------------------------*/
+/*====================================================================*/
+
+@media print {
+
+    .offer * {
+        text-align: left;
+    }
+
+        .offer__description {
+	        font-size: 17pt;
+        }
+
+        .offer__description [class*="layout__br"]::before {
+	        display: none;
+        }
+
+        .offer__technologies {
+            max-width: none;
+            padding-top: 0;
+            margin-top: 27px;
+        }
+
+            .offer__technology {
+                align-self: flex-start;
+                max-width: none;
+                width: 100%;
+                padding: 0;
+                padding-bottom: 7px;
+                margin-right: auto;
+                margin-left: 0;
+
+                page-break-inside: avoid;
+            }
+
+                .offer__technology-link {
+                    min-height: 0;
+                    min-width: 0;
+                    margin-bottom: 0px;
+
+                    font-size: 17pt;
+                }
+
+                .offer__technology-link::before,
+                .offer__technology-link::after {
+                    display: none;
+                }
+
+                .offer__technology-name {
+                    position: static;
+
+                    transform: none;
+                }
+
+                .offer__technology-description {
+                    margin-top: 20px;
+
+                    font-size: 14pt;
+                }
+
+        .offer__info {
+            padding: 0;
+        }
+
+            .offer__info a {
+                color: inherit;
+            }
+}
+
+/*====================================================================*/
+/*---------------------------- REFERENCES ----------------------------*/
+/*====================================================================*/
+
+@media print {
+
+    .references__nav {
+        display: none;
+    }
+
+    .references__references {
+        height: auto !important;
+    }
+
+        .js .references .references__reference,
+        .no-js .references .references__reference {
+            position: static !important;
+
+            display: block !important;
+            max-height: none;
+            padding-bottom: 0;
+        }
+
+            .references__reference.references__reference * {
+                transform: none;
+
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .references__wrapper > .visually-hidden {
+                position: static;
+
+                display: block;
+                height: auto;
+                width: 100%;
+                padding: auto;
+                margin: auto;
+                margin-bottom: 17px;
+
+                font-family:  "Caudex", "Georgia", serif;
+                font-size: 17pt;
+                font-variant: small-caps;
+                text-align: left;
+
+                clip: auto;
+                overflow: visible;
+            }
+
+            .references__project-info,
+            .references__project-more-info,
+            .references__project-info-list {
+                width: 100%;
+                max-width: none;
+            }
+
+                .references__project-info-item,
+                .references__project-info-content {
+                    clear: none;
+                    float: none;
+                    display: inline;
+                }
+
+                .references__project-info-item {
+                }
+
+                .references__project-info-content {
+                    padding-right: 17px;
+                }
+
+        .references.references a {
+            color: inherit;
+        }
+}
+
+/*====================================================================*/
+/*----------------------------- ABOUT-ME -----------------------------*/
+/*====================================================================*/
+
+@media print {
+
+    .about-me__content,
+    .about-me__content p {
+        max-width: none;
+        padding: 0;
+    }
+
+    .about-me__content {
+        margin: 0;
+    }
+}
+
+/*====================================================================*/
+/*---------------------------- PRICELIST -----------------------------*/
+/*====================================================================*/
+
+@media print {
+
+    .pricelist__content {
+        max-width: none;
+        width: auto;
+        padding: 0;
+        margin: 0;
+    }
+
+        .pricelist__pricelist,
+        .pricelist__terms-and-conditions {
+            max-width: none;
+            width: auto;
+
+            text-align: left;
+        }
+
+        @media (min-width: 768px) {
+
+            .pricelist__pricelist,
+            .pricelist__terms-and-conditions {
+                width: 50%;
+            }
+        }
+
+
+            .pricelist__price {
+                padding: 0;
+                margin: 0;
+
+                text-align: left;
+                line-height: 1.5;
+            }
+
+                .pricelist__price-unit,
+                .pricelist__price * {
+                    padding: 0;
+                    margin: 0;
+
+                    line-height: 1.5;
+                    vertical-align: baseline;
+                }
+
+                .pricelist__price .price {
+                    transform: none;
+
+                    font-size: 17pt;
+                }
+
+                .pricelist__price-unit {
+                    display: inline-block;
+
+                    font-size: 14pt;
+                }
+
+            .pricelist__terms-and-conditions-link::after {
+                display: none;
+            }
+
+}
+
+/*====================================================================*/
+/*----------------------------- CONTACT ------------------------------*/
+/*====================================================================*/
+
+@media print {
+
+    .contact__content {
+        max-width: none;
+        width: auto;
+        padding: 0;
+        margin: 0;
+    }
+
+        .contact__contact-info {
+            display: block;
+            max-width: none;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+            .contact__contact-info > * {
+                padding: 0;
+                margin: 0;
+                margin-bottom: 32px;
+            }
+
+                .contact__option {
+                    display: inline-block;
+                    padding-right: 40px;
+                    margin: 0;
+
+                    font-size: 12pt;
+                }
+
+                    .contact__option-link {
+                        font-size: 17pt;
+                    }
+
+                    .contact__option-link .small {
+                        font-size: 14pt;
+                    }
+
+                .contact__option:not(:last-child) {
+                    margin-bottom: 20px;
+                }
+
+            .contact__social-sitea {
+                width: 100%;
+                max-width: none;
+
+                text-align: left;
+            }
+
+                .contact__social-site:nth-child(1n) {
+                    width: 100%;
+                    height: auto;
+                    padding: 0;
+                    margin: 0;
+                }
+
+                    .contact__social-site-link {
+                        text-decoration: none;
+                    }
+
+                        .contact__social-site svg {
+                            display: none;
+                        }
+}

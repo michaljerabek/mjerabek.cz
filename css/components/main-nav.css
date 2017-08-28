@@ -164,6 +164,13 @@
 
     transform: translateY(-100%) translateZ(0);
 }
+
+@media (max-height: 479px) {
+
+    .main-nav::after {
+        display: none;
+    }
+}
 /*/skrytý element pro otevření menu*/
 
     .main-nav__items {

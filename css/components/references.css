@@ -449,6 +449,17 @@
                         opacity: 0;
                     }
 
+                    .references__project-info-content a {
+                        text-decoration: none;
+
+                        color: #7D6937;
+                    }
+
+                    .references__project-info-content a:focus,
+                    .references__project-info-content a:hover {
+                        color: #3C6778;
+                    }
+
                 .references__project-more-info {
                     clear: both;
                     max-width: 320px;

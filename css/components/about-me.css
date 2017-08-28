@@ -72,6 +72,7 @@
         pointer-events: auto;
 
         will-change: transform;
+
         contain: layout size style;
     }
 

@@ -74,6 +74,13 @@ s {
     }
 }
 
+@media print {
+
+    html .x-print.x-print {
+        display: none;
+    }
+}
+
 /* Skryje obsah, pokud je zapnutý/vypnutý JavaScript. */
 html.no-js .x-no-js,
 html.js .x-js,

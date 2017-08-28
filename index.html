@@ -2,7 +2,7 @@
 <html class="no-js" lang="cs">
 <head>
 
-     <!-- Author: Michal Jeřábek | mjerabek.cz; created: 2017; -->
+    <!-- Author: Michal Jeřábek | mjerabek.cz; created: 2017; -->
 
     <!---
         Vítejte pod povrchem!
@@ -66,6 +66,7 @@
     <link rel="stylesheet" href="css/components/contact.css">
     <link rel="stylesheet" href="css/components/CodeMirror-theme.css">
 
+    <link rel="stylesheet" href="css/print.css" media="print">
 
     <!--SUPPORT-->
     <!--[if IE]>
@@ -91,7 +92,7 @@
 
     <!--–––––––– ** MAIN-NAV ** –––––––––-->
 
-    <nav class="main-nav">
+    <nav class="main-nav x-print">
 
         <h2 class="visually-hidden">Hlavní menu</h2>
 
@@ -183,7 +184,7 @@
 
             <header class="intro section" id="uvod" data-main-nav-target="true" data-main-nav-active=".main-nav__item:eq(1) .main-nav__link" data-main-nav-theme="#ceb77e">
 
-                <div class="section__background intro__background">
+                <div class="section__background intro__background x-print">
                     <div class="section__background-layer intro__background-layer" data-parallax-reverse="scroll">
                         <div class="square" data-js-hover="true"><!-- css --></div>
                     </div>
@@ -202,7 +203,7 @@
                 <div class="intro__content-wrapper layout__center">
 
                     <div class="intro__logo">
-                        <a class="intro__logo-link" href="/" title="Michal Jeřábek — Front-End kodér">
+                        <a class="intro__logo-link print__hide-href" href="/" title="Michal Jeřábek — Front-End kodér">
 
                             <img class="intro__logo-img" src="img/logo.png" alt="Michal Jeřábek — Logo">
 
@@ -218,7 +219,7 @@
                     </div>
                     <!-- /.intro__logo -->
 
-                    <div class="intro__content">
+                    <div class="intro__content x-print">
 
                         <h1 class="intro__title intro__title--hidden">
                             <span class="visually-hidden">Michal Jeřábek —</span>
@@ -269,7 +270,7 @@
 
                 <article class="offer offer--init-fade-in section section--dark" id="co-delam" data-main-nav-target="true" data-main-nav-theme="#c06c47">
 
-                    <div class="section__background offer__background">
+                    <div class="section__background offer__background x-print">
                         <div class="section__background-layer offer__background-layer">
                             <div class="square" data-js-hover="true"><!-- css --></div>
                         </div>
@@ -293,7 +294,7 @@
 
                             <li class="offer__technology offer__technology--html">
 
-                                <a class="offer__technology-link" href="#html" data-technologies-tab="0" data-main-nav-ignore="true">
+                                <a class="offer__technology-link print__hide-href" href="#html" data-technologies-tab="0" data-main-nav-ignore="true">
                                     <h3 class="offer__technology-name transition">
                                         <span class="text transition" data-break-text="true">HTML</span>
                                     </h3>
@@ -306,7 +307,7 @@
 
                             <li class="offer__technology offer__technology--css">
 
-                                <a class="offer__technology-link" href="#css" data-technologies-tab="1" data-main-nav-ignore="true">
+                                <a class="offer__technology-link print__hide-href" href="#css" data-technologies-tab="1" data-main-nav-ignore="true">
                                     <h3 class="offer__technology-name transition">
                                         <span class="text transition">CSS</span>
                                     </h3>
@@ -319,7 +320,7 @@
 
                             <li class="offer__technology offer__technology--js">
 
-                                <a class="offer__technology-link" href="#js" data-technologies-tab="2" data-main-nav-ignore="true">
+                                <a class="offer__technology-link print__hide-href" href="#js" data-technologies-tab="2" data-main-nav-ignore="true">
                                     <h3 class="offer__technology-name transition">
                                         <span class="text transition">JS</span>
                                     </h3>
@@ -340,7 +341,7 @@
                             <span class="text">Pro funkce jako uložení dat do databáze budete potřebovat back-endového <span class="small">(PHP)</span> vývojáře.</span>
                         </p>
 
-                        <div class="offer__btn-wrapper">
+                        <div class="offer__btn-wrapper x-print">
                             <a class="btn btn--light offer__btn" href="#kontakt">
                                 <span class="text">kontaktovat</span>
                             </a>
@@ -359,7 +360,7 @@
 
                 <article class="references section" id="reference" data-main-nav-target="true" data-main-nav-theme="#ceb77e">
 
-                    <div class="section__background references__background">
+                    <div class="section__background references__background x-print">
                         <div class="section__background-layer references__background-layer">
                             <div class="square" data-js-hover="true"><!-- css --></div>
                         </div>
@@ -375,7 +376,7 @@
                             <span class="text" data-break-text="true" data-small-caps="true">Reference</span>
                         </h2>
 
-                        <nav class="references__nav">
+                        <nav class="references__nav x-print">
 
                             <ul class="references__nav-items">
 
@@ -437,12 +438,12 @@
 
                                             <dt class="references__project-info-item fade-in">Web:</dt>
                                             <dd class="references__project-info-content fade-in">
-                                                <a href="beemedia.cz">beemedia.cz</a>
+                                                <a class="print__hide-href" href="beemedia.cz">beemedia.cz</a>
                                             </dd>
 
                                             <dt class="references__project-info-item fade-in">Kód:</dt>
                                             <dd class="references__project-info-content fade-in">
-                                                <a href="github.com">github.com</a>
+                                                <a class="print__replace-with-href" href="github.com"><span class="x-print">github.com</span></a>
                                             </dd>
 
                                         </dl>
@@ -453,7 +454,7 @@
                                     </div>
                                     <!-- /.references__project-info -->
 
-                                    <figure class="references__project-preview">
+                                    <figure class="references__project-preview x-print">
 
                                         <figcaption class="visually-hidden">BeeMedia — ukázka projektu</figcaption>
 
@@ -507,12 +508,12 @@
 
                                             <dt class="references__project-info-item">Web:</dt>
                                             <dd class="references__project-info-content">
-                                                <a href="hoteljewelprague.com">hoteljewelprague.com</a>
+                                                <a class="print__hide-href" href="hoteljewelprague.com">hoteljewelprague.com</a>
                                             </dd>
 
                                             <dt class="references__project-info-item">Kód:</dt>
                                             <dd class="references__project-info-content">
-                                                <a href="github.com">github.com</a>
+                                                <a class="print__replace-with-href" href="github.com"><span class="x-print">github.com</span></a>
                                             </dd>
 
                                         </dl>
@@ -523,7 +524,7 @@
                                     </div>
                                     <!-- /.references__project-info -->
 
-                                    <figure class="references__project-preview">
+                                    <figure class="references__project-preview x-print">
 
                                         <figcaption class="visually-hidden">Hotel Jewel — ukázka projektu</figcaption>
 
@@ -579,12 +580,12 @@
 
                                             <dt class="references__project-info-item">Web:</dt>
                                             <dd class="references__project-info-content">
-                                                <a href="express-alarm.cz">express-alarm.cz</a>
+                                                <a class="print__hide-href" href="express-alarm.cz">express-alarm.cz</a>
                                             </dd>
 
                                             <dt class="references__project-info-item">Kód:</dt>
                                             <dd class="references__project-info-content">
-                                                <a href="github.com">github.com</a>
+                                                <a class="print__replace-with-href" href="github.com"><span class="x-print">github.com</span></a>
                                             </dd>
 
                                         </dl>
@@ -595,7 +596,7 @@
                                     </div>
                                     <!-- /.references__project-info -->
 
-                                    <figure class="references__project-preview">
+                                    <figure class="references__project-preview x-print">
 
                                         <figcaption class="visually-hidden">Express Alarm — ukázka projektu</figcaption>
 
@@ -651,12 +652,12 @@
 
                                             <dt class="references__project-info-item">Web:</dt>
                                             <dd class="references__project-info-content">
-                                                <a href="venuepraha.cz">venuepraha.cz</a>
+                                                <a class="print__hide-href" href="venuepraha.cz">venuepraha.cz</a>
                                             </dd>
 
                                             <dt class="references__project-info-item">Kód:</dt>
                                             <dd class="references__project-info-content">
-                                                <a href="github.com">github.com</a>
+                                                <a class="print__replace-with-href" href="github.com"><span class="x-print">github.com</span></a>
                                             </dd>
 
                                         </dl>
@@ -667,7 +668,7 @@
                                     </div>
                                     <!-- /.references__project-info -->
 
-                                    <figure class="references__project-preview">
+                                    <figure class="references__project-preview x-print">
 
                                         <figcaption class="visually-hidden">VENUE — ukázka projektu</figcaption>
 
@@ -754,7 +755,7 @@
 
                 <article class="about-me section" id="kdo-jsem" data-main-nav-target="true" data-main-nav-theme="#ceb77e">
 
-                    <figure class="about-me__photo">
+                    <figure class="about-me__photo x-print">
                         <img class="about-me__img" src="img/about-me__photo--square.jpg" alt="Moje fotka">
                     </figure>
 
@@ -777,7 +778,7 @@
                         </div>
                         <!-- /.about-me__content -->
 
-                       <div class="about-me__btn-wrapper">
+                       <div class="about-me__btn-wrapper x-print">
                            <a class="btn btn--light about-me__btn" href="#kontakt">
                                <span class="text">kontaktovat</span>
                            </a>
@@ -796,7 +797,7 @@
 
                 <article class="pricelist section" id="cenik" data-main-nav-target="true" data-main-nav-theme="#c06c47">
 
-                    <div class="section__background pricelist__background">
+                    <div class="section__background pricelist__background x-print">
                         <div class="section__background-layer pricelist__background-layer">
                             <div class="square" data-js-hover="true"><!-- css --></div>
                         </div>
@@ -840,7 +841,7 @@
                             <section class="pricelist__terms-and-conditions" id="podminky">
 
                                 <h3 class="pricelist__terms-and-conditions-title">
-                                    <a class="pricelist__terms-and-conditions-link" href="#podminky" data-break-text="true" data-small-caps="true" data-main-nav-ignore="true">Smluvní podmínky</a>
+                                    <a class="pricelist__terms-and-conditions-link print__hide-href" href="#podminky" data-break-text="true" data-small-caps="true" data-main-nav-ignore="true">Smluvní podmínky</a>
                                 </h3>
 
                                 <div class="pricelist__terms-and-conditions-content">
@@ -864,7 +865,7 @@
                         </div>
                         <!-- /.pricelist__content -->
 
-                        <div class="pricelist__btn-wrapper">
+                        <div class="pricelist__btn-wrapper x-print">
                             <a class="btn btn--dark pricelist__btn" href="#kontakt">
                                 <span class="text">kontaktovat</span>
                             </a>
@@ -883,7 +884,7 @@
 
                 <article class="contact section" id="kontakt" data-main-nav-target="true" data-main-nav-theme="#ceb77e">
 
-                    <div class="section__background contact__background">
+                    <div class="section__background contact__background x-print">
 
                         <div class="section__background-layer contact__background-layer">
                             <svg class="speach speach--big" width="730" height="670" viewBox="0 0 730 670">
@@ -914,12 +915,12 @@
                                 <ul class="contact__options">
 
                                     <li class="contact__option contact__option--email">
-                                        <a class="contact__option-link" href="mailto:mjerabek@seznam.cz">mjerabek@seznam.cz</a>
+                                        <a class="contact__option-link print__hide-href" href="mailto:mjerabek@seznam.cz">mjerabek@seznam.cz</a>
                                         <p class="contact__option-note">Na vaše emaily se budu snažit odpovědět do <span class="small">24</span> hodin.</p>
                                     </li>
 
                                     <li class="contact__option contact__option--tel">
-                                        <a class="contact__option-link" href="tel:+420728635829">+<span class="small">420 728 635 829</span></a>
+                                        <a class="contact__option-link print__hide-href" href="tel:+420728635829">+<span class="small">420 728 635 829</span></a>
                                         <p class="contact__option-note">Jsem k dispozici ve všední dny od <span class="small">9</span>&nbsp;do <span class="small">13</span> hodin.</p>
                                     </li>
 
@@ -929,13 +930,15 @@
                                 <ul class="contact__social-sites">
 
                                     <li class="contact__social-site contact__social-site--github">
-                                        <a class="contact__social-site-link" href="https://github.com/michaljerabek">
+                                        <a class="contact__social-site-link print__replace-with-href" href="https://github.com/michaljerabek">
+                                            <span class="visually-hidden">GitHub</span>
                                             <svg class="transition" viewBox="0 0 33 33"><path d="M16.5,1.87c-8.282,0 -15,6.716 -15,15c0,6.627 4.298,12.25 10.259,14.234c0.748,0.138 0.991,-0.327 0.991,-0.722l0,-2.792c-4.172,0.907 -5.041,-1.77 -5.041,-1.77c-0.683,-1.734 -1.666,-2.195 -1.666,-2.195c-1.362,-0.931 0.103,-0.911 0.103,-0.911c1.507,0.105 2.299,1.546 2.299,1.546c1.338,2.292 3.509,1.63 4.365,1.246c0.134,-0.969 0.522,-1.631 0.953,-2.005c-3.332,-0.381 -6.834,-1.667 -6.834,-7.414c0,-1.638 0.586,-2.976 1.545,-4.026c-0.155,-0.379 -0.669,-1.905 0.146,-3.97c0,0 1.26,-0.402 4.126,1.538c1.197,-0.333 2.479,-0.499 3.754,-0.505c1.275,0.006 2.559,0.172 3.758,0.505c2.863,-1.94 4.121,-1.538 4.121,-1.538c0.816,2.066 0.302,3.593 0.147,3.97c0.963,1.05 1.544,2.389 1.544,4.026c0,5.762 -3.509,7.03 -6.849,7.402c0.538,0.465 1.029,1.377 1.029,2.777l0,4.116c0,0.399 0.24,0.868 1.001,0.72c5.956,-1.986 10.249,-7.607 10.249,-14.232c0,-8.284 -6.716,-15 -15,-15Z"/></svg>
                                         </a>
                                     </li>
 
                                     <li class="contact__social-site contact__social-site--youtube">
-                                        <a class="contact__social-site-link" href="https://youtube.com/">
+                                        <a class="contact__social-site-link print__replace-with-href" href="https://youtube.com/">
+                                            <span class="visually-hidden">YouTube</span>
                                             <svg class="transition" viewBox="0 0 33 33"><path d="M26.019,5.48c-4.505,-0.308 -14.539,-0.306 -19.038,0c-4.871,0.332 -5.445,3.275 -5.481,11.02c0.036,7.731 0.605,10.686 5.481,11.02c4.5,0.306 14.533,0.307 19.038,0c4.871,-0.333 5.445,-3.275 5.481,-11.02c-0.036,-7.731 -0.605,-10.686 -5.481,-11.02l0,0Zm-13.269,16.02l0,-10l10,4.991l-10,5.009l0,0Z"/></svg>
                                         </a>
                                     </li>
@@ -964,7 +967,7 @@
 
                             <!--–––––––– ** FORM ** –––––––––-->
 
-                            <form class="contact__form form form--dark" method="post" action="index.php?action=form-submit">
+                            <form class="contact__form form form--dark x-print" method="post" action="index.php?action=form-submit">
 
                                 <h3 class="visually-hidden x-mobile">Kontaktní formulář</h3>
                                 <h3 class="contact__form-title x-desktop x-tablet" data-break-text="true" data-small-caps="true">Nebo mi napište zprávu</h3>
