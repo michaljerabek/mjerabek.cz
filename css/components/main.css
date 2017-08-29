@@ -74,9 +74,9 @@ s {
     }
 }
 
-@media print {
+@media screen {
 
-    html .x-print.x-print {
+    html .x-screen.x-screen {
         display: none;
     }
 }
