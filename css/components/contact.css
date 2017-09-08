@@ -625,6 +625,8 @@
         .android .contact__form-info,
         .no-js .contact__form-info {
             overflow: auto;
+
+            will-change: scroll-position;
         }
 
         @supports (-webkit-overflow-scrolling: touch) {
@@ -633,8 +635,14 @@
             .no-js .contact__form-info {
                 overflow: auto;
                 -webkit-overflow-scrolling: touch;
+
+                will-change: scroll-position;
             }
         }
+
+            .contact__form-info .mCSB_container {
+                will-change: top;
+            }
 
             .contact__form-info p:not(:last-child) {
                 margin-bottom: 1.6875rem;

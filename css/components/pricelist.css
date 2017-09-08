@@ -102,6 +102,10 @@
                 color: #111;
             }
 
+            .pricelist__terms-and-conditions {
+                will-change: contents;
+            }
+
             @media (min-width: 768px) {
 
                 .pricelist__pricelist,
@@ -279,7 +283,7 @@
                         padding-top: 0.4375rem;
                         padding-bottom: 0.125rem;
 
-                        font-family: "Josefin Sans", sans-serif;
+                        font-family: "josefin-sans", "Josefin Sans", "Calibri", "Trebuchet MS", sans-serif;
                         font-size: 1.5625rem;
                         font-weight: 300;
                         font-style: italic;

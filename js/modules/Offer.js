@@ -71,28 +71,6 @@
                 }, 100);
             },
 
-            initPerspecitve = function () {
-
-                var $perspective = $(".ui__perspective"),
-
-                    perspectiveDebounce = null;
-
-                ns.$win.on("scroll." + ns + " scroll.Offer." + ns, function () {
-
-                    clearTimeout(perspectiveDebounce);
-
-                    perspectiveDebounce = setTimeout(function() {
-
-                        var windowCenter = ns.$win.scrollTop() + (window.innerHeight / 2);
-
-                        $perspective.css("perspective-origin", "50% " + windowCenter + "px");
-
-                    }, 100);
-                });
-
-                ns.$win.trigger("scroll.Offer." + ns);
-            },
-
             init = function () {
 
                 $self = $(SELECTOR.self);
@@ -103,8 +81,6 @@
                 setTimeout(checkScrollTop, 50);
 
                 setTimeout(initBackground, 0);
-
-                setTimeout(initPerspecitve, 0);
             };
 
         return {

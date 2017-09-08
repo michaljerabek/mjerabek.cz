@@ -9,15 +9,11 @@
     ns.Intro = (function () {
 
         var CLASS = {
-                hidden: "intro__title--hidden",
-
                 parallaxDestroyed: "intro--no-parallax"
             },
 
             SELECTOR = {
                 self: ".intro",
-
-                title: ".intro__title",
 
                 background: ".intro__background",
                 backgroundLayers: ".intro__background-layer",
@@ -25,7 +21,6 @@
             },
 
             $self,
-            $title,
 
             $bgLayers,
             parallax,
@@ -61,11 +56,6 @@
             init = function () {
 
                 $self = $(SELECTOR.self);
-
-                $title = $self.find(SELECTOR.title);
-
-                //text je skrytý kvůli animaci
-                $title.removeClass(CLASS.hidden);
 
                 setTimeout(initBackground, 0);
             };

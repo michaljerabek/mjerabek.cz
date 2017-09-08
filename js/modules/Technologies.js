@@ -45,7 +45,9 @@
 
                 inertEl: ".main-nav, .ui__perspective",
 
-                metaThemeColor: "meta[name='theme-color']"
+                metaThemeColor: "meta[name='theme-color']",
+
+                pagePerspective: ".ui__perspective"
             },
 
             EVENT = {
@@ -67,6 +69,7 @@
             initialized,
 
             $self,
+            $perspective,
             $nav,
             $navLinks,
             $activeIndicator,
@@ -132,25 +135,36 @@
                 });
             },
 
+            setPagePerspective = function () {
+
+                $perspective = $perspective || $(SELECTOR.pagePerspective);
+
+                var windowCenter = ns.$win.scrollTop() + (window.innerHeight / 2);
+
+                $perspective.css("perspective-origin", "50% " + windowCenter + "px");
+            },
+
             close = function (event) {
 
                 cancelPreventScroll();
 
                 ns.$win.off("keyup.Technologies" + ns);
 
-                $toggleEl.removeClass(CLASS.toggle);
-                $self.removeClass(CLASS.showCodeSample);
-
                 $inertEl.prop("inert", false);
                 $self.prop("inert", true);
 
                 openedByEl.focus();
+
+                setPagePerspective();
 
                 $metaThemeColor.attr("content", savedThemeColor);
 
                 var hash = "#" + ns.Offer.getSelf()[0].id;
 
                 window.history.replaceState(hash, "", hash);
+
+                $toggleEl.removeClass(CLASS.toggle);
+                $self.removeClass(CLASS.showCodeSample);
 
                 ns.$win.trigger(EVENT.closed);
 
@@ -179,6 +193,8 @@
 
                     initSelf($openers.get().indexOf(this));
                 }
+
+                setPagePerspective();
 
                 openedByEl = this;
 
@@ -351,6 +367,8 @@
                     watchContainer: 100
                 });
 
+                window.nav = infinitum;
+
                 setIndicatorWidth({ type: "init" });
 
                 infinitum.on("change." + ns, switchTabs);
@@ -414,7 +432,7 @@
 
                 $openers = $(SELECTOR.openers).on("click." + ns, open);
 
-                $openers.on("mouseenter." + ns + " touchstart." + ns, function () {
+                $openers.one("mouseenter." + ns + " touchstart." + ns, function () {
 
                     if (!initialized) {
 

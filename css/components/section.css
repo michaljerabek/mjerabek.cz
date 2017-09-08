@@ -10,9 +10,7 @@
     width: 100%;
 	min-height: 100vmin;
 
-    overflow: hidden;
-
-    contain: content;
+    will-change: contents;
 }
 
 @media (min-height: 1024px) and (min-width: 1024px) {
@@ -127,7 +125,7 @@
     }
 
         .section__title {
-            font-family: "Caudex", "Georgia", serif;
+            font-family: "Caudex", "Garamond", serif;
             font-variant: small-caps;
             text-align: center;
             line-height: 1;

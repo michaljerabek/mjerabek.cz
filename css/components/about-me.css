@@ -3,6 +3,8 @@
 /*====================================================================*/
 
 .about-me {
+    overflow: hidden;
+
     pointer-events: none;
 }
 
@@ -71,7 +73,7 @@
 
         pointer-events: auto;
 
-        will-change: transform;
+        will-change: transform, filter;
 
         contain: layout size style;
     }
@@ -128,8 +130,6 @@
     }
 
         .about-me__content {
-            transform: translateZ(0);
-
             padding-top: 3vmin;
             padding-top: 2vmax;
             margin-right: auto;
@@ -140,7 +140,7 @@
             letter-spacing: 0.004em;
 
 	        color: #e7e7e7;
-            text-shadow: -1px 1px 5px rgba(0, 0, 0, 1);
+            text-shadow: -1px 1px 4px rgba(0, 0, 0, 1);
         }
 
         @media (min-width: 1024px) {

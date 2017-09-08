@@ -41,7 +41,11 @@
 
 
     <!--FONTS-->
-    <link href="https://fonts.googleapis.com/css?family=Caudex:400,400i,700,700i|Josefin+Sans:100,100i,300,300i,400,400i,600,600i,700,700i|PT+Mono&amp;subset=latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Caudex:400,400i,700,700i|PT+Mono&amp;subset=latin-ext" rel="stylesheet">
+    <script src="http://use.edgefonts.net/josefin-sans:i7,n7,n3,i4,i3,n4,i1,n6,n1,i6:all.js" async></script>
+    <noscript>
+        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:100,100i,300,300i,400,400i,600,600i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+    </noscript>
 
 
     <!--STYLES-->
@@ -87,8 +91,7 @@
 </head>
 <body>
 
-    <script src="http://mjerabek.wz.cz/onScreenLog.js"></script>
-
+<!--    <script src="http://mjerabek.wz.cz/onScreenLog.js"></script>-->
 
     <!--–––––––– ** MAIN-NAV ** –––––––––-->
 
@@ -223,10 +226,12 @@
 
                         <h1 class="intro__title intro__title--hidden">
                             <span class="visually-hidden">Michal Jeřábek —</span>
-                            <span class="text" data-small-caps="true" data-break-text="true">Front-End kodér</span>
+                            <span class="text">
+                                <span class="word1" style="display: inline-block;"><span class="letter1" style="display: inline-block;"><span class="small-caps small-caps--upper">F</span></span><span class="letter2" style="display: inline-block;"><span class="small-caps small-caps--lower">r</span></span><span class="letter3" style="display: inline-block;"><span class="small-caps small-caps--lower">o</span></span><span class="letter4" style="display: inline-block;"><span class="small-caps small-caps--lower">n</span></span><span class="letter5" style="display: inline-block;"><span class="small-caps small-caps--lower">t</span></span><span class="letter6" style="display: inline-block;"><span class="small-caps small-caps--upper">-</span></span><span class="letter7" style="display: inline-block;"><span class="small-caps small-caps--upper">E</span></span><span class="letter8" style="display: inline-block;"><span class="small-caps small-caps--lower">n</span></span><span class="letter9" style="display: inline-block;"><span class="small-caps small-caps--lower">d</span></span></span><span class="space1" style="white-space: pre;"> </span><span class="word2" style="display: inline-block;"><span class="letter1" style="display: inline-block;"><span class="small-caps small-caps--lower">k</span></span><span class="letter2" style="display: inline-block;"><span class="small-caps small-caps--lower">o</span></span><span class="letter3" style="display: inline-block;"><span class="small-caps small-caps--lower">d</span></span><span class="letter4" style="display: inline-block;"><span class="small-caps small-caps--lower">é</span></span><span class="letter5" style="display: inline-block;"><span class="small-caps small-caps--lower">r</span></span></span>
+                            </span>
                         </h1>
 
-                        <p class="intro__claim x-print"><span class="first-line">přeměňuji vaše grafické návrhy</span> <span class="second-line layout__br--mobile-m layout__br--mobile-s">na webové stránky</span></p>
+                        <p class="intro__claim x-print"><span class="first-line">přeměňuji vaše grafické návrhy</span>&nbsp;<span class="second-line layout__br--mobile-m layout__br--mobile-s">na webové stránky</span></p>
 
                     </div>
                     <!-- /.intro__content -->
@@ -334,12 +339,18 @@
                         </ul>
                         <!-- /.offer__technologies -->
 
-                        <p class="offer__info">
-                            <span class="text">Potřebujete-li nejdříve vytvořit grafický návrh webu, můžu jej zajistit u svého <a href="#">bratra</a> :·).</span>
-                        </p>
-                        <p class="offer__info">
-                            <span class="text">Pro funkce jako uložení dat do databáze budete potřebovat back-endového <span class="small">(PHP)</span> vývojáře.</span>
-                        </p>
+                        <aside class="offer__info-wrapper">
+
+                            <p class="offer__info">
+                                <span class="text">Potřebujete-li nejdříve vytvořit grafický návrh webu, můžu jej zajistit u svého <a href="#">bratra</a> :·).</span>
+                            </p>
+
+                            <p class="offer__info">
+                                <span class="text">Pro funkce jako uložení dat do databáze budete potřebovat back-endového <span class="small">(PHP)</span> vývojáře.</span>
+                            </p>
+
+                        </aside>
+                        <!--/.offer__info-wrapper-->
 
                         <div class="offer__btn-wrapper x-print">
                             <a class="btn btn--light offer__btn" href="#kontakt">
@@ -705,7 +716,7 @@
                         </ul>
                         <!-- /.references__references -->
 
-                        <div class="references__more-references">
+                        <aside class="references__more-references">
 
                             <h3 class="references__more-references-title">Další reference:</h3>
 
@@ -715,10 +726,10 @@
                                 <li class="references__more-projects-project" data-after=", &hellip;">Nejlevnější Půjčovna Vozů</li>
                             </ul>
 
-                        </div>
+                        </aside>
                         <!-- /.references__more-references -->
 
-                        <div class="references__other-projects">
+                        <aside class="references__other-projects">
 
                             <h3 class="references__other-projects-title">Ostatní projekty:</h3>
 
@@ -739,7 +750,7 @@
                             </ul>
                             <!-- /.references__other-projects-projects -->
 
-                        </div>
+                        </aside>
                         <!-- /.references__other-projects -->
 
                     </div>
@@ -1341,7 +1352,7 @@
 
     <!--DEV-LIBS-->
     <script src="libs/inert-polyfill/inert-polyfill.min.js"></script>
-    <link rel="stylesheet" href="libs/inert-polyfill/inert-polyfill.css">
+    <link rel="stylesheet" href="libs/inert-polyfill/inert-polyfill.css" media="screen">
 
     <script src="libs/jquery.smallcaps.js"></script>
 
@@ -1349,10 +1360,10 @@
     <script src="libs/parallax.js"></script>
 
     <script src="libs/malihu-custom-scrollbar-plugin-3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-    <link rel="stylesheet" href="libs/malihu-custom-scrollbar-plugin-3.1.5/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="libs/malihu-custom-scrollbar-plugin-3.1.5/jquery.mCustomScrollbar.css" media="screen">
 
     <script src="libs/infinitum/infinitum.min.js"></script>
-    <link rel="stylesheet" href="libs/infinitum/css/infinitum.min.css">
+    <link rel="stylesheet" href="libs/infinitum/css/infinitum.min.css" media="screen">
 
     <script src="libs/CodeMirror-5.28.0/lib/codemirror.js"></script>
     <script src="libs/CodeMirror-5.28.0/addon/runmode/runmode.js"></script>
@@ -1378,6 +1389,7 @@
     <script src="js/modules/Form.js"></script>
     <script src="js/modules/Contact.js"></script>
     <script src="js/modules/ConsoleMessage.js"></script>
+    <script src="js/modules/Fonts.js"></script>
 
     <script src="js/init.js"></script>
 

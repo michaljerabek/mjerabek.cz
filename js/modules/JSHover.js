@@ -20,6 +20,19 @@
                 preventClick: "js-hover-prevent-click"
             },
 
+            SUPPORTS_PASSIVE = (function() {
+
+                try {
+
+                    window.addEventListener("test", null, { passive: true });
+
+                    return true;
+
+                } catch (e) {}
+
+                return false;
+            }()),
+
             hoverEl,
 
             byTouch = false,
@@ -30,32 +43,44 @@
 
                 var preventClick = null;
 
-                ns.$doc.on("touchstart." + ns, SELECTOR.item, function (event) {
+                window.document.addEventListener("touchstart", function (event) {
 
-                    byTouch = true;
+                    ns.$temp[0] = event.target;
 
-                    onItem = true;
+                    var $jsHover = ns.$temp.closest(SELECTOR.item),
 
-                    preventClick = null;
+                        jsHoverEl;
 
-                    if (hoverEl !== event.currentTarget) {
+                    if ($jsHover.length) {
 
-                        ns.$temp[0] = event.currentTarget;
+                        jsHoverEl = $jsHover[0];
 
-                        if (ns.$temp.data(DATA.preventClick)) {
+                        byTouch = true;
 
-                            preventClick = event.currentTarget;
+                        onItem = true;
+
+                        preventClick = null;
+
+                        if (hoverEl !== jsHoverEl) {
+
+                            ns.$temp[0] = jsHoverEl;
+
+                            if (ns.$temp.data(DATA.preventClick)) {
+
+                                preventClick = jsHoverEl;
+                            }
+
+                            ns.$temp.addClass(CLASS.isHover);
+
+                            ns.$temp[0] = hoverEl;
+
+                            ns.$temp.removeClass(CLASS.isHover);
+
+                            hoverEl = jsHoverEl;
                         }
-
-                        ns.$temp.addClass(CLASS.isHover);
-
-                        ns.$temp[0] = hoverEl;
-
-                        ns.$temp.removeClass(CLASS.isHover);
-
-                        hoverEl = event.currentTarget;
                     }
-                });
+
+                }, SUPPORTS_PASSIVE ? { passive: true } : false);
 
                 ns.$doc.on("click." + ns, SELECTOR.item, function (event) {
 
@@ -67,7 +92,7 @@
                     preventClick = null;
                 });
 
-                ns.$doc.on("touchstart." + ns, function () {
+                window.document.addEventListener("touchstart", function () {
 
                     if (!onItem) {
 
@@ -84,7 +109,8 @@
                     }
 
                     onItem = false;
-                });
+
+                }, SUPPORTS_PASSIVE ? { passive: true } : false);
 
                 ns.$doc.on("mouseenter." + ns + " mouseleave." + ns, SELECTOR.item, function (event) {
 

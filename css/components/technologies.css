@@ -319,6 +319,10 @@
         padding: 0;
     }
 
+    .technologies__content .mCSB_container {
+        will-change: top;
+    }
+
         .technologies__text,
         .technologies__sample {
             position: relative;
@@ -568,6 +572,8 @@
             .technologies__text-content-wrapper,
             .technologies__sample-content-wrapper {
                 overflow: auto;
+
+                will-change: scroll-position;
             }
 
             @supports (-webkit-overflow-scrolling: touch) {
@@ -710,7 +716,7 @@
                 height: 40px;
                 width: 100vh;
 
-                font-family: "Caudex", "Georgia", serif;
+                font-family: "Caudex", "Garamond", serif;
                 font-size: 1.25rem;
                 line-height: 37px;
                 letter-spacing: 0.075em;
@@ -871,14 +877,11 @@
     .technologies__nav-items {
         display: flex;
         width: 100%;
-
-        white-space: nowrap;
     }
 
         .technologies__nav-item {
             order: 3;
             flex: none;
-            display: inline-block;
             min-width: 38.12%;
             min-width: calc((100% / 21) * 8);
         }

@@ -300,9 +300,9 @@
 
                     $link = $(navLink),
 
-                    $scrollTarget = $("#" + targetId);
+                    $scrollTarget = $scrollTargets.filter("#" + targetId);
 
-                if ($scrollTarget.length && $scrollTarget.is(SELECTOR.scrollTarget)) {
+                if ($scrollTarget.length) {
 
                     $link.blur();
 

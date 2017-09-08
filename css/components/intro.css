@@ -161,7 +161,6 @@
 
             animation: show--init 0.5s linear 0s 1 forwards,
                 intro__show-logo-svg 3s cubic-bezier(.2, .7, .5, 1) 0.5s 1 forwards;
-            will-change: transform;
         }
 
         .intro__logo-svg + .intro__logo-svg {
@@ -326,8 +325,6 @@
                 stroke-width: 0.6;
                 stroke-dasharray: 180 180;
                 stroke-dashoffset: -180;
-
-                will-change: transform;
             }
 
             /*IE11 neumí animovat SVG*/
@@ -449,16 +446,20 @@
                 display: table;
                 margin: 0px auto;
 
-                font-family: "Caudex", "Georgia", serif;
                 font-size: 4.0625rem;
+                font-family: "caudex-above-fold", "Garamond", serif;
                 font-style: normal;
-                font-variant: small-caps;
+                text-transform: uppercase;
                 line-height: 0.831;
                 letter-spacing: -0.0075em;
 
                 color: #111;
 
                 pointer-events: auto;
+            }
+
+            .fonts__caudex--loaded .intro__title {
+                font-family: "Caudex";
             }
 
             @media (min-height: 480px) and (min-width: 1024px) and (max-width: 1219px) {
@@ -550,8 +551,8 @@
                 }
             }
 
-                .js .intro__title--hidden {
-                    opacity: 0;
+                .intro__title .small-caps--lower {
+                    font-size: 0.7em;
                 }
 
                 .intro__title [class*="letter"] {
@@ -703,15 +704,25 @@
                 display: table;
                 margin: 0px auto;
 
-                font-family: "Josefin Sans", sans-serif;
-                font-size: 1.6875rem;
+                font-family: "josefin-sans-intro-claim", "josefin-sans", "Calibri", "Trebuchet MS", sans-serif;
                 font-style: italic;
+                font-size: 1.6875rem;
                 font-weight: 300;
                 line-height: 1.185185;
 
                 color: #7D6937;
 
                 pointer-events: auto;
+
+                will-change: transform, opacity;
+            }
+
+            .wf-josefinsans-i3-active .intro__claim {
+                font-family: "josefin-sans", "Calibri", "Trebuchet MS", sans-serif;
+            }
+
+            .no-js .intro__claim {
+                font-family: "Josefin Sans", "Calibri", "Trebuchet MS", sans-serif;
             }
 
                 .intro__claim .first-line,
@@ -719,8 +730,6 @@
                     position: relative;
 
                     display: inline-block;
-
-                    will-change: transform, opacity;
                 }
 
                 .intro__claim .first-line {

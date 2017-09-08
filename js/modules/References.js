@@ -11,6 +11,8 @@
         var CLASS = {
                 parallaxDestroyed: "references--no-parallax",
 
+                selfJSLoaded: "references--js-loaded",
+
                 activeTab: "references__reference--active",
                 imageLoaded: "references__reference--image-loaded",
                 imageLoading: "references__reference--image-loading",
@@ -316,6 +318,8 @@
             init = function () {
 
                 $self = $(SELECTOR.self);
+
+                $self.addClass(CLASS.selfJSLoaded);
 
                 initNav();
 

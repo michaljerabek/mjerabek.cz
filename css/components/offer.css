@@ -280,7 +280,7 @@
                 min-height: 180px;
                 min-width: 180px;
 
-                font-family: "Caudex", "Georgia", serif;
+                font-family: "Caudex", "Garamond", serif;
                 font-size: 1.6875rem;
                 text-decoration: none;
                 text-transform: uppercase;
@@ -321,7 +321,7 @@
             }
 
             .offer__technology-link::before {
-                transform: translate3d(0px, 0px, 0px) rotate(-45deg);
+                transform: translate(0px, 0px) rotate(-45deg);
 
                 border-color: #bdbdbd;
             }
@@ -337,57 +337,57 @@
 
             .offer__technology--html .offer__technology-link::after,
             .offer__technology--js .offer__technology-link::after {
-                transform: translate3d(-5px, 5px, 0px) rotate(-45deg);
+                transform: translate(-5px, 5px) rotate(-45deg);
             }
 
             .offer__technology--css .offer__technology-link::before {
-                transform: translate3d(-5px, 5px, 0px) rotate(-45deg);
+                transform: translate(-5px, 5px) rotate(-45deg);
             }
 
             .offer__technology--css .offer__technology-link::after {
-                transform: translate3d(0px, 0px, 0px) rotate(-45deg);
+                transform: translate(0px, 0px) rotate(-45deg);
             }
 
             .offer__technology--html .offer__technology-link:hover::before,
             .offer__technology--html .offer__technology-link:focus::before,
             .offer__technology--js .offer__technology-link:hover::before,
             .offer__technology--js .offer__technology-link:focus::before {
-                transform: translate3d(5px, 0px, 0px) rotate(-45deg);
+                transform: translate(5px, 0px) rotate(-45deg);
             }
 
             .offer__technology--html .offer__technology-link:hover::after,
             .offer__technology--html .offer__technology-link:focus::after,
             .offer__technology--js .offer__technology-link:hover::after,
             .offer__technology--js .offer__technology-link:focus::after {
-                transform: translate3d(-5px, 0px, 0px) rotate(-45deg);
+                transform: translate(-5px, 0px) rotate(-45deg);
             }
 
             .offer__technology--css .offer__technology-link:hover::before,
             .offer__technology--css .offer__technology-link:focus::before {
-                transform: translate3d(-5px, 0px, 0px) rotate(-45deg);
+                transform: translate(-5px, 0px) rotate(-45deg);
             }
 
             .offer__technology--css .offer__technology-link:hover::after,
             .offer__technology--css .offer__technology-link:focus::after {
-                transform: translate3d(5px, 0px, 0px) rotate(-45deg);
+                transform: translate(5px, 0px) rotate(-45deg);
             }
 
             .offer__technology--html .offer__technology-link:active::before,
             .offer__technology--js .offer__technology-link:active::before {
-                transform: translate3d(7px, 0px, 0px) rotate(-45deg);
+                transform: translate(7px, 0px) rotate(-45deg);
             }
 
             .offer__technology--html .offer__technology-link:active::after,
             .offer__technology--js .offer__technology-link:active::after {
-                transform: translate3d(-7px, 0px, 0px) rotate(-45deg);
+                transform: translate(-7px, 0px) rotate(-45deg);
             }
 
             .offer__technology--css .offer__technology-link:active::before {
-                transform: translate3d(-7px, 0px, 0px) rotate(-45deg);
+                transform: translate(-7px, 0px) rotate(-45deg);
             }
 
             .offer__technology--css .offer__technology-link:active::after {
-                transform: translate3d(7px, 0px, 0px) rotate(-45deg);
+                transform: translate(7px, 0px) rotate(-45deg);
             }
 
                 .offer__technology-name {

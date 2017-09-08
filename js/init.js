@@ -78,9 +78,13 @@ jQuery(function () {
         window.MJNS.Contact.init();
     }
 
+    if (window.MJNS.Fonts) {
+
+        window.MJNS.Fonts.init();
+    }
+
     if (window.MJNS.ConsoleMessage) {
 
         setTimeout(window.MJNS.ConsoleMessage.init, 2000);
     }
-
 });

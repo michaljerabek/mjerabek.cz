@@ -33,12 +33,6 @@
         min-width: 240px;
         min-height: 52px;
         padding: 8px 40px;
-
-    }
-
-    .android .btn,
-    .apple .btn {
-        padding-top: 12px;
     }
 
     _:-ms-fullscreen, :root .btn {
@@ -59,27 +53,25 @@
         padding: 8px 32px;
     }
 
-    .android .btn,
-    .apple .btn {
-        padding-top: 11px;
-    }
-
     _:-ms-fullscreen, :root .btn {
         padding-top: 12px;
     }
 
     .btn .text {
-        margin-top: 1px;
-
         font-size: 1.25rem;
         line-height: 1.4375rem;
     }
 }
 
 .btn .text {
+    padding-bottom: 1px;
     margin: auto;
 
     font-weight: inherit;
+}
+
+.ff-android .btn .text {
+    padding-bottom: 2px;
 }
 
 .btn::-moz-focus-inner {

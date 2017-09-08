@@ -114,12 +114,12 @@
 }
 
 .js .references__nav::after {
-    content: "\2192";
+    content: "\2026";
 
     position: absolute;
     bottom: 2px;
 
-    font-size: 14px;
+    font-size: 17px;
     line-height: 0px;
 
     color: #bdbdbd;
@@ -262,7 +262,7 @@
 /*--------------------------------------------------------------------*/
 
 .js .references .fade-in {
-    transform: translateX(0px) translateY(0px) translateZ(0);
+    transform: translateX(0px) translateY(0px);
 
     opacity: 1;
 
@@ -285,6 +285,7 @@
     pointer-events: none;
 
     transition: height 0.35s cubic-bezier(.05, .2, .25, .95) 0s;
+    will-change: contents;
 }
 
 .no-js .references__references {
@@ -347,6 +348,10 @@
         left: 0;
 
         width: 100%;
+    }
+
+    .references:not(.references--js-loaded) .references__reference--active {
+        position: static;
     }
 
     .js .references__reference--active {
@@ -685,7 +690,6 @@
                         transition: filter 0.65s cubic-bezier(0, 0, .2, 1) 0s,
                             transform 0.65s cubic-bezier(0, 0, .2, 1) 0s,
                             opacity 0.65s cubic-bezier(0, 0, .2, 1) 0s;
-                        will-change: transform, filter;
                     }
 
                     .js .references__image {

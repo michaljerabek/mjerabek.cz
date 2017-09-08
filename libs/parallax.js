@@ -39,9 +39,7 @@
 
     var ParallaxController = (function () {
 
-        var EVENT_NS = "ParallaxController",
-
-            TILT_LIMIT = 67.5,
+        var TILT_LIMIT = 67.5,
             FAKE_TILT_REDUCER = 0.5,
 
             TYPE_TILT = 1,
@@ -60,6 +58,7 @@
 
             $win,
             winHeight = 0,
+            realWinHeight = 0,
             winWidth = 0,
             winScrollTop = 0,
 
@@ -69,12 +68,19 @@
 
             lastTiltWasFake = false,
 
+            updateParallaxesScroll,
+
+            _getRealWinHeight = function () {
+
+                return document.documentElement.clientHeight > window.innerHeight || isMobile ? window.innerHeight : document.documentElement.clientHeight;
+            },
+
             //v případě, že je sekce vidět, zavolá metodu transform příslušného Parallaxu
             updateParallaxes = function (type, parallaxId) {
 
-                winScrollTop = $win.scrollTop();
+                winScrollTop = window.pageYOffset || 0;
 
-                var p, parallax;
+                var p, parallax, toUpdate = [];
 
                 for (p in parallaxInstances) {
 
@@ -101,7 +107,7 @@
                         }
 
                         //použít fake-tilt pouze v případě, že zařízení nepodporuje tilt a tilt má být použit
-                        if (type === TYPE_FAKE_TILT && ((parallax.useFakeTilt && watchingTilt) || !parallax.useFakeTilt || !parallax.useTilt)) {
+                        if (type === TYPE_FAKE_TILT && ((watchingTilt && parallax.useFakeTilt) || !parallax.useFakeTilt || !parallax.useTilt)) {
 
                             return;
                         }
@@ -113,9 +119,14 @@
 
                         if (winBottom > parallaxOffsetTop && winScrollTop < parallaxBottom) {
 
-                            parallax.transform(lastTiltWasFake);
+                            toUpdate.push(parallax);
                         }
                     }
+                }
+
+                for (p = 0; p < toUpdate.length; p++) {
+
+                    toUpdate[p].transform(lastTiltWasFake);
                 }
             },
 
@@ -129,6 +140,7 @@
                 winHeight = $win.height();
                 winWidth = $win.width();
                 winScrollTop = $win.scrollTop();
+                realWinHeight = _getRealWinHeight();
 
                 initialBeta = null;
 
@@ -185,7 +197,6 @@
 
                         watchingTilt = true;
 
-                        // Use Full Tilt values
                         var euler = orientationControl.getScreenAdjustedEuler();
 
                         // Don't update CSS position if we are close to encountering gimbal lock
@@ -229,10 +240,14 @@
                 winHeight = $win.height();
                 winWidth = $win.width();
                 winScrollTop = $win.scrollTop();
+                realWinHeight = _getRealWinHeight();
 
-                $win.on("scroll." + EVENT_NS, updateParallaxes.bind(this, TYPE_SCROLL))
-                    .on("mousemove." + EVENT_NS, onFakeTilt.bind(this))
-                    .on("resize." + EVENT_NS, refresh);
+                updateParallaxesScroll = updateParallaxes.bind(this, TYPE_SCROLL);
+                onFakeTilt = onFakeTilt.bind(this);
+
+                window.addEventListener("scroll", updateParallaxesScroll);
+                window.addEventListener("mousemove", onFakeTilt);
+                window.addEventListener("resize", refresh);
 
                 if (!watchingTilt) {
 
@@ -246,7 +261,9 @@
 
             destroy = function () {
 
-                $win.off("." + EVENT_NS);
+                window.removeEventListener("scroll", updateParallaxesScroll);
+                window.removeEventListener("mousemove", onFakeTilt);
+                window.removeEventListener("resize", refresh);
 
                 initialized = false;
             },
@@ -280,7 +297,7 @@
 
             getRealWinHeight = function () {
 
-                return document.documentElement.clientHeight > window.innerHeight || isMobile ? window.innerHeight : document.documentElement.clientHeight;
+                return realWinHeight;
             },
 
             getWinHeight = function () {
@@ -634,6 +651,8 @@
         //přepočet "parallaxProgression" od středu na rozsah mezi -1 a 1 (označující o kolik % "parallaxExtention" se má obrázek posunout)
         var progressionFromCenter = parallaxProgression > 1 ? (parallaxProgression - 1) * -1: 1 - parallaxProgression,
 
+            realWinHeight = ParallaxController.getRealWinHeight(),
+
             l = this.layers.length - 1,
 
             layer,
@@ -664,7 +683,7 @@
 
             } else {
 
-                transform.y = transform.y + (layer.parallaxYExtention * -layerProgressionFromCenter) + (((ParallaxController.getRealWinHeight() + this.parallaxHeight) / 2) * (layer.reverseScroll ? -layerProgressionFromCenter : layerProgressionFromCenter)) - (layer.layerHeight / 2);
+                transform.y = transform.y + (layer.parallaxYExtention * -layerProgressionFromCenter) + (((realWinHeight + this.parallaxHeight) / 2) * (layer.reverseScroll ? -layerProgressionFromCenter : layerProgressionFromCenter)) - (layer.layerHeight / 2);
             }
 
             if (typeof this.options.onBeforeTransform === "function") {
