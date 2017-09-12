@@ -32,11 +32,6 @@ body {
     height: 100%;
 }
 
-html:not([data-brackets-id]),
-body:not([data-brackets-id]) {
-    scroll-behavior: smooth;
-}
-
 body {
     min-width: 320px;
 
@@ -214,7 +209,6 @@ html.js .x-js,
     }
 }
 
-
 @media (min-width: 480px) and (max-width: 639px) {
 
     .layout__br--mobile-m:before {
@@ -240,6 +234,17 @@ html.js .x-js,
 @media (max-width: 399px) {
 
     .layout__br--mobile-xs:before {
+        content: "\A";
+
+        display: block;
+
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 359px) {
+
+    .layout__br--mobile-xxs:before {
         content: "\A";
 
         display: block;

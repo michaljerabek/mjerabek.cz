@@ -9,7 +9,7 @@
     left: 0;
 
     width: 100%;
-    height: 0%; /*ios bug - zobrazuje se nad obsahem i při skrytí*/
+    height: 0%; /*ios bug - zobrazuje se nad obsahem i při skrytí (no-js)*/
 
     color: #e7e7e7;
     visibility: hidden;
@@ -21,6 +21,10 @@
         z-index 0s linear 0.5s;
 
     contain: strict;
+}
+
+.js .technologies {
+    display: none;
 }
 
 .no-js #html:target .technologies,
@@ -407,7 +411,6 @@
         @media (min-width: 768px) {
 
             .technologies__sample {
-                padding-left: 40px;
                 padding-right: 40px;
             }
         }
@@ -457,6 +460,8 @@
 
             width: 61.88%;
             width: calc((100% / 21) * 13);
+
+            overflow: hidden;
         }
 
         @media (min-width: 768px) and (max-width: 1023px) {
@@ -489,7 +494,7 @@
 
             .technologies--show-sample .technologies__sample {
                 width: 100%;
-                padding-left: 48px;
+                padding-left: 40px;
             }
 
             .no-js .technologies__sample:hover,
@@ -634,6 +639,20 @@
                 .technologies__text-content,
                 .technologies__sample-content {
                     display: block;
+                }
+
+                @media (min-width: 768px) {
+
+                    .technologies__sample-content {
+                        padding-left: 40px;
+                    }
+                }
+
+                @media (max-width: 767px) {
+
+                    .technologies__sample-content {
+                        padding-left: 8px;
+                    }
                 }
 
                 .technologies__text-content {
@@ -994,6 +1013,8 @@
                     position: relative;
 
                     padding-bottom: 14px;
+
+                    transition-property: color;
                 }
 
                 .technologies__nav-item:first-child .letter1 {

@@ -206,7 +206,7 @@
                 @-moz-document url-prefix() {
 
                     .pricelist__price {
-                        margin-bottom: calc(1.6875rem + 1px);
+                        margin-bottom: calc(1.6875rem + 0.5px);
                     }
                 }
 

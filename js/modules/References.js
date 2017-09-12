@@ -275,7 +275,7 @@
 
                     ns.$win.trigger("resize.References." + ns);
 
-                }, 50);
+                }, 200);
             },
 
             initBackground = function () {
@@ -286,6 +286,7 @@
                     parallax: SELECTOR.background,
                     layers: $bgLayers,
                     fakeTilt: false,
+                    debounce: 100,
 
                     onBeforeTransform: function ($el, progress, tX, tY, transform) {
 

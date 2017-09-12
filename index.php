@@ -48,6 +48,11 @@ if (isset($_SESSION["ok"])) {
 
 $replace("[^{}]+", "");
 
+if (isset($_ENV["ENV"]) && $_ENV["ENV"] === "production") {
+
+    $content = preg_replace("/\n*\s*<!--dev-->.*?<!--\/dev-->/s", "", $content);
+}
+
 unset($_SESSION["ok"]);
 unset($_SESSION["old_input"]);
 unset($_SESSION["validationErrors"]);

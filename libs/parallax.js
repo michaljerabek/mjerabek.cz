@@ -37,7 +37,7 @@
 
         SUPPORTS_TRANSFORM = document.body.style[TRANSFORM_PROP] !== undefined;
 
-    var ParallaxController = (function () {
+    var ParallaxController = window.ParallaxController = (function () {
 
         var TILT_LIMIT = 67.5,
             FAKE_TILT_REDUCER = 0.5,
@@ -132,7 +132,7 @@
 
             refresh = function (force) {
 
-                if (($win.height() === winHeight && $win.width() === winWidth) && force !== true) {
+                if (force !== true && ($win.height() === winHeight && $win.width() === winWidth)) {
 
                     return;
                 }
@@ -247,7 +247,8 @@
 
                 window.addEventListener("scroll", updateParallaxesScroll);
                 window.addEventListener("mousemove", onFakeTilt);
-                window.addEventListener("resize", refresh);
+
+                $win.on("resize.ParallaxController", refresh);
 
                 if (!watchingTilt) {
 
@@ -263,7 +264,8 @@
 
                 window.removeEventListener("scroll", updateParallaxesScroll);
                 window.removeEventListener("mousemove", onFakeTilt);
-                window.removeEventListener("resize", refresh);
+
+                $win.off("resize.ParallaxController");
 
                 initialized = false;
             },
@@ -647,6 +649,8 @@
             parallaxProgression = ((parallaxBottom - ParallaxController.getWinScrollTop()) / this.parallaxYOuterRange) * 2;
 
         parallaxProgression = isFinite(parallaxProgression) ? parallaxProgression : 0;
+
+        parallaxProgression = Math.max(0, Math.min(parallaxProgression, 2));
 
         //přepočet "parallaxProgression" od středu na rozsah mezi -1 a 1 (označující o kolik % "parallaxExtention" se má obrázek posunout)
         var progressionFromCenter = parallaxProgression > 1 ? (parallaxProgression - 1) * -1: 1 - parallaxProgression,

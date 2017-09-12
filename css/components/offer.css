@@ -76,6 +76,7 @@
 
             .offer__title .word2 .letter1 {
                 margin-right: -0.055em;
+                margin-right: -0.055em;
             }
 
             .offer__title .word2 .letter2 {
@@ -141,6 +142,7 @@
 
         .offer__description {
             width: 100%;
+            padding-top: calc(2vh - 12px);
 
             font-style: italic;
             font-weight: 300;
@@ -491,6 +493,13 @@
 
                 .offer__technology-description .small {
                     font-size: 0.8235294em;
+                }
+
+                @media (max-width: 359px) {
+
+                    .offer__technology--css .layout__br--all::before {
+                        display: none;
+                    }
                 }
 
 /*//////////////////////////// TECHNOLOGIES ////////////////////////////*/

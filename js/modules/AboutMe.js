@@ -1,5 +1,5 @@
 /*jslint indent: 4, white: true, nomen: true, regexp: true, unparam: true, node: true, browser: true, devel: true, nomen: true, plusplus: true, regexp: true, sloppy: true, vars: true*/
-/*global jQuery, Parallax*/
+/*global jQuery, Parallax, ParallaxController*/
 
 (function (ns, $) {
 
@@ -34,6 +34,19 @@
                 $el.css("filter", "blur(" + filter + "px)");
             },
 
+            checkPhotoPosition = function () {
+
+                var selfRect = parallax.$parallax[0].getBoundingClientRect(),
+                    photoRect = parallax.$layers[0].getBoundingClientRect();
+
+                if (photoRect.bottom < selfRect.bottom) {
+
+                    ParallaxController.refresh(true);
+
+                    setTimeout(checkPhotoPosition, 1000);
+                }
+            },
+
             init = function (debug) {
 
                 setTimeout(function() {
@@ -52,6 +65,8 @@
 
                         parallax.$layers.css("filter", "none");
                     });
+
+//                    setTimeout(checkPhotoPosition, 2000);
 
                     if (debug) {
 

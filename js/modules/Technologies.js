@@ -169,6 +169,15 @@
                 ns.$win.trigger(EVENT.closed);
 
                 event.preventDefault();
+
+                $self.on("transitionend." + ns, function (event) {
+
+                    if (event.originalEvent.propertyName === "visibility" && event.originalEvent.target === $self[0]) {
+
+                        $self.off("transitionend." + ns)
+                            .css("display", "none");
+                    }
+                });
             },
 
             listenESC = function () {
@@ -188,6 +197,9 @@
             },
 
             open = function (event) {
+
+                $self.off("transitionend." + ns)
+                    .css("display", "block");
 
                 if (!initialized) {
 
@@ -374,6 +386,10 @@
                 infinitum.on("change." + ns, switchTabs);
 
                 infinitum.on("change." + ns + " dragging." + ns + " dragend." + ns, setIndicatorWidth);
+
+                ns.$win.on("resize." + ns, setIndicatorWidth);
+
+                setTimeout(setIndicatorWidth.bind(null, { type: "ios-fix" }), 100);
             },
 
             initButtons = function () {
@@ -436,7 +452,11 @@
 
                     if (!initialized) {
 
+                        $self.css("display", "block");
+
                         initSelf($openers.get().indexOf(this));
+
+                        $self.css("display", "none");
                     }
                 });
 

@@ -419,7 +419,7 @@
         @media (min-height: 768px) and (max-height: 1023px) {
 
             .intro__content {
-                margin-bottom: 21vmin;
+                margin-bottom: 23vmin;
                 margin-top: calc(-48px + 2vh);
             }
         }
@@ -732,6 +732,14 @@
                     display: inline-block;
                 }
 
+                @media (max-width: 639px) {
+
+                    .intro__claim .first-line {
+                        display: table;
+                        margin: 0px auto;
+                    }
+                }
+
                 .intro__claim .first-line {
                     animation: show--init 0.8s linear 0s 1 forwards,
                         show 1.65s cubic-bezier(.7, .4, .4, .9) 0.8s 1 forwards,
@@ -787,7 +795,7 @@
             @media (min-height: 480px) and (min-width: 480px) and (max-width: 767px) {
 
                 .intro__claim {
-                    font-size: 1.4375rem;
+                    font-size: 1.3125rem;
                 }
             }
 
