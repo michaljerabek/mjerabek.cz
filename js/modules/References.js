@@ -219,6 +219,7 @@
 
                 infinitum = new Infinitum({
                     selector: SELECTOR.nav,
+                    startBreak: Infinitum.POSITION[window.innerWidth < 1400 ? "START" : "CENTER"],
                     watchContainer: 100,
                     watchItems: 200
                 });

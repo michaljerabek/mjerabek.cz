@@ -196,7 +196,7 @@
                         <div class="square" data-js-hover="true"><!-- css --></div>
                     </div>
                     <div class="section__background-layer intro__background-layer" data-parallax-reverse="tilt">
-                        <div class="square" data-js-hover="true"> css </div>
+                        <div class="square" data-js-hover="true"><!-- css --></div>
                     </div>
                     <div class="section__background-layer intro__background-layer" data-parallax-reverse="scroll">
                         <div class="square" data-js-hover="true"><!-- css --></div>
@@ -768,7 +768,13 @@
                 <article class="about-me section x-print" id="kdo-jsem" data-main-nav-target="true" data-main-nav-theme="#ceb77e">
 
                     <figure class="about-me__photo x-print">
-                        <img class="about-me__img" src="img/about-me__photo--square.jpg" alt="Moje fotka">
+                        <picture>
+                            <source srcset="img/about-me__photo--S1.jpg 1x, img/about-me__photo--S2.jpg 2x" media="(max-width: 540px)">
+                            <source srcset="img/about-me__photo--M1.jpg 1x, img/about-me__photo--M2.jpg 2x" media="(min-width: 541px) and (max-width: 810px)">
+                            <source srcset="img/about-me__photo--L1.jpg 1x, img/about-me__photo--L2.jpg 2x" media="(min-width: 811px)">
+
+                            <img class="about-me__img" src="img/about-me__photo--M2.jpg" srcset="img/about-me__photo--M1.jpg 1x, img/about-me__photo--M2.jpg 2x" alt="Moje fotka">
+                        </picture>
                     </figure>
 
                    <div class="layout__center">

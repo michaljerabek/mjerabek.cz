@@ -32,6 +32,11 @@ body {
     height: 100%;
 }
 
+html.no-js,
+.no-js body {
+    scroll-behavior: smooth;
+}
+
 body {
     min-width: 320px;
 

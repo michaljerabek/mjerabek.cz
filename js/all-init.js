@@ -10,13 +10,15 @@
         var SELECTOR = {
                 self: ".about-me",
 
-                photo: ".about-me__photo"
+                photo: ".about-me__photo",
+                photoImg: ".about-me__img"
             },
 
             PHOTO_FILTER = 20,
 
             parallax,
             useFilter = true,
+            $img = null,
 
             applyPhotoFilter = function ($el, progress) {
 
@@ -25,13 +27,15 @@
                     return;
                 }
 
+                $img = $img || $el.find(SELECTOR.photoImg);
+
                 var recalc = progress > 0 ? Math.max(-1 + (progress * 2), 0) : Math.min(1 + (progress * 2), 0);
 
                 recalc = Math.abs(recalc);
 
                 var filter = (recalc * PHOTO_FILTER).toFixed(3);
 
-                $el.css("filter", "blur(" + filter + "px)");
+                $img.css("filter", "blur(" + filter + "px)");
             },
 
             checkPhotoPosition = function () {
@@ -63,10 +67,9 @@
 
                         useFilter = false;
 
-                        parallax.$layers.css("filter", "none");
+                        parallax.$layers.find(SELECTOR.photoImg)
+                            .css("filter", "none");
                     });
-
-//                    setTimeout(checkPhotoPosition, 2000);
 
                     if (debug) {
 
@@ -2521,6 +2524,7 @@
 
                 infinitum = new Infinitum({
                     selector: SELECTOR.nav,
+                    startBreak: Infinitum.POSITION[window.innerWidth < 1400 ? "START" : "CENTER"],
                     watchContainer: 100,
                     watchItems: 200
                 });

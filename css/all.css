@@ -1844,7 +1844,7 @@ input[type="time"]:focus {
 
             .intro__content {
                 margin-bottom: 27vmin;
-                margin-top: calc(-48px + 2vh);
+                margin-top: calc(-56px + 2vh);
             }
         }
 
@@ -1860,7 +1860,7 @@ input[type="time"]:focus {
 
             .intro__content {
                 margin-bottom: 19vmin;
-                margin-top: calc(-48px + 3vh);
+                margin-top: calc(-56px + 3vh);
             }
         }
 
@@ -4934,7 +4934,7 @@ input[type="time"]:focus {
             .no-js .technologies__sample-content-wrapper {
                 overflow: auto;
             }
-
+\
             .js .technologies__text-content-wrapper,
             .js .technologies__sample-content-wrapper {
                 overflow: hidden;
@@ -4948,6 +4948,7 @@ input[type="time"]:focus {
             .technologies__text-content-wrapper,
             .technologies__sample-content-wrapper {
                 overflow: auto;
+                scroll-boundary-behavior: contain;
 
                 will-change: scroll-position;
             }
@@ -6627,7 +6628,7 @@ input[type="time"]:focus {
 
         pointer-events: auto;
 
-        will-change: transform, filter;
+        will-change: transform;
 
         contain: layout size style;
     }
@@ -6635,44 +6636,51 @@ input[type="time"]:focus {
         .about-me__img {
             position: absolute;
             bottom: 0%;
-            right: 0%;
-            right: calc((-1080px + 100%) / -4);
+            right: -20%;
+            right: calc((-540px + 100%) / -2.25);
 
-            transform: scale(0.85);
+            transform-origin: bottom right;
 
-            height: 80%;
-            height: calc(100% - ((10vh + 10vw) / 2));
-
-            opacity: 0.85;
+            height: 87.5%;
+            height: calc(100% - ((8vh + 8vw) / 2));
 
             pointer-events: none;
+
+            will-change: filter;
         }
 
         @media (min-width: 1080px) {
 
             .about-me__img {
-                right: calc((-1080px + 100%) / 4);
+                right: calc((-2700px + 100%) / 5);
             }
         }
 
         @media (max-width: 1023px) {
 
             .about-me__img {
-                right: calc((-1080px + 100%) / 6);
+                right: calc((-2700px + 100%) / 7.5);
 
-                transform: translateY(-6%) scale(0.85);
+                transform: translateY(-4%);
 
-                height: calc(100% - ((20vh + 20vw) / 2));
+                height: calc(100% - ((25vh + 25vw) / 2.5));
             }
         }
 
         @media (max-width: 767px) {
 
             .about-me__img {
-                right: calc((-1080px + 100%) / 8);
+                right: calc((-2700px + 100%) / 10);
 
                 height: auto;
-                width: calc(540px + 50vw);
+                width: calc(540px + 55vw);
+            }
+        }
+
+        @media (max-height: 767px) and (max-width: 1079px) {
+
+            .about-me__img {
+                bottom: -4vw;
             }
         }
 
