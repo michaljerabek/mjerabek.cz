@@ -879,6 +879,8 @@
 
     .js .contact__background-layer .speach:not(.speach--visible) {
 	    display: none;
+
+        animation: none;
     }
 
     @media (max-width: 767px) {

@@ -64,6 +64,8 @@
                 }
             },
 
+            SCROLL_AMOUNT_SAMPLE = 324,
+
             THEME_COLOR = "#ceb77e",
 
             initialized,
@@ -418,6 +420,7 @@
                     $contentWrappers.filter(SELECTOR.textWrapper).mCustomScrollbar(SCROLL_OPTIONS);
 
                     SCROLL_OPTIONS.axis = "yx";
+                    SCROLL_OPTIONS.mouseWheel.scrollAmount = SCROLL_AMOUNT_SAMPLE;
 
                     $contentWrappers.filter(SELECTOR.sampleWrapper).mCustomScrollbar(SCROLL_OPTIONS);
                 }

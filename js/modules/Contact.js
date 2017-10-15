@@ -92,6 +92,9 @@
                 setTimeout(function() {
 
                     ns.$win.trigger("bg-object-opacity-animation__add." + ns, [$bgLayers, SELECTOR.findSpeechBubble, "--slide-in"]);
+
+                    ns.$win.trigger("scroll.Contact." + ns);
+
                 }, 200);
 
                 var scrollDebounce = null;

@@ -5674,7 +5674,7 @@ input[type="time"]:focus {
                 color: #3C6778;
             }
 
-                .reference__project-name {
+                .references__project-name {
                     display: block;
 
                     font-family: "Caudex";
@@ -5683,26 +5683,26 @@ input[type="time"]:focus {
                     letter-spacing: 0.01em;
                 }
 
-                .apple .reference__project-name {
+                .apple .references__project-name {
                     text-indent: 0;
                     letter-spacing: 0;
                 }
 
                 @media (min-width: 768px) {
 
-                    .reference__project-name {
+                    .references__project-name {
                         font-size: 2rem;
                     }
                 }
 
                 @media (max-width: 767px) {
 
-                    .reference__project-name {
+                    .references__project-name {
                         font-size: 1.6875rem;
                     }
                 }
 
-                .reference__project-type {
+                .references__project-type {
                     display: block;
 
                     font-weight: 300;
@@ -5713,14 +5713,14 @@ input[type="time"]:focus {
 
                 @media (min-width: 768px) {
 
-                    .reference__project-type {
+                    .references__project-type {
                         font-size: 1.25rem;
                     }
                 }
 
                 @media (max-width: 767px) {
 
-                    .reference__project-type {
+                    .references__project-type {
                         font-size: 1.0625rem;
                     }
                 }

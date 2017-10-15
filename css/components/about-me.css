@@ -89,7 +89,7 @@
             transform-origin: bottom right;
 
             height: 87.5%;
-            height: calc(100% - ((8vh + 8vw) / 2));
+            height: calc(100% - ((9vh + 9vw) / 2));
 
             pointer-events: none;
 
@@ -99,18 +99,19 @@
         @media (min-width: 1080px) {
 
             .about-me__img {
-                right: calc((-2700px + 100%) / 5);
+                bottom: -0.5%;
+                right: calc((-2300px + 100%) / 3.5);
             }
         }
 
         @media (max-width: 1023px) {
 
             .about-me__img {
-                right: calc((-2700px + 100%) / 7.5);
+                right: calc((-2700px + 100%) / 8);
 
                 transform: translateY(-4%);
 
-                height: calc(100% - ((25vh + 25vw) / 2.5));
+                height: calc(100% - ((30vh + 30vw) / 2.5));
             }
         }
 
@@ -206,7 +207,7 @@
         @media (max-width: 767px) {
 
             .about-me__content {
-                padding-bottom: 40vmin;
+                padding-bottom: 44vmin;
             }
         }
 

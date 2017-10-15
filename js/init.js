@@ -1,5 +1,5 @@
 /*jslint indent: 4, white: true, unparam: true, node: true, browser: true, devel: true, nomen: true, plusplus: true, regexp: true, sloppy: true, vars: true*/
-/*global jQuery*/
+/*global jQuery, window*/
 
 jQuery(function () {
 
