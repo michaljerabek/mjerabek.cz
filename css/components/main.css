@@ -101,6 +101,20 @@ s {
     }
 }
 
+@media (min-width: 640px) and (max-width: 767px) {
+
+    html .x-mobile-l.x-mobile-l {
+        display: none;
+    }
+}
+
+@media (min-width: 480px) and (max-width: 639px) {
+
+    html .x-mobile-m.x-mobile-m {
+        display: none;
+    }
+}
+
 @media screen {
 
     html .x-screen.x-screen {
