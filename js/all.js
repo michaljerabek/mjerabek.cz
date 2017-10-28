@@ -2897,6 +2897,17 @@
                 return parseInt($el.data(DATA.tab), 10) || 0;
             },
 
+            resetSamplesScrollPosition = function () {
+
+                if ($contentWrappers) {
+
+                    $contentWrappers.filter(SELECTOR.sampleWrapper)
+                        .mCustomScrollbar("scrollTo", [0, 0], {
+                            scrollInertia: 0
+                        });
+                }
+            },
+
             open = function (event) {
 
                 $self.off("transitionend." + ns)
@@ -2919,11 +2930,10 @@
 
                 ns.$temp[0] = this;
 
-
                 $navLinks.css("transition", "none");
-                $contentWrappers.css("transition", "none")
-                    .filter(SELECTOR.sampleWrapper)
-                    .mCustomScrollbar("scrollTo", [0, 0], { scrollInertia: 0 });
+                $contentWrappers.css("transition", "none");
+
+                resetSamplesScrollPosition();
 
                 $tabs.removeClass(CLASS.fromRightTechnology)
                     .removeClass(CLASS.fromLeftTechnology)
