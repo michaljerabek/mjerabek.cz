@@ -220,8 +220,11 @@
 
                 ns.$temp[0] = this;
 
+
                 $navLinks.css("transition", "none");
-                $contentWrappers.css("transition", "none");
+                $contentWrappers.css("transition", "none")
+                    .filter(SELECTOR.sampleWrapper)
+                    .mCustomScrollbar("scrollTo", [0, 0], { scrollInertia: 0 });
 
                 $tabs.removeClass(CLASS.fromRightTechnology)
                     .removeClass(CLASS.fromLeftTechnology)
