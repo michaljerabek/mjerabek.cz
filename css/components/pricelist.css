@@ -1,0 +1,519 @@
+/*====================================================================*/
+/*----------------------------- PRICELIST ----------------------------*/
+/*====================================================================*/
+
+.pricelist {
+	background-color: #fff;
+
+    text-align: center;
+}
+
+    .pricelist > .layout__center {
+	    display: flex;
+        flex-direction: column;
+
+        pointer-events: none;
+    }
+
+        .pricelist__title .text {
+            color: #7D6937;
+
+            pointer-events: auto;
+        }
+
+            /*kerning*/
+            .pricelist__title .word1 .letter1 {
+                margin-right: -0.02em;
+            }
+
+            .pricelist__title .word1 .letter2 {
+                margin-right: -0.015em;
+            }
+
+            .pricelist__title .word1 .letter3 {
+                margin-right: -0.015em;
+            }
+
+            .pricelist__title .word1 .letter4 {
+                margin-right: -0.02em;
+            }
+
+            .pricelist__title .word1 .letter5 {
+                margin-right: -0.02em;
+            }
+
+            .pricelist__title .word2 .letter1 {
+                margin-right: -0.01em;
+            }
+
+            .pricelist__title .word2 .letter2 {
+                margin-right: -0.03em;
+            }
+
+            .pricelist__title .word3 .letter1 {
+                margin-right: -0.01em;
+            }
+
+            .pricelist__title .word3 .letter2 {
+                margin-right: -0.03em;
+            }
+
+            .pricelist__title .word3 .letter3 {
+                margin-right: -0.025em;
+            }
+
+            .pricelist__title .word3 .letter4 {
+                margin-right: -0.02em;
+            }
+
+            .pricelist__title .word4 .letter1 {
+                margin-right: 0.02em;
+            }
+
+            .pricelist__title .word4 .letter2 {
+                margin-right: -0.06em;
+            }
+
+            .pricelist__title .word4 .letter3 {
+                margin-right: -0.045em;
+            }
+
+            .pricelist__title .word4 .letter4 {
+                margin-right: -0.02em;
+            }
+            /*/kerning*/
+
+        .pricelist__content {
+            padding-top: 3vmin;
+            padding-top: 2vmax;
+            margin-bottom: 40px;
+
+            font-size: 0;
+        }
+
+            .pricelist__pricelist,
+            .pricelist__terms-and-conditions {
+                font-size: 1.0625rem;
+                font-weight: 300;
+                line-height: 1.6875rem;
+                vertical-align: top;
+                letter-spacing: 0.004em;
+
+                color: #111;
+            }
+
+            .pricelist__terms-and-conditions {
+                will-change: contents;
+            }
+
+            @media (min-width: 768px) {
+
+                .pricelist__pricelist,
+                .pricelist__terms-and-conditions {
+                    display: inline-block;
+                    width: 450px;
+                    max-width: 50%;
+                }
+            }
+
+            @media (min-width: 1024px) {
+
+                .pricelist__pricelist {
+                    padding-right: 40px;
+
+                    text-align: right;
+                }
+            }
+
+            @media (min-width: 768px) and (max-width: 1023px) {
+
+                .pricelist__pricelist {
+                    padding-right: 20px;
+
+                    text-align: right;
+                }
+            }
+
+            @media (min-width: 1024px) {
+
+                .pricelist__terms-and-conditions {
+                    padding-left: 40px;
+
+                    text-align: left;
+                }
+            }
+
+            @media (min-width: 768px) and (max-width: 1023px) {
+
+                .pricelist__terms-and-conditions {
+                    padding-left: 20px;
+
+                    text-align: left;
+                }
+            }
+
+            @media (max-width: 767px) {
+
+                .pricelist__pricelist,
+                .pricelist__terms-and-conditions {
+                    max-width: 75%;
+
+                    margin-left: auto;
+                    margin-right: auto;
+
+                    text-align: left;
+                }
+
+                .pricelist__pricelist {
+                    margin-bottom: 40px;
+                }
+            }
+
+            @media (max-width: 479px) {
+
+                .pricelist__pricelist,
+                .pricelist__terms-and-conditions {
+                    max-width: none;
+                }
+            }
+
+                .pricelist__price-info p,
+                .pricelist__terms-and-conditions p {
+                    margin-bottom: 1.6875rem;
+
+                    pointer-events: auto;
+                }
+
+                .pricelist__price-info .small,
+                .pricelist__terms-and-conditions .small {
+                    font-size: 0.875rem;
+                    line-height: 1;
+                }
+
+                .pricelist__price {
+                    position: relative;
+
+                    margin-bottom: 1.6875rem;
+
+                    font-family: "Caudex", serif;
+                    font-size: 3.25rem;
+                    text-align: right;
+                    line-height: 3.3750rem;
+
+                    color: #111;
+                }
+
+                @-moz-document url-prefix() {
+
+                    .pricelist__price {
+                        margin-bottom: calc(1.6875rem + 0.5px);
+                    }
+                }
+
+                    .pricelist__price .price {
+                        pointer-events: auto;
+                    }
+
+                @media (min-width: 1024px) {
+
+                    .pricelist__price {
+                        font-size: 3.25rem;
+                    }
+                }
+
+                @media (min-width: 768px) and (max-width: 1023px) {
+
+                    .pricelist__price {
+                        font-size: 3rem;
+                    }
+
+                    .pricelist__price .price {
+                        transform: translateY(0.075rem);
+
+                        display: inline-block;
+                    }
+
+                    .apple .pricelist__price .price {
+                        transform: translateY(0.125rem);
+                    }
+                }
+
+                @media (max-width: 767px) {
+
+                    .pricelist__price {
+                        font-size: 2.75rem;
+                    }
+
+                    .pricelist__price .price {
+                        vertical-align: middle;
+                        line-height: 1;
+                    }
+                }
+                    /*kerning*/
+                    .pricelist__price .small .word1 .letter1 {
+                        margin-right: -0.01em;
+                    }
+
+                    .pricelist__price .small + span .word1 .letter1 {
+                        margin-right: -0.025em;
+                    }
+
+                    .pricelist__price .small + span .word1 .letter2 {
+                        margin-right: 0.005em;
+                    }
+
+                    .pricelist__price .small + span .word1 .letter3 {
+                        margin-right: -0.035em;
+                    }
+
+                    .pricelist__price .small + span .word2 .letter1 {
+                        margin-right: -0.02em;
+                    }
+                    /*/kerning*/
+
+                    .pricelist__price .small {
+                        margin-right: -0.1em;
+
+                        font-size: 0.7692308em;
+                        line-height: 1;
+                    }
+
+                    .pricelist__price-unit {
+                        display: block;
+                        padding-top: 0.4375rem;
+                        padding-bottom: 0.125rem;
+
+                        font-family: "josefin-sans", "Josefin Sans", "Calibri", "Trebuchet MS", sans-serif;
+                        font-size: 1.5625rem;
+                        font-weight: 300;
+                        font-style: italic;
+                        line-height: 1.6875rem;
+
+                        color: #7D6937;
+
+                        pointer-events: auto;
+                    }
+
+                    .apple .pricelist__price-unit {
+                        margin-top: 0.125rem;
+                    }
+
+                    @media (max-width: 767px) {
+
+                        .js .pricelist__terms-and-conditions .small,
+                        .js .pricelist__terms-and-conditions p {
+                            overflow: hidden;
+
+                            transition: opacity 0.25s linear 0.25s,
+                                line-height 0.5s cubic-bezier(.1, .4, .1, 1) 0s,
+                                margin-bottom 0.5s cubic-bezier(.1, .4, .1, 1) 0s;
+                        }
+
+                        .js .pricelist__terms-and-conditions:not(.pricelist__terms-and-conditions--show) p,
+                        .js .pricelist__terms-and-conditions:not(.pricelist__terms-and-conditions--show) .small {
+                            margin-bottom: 0rem;
+
+                            line-height: 0rem;
+
+                            opacity: 0;
+
+                            transition: opacity 0.25s linear 0s,
+                                line-height 0.5s cubic-bezier(.5, .1, .5, 1) 0.2s,
+                                margin-bottom 0.5s cubic-bezier(.4, .1, .6, 1) 0.2s;
+                        }
+                    }
+
+                .pricelist__terms-and-conditions-title {
+                    margin-top: 1.625rem;
+                    margin-bottom: 0.75rem;
+
+                    line-height: 1.4375rem;
+                    letter-spacing: 0.03em;
+
+                    color: #474747;
+                }
+
+                .apple .pricelist__terms-and-conditions-title {
+                    letter-spacing: 0.01em;
+                }
+
+                    .pricelist__terms-and-conditions-link {
+                        position: relative;
+
+                        display: inline-block;
+                        padding-right: 27px;
+
+                        font-family: "Caudex", serif;
+                        font-size: 1.4375rem;
+                        font-variant: small-caps;
+                        text-decoration: none;
+
+                        color: inherit;
+
+                        pointer-events: auto;
+                    }
+
+                        /*kerning*/
+                        .pricelist__terms-and-conditions-link .word1 .letter1 {
+                            margin-right: 0.02em;
+                        }
+
+                        .pricelist__terms-and-conditions-link .word1 .letter2 {
+                            margin-right: -0.005em;
+                        }
+
+                        .pricelist__terms-and-conditions-link .word1 .letter3 {
+                            margin-right: -0.035em;
+                        }
+
+                        .pricelist__terms-and-conditions-link .word1 .letter4 {
+                            margin-right: -0.02em;
+                        }
+
+                        .pricelist__terms-and-conditions-link .word1 .letter5 {
+                            margin-right: -0.015em;
+                        }
+
+                        .pricelist__terms-and-conditions-link .word1 .letter6 {
+                            margin-right: 0.01em;
+                        }
+
+                        .pricelist__terms-and-conditions-link .word1 .letter7 {
+                            margin-right: -0.02em;
+                        }
+
+                        .pricelist__terms-and-conditions-link .word2 .letter1 {
+                            margin-right: 0.01em;
+                        }
+
+                        .pricelist__terms-and-conditions-link .word2 .letter2 {
+                            margin-right: -0.005em;
+                        }
+
+                        .pricelist__terms-and-conditions-link .word2 .letter3 {
+                            margin-right: -0.01em;
+                        }
+
+                        .pricelist__terms-and-conditions-link .word2 .letter4 {
+                            margin-right: 0.01em;
+                        }
+
+                        .pricelist__terms-and-conditions-link .word2 .letter5 {
+                            margin-right: -0.015em;
+                        }
+
+                        .pricelist__terms-and-conditions-link .word2 .letter6 {
+                            margin-right: -0.015em;
+                        }
+
+                        .pricelist__terms-and-conditions-link .word2 .letter7 {
+                            margin-right: -0.025em;
+                        }
+                        /*/kerning*/
+
+                    @media (max-width: 767px) {
+
+                        .pricelist__terms-and-conditions-link::after {
+                            content: "";
+
+                            position: absolute;
+                            top: 6px;
+                            right: 13px;
+                            bottom: 0px;
+
+                            transform-origin: center 2px;
+
+                            height: 0;
+                            width: 0;
+                            margin: auto;
+
+                            border: 4px solid;
+                            border-color: #111 transparent transparent transparent;
+
+                            transition: inherit;
+                        }
+
+                        .pricelist__terms-and-conditions--show .pricelist__terms-and-conditions-link::after,
+                        .pricelist__terms-and-conditions-link:hover::after,
+                        .pricelist__terms-and-conditions-link:focus::after {
+                            border-top-color: #3C6778;
+                        }
+
+                        .pricelist__terms-and-conditions--show .pricelist__terms-and-conditions-link,
+                        .pricelist__terms-and-conditions-link:hover,
+                        .pricelist__terms-and-conditions-link:focus {
+                            color: #3C6778;
+                        }
+
+                        .pricelist__terms-and-conditions--show .pricelist__terms-and-conditions-link::after {
+                            transform: rotate(180deg);
+                        }
+                    }
+
+            .pricelist__btn-wrapper {
+                margin-top: auto;
+            }
+
+/*--------------------------------------------------------------------*/
+/*---------------------------- BACKGROUND ----------------------------*/
+/*--------------------------------------------------------------------*/
+
+.pricelist__background-layer:nth-child(1) {
+    width: calc(100% + 100px);
+    height: calc(100% + 500px);
+}
+
+.pricelist__background-layer:nth-child(2) {
+    width: calc(100% + 100px);
+    height: calc(100% + 500px);
+}
+
+.pricelist--no-parallax .pricelist__background-layer:nth-child(1n) {
+    width: 100%;
+    height: 100%;
+}
+
+    .pricelist__background-layer .square {
+        border-color: rgba(192, 108, 71, 0.4);
+
+        transition: background-color 2s ease 1s,
+            border-color 2s ease 1s,
+            opacity 1.5s ease 0s;
+    }
+
+    .no-js .section__background-layer--stop-animation .square:not(:hover),
+    .js .pricelist__background-layer.section__background-layer--stop-animation .square:not(.hover) {
+        border-color: rgba(192, 108, 71, 0.3);
+    }
+
+    .pricelist__background-layer:nth-child(1) .square {
+        margin-top: calc(-763.5px - 110px);
+        margin-left: -770px;
+    }
+
+    .pricelist__background-layer:nth-child(2) .square {
+        margin-top: calc(-763.5px - 305px);
+        margin-left: calc(-1527px + 485px);
+    }
+
+    .js .pricelist__background-layer:not(.section__background-layer--stop-hover) .square.hover,
+    .no-js .pricelist__background-layer:not(.section__background-layer--stop-hover) .square:hover {
+        background-color: rgba(192, 108, 71, 0.1);
+        border-color: rgba(192, 108, 71, 0);
+
+        transition: background-color 1s ease 0s,
+            border-color 1s ease 0s,
+            opacity 1.5s ease 0s;
+    }
+
+
+
+@media (min-width: 1024px) {
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+}
+
+@media (max-width: 767px) {
+
+}

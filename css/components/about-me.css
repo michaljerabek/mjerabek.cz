@@ -1,0 +1,289 @@
+/*====================================================================*/
+/*------------------------------ ABOUT-ME ----------------------------*/
+/*====================================================================*/
+
+.about-me {
+    background-color: #000;
+
+    overflow: hidden;
+
+    pointer-events: none;
+}
+
+    .about-me__title {
+        color: #e7e7e7;
+
+        pointer-events: auto;
+    }
+
+        /*kerning*/
+        .about-me__title .text > span:first-child .word1 .letter1 {
+            margin-right: -0.015em;
+        }
+
+        .about-me__title .text > span:first-child .word1 .letter2 {
+            margin-right: 0.01em;
+        }
+
+        .about-me__title .text > span:first-child .word1 .letter3 {
+            margin-right: 0.025em;
+        }
+
+        .about-me__title .text > span:first-child .word1 .letter4 {
+            margin-right: -0.01em;
+        }
+
+        .about-me__title .text > span:first-child .word2 .letter1 {
+        }
+
+        .about-me__title .text > span:first-child .word2 .letter2 {
+            margin-right: -0.015em;
+        }
+
+        .about-me__title .text > span:first-child .word2 .letter3 {
+            margin-right: 0.01em;
+        }
+
+        .about-me__title .text > span:first-child .word2 .letter4 {
+            margin-right: 0.015em;
+        }
+
+        .about-me__title .text > span:nth-child(2) .word1 .letter1 {
+            margin-right: -0.05em;
+        }
+
+        .about-me__title .text > span:nth-child(2) .word2 .letter1 {
+            margin-right: -0.005em;
+        }
+
+        .about-me__title .text > span:nth-child(2) .word2 .letter2 {
+            margin-right: 0.005em;
+        }
+        /*/kerning*/
+
+    .about-me__photo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        transform: translate(-50%, -50%);
+
+        width: 100%;
+        height: 100%;
+        width: calc(100% + 60px);
+        height: calc(100% + 60px + 200px);
+
+        pointer-events: auto;
+
+        will-change: transform;
+
+        contain: layout size style;
+    }
+
+        .about-me__img {
+            position: absolute;
+            bottom: 0%;
+            right: -20%;
+            right: calc((-540px + 100%) / -2.25);
+
+            transform-origin: bottom right;
+
+            height: 87.5%;
+            height: calc(100% - ((12vh + 12vw) / 4));
+
+            pointer-events: none;
+
+            will-change: filter;
+        }
+
+        @media (min-width: 1080px) {
+
+            .about-me__img {
+                bottom: -0.25%;
+                right: calc((-2304px + 100%) / 3.5);
+            }
+        }
+
+        @media (max-width: 1023px) {
+
+            .about-me__img {
+                right: calc((-2460px + 100%) / 6);
+
+                transform: translateY(-2%);
+
+                height: calc(100% - ((30vh + 30vw) / 4));
+            }
+        }
+
+        @media (max-width: 767px) {
+
+            .about-me__img {
+                right: calc((540px + 100%) / -4.5);
+
+                height: auto;
+                width: calc(540px + 60vw);
+            }
+        }
+
+        @media (max-height: 767px) and (max-width: 1079px) {
+
+            .about-me__img {
+                bottom: -4vw;
+            }
+        }
+
+        @media (max-width: 479px) {
+
+            .about-me__img {
+                bottom: 0;
+            }
+        }
+
+    .about-me > .layout__center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+    }
+
+        .about-me__content {
+            padding-top: 3vmin;
+            padding-top: 2vmax;
+            margin-right: auto;
+            margin-bottom: 80px;
+
+            font-size: 1.0625rem;
+            line-height: 1.6875rem;
+            letter-spacing: 0.004em;
+
+	        color: #e7e7e7;
+            text-shadow: -1px 1px 4px rgba(0, 0, 0, 1);
+        }
+
+        @media (min-width: 1024px) {
+
+            .about-me__content {
+                max-width: 76.16%;
+                max-width: calc(((100% / 21) * 8) * 2);
+
+                -webkit-column-count: 2;
+                -moz-column-count: 2;
+                column-count: 2;
+                -webkit-column-gap: 0;
+                -moz-column-gap: 0;
+                column-gap: 0;
+            }
+        }
+
+        @media (min-width: 1024px) and (max-width: 1219px) {
+
+            .about-me__content {
+                padding: 0 20px;
+            }
+        }
+
+        @media (min-width: 640px) and (max-width: 1023px) {
+
+            .about-me__content {
+                max-width: 61.88%;
+                max-width: calc((100% / 21) * 13);
+            }
+        }
+
+        @media (max-width: 767px) {
+
+            .about-me__content {
+                max-width: 75%;
+            }
+        }
+
+        @media (max-width: 479px) {
+
+            .about-me__content {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-height: 767px) {
+
+            .about-me__content {
+                padding-bottom: 24vmin;
+            }
+        }
+
+        @media (max-width: 767px) {
+
+            .about-me__content {
+                padding-bottom: 44vmin;
+            }
+        }
+
+        @media (max-width: 479px) {
+
+            .about-me__content {
+                padding-bottom: 48vmin;
+            }
+        }
+
+            .about-me__content p {
+                margin-bottom: 1.6875rem;
+
+                pointer-events: auto;
+            }
+
+            @media (min-width: 1220px) {
+
+                .about-me__content p {
+                    padding: 0 40px;
+                }
+            }
+
+            @media (min-width: 1024px) and (max-width: 1219px) {
+
+                .about-me__content p {
+                    padding: 0 20px;
+                }
+            }
+
+            @media (min-width: 768px) and (max-width: 1023px) {
+
+                .about-me__content p {
+                    padding: 0 40px;
+                }
+            }
+
+            @media (max-width: 767px) {
+
+                .about-me__content p {
+                    padding: 0 20px;
+                }
+            }
+
+            .about-me__content .small {
+                font-size: 0.875rem;
+                line-height: 1;
+            }
+
+            .about-me__content .liberec-symbol {
+                position: relative;
+                top: 0.175rem;
+
+                margin-left: -0.125rem;
+                margin-right: -0.0625rem;
+
+                font-size: 1.6875rem;
+                vertical-align: bottom;
+            }
+
+        .about-me__btn-wrapper {
+	        margin-top: auto;
+        }
+
+@media (min-width: 1024px) {
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+}
+
+@media (max-width: 767px) {
+}

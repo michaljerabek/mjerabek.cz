@@ -1,0 +1,303 @@
+/*--------------------------------------------------------------------*/
+/*------------------------------- FORM -------------------------------*/
+/*--------------------------------------------------------------------*/
+
+.form__item {
+	margin-bottom: 1.4375rem;
+
+    font-size: 0;
+}
+
+    select.form__field,
+    textarea.form__field,
+    input[type="text"].form__field,
+    input[type="password"].form__field,
+    input[type="search"].form__field,
+    input[type="tel"].form__field,
+    input[type="email"].form__field,
+    input[type="number"].form__field,
+    input[type="step"].form__field,
+    input[type^="date"].form__field,
+    input[type="time"].form__field {
+        width: 100%;
+        height: 3.25rem;
+        padding: 0 20px;
+
+        font-family: inherit;
+        font-size: 1.25rem;
+        font-weight: 400;
+        vertical-align: top;
+        line-height: 3.125rem;
+
+        border: 1px solid;
+        box-shadow: none;
+        outline: none;
+    }
+
+    .apple select.form__field,
+    .apple input[type="text"].form__field,
+    .apple input[type="password"].form__field,
+    .apple input[type="search"].form__field,
+    .apple input[type="tel"].form__field,
+    .apple input[type="email"].form__field,
+    .apple input[type="number"].form__field,
+    .apple input[type="step"].form__field,
+    .apple input[type^="date"].form__field,
+    .apple input[type="time"].form__field,
+    .android select.form__field,
+    .android input[type="text"].form__field,
+    .android input[type="password"].form__field,
+    .android input[type="search"].form__field,
+    .android input[type="tel"].form__field,
+    .android input[type="email"].form__field,
+    .android input[type="number"].form__field,
+    .android input[type="step"].form__field,
+    .android input[type^="date"].form__field,
+    .android input[type="time"].form__field {
+        padding-top: 4px;
+    }
+
+    /*odstraní zabarvení automaticky vyplněných polí v Chromu*/
+    @supports (animation-name: form--clear-autofill) {
+
+        input[type="text"].form__field:-webkit-autofill,
+        input[type="password"].form__field:-webkit-autofill,
+        input[type="search"].form__field:-webkit-autofill,
+        input[type="tel"].form__field:-webkit-autofill,
+        input[type="email"].form__field:-webkit-autofill,
+        input[type="number"].form__field:-webkit-autofill,
+        input[type="step"].form__field:-webkit-autofill,
+        input[type^="date"].form__field:-webkit-autofill,
+        input[type="time"].form__field:-webkit-autofill {
+            -webkit-text-fill-color: #e7e7e7;
+            animation-name: form--clear-autofill;
+            animation-fill-mode: both;
+        }
+    }
+
+    @keyframes form--clear-autofill {
+        to {
+            background: transparent;
+        }
+    }
+    /*/*/
+
+    @media (max-width: 479px) {
+
+        select.form__field,
+        textarea.form__field,
+        input[type="text"].form__field,
+        input[type="password"].form__field,
+        input[type="search"].form__field,
+        input[type="tel"].form__field,
+        input[type="email"].form__field,
+        input[type="number"].form__field,
+        input[type="step"].form__field,
+        input[type^="date"].form__field,
+        input[type="time"].form__field {
+            width: 100%;
+            height: 3rem;
+            padding: 0 17px;
+
+            font-size: 1.0625rem;
+            line-height: 2.875rem;
+        }
+
+        .apple select.form__field,
+        .apple input[type="text"].form__field,
+        .apple input[type="password"].form__field,
+        .apple input[type="search"].form__field,
+        .apple input[type="tel"].form__field,
+        .apple input[type="email"].form__field,
+        .apple input[type="number"].form__field,
+        .apple input[type="step"].form__field,
+        .apple input[type^="date"].form__field,
+        .apple input[type="time"].form__field,
+        .android select.form__field,
+        .android input[type="text"].form__field,
+        .android input[type="password"].form__field,
+        .android input[type="search"].form__field,
+        .android input[type="tel"].form__field,
+        .android input[type="email"].form__field,
+        .android input[type="number"].form__field,
+        .android input[type="step"].form__field,
+        .android input[type^="date"].form__field,
+        .android input[type="time"].form__field {
+            padding-top: 3px;
+        }
+    }
+
+    .apple textarea.form__field,
+    textarea.form__field {
+        min-width: 100%;
+        height: auto;
+        min-height: 9.75rem;
+        padding-top: 14px;
+        padding-bottom: 14px;
+
+        font-size: 1.0625rem;
+        line-height: 1.6875rem;
+
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
+
+    @media (max-width: 479px) {
+
+        textarea.form__field {
+            min-height: 9rem;
+            padding-top: 12px;
+            padding-bottom: 12px;
+        }
+    }
+
+    .form--dark select.form__field,
+    .form--dark textarea.form__field,
+    .form--dark input[type="text"].form__field,
+    .form--dark input[type="password"].form__field,
+    .form--dark input[type="search"].form__field,
+    .form--dark input[type="tel"].form__field,
+    .form--dark input[type="email"].form__field,
+    .form--dark input[type="number"].form__field,
+    .form--dark input[type="step"].form__field,
+    .form--dark input[type^="date"].form__field,
+    .form--dark input[type="time"].form__field {
+        color: #e7e7e7;
+        border-color: rgba(189, 189, 189, 0.5);
+    }
+
+    .form--dark select.form__field:hover,
+    .form--dark textarea.form__field:hover,
+    .form--dark input[type="text"].form__field:hover,
+    .form--dark input[type="password"].form__field:hover,
+    .form--dark input[type="search"].form__field:hover,
+    .form--dark input[type="tel"].form__field:hover,
+    .form--dark input[type="email"].form__field:hover,
+    .form--dark input[type="number"].form__field:hover,
+    .form--dark input[type="step"].form__field:hover,
+    .form--dark input[type^="date"].form__field:hover,
+    .form--dark input[type="time"].form__field:hover {
+        border-color: #CEB77E;
+    }
+
+    .form--dark select.form__field:focus,
+    .form--dark textarea.form__field:focus,
+    .form--dark input[type="text"].form__field:focus,
+    .form--dark input[type="password"].form__field:focus,
+    .form--dark input[type="search"].form__field:focus,
+    .form--dark input[type="tel"].form__field:focus,
+    .form--dark input[type="email"].form__field:focus,
+    .form--dark input[type="number"].form__field:focus,
+    .form--dark input[type="step"].form__field:focus,
+    .form--dark input[type^="date"].form__field:focus,
+    .form--dark input[type="time"].form__field:focus {
+        border-color: #79A9BD;
+    }
+
+    .form--dark .form__item--error select.form__field:not(:focus):not(:hover),
+    .form--dark .form__item--error textarea.form__field:not(:focus):not(:hover),
+    .form--dark .form__item--error input[type="text"].form__field:not(:focus):not(:hover),
+    .form--dark .form__item--error input[type="password"].form__field:not(:focus):not(:hover),
+    .form--dark .form__item--error input[type="search"].form__field:not(:focus):not(:hover),
+    .form--dark .form__item--error input[type="tel"].form__field:not(:focus):not(:hover),
+    .form--dark .form__item--error input[type="email"].form__field:not(:focus):not(:hover),
+    .form--dark .form__item--error input[type="number"].form__field:not(:focus):not(:hover),
+    .form--dark .form__item--error input[type="step"].form__field:not(:focus):not(:hover),
+    .form--dark .form__item--error input[type^="date"].form__field:not(:focus):not(:hover),
+    .form--dark .form__item--error input[type="time"].form__field:not(:focus):not(:hover),
+    .no-js .form--dark select.form__field:invalid:not(:focus):not(:hover),
+    .no-js .form--dark textarea.form__field:invalid:not(:focus):not(:hover),
+    .no-js .form--dark input[type="text"].form__field:invalid:not(:focus):not(:hover),
+    .no-js .form--dark input[type="password"].form__field:invalid:not(:focus):not(:hover),
+    .no-js .form--dark input[type="search"].form__field:invalid:not(:focus):not(:hover),
+    .no-js .form--dark input[type="tel"].form__field:invalid:not(:focus):not(:hover),
+    .no-js .form--dark input[type="email"].form__field:invalid:not(:focus):not(:hover),
+    .no-js .form--dark input[type="number"].form__field:invalid:not(:focus):not(:hover),
+    .no-js .form--dark input[type="step"].form__field:invalid:not(:focus):not(:hover),
+    .no-js .form--dark input[type^="date"].form__field:invalid:not(:focus):not(:hover),
+    .no-js .form--dark input[type="time"].form__field:invalid:not(:focus):not(:hover) {
+        border-color: #D07E5B;
+    }
+
+    .form__label {
+        display: block;
+        margin-bottom: 0.25rem;
+
+        font-size: 1.25rem;
+        font-weight: 300;
+        font-style: italic;
+        letter-spacing: 0.02em;
+
+        pointer-events: auto;
+    }
+
+    @media (max-width: 479px) {
+
+        .form__label {
+            font-size: 1.0625rem;
+        }
+    }
+
+    .form--dark .form__label {
+        color: #e7e7e7;
+    }
+
+    .form__error {
+        padding: 0;
+
+	    font-size: 0.875rem;
+        font-style: italic;
+        line-height: 0rem;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+
+        color: #D07E5B;
+        opacity: 0;
+        visibility: hidden;
+
+        overflow: hidden;
+
+        pointer-events: auto;
+
+        transition: opacity 0.25s ease 0s,
+            line-height 0.25s ease 0.125s,
+            padding 0.25s ease 0.125s,
+            visibility 0s linear 0.375s;
+    }
+
+    .form__item--error-general .form__error--general,
+    .form__item--error-required .form__error--required,
+    .form__item--error-type .form__error--type,
+    .form__item--error-pattern .form__error--pattern,
+    .form__item--error-bad-input .form__error--bad-input,
+    .form__item--error-overflow .form__error--overflow,
+    .form__item--error-underflow .form__error--underflow,
+    .form__item--error-step .form__error--step,
+    .form__item--error-long .form__error--long,
+    .form__item--error-short .form__error--short,
+    .form__item--error-general .form__error--general,
+    .form__item--error-type .form__error--type,
+    .form__item--error-required .form__error--required {
+        padding: 4px 0;
+
+        line-height: 1.25rem;
+
+        opacity: 1;
+        visibility: visible;
+
+        transition: opacity 0.25s ease 0.125s,
+            line-height 0.25s ease 0s,
+            padding 0.25s ease 0s;
+    }
+
+    .form--dark:not(.form--ok):not(.form--error):invalid .btn:hover,
+    .form--dark:not(.form--ok):not(.form--error):invalid .btn:focus {
+        color: #fff;
+        background-color: #C06C47;
+        border-color: #C06C47;
+    }
+
+    .form--dark:not(.form--ok):not(.form--error):invalid .btn:active {
+        color: #D07E5B;
+        background-color: transparent;
+        border-color: #D07E5B;
+    }

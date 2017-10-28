@@ -3,8 +3,22 @@
 /*--------------------------------------------------------------------*/
 
 /* Outline zaměřovatelných elementů. */
+a:not(.btn) {
+    outline: 1px dotted rgba(0, 0, 0, 0);
+}
+
 a:not(.btn):focus {
     outline: 1px dotted rgba(0, 0, 0, 0.5);
+}
+
+::-moz-selection {
+    color: white;
+    background: rgba(125, 105, 55, 0.85);
+}
+
+::selection {
+    color: white;
+    background: rgba(125, 105, 55, 0.85);
 }
 
 /*---------------------------- TRANSITION ----------------------------*/
@@ -53,7 +67,6 @@ a .transition-hideable {
         border-radius  0.275s cubic-bezier(.5, .25, .5, 1)  0s,
         border-color   0.275s cubic-bezier(.5, .25, .5, 1)  0s,
         filter         0.275s cubic-bezier(.5, .25, .5, 1)  0s,
-        -webkit-filter 0.275s cubic-bezier(.5, .25, .5, 1)  0s,
         background     0.275s cubic-bezier(.5, .25, .5, 1)  0s;
 }
 
@@ -72,7 +85,6 @@ a:focus .transition-hideable {
         border-radius  0.125s ease-out 0s,
         border-color   0.125s ease-out 0s,
         filter         0.125s ease-out 0s,
-        -webkit-filter 0.125s ease-out 0s,
         background     0.125s ease-out 0s;
 }
 
@@ -87,11 +99,60 @@ a:active .transition-hideable {
         border-radius  0.05s ease-out 0s,
         border-color   0.05s ease-out 0s,
         filter         0.05s ease-out 0s,
-        -webkit-filter 0.05s ease-out 0s,
         background     0.05s ease-out 0s;
 }
 
 /*//////////////////////////// TRANSITION ////////////////////////////*/
+
+/*---------------------------- ANIMATIONS ----------------------------*/
+
+@keyframes show {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes show--init {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes hide {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fake-visible {
+    from {
+        max-height: 0;
+    }
+    to {
+        max-height: 100%;
+    }
+}
+
+@keyframes fake-hidden {
+    from {
+        max-height: 100%;
+    }
+    to {
+        max-height: 0;
+    }
+}
+
+/*//////////////////////////// ANIMATIONS ////////////////////////////*/
+
 
 /*---------------------------- ICONS ----------------------------*/
 
@@ -147,7 +208,82 @@ a:active .transition-hideable {
     transition: all 0.05s ease-out 0s;
 }
 
-/*//////////////////////////// ICONS ////////////////////////////*/
+/*---------------------------- ZOOM ----------------------------*/
+
+.ui__perspective {
+    perspective: 100px;
+    perspective-origin: 50% 150vh;
+
+    width: 100%;
+
+    background-color: #000;
+
+    overflow: hidden;
+}
+
+.ff-android .ui__perspective {
+	perspective: none;
+}
+
+    .ui__zoom-out {
+        transition: 0.5s cubic-bezier(.5, 0, .6, 0.9) 0.25s;
+        will-change: transform;
+    }
+
+    .no-js #html:target ~ .ui__perspective .ui__zoom-out,
+    .no-js #css:target ~ .ui__perspective .ui__zoom-out,
+    .no-js #js:target ~ .ui__perspective .ui__zoom-out,
+    .ui__content--technologies .ui__zoom-out {
+        transform: translateZ(-8px);
+
+        filter: blur(2px) saturate(80%);
+
+        transition: 0.35s cubic-bezier(.2, .7, .3, 1) 0s;
+    }
+
+    .no-js #html:target ~ .ui__perspective .ui__zoom-out,
+    .no-js #css:target ~ .ui__perspective .ui__zoom-out,
+    .no-js #js:target ~ .ui__perspective .ui__zoom-out,
+    .edge .ui__zoom-out,
+    .performance--low .ui__zoom-out {
+        filter: none;
+    }
+
+    .performance--very-low .ui__zoom-out {
+        transform: none;
+
+        transition: none;
+    }
+
+    .ui__zoom-out::after {
+        content: "";
+
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: 1000;
+
+        transform: translateZ(8px);
+
+        width: 100%;
+        height: 100%;
+
+        background-color: #000;
+        opacity: 0;
+
+        pointer-events: none;
+
+        transition: opacity 0.5s cubic-bezier(0, 0, .8, 0) 0s;
+    }
+
+    .no-js #html:target ~ .ui__perspective .ui__zoom-out,
+    .no-js #css:target ~ .ui__perspective .ui__zoom-out,
+    .no-js #js:target ~ .ui__perspective .ui__zoom-out,
+    .ui__content--technologies .ui__zoom-out::after {
+        opacity: 0.5;
+
+        transition: opacity 0.5s cubic-bezier(.15, .75, .25, 1) 0.1s;
+    }
 
 /*--------------------------------------------------------------------*/
 /*------------------------------ INPUTS ------------------------------*/
@@ -180,15 +316,14 @@ input[type="time"] {
     -webkit-appearance: none;
        -moz-appearance: none;
 
+    pointer-events: auto;
+
     transition:
         color            0.275s cubic-bezier(.5, .25, .5, 1) 0s,
         border-color     0.275s cubic-bezier(.5, .25, .5, 1) 0s,
         opacity          0.275s cubic-bezier(.5, .25, .5, 1) 0s,
         background-color 0.275s cubic-bezier(.5, .25, .5, 1) 0s,
         filter           0.275s cubic-bezier(.5, .25, .5, 1) 0s,
-        -webkit-filter   0.275s cubic-bezier(.5, .25, .5, 1) 0s,
-        height           0.3s   ease                         0s,
-        width            0.3s   ease                         0s,
         border-width     0.3s   ease                         0s,
         margin           0.3s   ease                         0s,
         padding          0.3s   ease                         0s,
@@ -238,11 +373,61 @@ input[type="time"]:focus {
         opacity          0.125s ease-out 0s,
         background-color 0.125s ease-out 0s,
         filter           0.125s ease-out 0s,
-        -webkit-filter   0.125s ease-out 0s,
-        height           0.3s   ease     0s,
-        width            0.3s   ease     0s,
         border-width     0.3s   ease     0s,
         margin           0.3s   ease     0s,
         padding          0.3s   ease     0s,
         line-height      0.3s   ease     0s;
 }
+
+/*--------------------------------------------------------------------*/
+/*------------------------------- OTHER ------------------------------*/
+/*--------------------------------------------------------------------*/
+
+.ui__github {
+	position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 40px;
+    height: 40px;
+
+    opacity: 0;
+
+    animation: show--init 3.5s linear 0s 1 forwards,
+        show 2s ease 3.5s 1 forwards;
+}
+
+@media (min-width: 768px) {
+
+    .ui__github {
+        right: 0;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .ui__github {
+        left: 0;
+    }
+}
+
+    .ui__github svg {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        width: 27px;
+        height: 27px;
+        margin: auto;
+
+        fill: transparent;
+        stroke: #dbdbdb;
+        stroke-width: 1px;
+    }
+
+    .ui__github:hover svg,
+    .ui__github:focus svg {
+        stroke: #ceb77e;
+    }

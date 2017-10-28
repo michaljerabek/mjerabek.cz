@@ -1,5 +1,15 @@
 @import url("components/reset.css");
 @import url("components/main.css");
 @import url("components/ui.css");
+@import url("components/form.css");
 @import url("components/btn.css");
-@import url("components/page-footer.css");
+@import url("components/section.css");
+@import url("components/intro.css");
+@import url("components/main-nav.css");
+@import url("components/offer.css");
+@import url("components/technologies.css");
+@import url("components/references.css");
+@import url("components/about-me.css");
+@import url("components/pricelist.css");
+@import url("components/contact.css");
+@import url("components/CodeMirror-theme.css");

@@ -3,25 +3,75 @@
 /*====================================================================*/
 
 .btn {
-    transform: translateY(0px);
+    flex-grow: 0;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 1px; /*Android nezobrazuje border*/
 
-    display: inline-block;
-
+    font-family: inherit;
     text-decoration: none;
-    white-space: nowrap;
+    text-align: center;
 
     color: inherit;
     background: none;
-    border: none;
+    border: 1px solid currentColor;
     border-radius: 0px;
     cursor: pointer;
     -webkit-appearance: none;
        -moz-appearance: none;
 
+    pointer-events: auto;
     touch-action: manipulation;
 
     transition: all 0.275s cubic-bezier(.5, .25, .5, 1) 0s;
-    will-change: transform, box-shadow;
+}
+
+@media (min-width: 768px) {
+
+    .btn {
+        min-width: 240px;
+        min-height: 52px;
+        padding: 8px 40px;
+    }
+
+    _:-ms-fullscreen, :root .btn {
+        padding-top: 13px;
+    }
+
+    .btn .text {
+        font-size: 1.4375rem;
+        line-height: 1.4375rem;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .btn {
+        min-width: 224px;
+        min-height: 48px;
+        padding: 8px 32px;
+    }
+
+    _:-ms-fullscreen, :root .btn {
+        padding-top: 12px;
+    }
+
+    .btn .text {
+        font-size: 1.25rem;
+        line-height: 1.4375rem;
+    }
+}
+
+.btn .text {
+    padding-bottom: 1px;
+    margin: auto;
+
+    font-weight: inherit;
+}
+
+.ff-android .btn .text {
+    padding-bottom: 2px;
 }
 
 .btn::-moz-focus-inner {
@@ -32,9 +82,49 @@
 
 .btn:hover,
 .btn:focus {
+    outline: none;
+
     transition: all 0.125s ease-out 0s;
 }
 
 .btn:active {
     transition: all 0.05s ease-out 0s;
+}
+
+.btn--light {
+    font-weight: 400;
+
+    color: #ceb77e;
+}
+
+.btn--light:hover,
+.btn--light:focus {
+    color: #fff;
+    background-color: #6196ac;
+    border-color: #6196ac;
+}
+
+.btn--light:active {
+    color: #79a9bd;
+    background-color: transparent;
+    border-color: #79a9bd;
+}
+
+.btn--dark {
+    font-weight: 400;
+
+    color: #7D6937;
+}
+
+.btn--dark:hover,
+.btn--dark:focus {
+    color: #fff;
+    background-color: #498095;
+    border-color: #498095;
+}
+
+.btn--dark:active {
+    color: #3C6778;
+    background-color: transparent;
+    border-color: #3C6778;
 }

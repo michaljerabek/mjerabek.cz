@@ -273,7 +273,7 @@ gulp.task("critical", () => {
 const imagemin = requireModule("gulp-imagemin");
 const imageminMozjpeg = requireModule("imagemin-mozjpeg");
 
-const JPEG_QUALITY = 65;
+const JPEG_QUALITY = 75;
 
 gulp.task("images", () => {
 

@@ -1,11 +1,24 @@
 [
     {
         "js": [
-
+            "inert-polyfill/inert-polyfill.min.js",
+            "jquery.smallcaps.js",
+            "fulltilt.min.js",
+            "parallax.js",
+            "malihu-custom-scrollbar-plugin-3.1.5/jquery.mCustomScrollbar.concat.min.js",
+            "infinitum/infinitum.min.js",
+            "CodeMirror-5.28.0/lib/codemirror.js",
+            "CodeMirror-5.28.0/addon/runmode/runmode.js",
+            "CodeMirror-5.28.0/mode/javascript/javascript.js",
+            "CodeMirror-5.28.0/mode/css/css.js",
+            "CodeMirror-5.28.0/mode/xml/xml.js",
+            "CodeMirror-5.28.0/mode/htmlmixed/htmlmixed.js"
         ],
 
         "css": [
-
+            "inert-polyfill/inert-polyfill.css",
+            "malihu-custom-scrollbar-plugin-3.1.5/jquery.mCustomScrollbar.css",
+            "infinitum/css/infinitum.min.css"
         ],
 
         "postfix": ""
