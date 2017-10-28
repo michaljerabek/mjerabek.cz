@@ -51,6 +51,12 @@ $replace("[^{}]+", "");
 if (isset($_ENV["ENV"]) && $_ENV["ENV"] === "production") {
 
     $content = preg_replace("/\n*\s*<!--dev-->.*?<!--\/dev-->/s", "", $content);
+
+    $content = preg_replace("/(\n*\s*<!--prod-->.*?)(<!--)(.*?<!--\/prod-->)/s", "$1$3", $content);
+    $content = preg_replace("/(\n*\s*<!--prod-->.*?)(-->)(.*?<!--\/prod-->)/s", "$1$3", $content);
+
+    $content = preg_replace("/(\s*<!--prod-->)|(<!--\/prod-->\n?)/s", "", $content);
+
 }
 
 unset($_SESSION["ok"]);

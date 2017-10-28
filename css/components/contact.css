@@ -249,6 +249,13 @@
         font-style: italic;
     }
 
+    @media (min-width: 768px) {
+
+        .contact__option:last-child {
+            margin-bottom: 52px;
+        }
+    }
+
         .contact__option-link {
             display: inline-block;
             padding-bottom: 0.25rem;

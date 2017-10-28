@@ -39,7 +39,7 @@ CSS
 ZÁKLADNÍ MQ BREAKPOINTY
 ———————————————————————
 
-• FULL — >=1260px
+• FULL — >=1220px
 • DESKTOP — >=1024px
 • TABLET — 768px–1023px
 • MOBILE — <767px | <479px

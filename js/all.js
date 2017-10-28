@@ -520,6 +520,9 @@
                 setTimeout(function() {
 
                     ns.$win.trigger("bg-object-opacity-animation__add." + ns, [$bgLayers, SELECTOR.findSpeechBubble, "--slide-in"]);
+
+                    ns.$win.trigger("scroll.Contact." + ns);
+
                 }, 200);
 
                 var scrollDebounce = null;
@@ -703,13 +706,11 @@
 
 }((function (ns) { window[ns] = window[ns] || { toString: function () { return ns; } }; return window[ns]; }("MJNS")), jQuery));
 
-/*jslint indent: 4, white: true, unparam: true, node: true, browser: true, devel: true, nomen: true, plusplus: true, regexp: true, sloppy: true, vars: true*/
-
 /*jslint indent: 4, white: true, nomen: true, regexp: true, unparam: true, node: true, browser: true, devel: true, nomen: true, plusplus: true, regexp: true, sloppy: true, vars: true*/
 
 (function (ns) {
 
-    ns.ConsoleMessage = (function () {
+    ns.Fonts = (function () {
 
         var CLASS = {
                 caudexLoaded: "fonts__caudex--loaded"
@@ -2762,6 +2763,8 @@
                 }
             },
 
+            SCROLL_AMOUNT_SAMPLE = 324,
+
             THEME_COLOR = "#ceb77e",
 
             initialized,
@@ -3116,6 +3119,7 @@
                     $contentWrappers.filter(SELECTOR.textWrapper).mCustomScrollbar(SCROLL_OPTIONS);
 
                     SCROLL_OPTIONS.axis = "yx";
+                    SCROLL_OPTIONS.mouseWheel.scrollAmount = SCROLL_AMOUNT_SAMPLE;
 
                     $contentWrappers.filter(SELECTOR.sampleWrapper).mCustomScrollbar(SCROLL_OPTIONS);
                 }

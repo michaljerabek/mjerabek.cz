@@ -378,3 +378,56 @@ input[type="time"]:focus {
         padding          0.3s   ease     0s,
         line-height      0.3s   ease     0s;
 }
+
+/*--------------------------------------------------------------------*/
+/*------------------------------- OTHER ------------------------------*/
+/*--------------------------------------------------------------------*/
+
+.ui__github {
+	position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 40px;
+    height: 40px;
+
+    opacity: 0;
+
+    animation: show--init 3.5s linear 0s 1 forwards,
+        show 2s ease 3.5s 1 forwards;
+}
+
+@media (min-width: 768px) {
+
+    .ui__github {
+        right: 0;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .ui__github {
+        left: 0;
+    }
+}
+
+    .ui__github svg {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        width: 27px;
+        height: 27px;
+        margin: auto;
+
+        fill: transparent;
+        stroke: #dbdbdb;
+        stroke-width: 1px;
+    }
+
+    .ui__github:hover svg,
+    .ui__github:focus svg {
+        stroke: #ceb77e;
+    }
