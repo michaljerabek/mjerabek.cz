@@ -571,10 +571,10 @@
                     }
                 });
 
-                ns.$win.on("scroll." + ns + " scroll.MainNav." + ns, activateByScroll)
+                ns.$win.on("scroll." + ns + " scroll.MainNav." + ns + " resize.MainNav." + ns, activateByScroll)
                     .on("scroll." + ns + " scroll.MainNav." + ns, fixNav);
 
-                ns.$win.on("mousewheel." + ns + " DOMMouseScroll", onScroll);
+                ns.$win.on("mousewheel." + ns + " DOMMouseScroll." + ns, onScroll);
 
                 $self.on("focusin." + ns, function () {
 
