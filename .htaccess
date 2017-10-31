@@ -1,8 +1,7 @@
-Order Deny,Allow
-#Deny from all
-Allow from 127.0.0.1
+RewriteEngine On
 
-<Files index.php>
-    Order Allow,Deny
-    Allow from all
-</Files>
+RewriteCond %{REQUEST_URI} mjerabek\.cz/?([^/]*)$
+RewriteCond %{REQUEST_FILENAME} !-f [OR]
+RewriteCond %{REQUEST_FILENAME} index\.html [OR]
+RewriteCond %{REQUEST_FILENAME} index\.php
+RewriteRule ^(.*)$ index.php [L,QSA]
