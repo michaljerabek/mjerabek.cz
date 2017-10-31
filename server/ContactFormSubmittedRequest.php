@@ -54,7 +54,7 @@ class ContactFormSubmittedRequest {
 
         $this->responseToSession($response);
 
-        header("Location: " . $_SERVER["PHP_SELF"] . "#kontakt");
+        header("Location: /#kontakt");
     }
 
     protected function sendError($errors, $validationErrors) {
@@ -78,6 +78,6 @@ class ContactFormSubmittedRequest {
 
         $this->responseToSession($response);
 
-        header("Location: " . $_SERVER["PHP_SELF"] . "#kontakt");
+        header("Location: /#kontakt");
     }
 }
