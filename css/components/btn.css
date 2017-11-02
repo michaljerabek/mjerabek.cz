@@ -43,6 +43,25 @@
         font-size: 1.4375rem;
         line-height: 1.4375rem;
     }
+
+    .btn--small {
+        min-width: 120px;
+        min-height: 40px;
+        padding: 4px 32px;
+    }
+
+    _:-ms-fullscreen, :root .btn--small {
+        padding-top: 10px;
+    }
+
+    .btn--small .text {
+        font-size: 1.25rem;
+        line-height: 1.25rem;
+    }
+
+    .btn--small .text .small {
+        font-size: 1.0625rem;
+    }
 }
 
 @media (max-width: 767px) {
@@ -60,6 +79,25 @@
     .btn .text {
         font-size: 1.25rem;
         line-height: 1.4375rem;
+    }
+
+    .btn--small {
+        min-width: 96px;
+        min-height: 32px;
+        padding: 4px 24px;
+    }
+
+    _:-ms-fullscreen, :root .btn--small {
+        padding-top: 7px;
+    }
+
+    .btn--small .text {
+        font-size: 1.0625rem;
+        line-height: 1.0625rem;
+    }
+
+    .btn--small .text .small {
+        font-size: 0.875rem;
     }
 }
 

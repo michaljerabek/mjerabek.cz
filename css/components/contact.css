@@ -998,13 +998,3 @@
             transition: fill 1s ease 0s,
                 stroke 1s ease 0s;
         }
-
-
-@media (min-width: 1024px) {
-}
-
-@media (min-width: 768px) and (max-width: 1023px) {
-}
-
-@media (max-width: 767px) {
-}
