@@ -83,8 +83,14 @@ jQuery(function () {
         window.MJNS.Fonts.init();
     }
 
+    if (window.MJNS.Cookies) {
+
+        window.MJNS.Cookies.init();
+    }
+
     if (window.MJNS.ConsoleMessage) {
 
         setTimeout(window.MJNS.ConsoleMessage.init, 2000);
     }
+
 });

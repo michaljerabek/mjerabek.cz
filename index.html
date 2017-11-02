@@ -18,12 +18,13 @@
 
     <meta name="format-detection" content="telephone=no">
 
+    <meta name="google-site-verification" content="r8oCh4CzD7dIT4ogV3V7ag-8NwqI6EBVXKkJUDo85Hc">
 
-    <title>Michal Jeřábek — Front-End kodér</title>
+    <title>Michal Jeřábek — Front-End / HTML kodér</title>
 
 
     <meta name="description" content="Kóduji grafické návrhy a šablony do HTML, CSS a JavaScriptu.">
-    <meta name="keywords" content="kódování, kodér, HTML, CSS, JS, web, front-end, šablony, jQuery">
+    <meta name="keywords" content="kódování, kodér, HTML, CSS, JavaScript, web, front-end, šablony, jQuery">
     <meta name="author" content="Michal Jeřábek">
 
 
@@ -78,6 +79,7 @@
     <link rel="stylesheet" href="css/components/about-me.css" media="screen">
     <link rel="stylesheet" href="css/components/pricelist.css" media="screen">
     <link rel="stylesheet" href="css/components/contact.css" media="screen">
+    <link rel="stylesheet" href="css/components/cookies.css" media="screen">
     <link rel="stylesheet" href="css/components/CodeMirror-theme.css" media="screen">
     <!--/dev-->
 
@@ -110,6 +112,18 @@
     <!--dev-->
     <script src="http://mjerabek.wz.cz/onScreenLog.js"></script>
     <!--/dev-->
+
+    <!--prod-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!--<script async src="https://www.googletagmanager.com/gtag/js?id=UA-109158404-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-109158404-1');
+    </script>-->
+    <!--/prod-->
 
 
     <!--–––––––– ** MAIN-NAV ** –––––––––-->
@@ -1335,6 +1349,8 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script>!window.jQuery && document.write("<script src='libs/jq.min.js'><"+"/script>");</script>
 
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+
     <!--dev-->
     <!--libs-->
     <!--<script src="libs/inert-polyfill/inert-polyfill.min.js"></script>
@@ -1375,15 +1391,17 @@
     <script src="js/modules/Form.js"></script>
     <script src="js/modules/Contact.js"></script>
     <script src="js/modules/ConsoleMessage.js"></script>
+    <script src="js/modules/Cookies.js"></script>
     <script src="js/modules/Fonts.js"></script>
 
     <script src="js/init.js"></script>
     <!--/dev-->
 
     <!--prod-->
-    <script src="js/libs.min.js"></script>
-<!--    <script src="js/all-init.js"></script>-->
+    <script src="js/libs.min.js" defer></script>
+<!--    <script src="js/all-init.js" defer></script>-->
     <!--/prod-->
+
 
 </body>
 </html>
