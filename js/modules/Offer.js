@@ -10,11 +10,13 @@
 
         var CLASS = {
                 initFadeIn: "offer--init-fade-in",
+                technologiesInView: "offer--technologies-in-view",
                 parallaxDestroyed: "offer--no-parallax"
             },
 
             SELECTOR = {
                 self: ".offer",
+                technology: ".offer__technology",
 
                 background: ".offer__background",
                 backgroundLayers: ".offer__background-layer",
@@ -71,6 +73,48 @@
                 }, 100);
             },
 
+            initInteractionAnimation = function () {
+
+                var scrollDebounce = null,
+                    scrollTimeout = null,
+
+                    $firstTechnology = null;
+
+                ns.$win.on("scroll.Offer." + ns, function () {
+
+                    clearTimeout(scrollDebounce);
+                    clearTimeout(scrollTimeout);
+
+                    scrollDebounce = setTimeout(function() {
+
+                        $firstTechnology = $firstTechnology || $self.find(SELECTOR.technology).first();
+
+                        var firstTechnologyRect = $firstTechnology[0].getBoundingClientRect();
+
+                        if (firstTechnologyRect.top <= window.innerHeight * (2 / 3)) {
+
+                            $self.addClass(CLASS.technologiesInView);
+
+                            ns.$win.off("scroll.Offer." + ns);
+                        }
+                    }, 100);
+                });
+
+                scrollTimeout = setTimeout(function() {
+
+                    ns.$win.trigger("scroll.Offer." + ns);
+
+                }, 300);
+
+                ns.$win.on("technologies__interaction." + ns, function () {
+
+                    clearTimeout(scrollDebounce);
+                    clearTimeout(scrollTimeout);
+
+                    ns.$win.off("scroll.Offer." + ns);
+                });
+            },
+
             init = function () {
 
                 $self = $(SELECTOR.self);
@@ -81,6 +125,7 @@
                 setTimeout(checkScrollTop, 50);
 
                 setTimeout(initBackground, 0);
+                setTimeout(initInteractionAnimation, 0);
             };
 
         return {
