@@ -115,6 +115,13 @@ s {
     }
 }
 
+@media (max-width: 479px) {
+
+    html .x-mobile-s.x-mobile-s {
+        display: none;
+    }
+}
+
 @media screen {
 
     html .x-screen.x-screen {
@@ -222,6 +229,17 @@ html.js .x-js,
 @media (max-width: 767px) {
 
     .layout__br--mobile:before {
+        content: "\A";
+
+        display: block;
+
+        white-space: nowrap;
+    }
+}
+
+@media (min-width: 640px) and (max-width: 767px) {
+
+    .layout__br--mobile-l:before {
         content: "\A";
 
         display: block;

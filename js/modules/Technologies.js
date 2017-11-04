@@ -52,7 +52,8 @@
 
             EVENT = {
                 opened: "technologies__opened." + ns,
-                closed: "technologies__closed." + ns
+                closed: "technologies__closed." + ns,
+                interaction: "technologies__interaction." + ns
             },
 
             SCROLL_OPTIONS = {
@@ -473,6 +474,8 @@
                         initSelf($openers.get().indexOf(this));
 
                         $self.css("display", "none");
+
+                        ns.$win.trigger(EVENT.interaction);
                     }
                 });
 

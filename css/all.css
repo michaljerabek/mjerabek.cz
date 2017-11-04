@@ -177,6 +177,13 @@ s {
     }
 }
 
+@media (max-width: 479px) {
+
+    html .x-mobile-s.x-mobile-s {
+        display: none;
+    }
+}
+
 @media screen {
 
     html .x-screen.x-screen {
@@ -284,6 +291,17 @@ html.js .x-js,
 @media (max-width: 767px) {
 
     .layout__br--mobile:before {
+        content: "\A";
+
+        display: block;
+
+        white-space: nowrap;
+    }
+}
+
+@media (min-width: 640px) and (max-width: 767px) {
+
+    .layout__br--mobile-l:before {
         content: "\A";
 
         display: block;
@@ -3931,6 +3949,10 @@ input[type="time"]:focus {
             color: #ceb77e;
         }
 
+        .offer__description + .offer__description {
+            padding-top: 14px;
+        }
+
             .offer__description .text {
                 position: relative;
                 z-index: 2;
@@ -4173,6 +4195,29 @@ input[type="time"]:focus {
                 transform: translate(7px, 0px) rotate(-45deg);
             }
 
+            .offer--technologies-in-view .offer__technology:nth-child(1) .offer__technology-link::after {
+                animation: offer__technology-border-blink 1s ease-out 0.15s 1 forwards;
+            }
+
+            .offer--technologies-in-view .offer__technology:nth-child(2) .offer__technology-link::after {
+                animation: offer__technology-border-blink 1s ease-out 0.35s 1 forwards;
+            }
+
+            .offer--technologies-in-view .offer__technology:nth-child(3) .offer__technology-link::after {
+                animation: offer__technology-border-blink 1s ease-out 0.55s 1 forwards;
+            }
+
+            @keyframes offer__technology-border-blink {
+                5% {
+                    border-color: #6196ac;
+
+                    animation-timing-function: cubic-bezier(0, .0, .2, 1);
+                }
+                10% {
+                    border-color: #6196ac;
+                }
+            }
+
                 .offer__technology-name {
 	                position: absolute;
                     top: 50%;
@@ -4200,6 +4245,29 @@ input[type="time"]:focus {
 
                     .offer__technology--js:active .text {
                         letter-spacing: 0.025em;
+                    }
+
+                    .offer--technologies-in-view .offer__technology:nth-child(1) .offer__technology-name .text {
+                        animation: offer__technology-name-blink 1s ease-out 0.15s 1 forwards;
+                    }
+
+                    .offer--technologies-in-view .offer__technology:nth-child(2) .offer__technology-name .text {
+                        animation: offer__technology-name-blink 1s ease-out 0.35s 1 forwards;
+                    }
+
+                    .offer--technologies-in-view .offer__technology:nth-child(3) .offer__technology-name .text {
+                        animation: offer__technology-name-blink 1s ease-out 0.55s 1 forwards;
+                    }
+
+                    @keyframes offer__technology-name-blink {
+                        5% {
+                            color: #6196ac;
+
+                            animation-timing-function: cubic-bezier(0, .0, .2, 1);
+                        }
+                        10% {
+                            color: #6196ac;
+                        }
                     }
 
                 .offer__technology-name::before,
@@ -4258,6 +4326,35 @@ input[type="time"]:focus {
                 .offer__technology-link:focus .offer__technology-name::after,
                 .offer__technology-link:focus .offer__technology-name .text::after {
                     background-color: #6196ac;
+                }
+
+                .offer--technologies-in-view .offer__technology:nth-child(1) .offer__technology-name::before,
+                .offer--technologies-in-view .offer__technology:nth-child(1) .offer__technology-name::after,
+                .offer--technologies-in-view .offer__technology:nth-child(1) .offer__technology-name .text::after {
+                    animation: offer__technology-dot-blink 1s ease-out 0.15s 1 forwards;
+                }
+
+                .offer--technologies-in-view .offer__technology:nth-child(2) .offer__technology-name::before,
+                .offer--technologies-in-view .offer__technology:nth-child(2) .offer__technology-name::after,
+                .offer--technologies-in-view .offer__technology:nth-child(2) .offer__technology-name .text::after {
+                    animation: offer__technology-dot-blink 1s ease-out 0.35s 1 forwards;
+                }
+
+                .offer--technologies-in-view .offer__technology:nth-child(3) .offer__technology-name::before,
+                .offer--technologies-in-view .offer__technology:nth-child55) .offer__technology-name::after,
+                .offer--technologies-in-view .offer__technology:nth-child(3) .offer__technology-name .text::after {
+                    animation: offer__technology-dot-blink 1s ease-out 0.55s 1 forwards;
+                }
+
+                @keyframes offer__technology-dot-blink {
+                    5% {
+                        background-color: #6196ac;
+
+                        animation-timing-function: cubic-bezier(0, .0, .2, 1);
+                    }
+                    10% {
+                        background-color: #6196ac;
+                    }
                 }
 
             .offer__technology-description {

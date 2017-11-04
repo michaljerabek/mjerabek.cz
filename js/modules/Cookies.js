@@ -56,7 +56,10 @@
                     autoOpen: true,
                     overrideHTML: TEMPLATE,
                     onPopupOpen: onPopupOpen,
-                    onPopupClose: onPopupClose
+                    onPopupClose: onPopupClose,
+                    cookie: {
+                        expiryDays: window.location.host.match(/127\.0\.0\.1/) ? 0.000695 : 365
+                    }
                 });
             };
 
