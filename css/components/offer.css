@@ -150,6 +150,10 @@
             color: #ceb77e;
         }
 
+        .offer__description + .offer__description {
+            padding-top: 14px;
+        }
+
             .offer__description .text {
                 position: relative;
                 z-index: 2;
