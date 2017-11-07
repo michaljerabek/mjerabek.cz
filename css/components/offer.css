@@ -397,15 +397,15 @@
             }
 
             .offer--technologies-in-view .offer__technology:nth-child(1) .offer__technology-link::after {
-                animation: offer__technology-border-blink 1s ease-out 0.15s 1 forwards;
+                animation: offer__technology-border-blink 1s ease-out 0.25s 1 backwards;
             }
 
             .offer--technologies-in-view .offer__technology:nth-child(2) .offer__technology-link::after {
-                animation: offer__technology-border-blink 1s ease-out 0.35s 1 forwards;
+                animation: offer__technology-border-blink 1s ease-out 0.5s 1 backwards;
             }
 
             .offer--technologies-in-view .offer__technology:nth-child(3) .offer__technology-link::after {
-                animation: offer__technology-border-blink 1s ease-out 0.55s 1 forwards;
+                animation: offer__technology-border-blink 1s ease-out 0.75s 1 backwards;
             }
 
             @keyframes offer__technology-border-blink {
@@ -449,15 +449,15 @@
                     }
 
                     .offer--technologies-in-view .offer__technology:nth-child(1) .offer__technology-name .text {
-                        animation: offer__technology-name-blink 1s ease-out 0.15s 1 forwards;
+                        animation: offer__technology-name-blink 1s ease-out 0.25s 1 backwards;
                     }
 
                     .offer--technologies-in-view .offer__technology:nth-child(2) .offer__technology-name .text {
-                        animation: offer__technology-name-blink 1s ease-out 0.35s 1 forwards;
+                        animation: offer__technology-name-blink 1s ease-out 0.5s 1 backwards;
                     }
 
                     .offer--technologies-in-view .offer__technology:nth-child(3) .offer__technology-name .text {
-                        animation: offer__technology-name-blink 1s ease-out 0.55s 1 forwards;
+                        animation: offer__technology-name-blink 1s ease-out 0.75s 1 backwards;
                     }
 
                     @keyframes offer__technology-name-blink {
@@ -532,19 +532,19 @@
                 .offer--technologies-in-view .offer__technology:nth-child(1) .offer__technology-name::before,
                 .offer--technologies-in-view .offer__technology:nth-child(1) .offer__technology-name::after,
                 .offer--technologies-in-view .offer__technology:nth-child(1) .offer__technology-name .text::after {
-                    animation: offer__technology-dot-blink 1s ease-out 0.15s 1 forwards;
+                    animation: offer__technology-dot-blink 1s ease-out 0.25s 1 backwards;
                 }
 
                 .offer--technologies-in-view .offer__technology:nth-child(2) .offer__technology-name::before,
                 .offer--technologies-in-view .offer__technology:nth-child(2) .offer__technology-name::after,
                 .offer--technologies-in-view .offer__technology:nth-child(2) .offer__technology-name .text::after {
-                    animation: offer__technology-dot-blink 1s ease-out 0.35s 1 forwards;
+                    animation: offer__technology-dot-blink 1s ease-out 0.5s 1 backwards;
                 }
 
                 .offer--technologies-in-view .offer__technology:nth-child(3) .offer__technology-name::before,
                 .offer--technologies-in-view .offer__technology:nth-child55) .offer__technology-name::after,
                 .offer--technologies-in-view .offer__technology:nth-child(3) .offer__technology-name .text::after {
-                    animation: offer__technology-dot-blink 1s ease-out 0.55s 1 forwards;
+                    animation: offer__technology-dot-blink 1s ease-out 0.75s 1 backwards;
                 }
 
                 @keyframes offer__technology-dot-blink {
