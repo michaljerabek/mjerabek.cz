@@ -304,122 +304,6 @@
 }
 
 
-[href*="#reference-hotel-jewel"] .references__project-name .word1 .letter1 {
-    margin-right: 0.01em;
-}
-
-[href*="#reference-hotel-jewel"] .references__project-name .word1 .letter2 {
-    margin-right: 0.005em;
-}
-
-[href*="#reference-hotel-jewel"] .references__project-name .word1 .letter3 {
-    margin-right: -0.005em;
-}
-
-[href*="#reference-hotel-jewel"] .references__project-name .word1 .letter4 {
-    margin-right: -0.005em;
-}
-
-[href*="#reference-hotel-jewel"] .references__project-name .word1 .letter5 {
-    margin-right: -0.05em;
-}
-
-[href*="#reference-hotel-jewel"] .references__project-name .word2 .letter1 {
-    margin-right: -0.005em;
-}
-
-[href*="#reference-hotel-jewel"] .references__project-name .word2 .letter2 {
-    margin-right: -0.015em;
-}
-
-[href*="#reference-hotel-jewel"] .references__project-name .word2 .letter3 {
-    margin-right: -0.02em;
-}
-
-[href*="#reference-hotel-jewel"] .references__project-name .word2 .letter4 {
-    margin-right: -0.005em;
-}
-
-
-[href*="#reference-express-alarm"] .references__project-name .word1 .letter1 {
-    margin-right: -0.01em;
-}
-
-[href*="#reference-express-alarm"] .references__project-name .word1 .letter3 {
-    margin-right: -0.0075em;
-}
-
-[href*="#reference-express-alarm"] .references__project-name .word1 .letter4 {
-    margin-right: -0.025em;
-}
-
-[href*="#reference-express-alarm"] .references__project-name .word1 .letter7 {
-    margin-right: -0.035em;
-}
-
-[href*="#reference-express-alarm"] .references__project-name .word2 .letter1 {
-    margin-right: -0.025em;
-}
-
-[href*="#reference-express-alarm"] .references__project-name .word2 .letter2 {
-    margin-right: -0.025em;
-}
-
-[href*="#reference-express-alarm"] .references__project-name .word2 .letter3 {
-    margin-right: -0.02em;
-}
-
-[href*="#reference-express-alarm"] .references__project-name .word2 .letter4 {
-    margin-right: -0.0025em;
-}
-
-
-[href*="#reference-beemedia"] .references__project-name .letter1 {
-    margin-right: 0.01em;
-}
-
-[href*="#reference-beemedia"] .references__project-name .letter2 {
-    margin-right: -0.0em;
-}
-
-[href*="#reference-beemedia"] .references__project-name .letter3 {
-    margin-right: -0.015em;
-}
-
-[href*="#reference-beemedia"] .references__project-name .letter4 {
-    margin-right: -0.015em;
-}
-
-[href*="#reference-beemedia"] .references__project-name .letter5 {
-    margin-right: 0.0em;
-}
-
-[href*="#reference-beemedia"] .references__project-name .letter6 {
-    margin-right: -0.0em;
-}
-
-[href*="#reference-beemedia"] .references__project-name .letter7 {
-    margin-right: -0.015em;
-}
-
-
-[href*="#reference-venue"] .references__project-name .letter1 {
-    margin-right: -0.025em;
-}
-
-[href*="#reference-venue"] .references__project-name .letter2 {
-    margin-right: 0.0em;
-}
-
-[href*="#reference-venue"] .references__project-name .letter3 {
-    margin-right: -0.01em;
-}
-
-[href*="#reference-venue"] .references__project-name .letter4 {
-    margin-right: -0.03em;
-}
-
-
 [href*="#reference-design-apartman"] .references__project-name .word1 .letter1 {
     margin-right: -0.015em;
 }
@@ -472,6 +356,107 @@
     margin-right: -0.025em;
 }
 
+
+[href*="#pujcovna-vozu"] .references__project-name .word1 .letter1 {
+    margin-right: -0.005em;
+}
+
+[href*="#pujcovna-vozu"] .references__project-name .word1 .letter2 {
+    margin-right: -0.005em;
+}
+
+[href*="#pujcovna-vozu"] .references__project-name .word1 .letter3 {
+    margin-right: -0.0125em;
+}
+
+[href*="#pujcovna-vozu"] .references__project-name .word1 .letter4 {
+    margin-right: 0.03em;
+}
+
+[href*="#pujcovna-vozu"] .references__project-name .word1 .letter5 {
+    margin-right: -0.03em;
+}
+
+[href*="#pujcovna-vozu"] .references__project-name .word1 .letter6 {
+    margin-right: -0.015em;
+}
+
+[href*="#pujcovna-vozu"] .references__project-name .word1 .letter7 {
+    margin-right: -0.02em;
+}
+
+[href*="#pujcovna-vozu"] .references__project-name .word1 .letter8 {
+    margin-right: -0.235em;
+}
+
+[href*="#pujcovna-vozu"] .references__project-name .word2 .letter1 {
+    margin-right: -0.0675em;
+}
+
+[href*="#pujcovna-vozu"] .references__project-name .word2 .letter2 {
+    margin-right: 0.0125em;
+}
+
+[href*="#pujcovna-vozu"] .references__project-name .word2 .letter3 {
+    margin-right: -0.0em;
+}
+
+[href*="#pujcovna-vozu"] .references__project-name .word2 .letter4 {
+    margin-right: -0.0em;
+}
+
+
+[href*="#cenyprizemi"] .references__project-name .letter1 {
+    margin-right: -0.015em;
+}
+
+[href*="#cenyprizemi"] .references__project-name .letter2 {
+    margin-right: -0.025em;
+}
+
+[href*="#cenyprizemi"] .references__project-name .letter3 {
+    margin-right: -0.015em;
+}
+
+[href*="#cenyprizemi"] .references__project-name .letter4 {
+    margin-right: -0.05em;
+}
+
+[href*="#cenyprizemi"] .references__project-name .letter5 {
+    margin-right: -0.0075em;
+}
+
+[href*="#cenyprizemi"] .references__project-name .letter6 {
+    margin-right: 0.005em;
+}
+
+[href*="#cenyprizemi"] .references__project-name .letter7 {
+    margin-right: -0.005em;
+}
+
+[href*="#cenyprizemi"] .references__project-name .letter8 {
+    margin-right: -0.0175em;
+}
+
+[href*="#cenyprizemi"] .references__project-name .letter9 {
+    margin-right: -0.035em;
+}
+
+[href*="#cenyprizemi"] .references__project-name .letter10 {
+    margin-right: -0.0175em;
+}
+
+[href*="#cenyprizemi"] .references__project-name .letter11 {
+    margin-right: -0.06em;
+}
+
+[href*="#cenyprizemi"] .references__project-name .letter12 {
+    margin-right: -0.01em;
+}
+
+[href*="#cenyprizemi"] .references__project-name .letter13 {
+    margin-right: -0.0em;
+}
 
 /*--------------------------------------------------------------------*/
 /*---------------------------- REFERENCES ----------------------------*/
