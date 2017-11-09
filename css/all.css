@@ -4388,7 +4388,7 @@ input[type="time"]:focus {
 
         font-size: 1.0625rem;
         font-style: italic;
-        line-height: 1.588235;
+        line-height: 1.68750rem;
         letter-spacing: 0.01em;
     }
 
@@ -4396,7 +4396,7 @@ input[type="time"]:focus {
 
         .offer__info {
             font-size: 0.875rem;
-            line-height: 1.642857;
+            line-height: 1.43750rem;
         }
     }
 
@@ -6283,7 +6283,8 @@ input[type="time"]:focus {
 
                     .references__project-info-note {
                         font-style: italic;
-                        color: #a4a4a4;
+
+                        color: #878787;
                     }
 
                 .references__project-more-info {
@@ -6787,6 +6788,41 @@ input[type="time"]:focus {
                             }*/
 
 /*//////////////////////////// REFERENCES ////////////////////////////*/
+
+        .references__info {
+            align-self: flex-start;
+            padding-top: calc(2vh - 20px);
+            margin-top: 20px;
+
+            font-size: 1.0625rem;
+            font-style: italic;
+            line-height: 1.68750rem;
+            letter-spacing: 0.0075em;
+
+            color: #878787;
+        }
+
+        @media (min-width: 1024px) {
+
+            .references__info {
+                max-width: calc(((100% / 21) * 13) + ((((100% / 21) * 8) / 21) * 13))
+            }
+        }
+
+        @media (max-width: 767px) {
+
+            .references__info {
+                font-size: 0.875rem;
+                line-height: 1.43750rem;
+            }
+        }
+
+            .references__info .text {
+                position: relative;
+                z-index: 2;
+
+                pointer-events: auto;
+            }
 
         .references__more-references,
         .references__other-projects {
