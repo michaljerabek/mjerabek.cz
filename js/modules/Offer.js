@@ -89,9 +89,10 @@
 
                         $firstTechnology = $firstTechnology || $self.find(SELECTOR.technology).first();
 
-                        var firstTechnologyRect = $firstTechnology[0].getBoundingClientRect();
+                        var firstTechnologyRect = $firstTechnology[0].getBoundingClientRect(),
+                            winHeight = window.innerHeight;
 
-                        if (firstTechnologyRect.top <= window.innerHeight * (2 / 3)) {
+                        if (firstTechnologyRect.top <= winHeight * (2 / 3) && $self[0].getBoundingClientRect().bottom > winHeight * (1 / 3)) {
 
                             $self.addClass(CLASS.technologiesInView);
 
