@@ -256,45 +256,68 @@
         }
     }
 
-        .contact__option-link {
+        .contact__option-link-selection-wrapper {
+            position: relative;
+            left: -10px;
+
             display: inline-block;
-            padding-bottom: 0.25rem;
-
-            font-size: 2rem;
-            line-height: 1;
-            text-decoration: none;
-
-            color: #CEB77E;
+            padding-right: 20px;
+            padding-left: 10px;
 
             pointer-events: auto;
         }
 
-        @media (max-width: 639px) {
+        .contact__option-link-selection-wrapper:hover {
+            left: -20px;
+
+            padding-right: 40px;
+            padding-left: 20px;
+
+            cursor: text;
+        }
 
             .contact__option-link {
-                font-size: 1.6875rem;
-            }
-        }
+                display: inline-block;
+                padding-bottom: 0.25rem;
 
-        .contact__option-link:hover,
-        .contact__option-link:focus {
-            color: #79A9BD;
-        }
-
-            .contact__option-link .small {
-                font-size: 1.6875rem;
+                font-size: 2rem;
                 line-height: 1;
+                text-decoration: none;
+
+                color: #CEB77E;
+
+                pointer-events: auto;
             }
 
             @media (max-width: 639px) {
 
-                .contact__option-link .small {
-                    font-size: 1.4375rem;
+                .contact__option-link {
+                    font-size: 1.6875rem;
                 }
             }
 
+            .contact__option-link:hover,
+            .contact__option-link:focus {
+                color: #79A9BD;
+            }
+
+                .contact__option-link .small {
+                    font-size: 1.6875rem;
+                    line-height: 1;
+                }
+
+                @media (max-width: 639px) {
+
+                    .contact__option-link .small {
+                        font-size: 1.4375rem;
+                    }
+                }
+
         .contact__option-note {
             display: block;
+            width: -webkit-max-content;
+            width: -moz-max-content;
+            width: max-content;
 
             line-height: 1.5rem;
             letter-spacing: 0.015em;
@@ -400,9 +423,18 @@
 }
 
     .contact__address > * {
+        position: relative;
+        left: -10px;
+
         display: table;
+        padding-right: 10px;
+        padding-left: 10px;
 
         pointer-events: auto;
+    }
+
+    .contact__address > :hover {
+        cursor: text;
     }
 
     .contact__address .small {
