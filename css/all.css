@@ -6513,7 +6513,18 @@ input[type="time"]:focus {
                         top: 0;
                         left: 0;
 
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
                         width: 100%;
+                        min-height: 100%;
+                        padding: 14px;
+
+                        font-size: 1.0625rem;
+                        line-height: 1.4375rem;
+                        text-align: center;
+
+                        color: #474747;
 
                         transition: filter 0.65s cubic-bezier(0, 0, .2, 1) 0s,
                             transform 0.65s cubic-bezier(0, 0, .2, 1) 0s,
