@@ -88,6 +88,11 @@ jQuery(function () {
         window.MJNS.Cookies.init();
     }
 
+    if (window.MJNS.FixBugs) {
+
+        window.MJNS.FixBugs.init();
+    }
+
     if (window.MJNS.ConsoleMessage) {
 
         setTimeout(window.MJNS.ConsoleMessage.init, 2000);

@@ -64,6 +64,10 @@ table {
 /*-------------------------- GENERAL STYLES --------------------------*/
 /*====================================================================*/
 
+@-ms-viewport {
+    width: device-width;
+}
+
 /*--------------------------------------------------------------------*/
 /*------------------------------- FONTS ------------------------------*/
 /*--------------------------------------------------------------------*/
@@ -7376,6 +7380,14 @@ input[type="time"]:focus {
                 will-change: contents;
             }
 
+            @supports (pointer-events: none) {
+
+                .pricelist__terms-and-conditions {
+                    padding-top: 100px;
+                    margin-top: -100px;
+                }
+            }
+
             @media (min-width: 768px) {
 
                 .pricelist__pricelist,
@@ -7594,13 +7606,19 @@ input[type="time"]:focus {
                     }
 
                 .pricelist__terms-and-conditions-title {
-                    margin-top: 1.625rem;
                     margin-bottom: 0.75rem;
 
                     line-height: 1.4375rem;
                     letter-spacing: 0.03em;
 
                     color: #474747;
+                }
+
+                @media (min-width: 768px) {
+
+                    .pricelist__terms-and-conditions-title {
+                        margin-top: 1.625rem;
+                    }
                 }
 
                 .apple .pricelist__terms-and-conditions-title {
@@ -7621,6 +7639,13 @@ input[type="time"]:focus {
                         color: inherit;
 
                         pointer-events: auto;
+                    }
+
+                    @media (min-width: 768px) {
+
+                        .pricelist__terms-and-conditions-link {
+                            cursor: default;
+                        }
                     }
 
                         /*kerning*/
