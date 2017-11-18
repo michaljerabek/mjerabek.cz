@@ -40,7 +40,7 @@
                     }, 250);
                 });
 
-                ns.$win.trigger("scroll" + NS);
+                ns.$win.trigger("scroll." + NS);
             },
 
             init = function () {
