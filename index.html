@@ -7,7 +7,7 @@
     <!---
         Vítejte pod povrchem!
 
-        Na této stránce není kód záměrně minifikovaný, abyste si mohli prohlédnout, jak je web nakódovaný. JavaScript najdete v „/js/all-init.js“; CSS v „/css/all.css“.
+        Skripty a styly jsou na této stránce minifikované, pokud chcete vidět, jak je web nakódovaný, podívejte se na http://github.com/michaljerabek/mjerabek.cz.
     -->
 
     <meta charset="UTF-8">
@@ -22,7 +22,7 @@
 
 
     <link rel="preload" href="js/libs.min.js" as="script">
-    <link rel="preload" href="js/all-init.js" as="script">
+    <link rel="preload" href="js/all-init.min.js" as="script">
 
 
     <title>Front-End / HTML kodér — Michal Jeřábek</title>
@@ -89,7 +89,7 @@
     <!--/dev-->
 
     <!--prod-->
-<!--    <link rel="stylesheet" href="css/all.css" media="screen">-->
+<!--    <link rel="stylesheet" href="css/all.min.css" media="screen">-->
     <link rel="stylesheet" href="css/libs.min.css" media="screen">
     <link rel="stylesheet" href="css/print.css" media="print">
     <!--/prod-->
@@ -1420,7 +1420,7 @@
 
     <!--prod-->
     <script src="js/libs.min.js" defer></script>
-<!--    <script src="js/all-init.js" defer></script>-->
+<!--    <script src="js/all-init.min.js" defer></script>-->
     <!--/prod-->
 
 
