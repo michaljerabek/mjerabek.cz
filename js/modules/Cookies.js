@@ -22,6 +22,8 @@
                 "</div>"
             ].join(""),
 
+            PLUGIN_LINK = "//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js",
+
             onPopupOpen = function () {
 
                 if (ns.$win.scrollTop()) {
@@ -50,7 +52,12 @@
                 }
             },
 
-            init = function () {
+            loadCookieconsent = function () {
+
+                return $.getScript(PLUGIN_LINK);
+            },
+
+            initCookieconsent = function () {
 
                 cookieconsent.initialise({
                     autoOpen: true,
@@ -61,6 +68,11 @@
                         expiryDays: window.location.host.match(/127\.0\.0\.1/) ? 0.000695 : 365
                     }
                 });
+            },
+
+            init = function () {
+
+                loadCookieconsent().then(initCookieconsent);
             };
 
         return {
