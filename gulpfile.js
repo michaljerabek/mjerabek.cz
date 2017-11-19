@@ -94,7 +94,9 @@ gulp.task("css", () => {
             .pipe(
                 gulp.dest(path.resolve(PATHS.CSS_OUTPUT_DIR))
             )
-            .pipe(cleanCSS())
+            .pipe(cleanCSS({
+                compatibility: "ie8,-properties.zeroUnits"
+            }))
             .pipe(rename(path => path.basename = file.replace(PATHS.CSS_IMPORT, PATHS.CSS_OUTPUT_MIN)))
             .pipe(
                 gulp.dest(path.resolve(PATHS.CSS_OUTPUT_DIR))
