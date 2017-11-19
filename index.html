@@ -1424,5 +1424,67 @@
     <!--/prod-->
 
 
+    <!--JSON-LD-->
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org/",
+        "@id": "http://mjerabek.cz/PersonMichalJerabek",
+        "@type": "Person",
+        "givenName": "Michal",
+        "familyName": "Jeřábek",
+        "image": "http://mjerabek.cz/img/photo.jpg",
+        "address": {
+            "@id": "http://mjerabek.cz/PostalAddressMichalJerabek",
+            "@type": "PostalAddress",
+            "addressCountry": "CZ",
+            "addressLocality": "Liberec",
+            "addressRegion": "Czech Republic",
+            "postalCode": "46006",
+            "streetAddress": "Halasova 897"
+        },
+        "email": "mjerabek@seznam.cz",
+        "telephone": "+420728635829",
+        "url": "http://mjerabek.cz",
+        "jobTitle": "Front-end / HTML kodér"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org/",
+        "@type": "ProfessionalService",
+        "name": "Michal Jeřábek",
+        "description": "Front-end / HTML kodér",
+        "address": {
+            "@id": "http://mjerabek.cz/PostalAddressMichalJerabek"
+        },
+        "makesOffer": {
+        	"@type": "Offer",
+            "price": "329",
+            "priceCurrency": "CZK",
+            "itemOffered": {
+                "@type": "Service",
+                "serviceType": "Kódování webů, šablon a grafických návrhů do HTML, CSS a JavaScriptu.",
+                "provider": {
+                    "@id": "http://mjerabek.cz/PersonMichalJerabek"
+                },
+                "areaServed": {
+                  "@type": "State",
+                  "name": "Czech Republic"
+                },
+                "serviceOutput": {
+                    "@type": "SoftwareSourceCode",
+                    "programmingLanguage": "HTML, CSS, JS"
+                }
+            }
+        },
+        "email": "mjerabek@seznam.cz",
+        "telephone": "+420728635829",
+        "url": "http://mjerabek.cz",
+        "image": "http://mjerabek.cz/img/photo.jpg",
+        "priceRange": "$$"
+    }
+    </script>
+
 </body>
 </html>
