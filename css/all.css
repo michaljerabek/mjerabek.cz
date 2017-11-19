@@ -8117,10 +8117,7 @@ input[type="time"]:focus {
                 }
 
         .contact__option-note {
-            display: block;
-            width: -webkit-max-content;
-            width: -moz-max-content;
-            width: max-content;
+            display: table;
 
             line-height: 1.5rem;
             letter-spacing: 0.015em;
