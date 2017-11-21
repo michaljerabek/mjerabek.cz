@@ -51,6 +51,7 @@
             },
 
             EVENT = {
+                changed: "technologies__changed." + ns,
                 opened: "technologies__opened." + ns,
                 closed: "technologies__closed." + ns,
                 interaction: "technologies__interaction." + ns
@@ -377,6 +378,8 @@
                     $contentWrappers.css("transition", "");
 
                     window.history.replaceState($link[0].href, "", $link[0].href);
+
+                    ns.$win.trigger(EVENT.changed, $link[0].href.split("#")[1]);
 
                 }, 0);
             },

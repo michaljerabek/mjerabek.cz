@@ -52,7 +52,9 @@
             },
 
             EVENT = {
-                scrollTo: "main-nav__scroll-to." + ns
+                scrollTo: "main-nav__scroll-to." + ns,
+
+                targetChanged: "main-nav__target-changed." + ns
             },
 
             SCROLL_DURATION_BASE = 500,
@@ -114,6 +116,8 @@
                 if (history.state !== linkHref) {
 
                     history.replaceState(linkHref, document.title + " — " + $link.text(), linkHref);
+
+                    ns.$win.trigger(EVENT.targetChanged, [linkHref.split("#")[1]]);
                 }
             },
 

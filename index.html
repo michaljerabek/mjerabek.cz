@@ -118,16 +118,21 @@
     <script src="http://mjerabek.wz.cz/onScreenLog.js"></script>
     <!--/dev-->
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+    <!--GOOGLE-ANALYTICS-->
     <!--prod-->
-    <!--<script async src="https://www.googletagmanager.com/gtag/js?id=UA-109158404-1"></script>
-    <script>
+    <!--<script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+        gtag("js", new Date());
 
-        gtag('config', 'UA-109158404-1');
-    </script>-->
+        gtag("config", "UA-109158404-1");
+
+        window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+        ga("create", "UA-109158404-1", "auto");
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109158404-1"></script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>-->
     <!--/prod-->
 
 
@@ -547,7 +552,7 @@
 
                                             <dt class="references__project-info-item">Web:</dt>
                                             <dd class="references__project-info-content">
-                                                <a href="http://nejlevnejsipujcovnavozu.cz" rel="noreferrer"><span class="x-print">nejlevnejsipujcovnavozu.cz</span></a>
+                                                <a href="http://nejlevnejsipujcovnavozu.cz" rel="noreferrer" data-analytics-event-click="odkaz|Autopůjčovna"><span class="x-print">nejlevnejsipujcovnavozu.cz</span></a>
                                             </dd>
 
                                         </dl>
@@ -571,7 +576,7 @@
                                             <div class="references__image-overlay">
 
                                                 <span class="references__image-web">
-                                                    <a class="references__image-web-link" href="http://nejlevnejsipujcovnavozu.cz" rel="noreferrer">nejlevnejsipujcovnavozu.cz</a>
+                                                    <a class="references__image-web-link" href="http://nejlevnejsipujcovnavozu.cz" rel="noreferrer" data-analytics-event-click="odkaz|Autopůjčovna">nejlevnejsipujcovnavozu.cz</a>
                                                 </span>
 
                                             </div>
@@ -610,7 +615,7 @@
 
                                             <dt class="references__project-info-item">Web:</dt>
                                             <dd class="references__project-info-content">
-                                                <a href="http://cenyprizemi.cz" rel="noreferrer"><span class="x-print">cenyprizemi.cz</span></a>
+                                                <a href="http://cenyprizemi.cz" rel="noreferrer" data-analytics-event-click="odkaz|Cenyprizemi.cz"><span class="x-print">cenyprizemi.cz</span></a>
                                             </dd>
 
                                         </dl>
@@ -634,7 +639,7 @@
                                             <div class="references__image-overlay">
 
                                                 <span class="references__image-web">
-                                                    <a class="references__image-web-link" href="http://cenyprizemi.cz" rel="noreferrer">cenyprizemi.cz</a>
+                                                    <a class="references__image-web-link" href="http://cenyprizemi.cz" rel="noreferrer" data-analytics-event-click="odkaz|Cenyprizemi.cz">cenyprizemi.cz</a>
                                                 </span>
 
                                             </div>
@@ -673,7 +678,7 @@
 
                                             <dt class="references__project-info-item">Web:</dt>
                                             <dd class="references__project-info-content">
-                                                <a href="http://liberec-apartman.cz" rel="noreferrer"><span class="x-print">liberec-apartman.cz</span></a>
+                                                <a href="http://liberec-apartman.cz" rel="noreferrer" data-analytics-event-click="odkaz|Apartmán Liberec"><span class="x-print">liberec-apartman.cz</span></a>
                                             </dd>
 
                                         </dl>
@@ -697,7 +702,7 @@
                                             <div class="references__image-overlay">
 
                                                 <span class="references__image-web">
-                                                    <a class="references__image-web-link" href="http://liberec-apartman.cz" rel="noreferrer">liberec-apartman.cz</a>
+                                                    <a class="references__image-web-link" href="http://liberec-apartman.cz" rel="noreferrer" data-analytics-event-click="odkaz|Apartmán Liberec">liberec-apartman.cz</a>
                                                 </span>
 
                                             </div>
@@ -722,9 +727,9 @@
                             <h3 class="references__more-references-title">Další reference:</h3>
 
                             <ul class="references__more-projects">
-                                <li class="references__more-projects-project" data-after=","><a href="http://marketingwithlove.cz" rel="noreferrer">Marketing With Love</a></li>
-                                <li class="references__more-projects-project" data-after=","><a href="http://najdinavod.cz" rel="noreferrer">Najdi Návod</a></li>
-                                <li class="references__more-projects-project" data-after=", &hellip;"><a href="https://chcispolubydlici.cz/" rel="noreferrer">Chci Spolubydlící</a></li>
+                                <li class="references__more-projects-project" data-after=","><a href="http://marketingwithlove.cz" rel="noreferrer" data-analytics-event-click="odkaz|MWL">Marketing With Love</a></li>
+                                <li class="references__more-projects-project" data-after=","><a href="http://najdinavod.cz" rel="noreferrer" data-analytics-event-click="odkaz|Najdi Návod">Najdi Návod</a></li>
+                                <li class="references__more-projects-project" data-after=", &hellip;"><a href="https://chcispolubydlici.cz/" rel="noreferrer" data-analytics-event-click="odkaz|Chci Spolubydlící">Chci Spolubydlící</a></li>
                             </ul>
 
                         </aside>
@@ -737,15 +742,15 @@
                             <ul class="references__other-projects-projects">
 
                                 <li class="references__other-projects-project">
-                                    <a href="https://github.com/michaljerabek/mjGallery" title="JS plugin — galerie obrázků, videí, iframů, ..." data-after=",">mjGallery</a>
+                                    <a href="https://github.com/michaljerabek/mjGallery" title="JS plugin — galerie obrázků, videí, iframů, ..." data-after="," data-analytics-event-click="odkaz|mjGallery">mjGallery</a>
                                 </li>
 
                                 <li class="references__other-projects-project">
-                                    <a href="https://github.com/michaljerabek/Infinitum" title="JS plugin — nekonečná smyčka HTML elementů" data-after=",">Infinitum</a>
+                                    <a href="https://github.com/michaljerabek/Infinitum" title="JS plugin — nekonečná smyčka HTML elementů" data-after="," data-analytics-event-click="odkaz|Infinitum">Infinitum</a>
                                 </li>
 
                                 <li class="references__other-projects-project">
-                                    <a href="https://github.com/michaljerabek/UXN" title="JS plugin — uživatelsky přívětivé navigace"><span class="small">UXN</span></a>
+                                    <a href="https://github.com/michaljerabek/UXN" title="JS plugin — uživatelsky přívětivé navigace" data-analytics-event-click="odkaz|UXN"><span class="small">UXN</span></a>
                                 </li>
 
                             </ul>
@@ -755,7 +760,7 @@
                         <!-- /.references__other-projects -->
 
                         <p class="references__info">
-                            <span class="text">Většina zde uvedených referencí úplně neodpovídá současným postupům. Pokud chcete vidět aktuální výstup mé práce, můžete se podívat na <a href="http://github.com/michaljerabek/mjerabek.cz" title="Kód stránky na GitHub.com">kód této stránky</a> nebo na ukázku kódu v&nbsp;sekci <a href="#co-delam">Co dělám</a>.</span>
+                            <span class="text">Většina zde uvedených referencí úplně neodpovídá současným postupům. Pokud chcete vidět aktuální výstup mé práce, můžete se podívat na <a href="http://github.com/michaljerabek/mjerabek.cz" title="Kód stránky na GitHub.com" data-analytics-event-click="odkaz|kód stránky na githubu v referencích">kód této stránky</a> nebo na ukázku kódu v&nbsp;sekci <a href="#co-delam">Co dělám</a>.</span>
                         </p>
 
                     </div>
@@ -958,7 +963,7 @@
                                 <ul class="contact__social-sites">
 
                                     <li class="contact__social-site contact__social-site--github">
-                                        <a class="contact__social-site-link print__replace-with-href" href="https://github.com/michaljerabek" rel="me">
+                                        <a class="contact__social-site-link print__replace-with-href" href="https://github.com/michaljerabek" rel="me" data-analytics-event-click="odkaz|github v kontaktu">
                                             <span class="visually-hidden">GitHub</span>
                                             <svg class="transition x-print" viewBox="0 0 33 33"><path d="M16.5,1.87c-8.282,0 -15,6.716 -15,15c0,6.627 4.298,12.25 10.259,14.234c0.748,0.138 0.991,-0.327 0.991,-0.722l0,-2.792c-4.172,0.907 -5.041,-1.77 -5.041,-1.77c-0.683,-1.734 -1.666,-2.195 -1.666,-2.195c-1.362,-0.931 0.103,-0.911 0.103,-0.911c1.507,0.105 2.299,1.546 2.299,1.546c1.338,2.292 3.509,1.63 4.365,1.246c0.134,-0.969 0.522,-1.631 0.953,-2.005c-3.332,-0.381 -6.834,-1.667 -6.834,-7.414c0,-1.638 0.586,-2.976 1.545,-4.026c-0.155,-0.379 -0.669,-1.905 0.146,-3.97c0,0 1.26,-0.402 4.126,1.538c1.197,-0.333 2.479,-0.499 3.754,-0.505c1.275,0.006 2.559,0.172 3.758,0.505c2.863,-1.94 4.121,-1.538 4.121,-1.538c0.816,2.066 0.302,3.593 0.147,3.97c0.963,1.05 1.544,2.389 1.544,4.026c0,5.762 -3.509,7.03 -6.849,7.402c0.538,0.465 1.029,1.377 1.029,2.777l0,4.116c0,0.399 0.24,0.868 1.001,0.72c5.956,-1.986 10.249,-7.607 10.249,-14.232c0,-8.284 -6.716,-15 -15,-15Z"/></svg>
                                         </a>
@@ -1362,7 +1367,7 @@
     <!--–––––––– // TECHNOLOGIES // –––––––––-->
 
 
-    <a class="ui__github x-print" href="https://github.com/michaljerabek/mjerabek.cz" title="Kód stránky na GitHub.com">
+    <a class="ui__github x-print" href="https://github.com/michaljerabek/mjerabek.cz" title="Kód stránky na GitHub.com" data-analytics-event-click="odkaz|kód stránky na githubu v headeru">
         <svg class="transition" viewBox="0 0 33 33"><path d="M16.5,1.87c-8.282,0 -15,6.716 -15,15c0,6.627 4.298,12.25 10.259,14.234c0.748,0.138 0.991,-0.327 0.991,-0.722l0,-2.792c-4.172,0.907 -5.041,-1.77 -5.041,-1.77c-0.683,-1.734 -1.666,-2.195 -1.666,-2.195c-1.362,-0.931 0.103,-0.911 0.103,-0.911c1.507,0.105 2.299,1.546 2.299,1.546c1.338,2.292 3.509,1.63 4.365,1.246c0.134,-0.969 0.522,-1.631 0.953,-2.005c-3.332,-0.381 -6.834,-1.667 -6.834,-7.414c0,-1.638 0.586,-2.976 1.545,-4.026c-0.155,-0.379 -0.669,-1.905 0.146,-3.97c0,0 1.26,-0.402 4.126,1.538c1.197,-0.333 2.479,-0.499 3.754,-0.505c1.275,0.006 2.559,0.172 3.758,0.505c2.863,-1.94 4.121,-1.538 4.121,-1.538c0.816,2.066 0.302,3.593 0.147,3.97c0.963,1.05 1.544,2.389 1.544,4.026c0,5.762 -3.509,7.03 -6.849,7.402c0.538,0.465 1.029,1.377 1.029,2.777l0,4.116c0,0.399 0.24,0.868 1.001,0.72c5.956,-1.986 10.249,-7.607 10.249,-14.232c0,-8.284 -6.716,-15 -15,-15Z"/></svg>
     </a>
 
@@ -1414,6 +1419,7 @@
     <script src="js/modules/Cookies.js"></script>
     <script src="js/modules/Fonts.js"></script>
     <script src="js/modules/FixBugs.js"></script>
+    <script src="js/modules/Analytics.js"></script>
 
     <script src="js/init.js"></script>
     <!--/dev-->
