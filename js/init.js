@@ -1,5 +1,5 @@
 /*jslint indent: 4, white: true, unparam: true, node: true, browser: true, devel: true, nomen: true, plusplus: true, regexp: true, sloppy: true, vars: true*/
-/*global jQuery, window*/
+/*global jQuery, window, setTimeout*/
 
 jQuery(function () {
 
@@ -8,94 +8,25 @@ jQuery(function () {
         return;
     }
 
-    if (window.MJNS.Performance) {
+    var modules = ["Performance", "JSHover", "BreakText", "BGObjectsOpacityAnimation", "MainNav", "Intro", "SmallCaps", "Offer", "Technologies", "References", "AboutMe", "Pricelist", "Form", "Contact", "Fonts", "Cookies", "FixBugs", "Analytics", "ConsoleMessage:2000"];
 
-        window.MJNS.Performance.init();
-    }
+    modules.forEach(function (moduleSettings) {
 
-    if (window.MJNS.JSHover) {
+        var settings = moduleSettings.split(":"),
 
-        window.MJNS.JSHover.init();
-    }
+            moduleName = settings[0],
+            delayLoad = !isNaN(parseInt(settings[1])) ? parseInt(settings[1]): null;
 
-    if (window.MJNS.BreakText) {
+        if (window.MJNS[moduleName] && typeof window.MJNS[moduleName].init === "function") {
 
-        window.MJNS.BreakText.init();
-    }
+            if (typeof delayLoad === "number") {
 
-    if (window.MJNS.BGObjectsOpacityAnimation) {
+                setTimeout(window.MJNS[moduleName].init, delayLoad);
 
-        window.MJNS.BGObjectsOpacityAnimation.init();
-    }
+            } else {
 
-    if (window.MJNS.MainNav) {
-
-        window.MJNS.MainNav.init();
-    }
-
-    if (window.MJNS.Intro) {
-
-        window.MJNS.Intro.init();
-    }
-
-    if (window.MJNS.SmallCaps) {
-
-        window.MJNS.SmallCaps.init();
-    }
-
-    if (window.MJNS.Offer) {
-
-        window.MJNS.Offer.init();
-    }
-
-    if (window.MJNS.Technologies) {
-
-        window.MJNS.Technologies.init();
-    }
-
-    if (window.MJNS.References) {
-
-        window.MJNS.References.init();
-    }
-
-    if (window.MJNS.AboutMe) {
-
-        window.MJNS.AboutMe.init();
-    }
-
-    if (window.MJNS.Pricelist) {
-
-        window.MJNS.Pricelist.init();
-    }
-
-    if (window.MJNS.Form) {
-
-        window.MJNS.Form.init();
-    }
-
-    if (window.MJNS.Contact) {
-
-        window.MJNS.Contact.init();
-    }
-
-    if (window.MJNS.Fonts) {
-
-        window.MJNS.Fonts.init();
-    }
-
-    if (window.MJNS.Cookies) {
-
-        window.MJNS.Cookies.init();
-    }
-
-    if (window.MJNS.FixBugs) {
-
-        window.MJNS.FixBugs.init();
-    }
-
-    if (window.MJNS.ConsoleMessage) {
-
-        setTimeout(window.MJNS.ConsoleMessage.init, 2000);
-    }
-
+                window.MJNS[moduleName].init();
+            }
+        }
+    });
 });
