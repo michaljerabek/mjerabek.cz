@@ -302,10 +302,6 @@
                         pointer-events: auto;
                     }
 
-                    .apple .pricelist__price-unit {
-                        margin-top: 0.125rem;
-                    }
-
                     @media (max-width: 767px) {
 
                         .js .pricelist__terms-and-conditions .small,
