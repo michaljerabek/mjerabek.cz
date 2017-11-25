@@ -2382,7 +2382,7 @@
 
                             ns.$win.off("scroll.Offer." + ns);
                         }
-                    }, 100);
+                    }, 200);
                 });
 
                 scrollTimeout = setTimeout(function() {

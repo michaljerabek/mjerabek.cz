@@ -249,6 +249,8 @@
     }
 
         .offer__technology {
+            position: relative;
+
             padding-bottom: calc(10vh - 120px);
             margin-bottom: 40px;
         }
@@ -274,6 +276,86 @@
             .offer__technology {
                 max-width: 320px;
                 padding: 0 0px;
+            }
+        }
+
+        .offer__technology::after {
+            content: "\2192";
+
+            position: absolute;
+            top: -4px;
+            left: 50%;
+
+            transform: translateX(-90px) rotate(45deg) translateX(25px);
+
+            width: 0px;
+            height: 0px;
+
+            color: #bdbdbd;
+
+            font-family: Arial;
+            font-size: 17px;
+            line-height: 0;
+
+            opacity: 0;
+
+            animation-duration: 1.25s;
+            animation-timing-function: linear;
+            animation-iteration-count: 1;
+            animation-fill-mode: backwards;
+        }
+
+        .offer--technologies-in-view .offer__technology::after {
+            animation-name: offer__technology-interaction;
+        }
+
+        .offer__technology:nth-child(1)::after {
+            animation-delay: 0.27s;
+        }
+
+        .offer__technology:nth-child(2)::after {
+            animation-delay: 0.57s;
+        }
+
+        .offer__technology:nth-child(3)::after {
+            animation-delay: 0.87s;
+        }
+
+        @keyframes offer__technology-interaction {
+            0% {
+                transform: translateX(-90px) rotate(45deg) translateX(25px);
+
+                opacity: 0;
+            }
+            5% {
+                opacity: 1;
+            }
+            10% {
+                transform: translateX(-90px) rotate(45deg) translateX(40px);
+
+                opacity: 1;
+            }
+            25% {
+                transform: translateX(-90px) rotate(45deg) translateX(36px);
+
+                opacity: 1;
+            }
+            35% {
+                transform: translateX(-90px) rotate(45deg) translateX(40px);
+
+                opacity: 1;
+            }
+            50% {
+                transform: translateX(-90px) rotate(45deg) translateX(39px);
+
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-90px) rotate(45deg) translateX(37px);
+
+                opacity: 0;
+
+                animation-timing-function: cubic-bezier(.2, 1.2, .4, .8);
             }
         }
 
@@ -334,6 +416,11 @@
 
             .offer__technology-link::after {
                 border-color: #c06c47;
+
+                animation-duration: 1s;
+                animation-timing-function: ease-out;
+                animation-iteration-count: 1;
+                animation-fill-mode: backwards;
             }
 
             .offer__technology-link:hover::after,
@@ -396,16 +483,20 @@
                 transform: translate(7px, 0px) rotate(-45deg);
             }
 
+            .offer--technologies-in-view .offer__technology .offer__technology-link::after {
+                animation-name: offer__technology-border-blink;
+            }
+
             .offer--technologies-in-view .offer__technology:nth-child(1) .offer__technology-link::after {
-                animation: offer__technology-border-blink 1s ease-out 0.25s 1 backwards;
+                animation-delay: 0.35s;
             }
 
             .offer--technologies-in-view .offer__technology:nth-child(2) .offer__technology-link::after {
-                animation: offer__technology-border-blink 1s ease-out 0.5s 1 backwards;
+                animation-delay: 0.65s;
             }
 
             .offer--technologies-in-view .offer__technology:nth-child(3) .offer__technology-link::after {
-                animation: offer__technology-border-blink 1s ease-out 0.75s 1 backwards;
+                animation-delay: 0.95s;
             }
 
             @keyframes offer__technology-border-blink {
@@ -431,6 +522,13 @@
                     pointer-events: auto;
                 }
 
+                    .offer__technology-name .text {
+                        animation-duration: 1s;
+                        animation-timing-function: ease-out;
+                        animation-iteration-count: 1;
+                        animation-fill-mode: backwards;
+                    }
+
                     .offer__technology--html .letter4 {
                         margin-left: -0.035em;
                     }
@@ -448,16 +546,20 @@
                         letter-spacing: 0.025em;
                     }
 
+                    .offer--technologies-in-view .offer__technology .offer__technology-name .text {
+                        animation-name: offer__technology-name-blink;
+                    }
+
                     .offer--technologies-in-view .offer__technology:nth-child(1) .offer__technology-name .text {
-                        animation: offer__technology-name-blink 1s ease-out 0.25s 1 backwards;
+                        animation-delay: 0.35s;
                     }
 
                     .offer--technologies-in-view .offer__technology:nth-child(2) .offer__technology-name .text {
-                        animation: offer__technology-name-blink 1s ease-out 0.5s 1 backwards;
+                        animation-delay: 0.65s;
                     }
 
                     .offer--technologies-in-view .offer__technology:nth-child(3) .offer__technology-name .text {
-                        animation: offer__technology-name-blink 1s ease-out 0.75s 1 backwards;
+                        animation-delay: 0.95s;
                     }
 
                     @keyframes offer__technology-name-blink {
@@ -488,6 +590,10 @@
                     pointer-events: auto;
 
                     transition: inherit;
+                    animation-duration: 1s;
+                    animation-timing-function: ease-out;
+                    animation-iteration-count: 1;
+                    animation-fill-mode: backwards;
                 }
 
                 .offer__technology-name::before {
@@ -529,22 +635,28 @@
                     background-color: #6196ac;
                 }
 
+                .offer--technologies-in-view .offer__technology .offer__technology-name::before,
+                .offer--technologies-in-view .offer__technology .offer__technology-name::after,
+                .offer--technologies-in-view .offer__technology .offer__technology-name .text::after {
+                    animation-name: offer__technology-dot-blink;
+                }
+
                 .offer--technologies-in-view .offer__technology:nth-child(1) .offer__technology-name::before,
                 .offer--technologies-in-view .offer__technology:nth-child(1) .offer__technology-name::after,
                 .offer--technologies-in-view .offer__technology:nth-child(1) .offer__technology-name .text::after {
-                    animation: offer__technology-dot-blink 1s ease-out 0.25s 1 backwards;
+                    animation-delay: 0.35s;
                 }
 
                 .offer--technologies-in-view .offer__technology:nth-child(2) .offer__technology-name::before,
                 .offer--technologies-in-view .offer__technology:nth-child(2) .offer__technology-name::after,
                 .offer--technologies-in-view .offer__technology:nth-child(2) .offer__technology-name .text::after {
-                    animation: offer__technology-dot-blink 1s ease-out 0.5s 1 backwards;
+                    animation-delay: 0.65s;
                 }
 
                 .offer--technologies-in-view .offer__technology:nth-child(3) .offer__technology-name::before,
                 .offer--technologies-in-view .offer__technology:nth-child55) .offer__technology-name::after,
                 .offer--technologies-in-view .offer__technology:nth-child(3) .offer__technology-name .text::after {
-                    animation: offer__technology-dot-blink 1s ease-out 0.75s 1 backwards;
+                    animation-delay: 0.95s;
                 }
 
                 @keyframes offer__technology-dot-blink {
