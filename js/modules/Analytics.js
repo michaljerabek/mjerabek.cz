@@ -21,6 +21,9 @@
 
             PAGE_VIEW_TIMEOUT = 3500,
 
+            lastSection = "uvod",
+            lastSectionFrom = new Date(),
+
             pageViewTimeout = null,
 
             pageExitInitialized = false,
@@ -29,11 +32,16 @@
 
                 ns.$win.on("unload." + ns, function () {
 
-                    sendEvent("exit", "general", "Uživatel opustil stránku.");
+                    var lastSectionTime = ((new Date() - lastSectionFrom) / 1000).toFixed(1);
+
+                    sendEvent("exit", "general", "Poslední sekce: " + lastSection + "; " + lastSectionTime + "s.");
                 });
             },
 
             sendPageView = function (event, target) {
+
+                lastSection = target;
+                lastSectionFrom = new Date();
 
                 clearTimeout(pageViewTimeout);
 
