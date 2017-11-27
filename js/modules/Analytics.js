@@ -55,6 +55,8 @@
 
             sendPageView = function (event, target) {
 
+                target = (target || window.location.hash || "").replace("#", "");
+
                 clearTimeout(pageViewTimeout);
 
                 pageViewTimeout = setTimeout(function() {
@@ -115,7 +117,8 @@
             init = function () {
 
                 ns.$win.on("main-nav__target-changed." + ns, sendPageView)
-                    .on("technologies__changed." + ns, sendPageView);
+                    .on("technologies__changed." + ns, sendPageView)
+                    .on("technologies__closed." + ns, sendPageView);
 
                 ns.$doc.on("click." + ns + " mouseup." + ns, SELECTOR.eventClick, function (event) {
 
