@@ -26,9 +26,16 @@
 
             lastSentSection = lastSection,
 
+            hiddenFrom = document.hidden ? new Date() : null,
+
             pageViewTimeout = null,
 
             pageExitInitialized = false,
+
+            getHiddenTime = function () {
+
+                return ((new Date() - hiddenFrom) / 1000).toFixed(1);
+            },
 
             getLastSectionTime = function () {
 
@@ -132,7 +139,14 @@
 
                 ns.$win.on("visibilitychange." + ns, function () {
 
-                    sendEvent("visibility", "general", document.hidden ? "Skrytý" : "Viditelný");
+                    if (!document.hidden) {
+
+                        sendEvent("visibility", "general", "Skrytý: " + getHiddenTime() + "s");
+
+                        return;
+                    }
+
+                    hiddenFrom = new Date();
                 });
             };
 
