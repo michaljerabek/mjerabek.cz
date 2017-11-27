@@ -21,27 +21,39 @@
 
             PAGE_VIEW_TIMEOUT = 3500,
 
-            lastSection = "uvod",
+            lastSection = (window.location.hash || "#uvod").replace("#", ""),
             lastSectionFrom = new Date(),
+
+            lastSentSection = lastSection,
 
             pageViewTimeout = null,
 
             pageExitInitialized = false,
 
-            initPageExit = function () {
+            getLastSectionTime = function () {
+
+                return ((new Date() - lastSectionFrom) / 1000).toFixed(1);
+            },
+
+            initPageExitTime = function () {
 
                 ns.$win.on("unload." + ns, function () {
 
-                    var lastSectionTime = ((new Date() - lastSectionFrom) / 1000).toFixed(1);
-
-                    sendEvent("exit", "general", "Poslední sekce: " + lastSection + "; " + lastSectionTime + "s.");
+                    sendEvent("exit", "general", "Poslední sekce: " + lastSection + "; " + getLastSectionTime() + "s.");
                 });
             },
 
-            sendPageView = function (event, target) {
+            sendSectionExit = function () {
 
-                lastSection = target;
-                lastSectionFrom = new Date();
+                if (lastSentSection) {
+
+                    sendEvent("exit", "section", "Sekce: " + lastSentSection + "; " + getLastSectionTime() + "s.");
+
+                    lastSentSection = null;
+                }
+            },
+
+            sendPageView = function (event, target) {
 
                 clearTimeout(pageViewTimeout);
 
@@ -55,11 +67,19 @@
 
                     if (!pageExitInitialized) {
 
-                        initPageExit();
+                        initPageExitTime();
 
                         pageExitInitialized = true;
                     }
-                }, PAGE_VIEW_TIMEOUT);
+
+                    lastSentSection = target;
+
+                }.bind(null, lastSection, lastSectionFrom), PAGE_VIEW_TIMEOUT);
+
+                sendSectionExit();
+
+                lastSection = target;
+                lastSectionFrom = new Date();
             },
 
             parseEventData = function (el) {
@@ -105,6 +125,11 @@
                     }
 
                     sendEvent("click", event.currentTarget);
+                });
+
+                ns.$win.on("visibilitychange." + ns, function () {
+
+                    sendEvent("visibility", "general", document.hidden ? "Skrytý" : "Viditelný");
                 });
             };
 
