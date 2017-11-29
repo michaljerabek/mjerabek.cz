@@ -80,10 +80,15 @@
 
                     $firstTechnology = null;
 
-                ns.$win.on("scroll.Offer." + ns, function () {
+                ns.$win.on("scroll.Offer." + ns + " visibilitychange." + ns, function () {
 
                     clearTimeout(scrollDebounce);
                     clearTimeout(scrollTimeout);
+
+                    if (document.hidden) {
+
+                        return;
+                    }
 
                     scrollDebounce = setTimeout(function() {
 
@@ -96,7 +101,7 @@
 
                             $self.addClass(CLASS.technologiesInView);
 
-                            ns.$win.off("scroll.Offer." + ns);
+                            ns.$win.off("scroll.Offer." + ns + " visibilitychange." + ns);
                         }
                     }, 200);
                 });
