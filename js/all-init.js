@@ -108,6 +108,11 @@
                 eventClick: "[data-" + DATA.eventClick + "]"
             },
 
+            CATEGORY = {
+                WEB: "web",
+                SECTION: "sekce"
+            },
+
             DATA_DELIMITER = "|",
 
             PAGE_VIEW_TIMEOUT = 3500,
@@ -137,7 +142,7 @@
 
                 ns.$win.on("unload." + ns, function () {
 
-                    sendEvent("exit", "general", "Poslední sekce: " + lastSection + "; " + getLastSectionTime() + "s.");
+                    sendEvent("exit", CATEGORY.WEB, "Poslední sekce: " + lastSection + "; " + getLastSectionTime() + "s.");
                 });
             },
 
@@ -145,7 +150,7 @@
 
                 if (lastSentSection) {
 
-                    sendEvent("exit", "section", "Sekce: " + lastSentSection + "; " + getLastSectionTime() + "s.");
+                    sendEvent("exit", CATEGORY.SECTION, "Sekce: " + lastSentSection + "; " + getLastSectionTime() + "s.");
 
                     lastSentSection = null;
                 }
@@ -232,7 +237,7 @@
 
                     if (!document.hidden) {
 
-                        sendEvent("visibility", "general", "Skrytý: " + getHiddenTime() + "s");
+                        sendEvent("visibilitychange", CATEGORY.WEB, "Skrytý: " + getHiddenTime() + "s");
 
                         return;
                     }
