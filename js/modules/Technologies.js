@@ -100,6 +100,8 @@
             $metaThemeColor,
             savedThemeColor,
 
+            isOpened = false,
+
             fixCodeMirrorCSS = function () {
 
                 var mode = CodeMirror.mimeModes["text/css"],
@@ -148,7 +150,7 @@
                 $perspective.css("perspective-origin", "50% " + windowCenter + "px");
             },
 
-            close = function (event) {
+            close = function (event, hideOnly) {
 
                 cancelPreventScroll();
 
@@ -157,22 +159,31 @@
                 $inertEl.prop("inert", false);
                 $self.prop("inert", true);
 
-                openedByEl.focus();
+                if (!hideOnly) {
+
+                    openedByEl.focus();
+                }
 
                 setPagePerspective();
 
                 $metaThemeColor.attr("content", savedThemeColor);
 
-                var hash = "#" + ns.Offer.getSelf()[0].id;
+                if (!hideOnly) {
 
-                window.history.replaceState(hash, "", hash);
+                    var hash = "#" + ns.Offer.getSelf()[0].id;
+
+                    window.history.replaceState(hash, "", hash);
+                }
 
                 $toggleEl.removeClass(CLASS.toggle);
                 $self.removeClass(CLASS.showCodeSample);
 
                 ns.$win.trigger(EVENT.closed);
 
-                event.preventDefault();
+                if (event) {
+
+                    event.preventDefault();
+                }
 
                 $self.on("transitionend." + ns, function (event) {
 
@@ -182,6 +193,8 @@
                             .css("display", "none");
                     }
                 });
+
+                isOpened = false;
             },
 
             listenESC = function () {
@@ -212,6 +225,8 @@
             },
 
             open = function (event) {
+
+                event.preventDefault();
 
                 $self.off("transitionend." + ns)
                     .css("display", "block");
@@ -269,7 +284,7 @@
 
                 }, 0);
 
-                event.preventDefault();
+                isOpened = true;
             },
 
             setIndicatorWidth = function (event) {
@@ -384,6 +399,34 @@
                 }, 0);
             },
 
+            openById = function (id) {
+
+                id = "#" + id.replace("#", "");
+
+                if (isOpened) {
+
+                    var $navItem = infinitum.$items
+                            .find("[href$='" + id + "']")
+                            .closest(Infinitum.CLASS.selector("item"));
+
+                    if ($navItem.length) {
+
+                        infinitum.setCurrent($navItem);
+                    }
+
+                    return !!$navItem.length;
+                }
+
+                var $opener = ns.Offer.find("[href*='" + id + "']");
+
+                if ($opener.length) {
+
+                    $opener.click();
+                }
+
+                return !!$opener.length;
+            },
+
             initNav = function () {
 
                 $nav = $self.find(SELECTOR.nav);
@@ -397,8 +440,6 @@
                     startBreak: Infinitum.POSITION.START,
                     watchContainer: 100
                 });
-
-                window.nav = infinitum;
 
                 setIndicatorWidth({ type: "init" });
 
@@ -488,8 +529,16 @@
 
                 if (window.location.hash) {
 
-                    ns.Offer.find("[href*='" + window.location.hash + "']").click();
+                    openById(window.location.hash);
                 }
+
+                ns.$win.on("hashchange." + ns, function () {
+
+                    if (!openById(window.location.hash) && isOpened) {
+
+                        close(null, true);
+                    }
+                });
             };
 
         return {

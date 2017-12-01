@@ -215,6 +215,27 @@
                     .dequeue(TAB_SWITCH_QUEUE + willIndex);
             },
 
+            showTabById = function (id) {
+
+                id = "#" + id.replace("#", "");
+
+                if ("#" + $self[0].id === id) {
+
+                    return;
+                }
+
+                var $navItem = infinitum.$items
+                        .find("[href$='" + id + "']")
+                        .closest(Infinitum.CLASS.selector("item"));
+
+                if ($navItem.length) {
+
+                    infinitum.setCurrent($navItem);
+
+                    window.location.hash = "#" + $self[0].id;
+                }
+            },
+
             initNav = function () {
 
                 infinitum = new Infinitum({
@@ -253,6 +274,16 @@
                         ns.$win.trigger("main-nav__scroll-to." + ns, $self, true);
                     }
                 }
+
+                if (window.location.hash) {
+
+                    showTabById(window.location.hash);
+                }
+
+                ns.$win.on("hashchange." + ns, function () {
+
+                    showTabById(window.location.hash);
+                });
             },
 
             initTabs = function () {
