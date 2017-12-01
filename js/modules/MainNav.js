@@ -245,7 +245,7 @@
 
             isLocalLink = function (link) {
 
-                return location.pathname.replace(/^\//, "") === link.pathname.replace(/^\//, "") && location.hostname === link.hostname;
+                return link && location.pathname.replace(/^\//, "") === link.pathname.replace(/^\//, "") && location.hostname === link.hostname;
             },
 
             getScrollTargetTop = function ($link, $target) {
