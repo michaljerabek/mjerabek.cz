@@ -82,7 +82,7 @@
 
         .about-me__img {
             position: absolute;
-            bottom: 0%;
+            bottom: -0.75%;
             right: -20%;
             right: calc((-540px + 100%) / -2.25);
 
@@ -99,7 +99,6 @@
         @media (min-width: 1080px) {
 
             .about-me__img {
-                bottom: -0.25%;
                 right: calc((-2304px + 100%) / 3.5);
             }
         }

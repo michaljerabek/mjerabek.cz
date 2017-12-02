@@ -1768,7 +1768,7 @@ input[type="time"]:focus {
             }
         }
 
-        @media (min-height: 480px) and (max-height: 767px) and (min-width: 1024px) {
+        @media (min-height: 640px) and (max-height: 767px) and (min-width: 1024px) {
 
             .intro__logo-svg {
                 width: 92px;
@@ -1779,7 +1779,7 @@ input[type="time"]:focus {
             }
         }
 
-        @media (min-height: 480px) and (max-height: 767px) and (min-width: 768px) and (max-width: 1023px) {
+        @media (min-height: 640px) and (max-height: 767px) and (min-width: 768px) and (max-width: 1023px) {
 
             .intro__logo-svg {
                 width: 82px;
@@ -1790,7 +1790,7 @@ input[type="time"]:focus {
             }
         }
 
-        @media (min-height: 480px) and (max-height: 767px) and (min-width: 640px) and (max-width: 767px) {
+        @media (min-height: 640px) and (max-height: 767px) and (min-width: 640px) and (max-width: 767px) {
 
             .intro__logo-svg {
                 width: 76px;
@@ -1801,7 +1801,7 @@ input[type="time"]:focus {
             }
         }
 
-        @media (min-height: 480px) and (max-height: 767px) and (max-width: 639px) {
+        @media (min-height: 640px) and (max-height: 767px) and (max-width: 639px) {
 
             .intro__logo-svg {
                 width: 72px;
@@ -1812,7 +1812,7 @@ input[type="time"]:focus {
             }
         }
 
-        @media (max-height: 479px) and (min-width: 1024px) {
+        @media (max-height: 639px) and (min-width: 1024px) {
 
             .intro__logo-svg {
                 width: 88px;
@@ -1823,7 +1823,7 @@ input[type="time"]:focus {
             }
         }
 
-        @media (max-height: 479px) and (min-width: 768px) and (max-width: 1023px) {
+        @media (max-height: 639px) and (min-width: 768px) and (max-width: 1023px) {
 
             .intro__logo-svg {
                 width: 80px;
@@ -1834,7 +1834,7 @@ input[type="time"]:focus {
             }
         }
 
-        @media (max-height: 479px) and (min-width: 640px) and (max-width: 767px) {
+        @media (max-height: 639px) and (min-width: 640px) and (max-width: 767px) {
 
             .intro__logo-svg {
                 width: 72px;
@@ -1845,7 +1845,7 @@ input[type="time"]:focus {
             }
         }
 
-        @media (max-height: 479px) and (max-width: 639px) {
+        @media (max-height: 639px) and (max-width: 639px) {
 
             .intro__logo-svg {
                 width: 68px;
@@ -1998,21 +1998,28 @@ input[type="time"]:focus {
                 font-family: "Caudex";
             }
 
-            @media (min-height: 480px) and (min-width: 1024px) and (max-width: 1219px) {
+            @media (max-height: 767px) {
 
                 .intro__title {
                     font-size: 3.625rem;
                 }
             }
 
-            @media (min-height: 480px) and (min-width: 768px) and (max-width: 1023px) {
+            @media (min-height: 640px) and (min-width: 1024px) and (max-width: 1219px) {
+
+                .intro__title {
+                    font-size: 3.625rem;
+                }
+            }
+
+            @media (min-height: 640px) and (min-width: 768px) and (max-width: 1023px) {
 
                 .intro__title {
                     font-size: 3.25rem;
                 }
             }
 
-            @media (min-height: 480px) and (min-width: 640px) and (max-width: 767px) {
+            @media (min-height: 640px) and (min-width: 640px) and (max-width: 767px) {
 
                 .intro__title {
                     font-size: 2.75rem;
@@ -2021,7 +2028,7 @@ input[type="time"]:focus {
                 }
             }
 
-            @media (min-height: 480px) and (min-width: 480px) and (max-width: 639px) {
+            @media (min-height: 640px) and (min-width: 480px) and (max-width: 639px) {
 
                 .intro__title {
                     font-size: 2.5rem;
@@ -2030,7 +2037,7 @@ input[type="time"]:focus {
                 }
             }
 
-            @media (min-height: 480px) and (max-width: 479px) {
+            @media (min-height: 640px) and (max-width: 479px) {
 
                 .intro__title {
                     font-size: 2.125rem;
@@ -2039,28 +2046,28 @@ input[type="time"]:focus {
                 }
             }
 
-            @media (max-height: 479px) and (min-width: 1220px) {
+            @media (max-height: 639px) and (min-width: 1220px) {
 
                 .intro__title {
                     font-size: 3.625rem;
                 }
             }
 
-            @media (max-height: 479px) and (min-width: 1024px) and (max-width: 1219px) {
+            @media (max-height: 639px) and (min-width: 1024px) and (max-width: 1219px) {
 
                 .intro__title {
                     font-size: 3.25rem;
                 }
             }
 
-            @media (max-height: 479px) and (min-width: 768px) and (max-width: 1023px) {
+            @media (max-height: 639px) and (min-width: 768px) and (max-width: 1023px) {
 
                 .intro__title {
                     font-size: 2.75rem;
                 }
             }
 
-            @media (max-height: 479px) and (min-width: 640px) and (max-width: 767px) {
+            @media (max-height: 639px) and (min-width: 640px) and (max-width: 767px) {
 
                 .intro__title {
                     font-size: 2.5rem;
@@ -2069,7 +2076,7 @@ input[type="time"]:focus {
                 }
             }
 
-            @media (max-height: 479px) and (min-width: 480px) and (max-width: 639px) {
+            @media (max-height: 639px) and (min-width: 480px) and (max-width: 639px) {
 
                 .intro__title {
                     font-size: 2.125rem;
@@ -2078,7 +2085,7 @@ input[type="time"]:focus {
                 }
             }
 
-            @media (max-height: 479px) and (max-width: 479px) {
+            @media (max-height: 639px) and (max-width: 479px) {
 
                 .intro__title {
                     font-size: 2rem;
@@ -2314,63 +2321,70 @@ input[type="time"]:focus {
                     }
                 }
 
-            @media (min-height: 480px) and (min-width: 1024px) and (max-width: 1219px) {
+            @media (max-height: 767px) {
 
                 .intro__claim {
                     font-size: 1.5625rem;
                 }
             }
 
-            @media (min-height: 480px) and (min-width: 768px) and (max-width: 1023px) {
+            @media (min-height: 640px) and (min-width: 1024px) and (max-width: 1219px) {
 
                 .intro__claim {
                     font-size: 1.5625rem;
                 }
             }
 
-            @media (min-height: 480px) and (min-width: 480px) and (max-width: 767px) {
+            @media (min-height: 640px) and (min-width: 768px) and (max-width: 1023px) {
+
+                .intro__claim {
+                    font-size: 1.5625rem;
+                }
+            }
+
+            @media (min-height: 640px) and (min-width: 480px) and (max-width: 767px) {
 
                 .intro__claim {
                     font-size: 1.3125rem;
                 }
             }
 
-            @media (min-height: 480px) and (max-width: 479px) {
+            @media (min-height: 640px) and (max-width: 479px) {
 
                 .intro__claim {
                     font-size: 1.25rem;
                 }
             }
 
-            @media (max-height: 479px) and (min-width: 1220px) {
+            @media (max-height: 639px) and (min-width: 1220px) {
 
                 .intro__claim {
                     font-size: 1.5625rem;
                 }
             }
 
-            @media (max-height: 479px) and (min-width: 1024px) and (max-width: 1219px) {
+            @media (max-height: 639px) and (min-width: 1024px) and (max-width: 1219px) {
 
                 .intro__claim {
                     font-size: 1.4375rem;
                 }
             }
 
-            @media (max-height: 479px) and (min-width: 768px) and (max-width: 1023px) {
+            @media (max-height: 639px) and (min-width: 768px) and (max-width: 1023px) {
 
                 .intro__claim {
                     font-size: 1.4375rem;
                 }
             }
 
-            @media (max-height: 479px) and (min-width: 480px) and (max-width: 767px) {
+            @media (max-height: 639px) and (min-width: 480px) and (max-width: 767px) {
 
                 .intro__claim {
                     font-size: 1.325rem;
                 }
             }
 
-            @media (max-height: 479px) and (max-width: 479px) {
+            @media (max-height: 639px) and (max-width: 479px) {
 
                 .intro__claim {
                     font-size: 1.25rem;
@@ -3992,7 +4006,7 @@ input[type="time"]:focus {
         @media (min-width: 640px) and (max-width: 767px) {
 
             .offer__description {
-                font-size: 1.6875rem;
+                font-size: 1.5625rem;
                 line-height: 2.5rem;
             }
         }
@@ -7187,7 +7201,7 @@ input[type="time"]:focus {
 
         .about-me__img {
             position: absolute;
-            bottom: 0%;
+            bottom: -0.75%;
             right: -20%;
             right: calc((-540px + 100%) / -2.25);
 
@@ -7204,7 +7218,6 @@ input[type="time"]:focus {
         @media (min-width: 1080px) {
 
             .about-me__img {
-                bottom: -0.25%;
                 right: calc((-2304px + 100%) / 3.5);
             }
         }
