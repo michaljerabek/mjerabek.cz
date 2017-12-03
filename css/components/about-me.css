@@ -82,14 +82,14 @@
 
         .about-me__img {
             position: absolute;
-            bottom: -0.75%;
+            bottom: -1%;
             right: -20%;
             right: calc((-540px + 100%) / -2.25);
 
             transform-origin: bottom right;
 
-            height: 87.5%;
-            height: calc(100% - ((12vh + 12vw) / 4));
+            height: 90%;
+            height: calc(100% - ((15vh + 15vw) / 4));
 
             pointer-events: none;
 
@@ -100,6 +100,13 @@
 
             .about-me__img {
                 right: calc((-2304px + 100%) / 3.5);
+            }
+        }
+
+        @media (min-height: 1024px) and (min-width: 1400px) {
+
+            .about-me__img {
+                right: calc((-2460px + 100%) / 2.5);
             }
         }
 
@@ -213,14 +220,14 @@
         @media (max-width: 767px) {
 
             .about-me__content {
-                padding-bottom: 44vmin;
+                padding-bottom: 48vmin;
             }
         }
 
         @media (max-width: 479px) {
 
             .about-me__content {
-                padding-bottom: 48vmin;
+                padding-bottom: 64vmin;
             }
         }
 
