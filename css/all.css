@@ -7752,7 +7752,7 @@ input[type="time"]:focus {
         @media (min-height: 1024px) and (min-width: 1400px) {
 
             .about-me__img {
-                right: calc((-2460px + 100%) / 2.5);
+                right: calc((-2460px + 100%) / 2.85);
             }
         }
 
