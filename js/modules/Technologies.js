@@ -509,7 +509,7 @@
 
                 $openers = $(SELECTOR.openers).on("click." + ns, open);
 
-                $openers.one("mouseenter." + ns + " touchstart." + ns, function () {
+                $openers.one("mouseenter." + ns + " touchstart." + ns + " keydown." + ns, function () {
 
                     if (!initialized) {
 
