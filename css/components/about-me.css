@@ -110,6 +110,13 @@
             }
         }
 
+        @media (max-height: 1023px) and (min-width: 1400px) {
+
+            .about-me__img {
+                right: calc((-2304px + 100%) / 4.25);
+            }
+        }
+
         @media (max-width: 1023px) {
 
             .about-me__img {
