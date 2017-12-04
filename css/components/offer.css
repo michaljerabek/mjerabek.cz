@@ -695,52 +695,56 @@
 
 /*//////////////////////////// TECHNOLOGIES ////////////////////////////*/
 
-    .offer__info {
-        width: 100%;
-        padding: 0 calc(6vw - 24px);
-
-        font-size: 1.0625rem;
-        font-style: italic;
-        line-height: 1.68750rem;
-        letter-spacing: 0.01em;
+    .offer__info-wrapper {
+        max-width: 100%;
     }
-
-    @media (max-width: 767px) {
 
         .offer__info {
+            width: 100%;
+            padding: 0 calc(6vw - 24px);
+
+            font-size: 1.0625rem;
+            font-style: italic;
+            line-height: 1.68750rem;
+            letter-spacing: 0.01em;
+        }
+
+        @media (max-width: 767px) {
+
+            .offer__info {
+                font-size: 0.875rem;
+                line-height: 1.43750rem;
+            }
+        }
+
+        @media (max-width: 1219px) {
+
+            .offer__info + .offer__info {
+                margin-top: 8px;
+            }
+        }
+
+            .offer__info .text {
+                position: relative;
+                z-index: 2;
+
+                pointer-events: auto;
+            }
+
+            .offer__info a {
+                text-decoration: none;
+
+                color: #ceb77e;
+            }
+
+            .offer__info a:hover,
+            .offer__info a:focus {
+                color: #79a9bd;
+            }
+
+        .offer__info .small {
             font-size: 0.875rem;
-            line-height: 1.43750rem;
         }
-    }
-
-    @media (max-width: 1219px) {
-
-        .offer__info + .offer__info {
-            margin-top: 8px;
-        }
-    }
-
-        .offer__info .text {
-            position: relative;
-            z-index: 2;
-
-            pointer-events: auto;
-        }
-
-        .offer__info a {
-            text-decoration: none;
-
-            color: #ceb77e;
-        }
-
-        .offer__info a:hover,
-        .offer__info a:focus {
-            color: #79a9bd;
-        }
-
-    .offer__info .small {
-        font-size: 0.875rem;
-    }
 
     .offer__btn-wrapper {
         width: 100%;

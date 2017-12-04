@@ -29,7 +29,7 @@
 
             getWhiteSpace = function (num) {
 
-                return "<span class=\"" + (CLASS.space + num) + "\" style=\"white-space: pre;\"> </span>";
+                return "<span class=\"" + (CLASS.space + num) + "\"> </span>";
             },
 
             breakWord = function (word, num, hasSmallCaps) {
