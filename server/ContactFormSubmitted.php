@@ -3,7 +3,7 @@
 class ContactFormSubmitted {
 
     protected $to = "mjerabek@seznam.cz";
-    protected $subject = "PRÁCE — zpráva: {{name}} {{email}}";
+    protected $subject = "Zpráva z webu mjerabek.cz: {{name}} {{email}}";
 
     protected $errors = [];
 
