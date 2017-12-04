@@ -117,6 +117,8 @@
 
             PAGE_VIEW_TIMEOUT = 3500,
 
+            VISIBILITY_DEBOUNCE = 2000,
+
             lastSection = (window.location.hash || "#uvod").replace("#", ""),
             lastSectionFrom = new Date(),
 
@@ -124,13 +126,16 @@
 
             hiddenFrom = document.hidden ? new Date() : null,
 
+            visibilitychangeDebounce,
+            visibilitychangeDebounceFn,
+
             pageViewTimeout = null,
 
             pageExitInitialized = false,
 
-            getHiddenTime = function () {
+            getHiddenTime = function (debounceTime) {
 
-                return ((new Date() - hiddenFrom) / 1000).toFixed(1);
+                return (((new Date() - debounceTime) - hiddenFrom) / 1000).toFixed(1);
             },
 
             getLastSectionTime = function () {
@@ -141,6 +146,13 @@
             initPageExitTime = function () {
 
                 ns.$win.on("unload." + ns, function () {
+
+                    if (visibilitychangeDebounceFn) {
+
+                        clearTimeout(visibilitychangeDebounce);
+
+                        visibilitychangeDebounceFn();
+                    }
 
                     sendEvent("exit", CATEGORY.WEB, "Poslední sekce: " + lastSection + "; " + getLastSectionTime() + "s.");
                 });
@@ -217,33 +229,69 @@
                 }
             },
 
-            init = function () {
+            onClick = function (event) {
 
-                ns.$win.on("main-nav__target-changed." + ns, sendPageView)
-                    .on("technologies__changed." + ns, sendPageView)
-                    .on("technologies__closed." + ns, sendPageView);
+                if (event.type === "mouseup" && event.originalEvent.button !== 1) {
 
-                ns.$doc.on("click." + ns + " mouseup." + ns, SELECTOR.eventClick, function (event) {
+                    return;
+                }
 
-                    if (event.type === "mouseup" && event.originalEvent.button !== 1) {
+                sendEvent("click", event.currentTarget);
+            },
 
-                        return;
-                    }
+            onKeyup = function (event) {
 
-                    sendEvent("click", event.currentTarget);
-                });
+                if (event.which === 123) {
 
-                ns.$win.on("visibilitychange." + ns, function () {
+                    sendEvent("F12", CATEGORY.WEB, "Developer Tools");
+                }
+            },
 
-                    if (!document.hidden) {
+            onVisibilitychange = function () {
 
-                        sendEvent("visibilitychange", CATEGORY.WEB, "Skrytý: " + getHiddenTime() + "s");
+                if (!document.hidden) {
 
-                        return;
-                    }
+                    clearTimeout(visibilitychangeDebounce);
+
+                    visibilitychangeDebounceFn = function() {
+
+                        var debounceTime = new Date() - visibilitychangeDebounceFn.debounceStartTime;
+
+                        sendEvent("visibilitychange", CATEGORY.WEB, "Skrytý: " + getHiddenTime(debounceTime) + "s");
+
+                        visibilitychangeDebounceFn = null;
+                    };
+
+                    visibilitychangeDebounceFn.debounceStartTime = new Date();
+
+                    visibilitychangeDebounce = setTimeout(visibilitychangeDebounceFn, VISIBILITY_DEBOUNCE);
+
+                    return;
+                }
+
+                clearTimeout(visibilitychangeDebounce);
+
+                if (!visibilitychangeDebounceFn) {
 
                     hiddenFrom = new Date();
-                });
+                }
+
+                visibilitychangeDebounceFn = null;
+            },
+
+            init = function () {
+
+                ns.$win.on([
+                    "main-nav__target-changed." + ns,
+                    "technologies__changed." + ns,
+                    "technologies__closed." + ns
+                ].join(" "), sendPageView);
+
+                ns.$win.on("keyup." + ns, onKeyup);
+
+                ns.$win.on("visibilitychange." + ns, onVisibilitychange);
+
+                ns.$doc.on("click." + ns + " mouseup." + ns, SELECTOR.eventClick, onClick);
             };
 
         return {
