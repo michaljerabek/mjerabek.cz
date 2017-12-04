@@ -1203,6 +1203,13 @@
             }
         }
 
+        @media (max-width: 1023px) {
+
+            .references__info {
+                max-width: 100%;
+            }
+        }
+
         @media (max-width: 767px) {
 
             .references__info {

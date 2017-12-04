@@ -125,6 +125,8 @@
     }
 
         .section__title {
+            max-width: 100%;
+
             font-family: "Caudex", "Garamond", serif;
             font-variant: small-caps;
             text-align: center;
