@@ -18,6 +18,7 @@
             },
 
             CATEGORY = {
+                FORM: "form",
                 WEB: "web",
                 SECTION: "sekce"
             },
@@ -52,16 +53,21 @@
                 return ((new Date() - lastSectionFrom) / 1000).toFixed(1);
             },
 
+            clearVisibilitychange = function () {
+
+                if (visibilitychangeDebounceFn) {
+
+                    clearTimeout(visibilitychangeDebounce);
+
+                    visibilitychangeDebounceFn();
+                }
+            },
+
             initPageExitTime = function () {
 
                 ns.$win.on("unload." + ns, function () {
 
-                    if (visibilitychangeDebounceFn) {
-
-                        clearTimeout(visibilitychangeDebounce);
-
-                        visibilitychangeDebounceFn();
-                    }
+                    clearVisibilitychange();
 
                     sendEvent("exit", CATEGORY.WEB, "Poslední sekce: " + lastSection + "; " + getLastSectionTime() + "s.");
                 });
@@ -85,6 +91,8 @@
 
                 pageViewTimeout = setTimeout(function() {
 
+                    clearVisibilitychange();
+
                     if (typeof window.ga === "function") {
 
                         ga("set", "page", "#" + target);
@@ -100,7 +108,7 @@
 
                     lastSentSection = target;
 
-                }.bind(null, lastSection, lastSectionFrom), PAGE_VIEW_TIMEOUT);
+                }, PAGE_VIEW_TIMEOUT);
 
                 sendSectionExit();
 
@@ -123,6 +131,8 @@
             },
 
             sendEvent = function (action, elOrCategory, label) {
+
+                clearVisibilitychange();
 
                 if (typeof window.ga === "function") {
 
@@ -166,9 +176,9 @@
 
                         var debounceTime = new Date() - visibilitychangeDebounceFn.debounceStartTime;
 
-                        sendEvent("visibilitychange", CATEGORY.WEB, "Skrytý: " + getHiddenTime(debounceTime) + "s");
-
                         visibilitychangeDebounceFn = null;
+
+                        sendEvent("visibilitychange", CATEGORY.WEB, "Skrytý: " + getHiddenTime(debounceTime) + "s");
                     };
 
                     visibilitychangeDebounceFn.debounceStartTime = new Date();
@@ -188,6 +198,11 @@
                 visibilitychangeDebounceFn = null;
             },
 
+            onFormSent = function () {
+
+                sendEvent("sent", CATEGORY.FORM, "Odeslán formulář.");
+            },
+
             init = function () {
 
                 ns.$win.on([
@@ -199,6 +214,8 @@
                 ns.$win.on("keyup." + ns, onKeyup);
 
                 ns.$win.on("visibilitychange." + ns, onVisibilitychange);
+
+                ns.$win.on("form__success." + ns, onFormSent);
 
                 ns.$doc.on("click." + ns + " mouseup." + ns, SELECTOR.eventClick, onClick);
             };

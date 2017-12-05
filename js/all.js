@@ -109,6 +109,7 @@
             },
 
             CATEGORY = {
+                FORM: "form",
                 WEB: "web",
                 SECTION: "sekce"
             },
@@ -143,16 +144,21 @@
                 return ((new Date() - lastSectionFrom) / 1000).toFixed(1);
             },
 
+            clearVisibilitychange = function () {
+
+                if (visibilitychangeDebounceFn) {
+
+                    clearTimeout(visibilitychangeDebounce);
+
+                    visibilitychangeDebounceFn();
+                }
+            },
+
             initPageExitTime = function () {
 
                 ns.$win.on("unload." + ns, function () {
 
-                    if (visibilitychangeDebounceFn) {
-
-                        clearTimeout(visibilitychangeDebounce);
-
-                        visibilitychangeDebounceFn();
-                    }
+                    clearVisibilitychange();
 
                     sendEvent("exit", CATEGORY.WEB, "Poslední sekce: " + lastSection + "; " + getLastSectionTime() + "s.");
                 });
@@ -176,6 +182,8 @@
 
                 pageViewTimeout = setTimeout(function() {
 
+                    clearVisibilitychange();
+
                     if (typeof window.ga === "function") {
 
                         ga("set", "page", "#" + target);
@@ -191,7 +199,7 @@
 
                     lastSentSection = target;
 
-                }.bind(null, lastSection, lastSectionFrom), PAGE_VIEW_TIMEOUT);
+                }, PAGE_VIEW_TIMEOUT);
 
                 sendSectionExit();
 
@@ -214,6 +222,8 @@
             },
 
             sendEvent = function (action, elOrCategory, label) {
+
+                clearVisibilitychange();
 
                 if (typeof window.ga === "function") {
 
@@ -257,9 +267,9 @@
 
                         var debounceTime = new Date() - visibilitychangeDebounceFn.debounceStartTime;
 
-                        sendEvent("visibilitychange", CATEGORY.WEB, "Skrytý: " + getHiddenTime(debounceTime) + "s");
-
                         visibilitychangeDebounceFn = null;
+
+                        sendEvent("visibilitychange", CATEGORY.WEB, "Skrytý: " + getHiddenTime(debounceTime) + "s");
                     };
 
                     visibilitychangeDebounceFn.debounceStartTime = new Date();
@@ -279,6 +289,11 @@
                 visibilitychangeDebounceFn = null;
             },
 
+            onFormSent = function () {
+
+                sendEvent("sent", CATEGORY.FORM, "Odeslán formulář.");
+            },
+
             init = function () {
 
                 ns.$win.on([
@@ -290,6 +305,8 @@
                 ns.$win.on("keyup." + ns, onKeyup);
 
                 ns.$win.on("visibilitychange." + ns, onVisibilitychange);
+
+                ns.$win.on("form__success." + ns, onFormSent);
 
                 ns.$doc.on("click." + ns + " mouseup." + ns, SELECTOR.eventClick, onClick);
             };
@@ -1139,7 +1156,8 @@
  * o chybě (".form__error"). (Handler události se spustí i při nevalidním formuláři.)
  *
  * Při odesílání získá formulář třídu "form--progress". Při úspěšném odeslání formuláře
- * získá třídu "form--ok", jinak "form--error".
+ * získá třídu "form--ok" a spustí se událost EVENT.success, jinak získá třídu "form--error"
+ * a spustí se událost EVENT.error.
  */
 
 (function (ns, $) {
@@ -1182,9 +1200,14 @@
             },
 
             DATA = {
-                events: "events.Form",
+                events: "events." + ns + ".Form",
 
-                error: "error.Form"
+                error: "error." + ns + ".Form"
+            },
+
+            EVENT = {
+                success: "form__success." + ns,
+                error: "form__error." + ns
             },
 
             $forms,
@@ -1373,6 +1396,8 @@
                 setResultState(this, true);
 
                 clearFormElements(this[0].elements);
+
+                ns.$win.trigger(EVENT.success, [this]);
             },
 
             onFail = function (validationFailed, customErrors) {
@@ -1385,6 +1410,8 @@
                 }
 
                 setResultState(this, false, validationFailed || (customErrors && !$.isEmptyObject(customErrors)));
+
+                ns.$win.trigger(EVENT.error, [this, validationFailed || customErrors, customErrors]);
             },
 
             createDeferred = function ($form, validationErrors) {
