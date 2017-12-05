@@ -52,16 +52,21 @@
                 return ((new Date() - lastSectionFrom) / 1000).toFixed(1);
             },
 
+            clearVisibilitychange = function () {
+
+                if (visibilitychangeDebounceFn) {
+
+                    clearTimeout(visibilitychangeDebounce);
+
+                    visibilitychangeDebounceFn();
+                }
+            },
+
             initPageExitTime = function () {
 
                 ns.$win.on("unload." + ns, function () {
 
-                    if (visibilitychangeDebounceFn) {
-
-                        clearTimeout(visibilitychangeDebounce);
-
-                        visibilitychangeDebounceFn();
-                    }
+                    clearVisibilitychange();
 
                     sendEvent("exit", CATEGORY.WEB, "Poslední sekce: " + lastSection + "; " + getLastSectionTime() + "s.");
                 });
@@ -85,6 +90,8 @@
 
                 pageViewTimeout = setTimeout(function() {
 
+                    clearVisibilitychange();
+
                     if (typeof window.ga === "function") {
 
                         ga("set", "page", "#" + target);
@@ -100,7 +107,7 @@
 
                     lastSentSection = target;
 
-                }.bind(null, lastSection, lastSectionFrom), PAGE_VIEW_TIMEOUT);
+                }, PAGE_VIEW_TIMEOUT);
 
                 sendSectionExit();
 
@@ -123,6 +130,8 @@
             },
 
             sendEvent = function (action, elOrCategory, label) {
+
+                clearVisibilitychange();
 
                 if (typeof window.ga === "function") {
 
@@ -166,9 +175,9 @@
 
                         var debounceTime = new Date() - visibilitychangeDebounceFn.debounceStartTime;
 
-                        sendEvent("visibilitychange", CATEGORY.WEB, "Skrytý: " + getHiddenTime(debounceTime) + "s");
-
                         visibilitychangeDebounceFn = null;
+
+                        sendEvent("visibilitychange", CATEGORY.WEB, "Skrytý: " + getHiddenTime(debounceTime) + "s");
                     };
 
                     visibilitychangeDebounceFn.debounceStartTime = new Date();
