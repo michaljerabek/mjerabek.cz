@@ -18,6 +18,7 @@
             },
 
             CATEGORY = {
+                FORM: "form",
                 WEB: "web",
                 SECTION: "sekce"
             },
@@ -197,6 +198,11 @@
                 visibilitychangeDebounceFn = null;
             },
 
+            onFormSent = function () {
+
+                sendEvent("sent", CATEGORY.FORM, "Odeslán formulář.");
+            },
+
             init = function () {
 
                 ns.$win.on([
@@ -208,6 +214,8 @@
                 ns.$win.on("keyup." + ns, onKeyup);
 
                 ns.$win.on("visibilitychange." + ns, onVisibilitychange);
+
+                ns.$win.on("form__success." + ns, onFormSent);
 
                 ns.$doc.on("click." + ns + " mouseup." + ns, SELECTOR.eventClick, onClick);
             };

@@ -34,7 +34,8 @@
  * o chybě (".form__error"). (Handler události se spustí i při nevalidním formuláři.)
  *
  * Při odesílání získá formulář třídu "form--progress". Při úspěšném odeslání formuláře
- * získá třídu "form--ok", jinak "form--error".
+ * získá třídu "form--ok" a spustí se událost EVENT.success, jinak získá třídu "form--error"
+ * a spustí se událost EVENT.error.
  */
 
 (function (ns, $) {
@@ -77,9 +78,14 @@
             },
 
             DATA = {
-                events: "events.Form",
+                events: "events." + ns + ".Form",
 
-                error: "error.Form"
+                error: "error." + ns + ".Form"
+            },
+
+            EVENT = {
+                success: "form__success." + ns,
+                error: "form__error." + ns
             },
 
             $forms,
@@ -268,6 +274,8 @@
                 setResultState(this, true);
 
                 clearFormElements(this[0].elements);
+
+                ns.$win.trigger(EVENT.success, [this]);
             },
 
             onFail = function (validationFailed, customErrors) {
@@ -280,6 +288,8 @@
                 }
 
                 setResultState(this, false, validationFailed || (customErrors && !$.isEmptyObject(customErrors)));
+
+                ns.$win.trigger(EVENT.error, [this, validationFailed || customErrors, customErrors]);
             },
 
             createDeferred = function ($form, validationErrors) {
