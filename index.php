@@ -15,54 +15,65 @@ require "index.html";
 
 $content = ob_get_clean();
 
-$replace = function ($tag, $value) use (&$content) {
+$replaceTag = function ($tag, $value) use (&$content) {
 
     $content = preg_replace("/\{\{" . $tag . "}\}/", $value, $content);
 };
 
+$removeDev = function () use (&$content) {
+
+    $content = preg_replace("#\n*\s*(?<=<!--dev-->).*?(?=<!--/dev-->)#s", "", $content);
+    $content = preg_replace("#(\n*\s*<!--dev-->)#s", "", $content);
+    $content = preg_replace("#(<!--/dev-->\s*)\s*\n#s", "\n\n", $content);
+};
+
+$useProd = function () use (&$content) {
+
+    $content = preg_replace_callback("#(?<=<!--prod-->).*?(?=<!--/prod-->)#s", function ($matches) {
+        return preg_replace("#<!--|-->#", "", $matches[0]);
+    }, $content);
+    $content = preg_replace("#(\n*\s*<!--prod-->)#s", "", $content);
+    $content = preg_replace("#(<!--/prod-->\s*)\s*\n#s", "\n\n", $content);
+};
+
 if (isset($_SESSION["old_input"])) {
 
-    $replace("NAME", $_SESSION["old_input"]["name"] ?? "");
-    $replace("EMAIL", $_SESSION["old_input"]["email"] ?? "");
-    $replace("MSG", $_SESSION["old_input"]["msg"] ?? "");
+    $replaceTag("NAME", $_SESSION["old_input"]["name"] ?? "");
+    $replaceTag("EMAIL", $_SESSION["old_input"]["email"] ?? "");
+    $replaceTag("MSG", $_SESSION["old_input"]["msg"] ?? "");
 }
 
 if (isset($_SESSION["validationErrors"])) {
 
-    $replace("NAME_ERR", $_SESSION["validationErrors"]["name"] ?? "");
-    $replace("EMAIL_ERR", $_SESSION["validationErrors"]["email"] ?? "");
-    $replace("MSG_ERR", $_SESSION["validationErrors"]["msg"] ?? "");
+    $replaceTag("NAME_ERR", $_SESSION["validationErrors"]["name"] ?? "");
+    $replaceTag("EMAIL_ERR", $_SESSION["validationErrors"]["email"] ?? "");
+    $replaceTag("MSG_ERR", $_SESSION["validationErrors"]["msg"] ?? "");
 }
 
 if (isset($_SESSION["ok"])) {
 
     if ($_SESSION["ok"]) {
 
-        $replace("FORM_OK_MSG", "contact__form-send-ok--active");
+        $replaceTag("FORM_OK_MSG", "contact__form-send-ok--active");
 
     } else if (!isset($_SESSION["validationErrors"]) || !count($_SESSION["validationErrors"])) {
 
-        $replace("FORM_ERR_MSG", "contact__form-send-error--active");
+        $replaceTag("FORM_ERR_MSG", "contact__form-send-error--active");
     }
 }
 
-$replace("[^{}]+", "");
+$replaceTag("[^{}]+", "");
 
 if (isset($_ENV["ENV"]) && $_ENV["ENV"] === "production") {
 
-    $content = preg_replace("/\n*\s*<!--dev-->.*?<!--\/dev-->/s", "", $content);
-
-    $content = preg_replace("/(\n*\s*<!--prod-->.*?)(<!--)(.*?<!--\/prod-->)/s", "$1$3", $content);
-    $content = preg_replace("/(\n*\s*<!--prod-->.*?)(-->)(.*?<!--\/prod-->)/s", "$1$3", $content);
-
-    $content = preg_replace("/(\s*<!--prod-->)|(<!--\/prod-->\n?)/s", "", $content);
-
+    $removeDev();
+    $useProd();
 }
 
 unset($_SESSION["ok"]);
 unset($_SESSION["old_input"]);
 unset($_SESSION["validationErrors"]);
-
+//exit;
 echo $content;
 
 exit;
