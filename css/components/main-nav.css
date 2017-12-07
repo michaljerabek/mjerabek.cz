@@ -374,7 +374,7 @@
                 }
             }
 
-            @media (min-width: 768px) and (max-width: 1023px) {
+            @media (min-width: 768px) and (max-width: 1023px), (min-width: 768px) and (max-height: 479px) {
 
                 .main-nav__link {
                     padding: 0 20px;
@@ -398,7 +398,7 @@
                 }
             }
 
-            @media (min-width: 768px) and (max-width: 1023px) {
+            @media (min-width: 768px) and (max-width: 1023px), (min-width: 768px) and (max-height: 479px) {
 
                 .main-nav--fixed .main-nav__link {
                     padding: 0 16px;
@@ -438,7 +438,7 @@
             }
         }
 
-        @media (min-width: 768px) and (max-width: 1023px) {
+        @media (min-width: 768px) and (max-width: 1023px), (min-width: 768px) and (max-height: 479px) {
 
             .main-nav--fixed .main-nav__item:last-child {
                 margin-right: -15px;
