@@ -345,7 +345,6 @@
             width: 100%;
             max-width: inherit;
             margin-top: 52px;
-            margin-bottom: 0;
         }
     }
 }
@@ -415,6 +414,17 @@
             width: 100%;
             max-width: inherit;
             margin-top: 52px;
+        }
+
+        .contact__other-informations {
+            margin-bottom: 0;
+        }
+    }
+
+    @media (min-width: 400px) and (max-width: 767px) {
+
+        .contact__address {
+            margin-bottom: 0;
         }
     }
 
@@ -520,8 +530,8 @@
     @media (max-width: 767px) {
 
         .contact__registration-info {
-            order: 2;
-            margin-bottom: 0rem;
+            order: 4;
+            margin-bottom: 2vmax;
         }
     }
 
