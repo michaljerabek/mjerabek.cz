@@ -35,7 +35,10 @@
             return !!el.style[TRANSFORM_PROP] && !window.navigator.userAgent.match(/Trident/);
         }()),
 
-        SUPPORTS_TRANSFORM = document.body.style[TRANSFORM_PROP] !== undefined;
+        SUPPORTS_TRANSFORM = document.body.style[TRANSFORM_PROP] !== undefined,
+
+        SUPPORTS_INTERSECTION_OBSERVER = !!window.IntersectionObserver;
+
 
     var ParallaxController = window.ParallaxController = (function () {
 
@@ -50,11 +53,15 @@
 
             initialized = false,
             watchingTilt = false,
+            scrollAndFakeTiltEventsActivated = false,
 
             instanceCounter = 0,
             parallaxInstances = {},
 
             refreshDebounce = {},
+
+            intersectionObserver,
+            intersectingParallaxes = { length: 0 },
 
             $win,
             winHeight = 0,
@@ -75,14 +82,30 @@
                 return document.documentElement.clientHeight > window.innerHeight || isMobile ? window.innerHeight : document.documentElement.clientHeight;
             },
 
+            getParallaxByEl = function (el) {
+
+                var p;
+
+                for (p in parallaxInstances) {
+
+                    if (parallaxInstances.hasOwnProperty(p) && parallaxInstances[p].$parallax[0] === el) {
+
+                        return parallaxInstances[p];
+                    }
+                }
+
+                return null;
+            },
+
             //v případě, že je sekce vidět, zavolá metodu transform příslušného Parallaxu
             updateParallaxes = function (type, parallaxId) {
 
                 winScrollTop = window.pageYOffset || 0;
 
-                var p, parallax, toUpdate = [];
+                var parallaxesSource = SUPPORTS_INTERSECTION_OBSERVER ? intersectingParallaxes : parallaxInstances,
+                    p, parallax, toUpdate = [];
 
-                for (p in parallaxInstances) {
+                for (p in parallaxesSource) {
 
                     if (parallaxInstances.hasOwnProperty(p)) {
 
@@ -90,26 +113,33 @@
 
                         if (parallax.disabled) {
 
-                            return;
+                            continue;
                         }
 
                         if (typeof parallaxId === "string" || typeof parallaxId === "number") {
 
                             if (parallax.id !== parallaxId) {
 
-                                return;
+                                continue;
                             }
                         }
 
                         if (type === TYPE_TILT && !parallax.useTilt) {
 
-                            return;
+                            continue;
                         }
 
                         //použít fake-tilt pouze v případě, že zařízení nepodporuje tilt a tilt má být použit
                         if (type === TYPE_FAKE_TILT && ((watchingTilt && parallax.useFakeTilt) || !parallax.useFakeTilt || !parallax.useTilt)) {
 
-                            return;
+                            continue;
+                        }
+
+                        if (SUPPORTS_INTERSECTION_OBSERVER) {
+
+                            toUpdate.push(parallax);
+
+                            continue;
                         }
 
                         var parallaxOffsetTop = parallax.getOffset(),
@@ -228,6 +258,84 @@
                 });
             },
 
+            initScrollAndFakeTiltEvents = function () {
+
+                if (scrollAndFakeTiltEventsActivated) {
+
+                    return;
+                }
+
+                scrollAndFakeTiltEventsActivated = true;
+
+                window.addEventListener("scroll", updateParallaxesScroll);
+                window.addEventListener("mousemove", onFakeTilt);
+            },
+
+            destroyScrollAndFakeTiltEvents = function () {
+
+                if (!scrollAndFakeTiltEventsActivated) {
+
+                    return;
+                }
+
+                scrollAndFakeTiltEventsActivated = false;
+
+                window.removeEventListener("scroll", updateParallaxesScroll);
+                window.removeEventListener("mousemove", onFakeTilt);
+            },
+
+            addToIntersectingParallaxes = function (parallax) {
+
+                if (intersectingParallaxes[parallax.id]) {
+
+                    return;
+                }
+
+                intersectingParallaxes[parallax.id] = parallax;
+
+                intersectingParallaxes.length += 1;
+            },
+
+            removeFromIntersectingParallaxes = function (parallax) {
+
+                if (!intersectingParallaxes[parallax.id]) {
+
+                    return;
+                }
+
+                delete intersectingParallaxes[parallax.id];
+
+                intersectingParallaxes.length -= 1;
+            },
+
+            onIntersectionChange = function (entry) {
+
+                var parallax = getParallaxByEl(entry.target);
+
+                if (!parallax) {
+
+                    return;
+                }
+
+                if (entry.isIntersecting) {
+
+                    addToIntersectingParallaxes(parallax);
+
+                } else {
+
+                    removeFromIntersectingParallaxes(parallax);
+                }
+
+                if (!intersectingParallaxes.length) {
+
+                    destroyScrollAndFakeTiltEvents();
+
+                    return;
+                }
+
+                initScrollAndFakeTiltEvents();
+            },
+
             init = function () {
 
                 if (initialized) {
@@ -245,8 +353,19 @@
                 updateParallaxesScroll = updateParallaxes.bind(this, TYPE_SCROLL);
                 onFakeTilt = onFakeTilt.bind(this);
 
-                window.addEventListener("scroll", updateParallaxesScroll);
-                window.addEventListener("mousemove", onFakeTilt);
+                if (SUPPORTS_INTERSECTION_OBSERVER) {
+
+                    intersectionObserver = new IntersectionObserver(function (entries) {
+
+                        entries.forEach(onIntersectionChange);
+
+                    }, { threshold: 0 });
+                }
+
+                if (!SUPPORTS_INTERSECTION_OBSERVER) {
+
+                    initScrollAndFakeTiltEvents();
+                }
 
                 $win.on("resize.ParallaxController", refresh);
 
@@ -262,10 +381,17 @@
 
             destroy = function () {
 
-                window.removeEventListener("scroll", updateParallaxesScroll);
-                window.removeEventListener("mousemove", onFakeTilt);
+                destroyScrollAndFakeTiltEvents();
 
                 $win.off("resize.ParallaxController");
+
+                if (SUPPORTS_INTERSECTION_OBSERVER) {
+
+                    intersectionObserver.disconnect();
+                    intersectionObserver = null;
+
+                    intersectingParallaxes = { length: 0 };
+                }
 
                 initialized = false;
             },
@@ -279,6 +405,11 @@
                     parallaxInstances[parallax.id] = parallax;
 
                     setTimeout(updateParallaxes.bind(TYPE_SCROLL, parallax.id), 0);
+
+                    if (SUPPORTS_INTERSECTION_OBSERVER) {
+
+                        intersectionObserver.observe(parallax.$parallax[0]);
+                    }
                 }
             },
 
@@ -289,6 +420,13 @@
                     instanceCounter--;
 
                     delete parallaxInstances[parallax.id];
+
+                    if (SUPPORTS_INTERSECTION_OBSERVER) {
+
+                        removeFromIntersectingParallaxes(parallax);
+
+                        intersectionObserver.unobserve(parallax.$parallax[0]);
+                    }
 
                     if (!instanceCounter) {
 
@@ -528,12 +666,12 @@
             }
         }
 
+        ParallaxController.remove(this);
+
         this.$parallax = null;
         this.$layers = null;
 
         this.layers = [];
-
-        ParallaxController.remove(this);
 
         this.initialized = false;
     };
@@ -567,9 +705,6 @@
             return;
         }
 
-        ParallaxController.init();
-        ParallaxController.add(this);
-
         options = typeof options === "object" ? $.extend({}, DEFAULTS, options) : this.options;
 
         this.options = options;
@@ -586,6 +721,9 @@
 
             return;
         }
+
+        ParallaxController.init();
+        ParallaxController.add(this);
 
         this.parallaxHeight = this.$parallax.outerHeight();
         this.parallaxWidth = this.$parallax.outerWidth();
