@@ -68,7 +68,7 @@
 
             SCROLL_AMOUNT_SAMPLE = 324,
 
-            THEME_COLOR = "#ceb77e",
+            THEME_COLOR = "#C9B47F",
 
             initialized,
 

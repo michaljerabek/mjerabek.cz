@@ -147,7 +147,7 @@
             font-style: italic;
             font-weight: 300;
 
-            color: #ceb77e;
+            color: #C9B47F;
         }
 
         .offer__description + .offer__description {
@@ -415,7 +415,7 @@
             }
 
             .offer__technology-link::after {
-                border-color: #c06c47;
+                border-color: #B27B52;
 
                 animation-duration: 1s;
                 animation-timing-function: ease-out;
@@ -425,7 +425,7 @@
 
             .offer__technology-link:hover::after,
             .offer__technology-link:focus::after {
-                border-color: #6196ac;
+                border-color: #6595A9;
             }
 
             .offer__technology--html .offer__technology-link::after,
@@ -501,12 +501,12 @@
 
             @keyframes offer__technology-border-blink {
                 5% {
-                    border-color: #6196ac;
+                    border-color: #6595A9;
 
                     animation-timing-function: cubic-bezier(0, .0, .2, 1);
                 }
                 10% {
-                    border-color: #6196ac;
+                    border-color: #6595A9;
                 }
             }
 
@@ -535,7 +535,7 @@
 
                     .offer__technology-link:hover .text,
                     .offer__technology-link:focus .text {
-                        color: #6196ac;
+                        color: #6595A9;
                     }
 
                     .offer__technology-link:active .text {
@@ -564,12 +564,12 @@
 
                     @keyframes offer__technology-name-blink {
                         5% {
-                            color: #6196ac;
+                            color: #6595A9;
 
                             animation-timing-function: cubic-bezier(0, .0, .2, 1);
                         }
                         10% {
-                            color: #6196ac;
+                            color: #6595A9;
                         }
                     }
 
@@ -632,7 +632,7 @@
                 .offer__technology-link:focus .offer__technology-name::before,
                 .offer__technology-link:focus .offer__technology-name::after,
                 .offer__technology-link:focus .offer__technology-name .text::after {
-                    background-color: #6196ac;
+                    background-color: #6595A9;
                 }
 
                 .offer--technologies-in-view .offer__technology .offer__technology-name::before,
@@ -661,12 +661,12 @@
 
                 @keyframes offer__technology-dot-blink {
                     5% {
-                        background-color: #6196ac;
+                        background-color: #6595A9;
 
                         animation-timing-function: cubic-bezier(0, .0, .2, 1);
                     }
                     10% {
-                        background-color: #6196ac;
+                        background-color: #6595A9;
                     }
                 }
 
@@ -734,12 +734,12 @@
             .offer__info a {
                 text-decoration: none;
 
-                color: #ceb77e;
+                color: #C9B47F;
             }
 
             .offer__info a:hover,
             .offer__info a:focus {
-                color: #79a9bd;
+                color: #78A7BB;
             }
 
         .offer__info .small {
