@@ -17,7 +17,7 @@
     }
 
         .references__title {
-            color: #7D6937;
+            color: #7B6839;
 
             pointer-events: none;
         }
@@ -203,7 +203,7 @@
             .js .references__nav-items:not(.infinitum__track--moving) .references__nav-link:hover,
             .js .infinitum__item--possible-current .references__nav-link,
             .js .references__nav-items:not(.infinitum__track--dragging) .infinitum__item--current .references__nav-link {
-                color: #3C6778;
+                color: #3C6474;
             }
 
                 .references__project-name {
@@ -499,12 +499,12 @@
     .references a:not([class]) {
         text-decoration: none;
 
-        color: #7D6937;
+        color: #7B6839;
     }
 
     .references a:not([class]):focus,
     .references a:not([class]):hover {
-        color: #3C6778;
+        color: #3C6474;
     }
 
     .references__reference {
@@ -657,12 +657,12 @@
                     .references__project-info-content a {
                         text-decoration: none;
 
-                        color: #7D6937;
+                        color: #7B6839;
                     }
 
                     .references__project-info-content a:focus,
                     .references__project-info-content a:hover {
-                        color: #3C6778;
+                        color: #3C6474;
                     }
 
                     .references__project-info-note {
@@ -786,7 +786,7 @@
                 .js .references__image-wrapper::after {
                     transform: rotate(-180deg) translateX(-40px) scale(0.8);
 
-                    border-color: #ceb77e;
+                    border-color: #C9B47F;
 
                     animation-name: references__image-wrapper-loading;
                 }
@@ -794,7 +794,7 @@
                 .js .references__image-wrapper::before {
                     transform: rotate(-180deg) translateX(40px) scale(0.8);
 
-                    border-color: #D07E5B;
+                    border-color: #BF865E;
 
                     animation-name: references__image-wrapper-loading2;
                 }
@@ -826,68 +826,68 @@
 
                 @keyframes references__image-wrapper-loading {
                     0% {
-                        border-color: #ceb77e;
+                        border-color: #C9B47F;
                         opacity: 0;
                     }
                     50% {
-                        border-color: #ceb77e;
+                        border-color: #C9B47F;
                         opacity: 1;
                     }
                     100% {
                         transform: translateX(-6px) rotate(45deg);
 
-                        border-color: #79A9BD;
+                        border-color: #78A7BB;
                         opacity: 0;
                     }
                 }
 
                 @keyframes references__image-wrapper-loading2 {
                     0% {
-                        border-color: #D07E5B;
+                        border-color: #BF865E;
                         opacity: 0;
                     }
                     50% {
-                        border-color: #D07E5B;
+                        border-color: #BF865E;
                         opacity: 1;
                     }
                     100% {
                         transform: translateX(6px) rotate(45deg);
 
-                        border-color: #79A9BD;
+                        border-color: #78A7BB;
                         opacity: 0;
                     }
                 }
 
                 @keyframes references__image-wrapper-loading--small {
                     0% {
-                        border-color: #ceb77e;
+                        border-color: #C9B47F;
                         opacity: 0;
                     }
                     50% {
-                        border-color: #ceb77e;
+                        border-color: #C9B47F;
                         opacity: 1;
                     }
                     100% {
                         transform: translateX(-6px) rotate(45deg) scale(0.8);
 
-                        border-color: #79A9BD;
+                        border-color: #78A7BB;
                         opacity: 0;
                     }
                 }
 
                 @keyframes references__image-wrapper-loading2--small {
                     0% {
-                        border-color: #D07E5B;
+                        border-color: #BF865E;
                         opacity: 0;
                     }
                     50% {
-                        border-color: #D07E5B;
+                        border-color: #BF865E;
                         opacity: 1;
                     }
                     100% {
                         transform: translateX(6px) rotate(45deg) scale(0.8);
 
-                        border-color: #79A9BD;
+                        border-color: #78A7BB;
                         opacity: 0;
                     }
                 }

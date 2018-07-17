@@ -132,26 +132,26 @@
 .btn--light {
     font-weight: 400;
 
-    color: #ceb77e;
+    color: #C9B47F;
 }
 
 .btn--light:hover,
 .btn--light:focus {
     color: #fff;
-    background-color: #6196ac;
-    border-color: #6196ac;
+    background-color: #6595A9;
+    border-color: #6595A9;
 }
 
 .btn--light:active {
-    color: #79a9bd;
+    color: #78A7BB;
     background-color: transparent;
-    border-color: #79a9bd;
+    border-color: #78A7BB;
 }
 
 .btn--dark {
     font-weight: 400;
 
-    color: #7D6937;
+    color: #7B6839;
 }
 
 .btn--dark:hover,
@@ -162,7 +162,7 @@
 }
 
 .btn--dark:active {
-    color: #3C6778;
+    color: #3C6474;
     background-color: transparent;
-    border-color: #3C6778;
+    border-color: #3C6474;
 }

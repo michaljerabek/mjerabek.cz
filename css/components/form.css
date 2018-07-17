@@ -176,7 +176,7 @@
     .form--dark input[type="step"].form__field:hover,
     .form--dark input[type^="date"].form__field:hover,
     .form--dark input[type="time"].form__field:hover {
-        border-color: #CEB77E;
+        border-color: #C9B47F;
     }
 
     .form--dark select.form__field:focus,
@@ -190,7 +190,7 @@
     .form--dark input[type="step"].form__field:focus,
     .form--dark input[type^="date"].form__field:focus,
     .form--dark input[type="time"].form__field:focus {
-        border-color: #79A9BD;
+        border-color: #78A7BB;
     }
 
     .form--dark .form__item--error select.form__field:not(:focus):not(:hover),
@@ -215,7 +215,7 @@
     .no-js .form--dark input[type="step"].form__field:invalid:not(:focus):not(:hover),
     .no-js .form--dark input[type^="date"].form__field:invalid:not(:focus):not(:hover),
     .no-js .form--dark input[type="time"].form__field:invalid:not(:focus):not(:hover) {
-        border-color: #D07E5B;
+        border-color: #BF865E;
     }
 
     .form__label {
@@ -250,7 +250,7 @@
         font-weight: 600;
         letter-spacing: 0.01em;
 
-        color: #D07E5B;
+        color: #BF865E;
         opacity: 0;
         visibility: hidden;
 
@@ -292,12 +292,12 @@
     .form--dark:not(.form--ok):not(.form--error):invalid .btn:hover,
     .form--dark:not(.form--ok):not(.form--error):invalid .btn:focus {
         color: #fff;
-        background-color: #C06C47;
-        border-color: #C06C47;
+        background-color: #B27B52;
+        border-color: #B27B52;
     }
 
     .form--dark:not(.form--ok):not(.form--error):invalid .btn:active {
-        color: #D07E5B;
+        color: #BF865E;
         background-color: transparent;
-        border-color: #D07E5B;
+        border-color: #BF865E;
     }

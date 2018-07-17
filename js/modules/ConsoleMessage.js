@@ -4,7 +4,7 @@
 
     ns.ConsoleMessage = (function () {
 
-        var STYLES = "font-family: 'josefin-sans'; font-size: 17px; font-weight: 400; line-height: 27px; color: #7D6937;",
+        var STYLES = "font-family: 'josefin-sans'; font-size: 17px; font-weight: 400; line-height: 27px; color: #7B6839;",
 
             MSG_IDENTIFIER = /^-/,
 

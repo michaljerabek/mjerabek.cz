@@ -487,7 +487,7 @@
             @keyframes intro__show-logo-fill--2 {
                 to {
                     stroke-width: 0;
-                    fill: #b19653;
+                    fill: #AD9352;
                 }
             }
 
@@ -867,7 +867,7 @@
                 font-weight: 300;
                 line-height: 1.185185;
 
-                color: #7D6937;
+                color: #7B6839;
 
                 pointer-events: auto;
 

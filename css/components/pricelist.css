@@ -16,7 +16,7 @@
     }
 
         .pricelist__title .text {
-            color: #7D6937;
+            color: #7B6839;
 
             pointer-events: auto;
         }
@@ -297,7 +297,7 @@
                         font-style: italic;
                         line-height: 1.6875rem;
 
-                        color: #7D6937;
+                        color: #7B6839;
 
                         pointer-events: auto;
                     }
@@ -453,13 +453,13 @@
                         .pricelist__terms-and-conditions--show .pricelist__terms-and-conditions-link::after,
                         .pricelist__terms-and-conditions-link:hover::after,
                         .pricelist__terms-and-conditions-link:focus::after {
-                            border-top-color: #3C6778;
+                            border-top-color: #3C6474;
                         }
 
                         .pricelist__terms-and-conditions--show .pricelist__terms-and-conditions-link,
                         .pricelist__terms-and-conditions-link:hover,
                         .pricelist__terms-and-conditions-link:focus {
-                            color: #3C6778;
+                            color: #3C6474;
                         }
 
                         .pricelist__terms-and-conditions--show .pricelist__terms-and-conditions-link::after {
