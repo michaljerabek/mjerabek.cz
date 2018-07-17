@@ -292,8 +292,8 @@
     .form--dark:not(.form--ok):not(.form--error):invalid .btn:hover,
     .form--dark:not(.form--ok):not(.form--error):invalid .btn:focus {
         color: #fff;
-        background-color: #B27B52;
-        border-color: #B27B52;
+        background-color: #B3794E;
+        border-color: #B3794E;
     }
 
     .form--dark:not(.form--ok):not(.form--error):invalid .btn:active {

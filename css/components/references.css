@@ -957,7 +957,7 @@
                         padding: 20px;
 
                         color: #fff;
-                        background-color: rgba(60, 103, 120, 0.65);
+                        background-color: rgba(60, 110, 116, 0.65);
                         opacity: 0;
                         visibility: hidden;
 
@@ -970,12 +970,12 @@
                     .no-js.edge .references__image-wrapper:hover .references__overlay,
                     .performance--low .references__image-wrapper.hover .references__overlay,
                     .no-js .performance--low .references__image-wrapper:hover .references__overlay {
-                        background-color: rgba(60, 103, 120, 0.75);
+                        background-color: rgba(60, 110, 116, 0.75);
                     }
 
                     .edge .references__image-wrapper:focus-within .references__overlay,
                     .performance--low .references__image-wrapper:focus-within .references__overlay {
-                        background-color: rgba(60, 103, 120, 0.75);
+                        background-color: rgba(60, 110, 116, 0.75);
                     }
 
                     .references__image-wrapper.hover .references__image-overlay,
@@ -1298,7 +1298,7 @@
 }
 
     .references__background-layer .square {
-        border-color: rgba(177, 150, 83, 0.45);
+        border-color: rgba(173, 147, 82, 0.45);
 
         transition: background-color 2s ease 1s,
             border-color 2s ease 1s,
@@ -1307,7 +1307,7 @@
 
     .no-js .references__background-layer .square:not(:hover),
     .js .references__background-layer.section__background-layer--stop-animation .square:not(.hover) {
-        border-color: rgba(177, 150, 83, 0.325);
+        border-color: rgba(173, 147, 82, 0.325);
     }
 
     .references__background-layer:nth-child(1) .square {
@@ -1361,8 +1361,8 @@
 
     .js .references__background-layer:not(.section__background-layer--stop-hover) .square.hover,
     .no-js .references__background-layer:not(.section__background-layer--stop-hover) .square:hover {
-        background-color: rgba(177, 150, 83, 0.15);
-        border-color: rgba(177, 150, 83, 0);
+        background-color: rgba(173, 147, 82, 0.15);
+        border-color: rgba(173, 147, 82, 0);
 
         transition: background-color 1s ease 0s,
             border-color 1s ease 0s,

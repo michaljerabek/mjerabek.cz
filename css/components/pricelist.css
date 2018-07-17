@@ -491,7 +491,7 @@
 }
 
     .pricelist__background-layer .square {
-        border-color: rgba(192, 108, 71, 0.4);
+        border-color: rgba(179, 121, 78, 0.4);
 
         transition: background-color 2s ease 1s,
             border-color 2s ease 1s,
@@ -500,7 +500,7 @@
 
     .no-js .section__background-layer--stop-animation .square:not(:hover),
     .js .pricelist__background-layer.section__background-layer--stop-animation .square:not(.hover) {
-        border-color: rgba(192, 108, 71, 0.3);
+        border-color: rgba(179, 121, 78, 0.3);
     }
 
     .pricelist__background-layer:nth-child(1) .square {
@@ -515,8 +515,8 @@
 
     .js .pricelist__background-layer:not(.section__background-layer--stop-hover) .square.hover,
     .no-js .pricelist__background-layer:not(.section__background-layer--stop-hover) .square:hover {
-        background-color: rgba(192, 108, 71, 0.1);
-        border-color: rgba(192, 108, 71, 0);
+        background-color: rgba(179, 121, 78, 0.1);
+        border-color: rgba(179, 121, 78, 0);
 
         transition: background-color 1s ease 0s,
             border-color 1s ease 0s,

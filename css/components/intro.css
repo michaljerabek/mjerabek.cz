@@ -437,8 +437,8 @@
             .intro__logo-svg + .intro__logo-svg path {
                 transform: translateY(-10px);
 
-                fill: rgba(177, 150, 83, 0);
-                stroke: rgb(177, 150, 83);
+                fill: rgba(173, 147, 82, 0);
+                stroke: rgb(173, 147, 82);
 
                 animation: intro__show-logo-stroke 1.5s cubic-bezier(.5, .15, .65, .9) 0.7s 1 forwards,
                     intro__show-logo-transform 3s cubic-bezier(.2, .7, .5, 1) 0.7s 1 forwards,
@@ -459,7 +459,7 @@
             _:-ms-fullscreen, :root .intro__logo-svg + .intro__logo-svg path {
                 transform: none;
 
-                fill: rgba(177, 150, 83, 1);
+                fill: rgba(173, 147, 82, 1);
 
                 animation: show--init 0.7s linear 0s 1 forwards,
                     show 1.5s ease 0.7s 1 forwards;
@@ -1192,7 +1192,7 @@
 }
 
     .intro__background-layer .square {
-        border-color: rgba(206, 183, 126, 0.5);
+        border-color: rgba(202, 180, 125, 0.5);
 
         transition: background-color 2s ease 1s,
             border-color 2s ease 1s,
@@ -1201,7 +1201,7 @@
 
     .no-js .intro__background-layer .square:not(:hover),
     .js .intro__background-layer.section__background-layer--stop-animation .square:not(.hover) {
-        border-color: rgba(206, 183, 126, 0.35);
+        border-color: rgba(202, 180, 125, 0.35);
     }
 
     .intro__background-layer:nth-child(1) .square {
@@ -1252,8 +1252,8 @@
 
     .js .intro__background-layer:not(.section__background-layer--stop-hover) .square.hover,
     .no-js .intro__background-layer:not(.section__background-layer--stop-hover) .square:hover {
-        background-color: rgba(206, 183, 126, 0.175);
-        border-color: rgba(206, 183, 126, 0);
+        background-color: rgba(202, 180, 125, 0.175);
+        border-color: rgba(202, 180, 125, 0);
 
         transition: background-color 1s ease 0s,
             border-color 1s ease 0s,

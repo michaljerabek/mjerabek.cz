@@ -1053,8 +1053,8 @@
     }
 
         .contact__background-layer path {
-            fill: rgba(206, 183, 126, 0);
-            stroke: rgba(206, 183, 126, 0.4);
+            fill: rgba(202, 180, 125, 0);
+            stroke: rgba(202, 180, 125, 0.4);
             stroke-width: 1px;
 
             pointer-events: auto;
@@ -1074,7 +1074,7 @@
 
         .no-js .contact__background-layer path:not(:hover),
         .js .contact__background-layer.section__background-layer--stop-animation path:not(.hover) {
-            stroke: rgba(206, 183, 126, 0.325);
+            stroke: rgba(202, 180, 125, 0.325);
         }
 
         .contact__background-layer:nth-child(1) path {
@@ -1104,23 +1104,23 @@
 
         @keyframes contact__speach--fade-in-init {
             from {
-                stroke: rgba(206, 183, 126, 0);
+                stroke: rgba(202, 180, 125, 0);
             }
             to {
-                stroke: rgba(206, 183, 126, 0);
+                stroke: rgba(202, 180, 125, 0);
             }
         }
 
         @keyframes contact__speach--fade-in {
             from {
-                stroke: rgba(206, 183, 126, 0);
+                stroke: rgba(202, 180, 125, 0);
             }
         }
 
         .js .contact__background-layer:not(.section__background-layer--stop-hover) path.hover,
         .no-js .contact__background-layer:not(.section__background-layer--stop-hover) path:hover {
-            fill: rgba(206, 183, 126, 0.05);
-            stroke: rgba(206, 183, 126, 0);
+            fill: rgba(202, 180, 125, 0.05);
+            stroke: rgba(202, 180, 125, 0);
 
             transition: fill 1s ease 0s,
                 stroke 1s ease 0s;

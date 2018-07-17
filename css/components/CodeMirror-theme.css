@@ -1,6 +1,6 @@
 [data-codemirror-mimemode] { color: #d5d5d5; }
 .cm-keyword        { color: #6595A9; }
-.cm-atom           { color: #B27B52; }
+.cm-atom           { color: #B3794E; }
 .cm-number         { color: #AD9352; }
 .cm-def            { color: #d5d5d5; }
 .cm-variable       { color: #AD9352; }
@@ -8,9 +8,9 @@
 .cm-variable-3     { color: #6595A9; }
 .cm-operator       { color: #d5d5d5; }
 .cm-comment        { color: #878787; }
-.cm-string         { color: #B27B52; }
+.cm-string         { color: #B3794E; }
 .cm-string-2       { color: #78A7BB; }
-.cm-meta           { color: #B27B52; }
+.cm-meta           { color: #B3794E; }
 .cm-qualifier      { color: #d5d5d5; }
 .cm-builtin        { color: #AD9352; }
 .cm-bracket        { color: #d5d5d5; }
@@ -23,6 +23,6 @@
 .cm-link           { color: #C9B47F; }
 .cm-em             { color: #BF865E; font-style: italic; }
 .cm-strong         { color: #6595A9; }
-.cm-strikethrough  { color: #B27B52; }
+.cm-strikethrough  { color: #B3794E; }
 .cm-hr             { color: #AD9352; }
 .cm-error          { color: #BF865E; }

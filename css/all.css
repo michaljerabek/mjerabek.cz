@@ -373,12 +373,12 @@ a:not(.btn):focus {
 
 ::-moz-selection {
     color: white;
-    background: rgba(125, 105, 55, 0.85);
+    background: rgba(123, 104, 57, 0.85);
 }
 
 ::selection {
     color: white;
-    background: rgba(125, 105, 55, 0.85);
+    background: rgba(123, 104, 57, 0.85);
 }
 
 /*---------------------------- TRANSITION ----------------------------*/
@@ -1086,8 +1086,8 @@ input[type="time"]:focus {
     .form--dark:not(.form--ok):not(.form--error):invalid .btn:hover,
     .form--dark:not(.form--ok):not(.form--error):invalid .btn:focus {
         color: #fff;
-        background-color: #B27B52;
-        border-color: #B27B52;
+        background-color: #B3794E;
+        border-color: #B3794E;
     }
 
     .form--dark:not(.form--ok):not(.form--error):invalid .btn:active {
@@ -1975,8 +1975,8 @@ input[type="time"]:focus {
             .intro__logo-svg + .intro__logo-svg path {
                 transform: translateY(-10px);
 
-                fill: rgba(177, 150, 83, 0);
-                stroke: rgb(177, 150, 83);
+                fill: rgba(173, 147, 82, 0);
+                stroke: rgb(173, 147, 82);
 
                 animation: intro__show-logo-stroke 1.5s cubic-bezier(.5, .15, .65, .9) 0.7s 1 forwards,
                     intro__show-logo-transform 3s cubic-bezier(.2, .7, .5, 1) 0.7s 1 forwards,
@@ -1997,7 +1997,7 @@ input[type="time"]:focus {
             _:-ms-fullscreen, :root .intro__logo-svg + .intro__logo-svg path {
                 transform: none;
 
-                fill: rgba(177, 150, 83, 1);
+                fill: rgba(173, 147, 82, 1);
 
                 animation: show--init 0.7s linear 0s 1 forwards,
                     show 1.5s ease 0.7s 1 forwards;
@@ -2730,7 +2730,7 @@ input[type="time"]:focus {
 }
 
     .intro__background-layer .square {
-        border-color: rgba(206, 183, 126, 0.5);
+        border-color: rgba(202, 180, 125, 0.5);
 
         transition: background-color 2s ease 1s,
             border-color 2s ease 1s,
@@ -2739,7 +2739,7 @@ input[type="time"]:focus {
 
     .no-js .intro__background-layer .square:not(:hover),
     .js .intro__background-layer.section__background-layer--stop-animation .square:not(.hover) {
-        border-color: rgba(206, 183, 126, 0.35);
+        border-color: rgba(202, 180, 125, 0.35);
     }
 
     .intro__background-layer:nth-child(1) .square {
@@ -2790,8 +2790,8 @@ input[type="time"]:focus {
 
     .js .intro__background-layer:not(.section__background-layer--stop-hover) .square.hover,
     .no-js .intro__background-layer:not(.section__background-layer--stop-hover) .square:hover {
-        background-color: rgba(206, 183, 126, 0.175);
-        border-color: rgba(206, 183, 126, 0);
+        background-color: rgba(202, 180, 125, 0.175);
+        border-color: rgba(202, 180, 125, 0);
 
         transition: background-color 1s ease 0s,
             border-color 1s ease 0s,
@@ -4477,7 +4477,7 @@ input[type="time"]:focus {
             }
 
             .offer__technology-link::after {
-                border-color: #B27B52;
+                border-color: #B3794E;
 
                 animation-duration: 1s;
                 animation-timing-function: ease-out;
@@ -4840,7 +4840,7 @@ input[type="time"]:focus {
 }
 
     .offer__background-layer .square {
-        border-color: rgba(192, 108, 71, 0.45);
+        border-color: rgba(179, 121, 78, 0.45);
 
         transition: background-color 2s ease 1s,
             border-color 2s ease 1s,
@@ -4849,7 +4849,7 @@ input[type="time"]:focus {
 
     .no-js .section__background-layer--stop-animation .square:not(:hover),
     .js .offer__background-layer.section__background-layer--stop-animation .square:not(.hover) {
-        border-color: rgba(192, 108, 71, 0.325);
+        border-color: rgba(179, 121, 78, 0.325);
     }
 
     .offer__background-layer:nth-child(1) .square {
@@ -4897,8 +4897,8 @@ input[type="time"]:focus {
 
     .js .offer__background-layer:not(.section__background-layer--stop-hover) .square.hover,
     .no-js .offer__background-layer:not(.section__background-layer--stop-hover) .square:hover {
-        background-color: rgba(192, 108, 71, 0.1);
-        border-color: rgba(192, 108, 71, 0);
+        background-color: rgba(179, 121, 78, 0.1);
+        border-color: rgba(179, 121, 78, 0);
 
         transition: background-color 1s ease 0s,
             border-color 1s ease 0s,
@@ -5012,7 +5012,7 @@ input[type="time"]:focus {
             top: 50%;
             left: 50%;
 
-            color: #B27B52;
+            color: #B3794E;
         }
 
         .technologies__close .x::before,
@@ -6952,7 +6952,7 @@ input[type="time"]:focus {
                         padding: 20px;
 
                         color: #fff;
-                        background-color: rgba(60, 103, 120, 0.65);
+                        background-color: rgba(60, 110, 116, 0.65);
                         opacity: 0;
                         visibility: hidden;
 
@@ -6965,12 +6965,12 @@ input[type="time"]:focus {
                     .no-js.edge .references__image-wrapper:hover .references__overlay,
                     .performance--low .references__image-wrapper.hover .references__overlay,
                     .no-js .performance--low .references__image-wrapper:hover .references__overlay {
-                        background-color: rgba(60, 103, 120, 0.75);
+                        background-color: rgba(60, 110, 116, 0.75);
                     }
 
                     .edge .references__image-wrapper:focus-within .references__overlay,
                     .performance--low .references__image-wrapper:focus-within .references__overlay {
-                        background-color: rgba(60, 103, 120, 0.75);
+                        background-color: rgba(60, 110, 116, 0.75);
                     }
 
                     .references__image-wrapper.hover .references__image-overlay,
@@ -7293,7 +7293,7 @@ input[type="time"]:focus {
 }
 
     .references__background-layer .square {
-        border-color: rgba(177, 150, 83, 0.45);
+        border-color: rgba(173, 147, 82, 0.45);
 
         transition: background-color 2s ease 1s,
             border-color 2s ease 1s,
@@ -7302,7 +7302,7 @@ input[type="time"]:focus {
 
     .no-js .references__background-layer .square:not(:hover),
     .js .references__background-layer.section__background-layer--stop-animation .square:not(.hover) {
-        border-color: rgba(177, 150, 83, 0.325);
+        border-color: rgba(173, 147, 82, 0.325);
     }
 
     .references__background-layer:nth-child(1) .square {
@@ -7356,8 +7356,8 @@ input[type="time"]:focus {
 
     .js .references__background-layer:not(.section__background-layer--stop-hover) .square.hover,
     .no-js .references__background-layer:not(.section__background-layer--stop-hover) .square:hover {
-        background-color: rgba(177, 150, 83, 0.15);
-        border-color: rgba(177, 150, 83, 0);
+        background-color: rgba(173, 147, 82, 0.15);
+        border-color: rgba(173, 147, 82, 0);
 
         transition: background-color 1s ease 0s,
             border-color 1s ease 0s,
@@ -8151,7 +8151,7 @@ input[type="time"]:focus {
 }
 
     .pricelist__background-layer .square {
-        border-color: rgba(192, 108, 71, 0.4);
+        border-color: rgba(179, 121, 78, 0.4);
 
         transition: background-color 2s ease 1s,
             border-color 2s ease 1s,
@@ -8160,7 +8160,7 @@ input[type="time"]:focus {
 
     .no-js .section__background-layer--stop-animation .square:not(:hover),
     .js .pricelist__background-layer.section__background-layer--stop-animation .square:not(.hover) {
-        border-color: rgba(192, 108, 71, 0.3);
+        border-color: rgba(179, 121, 78, 0.3);
     }
 
     .pricelist__background-layer:nth-child(1) .square {
@@ -8175,8 +8175,8 @@ input[type="time"]:focus {
 
     .js .pricelist__background-layer:not(.section__background-layer--stop-hover) .square.hover,
     .no-js .pricelist__background-layer:not(.section__background-layer--stop-hover) .square:hover {
-        background-color: rgba(192, 108, 71, 0.1);
-        border-color: rgba(192, 108, 71, 0);
+        background-color: rgba(179, 121, 78, 0.1);
+        border-color: rgba(179, 121, 78, 0);
 
         transition: background-color 1s ease 0s,
             border-color 1s ease 0s,
@@ -9238,8 +9238,8 @@ input[type="time"]:focus {
     }
 
         .contact__background-layer path {
-            fill: rgba(206, 183, 126, 0);
-            stroke: rgba(206, 183, 126, 0.4);
+            fill: rgba(202, 180, 125, 0);
+            stroke: rgba(202, 180, 125, 0.4);
             stroke-width: 1px;
 
             pointer-events: auto;
@@ -9259,7 +9259,7 @@ input[type="time"]:focus {
 
         .no-js .contact__background-layer path:not(:hover),
         .js .contact__background-layer.section__background-layer--stop-animation path:not(.hover) {
-            stroke: rgba(206, 183, 126, 0.325);
+            stroke: rgba(202, 180, 125, 0.325);
         }
 
         .contact__background-layer:nth-child(1) path {
@@ -9289,23 +9289,23 @@ input[type="time"]:focus {
 
         @keyframes contact__speach--fade-in-init {
             from {
-                stroke: rgba(206, 183, 126, 0);
+                stroke: rgba(202, 180, 125, 0);
             }
             to {
-                stroke: rgba(206, 183, 126, 0);
+                stroke: rgba(202, 180, 125, 0);
             }
         }
 
         @keyframes contact__speach--fade-in {
             from {
-                stroke: rgba(206, 183, 126, 0);
+                stroke: rgba(202, 180, 125, 0);
             }
         }
 
         .js .contact__background-layer:not(.section__background-layer--stop-hover) path.hover,
         .no-js .contact__background-layer:not(.section__background-layer--stop-hover) path:hover {
-            fill: rgba(206, 183, 126, 0.05);
-            stroke: rgba(206, 183, 126, 0);
+            fill: rgba(202, 180, 125, 0.05);
+            stroke: rgba(202, 180, 125, 0);
 
             transition: fill 1s ease 0s,
                 stroke 1s ease 0s;
@@ -9385,7 +9385,7 @@ input[type="time"]:focus {
 
 [data-codemirror-mimemode] { color: #d5d5d5; }
 .cm-keyword        { color: #6595A9; }
-.cm-atom           { color: #B27B52; }
+.cm-atom           { color: #B3794E; }
 .cm-number         { color: #AD9352; }
 .cm-def            { color: #d5d5d5; }
 .cm-variable       { color: #AD9352; }
@@ -9393,9 +9393,9 @@ input[type="time"]:focus {
 .cm-variable-3     { color: #6595A9; }
 .cm-operator       { color: #d5d5d5; }
 .cm-comment        { color: #878787; }
-.cm-string         { color: #B27B52; }
+.cm-string         { color: #B3794E; }
 .cm-string-2       { color: #78A7BB; }
-.cm-meta           { color: #B27B52; }
+.cm-meta           { color: #B3794E; }
 .cm-qualifier      { color: #d5d5d5; }
 .cm-builtin        { color: #AD9352; }
 .cm-bracket        { color: #d5d5d5; }
@@ -9408,7 +9408,7 @@ input[type="time"]:focus {
 .cm-link           { color: #C9B47F; }
 .cm-em             { color: #BF865E; font-style: italic; }
 .cm-strong         { color: #6595A9; }
-.cm-strikethrough  { color: #B27B52; }
+.cm-strikethrough  { color: #B3794E; }
 .cm-hr             { color: #AD9352; }
 .cm-error          { color: #BF865E; }
 
