@@ -2938,11 +2938,6 @@ input[type="time"]:focus {
     box-shadow: none;
 }
 
-.main-nav--stop-anim {
-    animation-duration: 0s, 0s;
-    animation-delay: 0s, 0s;
-}
-
 .main-nav--fixed {
     position: fixed;
 
@@ -2960,6 +2955,12 @@ input[type="time"]:focus {
         opacity 0.75s ease-out 0s,
         z-index 0.75s ease-out 0s,
         filter 0.5s cubic-bezier(.5, 0, .6, 0.9) 0.25s;
+}
+
+.js.js .main-nav--stop-anim,
+.js.js .main-nav--fixed,
+.main-nav--stop-anim,
+.main-nav--fixed {
     animation-delay: 0s, 0s;
     animation-duration: 0s, 0s;
 }
