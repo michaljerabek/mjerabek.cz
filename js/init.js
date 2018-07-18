@@ -8,7 +8,7 @@ jQuery(function () {
         return;
     }
 
-    var modules = ["Performance", "JSHover", "BreakText", "BGObjectsOpacityAnimation", "MainNav", "Intro", "SmallCaps", "Offer", "Technologies", "References", "AboutMe", "Pricelist", "Form", "Contact", "Fonts", "Cookies", "FixBugs", "Analytics", "ConsoleMessage:2000"];
+    var modules = ["Performance", "Visibility", "JSHover", "BreakText", "BGObjectsOpacityAnimation", "MainNav", "Intro", "SmallCaps", "Offer", "Technologies", "References", "AboutMe", "Pricelist", "Form", "Contact", "Fonts", "Cookies", "FixBugs", "Analytics", "ConsoleMessage:2000"];
 
     modules.forEach(function (moduleSettings) {
 

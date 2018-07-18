@@ -392,7 +392,11 @@ input[type="time"]:focus {
     height: 40px;
 
     opacity: 0;
+}
 
+.no-js .ui__github,
+.js.no-visibility-chagne .ui__github,
+.js.was-visible .ui__github {
     animation: show--init 3.5s linear 0s 1 forwards,
         show 2s ease 3.5s 1 forwards;
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="cs">
+<html class="no-js visibility-change" lang="cs">
 <head>
 
     <!-- Author: Michal Jeřábek | mjerabek.cz; Created: 2017; -->
@@ -106,6 +106,9 @@
     <script>document.documentElement.className += navigator.userAgent.match(/Android/) ? " android" : "";</script>
     <script>document.documentElement.className += navigator.userAgent.match(/Edge/) ? " edge" : "";</script>
     <script>document.documentElement.className += navigator.userAgent.match(/Android.*Mobile.*Gecko.*Firefox/) ? " ff-android" : "";</script>
+
+    <script>!document.visibilityState && (document.documentElement.className = document.documentElement.className.replace(/(visibility-change)/, "no-$1"));</script>
+    <script>document.visibilityState && !document.hidden && (document.documentElement.className += " was-visible");</script>
 
     <script>!window.matchMedia && document.write("<script src='https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js'><"+"/script>");</script>
     <script>!window.matchMedia && !window.respond && document.write("<script src='libs/respond.min.js'><"+"/script>");</script>
@@ -1404,6 +1407,7 @@
 
     <!--modules-->
     <script src="js/modules/Performance.js"></script>
+    <script src="js/modules/Visibility.js"></script>
     <script src="js/modules/BGObjectsOpacityAnimation.js"></script>
     <script src="js/modules/BreakText.js"></script>
     <script src="js/modules/JSHover.js"></script>

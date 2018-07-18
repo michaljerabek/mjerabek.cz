@@ -44,7 +44,8 @@
         }
     }
 
-    .js .offer--init-fade-in > .layout__center {
+    .js.no-visibility-chagne .offer--init-fade-in > .layout__center,
+    .js.was-visible .offer--init-fade-in > .layout__center {
         animation: show--init 1.75s linear 0s 1 forwards,
             show 1.75s ease-out 1.75s 1 forwards;
     }
