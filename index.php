@@ -2,6 +2,8 @@
 
 session_start();
 
+define("VERSION", "2018-07-18-1");
+
 if (isset($_GET["action"])) {
 
     require "server" . DIRECTORY_SEPARATOR . $_GET["action"] . ".php";
@@ -61,6 +63,8 @@ if (isset($_SESSION["ok"])) {
         $replaceTag("FORM_ERR_MSG", "contact__form-send-error--active");
     }
 }
+
+$replaceTag("VERSION", VERSION);
 
 $replaceTag("[^{}]+", "");
 
