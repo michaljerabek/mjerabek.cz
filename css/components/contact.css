@@ -973,12 +973,34 @@
             animation: contact__send-msg--move 3s linear 0s infinite forwards;
         }
 
+        @media (max-width: 767px) {
+
+            .form--progress .numbers {
+                animation-name: contact__send-msg--move-mobile;
+            }
+        }
+
         @keyframes contact__send-msg--move {
             0% {
-                transform: translateX(0%);
+                transform: translateX(50%);
+                transform: translateX(calc(100% - 240px));
+                transform: translateX(calc(100% - 240px + 1ch));
             }
             100% {
+                transform: translateX(0%);
+                transform: translateX(-1ch);
+            }
+        }
+
+        @keyframes contact__send-msg--move-mobile {
+            0% {
                 transform: translateX(50%);
+                transform: translateX(calc(100% - 224px));
+                transform: translateX(calc(100% - 224px + 1ch));
+            }
+            100% {
+                transform: translateX(0%);
+                transform: translateX(-1ch);
             }
         }
 
