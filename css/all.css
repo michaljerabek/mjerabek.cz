@@ -2049,7 +2049,7 @@ input[type="time"]:focus {
             @keyframes intro__show-logo-fill--2 {
                 to {
                     stroke-width: 0;
-                    fill: #AD9352;
+                    fill: #AF975A;
                 }
             }
 
@@ -9243,12 +9243,34 @@ input[type="time"]:focus {
             animation: contact__send-msg--move 3s linear 0s infinite forwards;
         }
 
+        @media (max-width: 767px) {
+
+            .form--progress .numbers {
+                animation-name: contact__send-msg--move-mobile;
+            }
+        }
+
         @keyframes contact__send-msg--move {
             0% {
-                transform: translateX(0%);
+                transform: translateX(50%);
+                transform: translateX(calc(100% - 240px));
+                transform: translateX(calc(100% - 240px + 1ch));
             }
             100% {
+                transform: translateX(0%);
+                transform: translateX(-1ch);
+            }
+        }
+
+        @keyframes contact__send-msg--move-mobile {
+            0% {
                 transform: translateX(50%);
+                transform: translateX(calc(100% - 224px));
+                transform: translateX(calc(100% - 224px + 1ch));
+            }
+            100% {
+                transform: translateX(0%);
+                transform: translateX(-1ch);
             }
         }
 
@@ -9471,9 +9493,9 @@ input[type="time"]:focus {
 [data-codemirror-mimemode] { color: #d5d5d5; }
 .cm-keyword        { color: #6595A9; }
 .cm-atom           { color: #B3794E; }
-.cm-number         { color: #AD9352; }
+.cm-number         { color: #AF975A; }
 .cm-def            { color: #d5d5d5; }
-.cm-variable       { color: #AD9352; }
+.cm-variable       { color: #AF975A; }
 .cm-variable-2     { color: #d5d5d5; }
 .cm-variable-3     { color: #6595A9; }
 .cm-operator       { color: #d5d5d5; }
@@ -9482,11 +9504,11 @@ input[type="time"]:focus {
 .cm-string-2       { color: #78A7BB; }
 .cm-meta           { color: #B3794E; }
 .cm-qualifier      { color: #d5d5d5; }
-.cm-builtin        { color: #AD9352; }
+.cm-builtin        { color: #AF975A; }
 .cm-bracket        { color: #d5d5d5; }
 .cm-tag            { color: #C9B47F; }
 .cm-bracket.cm-tag { color: hsl(43, 31%, 35%); }
-.cm-attribute      { color: #AD9352; }
+.cm-attribute      { color: #AF975A; }
 .cm-property       { color: #C9B47F; }
 .cm-quote          { color: #d5d5d5; }
 .cm-header         { color: #6595A9; }
@@ -9494,6 +9516,6 @@ input[type="time"]:focus {
 .cm-em             { color: #BF865E; font-style: italic; }
 .cm-strong         { color: #6595A9; }
 .cm-strikethrough  { color: #B3794E; }
-.cm-hr             { color: #AD9352; }
+.cm-hr             { color: #AF975A; }
 .cm-error          { color: #BF865E; }
 

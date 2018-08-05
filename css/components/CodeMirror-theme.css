@@ -1,9 +1,9 @@
 [data-codemirror-mimemode] { color: #d5d5d5; }
 .cm-keyword        { color: #6595A9; }
 .cm-atom           { color: #B3794E; }
-.cm-number         { color: #AD9352; }
+.cm-number         { color: #AF975A; }
 .cm-def            { color: #d5d5d5; }
-.cm-variable       { color: #AD9352; }
+.cm-variable       { color: #AF975A; }
 .cm-variable-2     { color: #d5d5d5; }
 .cm-variable-3     { color: #6595A9; }
 .cm-operator       { color: #d5d5d5; }
@@ -12,11 +12,11 @@
 .cm-string-2       { color: #78A7BB; }
 .cm-meta           { color: #B3794E; }
 .cm-qualifier      { color: #d5d5d5; }
-.cm-builtin        { color: #AD9352; }
+.cm-builtin        { color: #AF975A; }
 .cm-bracket        { color: #d5d5d5; }
 .cm-tag            { color: #C9B47F; }
 .cm-bracket.cm-tag { color: hsl(43, 31%, 35%); }
-.cm-attribute      { color: #AD9352; }
+.cm-attribute      { color: #AF975A; }
 .cm-property       { color: #C9B47F; }
 .cm-quote          { color: #d5d5d5; }
 .cm-header         { color: #6595A9; }
@@ -24,5 +24,5 @@
 .cm-em             { color: #BF865E; font-style: italic; }
 .cm-strong         { color: #6595A9; }
 .cm-strikethrough  { color: #B3794E; }
-.cm-hr             { color: #AD9352; }
+.cm-hr             { color: #AF975A; }
 .cm-error          { color: #BF865E; }
