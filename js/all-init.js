@@ -2616,7 +2616,7 @@
 
             test = function (time) {
 
-                fpsCounter++;
+                fpsCounter = document.hidden ? 60: fpsCounter + 1;
 
                 if (time - lastTime >= 1000) {
 
