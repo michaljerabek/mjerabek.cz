@@ -267,11 +267,11 @@
                     }
 
                     .pricelist__price .small + span .word1 .letter2 {
-                        margin-right: 0.005em;
+                        margin-right: 0.035em;
                     }
 
                     .pricelist__price .small + span .word1 .letter3 {
-                        margin-right: -0.035em;
+                        margin-right: -0.075em;
                     }
 
                     .pricelist__price .small + span .word2 .letter1 {
