@@ -90,7 +90,7 @@ table {
 
 @font-face {
     font-family: josefin-sans;
-    src: url("css/fonts/JosefinSans-Regular.ttf") format("truetype");
+    src: url("/fonts/JosefinSans-Regular.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -98,7 +98,7 @@ table {
 
 @font-face {
     font-family: josefin-sans;
-    src: url("css/fonts/JosefinSans-Italic.ttf") format("truetype");
+    src: url("/fonts/JosefinSans-Italic.ttf") format("truetype");
     font-weight: 400;
     font-style: italic;
     font-display: swap;
@@ -106,7 +106,7 @@ table {
 
 @font-face {
     font-family: josefin-sans;
-    src: url("css/fonts/JosefinSans-Bold.ttf") format("truetype");
+    src: url("/fonts/JosefinSans-Bold.ttf") format("truetype");
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -114,7 +114,7 @@ table {
 
 @font-face {
     font-family: josefin-sans;
-    src: url("css/fonts/JosefinSans-BoldItalic.ttf") format("truetype");
+    src: url("/fonts/JosefinSans-BoldItalic.ttf") format("truetype");
     font-weight: 700;
     font-style: italic;
     font-display: swap;
@@ -122,7 +122,7 @@ table {
 
 @font-face {
     font-family: josefin-sans;
-    src: url("css/fonts/JosefinSans-Light.ttf") format("truetype");
+    src: url("/fonts/JosefinSans-Light.ttf") format("truetype");
     font-weight: 300;
     font-style: normal;
     font-display: swap;
@@ -130,7 +130,7 @@ table {
 
 @font-face {
     font-family: josefin-sans;
-    src: url("css/fonts/JosefinSans-LightItalic.ttf") format("truetype");
+    src: url("/fonts/JosefinSans-LightItalic.ttf") format("truetype");
     font-weight: 300;
     font-style: italic;
     font-display: swap;
@@ -138,7 +138,7 @@ table {
 
 @font-face {
     font-family: josefin-sans;
-    src: url("css/fonts/JosefinSans-Thin.ttf") format("truetype");
+    src: url("/fonts/JosefinSans-Thin.ttf") format("truetype");
     font-weight: 100;
     font-style: normal;
     font-display: swap;
@@ -146,7 +146,7 @@ table {
 
 @font-face {
     font-family: josefin-sans;
-    src: url("css/fonts/JosefinSans-ThinItalic.ttf") format("truetype");
+    src: url("/fonts/JosefinSans-ThinItalic.ttf") format("truetype");
     font-weight: 100;
     font-style: italic;
     font-display: swap;
@@ -154,7 +154,7 @@ table {
 
 @font-face {
     font-family: josefin-sans;
-    src: url("css/fonts/JosefinSans-SemiBold.ttf") format("truetype");
+    src: url("/fonts/JosefinSans-SemiBold.ttf") format("truetype");
     font-weight: 600;
     font-style: normal;
     font-display: swap;
@@ -162,7 +162,7 @@ table {
 
 @font-face {
     font-family: josefin-sans;
-    src: url("css/fonts/JosefinSans-SemiBoldItalic.ttf") format("truetype");
+    src: url("/fonts/JosefinSans-SemiBoldItalic.ttf") format("truetype");
     font-weight: 600;
     font-style: italic;
     font-display: swap;
