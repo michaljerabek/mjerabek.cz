@@ -390,7 +390,7 @@
                                 </div>
                                 <!-- /.offer__feature-icon -->
 
-                                <p class="offer__feature-description">Včetně <strong><a href="index.html" title="Ukázka manuálu dodávaného s nakódovanou šablonou.">manuálu</a> s&nbsp;popsanou <br class="mobile-break">metodologií, použitím a&nbsp;dalším <br class="mobile-break">vývojem kódu</strong>, takže mě nebudete potřebovat na&nbsp;další úpravy.</p>
+                                <p class="offer__feature-description">Včetně <strong><a href="index.html" title="Ukázka manuálu dodávaného s nakódovanou šablonou." target="_blank">manuálu</a> s&nbsp;popsanou <br class="mobile-break">metodologií, použitím a&nbsp;dalším <br class="mobile-break">vývojem kódu</strong>, takže mě nebudete potřebovat na&nbsp;další úpravy.</p>
 
                             </li>
                             <!-- /.offer__feature offer__feature––manual -->
@@ -1177,13 +1177,17 @@
 
                             <div class="technologies__text-content">
 
-                                <p>Základem výstupu práce s <span class="small">HTML</span> musí být <strong>validní&nbsp;a sémantický kód</strong>. Musí tedy odpovídat standardům&nbsp;a značky (tagy) musí <strong>správně označovat význam obsahu</strong>. Jedině tak může být výsledkem logicky strukturovaný&nbsp;a přístupný (accessible) kód. Díky tomu, že jsem četl celou specifikaci <span class="small">HTML5.2</span>, vám mohu takový kód dodat. (Například častou chybou bývá špatné seskupování formulářových prvků — značky <code>fieldset</code> a&nbsp;<code>legend</code> bývají ignorovány a&nbsp;checkboxy se pak seskupují pochybnými způsoby, apod.)</p>
+                                <p>Kvalita <span class="small">HTML</span> bývá často podceňována, ale <strong>správné označení obsahu je dnes důležitější než kdy dřív</strong>. Kromě vyhledávačů a&nbsp;čteček obrazovek se <strong>objevují další technologie, které potřebují porozumět vašemu webu</strong>. Jsou to například <strong>asistentky</strong> jako <i>Siri</i>, <i>Cortana</i> a&nbsp;<i>Alexa</i> nebo <strong>čtecí módy</strong> v&nbsp;prohlížečích.</p>
 
-                                <p>Výstup, který ode mne dostanete, bude velmi <strong>přehledný</strong> — písma, styly, JavaScript a&nbsp;další součásti dokumentu jsou <strong>seskupeny a&nbsp;označeny komentáři</strong>, stejně tak jednotilivé sekce (každá taková sekce má vlastní <span class="small">CSS</span> soubor) a&nbsp;konce významných bloků kódu.</p>
+                                <p>Výsledkem práce s&nbsp;<span class="small">HTML</span> musí být tedy kód, který bude <strong>odpovídat standardům</strong> a&nbsp;značky (tagy) budou <strong>správně označovat význam obsahu</strong>. Výsledkem pak bude logicky strukturovaný, přístupný (accessible) a&nbsp;pro další zařízení srozumitelný kód. A&nbsp;k&nbsp;tomu je potřeba si přečíst a&nbsp;respektovat specifikaci <span class="small">HTML5.2</span>.</p>
+
+                                <p>Výstup, který ode mne dostanete, bude velmi <strong>přehledný</strong> — písma, styly, JavaScript, jednotlivé komponenty, významné bloky a&nbsp;další součásti dokumentu budou seskupeny a&nbsp;označeny komentáři.</p>
 
                                 <p>Důležitý obsah bude <strong>přístupný i&nbsp;bez JavaScriptu</strong> (u&nbsp;komplikovanějších případů po dohodě) a&nbsp;kód bude také obsahovat další informace pro čtečky obrazovek a&nbsp;další asistivní technologie (například v&nbsp;podobě <span class="small">ARIA</span> atributů nebo skrytých nadpisů).</p>
 
-                                <p>V dokumentu budou vložené <strong>minifikované styly i&nbsp;JavaScript</strong>.</p>
+                                <p>V&nbsp;dokumentu také najdete poznámky pro programátory nebo další osoby, které budou s&nbsp;kódem pracovat.</p>
+
+                                <p>Podrobné vysvětlení kódu pak najdete v&nbsp;přiloženém <a href="" title="Ukázka manuálu dodávaného s nakódovanou šablonou." target="_blank">manuálu</a>.</p>
 
                                 <p>Vedle v&nbsp;ukázce si můžete prohlédnout kód hlavní stránky projektu <i>Nezávisláci</i>.</p>
 
@@ -1247,11 +1251,9 @@
 
                                 <p>Soubory stylů mohou být velmi náročné na udržování — změna jednoho stylu může způsobit změny na dalších nečekaných místech nebo naopak selektory mohou být tak specifické, že je skoro nemožné je přepsat.</p>
 
-                                <p>Proto používám <strong>metodologii <span class="small"><abbr title="Block Element Modifier">BEM</abbr></span>, pravidla řadím vždy podle stejného systému</strong>, pořadí a&nbsp;zarovnání seznamů pravidel vychází ze struktury <span class="small">HTML</span> (ale zároveň <span class="small">CSS</span> obsahuje co nejméně konkrétního <span class="small">HTML</span> kódu) a&nbsp;styly rozděluji podle sekcí na stránce do samostatných souborů.</p>
+                                <p>Proto používám <strong>metodologii <span class="small"><abbr title="Block Element Modifier">BEM</abbr></span></strong>, pravidla řadím vždy podle stejného systému, pořadí a&nbsp;zarovnání seznamů pravidel vychází ze struktury <span class="small">HTML</span> (ale zároveň <span class="small">CSS</span> obsahuje co nejméně konkrétního <span class="small">HTML</span> kódu), selektory vytvářím s&nbsp;co nejnižší specificitou a&nbsp;styly rozděluji podle komponentů do samostatných souborů.</p>
 
-                                <p>Nepoužívám žádné generátory kódu (preprocesory), takže <strong>kód je ručně vyladěný</strong>.</p>
-
-                                <p>Při práci také myslím na to, že <strong>layout a&nbsp;design stránky musí být stabilní</strong> a&nbsp;<strong>obsah se nesmí stát nepřístupným</strong> a&nbsp;to při jakékoliv velikosti prohlížeče a&nbsp;při jakémkoliv obsahu. Tyto problémy se objevují třeba u&nbsp;absolutně pozicovaných elementů nebo u&nbsp;fixních menu na mobilních zařízeních. (Často se například nepočítá s&nbsp;víceřádkovým obsahem; absolutně pozicované prvky se kvůli <code>overflow: hidden</code> na rodičovském elementu znepřístupní; apod.) Bohužel grafika vždy neumožní takového výsledku dosáhnout.</p>
+                                <p>Při práci také myslím na to, že <strong>layout a&nbsp;design stránky musí být stabilní a&nbsp;obsah se nesmí stát nepřístupným</strong> a&nbsp;to při jakékoliv velikosti prohlížeče a&nbsp;při jakémkoliv obsahu. Tyto problémy se objevují třeba u&nbsp;absolutně pozicovaných elementů nebo u&nbsp;fixních menu na mobilních zařízeních. (Bohužel ale grafika ne vždy umožní takového výsledku dosáhnout.)</p>
 
                                 <p>Neméně důležitou součástí práce se styly je také <strong>optimalizace překreslování</strong> a&nbsp;počtu prohlížečem vytvořených vrstev, aby vše běželo naprosto plynule.</p>
 
@@ -1259,7 +1261,11 @@
 
                                 <p>Zejména při kódování responzivních designů, animací nebo interaktivních prvků je potřeba mít i&nbsp;jistý <strong>grafický cit</strong>, aby výsledek vypadal vždy dobře. (Tato stránka je můj vlastní návrh.)</p>
 
-                                <p>Jako výstup mé práce dostanete vždy <strong>soubory spojené do jednoho a&nbsp;jeho minifikovanou variantu</strong>. (Včetně gulp-tasku pro další specializovaná spojení. V případě optimalizace pro <span class="small">HTTP/2</span> tento odstavec platit nemusí.)</p>
+                                <p>Obejdu se bez <i>Bootsrapu</i> a&nbsp;jiných frameworků, takže dostanete <strong>kód přesně vyladěný pro váš web</strong>. (Ostatně většina grafických designů není pro jejich použití optimalizovaná a&nbsp;tak nakonec jejich užití vede k&nbsp;přesnému opaku jejich smyslu.)</p>
+
+                                <p><strong>Pokud chcete použít preprocesor mohu vám nabídnout <span class="small">SCSS</span></strong>.</p>
+
+                                <p>Podrobné vysvětlení metodologie a&nbsp;jakým způsobem kód upravovat pak najdete v&nbsp;dodaném <a href="" title="Ukázka manuálu dodávaného s nakódovanou šablonou." target="_blank">manuálu</a>.</p>
 
                                 <p>Ukázka kódu vpravo je sekce se seznamem členů z&nbsp;projektu <i>Nezávisláci</i>.</p>
 
@@ -1323,11 +1329,13 @@
 
                                 <p>Kvalita JavaScriptu bývá často nejslabším místem webů — kód je nepřehledný, neefektivní a&nbsp;těžko upravitelný.</p>
 
-                                <p>Proto související funkcionalitu uzavírám do <strong>samostatných modulů</strong>, které přiřazuji ke <strong>jmennému prostoru</strong>, aby nekolidovaly s&nbsp;kódem třetích stran. Snažím se psát funkce co nejkratší a&nbsp;používám <strong>princip <span class="small"><abbr title="Don't repeat yourself">DRY</abbr></span></strong> — názvy selektorů a&nbsp;různá nastavení tak <strong>stačí změnit pouze na jednom místě</strong> (na začátku modulu).</p>
+                                <p>Proto související funkcionalitu uzavírám do <strong>samostatných modulů</strong>, které přiřazuji ke <strong>jmennému prostoru</strong>, aby nekolidovaly s&nbsp;kódem třetích stran. Snažím se psát funkce co nejkratší a&nbsp;používám <strong>princip <span class="small">DRY</span></strong> — názvy selektorů a&nbsp;různá nastavení tak <strong>stačí změnit pouze na jednom místě</strong> (na začátku modulu).</p>
 
-                                <p>Čitelnost kódu je sice mnohdy důležitější než jeho efektivita, často je ale na stránkách vidět nedostatečná znalost toho, jak prohlížeče vykreslují obsah nebo jak fungují knihovy jako jQuery, přitom jejich efektivní použití čitelnosti neuškodí — selektory elementů bývají příliš komplikované a&nbsp;navíc obsahují přesnou strukturu <span class="small">HTML</span>; v&nbsp;cyklech či animacích se neustále vytvářejí nové jQuery objekty (a&nbsp;operace nejsou seskupeny podle typu činnosti — čtení/zápis, což způsobuje zbytečné překreslování stránky); při načítání se desetkrát vytvoří jQuery objekt s&nbsp;<code>window</code>&hellip;</p>
+                                <p>Čitelnost kódu je sice mnohdy důležitější než jeho efektivita, často je ale na stránkách vidět nedostatečná znalost toho, jak prohlížeče vykreslují obsah nebo jak fungují knihovy jako <i>jQuery</i>, přitom jejich efektivní použití čitelnosti neuškodí — selektory elementů bývají příliš komplikované a&nbsp;navíc obsahují přesnou strukturu <span class="small">HTML</span>; v cyklech či animacích se neustále vytvářejí nové <i>jQuery</i> objekty (a&nbsp;operace nejsou seskupeny podle typu činnosti — čtení/zápis, což způsobuje zbytečné překreslování stránky); při načítání se desetkrát vytvoří <i>jQuery</i> objekt s&nbsp;<code>window</code>&hellip;</p>
 
-                                <p>Jako výstup dostanete <strong>moduly spojené do jednoho souboru včetně jeho minifikované verze</strong>. (Včetně gulp-tasku pro další specializovaná spojení. V případě optimalizace pro <span class="small">HTTP/2</span> tento odstavec platit nemusí.)</p>
+                                <p><strong>Na efektivitě ale záleží.</strong> Smartphony, které dnes používáme, jsou sice mnohem výkonější, ale low-endová zařízení jsou stále velmi pomalá a&nbsp;<strong>neefektivní kód způsobuje dlouhé načítání a&nbsp;pomalé reakce a&nbsp;tím i&nbsp;odcházení uživatelů</strong>. JavaScript ale zpracovávají i&nbsp;čím dál menší zařízení jako smartwatch, kde ani ty nejlepší nemají výkon na rozdávání.</p>
+
+                                <p>Podrobnosti o&nbsp;metodologii a&nbsp;použití dodaného kódu pak naleznete v&nbsp;přiloženém <a href="" title="Ukázka manuálu dodávaného s nakódovanou šablonou." target="_blank">manuálu</a>.</p>
 
                                 <p>V&nbsp;ukázce vpravo se můžete podívat na modul <code>BreakText</code> použitý na této stránce. Modul slouží k&nbsp;rozdělení textu po písmenech, což se hodí například pro kerning nebo&nbsp;animace.</p>
 
