@@ -89,7 +89,7 @@
             transform-origin: bottom right;
 
             height: 90%;
-            height: calc(100% - ((15vh + 15vw) / 4));
+            height: calc(100% - ((15vh + 15vw) / 3));
 
             pointer-events: none;
 
@@ -124,7 +124,7 @@
 
                 transform: translateY(-2%);
 
-                height: calc(100% - ((30vh + 30vw) / 4));
+                height: calc(100% - ((30vh + 30vw) / 3.5));
             }
         }
 
