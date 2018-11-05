@@ -177,6 +177,14 @@
                 }
             }
 
+            @media (max-width: 639px) {
+
+                .pricelist__pricelist,
+                .pricelist__terms-and-conditions {
+                    max-width: 87.5%;
+                }
+            }
+
             @media (max-width: 479px) {
 
                 .pricelist__pricelist,
