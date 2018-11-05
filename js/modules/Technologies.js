@@ -471,11 +471,7 @@
                 $tabs = $self.find(SELECTOR.tab);
                 $contentWrappers = $tabs.find(SELECTOR.contentWrappers);
 
-                if (typeof document.body.style.scrollbarWidth === "undefined" &&
-                    typeof document.body.style.scrollbarColor === "undefined" &&
-                    typeof document.body.style.webkitOverflowScrolling === "undefined" &&
-                    !document.documentElement.className.match(/android/))
-                {
+                if (typeof document.body.style.webkitOverflowScrolling === "undefined" && !document.documentElement.className.match(/android/)) {
 
                     SCROLL_OPTIONS.axis = "y";
 
