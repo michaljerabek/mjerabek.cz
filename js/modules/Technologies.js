@@ -4,6 +4,7 @@
 (function (ns, $) {
 
     ns.$win = ns.$win || $(window);
+    ns.$doc = ns.$doc || $(document);
     ns.$temp = ns.$temp || $([null]);
 
     ns.Technologies = (function () {
@@ -14,7 +15,9 @@
                 fromRightTechnology: "technologies__technology--from-right",
                 showCodeSample: "technologies--show-sample",
 
-                toggle: "ui__content--technologies"
+                toggle: "ui__content--technologies",
+
+                hiddenOpener: "technologies__hidden-link"
             },
 
             DATA = {
@@ -161,7 +164,12 @@
 
                 if (!hideOnly) {
 
-                    openedByEl.focus();
+                    ns.$temp[0] = openedByEl;
+
+                    if (!ns.$temp.hasClass(CLASS.hiddenOpener)) {
+
+                        openedByEl.focus();
+                    }
                 }
 
                 setPagePerspective();
@@ -417,7 +425,7 @@
                     return !!$navItem.length;
                 }
 
-                var $opener = ns.Offer.find("[href*='" + id + "']");
+                var $opener = $openers.filter("[href*='" + id + "']").first();
 
                 if ($opener.length) {
 
