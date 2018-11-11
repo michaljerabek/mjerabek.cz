@@ -90,7 +90,7 @@ table {
 
 @font-face {
     font-family: josefin-sans;
-    src: url("/fonts/JosefinSans-Regular.ttf") format("truetype");
+    src: url("../fonts/JosefinSans-Regular.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -98,7 +98,7 @@ table {
 
 @font-face {
     font-family: josefin-sans;
-    src: url("/fonts/JosefinSans-Italic.ttf") format("truetype");
+    src: url("../fonts/JosefinSans-Italic.ttf") format("truetype");
     font-weight: 400;
     font-style: italic;
     font-display: swap;
@@ -106,7 +106,7 @@ table {
 
 @font-face {
     font-family: josefin-sans;
-    src: url("/fonts/JosefinSans-Bold.ttf") format("truetype");
+    src: url("../fonts/JosefinSans-Bold.ttf") format("truetype");
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -114,7 +114,7 @@ table {
 
 @font-face {
     font-family: josefin-sans;
-    src: url("/fonts/JosefinSans-BoldItalic.ttf") format("truetype");
+    src: url("../fonts/JosefinSans-BoldItalic.ttf") format("truetype");
     font-weight: 700;
     font-style: italic;
     font-display: swap;
@@ -122,7 +122,7 @@ table {
 
 @font-face {
     font-family: josefin-sans;
-    src: url("/fonts/JosefinSans-Light.ttf") format("truetype");
+    src: url("../fonts/JosefinSans-Light.ttf") format("truetype");
     font-weight: 300;
     font-style: normal;
     font-display: swap;
@@ -130,7 +130,7 @@ table {
 
 @font-face {
     font-family: josefin-sans;
-    src: url("/fonts/JosefinSans-LightItalic.ttf") format("truetype");
+    src: url("../fonts/JosefinSans-LightItalic.ttf") format("truetype");
     font-weight: 300;
     font-style: italic;
     font-display: swap;
@@ -138,7 +138,7 @@ table {
 
 @font-face {
     font-family: josefin-sans;
-    src: url("/fonts/JosefinSans-Thin.ttf") format("truetype");
+    src: url("../fonts/JosefinSans-Thin.ttf") format("truetype");
     font-weight: 100;
     font-style: normal;
     font-display: swap;
@@ -146,7 +146,7 @@ table {
 
 @font-face {
     font-family: josefin-sans;
-    src: url("/fonts/JosefinSans-ThinItalic.ttf") format("truetype");
+    src: url("../fonts/JosefinSans-ThinItalic.ttf") format("truetype");
     font-weight: 100;
     font-style: italic;
     font-display: swap;
@@ -154,7 +154,7 @@ table {
 
 @font-face {
     font-family: josefin-sans;
-    src: url("/fonts/JosefinSans-SemiBold.ttf") format("truetype");
+    src: url("../fonts/JosefinSans-SemiBold.ttf") format("truetype");
     font-weight: 600;
     font-style: normal;
     font-display: swap;
@@ -162,7 +162,7 @@ table {
 
 @font-face {
     font-family: josefin-sans;
-    src: url("/fonts/JosefinSans-SemiBoldItalic.ttf") format("truetype");
+    src: url("../fonts/JosefinSans-SemiBoldItalic.ttf") format("truetype");
     font-weight: 600;
     font-style: italic;
     font-display: swap;
@@ -4239,6 +4239,17 @@ input[type="time"]:focus {
     background-color: #111111;
 }
 
+    .offer a:not(.btn) {
+        text-decoration: none;
+
+        color: #C9B47F;
+    }
+
+    .offer a:not(.btn):hover,
+    .offer a:not(.btn):focus {
+        color: #78A7BB;
+    }
+
     .offer > .layout__center {
         position: relative;
         z-index: 2;
@@ -4445,10 +4456,10 @@ input[type="time"]:focus {
         }
 
 /*--------------------------------------------------------------------*/
-/*--------------------------- TECHNOLOGIES ---------------------------*/
+/*----------------------------- FEATURES -----------------------------*/
 /*--------------------------------------------------------------------*/
 
-    .offer__technologies {
+    .offer__features {
         position: relative;
         z-index: 2;
 
@@ -4465,443 +4476,70 @@ input[type="time"]:focus {
 
     @media (min-width: 768px) {
 
-        .offer__technologies {
+        .offer__features {
             padding-bottom: 20px;
         }
     }
 
     @media (max-width: 767px) {
 
-        .offer__technologies {
+        .offer__features {
             padding-bottom: 0px;
         }
     }
 
-        .offer__technology {
+        .offer__feature {
             position: relative;
 
+            padding-top: calc(12vh - 140px);
             padding-bottom: calc(10vh - 120px);
-            margin-bottom: 40px;
+            margin-bottom: 60px;
         }
 
         @media (min-width: 1200px) {
 
-            .offer__technology {
+            .offer__feature {
                 max-width: 360px;
-                padding: 0 20px;
+                padding-right: 20px;
+                margin-bottom: 40px;
+                padding-left: 20px;
             }
         }
 
         @media (min-width: 480px) and (max-width: 1199px) {
 
-            .offer__technology {
+            .offer__feature {
                 max-width: 340px;
-                padding: 0 10px;
+                padding-right: 10px;
+                padding-left: 10px;
             }
         }
 
         @media (max-width: 479px) {
 
-            .offer__technology {
+            .offer__feature {
                 max-width: 320px;
-                padding: 0 0px;
+                padding-right: 0px;
+                padding-left: 0px;
+                padding-bottom: 0;
             }
         }
 
-        .offer__technology::after {
-            content: "\2192";
+            .offer__feature-icon {
 
-            position: absolute;
-            top: -4px;
-            left: 50%;
-
-            transform: translateX(-90px) rotate(45deg) translateX(25px);
-
-            width: 0px;
-            height: 0px;
-
-            color: #bdbdbd;
-
-            font-family: Arial;
-            font-size: 17px;
-            line-height: 0;
-
-            opacity: 0;
-
-            animation-duration: 1.25s;
-            animation-timing-function: linear;
-            animation-iteration-count: 1;
-            animation-fill-mode: backwards;
-        }
-
-        .offer--technologies-in-view .offer__technology::after {
-            animation-name: offer__technology-interaction;
-        }
-
-        .offer__technology:nth-child(1)::after {
-            animation-delay: 0.27s;
-        }
-
-        .offer__technology:nth-child(2)::after {
-            animation-delay: 0.57s;
-        }
-
-        .offer__technology:nth-child(3)::after {
-            animation-delay: 0.87s;
-        }
-
-        @keyframes offer__technology-interaction {
-            0% {
-                transform: translateX(-90px) rotate(45deg) translateX(25px);
-
-                opacity: 0;
-            }
-            5% {
-                opacity: 1;
-            }
-            10% {
-                transform: translateX(-90px) rotate(45deg) translateX(40px);
-
-                opacity: 1;
-            }
-            25% {
-                transform: translateX(-90px) rotate(45deg) translateX(36px);
-
-                opacity: 1;
-            }
-            35% {
-                transform: translateX(-90px) rotate(45deg) translateX(40px);
-
-                opacity: 1;
-            }
-            50% {
-                transform: translateX(-90px) rotate(45deg) translateX(39px);
-
-                opacity: 1;
-            }
-            100% {
-                transform: translateX(-90px) rotate(45deg) translateX(37px);
-
-                opacity: 0;
-
-                animation-timing-function: cubic-bezier(.2, 1.2, .4, .8);
-            }
-        }
-
-            .offer__technology-link {
-                position: relative;
-
-                transform: translateZ(0);
-
-                display: block;
-                min-height: 180px;
-                min-width: 180px;
-
-                font-family: "Caudex", "Garamond", serif;
-                font-size: 1.6875rem;
-                text-decoration: none;
-                text-transform: uppercase;
-                letter-spacing: 0.025em;
-
-                color: #bdbdbd;
             }
 
-            .section--dark a.offer__technology-link,
-            .section--dark a.offer__technology-link:focus,
-            .section--dark a.offer__technology-link:active {
-                outline: none;
-            }
-
-            .offer__technology--js .offer__technology-link {
-                letter-spacing: 0em;
-            }
-
-            .offer__technology-link::before,
-            .offer__technology-link::after {
-                content: "";
-
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                left: 0;
-                right: 0;
-
-                width: 120px;
-                height: 120px;
-                margin: auto;
-
-                border: 1px solid;
-
-                pointer-events: auto;
-
-                transition: inherit;
-            }
-
-            .offer__technology-link::before {
-                transform: translate(0px, 0px) rotate(-45deg);
-
-                border-color: #bdbdbd;
-            }
-
-            .offer__technology-link::after {
-                border-color: #B3794E;
-
-                animation-duration: 1s;
-                animation-timing-function: ease-out;
-                animation-iteration-count: 1;
-                animation-fill-mode: backwards;
-            }
-
-            .offer__technology-link:hover::after,
-            .offer__technology-link:focus::after {
-                border-color: #6595A9;
-            }
-
-            .offer__technology--html .offer__technology-link::after,
-            .offer__technology--js .offer__technology-link::after {
-                transform: translate(-5px, 5px) rotate(-45deg);
-            }
-
-            .offer__technology--css .offer__technology-link::before {
-                transform: translate(-5px, 5px) rotate(-45deg);
-            }
-
-            .offer__technology--css .offer__technology-link::after {
-                transform: translate(0px, 0px) rotate(-45deg);
-            }
-
-            .offer__technology--html .offer__technology-link:hover::before,
-            .offer__technology--html .offer__technology-link:focus::before,
-            .offer__technology--js .offer__technology-link:hover::before,
-            .offer__technology--js .offer__technology-link:focus::before {
-                transform: translate(5px, 0px) rotate(-45deg);
-            }
-
-            .offer__technology--html .offer__technology-link:hover::after,
-            .offer__technology--html .offer__technology-link:focus::after,
-            .offer__technology--js .offer__technology-link:hover::after,
-            .offer__technology--js .offer__technology-link:focus::after {
-                transform: translate(-5px, 0px) rotate(-45deg);
-            }
-
-            .offer__technology--css .offer__technology-link:hover::before,
-            .offer__technology--css .offer__technology-link:focus::before {
-                transform: translate(-5px, 0px) rotate(-45deg);
-            }
-
-            .offer__technology--css .offer__technology-link:hover::after,
-            .offer__technology--css .offer__technology-link:focus::after {
-                transform: translate(5px, 0px) rotate(-45deg);
-            }
-
-            .offer__technology--html .offer__technology-link:active::before,
-            .offer__technology--js .offer__technology-link:active::before {
-                transform: translate(7px, 0px) rotate(-45deg);
-            }
-
-            .offer__technology--html .offer__technology-link:active::after,
-            .offer__technology--js .offer__technology-link:active::after {
-                transform: translate(-7px, 0px) rotate(-45deg);
-            }
-
-            .offer__technology--css .offer__technology-link:active::before {
-                transform: translate(-7px, 0px) rotate(-45deg);
-            }
-
-            .offer__technology--css .offer__technology-link:active::after {
-                transform: translate(7px, 0px) rotate(-45deg);
-            }
-
-            .offer--technologies-in-view .offer__technology .offer__technology-link::after {
-                animation-name: offer__technology-border-blink;
-            }
-
-            .offer--technologies-in-view .offer__technology:nth-child(1) .offer__technology-link::after {
-                animation-delay: 0.35s;
-            }
-
-            .offer--technologies-in-view .offer__technology:nth-child(2) .offer__technology-link::after {
-                animation-delay: 0.65s;
-            }
-
-            .offer--technologies-in-view .offer__technology:nth-child(3) .offer__technology-link::after {
-                animation-delay: 0.95s;
-            }
-
-            @keyframes offer__technology-border-blink {
-                5% {
-                    border-color: #6595A9;
-
-                    animation-timing-function: cubic-bezier(0, .0, .2, 1);
-                }
-                10% {
-                    border-color: #6595A9;
-                }
-            }
-
-                .offer__technology-name {
-	                position: absolute;
-                    top: 50%;
-                    left: 50%;
-
-                    transform: translate(-50%, -50%);
-
-                    margin-top: -2px;
-
-                    pointer-events: auto;
+                .offer__feature-icon-svg {
+                    stroke: #bdbdbd;
                 }
 
-                    .offer__technology-name .text {
-                        animation-duration: 1s;
-                        animation-timing-function: ease-out;
-                        animation-iteration-count: 1;
-                        animation-fill-mode: backwards;
+                    .offer__feature-icon-svg .color {
+                        stroke: #BF865E;
                     }
 
-                    .offer__technology--html .letter4 {
-                        margin-left: -0.035em;
-                    }
-
-                    .offer__technology-link:hover .text,
-                    .offer__technology-link:focus .text {
-                        color: #6595A9;
-                    }
-
-                    .offer__technology-link:active .text {
-                        letter-spacing: 0.05em;
-                    }
-
-                    .offer__technology--js:active .text {
-                        letter-spacing: 0.025em;
-                    }
-
-                    .offer--technologies-in-view .offer__technology .offer__technology-name .text {
-                        animation-name: offer__technology-name-blink;
-                    }
-
-                    .offer--technologies-in-view .offer__technology:nth-child(1) .offer__technology-name .text {
-                        animation-delay: 0.35s;
-                    }
-
-                    .offer--technologies-in-view .offer__technology:nth-child(2) .offer__technology-name .text {
-                        animation-delay: 0.65s;
-                    }
-
-                    .offer--technologies-in-view .offer__technology:nth-child(3) .offer__technology-name .text {
-                        animation-delay: 0.95s;
-                    }
-
-                    @keyframes offer__technology-name-blink {
-                        5% {
-                            color: #6595A9;
-
-                            animation-timing-function: cubic-bezier(0, .0, .2, 1);
-                        }
-                        10% {
-                            color: #6595A9;
-                        }
-                    }
-
-                .offer__technology-name::before,
-                .offer__technology-name::after,
-                .offer__technology-name .text::after {
-                    content: "";
-
-                    position: absolute;
-                    bottom: -12px;
-                    left: 50%;
-
-                    width: 4px;
-                    height: 4px;
-
-                    background-color: #bdbdbd;
-
-                    pointer-events: auto;
-
-                    transition: inherit;
-                    animation-duration: 1s;
-                    animation-timing-function: ease-out;
-                    animation-iteration-count: 1;
-                    animation-fill-mode: backwards;
-                }
-
-                .offer__technology-name::before {
-                    transform: translateX(-10px) rotate(-45deg) translate(-50%, -50%);
-                }
-
-                .offer__technology-name::after {
-                    transform: translateX(10px) rotate(-45deg) translate(-50%, -50%);
-                }
-
-                .offer__technology-name .text::after {
-                    transform: rotate(-45deg) translate(-50%, -50%);
-                }
-
-                .offer__technology-link:hover .offer__technology-name::before,
-                .offer__technology-link:focus .offer__technology-name::before {
-                    transform: translateX(-11px) rotate(-45deg) translate(-50%, -50%);
-                }
-
-                .offer__technology-link:hover .offer__technology-name::after,
-                .offer__technology-link:focus .offer__technology-name::after {
-                    transform: translateX(11px) rotate(-45deg) translate(-50%, -50%);
-                }
-
-                .offer__technology-link:active .offer__technology-name::before {
-                    transform: translateX(-12px) rotate(-45deg) translate(-50%, -50%);
-                }
-
-                .offer__technology-link:active .offer__technology-name::after {
-                    transform: translateX(12px) rotate(-45deg) translate(-50%, -50%);
-                }
-
-                .offer__technology-link:hover .offer__technology-name::before,
-                .offer__technology-link:hover .offer__technology-name::after,
-                .offer__technology-link:hover .offer__technology-name .text::after,
-                .offer__technology-link:focus .offer__technology-name::before,
-                .offer__technology-link:focus .offer__technology-name::after,
-                .offer__technology-link:focus .offer__technology-name .text::after {
-                    background-color: #6595A9;
-                }
-
-                .offer--technologies-in-view .offer__technology .offer__technology-name::before,
-                .offer--technologies-in-view .offer__technology .offer__technology-name::after,
-                .offer--technologies-in-view .offer__technology .offer__technology-name .text::after {
-                    animation-name: offer__technology-dot-blink;
-                }
-
-                .offer--technologies-in-view .offer__technology:nth-child(1) .offer__technology-name::before,
-                .offer--technologies-in-view .offer__technology:nth-child(1) .offer__technology-name::after,
-                .offer--technologies-in-view .offer__technology:nth-child(1) .offer__technology-name .text::after {
-                    animation-delay: 0.35s;
-                }
-
-                .offer--technologies-in-view .offer__technology:nth-child(2) .offer__technology-name::before,
-                .offer--technologies-in-view .offer__technology:nth-child(2) .offer__technology-name::after,
-                .offer--technologies-in-view .offer__technology:nth-child(2) .offer__technology-name .text::after {
-                    animation-delay: 0.65s;
-                }
-
-                .offer--technologies-in-view .offer__technology:nth-child(3) .offer__technology-name::before,
-                .offer--technologies-in-view .offer__technology:nth-child55) .offer__technology-name::after,
-                .offer--technologies-in-view .offer__technology:nth-child(3) .offer__technology-name .text::after {
-                    animation-delay: 0.95s;
-                }
-
-                @keyframes offer__technology-dot-blink {
-                    5% {
-                        background-color: #6595A9;
-
-                        animation-timing-function: cubic-bezier(0, .0, .2, 1);
-                    }
-                    10% {
-                        background-color: #6595A9;
-                    }
-                }
-
-            .offer__technology-description {
+            .offer__feature-description {
                 padding-top: calc(12vh - 140px);
-                margin-top: 40px;
+                margin-top: 32px;
 
                 font-size: 1.0625rem;
                 line-height: 1.588235;
@@ -4911,26 +4549,205 @@ input[type="time"]:focus {
                 pointer-events: auto;
             }
 
-                .offer__technology-description .small {
+                .offer__feature-description .small {
                     font-size: 0.8235294em;
                 }
 
-                @media (max-width: 359px) {
+                @media (min-width: 360px) {
 
-                    .offer__technology--css .layout__br--all::before {
+                    .offer__feature-description .mobile-break {
                         display: none;
                     }
                 }
 
-/*//////////////////////////// TECHNOLOGIES ////////////////////////////*/
+/*---------------------------- FEATURES ANIMATIONS ----------------------------*/
+
+.offer__feature-icon .gear {
+    animation-delay: 0s;
+    animation-duration: 1.25s;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(1, 0.35, 0.8, 1.2);
+}
+
+.offer__feature-icon .gear--big {
+    transform-origin: 49.9px 73.4px;
+
+    animation-name: offer__gear-next-step--big;
+}
+
+.offer__feature-icon .gear--small {
+    transform-origin: 129.4px 37.3px;
+
+    animation-name: offer__gear-next-step--small;
+}
+
+@keyframes offer__gear-next-step--big {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(45deg);
+    }
+}
+
+@keyframes offer__gear-next-step--small {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-45deg);
+    }
+}
+
+.offer__feature-icon .wire {
+    animation-name: offer__bulb-flash;
+    animation-delay: 0s;
+    animation-duration: 1.25s;
+    animation-iteration-count: 3;
+    animation-timing-function: cubic-bezier(0.5, 0, 1, 1);
+}
+
+@keyframes offer__bulb-flash {
+    0% { opacity: 1; }
+    10% { opacity: 0.8; }
+    16% { opacity: 0.9; }
+    22% { opacity: 0.78; }
+    30% { opacity: 1; }
+    50% { opacity: 1; }
+    55% { opacity: 0.82; }
+    62% { opacity: 0.95; }
+    69% { opacity: 0.75; }
+    75% { opacity: 1; }
+    82% { opacity: 0.8; }
+    90% { opacity: 0.97; }
+    95% { opacity: 0.92; }
+    100% { opacity: 1; }
+}
+
+.offer__feature-icon .hand {
+    transform-origin: 80.9px 52.4px;
+
+    animation-name: offer__hand-move;
+    animation-delay: 0s;
+    animation-duration: 1.2s;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(0.15, 0.85, .45, 1.15);
+}
+
+.offer__feature-icon .tap {
+    display: none;
+}
+
+@supports (r: 10) {
+
+    .offer__feature-icon .tap {
+        display: block;
+    }
+}
+
+.offer__feature-icon .tap {
+    transform-origin: 77.9px 50.9px;
+
+    opacity: 0;
+
+    animation-name: offer__hand-tap, offer__hand-tap-opacity;
+    animation-delay: 0.0075s;
+    animation-duration: 1.15s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(.175, .9, .75, 1);
+    animation-timing-function: cubic-bezier(.45, .4, .25, .8);
+}
+
+@keyframes offer__hand-move {
+    0% {
+        transform: scale(1) translate(0px, 0px);
+    }
+    20% {
+        transform: scale(0.975) translate(-1%, -0.5%);
+    }
+    60% {
+        transform: scale(0.975) translate(-1%, -0.5%);
+
+        animation-timing-function: cubic-bezier(.3, 1.2, .4, 1.1);
+    }
+    100% {
+        transform: scale(1) translate(0px, 0px);
+    }
+}
+
+@keyframes offer__hand-tap {
+    0% {
+        r: 0;
+    }
+    100% {
+        r: 28;
+    }
+}
+
+@keyframes offer__hand-tap-opacity {
+    0% {
+        opacity: 0;
+    }
+    33.333% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.offer__feature-icon--no-anim .wire,
+.offer__feature-icon--no-anim .gear,
+.offer__feature-icon--no-anim .tap,
+.offer__feature-icon--no-anim .hand {
+    animation: none;
+}
+
+/*//////////////////////////// FEATURES ////////////////////////////*/
 
     .offer__info-wrapper {
-        max-width: 100%;
+        width: 100%;
+        max-width: 780px;
+    }
+
+    @media (max-width: 899px) {
+
+        .offer__info-wrapper {
+            max-width: 580px;
+        }
+    }
+
+    @media (max-width: 767px) {
+
+        .offer__info-wrapper {
+            max-width: 640px;
+        }
+    }
+
+    @media (max-width: 699px) {
+
+        .offer__info-wrapper {
+            max-width: 480px;
+        }
+    }
+
+    @media (max-width: 459px) {
+
+        .offer__info-wrapper {
+            max-width: 310px;
+        }
+    }
+
+    @media (max-width: 359px) {
+
+        .offer__info-wrapper {
+            max-width: 270px;
+        }
     }
 
         .offer__info {
             width: 100%;
-            padding: 0 calc(6vw - 24px);
 
             font-size: 1.0625rem;
             font-style: italic;
@@ -4946,11 +4763,8 @@ input[type="time"]:focus {
             }
         }
 
-        @media (max-width: 1219px) {
-
-            .offer__info + .offer__info {
-                margin-top: 8px;
-            }
+        .offer__info + .offer__info {
+            margin-top: 1.68750em;
         }
 
             .offer__info .text {
@@ -4958,17 +4772,6 @@ input[type="time"]:focus {
                 z-index: 2;
 
                 pointer-events: auto;
-            }
-
-            .offer__info a {
-                text-decoration: none;
-
-                color: #C9B47F;
-            }
-
-            .offer__info a:hover,
-            .offer__info a:focus {
-                color: #78A7BB;
             }
 
         .offer__info .small {
@@ -5651,7 +5454,7 @@ input[type="time"]:focus {
             .technologies__text-content-wrapper,
             .technologies__sample-content-wrapper {
                 overflow: auto;
-                scroll-boundary-behavior: contain;
+                overscroll-behavior: contain;
 
                 will-change: scroll-position;
             }
@@ -5780,6 +5583,17 @@ input[type="time"]:focus {
                         .technologies__text-content abbr::after {
                             display: none;
                         }
+                    }
+
+                    .technologies__text-content a {
+                        text-decoration: none;
+
+                        color: #C9B47F;
+                    }
+
+                    .technologies__text-content a:hover,
+                    .technologies__text-content a:focus {
+                        color: #78A7BB;
                     }
 
                 .technologies__sample-content {
@@ -7622,7 +7436,7 @@ input[type="time"]:focus {
             transform-origin: bottom right;
 
             height: 90%;
-            height: calc(100% - ((15vh + 15vw) / 4));
+            height: calc(100% - ((15vh + 15vw) / 3));
 
             pointer-events: none;
 
@@ -7657,7 +7471,7 @@ input[type="time"]:focus {
 
                 transform: translateY(-2%);
 
-                height: calc(100% - ((30vh + 30vw) / 4));
+                height: calc(100% - ((30vh + 30vw) / 3.5));
             }
         }
 
@@ -8001,6 +7815,14 @@ input[type="time"]:focus {
 
                 .pricelist__pricelist {
                     margin-bottom: 40px;
+                }
+            }
+
+            @media (max-width: 639px) {
+
+                .pricelist__pricelist,
+                .pricelist__terms-and-conditions {
+                    max-width: 87.5%;
                 }
             }
 
@@ -8563,6 +8385,14 @@ input[type="time"]:focus {
                 }
             }
 
+            @media (max-width: 639px) {
+
+                .contact__contact-info,
+                .contact__form {
+                    max-width: 87.5%;
+                }
+            }
+
             @supports (display: contents) {
 
                 @media (max-width: 767px) {
@@ -8811,6 +8641,14 @@ input[type="time"]:focus {
         }
     }
 
+    @media (min-width: 480px) and (max-width: 639px) {
+
+        .contact__address,
+        .contact__other-informations {
+            width: 43.75%;
+        }
+    }
+
     @media (min-width: 400px) and (max-width: 479px) {
 
         .contact__address,
@@ -8887,11 +8725,20 @@ input[type="time"]:focus {
         }
     }
 
-    @media (min-width: 480px) and (max-width: 767px) {
+    @media (min-width: 640px) and (max-width: 767px) {
 
         .contact__registration-info {
             max-width: 75%;
             margin-left: 12.5%;
+            margin-right: auto;
+        }
+    }
+
+    @media (min-width: 480px) and (max-width: 639px) {
+
+        .contact__registration-info {
+            max-width: 87.5%;
+            margin-left: 6.25%;
             margin-right: auto;
         }
     }
