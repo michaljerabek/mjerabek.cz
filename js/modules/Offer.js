@@ -334,6 +334,11 @@
                 initGlass($featureIcon.filter(SELECTOR.featureIconOptimization));
             },
 
+            isIE10Or11 = function () {
+
+                return parseInt($self.css("text-indent")) === 1;
+            },
+
             init = function () {
 
                 $self = $(SELECTOR.self);
@@ -345,7 +350,10 @@
 
                 setTimeout(initBackground, 0);
 
-                setTimeout(initFeaturesAnim, 0);
+                if (!isIE10Or11()) {
+
+                    setTimeout(initFeaturesAnim, 0);
+                }
             };
 
         return {

@@ -4237,6 +4237,16 @@ input[type="time"]:focus {
     background-color: #111111;
 }
 
+/*Test IE10-11 pro JS (Offer.js).*/
+_:-ms-input-placeholder, :root .offer { /*IE10-11*/
+    text-indent: 1px;
+}
+
+_:-ms-input-placeholder, :root .offer * { /*IE10-11*/
+    text-indent: 0;
+}
+/*/*/
+
 .offer--light-on {
     color: #111;
 }
@@ -4621,6 +4631,15 @@ input[type="time"]:focus {
                 }
 
 /*---------------------------- FEATURES ANIMATIONS ----------------------------*/
+
+_:-ms-input-placeholder, :root .offer__feature-icon * { /*IE10-11*/
+    transition: none !important;
+    animation: none !important;
+}
+
+_:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
+    display: none !important;
+}
 
 .offer__feature-icon--default-anim .gear {
     animation-delay: 0s;
