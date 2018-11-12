@@ -2414,20 +2414,61 @@
 
     ns.Offer = (function () {
 
+        $.easing[ns + ".Offer__light-on"] = function (x) {
+            return x * x * x;
+        };
+
+        $.easing[ns + ".Offer__light-off"] = function (x) {
+            return Math.sqrt(1 - Math.pow(x - 1, 2));
+        };
+
         var CLASS = {
                 initFadeIn: "offer--init-fade-in",
-                technologiesInView: "offer--technologies-in-view",
-                parallaxDestroyed: "offer--no-parallax"
+                parallaxDestroyed: "offer--no-parallax",
+
+                lightOn: "offer--light-on",
+
+                featureIconDefaultAnim: "offer__feature-icon--default-anim",
+                featureIconNoDefaultAnim: "offer__feature-icon--no-default-anim",
+                featureIconHiddenAnim: "offer__feature-icon--hidden-anim",
+                featureIconBreakGears: "offer__feature-icon--break-gears",
+                featureIconRepairGears: "offer__feature-icon--repair-gears",
+                featureIconBreakGlass: "offer__feature-icon--break-glass",
+                featureIconRepairGlass: "offer__feature-icon--repair-glass",
+
+                btnLight: "btn--light",
+                btnDark: "btn--dark"
             },
 
             SELECTOR = {
                 self: ".offer",
-                technology: ".offer__technology",
+                findCenter: ".layout__center",
+                findBtn: ".btn",
 
                 background: ".offer__background",
                 backgroundLayers: ".offer__background-layer",
-                findSquare: ".square"
+                findSquare: ".square",
+
+                light: ".offer__light",
+
+                featureIcon: ".offer__feature-icon",
+                featureIconManual: ".offer__feature--manual .offer__feature-icon",
+                featureIconSystem: ".offer__feature--system .offer__feature-icon",
+                featureIconOptimization: ".offer__feature--optimization .offer__feature-icon"
             },
+
+            EVENT = {
+                defaultAnimEnd: "offer__defaultanimationend",
+                hiddenAnimEnd: "offer__hiddenanimationend"
+            },
+
+            FEATURE_ICON_ANIM_INTERVAL = 7000,
+            FEATURE_ICON_ANIM_DEFAULT_PREFIX = /^offer__default-anim/,
+            FEATURE_ICON_ANIM_IGNORE_PREFIX = /^offer__x-/,
+
+            LIGHT_BGC_RGB = "240, 237, 227",
+            LIGHT_ON_DURATION = 200,
+            LIGHT_OFF_DURATION = 450,
 
             $self,
 
@@ -2479,52 +2520,224 @@
                 }, 100);
             },
 
-            initInteractionAnimation = function () {
+            getFeaturesAnimIndex = function (lastIndex, count) {
 
-                var scrollDebounce = null,
-                    scrollTimeout = null,
+                var index = Math.ceil(Math.random() * count) - 1;
 
-                    $firstTechnology = null;
+                return index === lastIndex ? getFeaturesAnimIndex(lastIndex, count) : index;
+            },
 
-                ns.$win.on("scroll.Offer." + ns + " visibilitychange." + ns, function () {
+            initLigth = function ($toggleIcon) {
 
-                    clearTimeout(scrollDebounce);
-                    clearTimeout(scrollTimeout);
+                var $light, $btn, centerEl;
 
-                    if (document.hidden) {
+                $toggleIcon.on("click." + ns, function (event) {
+
+                    event.preventDefault();
+
+                    $light = $light || $self.find(SELECTOR.light);
+                    $btn = $btn || $self.find(SELECTOR.findBtn);
+                    centerEl = centerEl || $self.find(SELECTOR.findCenter)[0];
+
+                    var iconPosition = $toggleIcon.position(),
+
+                        iconCenter = [
+                            centerEl.offsetLeft + iconPosition.left + ($toggleIcon.outerWidth() / 2),
+                            centerEl.offsetTop + iconPosition.top + ($toggleIcon.outerHeight() / 2)
+                        ],
+
+                        isLightOn = $self.hasClass(CLASS.lightOn);
+
+                        $light.stop().animate({textIndent: isLightOn ? 0: 1}, {
+                            duration: isLightOn ? LIGHT_OFF_DURATION: LIGHT_ON_DURATION,
+                            easing: isLightOn ? ns + ".Offer__light-off": ns + ".Offer__light-on",
+
+                            step: function (progress) {
+
+                                $light.css({
+                                    background: "radial-gradient(circle at " + iconCenter[0] + "px " + iconCenter[1] + "px, rgb(" + LIGHT_BGC_RGB + ") " + (progress * 100) + "%, rgba(" + LIGHT_BGC_RGB + ", 0) 100%)",
+                                    opacity: progress
+                                });
+                            }
+                        });
+
+                        if (isLightOn) {
+
+                            $self.removeClass(CLASS.lightOn);
+
+                            $btn.removeClass(CLASS.btnDark)
+                                .addClass(CLASS.btnLight);
+
+                        } else {
+
+                            $self.addClass(CLASS.lightOn);
+
+                            $btn.removeClass(CLASS.btnLight)
+                                .addClass(CLASS.btnDark);
+                        }
+                });
+            },
+
+            initGears = function ($toggleIcon)  {
+
+                var animateLater = false;
+
+                $toggleIcon.on("click." + ns, function (event) {
+
+                    event.preventDefault();
+
+                    if (!$toggleIcon.hasClass(CLASS.featureIconDefaultAnim) && !$toggleIcon.hasClass(CLASS.featureIconHiddenAnim)) {
+
+                        if ($toggleIcon.hasClass(CLASS.featureIconBreakGears)) {
+
+                            $toggleIcon.removeClass(CLASS.featureIconBreakGears)
+                                .addClass(CLASS.featureIconRepairGears)
+                                .addClass(CLASS.featureIconHiddenAnim);
+
+                        } else {
+
+                            $toggleIcon.addClass(CLASS.featureIconBreakGears)
+                                .removeClass(CLASS.featureIconRepairGears)
+                                .addClass(CLASS.featureIconHiddenAnim);
+                        }
 
                         return;
                     }
 
-                    scrollDebounce = setTimeout(function() {
+                    animateLater = true;
+                });
 
-                        $firstTechnology = $firstTechnology || $self.find(SELECTOR.technology).first();
+                ns.$win.on([EVENT.defaultAnimEnd, EVENT.hiddenAnimEnd].join(" "), function (event, iconEl) {
 
-                        var firstTechnologyRect = $firstTechnology[0].getBoundingClientRect(),
-                            winHeight = window.innerHeight;
+                    if (iconEl === $toggleIcon[0]) {
 
-                        if (firstTechnologyRect.top <= winHeight * (2 / 3) && $self[0].getBoundingClientRect().bottom > winHeight * (1 / 3)) {
+                        if (event.type === EVENT.hiddenAnimEnd && $toggleIcon.hasClass(CLASS.featureIconRepairGears)) {
 
-                            $self.addClass(CLASS.technologiesInView);
-
-                            ns.$win.off("scroll.Offer." + ns + " visibilitychange." + ns);
+                            $toggleIcon.removeClass(CLASS.featureIconRepairGears);
                         }
-                    }, 200);
+
+                        if (animateLater) {
+
+                            animateLater = false;
+
+                            $toggleIcon.click();
+                        }
+                    }
+                });
+            },
+
+            initGlass = function ($toggleIcon)  {
+
+                var animateLater = false;
+
+                $toggleIcon.on("click." + ns, function (event) {
+
+                    event.preventDefault();
+
+                    if (!$toggleIcon.hasClass(CLASS.featureIconDefaultAnim) && !$toggleIcon.hasClass(CLASS.featureIconHiddenAnim)) {
+
+                        if ($toggleIcon.hasClass(CLASS.featureIconBreakGlass)) {
+
+                            $toggleIcon.removeClass(CLASS.featureIconBreakGlass)
+                                .addClass(CLASS.featureIconRepairGlass)
+                                .addClass(CLASS.featureIconHiddenAnim)
+                                .removeClass(CLASS.featureIconNoDefaultAnim);
+
+                        } else {
+
+                            $toggleIcon.addClass(CLASS.featureIconBreakGlass)
+                                .removeClass(CLASS.featureIconRepairGlass)
+                                .addClass(CLASS.featureIconHiddenAnim)
+                                .addClass(CLASS.featureIconNoDefaultAnim);
+                        }
+
+                        return;
+                    }
+
+                    animateLater = true;
                 });
 
-                scrollTimeout = setTimeout(function() {
+                ns.$win.on([EVENT.defaultAnimEnd, EVENT.hiddenAnimEnd].join(" "), function (event, iconEl, targetEl) {
 
-                    ns.$win.trigger("scroll.Offer." + ns);
+                    if (iconEl === $toggleIcon[0]) {
 
-                }, 300);
+                        ns.$temp[0] = targetEl;
 
-                ns.$win.on("technologies__interaction." + ns, function () {
+                        if (ns.$temp.closest("defs").length) {
 
-                    clearTimeout(scrollDebounce);
-                    clearTimeout(scrollTimeout);
+                            return;
+                        }
 
-                    ns.$win.off("scroll.Offer." + ns);
+                        if (event.type === EVENT.hiddenAnimEnd && $toggleIcon.hasClass(CLASS.featureIconRepairGlass)) {
+
+                            $toggleIcon.removeClass(CLASS.featureIconRepairGlass);
+                        }
+
+                        if (animateLater) {
+
+                            animateLater = false;
+
+                            $toggleIcon.click();
+                        }
+                    }
                 });
+            },
+
+            initFeaturesAnim = function () {
+
+                var $featureIcon = $self.find(SELECTOR.featureIcon),
+                    lastAnimIndex = -1;
+
+                $featureIcon.on("animationend." + ns, function (event) {
+
+                    if (event.originalEvent.animationName.match(FEATURE_ICON_ANIM_IGNORE_PREFIX)) {
+
+                        return;
+                    }
+
+                    if (event.originalEvent.animationName.match(FEATURE_ICON_ANIM_DEFAULT_PREFIX)) {
+
+                        ns.$temp[0] = event.currentTarget;
+
+                        ns.$temp.removeClass(CLASS.featureIconDefaultAnim);
+
+                        ns.$win.trigger(EVENT.defaultAnimEnd, [event.currentTarget, event.target, event.originalEvent.animationName]);
+
+                        return;
+                    }
+
+                    ns.$temp[0] = event.currentTarget;
+
+                    ns.$temp.removeClass(CLASS.featureIconHiddenAnim);
+
+                    ns.$win.trigger(EVENT.hiddenAnimEnd, [event.currentTarget, event.target, event.originalEvent.animationName]);
+                });
+
+                setInterval(function animateIconInterval() {
+
+                    var index = getFeaturesAnimIndex(lastAnimIndex, $featureIcon.length),
+
+                        $icon = $featureIcon.eq(index);
+
+                    lastAnimIndex = index;
+
+                    if ($icon.hasClass(CLASS.featureIconHiddenAnim) || $icon.hasClass(CLASS.featureIconNoDefaultAnim)) {
+
+                        if ($featureIcon.not("." + CLASS.featureIconHiddenAnim).not("." + CLASS.featureIconNoDefaultAnim).length > 0) {
+
+                            animateIconInterval();
+                        }
+
+                        return;
+                    }
+
+                    $icon.addClass(CLASS.featureIconDefaultAnim);
+
+                }, FEATURE_ICON_ANIM_INTERVAL);
+
+                initLigth($featureIcon.filter(SELECTOR.featureIconManual));
+                initGears($featureIcon.filter(SELECTOR.featureIconSystem));
+                initGlass($featureIcon.filter(SELECTOR.featureIconOptimization));
             },
 
             init = function () {
@@ -2537,7 +2750,8 @@
                 setTimeout(checkScrollTop, 50);
 
                 setTimeout(initBackground, 0);
-                setTimeout(initInteractionAnimation, 0);
+
+                setTimeout(initFeaturesAnim, 0);
             };
 
         return {
@@ -3170,6 +3384,7 @@
 (function (ns, $) {
 
     ns.$win = ns.$win || $(window);
+    ns.$doc = ns.$doc || $(document);
     ns.$temp = ns.$temp || $([null]);
 
     ns.Technologies = (function () {
@@ -3180,7 +3395,9 @@
                 fromRightTechnology: "technologies__technology--from-right",
                 showCodeSample: "technologies--show-sample",
 
-                toggle: "ui__content--technologies"
+                toggle: "ui__content--technologies",
+
+                hiddenOpener: "technologies__hidden-link"
             },
 
             DATA = {
@@ -3327,7 +3544,12 @@
 
                 if (!hideOnly) {
 
-                    openedByEl.focus();
+                    ns.$temp[0] = openedByEl;
+
+                    if (!ns.$temp.hasClass(CLASS.hiddenOpener)) {
+
+                        openedByEl.focus();
+                    }
                 }
 
                 setPagePerspective();
@@ -3583,7 +3805,7 @@
                     return !!$navItem.length;
                 }
 
-                var $opener = ns.Offer.find("[href*='" + id + "']");
+                var $opener = $openers.filter("[href*='" + id + "']").first();
 
                 if ($opener.length) {
 
