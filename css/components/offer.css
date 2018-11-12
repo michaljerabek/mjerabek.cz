@@ -361,6 +361,18 @@
                         stroke: currentColor;
                     }
 
+                    .edge .offer__feature-icon .hand {
+                        fill: #111;
+
+                        transition: fill 0.1s cubic-bezier(0, 0, .2, 1) 0s;
+                    }
+
+                    .edge .offer--light-on .offer__feature-icon .hand {
+                        fill: rgb(240, 237, 227);
+
+                        transition: fill 0.1s cubic-bezier(.5, 0, 1, 1) 0.1s;
+                    }
+
             .offer__feature-description {
                 padding-top: calc(12vh - 140px);
                 margin-top: 32px;
