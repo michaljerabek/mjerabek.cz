@@ -930,14 +930,11 @@
                         transition: filter 0.5s cubic-bezier(.3, .8, .4, .95) 0s;
                     }
 
-                    .edge .references__image-wrapper.hover .references__image,
-                    .no-js.edge .references__image-wrapper:hover .references__image,
                     .performance--low .references__image-wrapper.hover .references__image,
                     .no-js .performance--low .references__image-wrapper:hover .references__image {
                         filter: none;
                     }
 
-                    .edge .references__image-wrapper:focus-within .references__image,
                     .performance--low .references__image-wrapper:focus-within .references__image {
                         filter: none;
                     }
@@ -966,14 +963,11 @@
                             visibility 0s linear 0.65s;
                     }
 
-                    .edge .references__image-wrapper.hover .references__overlay,
-                    .no-js.edge .references__image-wrapper:hover .references__overlay,
                     .performance--low .references__image-wrapper.hover .references__overlay,
                     .no-js .performance--low .references__image-wrapper:hover .references__overlay {
                         background-color: rgba(60, 110, 116, 0.75);
                     }
 
-                    .edge .references__image-wrapper:focus-within .references__overlay,
                     .performance--low .references__image-wrapper:focus-within .references__overlay {
                         background-color: rgba(60, 110, 116, 0.75);
                     }

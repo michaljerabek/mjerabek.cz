@@ -244,7 +244,6 @@ a:active .transition-hideable {
     .no-js #html:target ~ .ui__perspective .ui__zoom-out,
     .no-js #css:target ~ .ui__perspective .ui__zoom-out,
     .no-js #js:target ~ .ui__perspective .ui__zoom-out,
-    .edge .ui__zoom-out,
     .performance--low .ui__zoom-out {
         filter: none;
     }

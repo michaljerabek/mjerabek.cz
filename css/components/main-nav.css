@@ -51,7 +51,6 @@
 }
 
 .no-js .main-nav,
-.edge .main-nav,
 .performance--low .main-nav {
     filter: none;
 }
