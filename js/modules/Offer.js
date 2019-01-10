@@ -56,7 +56,7 @@
                 hiddenAnimEnd: "offer__hiddenanimationend"
             },
 
-            FEATURE_ICON_ANIM_INTERVAL = 7000,
+            FEATURE_ICON_ANIM_INTERVAL = 6000,
             FEATURE_ICON_ANIM_DEFAULT_PREFIX = /^offer__default-anim/,
             FEATURE_ICON_ANIM_IGNORE_PREFIX = /^offer__x-/,
 
@@ -309,7 +309,7 @@
 
                 setInterval(function animateIconInterval() {
 
-                    var index = getFeaturesAnimIndex(lastAnimIndex, $featureIcon.length),
+                    var index = lastAnimIndex === -1 ? 1 : getFeaturesAnimIndex(lastAnimIndex, $featureIcon.length),
 
                         $icon = $featureIcon.eq(index);
 

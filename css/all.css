@@ -4616,6 +4616,8 @@ _:-ms-input-placeholder, :root .offer * { /*IE10-11*/
                     color: #BF865E;
                     stroke: #bdbdbd;
 
+                    cursor: help;
+
                     pointer-events: auto;
                 }
 
