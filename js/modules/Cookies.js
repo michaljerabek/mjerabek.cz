@@ -16,7 +16,7 @@
                     "<div class=\"layout__center\">",
                         "<span class=\"cookies__message cc-message\" id=\"cookieconsent:desc\">Tento web používá k analýze návštěvnosti soubory cookies. <a class=\"cookies__link cc-link\" tabindex=\"0\" href=\"http://cookiesandyou.com\" target=\"_blank\" lang=\"en\" aria-label=\"Dozvědět se více o cookies\">Více informací zde <i>(en)</i></a>.</span>",
                         "<div class=\"cookies__compliance cc-compliance\">",
-                            "<a class=\"cookies__dismiss btn btn--dark btn--small cc-dismiss cc-btn\" aria-label=\"Zavřít zprávu o cookies\" tabindex=\"0\"><span class=\"text cc-btn cc-dismiss\"><span class=\"small cc-btn cc-dismiss\">OK</span></span></a>",
+                        "<a class=\"cookies__dismiss btn btn--dark btn--special-small cc-dismiss cc-btn\" aria-label=\"Zavřít zprávu o cookies\" tabindex=\"0\"><span class=\"text cc-btn cc-dismiss\"><span class=\"small cc-btn cc-dismiss\">OK</span></span></a>",
                         "</div>",
                     "</div>",
                 "</div>"

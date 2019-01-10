@@ -952,7 +952,7 @@
                     "<div class=\"layout__center\">",
                         "<span class=\"cookies__message cc-message\" id=\"cookieconsent:desc\">Tento web používá k analýze návštěvnosti soubory cookies. <a class=\"cookies__link cc-link\" tabindex=\"0\" href=\"http://cookiesandyou.com\" target=\"_blank\" lang=\"en\" aria-label=\"Dozvědět se více o cookies\">Více informací zde <i>(en)</i></a>.</span>",
                         "<div class=\"cookies__compliance cc-compliance\">",
-                            "<a class=\"cookies__dismiss btn btn--dark btn--small cc-dismiss cc-btn\" aria-label=\"Zavřít zprávu o cookies\" tabindex=\"0\"><span class=\"text cc-btn cc-dismiss\"><span class=\"small cc-btn cc-dismiss\">OK</span></span></a>",
+                        "<a class=\"cookies__dismiss btn btn--dark btn--special-small cc-dismiss cc-btn\" aria-label=\"Zavřít zprávu o cookies\" tabindex=\"0\"><span class=\"text cc-btn cc-dismiss\"><span class=\"small cc-btn cc-dismiss\">OK</span></span></a>",
                         "</div>",
                     "</div>",
                 "</div>"
@@ -2740,6 +2740,11 @@
                 initGlass($featureIcon.filter(SELECTOR.featureIconOptimization));
             },
 
+            isIE10Or11 = function () {
+
+                return parseInt($self.css("text-indent")) === 1;
+            },
+
             init = function () {
 
                 $self = $(SELECTOR.self);
@@ -2751,7 +2756,10 @@
 
                 setTimeout(initBackground, 0);
 
-                setTimeout(initFeaturesAnim, 0);
+                if (!isIE10Or11()) {
+
+                    setTimeout(initFeaturesAnim, 0);
+                }
             };
 
         return {
@@ -2991,6 +2999,7 @@
                 infoItem: ".references__project-info-item",
                 infoContent: ".references__project-info-content",
                 moreInfo: ".references__project-more-info",
+                btn: ".references__project-btn",
 
                 background: ".references__background",
                 backgroundLayers: ".references__background-layer",
@@ -3056,6 +3065,9 @@
                     $currentTab.find(SELECTOR.moreInfo)
                         .removeClass(CLASS.fadeIn);
 
+                    $currentTab.find(SELECTOR.btn)
+                        .removeClass(CLASS.fadeIn);
+
                     next();
                 });
 
@@ -3115,6 +3127,9 @@
                 $queueEl.queue(TAB_SWITCH_QUEUE + willIndex, function () {
 
                     $tabToShow.find(SELECTOR.moreInfo)
+                        .addClass(CLASS.fadeIn);
+
+                    $tabToShow.find(SELECTOR.btn)
                         .addClass(CLASS.fadeIn);
 
                     if ($currentTab[0] !== $activeTab[0]) {

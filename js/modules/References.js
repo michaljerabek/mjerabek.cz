@@ -35,6 +35,7 @@
                 infoItem: ".references__project-info-item",
                 infoContent: ".references__project-info-content",
                 moreInfo: ".references__project-more-info",
+                btn: ".references__project-btn",
 
                 background: ".references__background",
                 backgroundLayers: ".references__background-layer",
@@ -100,6 +101,9 @@
                     $currentTab.find(SELECTOR.moreInfo)
                         .removeClass(CLASS.fadeIn);
 
+                    $currentTab.find(SELECTOR.btn)
+                        .removeClass(CLASS.fadeIn);
+
                     next();
                 });
 
@@ -159,6 +163,9 @@
                 $queueEl.queue(TAB_SWITCH_QUEUE + willIndex, function () {
 
                     $tabToShow.find(SELECTOR.moreInfo)
+                        .addClass(CLASS.fadeIn);
+
+                    $tabToShow.find(SELECTOR.btn)
                         .addClass(CLASS.fadeIn);
 
                     if ($currentTab[0] !== $activeTab[0]) {

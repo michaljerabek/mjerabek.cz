@@ -44,23 +44,30 @@
         line-height: 1.4375rem;
     }
 
+    .btn--special-small,
     .btn--small {
         min-width: 120px;
         min-height: 40px;
         padding: 4px 32px;
     }
 
+    _:-ms-fullscreen, :root .btn--special-small,
     _:-ms-fullscreen, :root .btn--small {
         padding-top: 10px;
     }
 
-    .btn--small .text {
+    .btn--special-small .text {
         font-size: 1.25rem;
         line-height: 1.25rem;
     }
 
-    .btn--small .text .small {
+    .btn--special-small .text .small {
         font-size: 1.0625rem;
+    }
+
+    .btn--small .text {
+        font-size: 1.1875rem;
+        line-height: 1.1875rem;
     }
 }
 
@@ -81,23 +88,41 @@
         line-height: 1.4375rem;
     }
 
-    .btn--small {
+    .btn--special-small {
         min-width: 96px;
         min-height: 32px;
         padding: 4px 24px;
     }
 
-    _:-ms-fullscreen, :root .btn--small {
+    _:-ms-fullscreen, :root .btn--special-small {
         padding-top: 7px;
+    }
+
+    .btn--special-small .text {
+        font-size: 1.0625rem;
+        line-height: 1.0625rem;
+    }
+
+    .btn--special-small .text .small {
+        font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 799px) {
+
+    _:-ms-fullscreen, :root .btn--small {
+        padding-top: 8px;
+    }
+
+    .btn--small {
+        min-width: 96px;
+        min-height: 36px;
+        padding: 6px 24px;
     }
 
     .btn--small .text {
         font-size: 1.0625rem;
         line-height: 1.0625rem;
-    }
-
-    .btn--small .text .small {
-        font-size: 0.875rem;
     }
 }
 
@@ -110,6 +135,12 @@
 
 .ff-android .btn .text {
     padding-bottom: 2px;
+}
+
+.apple .btn .text,
+.android .btn .text {
+    padding-top: 1px;
+    padding-bottom: 0;
 }
 
 .btn::-moz-focus-inner {
