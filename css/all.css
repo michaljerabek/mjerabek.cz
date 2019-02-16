@@ -7837,12 +7837,12 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
             position: absolute;
             bottom: -1%;
             right: -20%;
-            right: calc((-540px + 100%) / -2.25);
+            right: calc((-540px + 100%) / -2.3);
 
             transform-origin: bottom right;
 
             height: 90%;
-            height: calc(100% - ((15vh + 15vw) / 3));
+            height: calc(100% - ((17vh + 17vw) / 3));
 
             pointer-events: none;
 
@@ -7867,26 +7867,37 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 
             .about-me__img {
                 right: calc((-2304px + 100%) / 4.25);
+
+                height: calc(100% - ((12vh + 12vw) / 3));
             }
         }
 
         @media (max-width: 1023px) {
 
             .about-me__img {
-                right: calc((-2460px + 100%) / 6);
+                right: calc((-2460px + 100%) / 6.1);
 
                 transform: translateY(-2%);
 
-                height: calc(100% - ((30vh + 30vw) / 3.5));
+                height: calc(100% - ((35vh + 35vw) / 3.5));
             }
         }
 
         @media (max-width: 767px) {
 
             .about-me__img {
-                right: calc((540px + 100%) / -4.5);
+                right: calc((540px + 100%) / -5);
 
                 height: auto;
+                width: calc(540px + 55vw);
+            }
+        }
+
+        @media (max-width: 479px) {
+
+            .about-me__img {
+                right: calc((540px + 100%) / -4.5);
+
                 width: calc(540px + 60vw);
             }
         }
@@ -7980,7 +7991,14 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
         @media (max-width: 767px) {
 
             .about-me__content {
-                padding-bottom: 48vmin;
+                padding-bottom: 44vmin;
+            }
+        }
+
+        @media (max-width: 639px) {
+
+            .about-me__content {
+                padding-bottom: 52vmin;
             }
         }
 
