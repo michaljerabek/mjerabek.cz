@@ -184,7 +184,9 @@
         }
 
         .intro__logo-svg + .intro__logo-svg {
-            margin-left: -100px;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
 
         .no-js .intro__logo-svg,
@@ -224,20 +226,12 @@
             .intro__logo-svg {
                 width: 100px;
             }
-
-            .intro__logo-svg + .intro__logo-svg {
-                margin-left: -100px;
-            }
         }
 
         @media (min-height: 768px) and (min-width: 1024px) and (max-width: 1219px) {
 
             .intro__logo-svg {
                 width: 96px;
-            }
-
-            .intro__logo-svg + .intro__logo-svg {
-                margin-left: -96px;
             }
         }
 
@@ -246,20 +240,12 @@
             .intro__logo-svg {
                 width: 92px;
             }
-
-            .intro__logo-svg + .intro__logo-svg {
-                margin-left: -92px;
-            }
         }
 
         @media (min-height: 768px) and (min-width: 640px) and (max-width: 767px) {
 
             .intro__logo-svg {
                 width: 88px;
-            }
-
-            .intro__logo-svg + .intro__logo-svg {
-                margin-left: -88px;
             }
         }
 
@@ -268,20 +254,12 @@
             .intro__logo-svg {
                 width: 84px;
             }
-
-            .intro__logo-svg + .intro__logo-svg {
-                margin-left: -84px;
-            }
         }
 
         @media (min-height: 768px) and (max-width: 479px) {
 
             .intro__logo-svg {
                 width: 80px;
-            }
-
-            .intro__logo-svg + .intro__logo-svg {
-                margin-left: -80px;
             }
         }
 
@@ -290,20 +268,12 @@
             .intro__logo-svg {
                 width: 96px;
             }
-
-            .intro__logo-svg + .intro__logo-svg {
-                margin-left: -96px;
-            }
         }
 
         @media (min-height: 640px) and (max-height: 767px) and (min-width: 1024px) and (max-width: 1219px) {
 
             .intro__logo-svg {
                 width: 92px;
-            }
-
-            .intro__logo-svg + .intro__logo-svg {
-                margin-left: -92px;
             }
         }
 
@@ -312,20 +282,12 @@
             .intro__logo-svg {
                 width: 88px;
             }
-
-            .intro__logo-svg + .intro__logo-svg {
-                margin-left: -88px;
-            }
         }
 
         @media (min-height: 640px) and (max-height: 767px) and (min-width: 640px) and (max-width: 767px) {
 
             .intro__logo-svg {
                 width: 84px;
-            }
-
-            .intro__logo-svg + .intro__logo-svg {
-                margin-left: -84px;
             }
         }
 
@@ -334,20 +296,12 @@
             .intro__logo-svg {
                 width: 80px;
             }
-
-            .intro__logo-svg + .intro__logo-svg {
-                margin-left: -80px;
-            }
         }
 
         @media (min-height: 640px) and (max-height: 767px) and (max-width: 479px) {
 
             .intro__logo-svg {
                 width: 76px;
-            }
-
-            .intro__logo-svg + .intro__logo-svg {
-                margin-left: -76px;
             }
         }
 
@@ -356,20 +310,12 @@
             .intro__logo-svg {
                 width: 88px;
             }
-
-            .intro__logo-svg + .intro__logo-svg {
-                margin-left: -88px;
-            }
         }
 
         @media (max-height: 639px) and (min-width: 1024px) and (max-width: 1219px) {
 
             .intro__logo-svg {
                 width: 82px;
-            }
-
-            .intro__logo-svg + .intro__logo-svg {
-                margin-left: -82px;
             }
         }
 
@@ -378,20 +324,12 @@
             .intro__logo-svg {
                 width: 76px;
             }
-
-            .intro__logo-svg + .intro__logo-svg {
-                margin-left: -76px;
-            }
         }
 
         @media (max-height: 639px) and (min-width: 640px) and (max-width: 767px) {
 
             .intro__logo-svg {
                 width: 72px;
-            }
-
-            .intro__logo-svg + .intro__logo-svg {
-                margin-left: -72px;
             }
         }
 
@@ -400,20 +338,12 @@
             .intro__logo-svg {
                 width: 72px;
             }
-
-            .intro__logo-svg + .intro__logo-svg {
-                margin-left: -72px;
-            }
         }
 
         @media (max-height: 639px) and (max-width: 479px) {
 
             .intro__logo-svg {
                 width: 72px;
-            }
-
-            .intro__logo-svg + .intro__logo-svg {
-                margin-left: -72px;
             }
         }
 
