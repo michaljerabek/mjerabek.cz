@@ -122,11 +122,11 @@
         @media (max-width: 1023px) {
 
             .about-me__img {
-                right: calc((-2460px + 100%) / 6.1);
+                right: calc((-2460px + 100%) / 6.4);
 
                 transform: translateY(-2%);
 
-                height: calc(100% - ((35vh + 35vw) / 3.5));
+                height: calc(100% - ((25vh + 25vw) / 2.4));
             }
         }
 
@@ -137,6 +137,15 @@
 
                 height: auto;
                 width: calc(540px + 55vw);
+            }
+        }
+
+        @media (max-width: 767px) and (max-height: 479px) {
+
+            .about-me__img {
+                right: calc((540px + 100%) / -5.75);
+
+                width: calc(540px + 45vw);
             }
         }
 
@@ -153,6 +162,13 @@
 
             .about-me__img {
                 bottom: -4vw;
+            }
+        }
+
+        @media (max-height: 479px) and (max-width: 767px) {
+
+            .about-me__img {
+                bottom: -2vw;
             }
         }
 
