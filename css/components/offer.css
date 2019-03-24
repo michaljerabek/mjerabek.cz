@@ -359,9 +359,11 @@ _:-ms-input-placeholder, :root .offer * { /*IE10-11*/
                     color: #BF865E;
                     stroke: #bdbdbd;
 
-                    cursor: help;
-
                     pointer-events: auto;
+                }
+
+                .js .offer__feature-icon-svg {
+                    cursor: help;
                 }
 
                 .offer--light-on .offer__feature-icon-svg {
