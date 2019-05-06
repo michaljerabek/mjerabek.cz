@@ -9,8 +9,6 @@
     display: flex;
     width: 100%;
 	min-height: 100vmin;
-
-    will-change: contents;
 }
 
 @media (min-height: 1024px) and (min-width: 1024px) {
