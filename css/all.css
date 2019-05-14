@@ -6579,6 +6579,8 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
                 .references__project-name {
                     display: block;
 
+                    margin-bottom: 0.25rem;
+
                     font-family: "Caudex";
                     font-variant: small-caps;
                     text-indent: -0.05em;
@@ -6604,6 +6606,8 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
                 @media (max-width: 767px) {
 
                     .references__project-name {
+                        margin-bottom: 0.125rem;
+
                         font-size: 1.6875rem;
                     }
                 }
@@ -6817,6 +6821,62 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 
 [href*="#reference-trutnov-vet"] .references__project-name .letter10 {
     margin-right: 0.005em;
+}
+
+[href*="#reference-pojistena-pujcka"] .references__project-name .word1 .letter1 {
+    margin-right: -0.005em;
+}
+
+[href*="#reference-pojistena-pujcka"] .references__project-name .word1 .letter2 {
+    margin-right: 0.005em;
+}
+
+[href*="#reference-pojistena-pujcka"] .references__project-name .word1 .letter3 {
+    margin-right: -0.0075em;
+}
+
+[href*="#reference-pojistena-pujcka"] .references__project-name .word1 .letter4 {
+    margin-right: 0.02em;
+}
+
+[href*="#reference-pojistena-pujcka"] .references__project-name .word1 .letter5 {
+    margin-right: 0.0175em;
+}
+
+[href*="#reference-pojistena-pujcka"] .references__project-name .word1 .letter6 {
+    margin-right: -0.0075em;
+}
+
+[href*="#reference-pojistena-pujcka"] .references__project-name .word1 .letter7 {
+    margin-right: -0.015em;
+}
+
+[href*="#reference-pojistena-pujcka"] .references__project-name .word1 .letter8 {
+    margin-right: -0.02em;
+}
+
+[href*="#reference-pojistena-pujcka"] .references__project-name .word1 .letter9 {
+    margin-right: -0.065em;
+}
+
+[href*="#reference-pojistena-pujcka"] .references__project-name .word2 .letter1 {
+    margin-right: 0.005em;
+}
+
+[href*="#reference-pojistena-pujcka"] .references__project-name .word2 .letter2 {
+    margin-right: -0.0175em;
+}
+
+[href*="#reference-pojistena-pujcka"] .references__project-name .word2 .letter3 {
+    margin-right: -0.0em;
+}
+
+[href*="#reference-pojistena-pujcka"] .references__project-name .word2 .letter4 {
+    margin-right: 0.0035em;
+}
+
+[href*="#reference-pojistena-pujcka"] .references__project-name .word2 .letter5 {
+    margin-right: -0.01em;
 }
 
 /*--------------------------------------------------------------------*/
