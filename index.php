@@ -2,7 +2,7 @@
 
 session_start();
 
-define("VERSION", "2019-05-14");
+define("VERSION", "2019-05-15");
 
 if (isset($_GET["action"])) {
 

@@ -267,97 +267,36 @@
 
 /*---------------------------- KERNING ----------------------------*/
 
-[href*="#reference-nezavislaci"] .references__project-name .letter1 {
-	margin-right: -0.02em;
+[href*="#reference-zase-ostre"] .references__project-name .word1 .letter1 {
+    margin-right: 0.0115em;
 }
 
-[href*="#reference-nezavislaci"] .references__project-name .letter2 {
-	margin-right: -0.0em;
+[href*="#reference-zase-ostre"] .references__project-name .word1 .letter2 {
+    margin-right: -0.015em;
 }
 
-[href*="#reference-nezavislaci"] .references__project-name .letter3 {
-	margin-right: -0.005em;
-}
-
-[href*="#reference-nezavislaci"] .references__project-name .letter4 {
-	margin-right: -0.1075em;
-}
-
-[href*="#reference-nezavislaci"] .references__project-name .letter5 {
-	margin-right: -0.0075em;
-}
-
-[href*="#reference-nezavislaci"] .references__project-name .letter6 {
-	margin-right: 0.005em;
-}
-
-[href*="#reference-nezavislaci"] .references__project-name .letter7 {
+[href*="#reference-zase-ostre"] .references__project-name .word1 .letter3 {
     margin-right: 0.005em;
 }
 
-[href*="#reference-nezavislaci"] .references__project-name .letter8 {
-    margin-right: -0.035em;
+[href*="#reference-zase-ostre"] .references__project-name .word1 .letter4 {
+    margin-right: -0.045em;
 }
 
-[href*="#reference-nezavislaci"] .references__project-name .letter9 {
-    margin-right: -0.025em;
+[href*="#reference-zase-ostre"] .references__project-name .word2 .letter1 {
+    margin-right: 0.0325em;
 }
 
-[href*="#reference-nezavislaci"] .references__project-name .letter10 {
-    margin-right: 0.0025em;
+[href*="#reference-zase-ostre"] .references__project-name .word2 .letter2 {
+    margin-right: 0.0315em;
 }
 
-
-[href*="#reference-design-apartman"] .references__project-name .word1 .letter1 {
-    margin-right: -0.015em;
-}
-
-[href*="#reference-design-apartman"] .references__project-name .word1 .letter2 {
-    margin-right: 0.0em;
-}
-
-[href*="#reference-design-apartman"] .references__project-name .word1 .letter3 {
-    margin-right: 0.01em;
-}
-
-[href*="#reference-design-apartman"] .references__project-name .word1 .letter4 {
-    margin-right: -0.015em;
-}
-
-[href*="#reference-design-apartman"] .references__project-name .word1 .letter5 {
-    margin-right: -0.02em;
-}
-
-[href*="#reference-design-apartman"] .references__project-name .word1 .letter6 {
-    margin-right: -0.05em;
-}
-
-[href*="#reference-design-apartman"] .references__project-name .word2 .letter1 {
-    margin-right: -0.02em;
-}
-
-[href*="#reference-design-apartman"] .references__project-name .word2 .letter2 {
-    margin-right: -0.05em;
-}
-
-[href*="#reference-design-apartman"] .references__project-name .word2 .letter3 {
-    margin-right: -0.025em;
-}
-
-[href*="#reference-design-apartman"] .references__project-name .word2 .letter4 {
-    margin-right: 0.02em;
-}
-
-[href*="#reference-design-apartman"] .references__project-name .word2 .letter5 {
+[href*="#reference-zase-ostre"] .references__project-name .word2 .letter3 {
     margin-right: -0.0em;
 }
 
-[href*="#reference-design-apartman"] .references__project-name .word2 .letter6 {
-    margin-right: -0.015em;
-}
-
-[href*="#reference-design-apartman"] .references__project-name .word2 .letter7 {
-    margin-right: -0.025em;
+[href*="#reference-zase-ostre"] .references__project-name .word2 .letter4 {
+    margin-right: -0.02em;
 }
 
 
@@ -649,19 +588,15 @@
 
                 .references__project-info-list {
                     padding-right: 40px;
-                    margin-bottom: 0.4375rem;
 
-                    word-break: break-all;
-                    line-height: 2rem;
+                    line-height: 1.6875rem;
                 }
 
                 @media (max-width: 799px) {
 
                     .references__project-info-list {
-                        margin-bottom: 0.25rem;
-
                         font-size: 1.0625rem;
-                        line-height: 1.6875rem;
+                        line-height: 1.4375rem;
                     }
                 }
 
@@ -691,12 +626,18 @@
                     }
 
                     .references__project-info-content {
-                        float: left;
-                        margin-bottom: 0.25rem;
+                        margin-bottom: 0.625rem;
 
                         pointer-events: auto;
 
                         transition: 0.2s cubic-bezier(.45, .25, .4, .9);
+                    }
+
+                    @media (max-width: 799px) {
+
+                        .references__project-info-content {
+                            margin-bottom: 0.5rem;
+                        }
                     }
 
                     .js .references__project-info-content {
@@ -707,6 +648,7 @@
 
                     .references__project-info-content a {
                         text-decoration: none;
+                        word-break: break-all;
 
                         color: #7B6839;
                     }
@@ -724,6 +666,7 @@
 
                 .references__project-more-info {
                     clear: both;
+                    padding-top: 0.1875rem;
                     padding-right: 40px;
                     margin-bottom: 0.4375rem;
 
@@ -1146,7 +1089,7 @@
                                 transition: letter-spacing 0.4s cubic-bezier(.2, .9, .45, .95) 0s;
                             }
 
-                        /*.references__image-code {
+                        .references__image-code {
                             transform: translateY(10px);
 
                             margin-top: 0.1em;
@@ -1242,7 +1185,7 @@
                                 opacity: 0.65;
 
                                 transition: inherit;
-                            }*/
+                            }
 
 /*//////////////////////////// REFERENCES ////////////////////////////*/
 
