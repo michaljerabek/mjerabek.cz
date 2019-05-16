@@ -580,13 +580,13 @@ a:active .transition-hideable {
         max-height: 0;
     }
     to {
-        max-height: 100%;
+        max-height: none;
     }
 }
 
 @keyframes fake-hidden {
     from {
-        max-height: 100%;
+        max-height: none;
     }
     to {
         max-height: 0;
@@ -6451,6 +6451,10 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
     contain: layout;
 }
 
+.no-js .references__nav {
+    z-index: 3;
+}
+
 @media (min-width: 1680px), (min-height: 1050px) {
 
     .references__nav {
@@ -6528,12 +6532,17 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 
     .no-js .references__nav-items {
         overflow: auto;
+        scrollbar-width: thin;
     }
 
         .references__nav-item {
             flex: none;
             min-width: 38.08%;
             min-width: calc((100% / 21) * 8);
+        }
+
+        .no-js .references__nav-item:last-child {
+            order: -1;
         }
 
             .references__nav-link {
@@ -6850,6 +6859,8 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 }
 
 .no-js .references__references {
+    display: flex;
+    flex-direction: column;
     padding-bottom: calc(4vh - 20px + 40px);
 }
 
@@ -6879,6 +6890,13 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
         margin-bottom: 40px;
     }
 
+    .no-js .references__reference {
+        display: flex;
+        min-width: 100%;
+        padding-top: 120px;
+        margin-top: -120px;
+    }
+
     .no-js .references__reference:target ~ .references__reference:last-child,
     .no-js .references__reference {
         z-index: 1;
@@ -6895,7 +6913,8 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
     .no-js .references__reference:target {
         z-index: 2;
 
-        max-height: 100%;
+        order: -1;
+        max-height: none;
 
         pointer-events: auto;
 

@@ -138,13 +138,13 @@ a:active .transition-hideable {
         max-height: 0;
     }
     to {
-        max-height: 100%;
+        max-height: none;
     }
 }
 
 @keyframes fake-hidden {
     from {
-        max-height: 100%;
+        max-height: none;
     }
     to {
         max-height: 0;
