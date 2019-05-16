@@ -111,12 +111,13 @@
             CATEGORY = {
                 FORM: "form",
                 WEB: "web",
-                SECTION: "sekce"
+                SECTION: "sekce",
+                REFERENCES: "reference"
             },
 
             DATA_DELIMITER = "|",
 
-            PAGE_VIEW_TIMEOUT = 3500,
+            PAGE_VIEW_TIMEOUT = 3000,
 
             VISIBILITY_DEBOUNCE = 2000,
 
@@ -130,7 +131,8 @@
             visibilitychangeDebounce,
             visibilitychangeDebounceFn,
 
-            pageViewTimeout = null,
+            sendPageViewDebounce,
+            sendPageViewDebounceFn,
 
             pageExitInitialized = false,
 
@@ -142,6 +144,16 @@
             getLastSectionTime = function () {
 
                 return ((new Date() - lastSectionFrom) / 1000).toFixed(1);
+            },
+
+            clearPageView = function () {
+
+                if (sendPageViewDebounceFn) {
+
+                    clearTimeout(sendPageViewDebounce);
+
+                    sendPageViewDebounceFn();
+                }
             },
 
             clearVisibilitychange = function () {
@@ -168,19 +180,38 @@
 
                 if (lastSentSection) {
 
+                    if (lastSentSection.match(/^#?reference-/)) {
+
+                        lastSentSection = "reference";
+                    }
+
                     sendEvent("exit", CATEGORY.SECTION, "Sekce: " + lastSentSection + "; " + getLastSectionTime() + "s.");
 
                     lastSentSection = null;
                 }
             },
 
+            sendReferenceChange = function (event, target) {
+
+                clearVisibilitychange();
+
+                target = target.replace(/#?reference-/, "");
+
+                sendEvent("change", CATEGORY.REFERENCES, "Reference: " + target);
+            },
+
             sendPageView = function (event, target) {
 
                 target = (target || window.location.hash || "").replace("#", "");
 
-                clearTimeout(pageViewTimeout);
+                if (target && target.match(/^reference-/)) {
 
-                pageViewTimeout = setTimeout(function() {
+                    target = "reference";
+                }
+
+                clearTimeout(sendPageViewDebounce);
+
+                sendPageViewDebounceFn = function () {
 
                     clearVisibilitychange();
 
@@ -199,7 +230,10 @@
 
                     lastSentSection = target;
 
-                }, PAGE_VIEW_TIMEOUT);
+                    sendPageViewDebounceFn = null;
+                };
+
+                sendPageViewDebounce = setTimeout(sendPageViewDebounceFn, PAGE_VIEW_TIMEOUT);
 
                 sendSectionExit();
 
@@ -224,6 +258,8 @@
             sendEvent = function (action, elOrCategory, label) {
 
                 clearVisibilitychange();
+
+                clearPageView();
 
                 if (typeof window.ga === "function") {
 
@@ -299,9 +335,10 @@
                 ns.$win.on([
                     "main-nav__target-changed." + ns,
                     "technologies__changed." + ns,
-                    "technologies__closed." + ns,
-                    "references__changed." + ns
+                    "technologies__closed." + ns
                 ].join(" "), sendPageView);
+
+                ns.$win.on("references__changed." + ns, sendReferenceChange);
 
                 ns.$win.on("keyup." + ns, onKeyup);
 
