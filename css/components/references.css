@@ -699,23 +699,28 @@
                     opacity: 0;
                 }
 
-                .references__project-btn {
-                    margin-top: 1em;
-                    margin-bottom: 1em;
+                .references__project-btn-wrapper {
+                    transition: 0.2s cubic-bezier(.45, .25, .4, .9);
+                    transition-property: opacity, transform;
                 }
 
-                @media (max-width: 799px) {
-
-                    .references__project-btn {
-                        margin-top: calc(1em - 0.4375rem);
-                    }
-                }
-
-                .js .references__project-btn {
+                .js .references__project-btn-wrapper {
                     transform: translateY(20px);
 
                     opacity: 0;
                 }
+
+                    .references__project-btn {
+                        margin-top: 1em;
+                        margin-bottom: 1em;
+                    }
+
+                    @media (max-width: 799px) {
+
+                        .references__project-btn {
+                            margin-top: calc(1em - 0.4375rem);
+                        }
+                    }
 
                 .references__image-wrapper {
                     position: relative;
