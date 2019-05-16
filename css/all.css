@@ -6828,6 +6828,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
     opacity: 1;
 
     transition: 0.4s cubic-bezier(.45, .25, .4, .9);
+    transition-property: opacity, transform;
 }
 
 .references__references {
@@ -6959,14 +6960,14 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
                 .references__project-info-list {
                     padding-right: 40px;
 
-                    line-height: 1.6875rem;
+                    line-height: 2rem;
                 }
 
                 @media (max-width: 799px) {
 
                     .references__project-info-list {
                         font-size: 1.0625rem;
-                        line-height: 1.4375rem;
+                        line-height: 1.6875rem;
                     }
                 }
 
@@ -6981,6 +6982,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
                         pointer-events: auto;
 
                         transition: 0.2s cubic-bezier(.45, .25, .4, .9);
+                        transition-property: opacity, transform;
                     }
 
                     .js .references__project-info-item {
@@ -6996,18 +6998,12 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
                     }
 
                     .references__project-info-content {
-                        margin-bottom: 0.625rem;
+                        margin-bottom: 0.25rem;
 
                         pointer-events: auto;
 
                         transition: 0.2s cubic-bezier(.45, .25, .4, .9);
-                    }
-
-                    @media (max-width: 799px) {
-
-                        .references__project-info-content {
-                            margin-bottom: 0.5rem;
-                        }
+                        transition-property: opacity, transform;
                     }
 
                     .js .references__project-info-content {
@@ -7021,11 +7017,15 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
                         word-break: break-all;
 
                         color: #7B6839;
+
+                        transition-property: opacity, color;
                     }
 
                     .references__project-info-content a:focus,
                     .references__project-info-content a:hover {
                         color: #3C6474;
+
+                        transition-property: opacity, color;
                     }
 
                     .references__project-info-note {
@@ -7036,7 +7036,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 
                 .references__project-more-info {
                     clear: both;
-                    padding-top: 0.1875rem;
+                    padding-top: 0.25rem;
                     padding-right: 40px;
                     margin-bottom: 0.4375rem;
 
@@ -7045,6 +7045,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
                     pointer-events: auto;
 
                     transition: 0.2s cubic-bezier(.45, .25, .4, .9);
+                    transition-property: opacity, transform;
                 }
 
                 @media (min-width: 640px) {
