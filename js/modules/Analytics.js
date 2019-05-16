@@ -208,7 +208,8 @@
                 ns.$win.on([
                     "main-nav__target-changed." + ns,
                     "technologies__changed." + ns,
-                    "technologies__closed." + ns
+                    "technologies__closed." + ns,
+                    "references__changed." + ns
                 ].join(" "), sendPageView);
 
                 ns.$win.on("keyup." + ns, onKeyup);

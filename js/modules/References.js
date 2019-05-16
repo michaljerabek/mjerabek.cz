@@ -42,6 +42,10 @@
                 findSquare: ".square"
             },
 
+            EVENT = {
+                changed: "references__changed"
+            },
+
             TAB_SWITCH_QUEUE = "tab." + ns,
 
             STAGGER_DELAY = 30,
@@ -200,7 +204,7 @@
 
                 ns.$temp[0] = event.target;
 
-                var href = ns.$temp.find(SELECTOR.navLink)[0].href,
+                var href = ns.$temp.find(SELECTOR.navLink)[0].href.split("#")[1],
                     isIndex = $activeTab.index(),
                     willIndex = ns.$temp.index(),
 
@@ -216,10 +220,15 @@
 
                 $activeTab = $tabToShow.addClass(CLASS.activeTab);
 
-                window.history.replaceState(href, "", href);
+                window.history.replaceState(null, "", "#" + href);
 
                 $queueEl.dequeue(TAB_SWITCH_QUEUE + isIndex)
                     .dequeue(TAB_SWITCH_QUEUE + willIndex);
+
+                if (isIndex !== willIndex) {
+
+                    ns.$win.trigger(EVENT.changed, href);
+                }
             },
 
             showTabById = function (id) {
