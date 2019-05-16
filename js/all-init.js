@@ -2999,7 +2999,7 @@
                 infoItem: ".references__project-info-item",
                 infoContent: ".references__project-info-content",
                 moreInfo: ".references__project-more-info",
-                btn: ".references__project-btn",
+                btnWrapper: ".references__project-btn-wrapper",
 
                 background: ".references__background",
                 backgroundLayers: ".references__background-layer",
@@ -3065,7 +3065,7 @@
                     $currentTab.find(SELECTOR.moreInfo)
                         .removeClass(CLASS.fadeIn);
 
-                    $currentTab.find(SELECTOR.btn)
+                    $currentTab.find(SELECTOR.btnWrapper)
                         .removeClass(CLASS.fadeIn);
 
                     next();
@@ -3129,7 +3129,7 @@
                     $tabToShow.find(SELECTOR.moreInfo)
                         .addClass(CLASS.fadeIn);
 
-                    $tabToShow.find(SELECTOR.btn)
+                    $tabToShow.find(SELECTOR.btnWrapper)
                         .addClass(CLASS.fadeIn);
 
                     if ($currentTab[0] !== $activeTab[0]) {
