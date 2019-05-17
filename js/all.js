@@ -185,7 +185,7 @@
                         lastSentSection = "reference";
                     }
 
-                    sendEvent("exit", CATEGORY.SECTION, "Sekce: " + lastSentSection + "; " + getLastSectionTime() + "s.");
+                    sendEvent("exit", CATEGORY.SECTION, "Sekce: " + lastSentSection + "; " + getLastSectionTime() + "s.", true);
 
                     lastSentSection = null;
                 }
@@ -255,11 +255,14 @@
                 };
             },
 
-            sendEvent = function (action, elOrCategory, label) {
+            sendEvent = function (action, elOrCategory, label, skipClearPageView) {
 
                 clearVisibilitychange();
 
-                clearPageView();
+                if (!skipClearPageView) {
+
+                    clearPageView();
+                }
 
                 if (typeof window.ga === "function") {
 
