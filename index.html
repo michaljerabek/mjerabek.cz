@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html class="no-js visibility-change" lang="cs">
+<html class="no-js visibility-change" lang="cs"><!-- Author: Michal Jeřábek | mjerabek.cz; Created: 2017; -->
 <head>
-
-    <!-- Author: Michal Jeřábek | mjerabek.cz; Created: 2017; -->
 
     <!---
         Vítejte pod povrchem!
 
         Skripty a styly jsou na této stránce minifikované, pokud chcete vidět, jak je web nakódovaný, na http://github.com/michaljerabek/mjerabek.cz najdete celý zdrojový kód webu.
     -->
+
+
+    <!--———————————— META-GENERAL ————————————-->
 
     <meta charset="UTF-8">
 
@@ -17,19 +18,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
     <meta name="format-detection" content="telephone=no">
-
     <meta name="google-site-verification" content="r8oCh4CzD7dIT4ogV3V7ag-8NwqI6EBVXKkJUDo85Hc">
 
 
-    <link rel="preload" href="https://code.jquery.com/jquery-3.2.1.min.js" as="script" crossorigin>
-
-    <link rel="preload" href="css/libs.min.css?v={{VERSION}}" as="style">
-    <link rel="preload" href="css/all.min.css?v={{VERSION}}" as="style">
-    <link rel="preload" href="js/libs.min.js?v={{VERSION}}" as="script">
-    <link rel="preload" href="js/all-init.min.js?v={{VERSION}}" as="script">
-
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-
+    <!--———————————— META-PAGE ————————————-->
 
     <title>Front-End / HTML kodér — Michal Jeřábek</title>
 
@@ -39,65 +31,52 @@
     <meta name="author" content="Michal Jeřábek">
 
 
-    <!--SOCIAL SITES-->
-    <meta property="og:locale" content="cs_CZ">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="http://mjerabek.cz">
-    <meta property="og:title" content="Front-End / HTML kodér — Michal Jeřábek">
-    <meta property="og:image" content="http://mjerabek.cz/img/social__image--fb.jpg">
-    <meta property="og:description" content="Jsem HTML kodér — nabízím kvalitní kódování grafických návrhů a šablon do HTML, CSS a JavaScriptu.">
+    <!--———————————— PRELOAD ————————————-->
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="http://mjerabek.cz/img/social__image--tw.jpg">
-    <meta name="twitter:title" content="Front-End / HTML kodér — Michal Jeřábek">
-    <meta name="twitter:description" content="Jsem HTML kodér — nabízím kvalitní kódování grafických návrhů a šablon do HTML, CSS a JavaScriptu.">
+    <link rel="preconnect" href="https://code.jquery.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/">
+
+    <link rel="preload" href="build/libs.build.min.css?v={{LIBS_VERSION}}" as="style">
+    <link rel="preload" href="build/all.build.min.css?v={{VERSION}}" as="style">
+    <link rel="preload" href="build/libs.build.min.js?v={{LIBS_VERSION}}" as="script">
+    <link rel="preload" href="build/all.build.min.js?v={{VERSION}}" as="script">
 
 
-    <!--FAVICON-->
+    <!--———————————— FAVICON ————————————-->
+
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-    <link rel="manifest" href="favicon/manifest.json">
-    <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#C9B47F">
+    <link rel="manifest" href="favicon/site.webmanifest" crossorigin>
+    <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#af975a">
     <link rel="shortcut icon" href="favicon/favicon.ico">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="favicon/mstile-144x144.png">
     <meta name="msapplication-config" content="favicon/browserconfig.xml">
     <meta name="theme-color" content="#C9B47F">
 
 
-    <!--FONTS-->
-    <link href="https://fonts.googleapis.com/css?family=Caudex:400,400i,700,700i|PT+Mono&amp;subset=latin-ext" rel="stylesheet">
+    <!--———————————— META-SHARE ————————————-->
+
+    <meta property="og:locale" content="cs_CZ">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mjerabek.cz">
+    <meta property="og:title" content="Front-End / HTML kodér — Michal Jeřábek">
+    <meta property="og:image" content="https://mjerabek.cz/img/social__image--fb.jpg">
+    <meta property="og:description" content="Jsem HTML kodér — nabízím kvalitní kódování grafických návrhů a šablon do HTML, CSS a JavaScriptu.">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://mjerabek.cz/img/social__image--tw.jpg">
+    <meta name="twitter:title" content="Front-End / HTML kodér — Michal Jeřábek">
+    <meta name="twitter:description" content="Jsem HTML kodér — nabízím kvalitní kódování grafických návrhů a šablon do HTML, CSS a JavaScriptu.">
 
 
-    <!--STYLES-->
-    <!--dev-->
-    <link rel="stylesheet" href="css/components/reset.css" media="screen">
-    <link rel="stylesheet" href="css/components/main.css" media="screen">
-    <link rel="stylesheet" href="css/components/ui.css" media="screen">
-    <link rel="stylesheet" href="css/components/form.css" media="screen">
-    <link rel="stylesheet" href="css/components/btn.css" media="screen">
-    <link rel="stylesheet" href="css/components/section.css" media="screen">
-    <link rel="stylesheet" href="css/components/intro.css" media="screen">
-    <link rel="stylesheet" href="css/components/main-nav.css" media="screen">
-    <link rel="stylesheet" href="css/components/offer.css" media="screen">
-    <link rel="stylesheet" href="css/components/technologies.css" media="screen">
-    <link rel="stylesheet" href="css/components/references.css" media="screen">
-    <link rel="stylesheet" href="css/components/about-me.css" media="screen">
-    <link rel="stylesheet" href="css/components/pricelist.css" media="screen">
-    <link rel="stylesheet" href="css/components/contact.css" media="screen">
-    <link rel="stylesheet" href="css/components/cookies.css" media="screen">
-    <link rel="stylesheet" href="css/components/CodeMirror-theme.css" media="screen">
-    <!--/dev-->
+    <!--———————————— FONTS ————————————-->
 
-    <!--prod-->
-    <!--<link rel="stylesheet" href="css/all.min.css?v={{VERSION}}" media="screen">-->
-    <link rel="stylesheet" href="css/libs.min.css?v={{VERSION}}" media="screen">
-    <link rel="stylesheet" href="css/print.css?v={{VERSION}}" media="print">
-    <!--/prod-->
+    <link href="https://fonts.googleapis.com/css?family=Caudex:400,400i,700,700i|PT+Mono&amp;subset=latin-ext&display=swap" rel="stylesheet">
 
 
-    <!--SUPPORT-->
+    <!--———————————— SUPPORT ————————————-->
+
     <!--[if IE]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
         <script>!window.html5 && document.write("<script src='libs/html5shiv.js'><"+"/script>");</script>
@@ -111,12 +90,32 @@
         document.documentElement.className += navigator.userAgent.match(/Android.*Mobile.*Gecko.*Firefox/) ? " ff-android" : "";
     </script>
 
-    <script>!document.visibilityState && (document.documentElement.className = document.documentElement.className.replace(/(visibility-change)/, "no-$1"));</script>
-    <script>document.visibilityState && !document.hidden && (document.documentElement.className += " was-visible");</script>
-
     <script>!window.matchMedia && document.write("<script src='https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js'><"+"/script>");</script>
     <script>!window.matchMedia && !window.respond && document.write("<script src='libs/respond.min.js'><"+"/script>");</script>
     <script>!window.matchMedia &&  window.respond && document.write("<script src='libs/respond.matchmedia.addListener.min.js'><"+"/script>");</script>
+
+
+    <!--———————————— STYLES ————————————-->
+
+    <!--dev-->
+    <script src="dev/PATHS.js"></script>
+    <script src="dev/load-css.js" data-files="libs.build.css, all.build.css, print.build.css" data-media="screen, screen, print"></script>
+    <noscript><link href="dev/cssimport/all.build.css" rel="stylesheet" media="screen"></noscript>
+    <!--/dev-->
+
+    <!--prod-->
+    <!--<link href="build/libs.build.min.css?v={{LIBS_VERSION}}" rel="stylesheet" media="screen">-->
+    <!--<link href="build/all.build.min.css?v={{VERSION}}" rel="stylesheet" media="screen">-->
+
+    <!--<script>window.addEventListener("load", function () { document.head.insertAdjacentHTML("beforeend", "<link href=\"build/print.build.min.css\" rel=\"stylesheet\" media=\"print\">"); });</script>-->
+    <!--<noscript><link href="build/print.build.min.css" rel="stylesheet" media="print"></noscript>-->
+    <!--/prod-->
+
+
+    <!--———————————— JAVASCRIPT-HEAD ————————————-->
+
+    <script>!document.visibilityState && (document.documentElement.className = document.documentElement.className.replace(/(visibility-change)/, "no-$1"));</script>
+    <script>document.visibilityState && !document.hidden && (document.documentElement.className += " was-visible");</script>
 
 </head>
 <body>
@@ -126,7 +125,8 @@
     <!--/dev-->
 
 
-    <!--GOOGLE-ANALYTICS-->
+    <!--———————————— GOOGLE-ANALYTICS ————————————-->
+
     <!--prod-->
     <!--<script>
         window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -139,16 +139,32 @@
     <!--/prod-->
 
 
+    <!--———————————— CONTENT ————————————-->
+
+
+    <!--––––––––– ** UI__ACCESSIBILITY-NAV ** –––––––––-->
+
+
+    <a class="ui__accessibility-nav x-print" href="#hlavni-obsah">Přejít na hlavní obsah</a>
+    <a class="ui__accessibility-nav x-print" href="#hlavni-navigace">Přejít na hlavní navigaci</a>
+
+
+    <!--––––––––– // UI__ACCESSIBILITY-NAV // –––––––––-->
+
+
     <!--––––––––– ** MAIN-NAV ** –––––––––-->
 
-    <nav class="main-nav x-print">
+
+    <nav class="main-nav x-print" id="hlavni-navigace">
 
         <h2 class="visually-hidden">Hlavní menu</h2>
 
         <input class="ui__hidden-toggle x-desktop x-tablet" id="main-nav__mobile-opener" type="checkbox">
 
         <label class="main-nav__mobile-opener x-desktop x-tablet transition" for="main-nav__mobile-opener">
-            <span class="text transition"><span class="visually-hidden">Otevřít nebo zavřít </span>Menu</span>
+            <span class="text transition">
+                <span class="visually-hidden">Otevřít nebo zavřít </span>Menu
+            </span>
         </label>
 
         <div class="main-nav__wrapper layout__center">
@@ -175,37 +191,49 @@
 
                     <li class="main-nav__item main-nav__item--active">
                         <a class="main-nav__link" href="#uvod">
-                            <span class="text transition" data-break-text="true" data-small-caps="true">Úvod</span>
+                            <span class="text transition" data-break-text="true" data-small-caps="true">
+                                Úvod
+                            </span>
                         </a>
                     </li>
 
                     <li class="main-nav__item">
                         <a class="main-nav__link" href="#co-delam">
-                            <span class="text transition" data-break-text="true" data-small-caps="true">Co dělám</span>
+                            <span class="text transition" data-break-text="true" data-small-caps="true">
+                                Co dělám
+                            </span>
                         </a>
                     </li>
 
                     <li class="main-nav__item">
                         <a class="main-nav__link" href="#reference">
-                            <span class="text transition" data-small-caps="true">Reference</span>
+                            <span class="text transition" data-small-caps="true">
+                                Reference
+                            </span>
                         </a>
                     </li>
 
                     <li class="main-nav__item">
                         <a class="main-nav__link" href="#kdo-jsem">
-                            <span class="text transition" data-break-text="true" data-small-caps="true">Kdo jsem</span>
+                            <span class="text transition" data-break-text="true" data-small-caps="true">
+                                Kdo jsem
+                            </span>
                         </a>
                     </li>
 
                     <li class="main-nav__item">
                         <a class="main-nav__link" href="#cenik">
-                            <span class="text transition" data-small-caps="true">Ceník</span>
+                            <span class="text transition" data-small-caps="true">
+                                Ceník
+                            </span>
                         </a>
                     </li>
 
                     <li class="main-nav__item">
                         <a class="main-nav__link" href="#kontakt">
-                            <span class="text transition" data-break-text="true" data-small-caps="true">Kontakt</span>
+                            <span class="text transition" data-break-text="true" data-small-caps="true">
+                                Kontakt
+                            </span>
                         </a>
                     </li>
 
@@ -219,7 +247,8 @@
         <!-- /.main-nav__wrapper layout__center -->
 
     </nav>
-    <!-- /.intro__main-nav main-nav -->
+    <!-- /.intro__main-nav main-nav #hlavni-navigace -->
+
 
     <!--––––––––– // MAIN-NAV // –––––––––-->
 
@@ -230,6 +259,7 @@
 
 
             <!--––––––––– ** INTRO | SECTION ** –––––––––-->
+
 
             <header class="intro section" id="uvod" data-main-nav-target="true" data-main-nav-active=".main-nav__item:eq(1) .main-nav__link" data-main-nav-theme="#C9B47F">
 
@@ -277,14 +307,18 @@
                             </span>
                         </h1>
 
-                        <p class="intro__claim x-print"><span class="first-line">přeměňuji&#8288; <span class="x-tablet x-mobile-l x-mobile-m">vaše </span>&#8288;grafické návrhy</span>&nbsp;<span class="second-line">na webové stránky</span></p>
+                        <p class="intro__claim x-print">
+                            <span class="first-line">přeměňuji&#8288; <span class="x-tablet x-mobile-l x-mobile-m">vaše </span>&#8288;grafické návrhy</span>&nbsp;<span class="second-line">na webové stránky</span>
+                        </p>
 
                     </div>
                     <!-- /.intro__content -->
 
                     <div class="intro__name">
 
-                        <span class="text x-print" role="presentation" aria-hidden="true">Michal Jeřábek</span>
+                        <span class="text x-print" role="presentation" aria-hidden="true">
+                            Michal Jeřábek
+                        </span>
 
                         <svg class="intro__name-svg" width="220" height="32" viewBox="0 0 220 32" fill="#111111">
                             <path d="M25.19,9.505l0,11.392c0,0.444 0.172,0.726 0.518,0.846c0.345,0.119 0.517,0.265 0.517,0.435c0,0.144 -0.071,0.216 -0.215,0.216l-3.476,0c-0.144,0 -0.215,-0.072 -0.215,-0.216c0,-0.17 0.171,-0.316 0.512,-0.435c0.342,-0.12 0.513,-0.402 0.513,-0.846l0,-10.982l-5.916,12.786l-0.4,0l-5.855,-12.304l0,10.5c0,0.444 0.171,0.726 0.512,0.846c0.342,0.119 0.513,0.265 0.513,0.435c0,0.144 -0.072,0.216 -0.215,0.216l-2.605,0c-0.143,0 -0.215,-0.072 -0.215,-0.216c0,-0.17 0.171,-0.316 0.513,-0.435c0.341,-0.12 0.512,-0.402 0.512,-0.846l0,-11.392c0,-0.438 -0.171,-0.718 -0.512,-0.841c-0.342,-0.123 -0.513,-0.274 -0.513,-0.451c0,-0.144 0.072,-0.216 0.215,-0.216l2.728,0l5.609,11.505l5.434,-11.505l2.861,0c0.144,0 0.215,0.072 0.215,0.216c0,0.177 -0.172,0.328 -0.517,0.451c-0.346,0.123 -0.518,0.403 -0.518,0.841Z"/>
@@ -311,15 +345,16 @@
             </header>
             <!-- /.intro section -->
 
+
             <!--––––––––– // INTRO | SECTION // –––––––––-->
 
 
-            <main role="main">
+            <main id="hlavni-obsah" role="main">
 
 
                 <!--––––––––– ** OFFER | SECTION ** –––––––––-->
 
-                <article class="offer offer--init-fade-in section section--dark offer__light-transition x-print" id="co-delam" data-main-nav-target="true" data-main-nav-theme="#B3794E">
+                <article class="offer offer--init-fade-in section section--dark offer__light-transition inverse-focus x-print" id="co-delam" data-main-nav-target="true" data-main-nav-theme="#B3794E">
 
                     <div class="offer__light"><!-- css --></div>
 
@@ -336,7 +371,9 @@
                     <div class="layout__center">
 
                         <h2 class="section__title offer__title offer__light-transition">
-                            <span class="text" data-break-text="true" data-small-caps="true">Co vám mohu nabídnout?</span>
+                            <span class="text" data-break-text="true" data-small-caps="true">
+                                Co vám mohu nabídnout?
+                            </span>
                         </h2>
 
                         <p class="offer__description offer__light-transition x-mobile">
@@ -399,7 +436,9 @@
                                 </div>
                                 <!-- /.offer__feature-icon -->
 
-                                <p class="offer__feature-description"><strong>Použitelnost díky optimalizaci</strong> pro <br class="mobile-break">všechny velikosti a&nbsp;dotyková zařízení, <br class="mobile-break">rychlé reakci na uživatelský vstup nebo&nbsp;sémantickému&nbsp;kódu.</p>
+                                <p class="offer__feature-description">
+                                    <strong>Použitelnost díky optimalizaci</strong> pro <br class="mobile-break">všechny velikosti a&nbsp;dotyková zařízení, <br class="mobile-break">rychlé reakci na uživatelský vstup nebo&nbsp;sémantickému&nbsp;kódu.
+                                </p>
 
                             </li>
                             <!-- /.offer__feature offer__feature––optimization -->
@@ -416,7 +455,9 @@
                                 </div>
                                 <!-- /.offer__feature-icon -->
 
-                                <p class="offer__feature-description">Komponentový a&nbsp;organizovaný <strong>systém a&nbsp;konzistentní metodologii</strong> pro snadno upravovatelný a&nbsp;<strong>udržovatelný kód</strong>.</p>
+                                <p class="offer__feature-description">
+                                    Komponentový a&nbsp;organizovaný <strong>systém a&nbsp;konzistentní metodologii</strong> pro snadno upravovatelný a&nbsp;<strong>udržovatelný kód</strong>.
+                                </p>
 
                             </li>
                             <!-- /.offer__feature offer__feature––system -->
@@ -435,7 +476,9 @@
                                 </div>
                                 <!-- /.offer__feature-icon -->
 
-                                <p class="offer__feature-description">Včetně <strong><a href="https://github.com/michaljerabek/mjerabek.cz/tree/master/manual" title="Ukázka manuálu dodávaného s nakódovanou šablonou" target="_blank" data-analytics-event-click="odkaz|Manuál">manuálu</a> s&nbsp;popsanou <br class="mobile-break">metodologií, použitím a&nbsp;dalším <br class="mobile-break">vývojem kódu</strong>, takže mě nebudete potřebovat na&nbsp;další úpravy.</p>
+                                <p class="offer__feature-description">
+                                    Včetně <strong><a href="https://github.com/michaljerabek/mjerabek.cz/tree/master/manual" title="Ukázka manuálu dodávaného s nakódovanou šablonou" target="_blank" data-analytics-event-click="odkaz|Manuál">manuálu</a> s&nbsp;popsanou <br class="mobile-break">metodologií, použitím a&nbsp;dalším <br class="mobile-break">vývojem kódu</strong>, takže mě nebudete potřebovat na&nbsp;další úpravy.
+                                </p>
 
                             </li>
                             <!-- /.offer__feature offer__feature––manual -->
@@ -468,10 +511,12 @@
                 </article>
                 <!-- /.offer section -->
 
+
                 <!--––––––––– // OFFER | SECTION // –––––––––-->
 
 
                 <!--––––––––– ** REFERENCES | SECTION ** –––––––––-->
+
 
                 <article class="references section x-print" id="reference" data-main-nav-target="true" data-main-nav-theme="#C9B47F">
 
@@ -488,7 +533,9 @@
                     <div class="layout__center">
 
                         <h2 class="section__title references__title">
-                            <span class="text" data-break-text="true" data-small-caps="true">Reference</span>
+                            <span class="text" data-break-text="true" data-small-caps="true">
+                                Reference
+                            </span>
                         </h2>
 
                         <nav class="references__nav x-print">
@@ -497,29 +544,45 @@
 
                                 <li class="references__nav-item infinitum__item--current">
                                     <a class="references__nav-link" href="#reference-pojistena-pujcka" data-main-nav-ignore="true">
-                                        <span class="references__project-name" data-small-caps="true" data-break-text="true">Pojištěná Půjčka</span>
-                                        <span class="references__project-type">nabídka půjček</span>
+                                        <span class="references__project-name" data-small-caps="true" data-break-text="true">
+                                            Pojištěná Půjčka
+                                        </span>
+                                        <span class="references__project-type">
+                                            nabídka půjček
+                                        </span>
                                     </a>
                                 </li>
 
                                 <li class="references__nav-item">
                                     <a class="references__nav-link" href="#reference-zase-ostre" data-main-nav-ignore="true">
-                                        <span class="references__project-name" data-small-caps="true" data-break-text="true">Zase Ostře</span>
-                                        <span class="references__project-type">animovaná prezentace</span>
+                                        <span class="references__project-name" data-small-caps="true" data-break-text="true">
+                                            Zase Ostře
+                                        </span>
+                                        <span class="references__project-type">
+                                            animovaná prezentace
+                                        </span>
                                     </a>
                                 </li>
 
                                 <li class="references__nav-item">
                                     <a class="references__nav-link" href="#reference-trutnov-vet" data-main-nav-ignore="true">
-                                        <span class="references__project-name" data-small-caps="true" data-break-text="true">Trutnov-Vet</span>
-                                        <span class="references__project-type">prezentace</span>
+                                        <span class="references__project-name" data-small-caps="true" data-break-text="true">
+                                            Trutnov-Vet
+                                        </span>
+                                        <span class="references__project-type">
+                                            prezentace
+                                        </span>
                                     </a>
                                 </li>
 
                                 <li class="references__nav-item">
                                     <a class="references__nav-link" href="#reference-pujcovna-vozu" data-main-nav-ignore="true">
-                                        <span class="references__project-name" data-small-caps="true" data-break-text="true">Půjčovna Vozů</span>
-                                        <span class="references__project-type">rezervační web</span>
+                                        <span class="references__project-name" data-small-caps="true" data-break-text="true">
+                                            Půjčovna Vozů
+                                        </span>
+                                        <span class="references__project-type">
+                                            rezervační web
+                                        </span>
                                     </a>
                                 </li>
 
@@ -535,7 +598,9 @@
 
                                 <article class="references__wrapper">
 
-                                    <h3 class="visually-hidden">Pojištěná Půjčka — prezentace</h3>
+                                    <h3 class="visually-hidden">
+                                        Pojištěná Půjčka — prezentace
+                                    </h3>
 
                                     <div class="references__project-info">
 
@@ -576,7 +641,9 @@
 
                                     <figure class="references__project-preview x-print">
 
-                                        <figcaption class="visually-hidden">Pojištěná půjčka — ukázka projektu</figcaption>
+                                        <figcaption class="visually-hidden">
+                                            Pojištěná půjčka — ukázka projektu
+                                        </figcaption>
 
                                         <div class="references__image-wrapper fade-in" data-js-hover="true" data-js-hover-prevent-click="true">
 
@@ -608,7 +675,9 @@
 
                                 <article class="references__wrapper">
 
-                                    <h3 class="visually-hidden">Zase Ostře — animovaná prezentace</h3>
+                                    <h3 class="visually-hidden">
+                                        Zase Ostře — animovaná prezentace
+                                    </h3>
 
                                     <div class="references__project-info">
 
@@ -622,7 +691,9 @@
                                             <dt class="references__project-info-item">Čas:</dt>
                                             <dd class="references__project-info-content">
                                                 <span class="small">95</span> hodin
-                                                <span class="references__project-info-note">(včetně designu animací)</span>
+                                                <span class="references__project-info-note">
+                                                    (včetně designu animací)
+                                                </span>
                                             </dd>
 
                                             <dt class="references__project-info-item">Web:</dt>
@@ -657,7 +728,9 @@
 
                                     <figure class="references__project-preview x-print">
 
-                                        <figcaption class="visually-hidden">Zase Ostře — ukázka projektu</figcaption>
+                                        <figcaption class="visually-hidden">
+                                            Zase Ostře — ukázka projektu
+                                        </figcaption>
 
                                         <div class="references__image-wrapper" data-js-hover="true" data-js-hover-prevent-click="true">
 
@@ -697,7 +770,9 @@
 
                                 <article class="references__wrapper">
 
-                                    <h3 class="visually-hidden">Trutnov-Vet — prezentace</h3>
+                                    <h3 class="visually-hidden">
+                                        Trutnov-Vet — prezentace
+                                    </h3>
 
                                     <div class="references__project-info">
 
@@ -738,7 +813,9 @@
 
                                     <figure class="references__project-preview x-print">
 
-                                        <figcaption class="visually-hidden">Trutnov-vet.cz — ukázka projektu</figcaption>
+                                        <figcaption class="visually-hidden">
+                                            Trutnov-vet.cz — ukázka projektu
+                                        </figcaption>
 
                                         <div class="references__image-wrapper" data-js-hover="true" data-js-hover-prevent-click="true">
 
@@ -772,7 +849,9 @@
 
                                 <article class="references__wrapper">
 
-                                    <h3 class="visually-hidden">Nejlevnější půjčovna vozů — prezentace</h3>
+                                    <h3 class="visually-hidden">
+                                        Nejlevnější půjčovna vozů — prezentace
+                                    </h3>
 
                                     <div class="references__project-info">
 
@@ -813,7 +892,9 @@
 
                                     <figure class="references__project-preview x-print">
 
-                                        <figcaption class="visually-hidden">Nejlevnější půjčovna vozů — ukázka projektu</figcaption>
+                                        <figcaption class="visually-hidden">
+                                            Nejlevnější půjčovna vozů — ukázka projektu
+                                        </figcaption>
 
                                         <div class="references__image-wrapper" data-js-hover="true" data-js-hover-prevent-click="true">
 
@@ -908,10 +989,12 @@
                 </article>
                 <!-- /.references section -->
 
+
                 <!--––––––––– // REFERENCES | SECTION // –––––––––-->
 
 
                 <!--––––––––– ** ABOUT-ME | SECTION ** –––––––––-->
+
 
                 <article class="about-me section x-print" id="kdo-jsem" data-main-nav-target="true" data-main-nav-theme="#C9B47F">
 
@@ -928,7 +1011,9 @@
                    <div class="layout__center">
 
                         <h2 class="section__title about-me__title">
-                            <span class="text"><span data-break-text="true" data-small-caps="true">Něco málo</span> <span class="layout__br--mobile-xs" data-break-text="true" data-small-caps="true">o mně</span></span>
+                            <span class="text">
+                                <span data-break-text="true" data-small-caps="true">Něco málo</span> <span class="layout__br--mobile-xs" data-break-text="true" data-small-caps="true">o mně</span>
+                            </span>
                         </h2>
 
                         <div class="about-me__content">
@@ -950,10 +1035,12 @@
                 </article>
                 <!-- /.about-me section -->
 
+
                 <!--––––––––– // ABOUT-ME | SECTION // –––––––––-->
 
 
                 <!--––––––––– ** PRICELIST | SECTION ** –––––––––-->
+
 
                 <article class="pricelist section" id="cenik" data-main-nav-target="true" data-main-nav-theme="#B3794E">
 
@@ -970,14 +1057,18 @@
                     <div class="layout__center">
 
                         <h2 class="section__title pricelist__title x-print">
-                            <span class="text" data-break-text="true" data-small-caps="true">Kolik to bude stát?</span>
+                            <span class="text" data-break-text="true" data-small-caps="true">
+                                Kolik to bude stát?
+                            </span>
                         </h2>
 
                         <div class="pricelist__content">
 
                             <section class="pricelist__pricelist">
 
-                                <h3 class="pricelist__pricelist-title visually-hidden">Informace o ceně</h3>
+                                <h3 class="pricelist__pricelist-title visually-hidden">
+                                    Informace o ceně
+                                </h3>
 
                                 <p class="pricelist__price">
                                     <span class="price">
@@ -1003,7 +1094,9 @@
                             <section class="pricelist__terms-and-conditions" id="podminky">
 
                                 <h3 class="pricelist__terms-and-conditions-title">
-                                    <a class="pricelist__terms-and-conditions-link print__hide-href" href="#podminky" data-break-text="true" data-small-caps="true" data-main-nav-ignore="true">Smluvní podmínky</a>
+                                    <a class="pricelist__terms-and-conditions-link print__hide-href" href="#podminky" data-break-text="true" data-small-caps="true" data-main-nav-ignore="true">
+                                        Smluvní podmínky
+                                    </a>
                                 </h3>
 
                                 <div class="pricelist__terms-and-conditions-content">
@@ -1041,12 +1134,14 @@
                 </article>
                 <!-- /.pricelist section -->
 
+
                 <!--––––––––– // PRICELIST | SECTION // –––––––––-->
 
 
                 <!--––––––––– ** CONTACT | SECTION ** –––––––––-->
 
-                <article class="contact section section--dark" id="kontakt" data-main-nav-target="true" data-main-nav-theme="#C9B47F">
+
+                <article class="contact section section--dark inverse-focus" id="kontakt" data-main-nav-target="true" data-main-nav-theme="#C9B47F">
 
                     <div class="section__background contact__background x-print">
 
@@ -1068,8 +1163,12 @@
                     <div class="layout__center">
 
                         <h2 class="section__title contact__title x-print">
-                            <span class="text x-mobile" data-break-text="true" data-small-caps="true">Jak mě můžete kontaktovat?</span>
-                            <span class="text x-tablet x-desktop" data-break-text="true" data-small-caps="true">Kontakt</span>
+                            <span class="text x-mobile" data-break-text="true" data-small-caps="true">
+                                Jak mě můžete kontaktovat?
+                            </span>
+                            <span class="text x-tablet x-desktop" data-break-text="true" data-small-caps="true">
+                                Kontakt
+                            </span>
                         </h2>
 
                         <div class="contact__content">
@@ -1082,14 +1181,18 @@
                                         <p class="contact__option-link-selection-wrapper">
                                             <a class="contact__option-link print__hide-href" href="mailto:mjerabek@seznam.cz" rel="me">mjerabek@seznam.cz</a>
                                         </p>
-                                        <p class="contact__option-note">Na vaše emaily se budu snažit odpovědět do <span class="small">24</span> hodin.</p>
+                                        <p class="contact__option-note">
+                                            Na vaše emaily se budu snažit odpovědět do <span class="small">24</span> hodin.
+                                        </p>
                                     </li>
 
                                     <li class="contact__option contact__option--tel">
                                         <p class="contact__option-link-selection-wrapper">
                                             <a class="contact__option-link print__hide-href" href="tel:+420728635829" rel="me">+<span class="small">420 728 635 829</span></a>
                                         </p>
-                                        <p class="contact__option-note">Ve všední dny od <span class="small">8</span>&nbsp;do <span class="small">14</span> hodin. Nebo podle dohody.</p>
+                                        <p class="contact__option-note">
+                                            Ve všední dny od <span class="small">8</span>&nbsp;do <span class="small">14</span> hodin. Nebo podle dohody.
+                                        </p>
                                     </li>
 
                                 </ul>
@@ -1127,14 +1230,20 @@
 
                                 <div class="contact__other-informations">
 
-                                    <p class="contact__registration-id"><b><span class="small">IČ</span>: </b> <span class="small">06559891</span></p>
+                                    <p class="contact__registration-id">
+                                        <b><span class="small">IČ</span>: </b> <span class="small">06559891</span>
+                                    </p>
 
-                                    <p class="contact__bank-account"><b>Účet: </b><span class="small" title="Air Bank">1271497017/3030</span></p>
+                                    <p class="contact__bank-account">
+                                        <b>Účet: </b><span class="small" title="Air Bank">1271497017/3030</span>
+                                    </p>
 
                                 </div>
                                 <!-- /.contact__other-informations -->
 
-                                <p class="contact__registration-info">Fyzická osoba zapsaná v&nbsp;živnostenském rejstříku.</p>
+                                <p class="contact__registration-info">
+                                    Fyzická osoba zapsaná v&nbsp;živnostenském rejstříku.
+                                </p>
 
                             </div>
                             <!-- /.contact__contact-info -->
@@ -1142,46 +1251,63 @@
 
                             <!--––––––––– ** FORM ** –––––––––-->
 
+
                             <form class="contact__form form form--dark x-print" method="post" action="index.php?action=form-submit">
 
-                                <h3 class="visually-hidden x-mobile">Kontaktní formulář</h3>
-                                <h3 class="contact__form-title x-desktop x-tablet" data-break-text="true" data-small-caps="true">Nebo mi napište zprávu</h3>
+                                <h3 class="visually-hidden x-mobile">
+                                    Kontaktní formulář
+                                </h3>
+
+                                <h3 class="contact__form-title x-desktop x-tablet" data-break-text="true" data-small-caps="true">
+                                    Nebo mi napište zprávu
+                                </h3>
 
                                 <div class="contact__form-item form__item {{NAME_ERR}}">
 
                                     <label class="form__label" for="name">Jméno</label>
-
                                     <input class="form__field" id="name" type="text" name="name" value="{{NAME}}" minlength="3" pattern="[^0-9]+" autocomplete="name" required>
 
-                                    <p class="form__error form__error--required" aria-live="polite">Zadejte prosím své jméno, ať vím, jak vás mám oslovovat.</p>
+                                    <p class="form__error form__error--required" aria-live="polite">
+                                        Zadejte prosím své jméno, ať vím, jak vás mám oslovovat.
+                                    </p>
 
-                                    <p class="form__error form__error--pattern" aria-live="polite">Skutečně máte ve jméně čísla? Nevěřím!</p>
+                                    <p class="form__error form__error--pattern" aria-live="polite">
+                                        Skutečně máte ve jméně čísla? Nevěřím!
+                                    </p>
 
-                                    <p class="form__error form__error--short" aria-live="polite">Hm, to se mi zdá nějaké krátké.</p>
+                                    <p class="form__error form__error--short" aria-live="polite">
+                                        Hm, to se mi zdá nějaké krátké.
+                                    </p>
 
                                 </div>
 
                                 <div class="contact__form-item form__item {{EMAIL_ERR}}">
 
                                     <label class="form__label" for="email">Email</label>
-
                                     <input class="form__field" id="email" type="email" name="email" value="{{EMAIL}}" autocomplete="email" required>
 
-                                    <p class="form__error form__error--required" aria-live="polite">Zadejte prosím váš email, jinak vám nebudu moci odpovědět.</p>
+                                    <p class="form__error form__error--required" aria-live="polite">
+                                        Zadejte prosím váš email, jinak vám nebudu moci odpovědět.
+                                    </p>
 
-                                    <p class="form__error form__error--type" aria-live="polite">Podle všeho se nejedná o&nbsp;skutečnou emailovou adresu.</p>
+                                    <p class="form__error form__error--type" aria-live="polite">
+                                        Podle všeho se nejedná o&nbsp;skutečnou emailovou adresu.
+                                    </p>
 
                                 </div>
 
                                 <div class="contact__form-item contact__form-item--msg form__item {{MSG_ERR}}" id="kontakt-zprava">
 
                                     <label class="form__label" for="msg">Zpráva</label>
-
                                     <textarea class="form__field" id="msg" name="msg" minlength="20" autocomplete="off" required>{{MSG}}</textarea>
 
-                                    <p class="form__error form__error--required" aria-live="polite">A&nbsp;co takhle ještě pár vět o&nbsp;tom, proč mi píšete?</p>
+                                    <p class="form__error form__error--required" aria-live="polite">
+                                        A&nbsp;co takhle ještě pár vět o&nbsp;tom, proč mi píšete?
+                                    </p>
 
-                                    <p class="form__error form__error--short" aria-live="polite">Také nemám rád zbytečné vykecávání, ale nemohl(a) byste být trochu delší?</p>
+                                    <p class="form__error form__error--short" aria-live="polite">
+                                        Také nemám rád zbytečné vykecávání, ale nemohl(a) byste být trochu delší?
+                                    </p>
 
                                     <a class="contact__form-info-link" href="#kontakt-zprava" data-main-nav-ignore="true">Co napsat do zprávy?</a>
 
@@ -1199,12 +1325,31 @@
                                 </div>
 
                                 <div class="contact__form-send-msgs" aria-live="polite">
-                                    <p class="contact__form-send-error {{FORM_ERR_MSG}}">Tak to je opravdu trapné! Omlouvám se, ale formulář se nepodařilo odeslat. Zkuste to ještě jednou později nebo mě kontaktujte jiným způsobem.</p>
-                                    <p class="contact__form-send-error">Pořád nic. Tady evidentně něco nefunguje.</p>
-                                    <p class="contact__form-send-error">Ne.</p>
-                                    <p class="contact__form-send-error">Pravidlo třikrát a dost?!</p>
-                                    <p class="contact__form-send-error">Nejde to.</p>
-                                    <p class="contact__form-send-ok x-js {{FORM_OK_MSG}}">Zpráva odeslána!</p>
+
+                                    <p class="contact__form-send-error {{FORM_ERR_MSG}}">
+                                        Tak to je opravdu trapné! Omlouvám se, ale formulář se nepodařilo odeslat. Zkuste to ještě jednou později nebo mě kontaktujte jiným způsobem.
+                                    </p>
+
+                                    <p class="contact__form-send-error">
+                                        Pořád nic. Tady evidentně něco nefunguje.
+                                    </p>
+
+                                    <p class="contact__form-send-error">
+                                        Ne.
+                                    </p>
+
+                                    <p class="contact__form-send-error">
+                                        Pravidlo třikrát a dost?!
+                                    </p>
+
+                                    <p class="contact__form-send-error">
+                                        Nejde to.
+                                    </p>
+
+                                    <p class="contact__form-send-ok x-js {{FORM_OK_MSG}}">
+                                        Zpráva odeslána!
+                                    </p>
+
                                 </div>
                                 <!-- /.contact__form-send-msgs -->
 
@@ -1222,6 +1367,7 @@
                             </form>
                             <!-- /.contact__form form -->
 
+
                             <!--––––––––– // FORM // –––––––––-->
 
 
@@ -1234,10 +1380,12 @@
                 </article>
                 <!-- /.contact section -->
 
+
                 <!--––––––––– // CONTACT | SECTION // –––––––––-->
 
 
             </main>
+            <!-- /#hlavni-obsah -->
 
         </div>
         <!-- /.ui__zoom-out -->
@@ -1248,13 +1396,14 @@
 
     <!--––––––––– ** TECHNOLOGIES ** –––––––––-->
 
+
     <div id="html"><div id="css"><div id="js">
 
         <a class="technologies__hidden-link visually-hidden" href="#html" data-technologies-tab="0">Zobrazit podrobnosti o dodávaném HTML</a>
         <a class="technologies__hidden-link visually-hidden" href="#css" data-technologies-tab="1">Zobrazit podrobnosti o dodávaném CSS</a>
         <a class="technologies__hidden-link visually-hidden" href="#js" data-technologies-tab="2">Zobrazit podrobnosti o dodávaném JS</a>
 
-        <article class="technologies x-print">
+        <article class="technologies inverse-focus x-print">
 
             <h2 class="visually-hidden">Podrobnosti o HTML, CSS a JavaScriptu</h2>
 
@@ -1524,6 +1673,7 @@
 
     </div></div></div>
 
+
     <!--––––––––– // TECHNOLOGIES // –––––––––-->
 
 
@@ -1532,77 +1682,35 @@
     </a>
 
 
-    <!--JAVASCRIPT-->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <!--———————————— JAVASCRIPT ————————————-->
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script>!window.jQuery && document.write("<script src='libs/jq.min.js'><"+"/script>");</script>
 
     <!--dev-->
-    <!--libs-->
-    <script src="libs/inert-polyfill/inert-polyfill.min.js"></script>
-    <link rel="stylesheet" href="libs/inert-polyfill/inert-polyfill.css" media="screen">
-
-    <script src="libs/jquery.smallcaps.js"></script>
-
-    <script src="libs/fulltilt.min.js"></script>
-    <script src="libs/parallax.js"></script>
-
-    <script src="libs/malihu-custom-scrollbar-plugin-3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-    <link rel="stylesheet" href="libs/malihu-custom-scrollbar-plugin-3.1.5/jquery.mCustomScrollbar.css" media="screen">
-
-    <script src="libs/infinitum/infinitum.js"></script>
-    <link rel="stylesheet" href="libs/infinitum/css/infinitum.min.css" media="screen">
-
-    <script src="libs/CodeMirror-5.28.0/lib/codemirror.js"></script>
-    <script src="libs/CodeMirror-5.28.0/addon/runmode/runmode.js"></script>
-    <script src="libs/CodeMirror-5.28.0/mode/javascript/javascript.js"></script>
-    <script src="libs/CodeMirror-5.28.0/mode/css/css.js"></script>
-    <script src="libs/CodeMirror-5.28.0/mode/xml/xml.js"></script>
-    <script src="libs/CodeMirror-5.28.0/mode/htmlmixed/htmlmixed.js"></script>
-
-
-    <!--modules-->
-    <script src="js/modules/Performance.js"></script>
-    <script src="js/modules/Visibility.js"></script>
-    <script src="js/modules/BGObjectsOpacityAnimation.js"></script>
-    <script src="js/modules/BreakText.js"></script>
-    <script src="js/modules/JSHover.js"></script>
-    <script src="js/modules/Intro.js"></script>
-    <script src="js/modules/SmallCaps.js"></script>
-    <script src="js/modules/MainNav.js"></script>
-    <script src="js/modules/Offer.js"></script>
-    <script src="js/modules/Technologies.js"></script>
-    <script src="js/modules/References.js"></script>
-    <script src="js/modules/AboutMe.js"></script>
-    <script src="js/modules/Pricelist.js"></script>
-    <script src="js/modules/Form.js"></script>
-    <script src="js/modules/Contact.js"></script>
-    <script src="js/modules/ConsoleMessage.js"></script>
-    <script src="js/modules/Cookies.js"></script>
-    <script src="js/modules/Fonts.js"></script>
-    <script src="js/modules/FixBugs.js"></script>
-    <script src="js/modules/Analytics.js"></script>
-
-    <script src="js/init.js"></script>
+    <script src="dev/PATHS.js"></script>
+    <script src="dev/load-js.js" data-files="libs.build.js, all.build.js"></script>
     <!--/dev-->
 
     <!--prod-->
-    <!--<script src="js/libs.min.js?v={{VERSION}}" defer></script>-->
-    <!--<script src="js/all-init.min.js?v={{VERSION}}" defer></script>-->
+    <!--<script src="build/libs.build.min.js?v={{LIBS_VERSION}}" defer></script>-->
+    <!--<script src="build/all.build.min.js?v={{VERSION}}" defer></script>-->
     <!--/prod-->
 
 
-    <!--JSON-LD-->
+    <!--———————————— JSON-LD ————————————-->
+
     <script type="application/ld+json">
     {
         "@context": "http://schema.org/",
-        "@id": "http://mjerabek.cz/PersonMichalJerabek",
+        "@id": "https://mjerabek.cz/PersonMichalJerabek",
         "@type": "Person",
         "name": "Michal Jeřábek",
         "givenName": "Michal",
         "familyName": "Jeřábek",
-        "image": "http://mjerabek.cz/img/photo.jpg",
+        "image": "https://mjerabek.cz/img/photo.jpg",
         "address": {
-            "@id": "http://mjerabek.cz/PostalAddressMichalJerabek",
+            "@id": "https://mjerabek.cz/PostalAddressMichalJerabek",
             "@type": "PostalAddress",
             "addressCountry": "CZ",
             "addressLocality": "Liberec",
@@ -1612,7 +1720,7 @@
         },
         "email": "mjerabek@seznam.cz",
         "telephone": "+420728635829",
-        "url": "http://mjerabek.cz",
+        "url": "https://mjerabek.cz",
         "jobTitle": "Front-end / HTML kodér",
         "sameAs": [
             "https://github.com/michaljerabek",
@@ -1628,7 +1736,7 @@
         "name": "Michal Jeřábek",
         "description": "Front-end / HTML kodér",
         "address": {
-            "@id": "http://mjerabek.cz/PostalAddressMichalJerabek"
+            "@id": "https://mjerabek.cz/PostalAddressMichalJerabek"
         },
         "makesOffer": {
         	"@type": "Offer",
@@ -1638,7 +1746,7 @@
                 "@type": "Service",
                 "serviceType": "Kódování webů, šablon a grafických návrhů do HTML, CSS a JavaScriptu.",
                 "provider": {
-                    "@id": "http://mjerabek.cz/PersonMichalJerabek"
+                    "@id": "https://mjerabek.cz/PersonMichalJerabek"
                 },
                 "areaServed": {
                   "@type": "State",
@@ -1650,11 +1758,11 @@
                 }
             }
         },
-        "logo": "http://mjerabek.cz/img/logo.png",
+        "logo": "https://mjerabek.cz/img/logo.png",
         "email": "mjerabek@seznam.cz",
         "telephone": "+420728635829",
-        "url": "http://mjerabek.cz",
-        "image": "http://mjerabek.cz/img/photo.jpg",
+        "url": "https://mjerabek.cz",
+        "image": "https://mjerabek.cz/img/photo.jpg",
         "priceRange": "$$",
         "sameAs": [
             "https://github.com/michaljerabek",

@@ -5,8 +5,10 @@
 .btn {
     flex-grow: 0;
     flex-shrink: 0;
-    display: inline-flex;
     align-items: center;
+
+    display: inline-flex;
+
     margin-bottom: 1px; /*Android nezobrazuje border*/
 
     font-family: inherit;
@@ -154,6 +156,14 @@
     outline: none;
 
     transition: all 0.125s ease-out 0s;
+}
+
+.btn:focus-visible {
+    outline: 2px solid rgb(0, 0, 0);
+}
+
+.inverse-focus .btn:focus-visible {
+    outline: 2px solid rgb(255, 255, 255);
 }
 
 .btn:active {

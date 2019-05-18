@@ -131,6 +131,7 @@
         .contact__content {
             display: flex;
             justify-content: center;
+
             padding-top: 3vmin;
             padding-top: 2vmax;
 
@@ -269,6 +270,7 @@
             left: -10px;
 
             display: inline-block;
+
             padding-right: 20px;
             padding-left: 10px;
 
@@ -286,6 +288,7 @@
 
             .contact__option-link {
                 display: inline-block;
+
                 padding-bottom: 0.25rem;
 
                 font-size: 2rem;
@@ -341,6 +344,7 @@
 .contact__social-sites {
     display: flex;
     flex-wrap: wrap;
+
     margin-bottom: 52px;
 }
 
@@ -350,6 +354,7 @@
 
         .contact__social-sites {
             order: 3;
+
             width: 100%;
             max-width: inherit;
             margin-top: 52px;
@@ -362,6 +367,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
         width: 40px;
         height: 40px;
 
@@ -374,6 +380,7 @@
 
         .contact__social-site-link {
             display: block;
+
             width: inherit;
             height: inherit;
         }
@@ -402,13 +409,14 @@
 
     .contact__address,
     .contact__other-informations {
-        vertical-align: top;
-
         display: inline-block;
+
         width: 50%;
-        margin-left: -4px;
         margin-right: -4px;
         margin-bottom: 2rem;
+        margin-left: -4px;
+
+        vertical-align: top;
     }
 }
 
@@ -419,6 +427,7 @@
         .contact__address,
         .contact__other-informations {
             order: 2;
+
             width: 100%;
             max-width: inherit;
             margin-top: 52px;
@@ -462,8 +471,8 @@
         .contact__address,
         .contact__other-informations {
             width: 37.5%;
-            margin-left: 0;
             margin-right: 0;
+            margin-left: 0;
         }
     }
 
@@ -480,8 +489,8 @@
         .contact__address,
         .contact__other-informations {
             width: 50%;
-            margin-left: 0;
             margin-right: 0;
+            margin-left: 0;
         }
     }
 }
@@ -492,6 +501,7 @@
         left: -10px;
 
         display: table;
+
         padding-right: 10px;
         padding-left: 10px;
 
@@ -547,6 +557,7 @@
 
         .contact__registration-info {
             order: 4;
+
             margin-bottom: 2vmax;
         }
     }
@@ -555,8 +566,8 @@
 
         .contact__registration-info {
             max-width: 75%;
-            margin-left: 12.5%;
             margin-right: auto;
+            margin-left: 12.5%;
         }
     }
 
@@ -564,8 +575,8 @@
 
         .contact__registration-info {
             max-width: 87.5%;
-            margin-left: 6.25%;
             margin-right: auto;
+            margin-left: 6.25%;
         }
     }
 }
@@ -721,11 +732,11 @@
             right: 13px;
             bottom: 0px;
 
-            transform-origin: center 2px;
-
             height: 0;
             width: 0;
             margin: auto;
+
+            transform-origin: center 2px;
 
             border: 4px solid;
             border-color: #e7e7e7 transparent transparent transparent;
@@ -976,10 +987,10 @@
             right: 0%;
             bottom: 1px;
 
-            transform: translateX(0%);
-
             height: 0;
             margin: auto;
+
+            transform: translateX(0%);
         }
 
         .android .contact__form-btn .numbers,

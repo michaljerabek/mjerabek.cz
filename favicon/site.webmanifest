@@ -1,5 +1,6 @@
 {
-    "name": "MJ \u2014 kod\u00e9r",
+    "name": "Michal Jeřábek",
+    "short_name": "Jeřábek",
     "icons": [
         {
             "src": "android-chrome-192x192.png",
@@ -12,6 +13,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#C9B47F",
-    "background_color": "#C9B47F"
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
+    "display": "standalone"
 }

@@ -8,10 +8,10 @@
     left: 0;
     z-index: 99999;
 
-    transform: translateY(0%);
-
     width: 100%;
     padding: 14px 0;
+
+    transform: translateY(0%);
 
     color: #111;
     background-color: #fff;
@@ -33,9 +33,9 @@
 }
 
 .cookies--fade-out {
-    transform: translateY(100%);
-
     display: block !important;
+
+    transform: translateY(100%);
 }
 
     .cookies .layout__center {

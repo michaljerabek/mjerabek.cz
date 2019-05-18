@@ -2,7 +2,8 @@
 
 session_start();
 
-define("VERSION", "2019-05-17");
+define("VERSION", "2019-05-17-2");
+define("LIBS_VERSION", "2019-05-17-2");
 
 if (isset($_GET["action"])) {
 
@@ -25,7 +26,7 @@ $replaceTag = function ($tag, $value) use (&$content) {
 $removeDev = function () use (&$content) {
 
     $content = preg_replace("#\n*\s*(?<=<!--dev-->).*?(?=<!--/dev-->)#s", "", $content);
-    $content = preg_replace("#(\n*\s*<!--dev-->)#s", "", $content);
+    $content = preg_replace("#(\n*\s*<!--dev-->)#s", "\n", $content);
     $content = preg_replace("#(<!--/dev-->\s*)\s*\n#s", "\n\n", $content);
 };
 
@@ -34,7 +35,7 @@ $useProd = function () use (&$content) {
     $content = preg_replace_callback("#(?<=<!--prod-->).*?(?=<!--/prod-->)#s", function ($matches) {
         return preg_replace("#<!--|-->#", "", $matches[0]);
     }, $content);
-    $content = preg_replace("#(\n*\s*<!--prod-->)#s", "", $content);
+    $content = preg_replace("#(\n*\s*<!--prod-->)#s", "\n", $content);
     $content = preg_replace("#(<!--/prod-->\s*)\s*\n#s", "\n\n", $content);
 };
 
@@ -65,14 +66,15 @@ if (isset($_SESSION["ok"])) {
 }
 
 $replaceTag("VERSION", VERSION);
+$replaceTag("LIBS_VERSION", LIBS_VERSION);
 
 $replaceTag("[^{}]+", "");
 
-if (isset($_ENV["ENV"]) && $_ENV["ENV"] === "production") {
+//if (isset($_ENV["ENV"]) && $_ENV["ENV"] === "production") {
 
     $removeDev();
     $useProd();
-}
+//}
 
 unset($_SESSION["ok"]);
 unset($_SESSION["old_input"]);

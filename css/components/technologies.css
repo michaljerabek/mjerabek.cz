@@ -3,10 +3,10 @@
 /*====================================================================*/
 
 .technologies {
-    z-index: -1;
 	position: fixed;
     top: 0;
     left: 0;
+    z-index: -1;
 
     width: 100%;
     height: 0%; /*ios bug - zobrazuje se nad obsahem i při skrytí (no-js)*/
@@ -117,8 +117,8 @@
             left: 50%;
             z-index: 3;
 
-            height: 1px;
             width: 27px;
+            height: 1px;
 
             background: currentColor;
             box-shadow: -1px 1px 2px rgba(17, 17, 17, 0.325),
@@ -152,10 +152,11 @@
 .technologies__background {
     position: absolute;
     top: 0;
-    left: 0;
     right: 0;
+    left: 0;
 
     display: flex;
+
     width: 100%;
     height: 100%;
     padding: 0;
@@ -166,6 +167,7 @@
         position: relative;
 
         flex: none;
+
         height: 100vh;
 
         opacity: 0;
@@ -291,6 +293,7 @@
 
 .technologies__technology {
     display: block;
+
     height: 100vh;
 
     visibility: hidden;
@@ -320,6 +323,7 @@
         z-index: 2;
 
         display: flex;
+
         padding: 0;
     }
 
@@ -332,6 +336,7 @@
             position: relative;
 
             flex: none;
+
             height: 100vh;
 
             outline: none;
@@ -369,8 +374,8 @@
 
             .technologies__text,
             .technologies__sample {
-                padding-bottom: 80px;
                 padding-top: 165px;
+                padding-bottom: 80px;
             }
         }
 
@@ -378,8 +383,8 @@
 
             .technologies__text,
             .technologies__sample {
-                padding-bottom: 40px;
                 padding-top: 135px;
+                padding-bottom: 40px;
             }
         }
 
@@ -387,8 +392,8 @@
 
             .technologies__text,
             .technologies__sample {
-                padding-bottom: 20px;
                 padding-top: 105px;
+                padding-bottom: 20px;
             }
         }
 
@@ -418,16 +423,16 @@
         @media (max-width: 767px) {
 
             .technologies__sample {
-                padding-left: 20px;
                 padding-right: 20px;
+                padding-left: 20px;
             }
         }
 
         .technologies__text {
-            transform: translateX(-100px);
-
             width: 38.12%;
             width: calc((100% / 21) * 8);
+
+            transform: translateX(-100px);
         }
 
         @media (min-width: 768px) and (max-width: 1023px) {
@@ -550,6 +555,7 @@
                 transform: translateX(0px);
 
                 display: block;
+
                 height: 100%;
 
                 opacity: 0;
@@ -563,7 +569,7 @@
             .no-js .technologies__sample-content-wrapper {
                 overflow: auto;
             }
-\
+
             .js .technologies__text-content-wrapper,
             .js .technologies__sample-content-wrapper {
                 overflow: hidden;
@@ -741,11 +747,11 @@
                 left: 0;
                 z-index: 10;
 
-                transform-origin: left bottom;
-                transform: rotate(90deg);
-
-                height: 40px;
                 width: 100vh;
+                height: 40px;
+
+                transform: rotate(90deg);
+                transform-origin: left bottom;
 
                 font-family: "Caudex", "Garamond", serif;
                 font-size: 1.25rem;
@@ -872,10 +878,10 @@
     left: 50%;
     z-index: 9;
 
-    transform: translateX(-50%);
-
     width: 100%;
     padding: 0;
+
+    transform: translateX(-50%);
 
     font-size: 0;
 
@@ -907,12 +913,14 @@
 
     .technologies__nav-items {
         display: flex;
+
         width: 100%;
     }
 
         .technologies__nav-item {
             order: 3;
             flex: none;
+
             min-width: 38.12%;
             min-width: calc((100% / 21) * 8);
         }
@@ -936,9 +944,9 @@
             }
 
             .technologies__nav-link {
-                transform: translateX(100px);
-
                 display: block;
+
+                transform: translateX(100px);
 
                 font-family: "Caudex";
                 text-decoration: none;
@@ -1046,10 +1054,10 @@
         bottom: -14px;
         left: 40px;
 
-        transform: translateX(-100px);
-
         width: 100px;
         height: 2px;
+
+        transform: translateX(-100px);
 
         background-color: #6595A9;
         opacity: 0;

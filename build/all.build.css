@@ -1,66 +1,4 @@
 /*====================================================================*/
-/*------------------------- RESET + CLEARFIX -------------------------*/
-/*====================================================================*/
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
-}
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-    display: block;
-}
-body {
-    line-height: 1;
-}
-ol, ul {
-    list-style: none;
-}
-blockquote, q {
-    quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-    content: '';
-    content: none;
-}
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-}
-[hidden] {
-    display: none !important;
-}
-
-.cf:after {
-    visibility: hidden;
-    display: block;
-    font-size: 0;
-    content: " ";
-    clear: both;
-    height: 0;
-    }
-.cf { display: inline-table; }
-* html .cf { height: 1%; }
-.cf { display: block; }
-
-/*====================================================================*/
 /*-------------------------- GENERAL STYLES --------------------------*/
 /*====================================================================*/
 
@@ -440,17 +378,39 @@ html.js .x-js,
     }
 }
 
-/*--------------------------------------------------------------------*/
+/*====================================================================*/
 /*-------------------------------- UI --------------------------------*/
-/*--------------------------------------------------------------------*/
+/*====================================================================*/
 
 /* Outline zaměřovatelných elementů. */
-a:not(.btn) {
-    outline: 1px dotted rgba(0, 0, 0, 0);
+:focus {
+    outline: 1px dotted rgba(0, 0, 0, 0.5);
 }
 
-a:not(.btn):focus {
-    outline: 1px dotted rgba(0, 0, 0, 0.5);
+.inverse-focus:focus,
+.inverse-focus :focus {
+    outline-color: rgba(255, 255, 255, 0.5);
+}
+
+:focus-visible {
+    outline: 2px solid rgb(0, 0, 0);
+}
+
+.inverse-focus:focus-visible,
+.inverse-focus :focus-visible {
+    outline-color: rgb(255, 255, 255);
+}
+
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+:focus:not(:-moz-focusring) {
+    outline: none;
+}
+
+.custom-focus {
+    outline: none;
 }
 
 ::-moz-selection {
@@ -463,7 +423,51 @@ a:not(.btn):focus {
     background: rgba(123, 104, 57, 0.85);
 }
 
-/*---------------------------- TRANSITION ----------------------------*/
+/*--------------------------------------------------------------------*/
+/*-------------------------- ACCESSIBILITY ---------------------------*/
+/*--------------------------------------------------------------------*/
+
+/* Navigace pro lepší přístupnost.
+* Při spuštění webu se pomocí klávesy tab zobrazí v levém horním rohu
+* možnosti přejít na hlavní navigaci nebo obsah.
+*/
+
+.ui__accessibility-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999999999999999;
+
+    padding: 8px 12px;
+
+    font-family: serif;
+    font-size: 1.25rem;
+    letter-spacing: 0;
+
+    color: #000;
+    background-color: #fff;
+    border: 2px solid #000;
+
+    overflow: hidden;
+}
+
+.ui__accessibility-nav,
+.ui__accessibility-nav:focus,
+.ui__accessibility-nav:hover {
+    transition: none;
+}
+
+.ui__accessibility-nav:not(:focus) {
+    width: 0;
+    height: 0;
+    padding: 0;
+
+    border: none;
+}
+
+/*--------------------------------------------------------------------*/
+/*--------------------------- TRANSITION -----------------------------*/
+/*--------------------------------------------------------------------*/
 
 /* Univerzální transition.
  * Lze přidat jakémukoliv elementu.
@@ -544,9 +548,9 @@ a:active .transition-hideable {
         background     0.05s ease-out 0s;
 }
 
-/*//////////////////////////// TRANSITION ////////////////////////////*/
-
-/*---------------------------- ANIMATIONS ----------------------------*/
+/*--------------------------------------------------------------------*/
+/*--------------------------- ANIMATIONS -----------------------------*/
+/*--------------------------------------------------------------------*/
 
 @keyframes show {
     from {
@@ -593,10 +597,9 @@ a:active .transition-hideable {
     }
 }
 
-/*//////////////////////////// ANIMATIONS ////////////////////////////*/
-
-
-/*---------------------------- ICONS ----------------------------*/
+/*--------------------------------------------------------------------*/
+/*------------------------------ ICONS -------------------------------*/
+/*--------------------------------------------------------------------*/
 
 /* Přidá elementům ikonu (sprite). */
 .icon {
@@ -604,7 +607,7 @@ a:active .transition-hideable {
 
     display: inline-block;
 
-    background: url("../img/sprites.png") no-repeat;
+    /*background: url("../img/sprites.png") no-repeat;*/
 }
 
 .icon-before,
@@ -618,12 +621,12 @@ a:active .transition-hideable {
 
     position: absolute;
 
-    background: url("../img/sprites.png") no-repeat;
+    /*background: url("../img/sprites.png") no-repeat;*/
 }
 
 /* Pro elementy button. */
 .icon-btn {
-    background: url("../img/sprites.png") no-repeat;
+    /*background: url("../img/sprites.png") no-repeat;*/
     border: none;
     border-radius: 0px;
     cursor: pointer;
@@ -650,7 +653,9 @@ a:active .transition-hideable {
     transition: all 0.05s ease-out 0s;
 }
 
-/*---------------------------- ZOOM ----------------------------*/
+/*--------------------------------------------------------------------*/
+/*------------------------------- ZOOM -------------------------------*/
+/*--------------------------------------------------------------------*/
 
 .ui__perspective {
     perspective: 100px;
@@ -704,10 +709,10 @@ a:active .transition-hideable {
         left: 0px;
         z-index: 1000;
 
-        transform: translateZ(8px);
-
         width: 100%;
         height: 100%;
+
+        transform: translateZ(8px);
 
         background-color: #000;
         opacity: 0;
@@ -1099,6 +1104,7 @@ input[type="time"]:focus {
 
     .form__label {
         display: block;
+
         margin-bottom: 0.25rem;
 
         font-size: 1.25rem;
@@ -1188,8 +1194,10 @@ input[type="time"]:focus {
 .btn {
     flex-grow: 0;
     flex-shrink: 0;
-    display: inline-flex;
     align-items: center;
+
+    display: inline-flex;
+
     margin-bottom: 1px; /*Android nezobrazuje border*/
 
     font-family: inherit;
@@ -1339,6 +1347,14 @@ input[type="time"]:focus {
     transition: all 0.125s ease-out 0s;
 }
 
+.btn:focus-visible {
+    outline: 2px solid rgb(0, 0, 0);
+}
+
+.inverse-focus .btn:focus-visible {
+    outline: 2px solid rgb(255, 255, 255);
+}
+
 .btn:active {
     transition: all 0.05s ease-out 0s;
 }
@@ -1390,6 +1406,7 @@ input[type="time"]:focus {
     z-index: 1;
 
     display: flex;
+
     width: 100%;
 	min-height: 100vmin;
 }
@@ -1609,10 +1626,10 @@ input[type="time"]:focus {
         left: 50%;
         z-index: 1;
 
-        transform: translate(-50%, -50%);
-
         width: 100%;
         height: 100%;
+
+        transform: translate(-50%, -50%);
 
         will-change: transform;
 
@@ -1625,10 +1642,10 @@ input[type="time"]:focus {
             left: 50%;
             z-index: 1;
 
-            transform: translate3d(223.5px, 223.5px, 0px) rotate(45deg);
-
             width: 1080px;
             height: 1080px;
+
+            transform: translate3d(223.5px, 223.5px, 0px) rotate(45deg);
 
             border-width: 1px;
             border-style: solid;
@@ -1639,16 +1656,6 @@ input[type="time"]:focus {
 
             contain: layout size style;
     }
-
-/*//////////////////////////// BACKGROUND ////////////////////////////*/
-
-.section--dark a:not(.btn) {
-    outline: 1px dotted rgba(255, 255, 255, 0);
-}
-
-.section--dark a:not(.btn):focus {
-    outline: 1px dotted rgba(255, 255, 255, 0.5);
-}
 
 /*====================================================================*/
 /*------------------------------- INTRO ------------------------------*/
@@ -1753,6 +1760,7 @@ input[type="time"]:focus {
 
 .intro__logo {
     align-self: flex-start;
+
     width: 100%;
 
     font-size: 0;
@@ -1794,9 +1802,9 @@ input[type="time"]:focus {
     .intro__logo-link {
         position: relative;
 
-        transform: scale(1) translate(0px, 0px);
-
         display: inline-block;
+
+        transform: scale(1) translate(0px, 0px);
 
         filter: drop-shadow(-1px 1px 0px rgba(17, 17, 17, 0));
 
@@ -1818,10 +1826,10 @@ input[type="time"]:focus {
             left: 50%;
             z-index: 10;
 
-            transform: translate(-50%, -50%);
-
             max-width: 100%;
             max-height: 100%;
+
+            transform: translate(-50%, -50%);
 
             opacity: 0;
         }
@@ -2102,39 +2110,39 @@ input[type="time"]:focus {
         @media (min-height: 1024px) {
 
             .intro__content {
-                margin-bottom: 27vmin;
                 margin-top: calc(-56px + 2vh);
+                margin-bottom: 27vmin;
             }
         }
 
         @media (min-height: 768px) and (max-height: 1023px) {
 
             .intro__content {
-                margin-bottom: 23vmin;
                 margin-top: calc(-48px + 2vh);
+                margin-bottom: 23vmin;
             }
         }
 
         @media (min-height: 480px) and (max-height: 767px) {
 
             .intro__content {
-                margin-bottom: 18vmin;
                 margin-top: calc(-64px + 4vh);
+                margin-bottom: 18vmin;
             }
         }
 
         @media (max-height: 479px) {
 
             .intro__content {
-                margin-bottom: 13vmin;
                 margin-top: calc(-42px + 4vh);
+                margin-bottom: 13vmin;
             }
         }
 
             .intro__title {
-                padding-bottom: 0.26154em;
-
                 display: table;
+
+                padding-bottom: 0.26154em;
                 margin: 0px auto;
 
                 font-size: 4.0625rem;
@@ -2448,8 +2456,8 @@ input[type="time"]:focus {
                 .intro__title .word1 .letter6 {
                     top: 0.075em;
 
-                    margin-left: -0.06em;
                     margin-right: -0.065em;
+                    margin-left: -0.06em;
                 }
 
                 .intro__title .word1 .letter7 {
@@ -2489,6 +2497,7 @@ input[type="time"]:focus {
 
             .intro__claim {
                 display: table;
+
                 margin: 0px auto;
 
                 font-family: "josefin-sans-intro-claim", "josefin-sans", "Calibri", "Trebuchet MS", sans-serif;
@@ -2523,6 +2532,7 @@ input[type="time"]:focus {
 
                     .intro__claim .first-line {
                         display: table;
+
                         margin: 0px auto;
                     }
                 }
@@ -2702,6 +2712,7 @@ input[type="time"]:focus {
             position: relative;
 
             align-self: flex-end;
+
             margin-bottom: 10vmin;
 
             pointer-events: auto;
@@ -2723,9 +2734,9 @@ input[type="time"]:focus {
             .intro__name .text {
                 position: absolute;
                 top: 0;
+                right: 0;
                 bottom: 0;
                 left: 0;
-                right: 0;
 
                 margin: auto;
 
@@ -2930,8 +2941,9 @@ input[type="time"]:focus {
     left: 0;
     z-index: 999;
 
-    transform: translateY(0%);
     width: 100%;
+
+    transform: translateY(0%);
 
     background-color: transparent;
     border-bottom: 2px solid transparent;
@@ -3064,10 +3076,10 @@ input[type="time"]:focus {
     left: 0px;
     z-index: -1;
 
-    transform: translateY(-100%);
-
     width: 100%;
     height: calc(100% + 3px);
+
+    transform: translateY(-100%);
 
     pointer-events: auto;
 
@@ -3381,10 +3393,10 @@ input[type="time"]:focus {
         top: calc(50% + 13px);
         left: 50%;
 
-        transform: translateX(-5px) rotate(-45deg) translateX(-50%);
-
         width: 4px;
         height: 4px;
+
+        transform: translateX(-5px) rotate(-45deg) translateX(-50%);
 
         background-color: #3C6474;
         opacity: 0;
@@ -3521,10 +3533,10 @@ input[type="time"]:focus {
         .main-nav__wrapper::after {
             content: "";
 
-            z-index: -1;
             position: absolute;
             top: 0px;
             left: 0px;
+            z-index: -1;
 
             width: 100%;
             height: 100%;
@@ -3544,10 +3556,10 @@ input[type="time"]:focus {
         @media (max-width: 767px) {
 
             .main-nav__mobile-logo {
-                z-index: 5;
                 position: absolute;
                 top: 0;
                 left: 20px;
+                z-index: 5;
 
                 display: flex;
                 justify-content: center;
@@ -3623,10 +3635,10 @@ input[type="time"]:focus {
                 right: 0;
                 z-index: 5;
 
-                transform: translateZ(0);
-
-                padding-left: 10px;
                 padding-bottom: 10px;
+                padding-left: 10px;
+
+                transform: translateZ(0);
 
                 overflow: hidden;
 
@@ -3653,6 +3665,7 @@ input[type="time"]:focus {
                 .main-nav__items {
                     display: flex;
                     flex-direction: column;
+
                     min-width: 200px;
                     padding: 0px 0;
 
@@ -3872,6 +3885,7 @@ input[type="time"]:focus {
                         .main-nav__link:active,
                         .main-nav__link {
                             display: flex;
+
                             padding: 0 40px;
 
                             font-size: 1.25rem;
@@ -3904,11 +3918,11 @@ input[type="time"]:focus {
         bottom: 0;
         left: 23px;
 
-        transform: translateY(-50%) translateX(-5px) rotate(-45deg) translateX(-50%);
-
         width: 4px;
         height: 4px;
         margin: auto;
+
+        transform: translateY(-50%) translateX(-5px) rotate(-45deg) translateX(-50%);
 
         background-color: #3C6474;
         opacity: 0;
@@ -3975,6 +3989,7 @@ input[type="time"]:focus {
         display: flex;
         justify-content: center;
         align-items: center;
+
         padding: 1px 20px 0px 44px;
         margin-left: auto;
 
@@ -4019,10 +4034,11 @@ input[type="time"]:focus {
 
         position: absolute;
         left: 12px;
-        transform-origin: 50% 50%;
 
         width: 20px;
         height: 1px;
+
+        transform-origin: 50% 50%;
 
         background-color: currentColor;
 
@@ -4061,8 +4077,8 @@ input[type="time"]:focus {
 
     #main-nav__mobile-opener {
         top: 0;
-        bottom: 0;
         right: 0;
+        bottom: 0;
 
         margin: auto;
     }
@@ -4268,6 +4284,7 @@ _:-ms-input-placeholder, :root .offer * { /*IE10-11*/
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
+
         height: 100%;
         padding-top: 10px;
 
@@ -4301,6 +4318,7 @@ _:-ms-input-placeholder, :root .offer * { /*IE10-11*/
     /*bug v iOS - vynucení překreslení*/
     .js .offer:not(.offer--init-fade-in) {
         display: block;
+
         width: 100%;
 
         animation: none;
@@ -4328,7 +4346,6 @@ _:-ms-input-placeholder, :root .offer * { /*IE10-11*/
             }
 
             .offer__title .word2 .letter1 {
-                margin-right: -0.055em;
                 margin-right: -0.055em;
             }
 
@@ -4481,6 +4498,7 @@ _:-ms-input-placeholder, :root .offer * { /*IE10-11*/
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
+
         width: 100%;
         padding-top: 64px;
         margin: auto;
@@ -4513,8 +4531,8 @@ _:-ms-input-placeholder, :root .offer * { /*IE10-11*/
             .offer__feature {
                 max-width: 360px;
                 padding-right: 20px;
-                margin-bottom: 40px;
                 padding-left: 20px;
+                margin-bottom: 40px;
             }
         }
 
@@ -4532,8 +4550,8 @@ _:-ms-input-placeholder, :root .offer * { /*IE10-11*/
             .offer__feature {
                 max-width: 320px;
                 padding-right: 0px;
-                padding-left: 0px;
                 padding-bottom: 0;
+                padding-left: 0px;
             }
         }
 
@@ -5274,10 +5292,10 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 /*====================================================================*/
 
 .technologies {
-    z-index: -1;
 	position: fixed;
     top: 0;
     left: 0;
+    z-index: -1;
 
     width: 100%;
     height: 0%; /*ios bug - zobrazuje se nad obsahem i při skrytí (no-js)*/
@@ -5388,8 +5406,8 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
             left: 50%;
             z-index: 3;
 
-            height: 1px;
             width: 27px;
+            height: 1px;
 
             background: currentColor;
             box-shadow: -1px 1px 2px rgba(17, 17, 17, 0.325),
@@ -5423,10 +5441,11 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 .technologies__background {
     position: absolute;
     top: 0;
-    left: 0;
     right: 0;
+    left: 0;
 
     display: flex;
+
     width: 100%;
     height: 100%;
     padding: 0;
@@ -5437,6 +5456,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
         position: relative;
 
         flex: none;
+
         height: 100vh;
 
         opacity: 0;
@@ -5562,6 +5582,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 
 .technologies__technology {
     display: block;
+
     height: 100vh;
 
     visibility: hidden;
@@ -5591,6 +5612,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
         z-index: 2;
 
         display: flex;
+
         padding: 0;
     }
 
@@ -5603,6 +5625,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
             position: relative;
 
             flex: none;
+
             height: 100vh;
 
             outline: none;
@@ -5640,8 +5663,8 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 
             .technologies__text,
             .technologies__sample {
-                padding-bottom: 80px;
                 padding-top: 165px;
+                padding-bottom: 80px;
             }
         }
 
@@ -5649,8 +5672,8 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 
             .technologies__text,
             .technologies__sample {
-                padding-bottom: 40px;
                 padding-top: 135px;
+                padding-bottom: 40px;
             }
         }
 
@@ -5658,8 +5681,8 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 
             .technologies__text,
             .technologies__sample {
-                padding-bottom: 20px;
                 padding-top: 105px;
+                padding-bottom: 20px;
             }
         }
 
@@ -5689,16 +5712,16 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
         @media (max-width: 767px) {
 
             .technologies__sample {
-                padding-left: 20px;
                 padding-right: 20px;
+                padding-left: 20px;
             }
         }
 
         .technologies__text {
-            transform: translateX(-100px);
-
             width: 38.12%;
             width: calc((100% / 21) * 8);
+
+            transform: translateX(-100px);
         }
 
         @media (min-width: 768px) and (max-width: 1023px) {
@@ -5821,6 +5844,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
                 transform: translateX(0px);
 
                 display: block;
+
                 height: 100%;
 
                 opacity: 0;
@@ -5834,7 +5858,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
             .no-js .technologies__sample-content-wrapper {
                 overflow: auto;
             }
-\
+
             .js .technologies__text-content-wrapper,
             .js .technologies__sample-content-wrapper {
                 overflow: hidden;
@@ -6012,11 +6036,11 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
                 left: 0;
                 z-index: 10;
 
-                transform-origin: left bottom;
-                transform: rotate(90deg);
-
-                height: 40px;
                 width: 100vh;
+                height: 40px;
+
+                transform: rotate(90deg);
+                transform-origin: left bottom;
 
                 font-family: "Caudex", "Garamond", serif;
                 font-size: 1.25rem;
@@ -6143,10 +6167,10 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
     left: 50%;
     z-index: 9;
 
-    transform: translateX(-50%);
-
     width: 100%;
     padding: 0;
+
+    transform: translateX(-50%);
 
     font-size: 0;
 
@@ -6178,12 +6202,14 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 
     .technologies__nav-items {
         display: flex;
+
         width: 100%;
     }
 
         .technologies__nav-item {
             order: 3;
             flex: none;
+
             min-width: 38.12%;
             min-width: calc((100% / 21) * 8);
         }
@@ -6207,9 +6233,9 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
             }
 
             .technologies__nav-link {
-                transform: translateX(100px);
-
                 display: block;
+
+                transform: translateX(100px);
 
                 font-family: "Caudex";
                 text-decoration: none;
@@ -6317,10 +6343,10 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
         bottom: -14px;
         left: 40px;
 
-        transform: translateX(-100px);
-
         width: 100px;
         height: 2px;
+
+        transform: translateX(-100px);
 
         background-color: #6595A9;
         opacity: 0;
@@ -6442,6 +6468,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
     position: relative;
 
     flex: none;
+
     margin-bottom: 28px;
 
     outline: none;
@@ -6473,8 +6500,8 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 
     .references__nav {
         width: calc(100% + 80px);
-        margin-left: -40px;
         margin-right: -40px;
+        margin-left: -40px;
     }
 }
 
@@ -6482,8 +6509,8 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 
     .references__nav {
         width: calc(100% + 40px);
-        margin-left: -20px;
         margin-right: -20px;
+        margin-left: -20px;
     }
 }
 
@@ -6537,6 +6564,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 
         .references__nav-item {
             flex: none;
+
             min-width: 38.08%;
             min-width: calc((100% / 21) * 8);
         }
@@ -6547,9 +6575,10 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 
             .references__nav-link {
                 display: block;
+
                 padding-top: 12px;
-                padding-bottom: 12px;
                 padding-right: 40px;
+                padding-bottom: 12px;
 
                 text-decoration: none;
                 line-height: 1;
@@ -6844,6 +6873,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
     position: relative;
 
     flex-grow: 1;
+
     width: 100%;
     margin-bottom: auto;
 
@@ -6861,6 +6891,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 .no-js .references__references {
     display: flex;
     flex-direction: column;
+
     padding-bottom: calc(4vh - 20px + 40px);
 }
 
@@ -6892,6 +6923,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 
     .no-js .references__reference {
         display: flex;
+
         min-width: 100%;
         padding-top: 120px;
         margin-top: -120px;
@@ -6914,6 +6946,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
         z-index: 2;
 
         order: -1;
+
         max-height: none;
 
         pointer-events: auto;
@@ -6943,6 +6976,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
         .references__wrapper {
             display: flex;
             flex-wrap: wrap;
+
             width: 100%;
         }
 
@@ -7307,6 +7341,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
                         display: flex;
                         align-items: center;
                         justify-content: center;
+
                         width: 100%;
                         min-height: 100%;
 
@@ -7365,6 +7400,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
                         flex-direction: column;
                         justify-content: center;
                         align-items: center;
+
                         width: 100%;
                         height: 100%;
                         padding: 20px;
@@ -7485,9 +7521,9 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
                             }
 
                         .references__image-code {
-                            transform: translateY(10px);
-
                             margin-top: 0.1em;
+
+                            transform: translateY(10px);
 
                             transition: transform 0.65s cubic-bezier(0, 0, .2, 1) 0s;
                         }
@@ -7561,9 +7597,9 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
                                 left: 105%;
                                 left: calc(100% + 0.2em);
 
-                                transform: translateX(-0.2em) translateY(-50%);
-
                                 margin: auto;
+
+                                transform: translateX(-0.2em) translateY(-50%);
 
                                 font-family: "Arial", sans-serif;
                                 font-size: 0.8em;
@@ -7586,6 +7622,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 
         .references__info {
             align-self: flex-start;
+
             padding-top: calc(2vh - 20px);
             margin-top: 20px;
 
@@ -7847,12 +7884,12 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
         top: 50%;
         left: 50%;
 
-        transform: translate(-50%, -50%);
-
         width: 100%;
-        height: 100%;
         width: calc(100% + 60px);
+        height: 100%;
         height: calc(100% + 60px + 200px);
+
+        transform: translate(-50%, -50%);
 
         pointer-events: auto;
 
@@ -7863,14 +7900,14 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 
         .about-me__img {
             position: absolute;
-            bottom: -1%;
             right: -20%;
             right: calc((-540px + 100%) / -2.3);
-
-            transform-origin: bottom right;
+            bottom: -1%;
 
             height: 90%;
             height: calc(100% - ((17vh + 17vw) / 3));
+
+            transform-origin: bottom right;
 
             pointer-events: none;
 
@@ -7905,9 +7942,9 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
             .about-me__img {
                 right: calc((-2460px + 100%) / 6.4);
 
-                transform: translateY(-2%);
-
                 height: calc(100% - ((25vh + 25vw) / 2.4));
+
+                transform: translateY(-2%);
             }
         }
 
@@ -7916,8 +7953,8 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
             .about-me__img {
                 right: calc((540px + 100%) / -5);
 
-                height: auto;
                 width: calc(540px + 55vw);
+                height: auto;
             }
         }
 
@@ -7964,6 +8001,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
         display: flex;
         flex-direction: column;
         align-items: center;
+
         padding: 0;
     }
 
@@ -8096,8 +8134,8 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
                 position: relative;
                 top: 0.175rem;
 
-                margin-left: -0.125rem;
                 margin-right: -0.0625rem;
+                margin-left: -0.125rem;
 
                 font-size: 1.6875rem;
                 vertical-align: bottom;
@@ -8228,6 +8266,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
                 .pricelist__pricelist,
                 .pricelist__terms-and-conditions {
                     display: inline-block;
+
                     width: 450px;
                     max-width: 50%;
                 }
@@ -8275,8 +8314,8 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
                 .pricelist__terms-and-conditions {
                     max-width: 75%;
 
-                    margin-left: auto;
                     margin-right: auto;
+                    margin-left: auto;
 
                     text-align: left;
                 }
@@ -8353,9 +8392,9 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
                     }
 
                     .pricelist__price .price {
-                        transform: translateY(0.075rem);
-
                         display: inline-block;
+
+                        transform: translateY(0.075rem);
                     }
 
                     .apple .pricelist__price .price {
@@ -8370,8 +8409,8 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
                     }
 
                     .pricelist__price .price {
-                        vertical-align: middle;
                         line-height: 1;
+                        vertical-align: middle;
                     }
                 }
                     /*kerning*/
@@ -8405,6 +8444,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 
                     .pricelist__price-unit {
                         display: block;
+
                         padding-top: 0.4375rem;
                         padding-bottom: 0.125rem;
 
@@ -8468,6 +8508,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
                         position: relative;
 
                         display: inline-block;
+
                         padding-right: 27px;
 
                         font-family: "Caudex", serif;
@@ -8555,11 +8596,11 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
                             right: 13px;
                             bottom: 0px;
 
-                            transform-origin: center 2px;
-
                             height: 0;
                             width: 0;
                             margin: auto;
+
+                            transform-origin: center 2px;
 
                             border: 4px solid;
                             border-color: #111 transparent transparent transparent;
@@ -8773,6 +8814,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
         .contact__content {
             display: flex;
             justify-content: center;
+
             padding-top: 3vmin;
             padding-top: 2vmax;
 
@@ -8911,6 +8953,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
             left: -10px;
 
             display: inline-block;
+
             padding-right: 20px;
             padding-left: 10px;
 
@@ -8928,6 +8971,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 
             .contact__option-link {
                 display: inline-block;
+
                 padding-bottom: 0.25rem;
 
                 font-size: 2rem;
@@ -8983,6 +9027,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 .contact__social-sites {
     display: flex;
     flex-wrap: wrap;
+
     margin-bottom: 52px;
 }
 
@@ -8992,6 +9037,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 
         .contact__social-sites {
             order: 3;
+
             width: 100%;
             max-width: inherit;
             margin-top: 52px;
@@ -9004,6 +9050,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
         display: flex;
         justify-content: center;
         align-items: center;
+
         width: 40px;
         height: 40px;
 
@@ -9016,6 +9063,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 
         .contact__social-site-link {
             display: block;
+
             width: inherit;
             height: inherit;
         }
@@ -9044,13 +9092,14 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 
     .contact__address,
     .contact__other-informations {
-        vertical-align: top;
-
         display: inline-block;
+
         width: 50%;
-        margin-left: -4px;
         margin-right: -4px;
         margin-bottom: 2rem;
+        margin-left: -4px;
+
+        vertical-align: top;
     }
 }
 
@@ -9061,6 +9110,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
         .contact__address,
         .contact__other-informations {
             order: 2;
+
             width: 100%;
             max-width: inherit;
             margin-top: 52px;
@@ -9104,8 +9154,8 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
         .contact__address,
         .contact__other-informations {
             width: 37.5%;
-            margin-left: 0;
             margin-right: 0;
+            margin-left: 0;
         }
     }
 
@@ -9122,8 +9172,8 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
         .contact__address,
         .contact__other-informations {
             width: 50%;
-            margin-left: 0;
             margin-right: 0;
+            margin-left: 0;
         }
     }
 }
@@ -9134,6 +9184,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
         left: -10px;
 
         display: table;
+
         padding-right: 10px;
         padding-left: 10px;
 
@@ -9189,6 +9240,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 
         .contact__registration-info {
             order: 4;
+
             margin-bottom: 2vmax;
         }
     }
@@ -9197,8 +9249,8 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 
         .contact__registration-info {
             max-width: 75%;
-            margin-left: 12.5%;
             margin-right: auto;
+            margin-left: 12.5%;
         }
     }
 
@@ -9206,8 +9258,8 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 
         .contact__registration-info {
             max-width: 87.5%;
-            margin-left: 6.25%;
             margin-right: auto;
+            margin-left: 6.25%;
         }
     }
 }
@@ -9363,11 +9415,11 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
             right: 13px;
             bottom: 0px;
 
-            transform-origin: center 2px;
-
             height: 0;
             width: 0;
             margin: auto;
+
+            transform-origin: center 2px;
 
             border: 4px solid;
             border-color: #e7e7e7 transparent transparent transparent;
@@ -9618,10 +9670,10 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
             right: 0%;
             bottom: 1px;
 
-            transform: translateX(0%);
-
             height: 0;
             margin: auto;
+
+            transform: translateX(0%);
         }
 
         .android .contact__form-btn .numbers,
@@ -9825,10 +9877,10 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
     left: 0;
     z-index: 99999;
 
-    transform: translateY(0%);
-
     width: 100%;
     padding: 14px 0;
+
+    transform: translateY(0%);
 
     color: #111;
     background-color: #fff;
@@ -9850,9 +9902,9 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 }
 
 .cookies--fade-out {
-    transform: translateY(100%);
-
     display: block !important;
+
+    transform: translateY(100%);
 }
 
     .cookies .layout__center {
@@ -9915,4 +9967,3 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 .cm-strikethrough  { color: #B3794E; }
 .cm-hr             { color: #AF975A; }
 .cm-error          { color: #BF865E; }
-
