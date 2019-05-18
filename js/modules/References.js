@@ -8,7 +8,11 @@
 
     ns.References = (function () {
 
-        var CLASS = {
+        var ID = {
+                self: "reference"
+            },
+
+            CLASS = {
                 parallaxDestroyed: "references--no-parallax",
 
                 selfJSLoaded: "references--js-loaded",
@@ -307,16 +311,31 @@
                 $tabsWrapper = $self.find(".references__references");
 
                 var $tabs = $tabsWrapper.find(SELECTOR.tab);
-
-                $tabs.hide();
-
                 $activeTab = $tabs.filter(SELECTOR.activeTab);
 
+                $tabs.hide();
                 $activeTab.show();
 
                 correctWrapperHeight();
 
                 ns.$win.on("resize." + ns + " resize.References." + ns, correctWrapperHeight);
+
+                if (location.hash === "#" + ID.self || ns.$win.scrollTop() > 0) {
+
+                    setTimeout(loadImage.bind(null, $activeTab), 0);
+
+                } else {
+
+                    ns.$win.on("main-nav__target-changed.References." + ns, function (event, target) {
+
+                        if (target === ID.self) {
+
+                            loadImage($tabs.filter(SELECTOR.activeTab));
+
+                            ns.$win.off("main-nav__target-changed.References." + ns);
+                        }
+                    });
+                }
 
                 //iOS fix (špatná výška)
                 setTimeout(function() {

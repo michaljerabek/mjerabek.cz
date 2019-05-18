@@ -504,7 +504,7 @@ a:active .transition,
 /* Transition animující vzhled stejně jako základní .transition,
  * ale upravený pro animaci výšky elementu, která zůstane
  * konzistentní i při změně stavu na :hover, :focus nebo :active. */
-.transition-hideable,
+/*.transition-hideable,
 a .transition-hideable {
     transition:
         all            0.3s   ease                          0s,
@@ -546,7 +546,7 @@ a:active .transition-hideable {
         border-color   0.05s ease-out 0s,
         filter         0.05s ease-out 0s,
         background     0.05s ease-out 0s;
-}
+}*/
 
 /*--------------------------------------------------------------------*/
 /*--------------------------- ANIMATIONS -----------------------------*/
@@ -610,7 +610,7 @@ a:active .transition-hideable {
     /*background: url("../img/sprites.png") no-repeat;*/
 }
 
-.icon-before,
+/*.icon-before,
 .icon-after {
     position: relative;
 }
@@ -621,12 +621,12 @@ a:active .transition-hideable {
 
     position: absolute;
 
-    /*background: url("../img/sprites.png") no-repeat;*/
-}
+    background: url("../img/sprites.png") no-repeat;
+}*/
 
 /* Pro elementy button. */
-.icon-btn {
-    /*background: url("../img/sprites.png") no-repeat;*/
+/*.icon-btn {
+    background: url("../img/sprites.png") no-repeat;
     border: none;
     border-radius: 0px;
     cursor: pointer;
@@ -651,7 +651,7 @@ a:active .transition-hideable {
 
 .icon-btn:active {
     transition: all 0.05s ease-out 0s;
-}
+}*/
 
 /*--------------------------------------------------------------------*/
 /*------------------------------- ZOOM -------------------------------*/
@@ -7084,7 +7084,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
                     .references__project-info-note {
                         font-style: italic;
 
-                        color: #878787;
+                        color: #6d6d6d;
                     }
 
                 .references__project-more-info {
@@ -7631,7 +7631,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
             line-height: 1.68750rem;
             letter-spacing: 0.0075em;
 
-            color: #878787;
+            color: #6d6d6d;
         }
 
         @media (min-width: 1024px) {

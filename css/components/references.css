@@ -688,7 +688,7 @@
                     .references__project-info-note {
                         font-style: italic;
 
-                        color: #878787;
+                        color: #6d6d6d;
                     }
 
                 .references__project-more-info {
@@ -1235,7 +1235,7 @@
             line-height: 1.68750rem;
             letter-spacing: 0.0075em;
 
-            color: #878787;
+            color: #6d6d6d;
         }
 
         @media (min-width: 1024px) {

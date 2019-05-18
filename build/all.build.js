@@ -2281,7 +2281,11 @@
 
     ns.References = (function () {
 
-        var CLASS = {
+        var ID = {
+                self: "reference"
+            },
+
+            CLASS = {
                 parallaxDestroyed: "references--no-parallax",
 
                 selfJSLoaded: "references--js-loaded",
@@ -2580,16 +2584,31 @@
                 $tabsWrapper = $self.find(".references__references");
 
                 var $tabs = $tabsWrapper.find(SELECTOR.tab);
-
-                $tabs.hide();
-
                 $activeTab = $tabs.filter(SELECTOR.activeTab);
 
+                $tabs.hide();
                 $activeTab.show();
 
                 correctWrapperHeight();
 
                 ns.$win.on("resize." + ns + " resize.References." + ns, correctWrapperHeight);
+
+                if (location.hash === "#" + ID.self || ns.$win.scrollTop() > 0) {
+
+                    setTimeout(loadImage.bind(null, $activeTab), 0);
+
+                } else {
+
+                    ns.$win.on("main-nav__target-changed.References." + ns, function (event, target) {
+
+                        if (target === ID.self) {
+
+                            loadImage($tabs.filter(SELECTOR.activeTab));
+
+                            ns.$win.off("main-nav__target-changed.References." + ns);
+                        }
+                    });
+                }
 
                 //iOS fix (špatná výška)
                 setTimeout(function() {
@@ -3608,7 +3627,7 @@
             TEMPLATE = [
                 "<div class=\"cookies x-print cc-window\" role=\"dialog\" aria-label=\"cookieconsent\" aria-describedby=\"cookieconsent:desc\">",
                     "<div class=\"layout__center\">",
-                        "<span class=\"cookies__message cc-message\" id=\"cookieconsent:desc\">Tento web používá k analýze návštěvnosti soubory cookies. <a class=\"cookies__link cc-link\" tabindex=\"0\" href=\"http://cookiesandyou.com\" target=\"_blank\" lang=\"en\" aria-label=\"Dozvědět se více o cookies\">Více informací zde <i>(en)</i></a>.</span>",
+                        "<span class=\"cookies__message cc-message\" id=\"cookieconsent:desc\">Tento web používá k analýze návštěvnosti soubory cookies. <a class=\"cookies__link cc-link\" tabindex=\"0\" href=\"http://cookiesandyou.com\" target=\"_blank\" rel=\"noreferrer\" lang=\"en\" aria-label=\"Dozvědět se více o cookies\">Více informací zde <i>(en)</i></a>.</span>",
                         "<div class=\"cookies__compliance cc-compliance\">",
                         "<a class=\"cookies__dismiss btn btn--dark btn--special-small cc-dismiss cc-btn\" aria-label=\"Zavřít zprávu o cookies\" tabindex=\"0\"><span class=\"text cc-btn cc-dismiss\"><span class=\"small cc-btn cc-dismiss\">OK</span></span></a>",
                         "</div>",
@@ -3616,7 +3635,7 @@
                 "</div>"
             ].join(""),
 
-            PLUGIN_LINK = "//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js",
+            PLUGIN_LINK = "https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js",
 
             onPopupOpen = function () {
 

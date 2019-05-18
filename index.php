@@ -2,8 +2,8 @@
 
 session_start();
 
-define("VERSION", "2019-05-17-2");
-define("LIBS_VERSION", "2019-05-17-2");
+define("VERSION", "2019-05-18");
+define("LIBS_VERSION", "2019-05-18");
 
 if (isset($_GET["action"])) {
 
@@ -70,11 +70,13 @@ $replaceTag("LIBS_VERSION", LIBS_VERSION);
 
 $replaceTag("[^{}]+", "");
 
-//if (isset($_ENV["ENV"]) && $_ENV["ENV"] === "production") {
+if ((isset($_ENV["ENV"]) && $_ENV["ENV"] === "production") ||
+    ($_SERVER["HTTP_HOST"] === "localhost" && !isset($_GET["dev"]))
+) {
 
     $removeDev();
     $useProd();
-//}
+}
 
 unset($_SESSION["ok"]);
 unset($_SESSION["old_input"]);
