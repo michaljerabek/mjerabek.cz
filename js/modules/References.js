@@ -256,6 +256,30 @@
                 }
             },
 
+            ensureInitialImageLoad = function ($tabs) {
+
+                var sectionRect = $self[0].getBoundingClientRect();
+
+                if (window.location.hash === "#" + ID.self ||
+                    (sectionRect.top <= window.innerHeight && sectionRect.bottom >= 0)
+                ) {
+
+                    setTimeout(loadImage.bind(null, $tabs.filter(SELECTOR.activeTab)), 0);
+
+                } else {
+
+                    ns.$win.on("main-nav__target-changed.References." + ns, function (event, target) {
+
+                        if (target === ID.self) {
+
+                            loadImage($tabs.filter(SELECTOR.activeTab));
+
+                            ns.$win.off("main-nav__target-changed.References." + ns);
+                        }
+                    });
+                }
+            },
+
             initNav = function () {
 
                 infinitum = new Infinitum({
@@ -320,22 +344,7 @@
 
                 ns.$win.on("resize." + ns + " resize.References." + ns, correctWrapperHeight);
 
-                if (location.hash === "#" + ID.self || ns.$win.scrollTop() > 0) {
-
-                    setTimeout(loadImage.bind(null, $activeTab), 0);
-
-                } else {
-
-                    ns.$win.on("main-nav__target-changed.References." + ns, function (event, target) {
-
-                        if (target === ID.self) {
-
-                            loadImage($tabs.filter(SELECTOR.activeTab));
-
-                            ns.$win.off("main-nav__target-changed.References." + ns);
-                        }
-                    });
-                }
+                ensureInitialImageLoad($tabs);
 
                 //iOS fix (špatná výška)
                 setTimeout(function() {
