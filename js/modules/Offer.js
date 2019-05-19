@@ -85,6 +85,7 @@
                     parallax: SELECTOR.background,
                     layers: $bgLayers,
                     fakeTilt: false,
+                    refreshOnResize: false,
 
                     onBeforeTransform: function ($el, progress, tX, tY, transform) {
 

@@ -1,7 +1,15 @@
 /*jslint indent: 4, white: true, nomen: true, regexp: true, unparam: true, node: true, browser: true, devel: true, nomen: true, plusplus: true, regexp: true, sloppy: true, vars: true*/
-/*global $, FULLTILT*/
+/*global FULLTILT, window, document, setTimeout, clearTimeout, navigator, IntersectionObserver*/
 
-(function () {
+(function (root, factory) {
+    if (typeof define === "function" && define.amd) {
+        define(factory);
+    } else if (typeof module === "object" && module.exports) {
+        module.exports = factory();
+    } else {
+        root.Parallax = factory();
+    }
+}(typeof self !== "undefined" ? self : this, function () {
 
     var TRANSFORM_PROP = (function () {
 
@@ -37,10 +45,32 @@
 
         SUPPORTS_TRANSFORM = document.body.style[TRANSFORM_PROP] !== undefined,
 
-        SUPPORTS_INTERSECTION_OBSERVER = !!window.IntersectionObserver;
+        SUPPORTS_INTERSECTION_OBSERVER = !!window.IntersectionObserver,
+        SUPPORTS_RESIZE_OBSERVER = !!window.ResizeObserver,
+
+        SUPPORTS_RAF = !!window.requestAnimationFrame;
 
 
-    var ParallaxController = window.ParallaxController = (function () {
+    var extend = function () {
+
+        var i = 1, key;
+
+        for (i; i < arguments.length; i++) {
+
+            for (key in arguments[i]) {
+
+                if (arguments[i].hasOwnProperty(key)) {
+
+                    arguments[0][key] = arguments[i][key];
+                }
+            }
+        }
+
+        return arguments[0];
+    };
+
+
+    var ParallaxController = (function () {
 
         var TILT_LIMIT = 67.5,
             FAKE_TILT_REDUCER = 0.5,
@@ -60,10 +90,12 @@
 
             refreshDebounce = {},
 
+            rafUpdate,
+            parallaxesToUpdate = [],
+
             intersectionObserver,
             intersectingParallaxes = { length: 0 },
 
-            $win,
             winHeight = 0,
             realWinHeight = 0,
             winWidth = 0,
@@ -82,13 +114,18 @@
                 return document.documentElement.clientHeight > window.innerHeight || isMobile ? window.innerHeight : document.documentElement.clientHeight;
             },
 
+            _getScrollTop = function () {
+
+                return (window.pageYOffset || document.documentElement.scrollTop) - (document.documentElement.clientTop || 0);
+            },
+
             getParallaxByEl = function (el) {
 
                 var p;
 
                 for (p in parallaxInstances) {
 
-                    if (parallaxInstances.hasOwnProperty(p) && parallaxInstances[p].$parallax[0] === el) {
+                    if (parallaxInstances.hasOwnProperty(p) && parallaxInstances[p].elParallax === el) {
 
                         return parallaxInstances[p];
                     }
@@ -97,21 +134,38 @@
                 return null;
             },
 
-            //v případě, že je sekce vidět, zavolá metodu transform příslušného Parallaxu
-            updateParallaxes = function (type, parallaxId) {
+            updateByRAF = function () {
 
-                winScrollTop = window.pageYOffset || 0;
+                if (parallaxesToUpdate.length) {
+
+                    var p;
+
+                    for (p = 0; p < parallaxesToUpdate.length; p++) {
+
+                        parallaxesToUpdate[p].transform(lastTiltWasFake);
+                    }
+
+                    parallaxesToUpdate = [];
+                }
+
+                rafUpdate = null;
+            },
+
+            //v případě, že je sekce vidět, zavolá metodu transform příslušného Parallaxu
+            updateParallaxes = function (type, parallaxId, forceIntersectionCheck) {
+
+                winScrollTop = _getScrollTop();
 
                 var parallaxesSource = SUPPORTS_INTERSECTION_OBSERVER ? intersectingParallaxes : parallaxInstances,
-                    p, parallax, toUpdate = [];
+                    p, parallax;
 
                 for (p in parallaxesSource) {
 
-                    if (parallaxInstances.hasOwnProperty(p)) {
+                    if (parallaxesSource[p] instanceof window.Parallax) {
 
                         parallax = parallaxInstances[p];
 
-                        if (parallax.disabled) {
+                        if (parallax.disabled || ~parallaxesToUpdate.indexOf(parallax)) {
 
                             continue;
                         }
@@ -135,9 +189,14 @@
                             continue;
                         }
 
-                        if (SUPPORTS_INTERSECTION_OBSERVER) {
+                        if (SUPPORTS_INTERSECTION_OBSERVER && forceIntersectionCheck !== true) {
 
-                            toUpdate.push(parallax);
+                            parallaxesToUpdate.push(parallax);
+
+                            if (!rafUpdate && SUPPORTS_RAF) {
+
+                                rafUpdate = window.requestAnimationFrame(updateByRAF);
+                            }
 
                             continue;
                         }
@@ -149,44 +208,61 @@
 
                         if (winBottom > parallaxOffsetTop && winScrollTop < parallaxBottom) {
 
-                            toUpdate.push(parallax);
+                            parallaxesToUpdate.push(parallax);
+
+                            if (!rafUpdate && SUPPORTS_RAF) {
+
+                                rafUpdate = window.requestAnimationFrame(updateByRAF);
+                            }
                         }
                     }
                 }
 
-                for (p = 0; p < toUpdate.length; p++) {
+                if (!SUPPORTS_RAF) {
 
-                    toUpdate[p].transform(lastTiltWasFake);
+                    for (p = 0; p < parallaxesToUpdate.length; p++) {
+
+                        parallaxesToUpdate[p].transform(lastTiltWasFake);
+                    }
+
+                    parallaxesToUpdate = [];
                 }
             },
 
             refresh = function (force) {
 
-                if (force !== true && ($win.height() === winHeight && $win.width() === winWidth)) {
+                if (force !== true && (document.documentElement.clientHeight === winHeight && document.documentElement.clientWidth === winWidth)) {
 
                     return;
                 }
 
-                winHeight = $win.height();
-                winWidth = $win.width();
-                winScrollTop = $win.scrollTop();
+                winHeight = document.documentElement.clientHeight;
+                winWidth = document.documentElement.clientWidth;
+                winScrollTop = _getScrollTop();
                 realWinHeight = _getRealWinHeight();
 
                 initialBeta = null;
 
-                $.each(parallaxInstances, function (i, parallax) {
+                var parallax, p;
 
-                    if (parallax.options.debounce) {
+                for (p in parallaxInstances) {
 
-                        clearTimeout(refreshDebounce[parallax.id]);
+                    if (parallaxInstances.hasOwnProperty(p)) {
 
-                        refreshDebounce[parallax.id] = setTimeout(parallax.refresh.bind(this), parallax.options.debounce);
+                        parallax = parallaxInstances[p];
 
-                    } else {
+                        if (parallax.options.debounce) {
 
-                        parallax.refresh();
+                            clearTimeout(refreshDebounce[parallax.id]);
+
+                            refreshDebounce[parallax.id] = setTimeout(parallax.refresh.bind(this), parallax.options.debounce);
+
+                        } else {
+
+                            parallax.refresh();
+                        }
                     }
-                });
+                }
             },
 
             onFakeTilt = function (e) {
@@ -294,6 +370,10 @@
                 intersectingParallaxes[parallax.id] = parallax;
 
                 intersectingParallaxes.length += 1;
+
+                parallax.shouldRefreshOffset = true;
+
+                updateParallaxes(TYPE_SCROLL, parallax.id);
             },
 
             removeFromIntersectingParallaxes = function (parallax) {
@@ -343,11 +423,9 @@
                     return;
                 }
 
-                $win = $(window);
-
-                winHeight = $win.height();
-                winWidth = $win.width();
-                winScrollTop = $win.scrollTop();
+                winHeight = document.documentElement.clientHeight;
+                winWidth = document.documentElement.clientWidth;
+                winScrollTop = _getScrollTop();
                 realWinHeight = _getRealWinHeight();
 
                 updateParallaxesScroll = updateParallaxes.bind(this, TYPE_SCROLL);
@@ -367,13 +445,16 @@
                     initScrollAndFakeTiltEvents();
                 }
 
-                $win.on("resize.ParallaxController", refresh);
+                window.addEventListener("resize", refresh, false);
 
                 if (!watchingTilt) {
 
                     watchTilt();
+                }
 
-                    $win.mousemove();
+                if (SUPPORTS_RAF) {
+
+                    rafUpdate = window.requestAnimationFrame(updateByRAF);
                 }
 
                 initialized = true;
@@ -381,9 +462,16 @@
 
             destroy = function () {
 
+                if (SUPPORTS_RAF) {
+
+                    window.cancelAnimationFrame(rafUpdate);
+
+                    rafUpdate = null;
+                }
+
                 destroyScrollAndFakeTiltEvents();
 
-                $win.off("resize.ParallaxController");
+                window.removeEventListener("resize", refresh);
 
                 if (SUPPORTS_INTERSECTION_OBSERVER) {
 
@@ -404,11 +492,11 @@
 
                     parallaxInstances[parallax.id] = parallax;
 
-                    setTimeout(updateParallaxes.bind(TYPE_SCROLL, parallax.id), 0);
+                    setTimeout(updateParallaxes.bind(this, TYPE_SCROLL, parallax.id, true), 0);
 
                     if (SUPPORTS_INTERSECTION_OBSERVER) {
 
-                        intersectionObserver.observe(parallax.$parallax[0]);
+                        intersectionObserver.observe(parallax.elParallax);
                     }
                 }
             },
@@ -425,7 +513,7 @@
 
                         removeFromIntersectingParallaxes(parallax);
 
-                        intersectionObserver.unobserve(parallax.$parallax[0]);
+                        intersectionObserver.unobserve(parallax.elParallax);
                     }
 
                     if (!instanceCounter) {
@@ -488,7 +576,7 @@
 
     var Layer = function Layer(el, parallax) {
 
-            this.$el = $(el);
+            this.el = el;
 
             this.parallax = parallax;
 
@@ -502,16 +590,18 @@
 
     Layer.prototype.refresh = function (preserveTransform) {
 
-        var dataReverse = this.$el.data(Layer.DATA.REVERSE.ATTR);
+        var dataReverse = this.el.getAttribute("data-" + Layer.DATA.REVERSE.ATTR);
 
         this.reverseTilt = dataReverse === Layer.DATA.REVERSE.VAL.TILT || dataReverse === Layer.DATA.REVERSE.VAL.BOTH;
         this.reverseScroll = dataReverse === Layer.DATA.REVERSE.VAL.SCROLL || dataReverse === Layer.DATA.REVERSE.VAL.BOTH;
 
-        this.mode = this.$el.data(Layer.DATA.MODE.ATTR) || Layer.DATA.MODE.VAL.SCROLL;
+        this.mode = this.el.getAttribute("data-" + Layer.DATA.MODE.ATTR) || Layer.DATA.MODE.VAL.SCROLL;
 
-        var CSS = {
-            height: ""
-        };
+        var c,
+
+            CSS = {
+                height: ""
+            };
 
         if (!this.parallax.options.preserveStyles) {
 
@@ -520,14 +610,24 @@
             CSS.left = "50%";
             CSS.bottom = "auto";
             CSS.right = "auto";
+            CSS.minWidth = "100%";
+            CSS.minHeight = "100%";
 
             CSS[TRANSFORM_PROP] = TRANSFORM_3D ? "translate3d(-50%, -50%, 0)" : "translate(-50%, -50%)";
         }
 
-        this.$el.css(CSS);
+        for (c in CSS) {
 
-        this.layerHeight = this.$el.outerHeight();
-        this.layerWidth = this.$el.outerWidth();
+            if (CSS.hasOwnProperty(c)) {
+
+                this.el.style[c] = CSS[c];
+            }
+        }
+
+        var rect = this.el.getBoundingClientRect();
+
+        this.layerHeight = rect.height;
+        this.layerWidth = rect.width;
 
         //velikost zvětšení sekce (polovina)
         this.parallaxXExtention = (this.layerWidth - this.parallax.parallaxWidth) / 2;
@@ -537,9 +637,11 @@
 
             var fixedHeight = ParallaxController.getRealWinHeight() + (this.parallaxYExtention * 2);
 
-            this.$el.height(fixedHeight);
+            this.el.style.height = fixedHeight + "px";
 
-            this.layerHeight = this.$el.outerHeight();
+            rect = this.el.getBoundingClientRect();
+
+            this.layerHeight = rect.height;
         }
 
         //šířka je větší jak výška => použít na šířku rozměry výšky, jinak při tiltu bude parallax mimo
@@ -555,6 +657,8 @@
             this.parallaxTiltYExtention = this.parallaxYExtention * this.tiltScrollRatio;
             this.parallaxYExtention = this.parallaxYExtention * (1 - this.tiltScrollRatio);
         }
+
+        this.wasIntersecting = false;
 
         if (!preserveTransform) {
 
@@ -587,13 +691,19 @@
 
             return function (x, y) {
 
-                this.$el[0].style[TRANSFORM_PROP] = x === true ? "translate3d(-50%, -50%, 0)" : x === false ? "" : "translate3d(" + x + "px, " + y + "px, 0)";
+                y = this.mode === Layer.DATA.MODE.VAL.FIXED ? Math.round(y) : y;
+                x = this.mode === Layer.DATA.MODE.VAL.FIXED ? Math.round(x) : x;
+
+                this.el.style[TRANSFORM_PROP] = x === true ? "translate3d(-50%, -50%, 0)" : x === false ? "" : "translate3d(" + x + "px, " + y + "px, 0)";
             };
         }
 
         return function (x, y) {
 
-            this.$el[0].style[TRANSFORM_PROP] = x === true ? "translate(-50%, -50%)" : x === false ? "" : "translate(" + x + "px, " + y + "px)";
+            y = this.mode === Layer.DATA.MODE.VAL.FIXED ? Math.round(y) : y;
+            x = this.mode === Layer.DATA.MODE.VAL.FIXED ? Math.round(x) : x;
+
+            this.el.style[TRANSFORM_PROP] = x === true ? "translate(-50%, -50%)" : x === false ? "" : "translate(" + x + "px, " + y + "px)";
         };
     }());
 
@@ -605,45 +715,119 @@
         },
 
         DEFAULTS = {
-            parallax: "." + CLASS.parallax + ":eq(0)",
+            parallax: "." + CLASS.parallax,
             layers: "." + CLASS.layer,
             useTilt: true,
             fakeTilt: true,
+            refreshOnResize: true,
             debounce: 0,
+            resizeInterval: 1000,
             removeIfNotSupported: false,
             preserveStyles: false,
             onTransform: null,
-            onBeforeTransform: null
+            onBeforeTransform: null,
+            onFirstIntersection: null
         },
 
         loadElements = function (options) {
 
-            if (typeof options.parallax === "string" || (window.HTMLElement && options.parallax instanceof window.HTMLElement)) {
+            if (typeof options.parallax === "string") {
 
-                this.$parallax = $(options.parallax);
+                this.elParallax = document.querySelector(options.parallax);
+
+            } else if ((window.HTMLElement && options.parallax instanceof window.HTMLElement) || (window.SVGElement && options.parallax instanceof window.SVGElement)) {
+
+                this.elParallax = options.parallax;
 
             } else if (options.parallax.jquery) {
 
-                this.$parallax = options.parallax;
+                this.elParallax = options.parallax[0];
             }
 
-            if (typeof options.layers === "string") {
+            if (!options.layers) {
 
-                this.$layers = this.$parallax.find(options.layers);
+                this.elLayers = [];
+
+                for (var c in this.elParallax.children) {
+
+                    if (this.elParallax.children.hasOwnProperty(c) && !this.elParallax.children[c].tagName.match(/^(no)?script$/i)) {
+
+                        this.elLayers.push(this.elParallax.children[c]);
+                    }
+                }
+
+            } else if (typeof options.layers === "string") {
+
+                this.elLayers = this.elParallax.querySelectorAll(options.layers);
 
             } else if (window.HTMLElement && options.layers instanceof window.HTMLElement) {
 
-                this.$layers = $(options.layers);
+                this.elLayers = [options.layers];
 
             } else if (options.layers.jquery) {
 
-                this.$layers = options.layers;
+                this.elLayers = options.layers.toArray();
+            }
+
+            this.elLayers = Array.prototype.slice.call(this.elLayers, 0);
+        },
+
+        initResizeParallaxObserver = function () {
+
+            clearTimeout(this.resizeParallaxDebounce);
+
+            if (SUPPORTS_RAF) {
+
+                cancelAnimationFrame(this.resizeParallaxDebounce);
+            }
+
+            if (SUPPORTS_RESIZE_OBSERVER) {
+
+                if (this.resizeObserver) {
+
+                    return;
+                }
+
+                this.resizeObserver = new ResizeObserver(function (entries) {
+
+                    if (this.parallaxWidth !== entries[0].contentRect.width || this.parallaxHeight !== entries[0].contentRect.height) {
+
+                        if (SUPPORTS_RAF && !this.options.debounce) {
+
+                            this.resizeParallaxDebounce = requestAnimationFrame(this.refresh.bind(this));
+
+                        } else {
+
+                            this.resizeParallaxDebounce = setTimeout(this.refresh.bind(this), this.options.debounce);
+                        }
+                    }
+                }.bind(this));
+
+            } else {
+
+                clearInterval(this.resizeParallaxInterval);
+
+                this.resizeParallaxInterval = setInterval(function () {
+
+                    var currentRect = this.elParallax.getBoundingClientRect();
+
+                    if (this.parallaxWidth !== currentRect.width || this.parallaxHeight !== currentRect.height) {
+
+                        if (this.options.debounce) {
+
+                            this.resizeParallaxDebounce = setTimeout(this.refresh.bind(this), this.options.debounce);
+
+                        } else {
+
+                            this.refresh();
+                        }
+                    }
+
+                }.bind(this), this.options.resizeInterval);
             }
         },
 
-        Parallax = window.Parallax = function Parallax(options) {
-
-            DEFAULTS.parallax = "." + CLASS.parallax + ":eq(" + instanceCounter + ")";
+        Parallax = function Parallax(options) {
 
             this.id = "Parallax-" + (instanceCounter++);
 
@@ -656,7 +840,7 @@
 
     Parallax.prototype.destroy = function () {
 
-        if (this.$layers) {
+        if (this.elLayers) {
 
             var layer = this.layers.length - 1;
 
@@ -666,10 +850,27 @@
             }
         }
 
+        clearInterval(this.resizeParallaxInterval);
+        clearTimeout(this.resizeParallaxDebounce);
+
+        if (SUPPORTS_RAF) {
+
+            cancelAnimationFrame(this.resizeParallaxDebounce);
+        }
+
+        if (this.resizeObserver) {
+
+            this.resizeObserver.unobserve(this.elParallax);
+
+            this.resizeObserver.disconnect();
+        }
+
+        this.resizeObserver = null;
+
         ParallaxController.remove(this);
 
-        this.$parallax = null;
-        this.$layers = null;
+        this.elParallax = null;
+        this.elLayers = null;
 
         this.layers = [];
 
@@ -678,46 +879,53 @@
 
     Parallax.prototype.refresh = function (options, elements) {
 
+        if (this.resizeObserver) {
+
+            this.resizeObserver.unobserve(this.elParallax);
+        }
+
         if (!SUPPORTS_TRANSFORM) {
 
-            options = typeof options === "object" ? $.extend({}, DEFAULTS, options) : this.options;
+            options = typeof options === "object" ? extend({}, DEFAULTS, options) : this.options;
 
             loadElements.call(this, options);
 
             if (this.options.removeIfNotSupported) {
 
-                this.$layers.remove();
+                this.elLayers.forEach(function (layer) {
+
+                    layer.parentNode.removeChild(layer);
+                });
 
             } else if (!this.options.preserveStyles) {
 
-                this.$layers.each($.proxy(function (i, layer) {
+                this.elLayers.forEach(function (layer) {
 
-                    var $layer = $(layer);
+                    var parallaxRect = this.elParallax.getBoundingClientRect(),
+                        layerRect = layer.getBoundingClientRect();
 
-                    $layer.css({
-                        top: ($layer.outerHeight() - this.$parallax.outerHeight()) / -2,
-                        left: ($layer.outerWidth() - this.$parallax.outerWidth()) / -2
-                    });
+                    layer.style.top = (layerRect.height - parallaxRect.height) / -2;
+                    layer.style.left = (layerRect.width - parallaxRect.width) / -2;
 
-                }, this));
+                }.bind(this));
             }
 
             return;
         }
 
-        options = typeof options === "object" ? $.extend({}, DEFAULTS, options) : this.options;
+        options = typeof options === "object" ? extend({}, DEFAULTS, options) : this.options;
 
         this.options = options;
 
         this.useTilt = options.useTilt;
         this.useFakeTilt = options.useTilt && options.fakeTilt;
 
-        if (elements || options === true || !this.$parallax || !this.$layers) {
+        if (elements || options === true || !this.elParallax || !this.elLayers) {
 
             loadElements.call(this, options);
         }
 
-        if (!this.$parallax.length || !this.$layers.length) {
+        if (!this.elParallax || !this.elLayers.length) {
 
             return;
         }
@@ -725,10 +933,13 @@
         ParallaxController.init();
         ParallaxController.add(this);
 
-        this.parallaxHeight = this.$parallax.outerHeight();
-        this.parallaxWidth = this.$parallax.outerWidth();
+        var rect = this.elParallax.getBoundingClientRect();
+
+        this.parallaxHeight = rect.height;
+        this.parallaxWidth = rect.width;
 
         this.getOffset();
+        this.shouldRefreshOffset = false;
 
         //rozsah parallaxu -> kolik pixelů bude efekt viditelný
         this.parallaxXOuterRange = this.parallaxWidth + ParallaxController.getWinWidth();
@@ -738,7 +949,7 @@
 
             this.layers = [];
 
-            this.$layers.each(function (i, el) {
+            this.elLayers.forEach(function (el) {
 
                 this.layers.push(new Layer(el, this));
 
@@ -757,11 +968,21 @@
         this.initialized = true;
 
         this.transform();
+
+        if (this.options.refreshOnResize) {
+
+            initResizeParallaxObserver.call(this);
+
+            if (this.resizeObserver) {
+
+                this.resizeObserver.observe(this.elParallax);
+            }
+        }
     };
 
     Parallax.prototype.getOffset = function () {
 
-        this.offsetTop = this.$parallax.offset().top;
+        this.offsetTop = this.elParallax.getBoundingClientRect().top + ParallaxController.getWinScrollTop();
 
         return this.offsetTop;
     };
@@ -771,6 +992,13 @@
         if (!this.initialized) {
 
             return;
+        }
+
+        if (this.shouldRefreshOffset) {
+
+            this.getOffset();
+
+            this.shouldRefreshOffset = false;
         }
 
         var transform = { x: 0, y: 0 },
@@ -820,7 +1048,7 @@
             //odčítá se (this.parallaxHeight / 2), protože obrázek má top: 50%.
 
             if (layer.mode === Layer.DATA.MODE.VAL.SCROLL) {
-                //            transformY = (transformY - (layer.parallaxTiltYExtention || 0) + (layer.parallaxYExtention * layerProgressionFromCenter) - layer.parallaxYExtention - (this.parallaxHeight / 2));
+
                 transform.y = (transform.y + (layer.parallaxYExtention * layerProgressionFromCenter) - (layer.layerHeight / 2));
 
             } else {
@@ -828,24 +1056,38 @@
                 transform.y = transform.y + (layer.parallaxYExtention * -layerProgressionFromCenter) + (((realWinHeight + this.parallaxHeight) / 2) * (layer.reverseScroll ? -layerProgressionFromCenter : layerProgressionFromCenter)) - (layer.layerHeight / 2);
             }
 
+            if (!layer.wasIntersecting && layerProgressionFromCenter < 1 && layerProgressionFromCenter > -1) {
+
+                layer.wasIntersecting = true;
+
+                if (typeof this.options.onFirstIntersection === "function") {
+
+                    this.options.onFirstIntersection.call(this, layer.$el, layerProgressionFromCenter, layerXPerc, layerYPerc, transform);
+
+                } else if (this.options.onFirstIntersection instanceof Array && this.options.onFirstIntersection[l]) {
+
+                    this.options.onFirstIntersection[l].call(this, layer.$el, layerProgressionFromCenter, layerXPerc, layerYPerc, transform);
+                }
+            }
+
             if (typeof this.options.onBeforeTransform === "function") {
 
-                this.options.onBeforeTransform.call(this, layer.$el, layerProgressionFromCenter, layerXPerc, layerYPerc, transform);
+                this.options.onBeforeTransform.call(this, layer.el, layerProgressionFromCenter, layerXPerc, layerYPerc, transform);
 
-            } else if (this.options.onBeforeTransform instanceof Array && this.options.onTransform[l]) {
+            } else if (this.options.onBeforeTransform instanceof Array && this.options.onBeforeTransform[l]) {
 
-                this.options.onBeforeTransform[l].call(this, layer.$el, layerProgressionFromCenter, layerXPerc, layerYPerc, transform);
+                this.options.onBeforeTransform[l].call(this, layer.el, layerProgressionFromCenter, layerXPerc, layerYPerc, transform);
             }
 
             layer.transform(transform.x, transform.y);
 
             if (typeof this.options.onTransform === "function") {
 
-                this.options.onTransform.call(this, layer.$el, layerProgressionFromCenter, layerXPerc, layerYPerc, transform);
+                this.options.onTransform.call(this, layer.el, layerProgressionFromCenter, layerXPerc, layerYPerc, transform);
 
             } else if (this.options.onTransform instanceof Array && this.options.onTransform[l]) {
 
-                this.options.onTransform[l].call(this, layer.$el, layerProgressionFromCenter, layerXPerc, layerYPerc, transform);
+                this.options.onTransform[l].call(this, layer.el, layerProgressionFromCenter, layerXPerc, layerYPerc, transform);
             }
         }
     };
@@ -870,4 +1112,6 @@
         this.disabled = true;
     };
 
-}());
+    return Parallax;
+
+}));

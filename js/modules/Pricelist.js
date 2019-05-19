@@ -44,7 +44,8 @@
                 parallax = new Parallax({
                     parallax: SELECTOR.background,
                     layers: $bgLayers,
-                    fakeTilt: false
+                    fakeTilt: false,
+                    refreshOnResize: false
                 });
 
                 ns.$win.on("verylowperformance." + ns, function () {

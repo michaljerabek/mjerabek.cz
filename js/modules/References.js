@@ -363,6 +363,7 @@
                     layers: $bgLayers,
                     fakeTilt: false,
                     debounce: 100,
+                    refreshOnResize: false,
 
                     onBeforeTransform: function ($el, progress, tX, tY, transform) {
 

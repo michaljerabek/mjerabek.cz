@@ -3,6 +3,7 @@
 
 (function (ns, $) {
 
+    ns.$temp = ns.$temp || $([null]);
     ns.$win = ns.$win || $(window);
 
     ns.AboutMe = (function () {
@@ -20,14 +21,14 @@
             useFilter = true,
             $img = null,
 
-            applyPhotoFilter = function ($el, progress) {
+            applyPhotoFilter = function (el, progress) {
 
                 if (!useFilter) {
 
                     return;
                 }
 
-                $img = $img || $el.find(SELECTOR.photoImg);
+                $img = $img || $(el).find(SELECTOR.photoImg);
 
                 var recalc = progress > 0 ? Math.max(-1 + (progress * 2), 0) : Math.min(1 + (progress * 2), 0);
 
@@ -38,7 +39,7 @@
                 $img.css("filter", "blur(" + filter + "px)");
             },
 
-            checkPhotoPosition = function () {
+            /*checkPhotoPosition = function () {
 
                 var selfRect = parallax.$parallax[0].getBoundingClientRect(),
                     photoRect = parallax.$layers[0].getBoundingClientRect();
@@ -49,7 +50,7 @@
 
                     setTimeout(checkPhotoPosition, 1000);
                 }
-            },
+            },*/
 
             init = function (debug) {
 
@@ -59,6 +60,7 @@
                         parallax: SELECTOR.self,
                         layers: SELECTOR.photo,
                         fakeTilt: false,
+                        refreshOnResize: false,
 
                         onTransform: applyPhotoFilter
                     });
@@ -67,7 +69,9 @@
 
                         useFilter = false;
 
-                        parallax.$layers.find(SELECTOR.photoImg)
+                        ns.$temp[0] = parallax.elLayers;
+
+                        ns.$temp.find(SELECTOR.photoImg)
                             .css("filter", "none");
                     });
 
