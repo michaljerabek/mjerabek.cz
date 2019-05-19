@@ -344,7 +344,8 @@
                 .main-nav__link {
                     transition: line-height 1.5s cubic-bezier(.25, .65, .2, 1) 0s,
                         height 1.5s cubic-bezier(.25, .65, .2, 1) 0s,
-                        padding 1.5s cubic-bezier(.25, .65, .2, 1) 0s;
+                        padding 1.5s cubic-bezier(.25, .65, .2, 1) 0s,
+                        visibility 0s linear 1.5s;
                 }
 
                 .main-nav--fixed .main-nav__link:hover,
@@ -419,6 +420,7 @@
                 justify-content: flex-start;
 
                 opacity: 0;
+                visibility: hidden;
 
                 overflow: hidden;
             }
@@ -434,6 +436,7 @@
                 flex-grow: 1;
 
                 opacity: 1;
+                visibility: visible;
             }
         }
 

@@ -27,6 +27,15 @@
     display: none;
 }
 
+#html,
+#css,
+#js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+}
+
 .no-js #html:target .technologies,
 .no-js #css:target .technologies,
 .no-js #js:target .technologies,
@@ -584,8 +593,17 @@
             .technologies__sample-content-wrapper {
                 overflow: auto;
                 overscroll-behavior: contain;
+                scrollbar-width: thin;
+                scrollbar-color: rgba(255, 255, 255, 0) transparent;
 
                 will-change: scroll-position;
+            }
+
+            .technologies__text-content-wrapper:hover,
+            .technologies__sample-content-wrapper:hover,
+            .technologies__text-content-wrapper:focus,
+            .technologies__sample-content-wrapper:focus {
+                scrollbar-color: rgba(255, 255, 255, 0.35) transparent;
             }
 
             @supports (-webkit-overflow-scrolling: touch) {

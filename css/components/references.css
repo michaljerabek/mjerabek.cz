@@ -539,6 +539,8 @@
 
         max-height: 0;
 
+        visibility: hidden;
+
         overflow: hidden;
 
         animation: fake-hidden 0.35s steps(1) 0s 1 forwards,
@@ -552,6 +554,8 @@
         order: -1;
 
         max-height: none;
+
+        visibility: visible;
 
         pointer-events: auto;
 

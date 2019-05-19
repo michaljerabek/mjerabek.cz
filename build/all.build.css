@@ -582,18 +582,26 @@ a:active .transition-hideable {
 @keyframes fake-visible {
     from {
         max-height: 0;
+
+        visibility: hidden;
     }
     to {
         max-height: none;
+
+        visibility: visible;
     }
 }
 
 @keyframes fake-hidden {
     from {
         max-height: none;
+
+        visibility: visible;
     }
     to {
         max-height: 0;
+
+        visibility: hidden;
     }
 }
 
@@ -833,6 +841,7 @@ input[type="time"]:focus {
 	position: absolute;
     top: 0;
     right: 0;
+    z-index: 1;
 
     width: 40px;
     height: 40px;
@@ -3273,7 +3282,8 @@ input[type="time"]:focus {
                 .main-nav__link {
                     transition: line-height 1.5s cubic-bezier(.25, .65, .2, 1) 0s,
                         height 1.5s cubic-bezier(.25, .65, .2, 1) 0s,
-                        padding 1.5s cubic-bezier(.25, .65, .2, 1) 0s;
+                        padding 1.5s cubic-bezier(.25, .65, .2, 1) 0s,
+                        visibility 0s linear 1.5s;
                 }
 
                 .main-nav--fixed .main-nav__link:hover,
@@ -3348,6 +3358,7 @@ input[type="time"]:focus {
                 justify-content: flex-start;
 
                 opacity: 0;
+                visibility: hidden;
 
                 overflow: hidden;
             }
@@ -3363,6 +3374,7 @@ input[type="time"]:focus {
                 flex-grow: 1;
 
                 opacity: 1;
+                visibility: visible;
             }
         }
 
@@ -5316,6 +5328,15 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
     display: none;
 }
 
+#html,
+#css,
+#js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+}
+
 .no-js #html:target .technologies,
 .no-js #css:target .technologies,
 .no-js #js:target .technologies,
@@ -5873,8 +5894,17 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
             .technologies__sample-content-wrapper {
                 overflow: auto;
                 overscroll-behavior: contain;
+                scrollbar-width: thin;
+                scrollbar-color: rgba(255, 255, 255, 0) transparent;
 
                 will-change: scroll-position;
+            }
+
+            .technologies__text-content-wrapper:hover,
+            .technologies__sample-content-wrapper:hover,
+            .technologies__text-content-wrapper:focus,
+            .technologies__sample-content-wrapper:focus {
+                scrollbar-color: rgba(255, 255, 255, 0.35) transparent;
             }
 
             @supports (-webkit-overflow-scrolling: touch) {
@@ -6935,6 +6965,8 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 
         max-height: 0;
 
+        visibility: hidden;
+
         overflow: hidden;
 
         animation: fake-hidden 0.35s steps(1) 0s 1 forwards,
@@ -6948,6 +6980,8 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
         order: -1;
 
         max-height: none;
+
+        visibility: visible;
 
         pointer-events: auto;
 
