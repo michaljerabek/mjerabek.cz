@@ -45,9 +45,9 @@ l,!0)}a&&a.addEventListener("focusin",l,!0);c=a}m(b)},!0);document.addEventListe
                     var newText = convertText(text);
                     $temp[0] = element;
                     $temp[0] = $temp.replaceWith(newText);
-                    $temp.css({
+                    /*$temp.css({
                         border: '0 none'
-                    });
+                    });*/
                 }
             }
         }

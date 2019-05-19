@@ -39,9 +39,9 @@
                     var newText = convertText(text);
                     $temp[0] = element;
                     $temp[0] = $temp.replaceWith(newText);
-                    $temp.css({
+                    /*$temp.css({
                         border: '0 none'
-                    });
+                    });*/
                 }
             }
         }
