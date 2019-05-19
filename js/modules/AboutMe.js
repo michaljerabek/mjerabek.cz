@@ -69,7 +69,7 @@
 
                         useFilter = false;
 
-                        ns.$temp[0] = parallax.elLayers;
+                        ns.$temp[0] = parallax.elLayers[0];
 
                         ns.$temp.find(SELECTOR.photoImg)
                             .css("filter", "none");

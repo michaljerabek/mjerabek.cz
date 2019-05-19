@@ -2,8 +2,8 @@
 
 session_start();
 
-define("VERSION", "2019-05-19");
-define("LIBS_VERSION", "2019-05-19-2");
+define("VERSION", "2019-05-19-3");
+define("LIBS_VERSION", "2019-05-19-3");
 
 if (isset($_GET["action"])) {
 
