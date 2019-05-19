@@ -57,7 +57,8 @@
             ],
 
             "all.build.css": [
-                comp("main.css"),
+                file("main.css"),
+
                 comp("ui.css"),
                 comp("form.css"),
                 comp("btn.css"),
@@ -65,13 +66,16 @@
                 comp("intro.css"),
                 comp("main-nav.css"),
                 comp("offer.css"),
-                comp("technologies.css"),
                 comp("references.css"),
                 comp("about-me.css"),
                 comp("pricelist.css"),
                 comp("contact.css"),
                 comp("cookies.css"),
                 comp("CodeMirror-theme.css")
+            ],
+
+            "technologies.build.css": [
+                comp("technologies.css")
             ],
 
             "print.build.css": [

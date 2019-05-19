@@ -60,10 +60,14 @@
                     parallax[event.type.match(/opened/) ? "disable" : "enable"]();
                 });
 
-                setTimeout(function() {
+                ns.$BGObjectsOpacityAnimation.then(function () {
 
-                    ns.$win.trigger("bg-object-opacity-animation__add." + ns, [$bgLayers, SELECTOR.findSquare]);
-                }, 150);
+                    setTimeout(function() {
+
+                        ns.$win.trigger("bg-object-opacity-animation__add." + ns, [$bgLayers, SELECTOR.findSquare]);
+
+                    }, 150);
+                });
             },
 
             init = function () {

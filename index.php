@@ -4,6 +4,9 @@ session_start();
 
 define("VERSION", "2019-05-19-3");
 define("LIBS_VERSION", "2019-05-19-3");
+define("PROD", (isset($_ENV["ENV"]) && $_ENV["ENV"] === "production") ||
+       ($_SERVER["HTTP_HOST"] === "localhost" && !isset($_GET["dev"])));
+define("DEV", !PROD);
 
 if (isset($_GET["action"])) {
 
@@ -68,11 +71,11 @@ if (isset($_SESSION["ok"])) {
 $replaceTag("VERSION", VERSION);
 $replaceTag("LIBS_VERSION", LIBS_VERSION);
 
+$replaceTag("ENV", PROD ? "production": "dev");
+
 $replaceTag("[^{}]+", "");
 
-if ((isset($_ENV["ENV"]) && $_ENV["ENV"] === "production") ||
-    ($_SERVER["HTTP_HOST"] === "localhost" && !isset($_GET["dev"]))
-) {
+if (PROD) {
 
     $removeDev();
     $useProd();

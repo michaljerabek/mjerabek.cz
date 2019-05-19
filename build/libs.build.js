@@ -357,7 +357,7 @@ l,!0)}a&&a.addEventListener("focusin",l,!0);c=a}m(b)},!0);document.addEventListe
 
                             clearTimeout(refreshDebounce[parallax.id]);
 
-                            refreshDebounce[parallax.id] = setTimeout(parallax.refresh.bind(this), parallax.options.debounce);
+                            refreshDebounce[parallax.id] = setTimeout(parallax.refresh.bind(parallax), parallax.options.debounce);
 
                         } else {
 

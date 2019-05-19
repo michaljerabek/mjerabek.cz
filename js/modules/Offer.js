@@ -109,10 +109,14 @@
                     parallax[event.type.match(/opened/) ? "disable" : "enable"]();
                 });
 
-                setTimeout(function() {
+                ns.$BGObjectsOpacityAnimation.then(function () {
 
-                    ns.$win.trigger("bg-object-opacity-animation__add." + ns, [$bgLayers, SELECTOR.findSquare]);
-                }, 100);
+                    setTimeout(function() {
+
+                        ns.$win.trigger("bg-object-opacity-animation__add." + ns, [$bgLayers, SELECTOR.findSquare]);
+
+                    }, 100);
+                });
             },
 
             getFeaturesAnimIndex = function (lastIndex, count) {

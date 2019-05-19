@@ -401,6 +401,10 @@ html.js .x-js,
     }
 }
 
+.technologies:not(.technologies--loaded) {
+    display: none;
+}
+
 /*
  * Copyright 2015 Google Inc. All rights reserved.
  *

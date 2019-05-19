@@ -90,13 +90,16 @@
                     parallax[event.type.match(/opened/) ? "disable" : "enable"]();
                 });
 
-                setTimeout(function() {
+                ns.$BGObjectsOpacityAnimation.then(function () {
 
-                    ns.$win.trigger("bg-object-opacity-animation__add." + ns, [$bgLayers, SELECTOR.findSpeechBubble, "--slide-in"]);
+                    setTimeout(function() {
 
-                    ns.$win.trigger("scroll.Contact." + ns);
+                        ns.$win.trigger("bg-object-opacity-animation__add." + ns, [$bgLayers, SELECTOR.findSpeechBubble, "--slide-in"]);
 
-                }, 200);
+                        ns.$win.trigger("scroll.Contact." + ns);
+
+                    }, 200);
+                });
 
                 var scrollDebounce = null;
 

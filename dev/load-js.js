@@ -59,26 +59,36 @@
             "all.build.js": [
                 mod("Performance.js"),
                 mod("Visibility.js"),
-                mod("BGObjectsOpacityAnimation.js"),
                 mod("BreakText.js"),
                 mod("JSHover.js"),
                 mod("Intro.js"),
                 mod("SmallCaps.js"),
                 mod("MainNav.js"),
                 mod("Offer.js"),
-                mod("Technologies.js"),
+                mod("TechnologiesLoader.js"),
                 mod("References.js"),
                 mod("AboutMe.js"),
                 mod("Pricelist.js"),
                 mod("Form.js"),
                 mod("Contact.js"),
-                mod("ConsoleMessage.js"),
                 mod("Cookies.js"),
                 mod("Fonts.js"),
                 mod("FixBugs.js"),
                 mod("Analytics.js"),
 
                 file("init.js")
+            ],
+
+            "Technologies.build.js": [
+                mod("Technologies.js")
+            ],
+
+            "BGObjectsOpacityAnimation.build.js": [
+                mod("BGObjectsOpacityAnimation.js")
+            ],
+
+            "ConsoleMessage.build.js": [
+                mod("ConsoleMessage.js")
             ]
         };
 
@@ -110,7 +120,7 @@
             if (files[fileName]) {
 
                 files[fileName].forEach(function (file) {
-                    document.write("<script src=\"" + file + "\"></script>");
+                    document.write("<script src=\"" + file + "\" defer></script>");
                 });
             }
         });

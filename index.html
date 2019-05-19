@@ -103,11 +103,13 @@
     <script src="dev/load-css.js" data-files="libs.build.css, all.build.css, print.build.css" data-media="screen, screen, print"></script>
     <noscript><link href="dev/cssimport/libs.build.css" rel="stylesheet" media="screen"></noscript>
     <noscript><link href="dev/cssimport/all.build.css" rel="stylesheet" media="screen"></noscript>
+    <noscript><link href="css/components/technologies.css" rel="stylesheet" media="screen"></noscript>
     <!--/dev-->
 
     <!--prod-->
     <!--<link href="build/libs.build.min.css?v={{LIBS_VERSION}}" rel="stylesheet" media="screen">-->
     <!--<link href="build/all.build.min.css?v={{VERSION}}" rel="stylesheet" media="screen">-->
+    <!--<noscript><link href="build/technologies.build.min.css" rel="stylesheet" media="screen"></noscript>-->
 
     <!--<script>window.addEventListener("load", function () { document.head.insertAdjacentHTML("beforeend", "<link href=\"build/print.build.min.css\" rel=\"stylesheet\" media=\"print\">"); });</script>-->
     <!--<noscript><link href="build/print.build.min.css" rel="stylesheet" media="print"></noscript>-->
@@ -115,6 +117,13 @@
 
 
     <!--———————————— JAVASCRIPT-HEAD ————————————-->
+
+    <script>
+        (function (ns) {
+            ns.ENV = "{{ENV}}";
+            ns.VERSION = "{{VERSION}}";
+        }((function (ns) { window[ns] = window[ns] || { toString: function () { return ns; } }; return window[ns]; }("MJNS"))));
+    </script>
 
     <script>!document.visibilityState && (document.documentElement.className = document.documentElement.className.replace(/(visibility-change)/, "no-$1"));</script>
     <script>document.visibilityState && !document.hidden && (document.documentElement.className += " was-visible");</script>

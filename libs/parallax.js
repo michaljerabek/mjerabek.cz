@@ -255,7 +255,7 @@
 
                             clearTimeout(refreshDebounce[parallax.id]);
 
-                            refreshDebounce[parallax.id] = setTimeout(parallax.refresh.bind(this), parallax.options.debounce);
+                            refreshDebounce[parallax.id] = setTimeout(parallax.refresh.bind(parallax), parallax.options.debounce);
 
                         } else {
 
