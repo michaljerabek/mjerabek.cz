@@ -157,6 +157,13 @@
     transition: inherit;
 }
 
+@media (max-height: 479px) {
+
+    .main-nav--fixed::after {
+        height: 50%;
+    }
+}
+
 .main-nav--hidden::after {
     z-index: 2;
 
