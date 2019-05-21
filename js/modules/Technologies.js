@@ -17,7 +17,9 @@
 
                 toggle: "ui__content--technologies",
 
-                hiddenOpener: "technologies__hidden-link"
+                hiddenOpener: "technologies__hidden-link",
+
+                mCustomScrollbar: "mCustomScrollbar"
             },
 
             DATA = {
@@ -74,6 +76,7 @@
             THEME_COLOR = "#C9B47F",
 
             initialized,
+            hasCustomScrollbars,
 
             $self,
             $perspective,
@@ -123,24 +126,23 @@
                 });
             },
 
-            cancelPreventScroll = function () {
+            initCustomScrollbars = function () {
 
-                ns.$win.off(["mousewheel", "DOMMouseScroll", "touchmove"].join(".Technologies." + ns + " ") + ".Technologies." + ns);
-            },
+                if (!$.fn.mCustomScrollbar || hasCustomScrollbars) {
 
-            preventScroll = function () {
+                    return;
+                }
 
-                ns.$win.on(["mousewheel", "DOMMouseScroll", "touchmove"].join(".Technologies." + ns + " ") + ".Technologies." + ns, function (event) {
+                SCROLL_OPTIONS.axis = "y";
 
-                    ns.$temp[0] = event.target;
+                $contentWrappers.filter(SELECTOR.textWrapper).mCustomScrollbar(SCROLL_OPTIONS);
 
-                    if (event.type === "touchmove" && ns.$temp.closest(SELECTOR.contentWrappers).length) {
+                SCROLL_OPTIONS.axis = "yx";
+                SCROLL_OPTIONS.mouseWheel.scrollAmount = SCROLL_AMOUNT_SAMPLE;
 
-                        return;
-                    }
+                $contentWrappers.filter(SELECTOR.sampleWrapper).mCustomScrollbar(SCROLL_OPTIONS);
 
-                    event.preventDefault();
-                });
+                hasCustomScrollbars = true;
             },
 
             setPagePerspective = function () {
@@ -153,8 +155,6 @@
             },
 
             close = function (event, hideOnly) {
-
-                cancelPreventScroll();
 
                 ns.$win.off("keyup.Technologies" + ns);
 
@@ -220,14 +220,32 @@
                 return parseInt($el.data(DATA.tab), 10) || 0;
             },
 
+            getTabIndexFromEl = function (el) {
+
+                ns.$temp[0] = el;
+
+                return getTabIndexFrom$El(ns.$temp);
+            },
+
             resetSamplesScrollPosition = function () {
 
                 if ($contentWrappers) {
 
-                    $contentWrappers.filter(SELECTOR.sampleWrapper)
-                        .mCustomScrollbar("scrollTo", [0, 0], {
-                            scrollInertia: 0
-                        });
+                    if ($contentWrappers.hasClass(CLASS.mCustomScrollbar)) {
+
+                        $contentWrappers
+                            .filter(SELECTOR.sampleWrapper)
+                            .mCustomScrollbar("scrollTo", [0, 0], {
+                                scrollInertia: 0
+                            });
+                    } else {
+
+                        $contentWrappers
+                            .filter(SELECTOR.sampleWrapper)
+                            .each(function () {
+                                this.scrollTo(0, 0);
+                            });
+                    }
                 }
             },
 
@@ -240,7 +258,9 @@
 
                 if (!initialized) {
 
-                    initSelf($openers.get().indexOf(this));
+                    ns.$temp[0] = this;
+
+                    initSelf(getTabIndexFrom$El(ns.$temp));
                 }
 
                 setPagePerspective();
@@ -249,7 +269,6 @@
 
                 clearTimeout(openTimeout);
 
-                preventScroll();
                 listenESC();
 
                 ns.$temp[0] = this;
@@ -257,6 +276,7 @@
                 $navLinks.css("transition", "none");
                 $contentWrappers.css("transition", "none");
 
+                initCustomScrollbars();
                 resetSamplesScrollPosition();
 
                 $tabs.removeClass(CLASS.fromRightTechnology)
@@ -474,17 +494,7 @@
                 $tabs = $self.find(SELECTOR.tab);
                 $contentWrappers = $tabs.find(SELECTOR.contentWrappers);
 
-                if (typeof document.body.style.webkitOverflowScrolling === "undefined" && !document.documentElement.className.match(/android/)) {
-
-                    SCROLL_OPTIONS.axis = "y";
-
-                    $contentWrappers.filter(SELECTOR.textWrapper).mCustomScrollbar(SCROLL_OPTIONS);
-
-                    SCROLL_OPTIONS.axis = "yx";
-                    SCROLL_OPTIONS.mouseWheel.scrollAmount = SCROLL_AMOUNT_SAMPLE;
-
-                    $contentWrappers.filter(SELECTOR.sampleWrapper).mCustomScrollbar(SCROLL_OPTIONS);
-                }
+                initCustomScrollbars();
 
                 fixCodeMirrorCSS();
 
@@ -504,17 +514,38 @@
                 initialized = true;
             },
 
-            init = function (tab) {
+            onInitInitSelf = function (tabOrEl) {
 
-                $openers = $(SELECTOR.openers).on("click." + ns, open);
-
-                $self = $(SELECTOR.self);
+                var tab = typeof tabOrEl === "number" ? tabOrEl: getTabIndexFromEl(tabOrEl);
 
                 $self.css("display", "block");
 
-                initSelf(tab || 0);
+                initSelf(tab);
 
                 $self.css("display", "none");
+            },
+
+            init = function (tab) {
+
+                $self = $(SELECTOR.self);
+                $openers = $(SELECTOR.openers);
+
+                $openers.on("click." + ns, open);
+
+                if (typeof tab === "number") {
+
+                    onInitInitSelf(tab);
+
+                } else {
+
+                    $openers.one("mouseenter." + ns + " touchstart." + ns + " keydown." + ns, function () {
+
+                        if (!initialized) {
+
+                            onInitInitSelf(this);
+                        }
+                    });
+                }
 
                 $self.prop("inert", true);
 

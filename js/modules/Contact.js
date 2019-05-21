@@ -54,6 +54,8 @@
             MSG_FADE_DURATION = 250,
             MSG_QUEUE = "Contact.msg." + ns,
 
+            hasCustomScrollbar = false,
+
             $self,
             $form,
             $formInfo,
@@ -122,23 +124,31 @@
                 });
             },
 
+            initCustomScrollbar = function () {
+
+                if (!$.fn.mCustomScrollbar || hasCustomScrollbar) {
+
+                    return;
+                }
+
+                $formInfo.mCustomScrollbar(SCROLL_OPTIONS);
+
+                hasCustomScrollbar = true;
+            },
+
             initFormInfo = function () {
 
                 $formInfo = $form.find(SELECTOR.formInfo);
-
                 $formInfoLink = $form.find(SELECTOR.formInfoLink);
 
                 $formInfoLink.on("click." + ns, function (event) {
 
+                    event.preventDefault();
+
                     $form.toggleClass(CLASS.showFormInfo);
 
-                    event.preventDefault();
+                    initCustomScrollbar();
                 });
-
-                if (typeof document.body.style.webkitOverflowScrolling === "undefined" && !document.documentElement.className.match(/android/)) {
-
-                    $formInfo.mCustomScrollbar(SCROLL_OPTIONS);
-                }
             },
 
             getFormData = function () {
@@ -271,7 +281,10 @@
 
                 initForm();
 
-                setTimeout(initBackground, 200);
+                ns.$ParallaxLoader.then(function () {
+
+                    setTimeout(initBackground, 200);
+                });
             };
 
         return {

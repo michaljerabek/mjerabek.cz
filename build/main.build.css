@@ -30,7 +30,7 @@
 
 @font-face {
     font-family: josefin-sans;
-    src: url("../../fonts/JosefinSans-Regular.ttf") format("truetype");
+    src: url("../fonts/JosefinSans-Regular.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -38,7 +38,7 @@
 
 @font-face {
     font-family: josefin-sans;
-    src: url("../../fonts/JosefinSans-Italic.ttf") format("truetype");
+    src: url("../fonts/JosefinSans-Italic.ttf") format("truetype");
     font-weight: 400;
     font-style: italic;
     font-display: swap;
@@ -46,7 +46,7 @@
 
 @font-face {
     font-family: josefin-sans;
-    src: url("../../fonts/JosefinSans-Bold.ttf") format("truetype");
+    src: url("../fonts/JosefinSans-Bold.ttf") format("truetype");
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -54,7 +54,7 @@
 
 @font-face {
     font-family: josefin-sans;
-    src: url("../../fonts/JosefinSans-BoldItalic.ttf") format("truetype");
+    src: url("../fonts/JosefinSans-BoldItalic.ttf") format("truetype");
     font-weight: 700;
     font-style: italic;
     font-display: swap;
@@ -62,7 +62,7 @@
 
 @font-face {
     font-family: josefin-sans;
-    src: url("../../fonts/JosefinSans-Light.ttf") format("truetype");
+    src: url("../fonts/JosefinSans-Light.ttf") format("truetype");
     font-weight: 300;
     font-style: normal;
     font-display: swap;
@@ -70,7 +70,7 @@
 
 @font-face {
     font-family: josefin-sans;
-    src: url("../../fonts/JosefinSans-LightItalic.ttf") format("truetype");
+    src: url("../fonts/JosefinSans-LightItalic.ttf") format("truetype");
     font-weight: 300;
     font-style: italic;
     font-display: swap;
@@ -78,7 +78,7 @@
 
 @font-face {
     font-family: josefin-sans;
-    src: url("../../fonts/JosefinSans-Thin.ttf") format("truetype");
+    src: url("../fonts/JosefinSans-Thin.ttf") format("truetype");
     font-weight: 100;
     font-style: normal;
     font-display: swap;
@@ -86,7 +86,7 @@
 
 @font-face {
     font-family: josefin-sans;
-    src: url("../../fonts/JosefinSans-ThinItalic.ttf") format("truetype");
+    src: url("../fonts/JosefinSans-ThinItalic.ttf") format("truetype");
     font-weight: 100;
     font-style: italic;
     font-display: swap;
@@ -94,7 +94,7 @@
 
 @font-face {
     font-family: josefin-sans;
-    src: url("../../fonts/JosefinSans-SemiBold.ttf") format("truetype");
+    src: url("../fonts/JosefinSans-SemiBold.ttf") format("truetype");
     font-weight: 600;
     font-style: normal;
     font-display: swap;
@@ -102,7 +102,7 @@
 
 @font-face {
     font-family: josefin-sans;
-    src: url("../../fonts/JosefinSans-SemiBoldItalic.ttf") format("truetype");
+    src: url("../fonts/JosefinSans-SemiBoldItalic.ttf") format("truetype");
     font-weight: 600;
     font-style: italic;
     font-display: swap;
@@ -339,10 +339,14 @@ html.js .x-js,
     }
 }
 
-.technologies:not(.technologies--loaded) {
-    display: none;
+#html,
+#css,
+#js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
 }
-
 /*====================================================================*/
 /*-------------------------------- UI --------------------------------*/
 /*====================================================================*/
@@ -625,6 +629,97 @@ a:active .transition-hideable {
 .icon-btn:active {
     transition: all 0.05s ease-out 0s;
 }*/
+
+/*--------------------------------------------------------------------*/
+/*------------------------------ LOADER ------------------------------*/
+/*--------------------------------------------------------------------*/
+
+.js .ui__loader::before,
+.js .ui__loader::after {
+    content: "";
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 999999;
+
+    font-size: 40px;
+
+    width: 1em;
+    height: 1em;
+    margin-left: -0.5em;
+    margin-top: -0.5em;
+
+    border: 1px solid;
+    opacity: 0;
+
+    animation-duration: 1.5s;
+    animation-timing-function: cubic-bezier(0, .8, .75, 1);
+    animation-iteration-count: 0;
+}
+
+.js .ui__loader::after {
+    transform: rotate(-180deg) translateX(-1em) scale(0.8);
+
+    border-color: #C9B47F;
+
+    animation-name: ui__loader-loading;
+}
+
+.js .ui__loader::before {
+    transform: rotate(-180deg) translateX(1em) scale(0.8);
+
+    border-color: #BF865E;
+
+    animation-name: ui__loader-loading2;
+}
+
+@media (max-width: 479px) {
+
+    .js .ui__loader::before,
+    .js .ui__loader::after {
+        font-size: 32px;
+    }
+}
+
+.js .ui__loader::after,
+.js .ui__loader::before {
+    animation-iteration-count: infinite;
+}
+
+@keyframes ui__loader-loading {
+    0% {
+        border-color: #C9B47F;
+        opacity: 0;
+    }
+    50% {
+        border-color: #C9B47F;
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-0.15em) rotate(45deg);
+
+        border-color: #78A7BB;
+        opacity: 0;
+    }
+}
+
+@keyframes ui__loader-loading2 {
+    0% {
+        border-color: #BF865E;
+        opacity: 0;
+    }
+    50% {
+        border-color: #BF865E;
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(0.15em) rotate(45deg);
+
+        border-color: #78A7BB;
+        opacity: 0;
+    }
+}
 
 /*--------------------------------------------------------------------*/
 /*------------------------------- ZOOM -------------------------------*/
@@ -1371,6 +1466,120 @@ input[type="time"]:focus {
     border-color: #3C6474;
 }
 
+.btn--light.btn--error {
+    color: #BF865E;
+    border-color: #BF865E;
+    background-color: transparent;
+}
+
+.btn--light.btn--error:hover,
+.btn--light.btn--error:focus {
+    color: #fff;
+    border-color: #BF865E;
+    background-color: #BF865E;
+}
+
+.btn--light.btn--error:active {
+    color: #B3794E;
+    border-color: #B3794E;
+    background-color: transparent;
+}
+
+/*--------------------------------------------------------------------*/
+/*------------------------ PROGRESS-ANIMATION ------------------------*/
+/*--------------------------------------------------------------------*/
+
+.btn--progress {
+    cursor: wait;
+}
+
+    .btn .text {
+        transition: opacity 0.25s linear 0.25s;
+    }
+
+    .btn--progress .text {
+        opacity: 0;
+
+        transition: opacity 0.25s linear 0s;
+    }
+
+    .btn .progress-animation {
+        position: absolute;
+        top: 1px;
+        left: 1px;
+
+        height: 100%;
+        width: 100%;
+        margin: auto;
+
+        font-size: 1.0625rem;
+        line-height: 0;
+
+        opacity: 0;
+
+        overflow: hidden;
+
+        transition: opacity 0.25s linear 0s;
+    }
+
+    .btn--progress .progress-animation {
+        opacity: 1;
+
+        transition: opacity 0.25s linear 0.25s;
+    }
+
+        .btn .numbers {
+            position: absolute;
+            top: 0;
+            right: 0%;
+            bottom: 1px;
+
+            height: 0;
+            margin: auto;
+
+            transform: translateX(0%);
+        }
+
+        .android .btn .numbers,
+        .apple .btn .numbers {
+            top: 3px;
+        }
+
+        .btn--progress .numbers {
+            transition: opacity 0.25s linear 0.25s;
+            animation: btn__progress--move 3s linear 0s infinite forwards;
+        }
+
+        @media (max-width: 767px) {
+
+            .btn--progress .numbers {
+                animation-name: btn__progress--move-mobile;
+            }
+        }
+
+        @keyframes btn__progress--move {
+            0% {
+                transform: translateX(50%);
+                transform: translateX(calc(100% - 240px));
+                transform: translateX(calc(100% - 240px + 1ch));
+            }
+            100% {
+                transform: translateX(0%);
+                transform: translateX(-1ch);
+            }
+        }
+
+        @keyframes btn__progress--move-mobile {
+            0% {
+                transform: translateX(50%);
+                transform: translateX(calc(100% - 224px));
+                transform: translateX(calc(100% - 224px + 1ch));
+            }
+            100% {
+                transform: translateX(0%);
+                transform: translateX(-1ch);
+            }
+        }
 /*====================================================================*/
 /*------------------------------ SECTION -----------------------------*/
 /*====================================================================*/
@@ -5265,6 +5474,73 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
     }
 
 /*====================================================================*/
+/*------------------------ TECHNOLOGIES-LOADER -----------------------*/
+/*====================================================================*/
+
+.js .technologies:not(.technologies--loaded) {
+    display: none;
+}
+
+.technologies-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+
+    width: 100%;
+    height: 0%;
+
+    background-color: rgba(0, 0, 0, 0.65);
+    opacity: 0;
+    visibility: hidden;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 1s ease-out 0s,
+        visibility 0s linear 1s,
+        height 0s linear 1s;
+}
+
+.js #html:target .technologies:not(.technologies--loaded):not(.technologies--error) ~ .technologies-loader,
+.js #css:target .technologies:not(.technologies--loaded):not(.technologies--error) ~ .technologies-loader,
+.js #js:target .technologies:not(.technologies--loaded):not(.technologies--error) ~ .technologies-loader,
+.js .technologies--show-loader ~ .technologies-loader {
+    height: 100%;
+
+    opacity: 1;
+    visibility: visible;
+
+    pointer-events: all;
+
+    transition: opacity 0.5s ease-out 0s,
+}
+
+.js .technologies-loader::after,
+.js .technologies-loader::before {
+    font-size: 72px;
+}
+
+@media (max-width: 479px) {
+
+    .js .technologies-loader::before,
+    .js .technologies-loader::after {
+        font-size: 64px;
+    }
+}
+
+.js .technologies--loading ~ .technologies-loader::after,
+.js .technologies--loading ~ .technologies-loader::before {
+    animation-iteration-count: infinite;
+}
+
+.js .technologies--loaded ~ .technologies-loader::after,
+.js .technologies--loaded ~ .technologies-loader::before {
+    animation-iteration-count: 1;
+}
+/*====================================================================*/
 /*----------------------------- REFERENCES ---------------------------*/
 /*====================================================================*/
 
@@ -6076,56 +6352,16 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
                     box-shadow: -1px 1px 10px 0px rgba(0, 0, 0, 0.1);
                 }
 
-                .js .references__image-wrapper::before,
-                .js .references__image-wrapper::after {
-                    content: "";
-
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    z-index: -1;
-
-                    width: 40px;
-                    height: 40px;
-                    margin-left: -20px;
-                    margin-top: -20px;
-
-                    border: 1px solid;
-                    opacity: 0;
-
-                    animation-duration: 1.5s;
-                    animation-timing-function: cubic-bezier(0, .8, .75, 1);
-                    animation-iteration-count: 0;
-                }
-
-                .js .references__image-wrapper::after {
-                    transform: rotate(-180deg) translateX(-40px) scale(0.8);
-
-                    border-color: #C9B47F;
-
-                    animation-name: references__image-wrapper-loading;
-                }
-
+                .js .references__image-wrapper::after,
                 .js .references__image-wrapper::before {
-                    transform: rotate(-180deg) translateX(40px) scale(0.8);
-
-                    border-color: #BF865E;
-
-                    animation-name: references__image-wrapper-loading2;
+                    z-index: -1;
                 }
 
                 @media (max-width: 479px), (min-width: 640px) and (max-width: 767px) {
 
-                    .js .references__image-wrapper::after {
-                        transform: rotate(-180deg) translateX(-40px) scale(0.8);
-
-                        animation-name: references__image-wrapper-loading--small;
-                    }
-
+                    .js .references__image-wrapper::after,
                     .js .references__image-wrapper::before {
-                        transform: rotate(-180deg) translateX(40px) scale(0.8);
-
-                        animation-name: references__image-wrapper-loading2--small;
+                        font-size: 32px;
                     }
                 }
 
@@ -6137,74 +6373,6 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
                 .js .references__reference--image-loaded .references__image-wrapper::after,
                 .js .references__reference--image-loaded .references__image-wrapper::before {
                     animation-iteration-count: 1;
-                }
-
-                @keyframes references__image-wrapper-loading {
-                    0% {
-                        border-color: #C9B47F;
-                        opacity: 0;
-                    }
-                    50% {
-                        border-color: #C9B47F;
-                        opacity: 1;
-                    }
-                    100% {
-                        transform: translateX(-6px) rotate(45deg);
-
-                        border-color: #78A7BB;
-                        opacity: 0;
-                    }
-                }
-
-                @keyframes references__image-wrapper-loading2 {
-                    0% {
-                        border-color: #BF865E;
-                        opacity: 0;
-                    }
-                    50% {
-                        border-color: #BF865E;
-                        opacity: 1;
-                    }
-                    100% {
-                        transform: translateX(6px) rotate(45deg);
-
-                        border-color: #78A7BB;
-                        opacity: 0;
-                    }
-                }
-
-                @keyframes references__image-wrapper-loading--small {
-                    0% {
-                        border-color: #C9B47F;
-                        opacity: 0;
-                    }
-                    50% {
-                        border-color: #C9B47F;
-                        opacity: 1;
-                    }
-                    100% {
-                        transform: translateX(-6px) rotate(45deg) scale(0.8);
-
-                        border-color: #78A7BB;
-                        opacity: 0;
-                    }
-                }
-
-                @keyframes references__image-wrapper-loading2--small {
-                    0% {
-                        border-color: #BF865E;
-                        opacity: 0;
-                    }
-                    50% {
-                        border-color: #BF865E;
-                        opacity: 1;
-                    }
-                    100% {
-                        transform: translateX(6px) rotate(45deg) scale(0.8);
-
-                        border-color: #78A7BB;
-                        opacity: 0;
-                    }
                 }
 
                     .references__image {
@@ -8336,7 +8504,8 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 
             transition: height 0.425s cubic-bezier(0.3, 0.15, .3, 1) 0s,
                 opacity 0.425s cubic-bezier(0.3, 0.15, .3, 1) 0s,
-                visibility 0s linear 0.425s;
+                visibility 0s linear 0.425s,
+                scrollbar-color 0.275s cubic-bezier(0, 0, .54, .9) 0s;
         }
 
         @media (max-width: 479px) {
@@ -8349,22 +8518,20 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
             }
         }
 
-        .android .contact__form-info,
-        .no-js .contact__form-info {
+        .contact__form-info:not(.mCustomScrollbar) {
             overflow: auto;
+            scroll-behavior: smooth;
+            overscroll-behavior: contain;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0) transparent;
+            -webkit-overflow-scrolling: touch;
 
             will-change: scroll-position;
         }
 
-        @supports (-webkit-overflow-scrolling: touch) {
-
-            .js .contact__form-info,
-            .no-js .contact__form-info {
-                overflow: auto;
-                -webkit-overflow-scrolling: touch;
-
-                will-change: scroll-position;
-            }
+        .contact__form-info:hover,
+        .contact__form-info:focus {
+            scrollbar-color: rgba(255, 255, 255, 0.35) transparent;
         }
 
             .contact__form-info .mCSB_container {
@@ -8391,7 +8558,17 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
             visibility: visible;
 
             transition: height 0.425s cubic-bezier(0.3, 0.15, .3, 1) 0s,
-                opacity 0.425s cubic-bezier(0.3, 0.15, .3, 1) 0s;
+                opacity 0.425s cubic-bezier(0.3, 0.15, .3, 1) 0s,
+                scrollbar-color 0.275s cubic-bezier(0, 0, .54, .9) 0s;
+        }
+
+        .contact__form--show-info .contact__form-info-link + .contact__form-info:hover,
+        .no-js .contact__form-item--msg:target .contact__form-info-link + .contact__form-info:hover,
+        .contact__form--show-info .contact__form-info-link + .contact__form-info:focus,
+        .no-js .contact__form-item--msg:target .contact__form-info-link + .contact__form-info:focus {
+            transition: height 0.425s cubic-bezier(0.3, 0.15, .3, 1) 0s,
+                opacity 0.425s cubic-bezier(0.3, 0.15, .3, 1) 0s,
+                scrollbar-color 0.4s cubic-bezier(0, 0, .25, 1) 0s;
         }
 
     .contact__form-send-msgs {
@@ -8508,10 +8685,6 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
     background-color: transparent;
 }
 
-    .contact__form-btn .text {
-        transition: opacity 0.25s linear 0.25s;
-    }
-
     .contact__form-btn--hide-text .text,
     .form--progress .text {
         opacity: 0;
@@ -8519,43 +8692,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
         transition: opacity 0.25s linear 0s;
     }
 
-    .contact__form-btn .send-animation {
-        position: absolute;
-        top: 1px;
-        left: 1px;
-
-        height: 100%;
-        width: 100%;
-        margin: auto;
-
-        font-size: 1.0625rem;
-        line-height: 0;
-
-        opacity: 0;
-
-        overflow: hidden;
-
-        transition: opacity 0.25s linear 0s;
-    }
-
-        .contact__form-btn .numbers {
-            position: absolute;
-            top: 0;
-            right: 0%;
-            bottom: 1px;
-
-            height: 0;
-            margin: auto;
-
-            transform: translateX(0%);
-        }
-
-        .android .contact__form-btn .numbers,
-        .apple .contact__form-btn .numbers {
-            top: 3px;
-        }
-
-    .form--progress .send-animation {
+    .form--progress .progress-animation {
         opacity: 1;
 
         transition: opacity 0.25s linear 0.25s;
@@ -8563,37 +8700,13 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 
         .form--progress .numbers {
             transition: opacity 0.25s linear 0.25s;
-            animation: contact__send-msg--move 3s linear 0s infinite forwards;
+            animation: btn__progress--move 3s linear 0s infinite forwards;
         }
 
         @media (max-width: 767px) {
 
             .form--progress .numbers {
-                animation-name: contact__send-msg--move-mobile;
-            }
-        }
-
-        @keyframes contact__send-msg--move {
-            0% {
-                transform: translateX(50%);
-                transform: translateX(calc(100% - 240px));
-                transform: translateX(calc(100% - 240px + 1ch));
-            }
-            100% {
-                transform: translateX(0%);
-                transform: translateX(-1ch);
-            }
-        }
-
-        @keyframes contact__send-msg--move-mobile {
-            0% {
-                transform: translateX(50%);
-                transform: translateX(calc(100% - 224px));
-                transform: translateX(calc(100% - 224px + 1ch));
-            }
-            100% {
-                transform: translateX(0%);
-                transform: translateX(-1ch);
+                animation-name: btn__progress--move-mobile;
             }
         }
 
@@ -8812,32 +8925,3 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
             .cookies__link:focus {
                 color: #498095;
             }
-
-[data-codemirror-mimemode] { color: #d5d5d5; }
-.cm-keyword        { color: #6595A9; }
-.cm-atom           { color: #B3794E; }
-.cm-number         { color: #AF975A; }
-.cm-def            { color: #d5d5d5; }
-.cm-variable       { color: #AF975A; }
-.cm-variable-2     { color: #d5d5d5; }
-.cm-variable-3     { color: #6595A9; }
-.cm-operator       { color: #d5d5d5; }
-.cm-comment        { color: #878787; }
-.cm-string         { color: #B3794E; }
-.cm-string-2       { color: #78A7BB; }
-.cm-meta           { color: #B3794E; }
-.cm-qualifier      { color: #d5d5d5; }
-.cm-builtin        { color: #AF975A; }
-.cm-bracket        { color: #d5d5d5; }
-.cm-tag            { color: #C9B47F; }
-.cm-bracket.cm-tag { color: hsl(43, 31%, 35%); }
-.cm-attribute      { color: #AF975A; }
-.cm-property       { color: #C9B47F; }
-.cm-quote          { color: #d5d5d5; }
-.cm-header         { color: #6595A9; }
-.cm-link           { color: #C9B47F; }
-.cm-em             { color: #BF865E; font-style: italic; }
-.cm-strong         { color: #6595A9; }
-.cm-strikethrough  { color: #B3794E; }
-.cm-hr             { color: #AF975A; }
-.cm-error          { color: #BF865E; }

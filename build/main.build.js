@@ -156,14 +156,15 @@
             },
 
             SELECTOR = {
-                items: "[data-break-text='true']"
+                items: "[data-break-text='true']",
+                lazyItems: "[data-break-text='lazy']"
             },
 
             wrapLetter = function (letter, num, smallCaps) {
 
                 var attrs = [
                         "class=\"", CLASS.letter + num, "\" style=\"display: inline-block;\"",
-                        smallCaps ? ns.SmallCaps.getAttr(true) : ""
+                        smallCaps ? ns.SmallCaps.getAttr(smallCaps) : ""
                     ].join(" ");
 
                 return "<span " + attrs + ">" + letter + "</span>";
@@ -216,11 +217,11 @@
 
                 ns.$temp[0] = el;
 
-                var hasSmallCaps = ns.SmallCaps.isItem(ns.$temp),
+                var smallCapsAttr = ns.SmallCaps.getState(ns.$temp),
 
-                    result = breakText(ns.$temp, hasSmallCaps);
+                    result = breakText(ns.$temp, smallCapsAttr);
 
-                if (hasSmallCaps) {
+                if (smallCapsAttr) {
 
                     ns.SmallCaps.removeItem(ns.$temp);
                 }
@@ -228,9 +229,9 @@
                 ns.$temp.html(result.join(""));
             },
 
-            init = function () {
+            execInit = function (selector) {
 
-                var items = document.querySelectorAll(SELECTOR.items),
+                var items = document.querySelectorAll(selector),
 
                     length = items.length,
                     i = 0;
@@ -238,6 +239,20 @@
                 for (i; i < length; i++) {
 
                     processElement(i, items[i]);
+                }
+            },
+
+            init = function () {
+
+                execInit(SELECTOR.items);
+
+                if (window.requestIdleCallback) {
+
+                    window.requestIdleCallback(execInit.bind(this, SELECTOR.lazyItems));
+
+                } else {
+
+                    setTimeout(execInit.bind(this, SELECTOR.lazyItems), 0);
                 }
             };
 
@@ -453,7 +468,7 @@
 
                 $self = $(SELECTOR.self);
 
-                setTimeout(initBackground, 0);
+                ns.$ParallaxLoader.then(initBackground);
             };
 
         return {
@@ -476,12 +491,13 @@
             },
 
             SELECTOR = {
-                items: "[" + ATTR.item + "='true']"
+                items: "[" + ATTR.item + "='true']",
+                lazyItems: "[" + ATTR.item + "='lazy']"
             },
 
             getAttr = function (state) {
 
-                return ATTR.item + ( typeof state === "boolean" ? "=\"" + state.toString() + "\"" : "");
+                return ATTR.item + (state ? "=\"" + state.toString() + "\"" : "");
             },
 
             removeItem = function ($el) {
@@ -489,25 +505,41 @@
                 return $el[0].removeAttribute(ATTR.item);
             },
 
-            isItem = function ($el) {
+            getState = function ($el) {
 
-                return !!$el[0].getAttribute(ATTR.item);
+                var attr = $el[0].getAttribute(ATTR.item);
+
+                return attr === "true" ? true: attr === "lazy" ? "lazy" : false;
+            },
+
+            execInit = function (selector) {
+
+                var $items = $(document.querySelectorAll(selector));
+
+                $items.smallCaps();
             },
 
             init = function () {
 
                 if (typeof $.fn.smallCaps === "function") {
 
-                    var items = document.querySelectorAll(SELECTOR.items);
+                    execInit(SELECTOR.items);
 
-                    $(items).smallCaps();
+                    if (window.requestIdleCallback) {
+
+                        window.requestIdleCallback(execInit.bind(this, SELECTOR.lazyItems));
+
+                    } else {
+
+                        setTimeout(execInit.bind(this, SELECTOR.lazyItems), 0);
+                    }
                 }
             };
 
         return {
             init: init,
 
-            isItem: isItem,
+            getState: getState,
             removeItem: removeItem,
 
             getAttr: getAttr
@@ -626,6 +658,15 @@
             updateHistory = function ($link) {
 
                 if (preserveHistory) {
+
+                    return;
+                }
+
+                if ($link === null) {
+
+                    history.replaceState(null, document.title, "#");
+
+                    ns.$win.trigger(EVENT.targetChanged, [null]);
 
                     return;
                 }
@@ -919,6 +960,15 @@
 
                     currentScrollTarget = _currentScrollTarget;
 
+                    if (!_currentScrollTarget) {
+
+                        deactivateItem();
+
+                        updateHistory(null);
+
+                        return;
+                    }
+
                     ns.$temp[0] = currentScrollTarget;
 
                     var activeSelector = ns.$temp.attr("data-" + DATA.active),
@@ -928,6 +978,11 @@
                     activateItem($link, true);
 
                     updateHistory($link);
+
+                    if (!initialized) {
+
+                        ns.$win.trigger(EVENT.targetChanged, [$link[0].href.split("#")[1]]);
+                    }
 
                     changeTheme(ns.$temp);
                 }
@@ -1117,18 +1172,14 @@
             initElements = function () {
 
                 $scrollingElement = $("html, body");
+                $metaThemeColor = $(SELECTOR.metaThemeColor);
 
                 $self = $(SELECTOR.self);
-
                 $itemsWrapper = $self.find(SELECTOR.itemsWrapper);
 
                 $fixedElement = $(SELECTOR.fixedElement);
-
-                $opener = $self.find(SELECTOR.opener);
-
                 $scrollTargets = $(SELECTOR.scrollTarget);
-
-                $metaThemeColor = $(SELECTOR.metaThemeColor);
+                $opener = $self.find(SELECTOR.opener);
             },
 
             init = function () {
@@ -1139,7 +1190,6 @@
                 }
 
                 initElements();
-
                 initEvents();
 
                 initialized = true;
@@ -1510,7 +1560,7 @@
                 //ie fix
                 setTimeout(checkScrollTop, 50);
 
-                setTimeout(initBackground, 0);
+                ns.$ParallaxLoader.then(initBackground);
 
                 if (!isIE10Or11()) {
 
@@ -1537,18 +1587,27 @@
 }((function (ns) { window[ns] = window[ns] || { toString: function () { return ns; } }; return window[ns]; }("MJNS")), jQuery));
 
 /*jslint indent: 4, white: true, nomen: true, regexp: true, unparam: true, node: true, browser: true, devel: true, nomen: true, plusplus: true, regexp: true, sloppy: true, vars: true*/
-/*global jQuery, Infinitum, CodeMirror*/
+/*global jQuery*/
 
 (function (ns, $) {
 
     ns.$win = ns.$win || $(window);
-    ns.$doc = ns.$doc || $(document);
     ns.$temp = ns.$temp || $([null]);
 
     ns.TechnologiesLoader = (function () {
 
         var CLASS = {
-                loaded: "technologies--loaded"
+                loading: "technologies--loading",
+                showLoader: "technologies--show-loader",
+                loaded: "technologies--loaded",
+                error: "technologies--error",
+
+                btnProgress: "btn--progress",
+                btnError: "btn--error",
+
+                js: "technologies-loader__js",
+                css: "technologies-loader__css",
+                font: "technologies-loader__font"
             },
 
             DATA = {
@@ -1556,100 +1615,406 @@
             },
 
             SELECTOR = {
+                technologiesLoader: ".technologies-loader",
                 technologies: ".technologies",
 
-                openers: "[data-" + DATA.tab + "]"
+                openers: "[data-" + DATA.tab + "]",
+                btn: ".btn"
             },
 
-            TECHNOLOGIES_HASH_REGEX = /^#(html|css|js)$/,
+            STATE = {
+                ERROR: -1,
+                INIT: 1,
+                LOADING: 10,
+                LOADED: 20
+            },
 
-            JS = ns.ENV.match(/^prod/i) ? "build/Technologies.build.min.js" : "js/modules/Technologies.js",
-            CSS = ns.ENV.match(/^prod/i) ? "build/technologies.build.min.css" : "css/components/technologies.css",
+            TECHNOLOGIES_HASH_REGEX = /^#(html|css|js)$/i,
+            SECTION_TARGETS_REGEX = /^co-delam$/i,
 
-            loaded = false,
+            SECTION_TARGETS_LOAD_DELAY = 3000,
 
+            JS_TO_LOAD = ns.ENV.match(/^prod/i) ? "build/technologies.build.min.js" : "build/technologies.build.js",
+            CSS_TO_LOAD = ns.ENV.match(/^prod/i) ? "build/technologies.build.min.css" : "build/technologies.build.css",
+            FONT_TO_LOAD = "https://fonts.googleapis.com/css?family=PT+Mono&display=swap",
+
+            currentState = STATE.INIT,
+
+            loadIdleCallback,
+
+            $technologiesLoader,
             $technologies,
             $openers,
 
-            shouldBeLoaded = function () {
+            elOpener,
+            initTab,
 
-                return !loaded && window.location.hash && window.location.hash.match(TECHNOLOGIES_HASH_REGEX);
+            sectionTargetsLoadDebounce,
+
+            shouldBeLoadedByHash = function () {
+
+                return currentState <= STATE.INIT && window.location.hash && window.location.hash.match(TECHNOLOGIES_HASH_REGEX);
             },
 
-            load = function (initTab, elOpener) {
+            onError = function (event) {
 
-                var elScript = document.createElement("script"),
-                    elLink = document.createElement("link"),
+                currentState = STATE.ERROR;
 
-                    loadCount = 0,
+                event.target.parentElement.removeChild(event.target);
 
-                    onLoad = function () {
+                $technologies.addClass(CLASS.error)
+                    .removeClass(CLASS.showLoader);
 
-                        loadCount++;
+                if (!elOpener) {
 
-                        if (loadCount === 2) {
+                    return;
+                }
 
-                            $technologies.addClass(CLASS.loaded);
+                ns.$temp[0] = elOpener;
 
-                            ns.Technologies.init(initTab);
+                if (ns.$temp.is(SELECTOR.btn)) {
 
-                            if (elOpener) {
+                    ns.$temp.removeClass(CLASS.btnProgress)
+                        .addClass(CLASS.btnError);
+                }
 
-                                elOpener.click();
+                elOpener = null;
+            },
+
+            onLoad = function (event) {
+
+                switch (event.target.className) {
+
+                    case CLASS.css:
+
+                        CSS_TO_LOAD = null;
+
+                        break;
+
+                    case CLASS.js:
+
+                        JS_TO_LOAD = null;
+
+                        break;
+                }
+
+                if (!CSS_TO_LOAD && !JS_TO_LOAD) {
+
+                    currentState = STATE.LOADED;
+
+                    if ($openers) {
+
+                        $openers.removeClass(CLASS.btnProgress)
+                            .removeClass(CLASS.btnError)
+                            .off(".TechnologiesLoader." + ns);
+                    }
+
+                    ns.$win.off(".TechnologiesLoader." + ns)
+                        .off("main-nav__target-changed.TechnologiesLoader." + ns);
+
+                    $technologiesLoader.off("." + ns);
+
+                    $technologies.removeClass(CLASS.loading)
+                        .removeClass(CLASS.showLoader)
+                        .addClass(CLASS.loaded);
+
+                    if (elOpener) {
+
+                        ns.$temp[0] = elOpener;
+
+                        initTab = ns.$temp.data(DATA.tab);
+                    }
+
+                    ns.Technologies.init(initTab);
+
+                    if (elOpener) {
+
+                        elOpener.click();
+                    }
+                }
+            },
+
+            load = function () {
+
+                if (loadIdleCallback && window.cancelIdleCallback) {
+
+                    window.cancelIdleCallback(loadIdleCallback);
+                }
+
+                if (currentState > STATE.INIT || (!JS_TO_LOAD && !CSS_TO_LOAD)) {
+
+                    return;
+                }
+
+                currentState = STATE.LOADING;
+
+                $technologies.removeClass(CLASS.error)
+                    .addClass(CLASS.loading);
+
+                var elScript = JS_TO_LOAD ? document.createElement("script") : null,
+                    elStyleLink = CSS_TO_LOAD ? document.createElement("link") : null,
+                    elFontLink = FONT_TO_LOAD ? document.createElement("link") : null;
+
+                if (elScript) {
+
+                    elScript.className = CLASS.js;
+                    elScript.defer = true;
+                    elScript.src = JS_TO_LOAD;
+                    elScript.onload = onLoad;
+                    elScript.onerror = onError;
+
+                    document.head.appendChild(elScript);
+                }
+
+                if (elStyleLink) {
+
+                    elStyleLink.className = CLASS.css;
+                    elStyleLink.rel = "stylesheet";
+                    elStyleLink.media = "screen";
+                    elStyleLink.href = CSS_TO_LOAD;
+                    elStyleLink.onload = onLoad;
+                    elStyleLink.onerror = onError;
+
+                    document.head.appendChild(elStyleLink);
+                }
+
+                if (elFontLink) {
+
+                    elFontLink.className = CLASS.font;
+                    elFontLink.rel = "stylesheet";
+                    elFontLink.href = FONT_TO_LOAD;
+                    elFontLink.onload = onLoad;
+
+                    document.head.appendChild(elFontLink);
+
+                    FONT_TO_LOAD = null;
+                }
+            },
+
+            cancelLoader = function () {
+
+                if (!elOpener) {
+
+                    var currentScrollTop = ns.$win.scrollTop();
+
+                    window.location.hash = "";
+
+                    ns.$win.scrollTop(currentScrollTop);
+                }
+
+                elOpener = null;
+
+                $technologies.removeClass(CLASS.showLoader);
+            },
+
+            initLoadEvents = function () {
+
+                ns.$win.on("hashchange.TechnologiesLoader." + ns, function () {
+
+                    if (shouldBeLoadedByHash()) {
+
+                        load();
+                    }
+                });
+
+                ns.$win.on("main-nav__target-changed.TechnologiesLoader." + ns, function (event, target) {
+
+                    clearTimeout(sectionTargetsLoadDebounce);
+
+                    if (target.match(SECTION_TARGETS_REGEX) && currentState <= STATE.INIT) {
+
+                        sectionTargetsLoadDebounce = setTimeout(function() {
+
+                            if (currentState <= STATE.INIT) {
+
+                                if (window.requestIdleCallback) {
+
+                                    loadIdleCallback = window.requestIdleCallback(load);
+
+                                } else {
+
+                                    load();
+                                }
+                            }
+                        }, SECTION_TARGETS_LOAD_DELAY);
+                    }
+                });
+
+                $openers.on(["mouseenter", "touchstart", "keydown", "click"].join(".TechnologiesLoader." + ns + " ") + ".TechnologiesLoader." + ns, function (event) {
+
+                    ns.$temp[0] = event.currentTarget;
+
+                    if (event.type === "click") {
+
+                        event.preventDefault();
+
+                        if (currentState < STATE.LOADED) {
+
+                            if (ns.$temp.is(SELECTOR.btn)) {
+
+                                if (elOpener === event.currentTarget) {
+
+                                    elOpener = null;
+
+                                    ns.$temp.removeClass(CLASS.btnError)
+                                        .removeClass(CLASS.btnProgress);
+
+                                    return;
+                                }
+
+                                ns.$temp.removeClass(CLASS.btnError)
+                                    .addClass(CLASS.btnProgress);
+
+                            } else {
+
+                                $technologies.addClass(CLASS.showLoader);
                             }
 
-                            $openers.off(".TechnologiesLoader." + ns);
+                            elOpener = event.currentTarget;
                         }
-                    };
 
-                elScript.src = JS;
-                elScript.onload = onLoad;
+                        if (currentState <= STATE.INIT) {
 
-                elLink.rel = "stylesheet";
-                elLink.media = "screen";
-                elLink.href = CSS;
-                elLink.onload = onLoad;
+                            initTab = ns.$temp.data(DATA.tab);
 
-                document.head.appendChild(elLink);
-                document.head.appendChild(elScript);
+                            load();
+                        }
+                    } else {
 
-                loaded = true;
+                        if (currentState <= STATE.INIT) {
+
+                            initTab = ns.$temp.data(DATA.tab);
+
+                            if (window.requestIdleCallback) {
+
+                                loadIdleCallback = window.requestIdleCallback(load);
+
+                            } else {
+
+                                load();
+                            }
+                        }
+                    }
+                });
             },
 
             init = function () {
 
                 $technologies = $(SELECTOR.technologies);
+                $technologiesLoader = $(SELECTOR.technologiesLoader);
 
-                if (shouldBeLoaded()) {
+                if (shouldBeLoadedByHash()) {
 
                     load();
 
                 } else {
 
-                    ns.$win.on("hashchange." + ns, function () {
-
-                        if (shouldBeLoaded()) {
-
-                            load();
-                        }
-                    });
-
                     $openers = $(SELECTOR.openers);
 
-                    $openers.on(["mouseenter", "touchstart", "keydown", "click"].join(".TechnologiesLoader." + ns + " ") + ".TechnologiesLoader." + ns, function (event) {
+                    initLoadEvents();
+                }
 
-                        if (event.type === "click") {
+                $technologiesLoader.on("click." + ns + " touchend." + ns, cancelLoader);
 
-                            event.preventDefault();
-                        }
+                ns.$win.on("keyup.TechnologiesLoader" + ns, function (event) {
 
-                        if (!loaded) {
+                    if (event.which === 27) { //ESC
 
-                            ns.$temp[0] = event.currentTarget;
+                        cancelLoader();
+                    }
+                });
+            };
 
-                            load(ns.$temp.data(DATA.tab), event.type === "click" ? event.currentTarget: null);
-                        }
-                    });
+        return {
+            init: init
+        };
+
+    }());
+
+}((function (ns) { window[ns] = window[ns] || { toString: function () { return ns; } }; return window[ns]; }("MJNS")), jQuery));
+
+/*jslint indent: 4, white: true, nomen: true, regexp: true, unparam: true, node: true, browser: true, devel: true, nomen: true, plusplus: true, regexp: true, sloppy: true, vars: true*/
+/*global jQuery*/
+
+(function (ns, $) {
+
+    ns.$win = ns.$win || $(window);
+
+    ns.CustomScrollbarLoader = (function () {
+
+        var EVENT = {
+                loaded: "custom-scrollbar__loaded." + ns
+            },
+
+            JS_TO_LOAD = "libs/malihu-custom-scrollbar-plugin-3.1.5/jquery.mCustomScrollbar.concat.min.js",
+            CSS_TO_LOAD = "libs/malihu-custom-scrollbar-plugin-3.1.5/jquery.mCustomScrollbar.css",
+
+            TECHNOLOGIES_HASH_REGEX = /^#(html|css|js)$/i,
+
+            onLoad = function (event) {
+
+                if (event.target.tagName.toLowerCase() === "link") {
+
+                    CSS_TO_LOAD = null;
+                }
+
+                if (event.target.tagName.toLowerCase() === "script") {
+
+                    JS_TO_LOAD = null;
+                }
+
+                if (!CSS_TO_LOAD && !JS_TO_LOAD) {
+
+                    ns.$win.trigger(EVENT.loaded);
+                }
+            },
+
+            load = function () {
+
+                var elScript = document.createElement("script"),
+                    elLink = document.createElement("link");
+
+                elScript.defer = true;
+                elScript.src = JS_TO_LOAD;
+                elScript.onload = onLoad;
+
+                elLink.rel = "stylesheet";
+                elLink.href = CSS_TO_LOAD;
+                elLink.onload = onLoad;
+
+                document.head.appendChild(elScript);
+                document.head.appendChild(elLink);
+            },
+
+            shouldBeLoaded = function () {
+
+                var style = document.body.style;
+
+                return typeof style.webkitOverflowScrolling === "undefined" && typeof style.scrollbarWidth === "undefined" &&
+                    !document.documentElement.className.match(/android/);
+            },
+
+            technologiesShouldBeOpened = function () {
+
+                return window.location.hash && window.location.hash.match(TECHNOLOGIES_HASH_REGEX);
+            },
+
+            init = function () {
+
+                if (shouldBeLoaded()) {
+
+                    if (technologiesShouldBeOpened()) {
+
+                        load();
+
+                    } else if (window.requestIdleCallback) {
+
+                        window.requestIdleCallback(load);
+
+                    } else {
+
+                        setTimeout(load, 0);
+                    }
                 }
             };
 
@@ -1720,7 +2085,10 @@
 
             $self,
             $tabsWrapper,
+            $tabs,
             $activeTab,
+
+            initialImageLoadStarted,
 
             $bgLayers,
             parallax,
@@ -1919,7 +2287,21 @@
                 }
             },
 
-            ensureInitialImageLoad = function ($tabs) {
+            execLoadInitialImage = function () {
+
+                if (initialImageLoadStarted) {
+
+                    return;
+                }
+
+                initialImageLoadStarted = true;
+
+                loadImage($tabs.filter(SELECTOR.activeTab));
+
+                ns.$win.off("main-nav__target-changed.References." + ns);
+            },
+
+            ensureInitialImageLoad = function () {
 
                 var sectionRect = $self[0].getBoundingClientRect();
 
@@ -1929,15 +2311,15 @@
 
                     setTimeout(loadImage.bind(null, $tabs.filter(SELECTOR.activeTab)), 0);
 
+                    initialImageLoadStarted = true;
+
                 } else {
 
                     ns.$win.on("main-nav__target-changed.References." + ns, function (event, target) {
 
                         if (target === ID.self) {
 
-                            loadImage($tabs.filter(SELECTOR.activeTab));
-
-                            ns.$win.off("main-nav__target-changed.References." + ns);
+                            execLoadInitialImage();
                         }
                     });
                 }
@@ -1997,7 +2379,7 @@
 
                 $tabsWrapper = $self.find(".references__references");
 
-                var $tabs = $tabsWrapper.find(SELECTOR.tab);
+                $tabs = $tabsWrapper.find(SELECTOR.tab);
                 $activeTab = $tabs.filter(SELECTOR.activeTab);
 
                 $tabs.hide();
@@ -2007,7 +2389,7 @@
 
                 ns.$win.on("resize." + ns + " resize.References." + ns, correctWrapperHeight);
 
-                ensureInitialImageLoad($tabs);
+                ensureInitialImageLoad();
 
                 //iOS fix (špatná výška)
                 setTimeout(function() {
@@ -2035,7 +2417,9 @@
                             extention = layer.parallaxYExtention;
 
                         transform.x += extention * progress;
-                    }
+                    },
+
+                    onFirstIntersection: execLoadInitialImage
                 });
 
                 ns.$win.on("verylowperformance." + ns, function () {
@@ -2066,10 +2450,12 @@
                 $self.addClass(CLASS.selfJSLoaded);
 
                 initNav();
-
                 initTabs();
 
-                setTimeout(initBackground, 100);
+                ns.$ParallaxLoader.then(function () {
+
+                    setTimeout(initBackground, 100);
+                });
             };
 
         return {
@@ -2136,35 +2522,38 @@
 
             init = function (debug) {
 
-                setTimeout(function() {
+                ns.$ParallaxLoader.then(function () {
 
-                    parallax = new Parallax({
-                        parallax: SELECTOR.self,
-                        layers: SELECTOR.photo,
-                        fakeTilt: false,
-                        refreshOnResize: false,
+                    setTimeout(function() {
 
-                        onTransform: applyPhotoFilter
-                    });
+                        parallax = new Parallax({
+                            parallax: SELECTOR.self,
+                            layers: SELECTOR.photo,
+                            fakeTilt: false,
+                            refreshOnResize: false,
 
-                    ns.$win.on("lowperformance." + ns, function () {
-
-                        useFilter = false;
-
-                        ns.$temp[0] = parallax.elLayers[0];
-
-                        ns.$temp.find(SELECTOR.photoImg)
-                            .css("filter", "none");
-                    });
-
-                    if (debug) {
-
-                        ns.$win.on("resize", function () {
-
-                            ns.$win.scrollTop($(SELECTOR.self).offset().top);
+                            onTransform: applyPhotoFilter
                         });
-                    }
-                }, 100);
+
+                        ns.$win.on("lowperformance." + ns, function () {
+
+                            useFilter = false;
+
+                            ns.$temp[0] = parallax.elLayers[0];
+
+                            ns.$temp.find(SELECTOR.photoImg)
+                                .css("filter", "none");
+                        });
+
+                        if (debug) {
+
+                            ns.$win.on("resize", function () {
+
+                                ns.$win.scrollTop($(SELECTOR.self).offset().top);
+                            });
+                        }
+                    }, 100);
+                });
             };
 
         return {
@@ -2256,7 +2645,10 @@
                 $self.find(SELECTOR.termsAndConditionsLink)
                     .on("click." + ns, showTermsAndConditions);
 
-                setTimeout(initBackground, 150);
+                ns.$ParallaxLoader.then(function () {
+
+                    setTimeout(initBackground, 150);
+                });
             };
 
         return {
@@ -2759,6 +3151,8 @@
             MSG_FADE_DURATION = 250,
             MSG_QUEUE = "Contact.msg." + ns,
 
+            hasCustomScrollbar = false,
+
             $self,
             $form,
             $formInfo,
@@ -2827,23 +3221,31 @@
                 });
             },
 
+            initCustomScrollbar = function () {
+
+                if (!$.fn.mCustomScrollbar || hasCustomScrollbar) {
+
+                    return;
+                }
+
+                $formInfo.mCustomScrollbar(SCROLL_OPTIONS);
+
+                hasCustomScrollbar = true;
+            },
+
             initFormInfo = function () {
 
                 $formInfo = $form.find(SELECTOR.formInfo);
-
                 $formInfoLink = $form.find(SELECTOR.formInfoLink);
 
                 $formInfoLink.on("click." + ns, function (event) {
 
+                    event.preventDefault();
+
                     $form.toggleClass(CLASS.showFormInfo);
 
-                    event.preventDefault();
+                    initCustomScrollbar();
                 });
-
-                if (typeof document.body.style.webkitOverflowScrolling === "undefined" && !document.documentElement.className.match(/android/)) {
-
-                    $formInfo.mCustomScrollbar(SCROLL_OPTIONS);
-                }
             },
 
             getFormData = function () {
@@ -2976,92 +3378,10 @@
 
                 initForm();
 
-                setTimeout(initBackground, 200);
-            };
+                ns.$ParallaxLoader.then(function () {
 
-        return {
-            init: init
-        };
-
-    }());
-
-}((function (ns) { window[ns] = window[ns] || { toString: function () { return ns; } }; return window[ns]; }("MJNS")), jQuery));
-
-/*jslint indent: 4, white: true, nomen: true, regexp: true, unparam: true, node: true, browser: true, devel: true, nomen: true, plusplus: true, regexp: true, sloppy: true, vars: true*/
-/*global jQuery, cookieconsent*/
-
-(function (ns, $) {
-
-    ns.$win = ns.$win || $(window);
-
-    ns.Cookies = (function () {
-
-        var CLASS = {
-                fadeOut: "cookies--fade-out"
-            },
-
-            TEMPLATE = [
-                "<div class=\"cookies x-print cc-window\" role=\"dialog\" aria-label=\"cookieconsent\" aria-describedby=\"cookieconsent:desc\">",
-                    "<div class=\"layout__center\">",
-                        "<span class=\"cookies__message cc-message\" id=\"cookieconsent:desc\">Tento web používá k analýze návštěvnosti soubory cookies. <a class=\"cookies__link cc-link\" tabindex=\"0\" href=\"http://cookiesandyou.com\" target=\"_blank\" rel=\"noreferrer\" lang=\"en\" aria-label=\"Dozvědět se více o cookies\">Více informací zde <i>(en)</i></a>.</span>",
-                        "<div class=\"cookies__compliance cc-compliance\">",
-                        "<a class=\"cookies__dismiss btn btn--dark btn--special-small cc-dismiss cc-btn\" aria-label=\"Zavřít zprávu o cookies\" tabindex=\"0\"><span class=\"text cc-btn cc-dismiss\"><span class=\"small cc-btn cc-dismiss\">OK</span></span></a>",
-                        "</div>",
-                    "</div>",
-                "</div>"
-            ].join(""),
-
-            PLUGIN_LINK = "https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js",
-
-            onPopupOpen = function () {
-
-                if (ns.$win.scrollTop()) {
-
-                    this.element.style.transitionDelay = "0s";
-                }
-            },
-
-            onPopupClose = function () {
-
-                if (typeof this.element.style.transition !== "undefined") {
-
-                    this.element.style.transitionDelay = "";
-
-                    this.element.className += (" " + CLASS.fadeOut);
-
-                    this.element.addEventListener("transitionend", function onCookeisCloseTransitionend(event) {
-
-                        if (event.target === this.element) {
-
-                            this.element.className = this.element.className.replace(" " + CLASS.fadeOut, "");
-
-                            this.element.removeEventListener("transitionend", onCookeisCloseTransitionend);
-                        }
-                    }.bind(this));
-                }
-            },
-
-            loadCookieconsent = function () {
-
-                return $.getScript(PLUGIN_LINK);
-            },
-
-            initCookieconsent = function () {
-
-                cookieconsent.initialise({
-                    autoOpen: true,
-                    overrideHTML: TEMPLATE,
-                    onPopupOpen: onPopupOpen,
-                    onPopupClose: onPopupClose,
-                    cookie: {
-                        expiryDays: window.location.host.match(/127\.0\.0\.1/) ? 0.000695 : 365
-                    }
+                    setTimeout(initBackground, 200);
                 });
-            },
-
-            init = function () {
-
-                loadCookieconsent().then(initCookieconsent);
             };
 
         return {
@@ -3447,80 +3767,74 @@
 /*jslint indent: 4, white: true, unparam: true, node: true, browser: true, devel: true, nomen: true, plusplus: true, regexp: true, sloppy: true, vars: true*/
 /*global jQuery, window*/
 
-jQuery(function () {
+(function() {
 
     if (!window.MJNS) {
 
         return;
     }
 
-    var idleCallback = window.requestIdleCallback || function (fn) { return setTimeout(fn, 0); },
-
-        NS = window.MJNS,
-
-        modules = ["$BGObjectsOpacityAnimation", "Performance", "Visibility", "JSHover", "BreakText", "MainNav", "Intro", "SmallCaps", "Offer", "TechnologiesLoader", "References", "AboutMe", "Pricelist", "Form", "Contact", "Fonts", "Cookies", "FixBugs", "Analytics", "$ConsoleMessage"],
-        asyncModulesToLoad = [
-            "build/BGObjectsOpacityAnimation.build.min.js",
-            "build/ConsoleMessage.build.min.js"
-        ];
-
-    modules.forEach(function (moduleName) {
-
-        moduleName = moduleName || "";
-
-        if (NS[moduleName] && typeof NS[moduleName].init === "function") {
-
-            NS[moduleName].init();
-
-        } else if ((NS[moduleName] && typeof NS[moduleName].then === "function") || moduleName.indexOf("$") === 0) {
-
-            if (!NS[moduleName]) {
-
-                NS[moduleName] = jQuery.Deferred();
-            }
-
-            NS[moduleName].then(function () {
-
-                moduleName = moduleName.replace(/^\$/, "");
-
-                if (NS[moduleName] && typeof NS[moduleName].init === "function") {
-
-                    NS[moduleName].init();
-                }
-            });
-        }
-    });
+    var NS = window.MJNS,
+        PROD = NS.ENV.match(/^prod/i);
 
     jQuery(window).on("load", function () {
 
-        var loader = function () {
+        var idleCallback = window.requestIdleCallback || function (fn) { return setTimeout(fn, 0); },
 
-            asyncModulesToLoad.forEach(function (src) {
+            loadCookies = document.cookie.indexOf("cookieconsent_status=dismiss") === -1,
 
-                var elScript = document.createElement("script");
+            scriptsToLoad = [
+                PROD ? "build/background.build.min.js?v=" + NS.VERSION: null,
+                PROD ? "build/ConsoleMessage.build.min.js?v=" + NS.VERSION: "js/modules/ConsoleMessage.js",
+                PROD ? loadCookies ? "build/Cookies.build.min.js?v=" + NS.VERSION: null: "js/modules/Cookies.js"
+            ].filter(function (src) { return src; });
 
-                if (NS.ENV.match(/^prod/i)) {
+        idleCallback(function () {
 
-                    src += "?v=" + NS.VERSION;
+            scriptsToLoad.forEach(function (src) {
 
-                } else {
+                idleCallback(function () {
 
-                    src = src.replace(/\.min\.js$/, ".js");
-                }
+                    var elScript = document.createElement("script");
 
-                elScript.async = true;
-
-                var loadFn = function () {
-
+                    elScript.async = true;
                     elScript.src = src;
 
                     document.body.appendChild(elScript);
-                };
-
-                idleCallback(loadFn);
+                });
             });
-        };
-
-        idleCallback(loader);
+        });
     });
-});
+
+    jQuery(function () {
+
+        var modules = ["$ParallaxLoader", "$BGObjectsOpacityAnimation", "$Cookies", "CustomScrollbarLoader", "Performance", "Visibility", "JSHover", "BreakText", "Intro", "SmallCaps", "Offer", "TechnologiesLoader", "References", "AboutMe", "Pricelist", "Form", "Contact", "Fonts", "FixBugs", "Analytics", "$ConsoleMessage", "MainNav"];
+
+        modules.forEach(function (moduleName) {
+
+            moduleName = moduleName || "";
+
+            if (NS[moduleName] && typeof NS[moduleName].init === "function") {
+
+                NS[moduleName].init();
+
+            } else if ((NS[moduleName] && typeof NS[moduleName].then === "function") || moduleName.indexOf("$") === 0) {
+
+                if (!NS[moduleName]) {
+
+                    NS[moduleName] = jQuery.Deferred();
+                }
+
+                NS[moduleName].then(function () {
+
+                    moduleName = moduleName.replace(/^\$/, "");
+
+                    if (NS[moduleName] && typeof NS[moduleName].init === "function") {
+
+                        NS[moduleName].init();
+                    }
+                });
+            }
+        });
+    });
+}());

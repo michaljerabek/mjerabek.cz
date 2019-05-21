@@ -57,7 +57,10 @@
 
             $self,
             $tabsWrapper,
+            $tabs,
             $activeTab,
+
+            initialImageLoadStarted,
 
             $bgLayers,
             parallax,
@@ -256,7 +259,21 @@
                 }
             },
 
-            ensureInitialImageLoad = function ($tabs) {
+            execLoadInitialImage = function () {
+
+                if (initialImageLoadStarted) {
+
+                    return;
+                }
+
+                initialImageLoadStarted = true;
+
+                loadImage($tabs.filter(SELECTOR.activeTab));
+
+                ns.$win.off("main-nav__target-changed.References." + ns);
+            },
+
+            ensureInitialImageLoad = function () {
 
                 var sectionRect = $self[0].getBoundingClientRect();
 
@@ -266,15 +283,15 @@
 
                     setTimeout(loadImage.bind(null, $tabs.filter(SELECTOR.activeTab)), 0);
 
+                    initialImageLoadStarted = true;
+
                 } else {
 
                     ns.$win.on("main-nav__target-changed.References." + ns, function (event, target) {
 
                         if (target === ID.self) {
 
-                            loadImage($tabs.filter(SELECTOR.activeTab));
-
-                            ns.$win.off("main-nav__target-changed.References." + ns);
+                            execLoadInitialImage();
                         }
                     });
                 }
@@ -334,7 +351,7 @@
 
                 $tabsWrapper = $self.find(".references__references");
 
-                var $tabs = $tabsWrapper.find(SELECTOR.tab);
+                $tabs = $tabsWrapper.find(SELECTOR.tab);
                 $activeTab = $tabs.filter(SELECTOR.activeTab);
 
                 $tabs.hide();
@@ -344,7 +361,7 @@
 
                 ns.$win.on("resize." + ns + " resize.References." + ns, correctWrapperHeight);
 
-                ensureInitialImageLoad($tabs);
+                ensureInitialImageLoad();
 
                 //iOS fix (špatná výška)
                 setTimeout(function() {
@@ -372,7 +389,9 @@
                             extention = layer.parallaxYExtention;
 
                         transform.x += extention * progress;
-                    }
+                    },
+
+                    onFirstIntersection: execLoadInitialImage
                 });
 
                 ns.$win.on("verylowperformance." + ns, function () {
@@ -403,10 +422,12 @@
                 $self.addClass(CLASS.selfJSLoaded);
 
                 initNav();
-
                 initTabs();
 
-                setTimeout(initBackground, 100);
+                ns.$ParallaxLoader.then(function () {
+
+                    setTimeout(initBackground, 100);
+                });
             };
 
         return {

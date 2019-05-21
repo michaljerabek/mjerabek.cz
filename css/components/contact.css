@@ -779,7 +779,8 @@
 
             transition: height 0.425s cubic-bezier(0.3, 0.15, .3, 1) 0s,
                 opacity 0.425s cubic-bezier(0.3, 0.15, .3, 1) 0s,
-                visibility 0s linear 0.425s;
+                visibility 0s linear 0.425s,
+                scrollbar-color 0.275s cubic-bezier(0, 0, .54, .9) 0s;
         }
 
         @media (max-width: 479px) {
@@ -792,22 +793,20 @@
             }
         }
 
-        .android .contact__form-info,
-        .no-js .contact__form-info {
+        .contact__form-info:not(.mCustomScrollbar) {
             overflow: auto;
+            scroll-behavior: smooth;
+            overscroll-behavior: contain;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0) transparent;
+            -webkit-overflow-scrolling: touch;
 
             will-change: scroll-position;
         }
 
-        @supports (-webkit-overflow-scrolling: touch) {
-
-            .js .contact__form-info,
-            .no-js .contact__form-info {
-                overflow: auto;
-                -webkit-overflow-scrolling: touch;
-
-                will-change: scroll-position;
-            }
+        .contact__form-info:hover,
+        .contact__form-info:focus {
+            scrollbar-color: rgba(255, 255, 255, 0.35) transparent;
         }
 
             .contact__form-info .mCSB_container {
@@ -834,7 +833,17 @@
             visibility: visible;
 
             transition: height 0.425s cubic-bezier(0.3, 0.15, .3, 1) 0s,
-                opacity 0.425s cubic-bezier(0.3, 0.15, .3, 1) 0s;
+                opacity 0.425s cubic-bezier(0.3, 0.15, .3, 1) 0s,
+                scrollbar-color 0.275s cubic-bezier(0, 0, .54, .9) 0s;
+        }
+
+        .contact__form--show-info .contact__form-info-link + .contact__form-info:hover,
+        .no-js .contact__form-item--msg:target .contact__form-info-link + .contact__form-info:hover,
+        .contact__form--show-info .contact__form-info-link + .contact__form-info:focus,
+        .no-js .contact__form-item--msg:target .contact__form-info-link + .contact__form-info:focus {
+            transition: height 0.425s cubic-bezier(0.3, 0.15, .3, 1) 0s,
+                opacity 0.425s cubic-bezier(0.3, 0.15, .3, 1) 0s,
+                scrollbar-color 0.4s cubic-bezier(0, 0, .25, 1) 0s;
         }
 
     .contact__form-send-msgs {
@@ -951,10 +960,6 @@
     background-color: transparent;
 }
 
-    .contact__form-btn .text {
-        transition: opacity 0.25s linear 0.25s;
-    }
-
     .contact__form-btn--hide-text .text,
     .form--progress .text {
         opacity: 0;
@@ -962,43 +967,7 @@
         transition: opacity 0.25s linear 0s;
     }
 
-    .contact__form-btn .send-animation {
-        position: absolute;
-        top: 1px;
-        left: 1px;
-
-        height: 100%;
-        width: 100%;
-        margin: auto;
-
-        font-size: 1.0625rem;
-        line-height: 0;
-
-        opacity: 0;
-
-        overflow: hidden;
-
-        transition: opacity 0.25s linear 0s;
-    }
-
-        .contact__form-btn .numbers {
-            position: absolute;
-            top: 0;
-            right: 0%;
-            bottom: 1px;
-
-            height: 0;
-            margin: auto;
-
-            transform: translateX(0%);
-        }
-
-        .android .contact__form-btn .numbers,
-        .apple .contact__form-btn .numbers {
-            top: 3px;
-        }
-
-    .form--progress .send-animation {
+    .form--progress .progress-animation {
         opacity: 1;
 
         transition: opacity 0.25s linear 0.25s;
@@ -1006,37 +975,13 @@
 
         .form--progress .numbers {
             transition: opacity 0.25s linear 0.25s;
-            animation: contact__send-msg--move 3s linear 0s infinite forwards;
+            animation: btn__progress--move 3s linear 0s infinite forwards;
         }
 
         @media (max-width: 767px) {
 
             .form--progress .numbers {
-                animation-name: contact__send-msg--move-mobile;
-            }
-        }
-
-        @keyframes contact__send-msg--move {
-            0% {
-                transform: translateX(50%);
-                transform: translateX(calc(100% - 240px));
-                transform: translateX(calc(100% - 240px + 1ch));
-            }
-            100% {
-                transform: translateX(0%);
-                transform: translateX(-1ch);
-            }
-        }
-
-        @keyframes contact__send-msg--move-mobile {
-            0% {
-                transform: translateX(50%);
-                transform: translateX(calc(100% - 224px));
-                transform: translateX(calc(100% - 224px + 1ch));
-            }
-            100% {
-                transform: translateX(0%);
-                transform: translateX(-1ch);
+                animation-name: btn__progress--move-mobile;
             }
         }
 

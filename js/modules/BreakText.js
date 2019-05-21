@@ -14,14 +14,15 @@
             },
 
             SELECTOR = {
-                items: "[data-break-text='true']"
+                items: "[data-break-text='true']",
+                lazyItems: "[data-break-text='lazy']"
             },
 
             wrapLetter = function (letter, num, smallCaps) {
 
                 var attrs = [
                         "class=\"", CLASS.letter + num, "\" style=\"display: inline-block;\"",
-                        smallCaps ? ns.SmallCaps.getAttr(true) : ""
+                        smallCaps ? ns.SmallCaps.getAttr(smallCaps) : ""
                     ].join(" ");
 
                 return "<span " + attrs + ">" + letter + "</span>";
@@ -74,11 +75,11 @@
 
                 ns.$temp[0] = el;
 
-                var hasSmallCaps = ns.SmallCaps.isItem(ns.$temp),
+                var smallCapsAttr = ns.SmallCaps.getState(ns.$temp),
 
-                    result = breakText(ns.$temp, hasSmallCaps);
+                    result = breakText(ns.$temp, smallCapsAttr);
 
-                if (hasSmallCaps) {
+                if (smallCapsAttr) {
 
                     ns.SmallCaps.removeItem(ns.$temp);
                 }
@@ -86,9 +87,9 @@
                 ns.$temp.html(result.join(""));
             },
 
-            init = function () {
+            execInit = function (selector) {
 
-                var items = document.querySelectorAll(SELECTOR.items),
+                var items = document.querySelectorAll(selector),
 
                     length = items.length,
                     i = 0;
@@ -96,6 +97,20 @@
                 for (i; i < length; i++) {
 
                     processElement(i, items[i]);
+                }
+            },
+
+            init = function () {
+
+                execInit(SELECTOR.items);
+
+                if (window.requestIdleCallback) {
+
+                    window.requestIdleCallback(execInit.bind(this, SELECTOR.lazyItems));
+
+                } else {
+
+                    setTimeout(execInit.bind(this, SELECTOR.lazyItems), 0);
                 }
             };
 

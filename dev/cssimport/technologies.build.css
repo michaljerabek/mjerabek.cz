@@ -1,1 +1,3 @@
+@import url("../../libs/inert-polyfill/inert-polyfill.css");
 @import url("../../css/components/technologies.css");
+@import url("../../css/components/CodeMirror-theme.css");

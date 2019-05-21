@@ -2,10 +2,12 @@
 
 session_start();
 
-define("VERSION", "2019-05-19-3");
-define("LIBS_VERSION", "2019-05-19-3");
-define("PROD", (isset($_ENV["ENV"]) && $_ENV["ENV"] === "production") ||
-       ($_SERVER["HTTP_HOST"] === "localhost" && !isset($_GET["dev"])));
+define("VERSION", "2019-05-21-6");
+define("LIBS_VERSION", "2019-05-21-6");
+define("PROD",
+    (isset($_ENV["ENV"]) && $_ENV["ENV"] === "production") ||
+    ($_SERVER["HTTP_HOST"] === "localhost" && !isset($_GET["dev"]))
+);
 define("DEV", !PROD);
 
 if (isset($_GET["action"])) {

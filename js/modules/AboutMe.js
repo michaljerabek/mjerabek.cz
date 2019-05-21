@@ -54,35 +54,38 @@
 
             init = function (debug) {
 
-                setTimeout(function() {
+                ns.$ParallaxLoader.then(function () {
 
-                    parallax = new Parallax({
-                        parallax: SELECTOR.self,
-                        layers: SELECTOR.photo,
-                        fakeTilt: false,
-                        refreshOnResize: false,
+                    setTimeout(function() {
 
-                        onTransform: applyPhotoFilter
-                    });
+                        parallax = new Parallax({
+                            parallax: SELECTOR.self,
+                            layers: SELECTOR.photo,
+                            fakeTilt: false,
+                            refreshOnResize: false,
 
-                    ns.$win.on("lowperformance." + ns, function () {
-
-                        useFilter = false;
-
-                        ns.$temp[0] = parallax.elLayers[0];
-
-                        ns.$temp.find(SELECTOR.photoImg)
-                            .css("filter", "none");
-                    });
-
-                    if (debug) {
-
-                        ns.$win.on("resize", function () {
-
-                            ns.$win.scrollTop($(SELECTOR.self).offset().top);
+                            onTransform: applyPhotoFilter
                         });
-                    }
-                }, 100);
+
+                        ns.$win.on("lowperformance." + ns, function () {
+
+                            useFilter = false;
+
+                            ns.$temp[0] = parallax.elLayers[0];
+
+                            ns.$temp.find(SELECTOR.photoImg)
+                                .css("filter", "none");
+                        });
+
+                        if (debug) {
+
+                            ns.$win.on("resize", function () {
+
+                                ns.$win.scrollTop($(SELECTOR.self).offset().top);
+                            });
+                        }
+                    }, 100);
+                });
             };
 
         return {

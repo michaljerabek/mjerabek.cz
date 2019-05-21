@@ -40,4 +40,4 @@
 
     setTimeout(ns.$ConsoleMessage.resolve, 2000);
 
-}((function (ns) { window[ns] = window[ns] || { toString: function () { return ns; } }; return window[ns]; }("MJNS", jQuery))));
+}((function (ns) { window[ns] = window[ns] || { toString: function () { return ns; } }; return window[ns]; }("MJNS")), jQuery));

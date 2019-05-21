@@ -62,7 +62,7 @@
 
                 $self = $(SELECTOR.self);
 
-                setTimeout(initBackground, 0);
+                ns.$ParallaxLoader.then(initBackground);
             };
 
         return {

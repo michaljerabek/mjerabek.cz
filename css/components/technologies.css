@@ -27,15 +27,6 @@
     display: none;
 }
 
-#html,
-#css,
-#js {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-}
-
 .no-js #html:target .technologies,
 .no-js #css:target .technologies,
 .no-js #js:target .technologies,
@@ -569,32 +560,22 @@
 
                 opacity: 0;
 
+                overflow: hidden;
+
                 transition: transform 0.45s cubic-bezier(0, 0, .2, 1) 0s,
-                    opacity 0.45s cubic-bezier(0, 0, .2, 1) 0s;
+                    opacity 0.45s cubic-bezier(0, 0, .2, 1) 0s,
+                    scrollbar-color 0.275s cubic-bezier(0, 0, .54, .9) 0s;
                 will-change: transform, opacity;
             }
 
-            .no-js .technologies__text-content-wrapper,
-            .no-js .technologies__sample-content-wrapper {
+            .technologies__text-content-wrapper:not(.mCustomScrollbar),
+            .technologies__sample-content-wrapper:not(.mCustomScrollbar) {
                 overflow: auto;
-            }
-
-            .js .technologies__text-content-wrapper,
-            .js .technologies__sample-content-wrapper {
-                overflow: hidden;
-            }
-
-            .android .technologies__text-content-wrapper,
-            .android .technologies__sample-content-wrapper {
-                overflow: auto;
-            }
-
-            .technologies__text-content-wrapper,
-            .technologies__sample-content-wrapper {
-                overflow: auto;
+                scroll-behavior: smooth;
                 overscroll-behavior: contain;
                 scrollbar-width: thin;
                 scrollbar-color: rgba(255, 255, 255, 0) transparent;
+                -webkit-overflow-scrolling: touch;
 
                 will-change: scroll-position;
             }
@@ -604,17 +585,6 @@
             .technologies__text-content-wrapper:focus,
             .technologies__sample-content-wrapper:focus {
                 scrollbar-color: rgba(255, 255, 255, 0.35) transparent;
-            }
-
-            @supports (-webkit-overflow-scrolling: touch) {
-
-                .js .technologies__text-content-wrapper,
-                .js .technologies__sample-content-wrapper,
-                .no-js .technologies__text-content-wrapper,
-                .no-js .technologies__sample-content-wrapper {
-                    overflow: auto;
-                    -webkit-overflow-scrolling: touch;
-                }
             }
 
             .technologies__technology--from-left .technologies__text-content-wrapper,
@@ -640,7 +610,8 @@
                 opacity: 1;
 
                 transition: transform 0.45s cubic-bezier(0, 0, .2, 1) 0.2s,
-                    opacity 0.45s cubic-bezier(0, 0, .2, 1) 0.2s;
+                    opacity 0.45s cubic-bezier(0, 0, .2, 1) 0.2s,
+                    scrollbar-color 0.4s cubic-bezier(0, 0, .25, 1) 0s;
             }
 
                 @media (min-width: 768px) {

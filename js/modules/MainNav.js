@@ -111,6 +111,15 @@
                     return;
                 }
 
+                if ($link === null) {
+
+                    history.replaceState(null, document.title, "#");
+
+                    ns.$win.trigger(EVENT.targetChanged, [null]);
+
+                    return;
+                }
+
                 var linkHref = $link[0].getAttribute("href");
 
                 if (history.state !== linkHref) {
@@ -400,6 +409,15 @@
 
                     currentScrollTarget = _currentScrollTarget;
 
+                    if (!_currentScrollTarget) {
+
+                        deactivateItem();
+
+                        updateHistory(null);
+
+                        return;
+                    }
+
                     ns.$temp[0] = currentScrollTarget;
 
                     var activeSelector = ns.$temp.attr("data-" + DATA.active),
@@ -409,6 +427,11 @@
                     activateItem($link, true);
 
                     updateHistory($link);
+
+                    if (!initialized) {
+
+                        ns.$win.trigger(EVENT.targetChanged, [$link[0].href.split("#")[1]]);
+                    }
 
                     changeTheme(ns.$temp);
                 }
@@ -598,18 +621,14 @@
             initElements = function () {
 
                 $scrollingElement = $("html, body");
+                $metaThemeColor = $(SELECTOR.metaThemeColor);
 
                 $self = $(SELECTOR.self);
-
                 $itemsWrapper = $self.find(SELECTOR.itemsWrapper);
 
                 $fixedElement = $(SELECTOR.fixedElement);
-
-                $opener = $self.find(SELECTOR.opener);
-
                 $scrollTargets = $(SELECTOR.scrollTarget);
-
-                $metaThemeColor = $(SELECTOR.metaThemeColor);
+                $opener = $self.find(SELECTOR.opener);
             },
 
             init = function () {
@@ -620,7 +639,6 @@
                 }
 
                 initElements();
-
                 initEvents();
 
                 initialized = true;

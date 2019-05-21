@@ -41,22 +41,11 @@
 
     var FILES = {
             "libs.build.js": [
-                lib("inert-polyfill/inert-polyfill.min.js"),
                 lib("jquery.smallcaps.js"),
-                lib("fulltilt.min.js"),
-                lib("parallax.js"),
-                lib("malihu-custom-scrollbar-plugin-3.1.5/jquery.mCustomScrollbar.concat.min.js"),
-                lib("infinitum/infinitum.js"),
-
-                lib("CodeMirror-5.28.0/lib/codemirror.js"),
-                lib("CodeMirror-5.28.0/addon/runmode/runmode.js"),
-                lib("CodeMirror-5.28.0/mode/javascript/javascript.js"),
-                lib("CodeMirror-5.28.0/mode/css/css.js"),
-                lib("CodeMirror-5.28.0/mode/xml/xml.js"),
-                lib("CodeMirror-5.28.0/mode/htmlmixed/htmlmixed.js")
+                lib("infinitum/infinitum.js")
             ],
 
-            "all.build.js": [
+            "main.build.js": [
                 mod("Performance.js"),
                 mod("Visibility.js"),
                 mod("BreakText.js"),
@@ -66,12 +55,12 @@
                 mod("MainNav.js"),
                 mod("Offer.js"),
                 mod("TechnologiesLoader.js"),
+                mod("CustomScrollbarLoader.js"),
                 mod("References.js"),
                 mod("AboutMe.js"),
                 mod("Pricelist.js"),
                 mod("Form.js"),
                 mod("Contact.js"),
-                mod("Cookies.js"),
                 mod("Fonts.js"),
                 mod("FixBugs.js"),
                 mod("Analytics.js"),
@@ -79,16 +68,32 @@
                 file("init.js")
             ],
 
-            "Technologies.build.js": [
+            "technologies.build.js": [
+                lib("inert-polyfill/inert-polyfill.min.js"),
+                lib("CodeMirror-5.28.0/lib/codemirror.js"),
+                lib("CodeMirror-5.28.0/addon/runmode/runmode.js"),
+                lib("CodeMirror-5.28.0/mode/javascript/javascript.js"),
+                lib("CodeMirror-5.28.0/mode/css/css.js"),
+                lib("CodeMirror-5.28.0/mode/xml/xml.js"),
+                lib("CodeMirror-5.28.0/mode/htmlmixed/htmlmixed.js"),
+
                 mod("Technologies.js")
             ],
 
-            "BGObjectsOpacityAnimation.build.js": [
-                mod("BGObjectsOpacityAnimation.js")
+            "background.build.js": [
+                lib("fulltilt.min.js"),
+                lib("parallax.js"),
+
+                mod("BGObjectsOpacityAnimation.js"),
+                mod("$ParallaxLoader.js")
             ],
 
             "ConsoleMessage.build.js": [
                 mod("ConsoleMessage.js")
+            ],
+
+            "Cookies.build.js": [
+                mod("Cookies.js")
             ]
         };
 

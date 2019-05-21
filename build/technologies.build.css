@@ -1,3 +1,28 @@
+/*
+ * Copyright 2015 Google Inc. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+
+*[inert] {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+}
+
 /*====================================================================*/
 /*---------------------------- TECHNOLOGIES --------------------------*/
 /*====================================================================*/
@@ -25,15 +50,6 @@
 
 .js .technologies {
     display: none;
-}
-
-#html,
-#css,
-#js {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
 }
 
 .no-js #html:target .technologies,
@@ -569,32 +585,22 @@
 
                 opacity: 0;
 
+                overflow: hidden;
+
                 transition: transform 0.45s cubic-bezier(0, 0, .2, 1) 0s,
-                    opacity 0.45s cubic-bezier(0, 0, .2, 1) 0s;
+                    opacity 0.45s cubic-bezier(0, 0, .2, 1) 0s,
+                    scrollbar-color 0.275s cubic-bezier(0, 0, .54, .9) 0s;
                 will-change: transform, opacity;
             }
 
-            .no-js .technologies__text-content-wrapper,
-            .no-js .technologies__sample-content-wrapper {
+            .technologies__text-content-wrapper:not(.mCustomScrollbar),
+            .technologies__sample-content-wrapper:not(.mCustomScrollbar) {
                 overflow: auto;
-            }
-
-            .js .technologies__text-content-wrapper,
-            .js .technologies__sample-content-wrapper {
-                overflow: hidden;
-            }
-
-            .android .technologies__text-content-wrapper,
-            .android .technologies__sample-content-wrapper {
-                overflow: auto;
-            }
-
-            .technologies__text-content-wrapper,
-            .technologies__sample-content-wrapper {
-                overflow: auto;
+                scroll-behavior: smooth;
                 overscroll-behavior: contain;
                 scrollbar-width: thin;
                 scrollbar-color: rgba(255, 255, 255, 0) transparent;
+                -webkit-overflow-scrolling: touch;
 
                 will-change: scroll-position;
             }
@@ -604,17 +610,6 @@
             .technologies__text-content-wrapper:focus,
             .technologies__sample-content-wrapper:focus {
                 scrollbar-color: rgba(255, 255, 255, 0.35) transparent;
-            }
-
-            @supports (-webkit-overflow-scrolling: touch) {
-
-                .js .technologies__text-content-wrapper,
-                .js .technologies__sample-content-wrapper,
-                .no-js .technologies__text-content-wrapper,
-                .no-js .technologies__sample-content-wrapper {
-                    overflow: auto;
-                    -webkit-overflow-scrolling: touch;
-                }
             }
 
             .technologies__technology--from-left .technologies__text-content-wrapper,
@@ -640,7 +635,8 @@
                 opacity: 1;
 
                 transition: transform 0.45s cubic-bezier(0, 0, .2, 1) 0.2s,
-                    opacity 0.45s cubic-bezier(0, 0, .2, 1) 0.2s;
+                    opacity 0.45s cubic-bezier(0, 0, .2, 1) 0.2s,
+                    scrollbar-color 0.4s cubic-bezier(0, 0, .25, 1) 0s;
             }
 
                 @media (min-width: 768px) {
@@ -1122,3 +1118,32 @@
     }
 
 /*//////////////////////////// NAVIGATION ////////////////////////////*/
+
+[data-codemirror-mimemode] { color: #d5d5d5; }
+.cm-keyword        { color: #6595A9; }
+.cm-atom           { color: #B3794E; }
+.cm-number         { color: #AF975A; }
+.cm-def            { color: #d5d5d5; }
+.cm-variable       { color: #AF975A; }
+.cm-variable-2     { color: #d5d5d5; }
+.cm-variable-3     { color: #6595A9; }
+.cm-operator       { color: #d5d5d5; }
+.cm-comment        { color: #878787; }
+.cm-string         { color: #B3794E; }
+.cm-string-2       { color: #78A7BB; }
+.cm-meta           { color: #B3794E; }
+.cm-qualifier      { color: #d5d5d5; }
+.cm-builtin        { color: #AF975A; }
+.cm-bracket        { color: #d5d5d5; }
+.cm-tag            { color: #C9B47F; }
+.cm-bracket.cm-tag { color: hsl(43, 31%, 35%); }
+.cm-attribute      { color: #AF975A; }
+.cm-property       { color: #C9B47F; }
+.cm-quote          { color: #d5d5d5; }
+.cm-header         { color: #6595A9; }
+.cm-link           { color: #C9B47F; }
+.cm-em             { color: #BF865E; font-style: italic; }
+.cm-strong         { color: #6595A9; }
+.cm-strikethrough  { color: #B3794E; }
+.cm-hr             { color: #AF975A; }
+.cm-error          { color: #BF865E; }

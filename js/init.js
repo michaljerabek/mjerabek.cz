@@ -1,80 +1,74 @@
 /*jslint indent: 4, white: true, unparam: true, node: true, browser: true, devel: true, nomen: true, plusplus: true, regexp: true, sloppy: true, vars: true*/
 /*global jQuery, window*/
 
-jQuery(function () {
+(function() {
 
     if (!window.MJNS) {
 
         return;
     }
 
-    var idleCallback = window.requestIdleCallback || function (fn) { return setTimeout(fn, 0); },
-
-        NS = window.MJNS,
-
-        modules = ["$BGObjectsOpacityAnimation", "Performance", "Visibility", "JSHover", "BreakText", "MainNav", "Intro", "SmallCaps", "Offer", "TechnologiesLoader", "References", "AboutMe", "Pricelist", "Form", "Contact", "Fonts", "Cookies", "FixBugs", "Analytics", "$ConsoleMessage"],
-        asyncModulesToLoad = [
-            "build/BGObjectsOpacityAnimation.build.min.js",
-            "build/ConsoleMessage.build.min.js"
-        ];
-
-    modules.forEach(function (moduleName) {
-
-        moduleName = moduleName || "";
-
-        if (NS[moduleName] && typeof NS[moduleName].init === "function") {
-
-            NS[moduleName].init();
-
-        } else if ((NS[moduleName] && typeof NS[moduleName].then === "function") || moduleName.indexOf("$") === 0) {
-
-            if (!NS[moduleName]) {
-
-                NS[moduleName] = jQuery.Deferred();
-            }
-
-            NS[moduleName].then(function () {
-
-                moduleName = moduleName.replace(/^\$/, "");
-
-                if (NS[moduleName] && typeof NS[moduleName].init === "function") {
-
-                    NS[moduleName].init();
-                }
-            });
-        }
-    });
+    var NS = window.MJNS,
+        PROD = NS.ENV.match(/^prod/i);
 
     jQuery(window).on("load", function () {
 
-        var loader = function () {
+        var idleCallback = window.requestIdleCallback || function (fn) { return setTimeout(fn, 0); },
 
-            asyncModulesToLoad.forEach(function (src) {
+            loadCookies = document.cookie.indexOf("cookieconsent_status=dismiss") === -1,
 
-                var elScript = document.createElement("script");
+            scriptsToLoad = [
+                PROD ? "build/background.build.min.js?v=" + NS.VERSION: null,
+                PROD ? "build/ConsoleMessage.build.min.js?v=" + NS.VERSION: "js/modules/ConsoleMessage.js",
+                PROD ? loadCookies ? "build/Cookies.build.min.js?v=" + NS.VERSION: null: "js/modules/Cookies.js"
+            ].filter(function (src) { return src; });
 
-                if (NS.ENV.match(/^prod/i)) {
+        idleCallback(function () {
 
-                    src += "?v=" + NS.VERSION;
+            scriptsToLoad.forEach(function (src) {
 
-                } else {
+                idleCallback(function () {
 
-                    src = src.replace(/\.min\.js$/, ".js");
-                }
+                    var elScript = document.createElement("script");
 
-                elScript.async = true;
-
-                var loadFn = function () {
-
+                    elScript.async = true;
                     elScript.src = src;
 
                     document.body.appendChild(elScript);
-                };
-
-                idleCallback(loadFn);
+                });
             });
-        };
-
-        idleCallback(loader);
+        });
     });
-});
+
+    jQuery(function () {
+
+        var modules = ["$ParallaxLoader", "$BGObjectsOpacityAnimation", "$Cookies", "CustomScrollbarLoader", "Performance", "Visibility", "JSHover", "BreakText", "Intro", "SmallCaps", "Offer", "TechnologiesLoader", "References", "AboutMe", "Pricelist", "Form", "Contact", "Fonts", "FixBugs", "Analytics", "$ConsoleMessage", "MainNav"];
+
+        modules.forEach(function (moduleName) {
+
+            moduleName = moduleName || "";
+
+            if (NS[moduleName] && typeof NS[moduleName].init === "function") {
+
+                NS[moduleName].init();
+
+            } else if ((NS[moduleName] && typeof NS[moduleName].then === "function") || moduleName.indexOf("$") === 0) {
+
+                if (!NS[moduleName]) {
+
+                    NS[moduleName] = jQuery.Deferred();
+                }
+
+                NS[moduleName].then(function () {
+
+                    moduleName = moduleName.replace(/^\$/, "");
+
+                    if (NS[moduleName] && typeof NS[moduleName].init === "function") {
+
+                        NS[moduleName].init();
+                    }
+                });
+            }
+        });
+    });
+}());

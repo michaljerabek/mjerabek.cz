@@ -1,0 +1,67 @@
+/*====================================================================*/
+/*------------------------ TECHNOLOGIES-LOADER -----------------------*/
+/*====================================================================*/
+
+.js .technologies:not(.technologies--loaded) {
+    display: none;
+}
+
+.technologies-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+
+    width: 100%;
+    height: 0%;
+
+    background-color: rgba(0, 0, 0, 0.65);
+    opacity: 0;
+    visibility: hidden;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 1s ease-out 0s,
+        visibility 0s linear 1s,
+        height 0s linear 1s;
+}
+
+.js #html:target .technologies:not(.technologies--loaded):not(.technologies--error) ~ .technologies-loader,
+.js #css:target .technologies:not(.technologies--loaded):not(.technologies--error) ~ .technologies-loader,
+.js #js:target .technologies:not(.technologies--loaded):not(.technologies--error) ~ .technologies-loader,
+.js .technologies--show-loader ~ .technologies-loader {
+    height: 100%;
+
+    opacity: 1;
+    visibility: visible;
+
+    pointer-events: all;
+
+    transition: opacity 0.5s ease-out 0s,
+}
+
+.js .technologies-loader::after,
+.js .technologies-loader::before {
+    font-size: 72px;
+}
+
+@media (max-width: 479px) {
+
+    .js .technologies-loader::before,
+    .js .technologies-loader::after {
+        font-size: 64px;
+    }
+}
+
+.js .technologies--loading ~ .technologies-loader::after,
+.js .technologies--loading ~ .technologies-loader::before {
+    animation-iteration-count: infinite;
+}
+
+.js .technologies--loaded ~ .technologies-loader::after,
+.js .technologies--loaded ~ .technologies-loader::before {
+    animation-iteration-count: 1;
+}

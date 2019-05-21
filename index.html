@@ -38,9 +38,9 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com/" crossorigin>
 
     <link rel="preload" href="build/libs.build.min.css?v={{LIBS_VERSION}}" as="style">
-    <link rel="preload" href="build/all.build.min.css?v={{VERSION}}" as="style">
+    <link rel="preload" href="build/main.build.min.css?v={{VERSION}}" as="style">
     <link rel="preload" href="build/libs.build.min.js?v={{LIBS_VERSION}}" as="script">
-    <link rel="preload" href="build/all.build.min.js?v={{VERSION}}" as="script">
+    <link rel="preload" href="build/main.build.min.js?v={{VERSION}}" as="script">
 
 
     <!--———————————— FAVICON ————————————-->
@@ -73,7 +73,8 @@
 
     <!--———————————— FONTS ————————————-->
 
-    <link href="https://fonts.googleapis.com/css?family=Caudex:400,400i,700,700i|PT+Mono&amp;subset=latin-ext&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Caudex:400,400i,700,700i;subset=latin-ext&display=swap" rel="stylesheet">
+    <noscript><link href="https://fonts.googleapis.com/css?family=PT+Mono&display=swap" rel="stylesheet"> </noscript>
 
 
     <!--———————————— SUPPORT ————————————-->
@@ -100,15 +101,15 @@
 
     <!--dev-->
     <script src="dev/PATHS.js"></script>
-    <script src="dev/load-css.js" data-files="libs.build.css, all.build.css, print.build.css" data-media="screen, screen, print"></script>
+    <script src="dev/load-css.js" data-files="libs.build.css, main.build.css, print.build.css" data-media="screen, screen, print"></script>
     <noscript><link href="dev/cssimport/libs.build.css" rel="stylesheet" media="screen"></noscript>
-    <noscript><link href="dev/cssimport/all.build.css" rel="stylesheet" media="screen"></noscript>
+    <noscript><link href="dev/cssimport/main.build.css" rel="stylesheet" media="screen"></noscript>
     <noscript><link href="css/components/technologies.css" rel="stylesheet" media="screen"></noscript>
     <!--/dev-->
 
     <!--prod-->
     <!--<link href="build/libs.build.min.css?v={{LIBS_VERSION}}" rel="stylesheet" media="screen">-->
-    <!--<link href="build/all.build.min.css?v={{VERSION}}" rel="stylesheet" media="screen">-->
+    <!--<link href="build/main.build.min.css?v={{VERSION}}" rel="stylesheet" media="screen">-->
     <!--<noscript><link href="build/technologies.build.min.css" rel="stylesheet" media="screen"></noscript>-->
 
     <!--<script>window.addEventListener("load", function () { document.head.insertAdjacentHTML("beforeend", "<link href=\"build/print.build.min.css\" rel=\"stylesheet\" media=\"print\">"); });</script>-->
@@ -129,7 +130,7 @@
     <script>document.visibilityState && !document.hidden && (document.documentElement.className += " was-visible");</script>
 
 
-    <!--———————————— DYNAMIC ————————————-->
+    <!--———————————— APPENDED ————————————-->
 
 </head>
 <body>
@@ -372,6 +373,7 @@
 
                 <!--––––––––– ** OFFER | SECTION ** –––––––––-->
 
+
                 <article class="offer offer--init-fade-in section section--dark offer__light-transition inverse-focus x-print" id="co-delam" data-main-nav-target="true" data-main-nav-theme="#B3794E">
 
                     <div class="offer__light"><!-- css --></div>
@@ -520,6 +522,9 @@
                         <div class="offer__btn-wrapper x-print">
                             <a class="btn btn--light offer__btn" href="#html" title="Podrobnosti o dodáveném kódu, webech a šablonách" data-technologies-tab="0" data-main-nav-ignore="true">
                                 <span class="text">Co přesně dostanu?</span>
+                                <span class="progress-animation" role="presentation" aria-hidden="true">
+                                    <span class="numbers">01001111&nbsp;01100100&nbsp;01100101&nbsp;01110011&nbsp;11000011&nbsp;10101101&nbsp;01101100&nbsp;11000011&nbsp;10100001&nbsp;01101101&nbsp;00101110&nbsp;00101110&nbsp;00101110</span>
+                                </span>
                             </a>
                         </div>
 
@@ -663,7 +668,7 @@
                                             Pojištěná půjčka — ukázka projektu
                                         </figcaption>
 
-                                        <div class="references__image-wrapper fade-in" data-js-hover="true" data-js-hover-prevent-click="true">
+                                        <div class="references__image-wrapper ui__loader fade-in" data-js-hover="true" data-js-hover-prevent-click="true">
 
                                             <noscript class="references__image-template">
                                                 <img class="references__image" src="img/references__img--pojistena-pujckaX1.jpg" srcset="img/references__img--pojistena-pujckaX1.jpg 1x, img/references__img--pojistena-pujckaX2.jpg 2x" alt="Fotografie webu pojistenapujcka.cz">
@@ -752,7 +757,7 @@
                                             Zase Ostře — ukázka projektu
                                         </figcaption>
 
-                                        <div class="references__image-wrapper" data-js-hover="true" data-js-hover-prevent-click="true">
+                                        <div class="references__image-wrapper ui__loader" data-js-hover="true" data-js-hover-prevent-click="true">
 
                                             <noscript class="references__image-template">
                                                 <img class="references__image" src="img/references__img--zase-ostreX1.jpg" srcset="img/references__img--zase-ostreX1.jpg 1x, img/references__img--zase-ostreX2.jpg 2x" alt="Fotografie webu zaseostre.cz">
@@ -837,7 +842,7 @@
                                             Trutnov-vet.cz — ukázka projektu
                                         </figcaption>
 
-                                        <div class="references__image-wrapper" data-js-hover="true" data-js-hover-prevent-click="true">
+                                        <div class="references__image-wrapper ui__loader" data-js-hover="true" data-js-hover-prevent-click="true">
 
                                             <noscript class="references__image-template">
                                                 <img class="references__image" src="img/references__img--trutnov-vetX1.jpg" srcset="img/references__img--trutnov-vetX1.jpg 1x, img/references__img--trutnov-vetX2.jpg 2x" alt="Fotografie webu trutnov-vet.cz">
@@ -916,7 +921,7 @@
                                             Nejlevnější půjčovna vozů — ukázka projektu
                                         </figcaption>
 
-                                        <div class="references__image-wrapper" data-js-hover="true" data-js-hover-prevent-click="true">
+                                        <div class="references__image-wrapper ui__loader" data-js-hover="true" data-js-hover-prevent-click="true">
 
                                             <noscript class="references__image-template">
                                                 <img class="references__image" src="img/references__img--pujcovnavozuX1.jpg" srcset="img/references__img--pujcovnavozuX1.jpg 1x, img/references__img--pujcovnavozuX2.jpg 2x" alt="Fotografie webu Nejlevnější půjčovna vozů">
@@ -1092,7 +1097,7 @@
 
                                 <p class="pricelist__price">
                                     <span class="price">
-                                        <span class="small" data-break-text="true">od</span> <span data-break-text="true">390 Kč</span>
+                                        <span class="small" data-break-text="lazy">od</span> <span data-break-text="lazy">390 Kč</span>
                                     </span>
                                     <span class="pricelist__price-unit">za hodinu práce</span>
                                 </p>
@@ -1377,7 +1382,7 @@
 
                                     <button class="form__submit btn btn--light contact__form-btn" type="submit" name="form-submit" value="ContactFormSubmitted" data-contact-ok="zpráva odeslána" data-contact-error="neodesláno">
                                         <span class="text">odeslat zprávu</span>
-                                        <span class="send-animation" role="presentation" aria-hidden="true">
+                                        <span class="progress-animation" role="presentation" aria-hidden="true">
                                             <span class="numbers">01001111&nbsp;01100100&nbsp;01100101&nbsp;01110011&nbsp;11000011&nbsp;10101101&nbsp;01101100&nbsp;11000011&nbsp;10100001&nbsp;01101101&nbsp;00101110&nbsp;00101110&nbsp;00101110</span>
                                         </span>
                                     </button>
@@ -1442,7 +1447,7 @@
 
                     <li class="technologies__nav-item infinitum__item--current">
                         <a class="technologies__nav-link" href="#html">
-                            <span class="text transition" data-break-text="true">HTML</span>
+                            <span class="text transition" data-break-text="lazy">HTML</span>
                         </a>
                     </li>
 
@@ -1454,7 +1459,7 @@
 
                     <li class="technologies__nav-item">
                         <a class="technologies__nav-link" href="#js">
-                            <span class="text transition" data-break-text="true">JS</span>
+                            <span class="text transition" data-break-text="lazy">JS</span>
                         </a>
                     </li>
 
@@ -1508,15 +1513,15 @@
                         <button class="technologies__show-sample transition x-desktop x-tablet">
 
                             <span class="text text--full transition">
-                                <span class="show" data-small-caps="true">Zobrazit</span>
-                                <span class="hide" data-small-caps="true">Skrýt</span>
-                                <span data-small-caps="true">ukázku kódu</span>
+                                <span class="show" data-small-caps="lazy">Zobrazit</span>
+                                <span class="hide" data-small-caps="lazy">Skrýt</span>
+                                <span data-small-caps="lazy">ukázku kódu</span>
                             </span>
 
                             <span class="text text--short transition">
-                                <span class="show" data-small-caps="true">Zobrazit</span>
-                                <span class="hide" data-small-caps="true">Skrýt</span>
-                                <span data-small-caps="true">kód</span>
+                                <span class="show" data-small-caps="lazy">Zobrazit</span>
+                                <span class="hide" data-small-caps="lazy">Skrýt</span>
+                                <span data-small-caps="lazy">kód</span>
                             </span>
 
                         </button>
@@ -1691,6 +1696,8 @@
         </article>
         <!-- /.technologies -->
 
+        <div class="technologies-loader ui__loader x-no-js"><!-- css --></div>
+
     </div></div></div>
 
 
@@ -1704,12 +1711,12 @@
 
     <!--dev-->
     <script src="dev/PATHS.js"></script>
-    <script src="dev/load-js.js" data-files="libs.build.js, all.build.js"></script>
+    <script src="dev/load-js.js" data-files="libs.build.js, main.build.js, background.build.js"></script>
     <!--/dev-->
 
     <!--prod-->
     <!--<script src="build/libs.build.min.js?v={{LIBS_VERSION}}" defer></script>-->
-    <!--<script src="build/all.build.min.js?v={{VERSION}}" defer></script>-->
+    <!--<script src="build/main.build.min.js?v={{VERSION}}" defer></script>-->
     <!--/prod-->
 
 
@@ -1785,6 +1792,9 @@
         ]
     }
     </script>
+
+
+    <!--———————————— APPENDED ————————————-->
 
 </body>
 </html>

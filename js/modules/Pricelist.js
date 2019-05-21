@@ -79,7 +79,10 @@
                 $self.find(SELECTOR.termsAndConditionsLink)
                     .on("click." + ns, showTermsAndConditions);
 
-                setTimeout(initBackground, 150);
+                ns.$ParallaxLoader.then(function () {
+
+                    setTimeout(initBackground, 150);
+                });
             };
 
         return {

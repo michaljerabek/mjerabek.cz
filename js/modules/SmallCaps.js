@@ -10,12 +10,13 @@
             },
 
             SELECTOR = {
-                items: "[" + ATTR.item + "='true']"
+                items: "[" + ATTR.item + "='true']",
+                lazyItems: "[" + ATTR.item + "='lazy']"
             },
 
             getAttr = function (state) {
 
-                return ATTR.item + ( typeof state === "boolean" ? "=\"" + state.toString() + "\"" : "");
+                return ATTR.item + (state ? "=\"" + state.toString() + "\"" : "");
             },
 
             removeItem = function ($el) {
@@ -23,25 +24,41 @@
                 return $el[0].removeAttribute(ATTR.item);
             },
 
-            isItem = function ($el) {
+            getState = function ($el) {
 
-                return !!$el[0].getAttribute(ATTR.item);
+                var attr = $el[0].getAttribute(ATTR.item);
+
+                return attr === "true" ? true: attr === "lazy" ? "lazy" : false;
+            },
+
+            execInit = function (selector) {
+
+                var $items = $(document.querySelectorAll(selector));
+
+                $items.smallCaps();
             },
 
             init = function () {
 
                 if (typeof $.fn.smallCaps === "function") {
 
-                    var items = document.querySelectorAll(SELECTOR.items);
+                    execInit(SELECTOR.items);
 
-                    $(items).smallCaps();
+                    if (window.requestIdleCallback) {
+
+                        window.requestIdleCallback(execInit.bind(this, SELECTOR.lazyItems));
+
+                    } else {
+
+                        setTimeout(execInit.bind(this, SELECTOR.lazyItems), 0);
+                    }
                 }
             };
 
         return {
             init: init,
 
-            isItem: isItem,
+            getState: getState,
             removeItem: removeItem,
 
             getAttr: getAttr

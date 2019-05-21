@@ -207,3 +207,118 @@
     background-color: transparent;
     border-color: #3C6474;
 }
+
+.btn--light.btn--error {
+    color: #BF865E;
+    border-color: #BF865E;
+    background-color: transparent;
+}
+
+.btn--light.btn--error:hover,
+.btn--light.btn--error:focus {
+    color: #fff;
+    border-color: #BF865E;
+    background-color: #BF865E;
+}
+
+.btn--light.btn--error:active {
+    color: #B3794E;
+    border-color: #B3794E;
+    background-color: transparent;
+}
+
+/*--------------------------------------------------------------------*/
+/*------------------------ PROGRESS-ANIMATION ------------------------*/
+/*--------------------------------------------------------------------*/
+
+.btn--progress {
+    cursor: wait;
+}
+
+    .btn .text {
+        transition: opacity 0.25s linear 0.25s;
+    }
+
+    .btn--progress .text {
+        opacity: 0;
+
+        transition: opacity 0.25s linear 0s;
+    }
+
+    .btn .progress-animation {
+        position: absolute;
+        top: 1px;
+        left: 1px;
+
+        height: 100%;
+        width: 100%;
+        margin: auto;
+
+        font-size: 1.0625rem;
+        line-height: 0;
+
+        opacity: 0;
+
+        overflow: hidden;
+
+        transition: opacity 0.25s linear 0s;
+    }
+
+    .btn--progress .progress-animation {
+        opacity: 1;
+
+        transition: opacity 0.25s linear 0.25s;
+    }
+
+        .btn .numbers {
+            position: absolute;
+            top: 0;
+            right: 0%;
+            bottom: 1px;
+
+            height: 0;
+            margin: auto;
+
+            transform: translateX(0%);
+        }
+
+        .android .btn .numbers,
+        .apple .btn .numbers {
+            top: 3px;
+        }
+
+        .btn--progress .numbers {
+            transition: opacity 0.25s linear 0.25s;
+            animation: btn__progress--move 3s linear 0s infinite forwards;
+        }
+
+        @media (max-width: 767px) {
+
+            .btn--progress .numbers {
+                animation-name: btn__progress--move-mobile;
+            }
+        }
+
+        @keyframes btn__progress--move {
+            0% {
+                transform: translateX(50%);
+                transform: translateX(calc(100% - 240px));
+                transform: translateX(calc(100% - 240px + 1ch));
+            }
+            100% {
+                transform: translateX(0%);
+                transform: translateX(-1ch);
+            }
+        }
+
+        @keyframes btn__progress--move-mobile {
+            0% {
+                transform: translateX(50%);
+                transform: translateX(calc(100% - 224px));
+                transform: translateX(calc(100% - 224px + 1ch));
+            }
+            100% {
+                transform: translateX(0%);
+                transform: translateX(-1ch);
+            }
+        }

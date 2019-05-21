@@ -47,16 +47,11 @@
     var FILES = {
             "libs.build.css": [
                 file("reset.css"),
-                file("main.css"),
 
-                lib("inert-polyfill/inert-polyfill.css"),
-                lib("malihu-custom-scrollbar-plugin-3.1.5/jquery.mCustomScrollbar.css"),
-                lib("infinitum/css/infinitum.min.css"),
-
-                comp("reset.css")
+                lib("infinitum/css/infinitum.min.css")
             ],
 
-            "all.build.css": [
+            "main.build.css": [
                 file("main.css"),
 
                 comp("ui.css"),
@@ -66,16 +61,19 @@
                 comp("intro.css"),
                 comp("main-nav.css"),
                 comp("offer.css"),
+                comp("technologies-loader.css"),
                 comp("references.css"),
                 comp("about-me.css"),
                 comp("pricelist.css"),
                 comp("contact.css"),
-                comp("cookies.css"),
-                comp("CodeMirror-theme.css")
+                comp("cookies.css")
             ],
 
             "technologies.build.css": [
-                comp("technologies.css")
+                lib("inert-polyfill/inert-polyfill.css"),
+
+                comp("technologies.css"),
+                comp("CodeMirror-theme.css")
             ],
 
             "print.build.css": [

@@ -353,7 +353,7 @@
                 //ie fix
                 setTimeout(checkScrollTop, 50);
 
-                setTimeout(initBackground, 0);
+                ns.$ParallaxLoader.then(initBackground);
 
                 if (!isIE10Or11()) {
 

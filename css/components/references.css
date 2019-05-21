@@ -810,56 +810,16 @@
                     box-shadow: -1px 1px 10px 0px rgba(0, 0, 0, 0.1);
                 }
 
-                .js .references__image-wrapper::before,
-                .js .references__image-wrapper::after {
-                    content: "";
-
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    z-index: -1;
-
-                    width: 40px;
-                    height: 40px;
-                    margin-left: -20px;
-                    margin-top: -20px;
-
-                    border: 1px solid;
-                    opacity: 0;
-
-                    animation-duration: 1.5s;
-                    animation-timing-function: cubic-bezier(0, .8, .75, 1);
-                    animation-iteration-count: 0;
-                }
-
-                .js .references__image-wrapper::after {
-                    transform: rotate(-180deg) translateX(-40px) scale(0.8);
-
-                    border-color: #C9B47F;
-
-                    animation-name: references__image-wrapper-loading;
-                }
-
+                .js .references__image-wrapper::after,
                 .js .references__image-wrapper::before {
-                    transform: rotate(-180deg) translateX(40px) scale(0.8);
-
-                    border-color: #BF865E;
-
-                    animation-name: references__image-wrapper-loading2;
+                    z-index: -1;
                 }
 
                 @media (max-width: 479px), (min-width: 640px) and (max-width: 767px) {
 
-                    .js .references__image-wrapper::after {
-                        transform: rotate(-180deg) translateX(-40px) scale(0.8);
-
-                        animation-name: references__image-wrapper-loading--small;
-                    }
-
+                    .js .references__image-wrapper::after,
                     .js .references__image-wrapper::before {
-                        transform: rotate(-180deg) translateX(40px) scale(0.8);
-
-                        animation-name: references__image-wrapper-loading2--small;
+                        font-size: 32px;
                     }
                 }
 
@@ -871,74 +831,6 @@
                 .js .references__reference--image-loaded .references__image-wrapper::after,
                 .js .references__reference--image-loaded .references__image-wrapper::before {
                     animation-iteration-count: 1;
-                }
-
-                @keyframes references__image-wrapper-loading {
-                    0% {
-                        border-color: #C9B47F;
-                        opacity: 0;
-                    }
-                    50% {
-                        border-color: #C9B47F;
-                        opacity: 1;
-                    }
-                    100% {
-                        transform: translateX(-6px) rotate(45deg);
-
-                        border-color: #78A7BB;
-                        opacity: 0;
-                    }
-                }
-
-                @keyframes references__image-wrapper-loading2 {
-                    0% {
-                        border-color: #BF865E;
-                        opacity: 0;
-                    }
-                    50% {
-                        border-color: #BF865E;
-                        opacity: 1;
-                    }
-                    100% {
-                        transform: translateX(6px) rotate(45deg);
-
-                        border-color: #78A7BB;
-                        opacity: 0;
-                    }
-                }
-
-                @keyframes references__image-wrapper-loading--small {
-                    0% {
-                        border-color: #C9B47F;
-                        opacity: 0;
-                    }
-                    50% {
-                        border-color: #C9B47F;
-                        opacity: 1;
-                    }
-                    100% {
-                        transform: translateX(-6px) rotate(45deg) scale(0.8);
-
-                        border-color: #78A7BB;
-                        opacity: 0;
-                    }
-                }
-
-                @keyframes references__image-wrapper-loading2--small {
-                    0% {
-                        border-color: #BF865E;
-                        opacity: 0;
-                    }
-                    50% {
-                        border-color: #BF865E;
-                        opacity: 1;
-                    }
-                    100% {
-                        transform: translateX(6px) rotate(45deg) scale(0.8);
-
-                        border-color: #78A7BB;
-                        opacity: 0;
-                    }
                 }
 
                     .references__image {
