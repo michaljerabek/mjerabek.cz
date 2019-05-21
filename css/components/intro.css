@@ -487,7 +487,7 @@
                 margin: 0px auto;
 
                 font-size: 4.0625rem;
-                font-family: "caudex-above-fold", "Garamond", serif;
+                font-family: "caudex-above-fold", "Caudex", "Garamond", serif;
                 font-style: normal;
                 text-transform: uppercase;
                 line-height: 0.831;
@@ -499,7 +499,7 @@
             }
 
             .fonts__caudex--loaded .intro__title {
-                font-family: "Caudex";
+                font-family: "Caudex", "caudex-above-fold", serif;
             }
 
             @media (min-height: 768px) and (min-width: 1220px) {
@@ -841,7 +841,7 @@
 
                 margin: 0px auto;
 
-                font-family: "josefin-sans-intro-claim", "josefin-sans", "Calibri", "Trebuchet MS", sans-serif;
+                font-family: "josefin-sans-intro-claim", "josefin-sans", "Josefin Sans", "Calibri", "Trebuchet MS", sans-serif;
                 font-style: italic;
                 font-size: 1.6875rem;
                 font-weight: 300;
@@ -852,14 +852,6 @@
                 pointer-events: auto;
 
                 will-change: transform, opacity;
-            }
-
-            .wf-josefinsans-i3-active .intro__claim {
-                font-family: "josefin-sans", "Calibri", "Trebuchet MS", sans-serif;
-            }
-
-            .no-js .intro__claim {
-                font-family: "Josefin Sans", "Calibri", "Trebuchet MS", sans-serif;
             }
 
                 .intro__claim .first-line,
