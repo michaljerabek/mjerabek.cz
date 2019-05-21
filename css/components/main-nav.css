@@ -157,7 +157,7 @@
     transition: inherit;
 }
 
-@media (max-height: 479px) {
+@media (max-height: 767px) {
 
     .main-nav--fixed::after {
         height: 50%;
