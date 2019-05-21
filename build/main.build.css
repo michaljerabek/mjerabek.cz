@@ -347,6 +347,7 @@ html.js .x-js,
     left: 0;
     z-index: 99999;
 }
+
 /*====================================================================*/
 /*-------------------------------- UI --------------------------------*/
 /*====================================================================*/
@@ -1516,14 +1517,17 @@ input[type="time"]:focus {
         line-height: 0;
 
         opacity: 0;
+        visibility: hidden;
 
         overflow: hidden;
 
-        transition: opacity 0.25s linear 0s;
+        transition: opacity 0.25s linear 0s,
+            visibility 0s linear 0.25s;
     }
 
     .btn--progress .progress-animation {
         opacity: 1;
+        visibility: visible;
 
         transition: opacity 0.25s linear 0.25s;
     }
@@ -1580,6 +1584,7 @@ input[type="time"]:focus {
                 transform: translateX(-1ch);
             }
         }
+
 /*====================================================================*/
 /*------------------------------ SECTION -----------------------------*/
 /*====================================================================*/
@@ -5540,6 +5545,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 .js .technologies--loaded ~ .technologies-loader::before {
     animation-iteration-count: 1;
 }
+
 /*====================================================================*/
 /*----------------------------- REFERENCES ---------------------------*/
 /*====================================================================*/

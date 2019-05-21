@@ -522,8 +522,9 @@
                         <div class="offer__btn-wrapper x-print">
                             <a class="btn btn--light offer__btn" href="#html" title="Podrobnosti o dodáveném kódu, webech a šablonách" data-technologies-tab="0" data-main-nav-ignore="true">
                                 <span class="text">Co přesně dostanu?</span>
-                                <span class="progress-animation" role="presentation" aria-hidden="true">
-                                    <span class="numbers">01001111&nbsp;01100100&nbsp;01100101&nbsp;01110011&nbsp;11000011&nbsp;10101101&nbsp;01101100&nbsp;11000011&nbsp;10100001&nbsp;01101101&nbsp;00101110&nbsp;00101110&nbsp;00101110</span>
+                                <span class="progress-animation" aria-live="polite">
+                                    <span class="visually-hidden">Načítám, počkejte prosím&hellip;</span>
+                                    <span role="presentation" aria-hidden="true" class="numbers">01001111&nbsp;01100100&nbsp;01100101&nbsp;01110011&nbsp;11000011&nbsp;10101101&nbsp;01101100&nbsp;11000011&nbsp;10100001&nbsp;01101101&nbsp;00101110&nbsp;00101110&nbsp;00101110</span>
                                 </span>
                             </a>
                         </div>
@@ -1424,9 +1425,9 @@
 
     <div id="html"><div id="css"><div id="js">
 
-        <a class="technologies__hidden-link visually-hidden" href="#html" data-technologies-tab="0">Zobrazit podrobnosti o dodávaném HTML</a>
-        <a class="technologies__hidden-link visually-hidden" href="#css" data-technologies-tab="1">Zobrazit podrobnosti o dodávaném CSS</a>
-        <a class="technologies__hidden-link visually-hidden" href="#js" data-technologies-tab="2">Zobrazit podrobnosti o dodávaném JS</a>
+        <a class="technologies__hidden-link visually-hidden" href="#html" data-technologies-tab="0" aria-hidden="true">Zobrazit podrobnosti o dodávaném HTML</a>
+        <a class="technologies__hidden-link visually-hidden" href="#css" data-technologies-tab="1" aria-hidden="true">Zobrazit podrobnosti o dodávaném CSS</a>
+        <a class="technologies__hidden-link visually-hidden" href="#js" data-technologies-tab="2" aria-hidden="true">Zobrazit podrobnosti o dodávaném JS</a>
 
         <article class="technologies inverse-focus x-print">
 
@@ -1696,7 +1697,9 @@
         </article>
         <!-- /.technologies -->
 
-        <div class="technologies-loader ui__loader x-no-js"><!-- css --></div>
+        <div class="technologies-loader ui__loader x-no-js" aria-live="polite">
+            <span class="visually-hidden">Načítám, počkejte prosím&hellip;</span>
+        </div>
 
     </div></div></div>
 

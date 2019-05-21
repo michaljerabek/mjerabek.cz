@@ -125,6 +125,7 @@ Object.defineProperty(Element.prototype, "inert", {
         e ? this.setAttribute("inert", "") : this.removeAttribute("inert")
     }
 });
+
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
 // Distributed under an MIT license: http://codemirror.net/LICENSE
 
