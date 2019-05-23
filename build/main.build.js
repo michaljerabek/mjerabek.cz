@@ -827,25 +827,26 @@
 
                 var blockHistory = preserveHistory;
 
-                $scrollingElement.animate({ scrollTop: scrollTop }, {
+                $scrollingElement
+                    .stop()
+                    .animate({ scrollTop: scrollTop }, {
 
-                    duration: scrollDuration,
+                        duration: scrollDuration,
+                        easing: "mainNav." + ns,
 
-                    easing: "mainNav." + ns,
+                        step: function () {
 
-                    step: function () {
+                            preserveHistory = blockHistory;
 
-                        preserveHistory = blockHistory;
+                            hideNav = scrollTop > 0;
+                        },
+                        complete: function () {
 
-                        hideNav = scrollTop > 0;
-                    },
-                    complete: function () {
+                            onComplete();
 
-                        onComplete();
-
-                        preserveHistory = false;
-                    }
-                });
+                            preserveHistory = false;
+                        }
+                    });
             },
 
             getScrollDuration = function (targetScrollTop) {
