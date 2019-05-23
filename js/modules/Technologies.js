@@ -66,8 +66,8 @@
                 axis: "y",
                 scrollInertia: 500,
                 mouseWheel:{
-                    scrollAmount: 162,
-                    deltaFactor: 27
+                    deltaFactor: 27,
+                    scrollAmount: 162
                 }
             },
 
