@@ -289,7 +289,6 @@ Object.defineProperty(Element.prototype, "inert", {
 
                 window.removeEventListener("mousewheel", execPreventScroll);
                 window.removeEventListener("DOMMouseScroll", execPreventScroll);
-                window.removeEventListener("touchmove", execPreventScroll);
             },
 
             preventScroll = function () {
@@ -298,13 +297,11 @@ Object.defineProperty(Element.prototype, "inert", {
 
                     window.addEventListener("mousewheel", execPreventScroll, { passive: false });
                     window.addEventListener("DOMMouseScroll", execPreventScroll, { passive: false });
-                    window.addEventListener("touchmove", execPreventScroll, { passive: false });
 
                 } catch (e) {
 
                     window.addEventListener("mousewheel", execPreventScroll);
                     window.addEventListener("DOMMouseScroll", execPreventScroll);
-                    window.addEventListener("touchmove", execPreventScroll);
                 }
             },
 
