@@ -1783,7 +1783,6 @@
                     elFontLink.className = CLASS.font;
                     elFontLink.rel = "stylesheet";
                     elFontLink.href = FONT_TO_LOAD;
-                    elFontLink.onload = onLoad;
 
                     document.head.appendChild(elFontLink);
 
@@ -1898,6 +1897,19 @@
                 });
             },
 
+            initEvents = function () {
+
+                $technologiesLoader.on("click." + ns + " touchend." + ns, cancelLoader);
+
+                ns.$win.on("keyup.TechnologiesLoader" + ns, function (event) {
+
+                    if (event.which === 27) { //ESC
+
+                        cancelLoader();
+                    }
+                });
+            },
+
             init = function () {
 
                 $technologies = $(SELECTOR.technologies);
@@ -1914,15 +1926,7 @@
                     initLoadEvents();
                 }
 
-                $technologiesLoader.on("click." + ns + " touchend." + ns, cancelLoader);
-
-                ns.$win.on("keyup.TechnologiesLoader" + ns, function (event) {
-
-                    if (event.which === 27) { //ESC
-
-                        cancelLoader();
-                    }
-                });
+                initEvents();
             };
 
         return {
@@ -1975,6 +1979,7 @@
                     elLink = document.createElement("link");
 
                 elScript.defer = true;
+                elScript.async = false;
                 elScript.src = JS_TO_LOAD;
                 elScript.onload = onLoad;
 
@@ -2019,7 +2024,8 @@
             };
 
         return {
-            init: init
+            init: init,
+            shouldBeLoaded: shouldBeLoaded
         };
 
     }());

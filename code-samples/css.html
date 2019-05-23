@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+    <title>Ukázka dodávaného CSS kódu</title>
+
+    <link href="https://fonts.googleapis.com/css?family=PT+Mono&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../build/codesample.build.min.css">
+
+</head>
+<body>
+
+    <pre class="scrolling-element"><code><span class="cm-comment">/*====================================================================*/</span>
+<span class="cm-comment">/*------------------------------ MEMBERS -----------------------------*/</span>
+<span class="cm-comment">/*====================================================================*/</span>
+
+<span class="cm-qualifier">.members</span> {
+    <span class="cm-property">margin</span>: <span class="cm-number">0</span> <span class="cm-number">-15px</span>;
+
+    <span class="cm-property">font-size</span>: <span class="cm-number">0</span>;
+    <span class="cm-property">text-align</span>: <span class="cm-atom">center</span>;
+}
+
+<span class="cm-def">@media</span> (<span class="cm-property">max-width</span>: <span class="cm-number">767px</span>) {
+
+    <span class="cm-qualifier">.members</span> {
+        <span class="cm-property">max-width</span>: <span class="cm-number">560px</span>;
+        <span class="cm-property">margin-right</span>: <span class="cm-atom">auto</span>;
+        <span class="cm-property">margin-left</span>: <span class="cm-atom">auto</span>;
+    }
+}
+
+    <span class="cm-def">@media</span> (<span class="cm-property">min-width</span>: <span class="cm-number">640px</span>) {
+
+        <span class="cm-qualifier">.members__list</span>:<span class="cm-variable-3">not</span>(:<span class="cm-variable-3">first-child</span>) {
+            <span class="cm-property">margin-top</span>: <span class="cm-number">50px</span>;
+        }
+    }
+
+    <span class="cm-def">@media</span> (<span class="cm-property">max-width</span>: <span class="cm-number">639px</span>) {
+
+        <span class="cm-qualifier">.members__list</span>:<span class="cm-variable-3">not</span>(:<span class="cm-variable-3">first-child</span>) {
+            <span class="cm-property">margin-top</span>: <span class="cm-number">40px</span>;
+        }
+    }
+
+        <span class="cm-qualifier">.members__member</span> {
+            <span class="cm-property">display</span>: <span class="cm-atom">inline-block</span>;
+
+            <span class="cm-property">padding</span>: <span class="cm-number">0</span> <span class="cm-number">15px</span>;
+            <span class="cm-property">margin-bottom</span>: <span class="cm-number">60px</span>;
+
+            <span class="cm-property">text-align</span>: <span class="cm-atom">left</span>;
+
+            <span class="cm-property">overflow</span>: <span class="cm-atom">hidden</span>;
+        }
+
+        <span class="cm-def">@media</span> (<span class="cm-property">min-width</span>: <span class="cm-number">768px</span>) {
+
+            <span class="cm-qualifier">.members__member</span> {
+                <span class="cm-property">width</span>: <span class="cm-number">50%</span>;
+            }
+        }
+
+        <span class="cm-def">@media</span> (<span class="cm-property">max-width</span>: <span class="cm-number">767px</span>) {
+
+            <span class="cm-qualifier">.members__member</span> {
+                <span class="cm-property">width</span>: <span class="cm-number">100%</span>;
+            }
+        }
+
+            <span class="cm-qualifier">.members__profile-image-wrapper</span> {
+                <span class="cm-property">float</span>: <span class="cm-atom">left</span>;
+
+                <span class="cm-property">width</span>: <span class="cm-number">140px</span>;
+                <span class="cm-property">height</span>: <span class="cm-number">140px</span>;
+            }
+
+                <span class="cm-qualifier">.members__profile-image</span> {
+                    <span class="cm-property">display</span>: <span class="cm-atom">block</span>;
+
+                    <span class="cm-property">width</span>: <span class="cm-number">140px</span>;
+                    <span class="cm-property">height</span>: <span class="cm-number">140px</span>;
+
+                    <span class="cm-property">text-align</span>: <span class="cm-atom">center</span>;
+                    <span class="cm-property">line-height</span>: <span class="cm-number">140px</span>;
+
+                    <span class="cm-property">background-color</span>: <span class="cm-atom">#f6f6f6</span>;
+                    <span class="cm-property">border-radius</span>: <span class="cm-number">50%</span>;
+
+                    <span class="cm-property">overflow</span>: <span class="cm-atom">hidden</span>;
+                }
+
+                <span class="cm-qualifier">.members__profile-image</span>:<span class="cm-variable-3">focus</span>,
+                <span class="cm-qualifier">.members__profile-image</span>:<span class="cm-variable-3">hover</span> {
+                    <span class="cm-property">opacity</span>: <span class="cm-number">0.85</span>;
+                }
+
+                    <span class="cm-qualifier">.members__profile-image-img</span> {
+                        <span class="cm-property">width</span>: <span class="cm-atom">inherit</span>;
+                        <span class="cm-property">height</span>: <span class="cm-atom">inherit</span>;
+                    }
+
+            <span class="cm-qualifier">.members__info</span> {
+                <span class="cm-property">margin-left</span>: <span class="cm-number">170px</span>;
+            }
+
+                <span class="cm-qualifier">.members__name</span> {
+                    <span class="cm-property">margin-top</span>: <span class="cm-number">2px</span>;
+                    <span class="cm-property">margin-bottom</span>: <span class="cm-number">5px</span>;
+                }
+
+                    <span class="cm-qualifier">.members__name-link</span> {
+                        <span class="cm-property">font-family</span>: <span class="cm-variable">Russo</span> <span class="cm-variable">One</span>;
+                        <span class="cm-property">font-size</span>: <span class="cm-number">27px</span>;
+                        <span class="cm-property">text-decoration</span>: <span class="cm-atom">none</span>;
+                        <span class="cm-property">line-height</span>: <span class="cm-number">1.25</span>;
+
+                        <span class="cm-property">color</span>: <span class="cm-atom">#553a32</span>;
+                    }
+
+                    <span class="cm-qualifier">.members__name-link</span>:<span class="cm-variable-3">focus</span>,
+                    <span class="cm-qualifier">.members__name-link</span>:<span class="cm-variable-3">hover</span> {
+                        <span class="cm-property">color</span>: <span class="cm-atom">#b21d47</span>;
+                    }
+
+                <span class="cm-qualifier">.members__period</span>,
+                <span class="cm-qualifier">.members__type</span> {
+                    <span class="cm-property">margin-bottom</span>: <span class="cm-number">3px</span>;
+
+                    <span class="cm-property">font-size</span>: <span class="cm-number">13px</span>;
+                    <span class="cm-property">line-height</span>: <span class="cm-number">21px</span>;
+
+                    <span class="cm-property">color</span>: <span class="cm-atom">#999</span>;
+                }
+
+                    <span class="cm-qualifier">.members</span> <span class="cm-qualifier">.highlight</span> {
+                        <span class="cm-property">font-family</span>: <span class="cm-variable">Russo</span> <span class="cm-variable">One</span>;
+                        <span class="cm-property">font-size</span>: <span class="cm-number">15px</span>;
+                        <span class="cm-property">text-decoration</span>: <span class="cm-atom">none</span>;
+
+                        <span class="cm-property">color</span>: <span class="cm-atom">#b21d47</span>;
+                    }
+
+                    <span class="cm-qualifier">.members</span> <span class="cm-qualifier">.highlight</span>[<span class="cm-tag">href</span>]:<span class="cm-variable-3">hover</span>,
+                    <span class="cm-qualifier">.members</span> <span class="cm-qualifier">.highlight</span>[<span class="cm-tag">href</span>]:<span class="cm-variable-3">focus</span> {
+                        <span class="cm-property">color</span>: <span class="cm-atom">#553a32</span>;
+                    }
+
+                <span class="cm-qualifier">.members__profile</span> {
+                    <span class="cm-property">margin-top</span>: <span class="cm-number">7px</span>;
+                }</code></pre>
+
+    <script src="../build/codesample.build.min.js"></script>
+
+</body>
+</html>

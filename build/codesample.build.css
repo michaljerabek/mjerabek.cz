@@ -1,0 +1,109 @@
+/*====================================================================*/
+/*--------------------------- CODE-SAMPLE ----------------------------*/
+/*====================================================================*/
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    padding: 0;
+    margin: 0;
+
+    font-family: "PT Mono", monospace;
+
+    color: #d5d5d5;
+}
+
+::-moz-selection {
+    color: white;
+    background: rgba(123, 104, 57, 0.85) !important;
+}
+
+::selection {
+    color: white;
+    background: rgba(123, 104, 57, 0.85) !important;
+}
+
+html,
+body {
+    position: relative;
+
+    height: 100vh;
+
+    overflow: hidden;
+}
+
+body * {
+    font-size: 0.875rem;
+    line-height: 1.6875rem;
+}
+
+.mobile body * {
+    font-size: 0.75rem;
+    line-height: 1.4375rem;
+}
+
+    .scrolling-element {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+        padding-left: 40px;
+
+        overflow: hidden;
+    }
+
+    .mobile .scrolling-element {
+        padding-left: 8px;
+    }
+
+    .scrolling-element:not(.mCustomScrollbar) {
+        overflow: auto;
+        scroll-behavior: smooth;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0) transparent;
+        -webkit-overflow-scrolling: touch;
+
+        transition: scrollbar-color 0.275s cubic-bezier(0, 0, .54, .9) 0s;
+    }
+
+    .scrolling-element:hover,
+    .scrolling-element:focus {
+        scrollbar-color: rgba(255, 255, 255, 0.35) transparent;
+
+        transition: scrollbar-color 0.4s cubic-bezier(0, 0, .25, 1) 0s;
+    }
+
+        .mobile .mCSB_scrollTools.mCSB_scrollTools.mCSB_scrollTools {
+            right: -6px;
+        }
+[data-codemirror-mimemode] { color: #d5d5d5; }
+.cm-keyword        { color: #6595A9; }
+.cm-atom           { color: #B3794E; }
+.cm-number         { color: #AF975A; }
+.cm-def            { color: #d5d5d5; }
+.cm-variable       { color: #AF975A; }
+.cm-variable-2     { color: #d5d5d5; }
+.cm-variable-3     { color: #6595A9; }
+.cm-operator       { color: #d5d5d5; }
+.cm-comment        { color: #878787; }
+.cm-string         { color: #B3794E; }
+.cm-string-2       { color: #78A7BB; }
+.cm-meta           { color: #B3794E; }
+.cm-qualifier      { color: #d5d5d5; }
+.cm-builtin        { color: #AF975A; }
+.cm-bracket        { color: #d5d5d5; }
+.cm-tag            { color: #C9B47F; }
+.cm-bracket.cm-tag { color: hsl(43, 31%, 35%); }
+.cm-attribute      { color: #AF975A; }
+.cm-property       { color: #C9B47F; }
+.cm-quote          { color: #d5d5d5; }
+.cm-header         { color: #6595A9; }
+.cm-link           { color: #C9B47F; }
+.cm-em             { color: #BF865E; font-style: italic; }
+.cm-strong         { color: #6595A9; }
+.cm-strikethrough  { color: #B3794E; }
+.cm-hr             { color: #AF975A; }
+.cm-error          { color: #BF865E; }

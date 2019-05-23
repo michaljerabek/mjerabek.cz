@@ -70,12 +70,6 @@
 
             "technologies.build.js": [
                 lib("inert-polyfill/inert-polyfill.min.js"),
-                lib("CodeMirror-5.28.0/lib/codemirror.js"),
-                lib("CodeMirror-5.28.0/addon/runmode/runmode.js"),
-                lib("CodeMirror-5.28.0/mode/javascript/javascript.js"),
-                lib("CodeMirror-5.28.0/mode/css/css.js"),
-                lib("CodeMirror-5.28.0/mode/xml/xml.js"),
-                lib("CodeMirror-5.28.0/mode/htmlmixed/htmlmixed.js"),
 
                 mod("Technologies.js")
             ],
@@ -94,6 +88,10 @@
 
             "Cookies.build.js": [
                 mod("Cookies.js")
+            ],
+
+            "codesample.build.js": [
+                mod("CodeSample/CodeSample.js")
             ]
         };
 

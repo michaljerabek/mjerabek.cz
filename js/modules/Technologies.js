@@ -1,5 +1,5 @@
 /*jslint indent: 4, white: true, nomen: true, regexp: true, unparam: true, node: true, browser: true, devel: true, nomen: true, plusplus: true, regexp: true, sloppy: true, vars: true*/
-/*global jQuery, Infinitum, CodeMirror*/
+/*global jQuery, Infinitum, window, document*/
 
 (function (ns, $) {
 
@@ -23,8 +23,7 @@
             },
 
             DATA = {
-                tab: "technologies-tab",
-                mimeMode: "codemirror-mimemode"
+                tab: "technologies-tab"
             },
 
             SELECTOR = {
@@ -40,6 +39,7 @@
                 tab: ".technologies__technology",
                 textWrapper: ".technologies__text-content-wrapper",
                 sampleWrapper: ".technologies__sample-content-wrapper",
+                sampleTemplate: ".technologies__sample-content-template",
                 sampleContent: ".technologies__sample-content",
                 findSampleContentCode: "code",
                 contentWrappers: ".technologies__text-content-wrapper, .technologies__sample-content-wrapper",
@@ -58,12 +58,12 @@
             EVENT = {
                 changed: "technologies__changed." + ns,
                 opened: "technologies__opened." + ns,
-                closed: "technologies__closed." + ns,
-                interaction: "technologies__interaction." + ns
+                closed: "technologies__closed." + ns
             },
 
             SCROLL_OPTIONS = {
                 theme: "minimal",
+                axis: "y",
                 scrollInertia: 500,
                 mouseWheel:{
                     scrollAmount: 162,
@@ -71,12 +71,10 @@
                 }
             },
 
-            SCROLL_AMOUNT_SAMPLE = 324,
-
             THEME_COLOR = "#C9B47F",
 
             initialized,
-            hasCustomScrollbars,
+            textsHaveCustomScrollbars,
 
             $self,
             $perspective,
@@ -99,50 +97,43 @@
 
             openTimeout,
             switchTabsTimeout,
-            highlightCodeTimeout,
-
-            highlighted = [],
+            tabLoadTimeout,
 
             $metaThemeColor,
             savedThemeColor,
 
             isOpened = false,
 
-            fixCodeMirrorCSS = function () {
-
-                var mode = CodeMirror.mimeModes["text/css"],
-
-                    valueKeywords = Object.keys(mode.valueKeywords),
-                    addValueKeywords = [
-                        "line-height", "width", "cubic-bezier"
-                    ];
-
-                addValueKeywords.forEach(function (keyword) {
-
-                    if (valueKeywords.indexOf(keyword) === -1) {
-
-                        mode.valueKeywords[keyword] = true;
-                    }
-                });
-            },
-
             initCustomScrollbars = function () {
 
-                if (!$.fn.mCustomScrollbar || hasCustomScrollbars) {
+                if (!$.fn.mCustomScrollbar) {
 
                     return;
                 }
 
-                SCROLL_OPTIONS.axis = "y";
+                if (!textsHaveCustomScrollbars) {
 
-                $contentWrappers.filter(SELECTOR.textWrapper).mCustomScrollbar(SCROLL_OPTIONS);
+                    $contentWrappers
+                        .filter(SELECTOR.textWrapper)
+                        .mCustomScrollbar(SCROLL_OPTIONS);
 
-                SCROLL_OPTIONS.axis = "yx";
-                SCROLL_OPTIONS.mouseWheel.scrollAmount = SCROLL_AMOUNT_SAMPLE;
+                    textsHaveCustomScrollbars = true;
+                }
 
-                $contentWrappers.filter(SELECTOR.sampleWrapper).mCustomScrollbar(SCROLL_OPTIONS);
+                $contentWrappers
+                    .filter(SELECTOR.sampleWrapper)
+                    .find(SELECTOR.sampleContent)
+                    .each(function () {
 
-                hasCustomScrollbars = true;
+                        if (this.contentWindow[ns]) {
+
+                            this.contentWindow[ns].CodeSample.initCustomScrollbars();
+
+                        } else {
+
+                            this.contentWindow[ns + "_CodeSample__initCustomScrollbars"] = true;
+                        }
+                    });
             },
 
             setPagePerspective = function () {
@@ -154,7 +145,44 @@
                 $perspective.css("perspective-origin", "50% " + windowCenter + "px");
             },
 
+            execPreventScroll = function (event) {
+
+                ns.$temp[0] = event.target;
+
+                if (ns.$temp.closest(SELECTOR.contentWrappers).length) {
+
+                    return;
+                }
+
+                event.preventDefault();
+            },
+
+            cancelPreventScroll = function () {
+
+                window.removeEventListener("mousewheel", execPreventScroll);
+                window.removeEventListener("DOMMouseScroll", execPreventScroll);
+                window.removeEventListener("touchmove", execPreventScroll);
+            },
+
+            preventScroll = function () {
+
+                try {
+
+                    window.addEventListener("mousewheel", execPreventScroll, { passive: false });
+                    window.addEventListener("DOMMouseScroll", execPreventScroll, { passive: false });
+                    window.addEventListener("touchmove", execPreventScroll, { passive: false });
+
+                } catch (e) {
+
+                    window.addEventListener("mousewheel", execPreventScroll);
+                    window.addEventListener("DOMMouseScroll", execPreventScroll);
+                    window.addEventListener("touchmove", execPreventScroll);
+                }
+            },
+
             close = function (event, hideOnly) {
+
+                cancelPreventScroll();
 
                 ns.$win.off("keyup.Technologies" + ns);
 
@@ -231,21 +259,16 @@
 
                 if ($contentWrappers) {
 
-                    if ($contentWrappers.hasClass(CLASS.mCustomScrollbar)) {
+                    $contentWrappers
+                        .filter(SELECTOR.sampleWrapper)
+                        .find(SELECTOR.sampleContent)
+                        .each(function () {
 
-                        $contentWrappers
-                            .filter(SELECTOR.sampleWrapper)
-                            .mCustomScrollbar("scrollTo", [0, 0], {
-                                scrollInertia: 0
-                            });
-                    } else {
+                            if (this.contentWindow[ns]) {
 
-                        $contentWrappers
-                            .filter(SELECTOR.sampleWrapper)
-                            .each(function () {
-                                this.scrollTo(0, 0);
-                            });
-                    }
+                                this.contentWindow[ns].CodeSample.resetScrollPosition();
+                            }
+                        });
                 }
             },
 
@@ -269,6 +292,7 @@
 
                 clearTimeout(openTimeout);
 
+                preventScroll();
                 listenESC();
 
                 ns.$temp[0] = this;
@@ -346,33 +370,31 @@
                 }
             },
 
-            isTabHighlighted = function (tab) {
+            isTabLoaded = function (tab) {
 
-                return !($tabs.eq(tab).length && highlighted.indexOf(tab) === -1);
+                return $tabs.eq(tab).find(SELECTOR.sampleContent).length;
             },
 
-            highlightCode = function (tab, all) {
+            loadCode = function (tab, all) {
 
                 tab = !tab || tab < 0 ? 0 : tab;
 
-                if (!isTabHighlighted(tab)) {
+                if (!isTabLoaded(tab)) {
 
-                    var $pre = $tabs.eq(tab).find(SELECTOR.sampleContent),
-                        $code = $pre.find(SELECTOR.findSampleContentCode);
+                    var $template = $tabs.eq(tab).find(SELECTOR.sampleTemplate),
+                        $content = $($template.text());
 
-                    CodeMirror.runMode($code.text(), $pre.data(DATA.mimeMode), $code[0]);
-
-                    highlighted.push(tab);
+                    $template.replaceWith($content);
 
                     if (all) {
 
                         var nextTab = (tab + 1) % $tabs.length;
 
-                        if (!isTabHighlighted(nextTab)) {
+                        if (!isTabLoaded(nextTab)) {
 
-                            clearTimeout(highlightCodeTimeout);
+                            clearTimeout(tabLoadTimeout);
 
-                            highlightCodeTimeout = setTimeout(highlightCode.bind(null, nextTab, true), 1000);
+                            tabLoadTimeout = setTimeout(loadCode.bind(null, nextTab, true), 1000);
                         }
                     }
                 }
@@ -406,7 +428,9 @@
                         infinitum._lastDir === Infinitum.DIR.LEFT ? CLASS.fromRightTechnology : CLASS.fromLeftTechnology
                     );
 
-                highlightCode(currentIndex);
+                loadCode(currentIndex);
+
+                initCustomScrollbars();
 
                 var $link = ns.$temp.find(SELECTOR.navLink);
 
@@ -494,11 +518,8 @@
                 $tabs = $self.find(SELECTOR.tab);
                 $contentWrappers = $tabs.find(SELECTOR.contentWrappers);
 
+                loadCode(tab, true);
                 initCustomScrollbars();
-
-                fixCodeMirrorCSS();
-
-                highlightCode(tab, true);
             },
 
             initSelf = function (tab) {

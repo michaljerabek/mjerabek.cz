@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+    <title>Ukázka dodávaného HTML kódu</title>
+
+    <link href="https://fonts.googleapis.com/css?family=PT+Mono&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../build/codesample.build.min.css">
+
+</head>
+<body>
+
+    <pre class="scrolling-element"><code><span class="cm-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">html</span> <span class="cm-attribute">class</span>=<span class="cm-string">"no-js"</span> <span class="cm-attribute">lang</span>=<span class="cm-string">"cs"</span><span class="cm-tag cm-bracket">&gt;</span>
+<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">head</span><span class="cm-tag cm-bracket">&gt;</span>
+
+
+    <span class="cm-comment">&lt;!--———————————— META-GENERAL ————————————--&gt;</span>
+
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">meta</span> <span class="cm-attribute">charset</span>=<span class="cm-string">"UTF-8"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">meta</span> <span class="cm-attribute">http-equiv</span>=<span class="cm-string">"X-UA-Compatible"</span> <span class="cm-attribute">content</span>=<span class="cm-string">"IE=Edge"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">meta</span> <span class="cm-attribute">name</span>=<span class="cm-string">"viewport"</span> <span class="cm-attribute">content</span>=<span class="cm-string">"width=device-width, initial-scale=1.0"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">meta</span> <span class="cm-attribute">name</span>=<span class="cm-string">"format-detection"</span> <span class="cm-attribute">content</span>=<span class="cm-string">"telephone=no"</span><span class="cm-tag cm-bracket">&gt;</span>
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">meta</span> <span class="cm-attribute">name</span>=<span class="cm-string">"skype_toolbar"</span> <span class="cm-attribute">content</span>=<span class="cm-string">"skype_toolbar_parser_compatible"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+
+    <span class="cm-comment">&lt;!--———————————— META-PAGE ————————————--&gt;</span>
+
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">title</span><span class="cm-tag cm-bracket">&gt;</span>Nezávisláci — Hlavní stránka<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">title</span><span class="cm-tag cm-bracket">&gt;</span>
+
+
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">meta</span> <span class="cm-attribute">name</span>=<span class="cm-string">"description"</span> <span class="cm-attribute">content</span>=<span class="cm-string">""</span><span class="cm-tag cm-bracket">&gt;</span>
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">meta</span> <span class="cm-attribute">name</span>=<span class="cm-string">"keywords"</span> <span class="cm-attribute">content</span>=<span class="cm-string">""</span><span class="cm-tag cm-bracket">&gt;</span>
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">meta</span> <span class="cm-attribute">name</span>=<span class="cm-string">"author"</span> <span class="cm-attribute">content</span>=<span class="cm-string">""</span><span class="cm-tag cm-bracket">&gt;</span>
+
+
+    <span class="cm-comment">&lt;!--———————————— PRELOAD ————————————--&gt;</span>
+
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">link</span> <span class="cm-attribute">href</span>=<span class="cm-string">"https://code.jquery.com/jquery-3.3.1.min.js"</span> <span class="cm-attribute">rel</span>=<span class="cm-string">"preload"</span> <span class="cm-attribute">as</span>=<span class="cm-string">"script"</span> <span class="cm-attribute">crossorigin</span>=<span class="cm-string">""</span><span class="cm-tag cm-bracket">&gt;</span>
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">link</span> <span class="cm-attribute">href</span>=<span class="cm-string">"https://fonts.gstatic.com/"</span> <span class="cm-attribute">rel</span>=<span class="cm-string">"preconnect"</span> <span class="cm-attribute">crossorigin</span>=<span class="cm-string">""</span><span class="cm-tag cm-bracket">&gt;</span>
+
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">link</span> <span class="cm-attribute">href</span>=<span class="cm-string">"build/all.build.min.css"</span> <span class="cm-attribute">rel</span>=<span class="cm-string">"preload"</span> <span class="cm-attribute">as</span>=<span class="cm-string">"style"</span><span class="cm-tag cm-bracket">&gt;</span>
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">link</span> <span class="cm-attribute">href</span>=<span class="cm-string">"build/all.build.min.js"</span> <span class="cm-attribute">rel</span>=<span class="cm-string">"preload"</span> <span class="cm-attribute">as</span>=<span class="cm-string">"script"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+
+    <span class="cm-comment">&lt;!--———————————— FAVICON ————————————--&gt;</span>
+
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">link</span> <span class="cm-attribute">rel</span>=<span class="cm-string">"apple-touch-icon"</span> <span class="cm-attribute">sizes</span>=<span class="cm-string">"180x180"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"/favicon/apple-touch-icon.png"</span><span class="cm-tag cm-bracket">&gt;</span>
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">link</span> <span class="cm-attribute">rel</span>=<span class="cm-string">"icon"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"image/png"</span> <span class="cm-attribute">sizes</span>=<span class="cm-string">"32x32"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"/favicon/favicon-32x32.png"</span><span class="cm-tag cm-bracket">&gt;</span>
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">link</span> <span class="cm-attribute">rel</span>=<span class="cm-string">"icon"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"image/png"</span> <span class="cm-attribute">sizes</span>=<span class="cm-string">"16x16"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"/favicon/favicon-16x16.png"</span><span class="cm-tag cm-bracket">&gt;</span>
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">link</span> <span class="cm-attribute">rel</span>=<span class="cm-string">"manifest"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"/favicon/manifest.json"</span><span class="cm-tag cm-bracket">&gt;</span>
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">link</span> <span class="cm-attribute">rel</span>=<span class="cm-string">"mask-icon"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"/favicon/safari-pinned-tab.svg"</span> <span class="cm-attribute">color</span>=<span class="cm-string">"#b21d47"</span><span class="cm-tag cm-bracket">&gt;</span>
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">link</span> <span class="cm-attribute">rel</span>=<span class="cm-string">"shortcut icon"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"/favicon/favicon.ico"</span><span class="cm-tag cm-bracket">&gt;</span>
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">meta</span> <span class="cm-attribute">name</span>=<span class="cm-string">"msapplication-config"</span> <span class="cm-attribute">content</span>=<span class="cm-string">"/favicon/browserconfig.xml"</span><span class="cm-tag cm-bracket">&gt;</span>
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">meta</span> <span class="cm-attribute">name</span>=<span class="cm-string">"theme-color"</span> <span class="cm-attribute">content</span>=<span class="cm-string">"#651837"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+
+    <span class="cm-comment">&lt;!--———————————— FONTS ————————————--&gt;</span>
+
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">link</span> <span class="cm-attribute">href</span>=<span class="cm-string">"https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Russo+One&amp;amp;subset=latin-ext"</span> <span class="cm-attribute">rel</span>=<span class="cm-string">"stylesheet"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+
+    <span class="cm-comment">&lt;!--———————————— SUPPORT ————————————--&gt;</span>
+
+    <span class="cm-comment">&lt;!--[if IE]&gt;</span>
+    <span class="cm-comment">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"&gt;&lt;/script&gt;</span>
+    <span class="cm-comment">&lt;script&gt;!window.html5 &amp;&amp; document.write("&lt;script src='libs/html5shiv.js'&gt;&lt;"+"/script&gt;");&lt;/script&gt;</span>
+    <span class="cm-comment">&lt;![endif]--&gt;</span>
+
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">script</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-variable">document</span>.<span class="cm-property">documentElement</span>.<span class="cm-property">className</span> <span class="cm-operator">=</span> <span class="cm-variable">document</span>.<span class="cm-property">documentElement</span>.<span class="cm-property">className</span>.<span class="cm-property">replace</span>(<span class="cm-string">"no-js"</span>, <span class="cm-string">"js"</span>);<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">script</span><span class="cm-tag cm-bracket">&gt;</span>
+
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">script</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-operator">!</span><span class="cm-variable">window</span>.<span class="cm-property">matchMedia</span> <span class="cm-operator">&amp;&amp;</span> <span class="cm-variable">document</span>.<span class="cm-property">write</span>(<span class="cm-string">"&lt;script src='https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js'&gt;&lt;"</span><span class="cm-operator">+</span><span class="cm-string">"/script&gt;"</span>);<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">script</span><span class="cm-tag cm-bracket">&gt;</span>
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">script</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-operator">!</span><span class="cm-variable">window</span>.<span class="cm-property">matchMedia</span> <span class="cm-operator">&amp;&amp;</span> <span class="cm-operator">!</span><span class="cm-variable">window</span>.<span class="cm-property">respond</span> <span class="cm-operator">&amp;&amp;</span> <span class="cm-variable">document</span>.<span class="cm-property">write</span>(<span class="cm-string">"&lt;script src='libs/respond.min.js'&gt;&lt;"</span><span class="cm-operator">+</span><span class="cm-string">"/script&gt;"</span>);<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">script</span><span class="cm-tag cm-bracket">&gt;</span>
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">script</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-variable">window</span>.<span class="cm-property">matchMedia</span> <span class="cm-operator">&amp;&amp;</span> <span class="cm-operator">!</span><span class="cm-variable">window</span>.<span class="cm-property">matchMedia</span>(<span class="cm-string">"all"</span>).<span class="cm-property">addListener</span> <span class="cm-operator">&amp;&amp;</span> <span class="cm-variable">document</span>.<span class="cm-property">write</span>(<span class="cm-string">"&lt;script src='libs/respond.matchmedia.addListener.min.js'&gt;&lt;"</span><span class="cm-operator">+</span><span class="cm-string">"/script&gt;"</span>);<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">script</span><span class="cm-tag cm-bracket">&gt;</span>
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">script</span> <span class="cm-attribute">src</span>=<span class="cm-string">"libs/modernizr-svgasimg.js"</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">script</span><span class="cm-tag cm-bracket">&gt;</span>
+
+
+    <span class="cm-comment">&lt;!--———————————— STYLES ————————————--&gt;</span>
+
+    <span class="cm-comment">&lt;!--dev--&gt;</span>
+    <span class="cm-comment">&lt;!--&lt;script src="dev/PATHS.js"&gt;&lt;/script&gt;--&gt;</span>
+    <span class="cm-comment">&lt;!--&lt;script src="dev/load-css.js" data-files="all.build.css, print.build.css" data-media="screen, print"&gt;&lt;/script&gt;--&gt;</span>
+    <span class="cm-comment">&lt;!--&lt;noscript&gt;&lt;link href="dev/cssimport/all.build.css" rel="stylesheet" media="screen"&gt;&lt;/noscript&gt;--&gt;</span>
+    <span class="cm-comment">&lt;!--/dev--&gt;</span>
+
+    <span class="cm-comment">&lt;!--prod--&gt;</span>
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">link</span> <span class="cm-attribute">href</span>=<span class="cm-string">"build/all.build.min.css"</span> <span class="cm-attribute">rel</span>=<span class="cm-string">"stylesheet"</span> <span class="cm-attribute">media</span>=<span class="cm-string">"screen"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">script</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-variable">window</span>.<span class="cm-property">addEventListener</span>(<span class="cm-string">"load"</span>, <span class="cm-keyword">function</span> () { <span class="cm-variable">document</span>.<span class="cm-property">head</span>.<span class="cm-property">innerHTML</span> <span class="cm-operator">+=</span> <span class="cm-string">"&lt;link rel=\"stylesheet\" href=\"build/print.build.min.css\" media=\"print\"&gt;"</span>; });<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">script</span><span class="cm-tag cm-bracket">&gt;</span>
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">noscript</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">link</span> <span class="cm-attribute">href</span>=<span class="cm-string">"build/print.build.min.css"</span> <span class="cm-attribute">rel</span>=<span class="cm-string">"stylesheet"</span> <span class="cm-attribute">media</span>=<span class="cm-string">"print"</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">noscript</span><span class="cm-tag cm-bracket">&gt;</span>
+    <span class="cm-comment">&lt;!--/prod--&gt;</span>
+
+<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">head</span><span class="cm-tag cm-bracket">&gt;</span>
+<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">body</span><span class="cm-tag cm-bracket">&gt;</span>
+
+
+    <span class="cm-comment">&lt;!--———————————— CONTENT ————————————--&gt;</span>
+
+
+    <span class="cm-comment">&lt;!--–––––––––– ** UI__ACCESSIBILITY-NAV ** –––––––––--&gt;</span>
+
+
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">"ui__accessibility-nav x-print"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"#main-content"</span><span class="cm-tag cm-bracket">&gt;</span>Přejít na hlavní obsah<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span>
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">"ui__accessibility-nav x-print"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"#main-nav"</span><span class="cm-tag cm-bracket">&gt;</span>Přejít na hlavní navigaci<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span>
+
+
+    <span class="cm-comment">&lt;!--–––––––––– // UI__ACCESSIBILITY-NAV // –––––––––--&gt;</span>
+
+
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"layout__push-footer"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+
+        <span class="cm-comment">&lt;!--––––––––– ** PAGE-HEADER ** –––––––––--&gt;</span>
+
+
+        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">header</span> <span class="cm-attribute">class</span>=<span class="cm-string">"page-header"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+            <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"page-header__top-bar x-print"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"layout__center"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">"page-header__logo"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"index.html"</span> <span class="cm-attribute">title</span>=<span class="cm-string">"Hlavní stránka"</span><span class="cm-tag cm-bracket">&gt;</span>
+                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">img</span> <span class="cm-attribute">class</span>=<span class="cm-string">"page-header__logo-img"</span> <span class="cm-attribute">src</span>=<span class="cm-string">"img/page-header__logoX1.png"</span> <span class="cm-attribute">srcset</span>=<span class="cm-string">"img/page-header__logoX1.png 1x, img/page-header__logoX2.png 2x"</span> <span class="cm-attribute">alt</span>=<span class="cm-string">"Nezávisláci - logo"</span><span class="cm-tag cm-bracket">&gt;</span>
+                    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span>
+
+
+                    <span class="cm-comment">&lt;!--––––––––– ** MAIN-NAV ** –––––––––--&gt;</span>
+
+
+                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">nav</span> <span class="cm-attribute">class</span>=<span class="cm-string">"page-header__main-nav main-nav"</span> <span class="cm-attribute">id</span>=<span class="cm-string">"main-nav"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">h2</span> <span class="cm-attribute">class</span>=<span class="cm-string">"visually-hidden"</span><span class="cm-tag cm-bracket">&gt;</span>Hlavní menu<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">h2</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">input</span> <span class="cm-attribute">class</span>=<span class="cm-string">"ui__hidden-toggle x-desktop x-tablet"</span> <span class="cm-attribute">id</span>=<span class="cm-string">"main-nav__mobile-opener"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"checkbox"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">"main-nav__mobile-opener transition x-desktop x-tablet"</span> <span class="cm-attribute">for</span>=<span class="cm-string">"main-nav__mobile-opener"</span> <span class="cm-attribute">title</span>=<span class="cm-string">"Menu"</span><span class="cm-tag cm-bracket">&gt;</span>
+                            <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">"text transition"</span><span class="cm-tag cm-bracket">&gt;</span>Otevřít / zavřít hlavní menu<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tag cm-bracket">&gt;</span>
+                        <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">ul</span> <span class="cm-attribute">class</span>=<span class="cm-string">"main-nav__items"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                            <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">li</span> <span class="cm-attribute">class</span>=<span class="cm-string">"main-nav__item transition-hideable"</span><span class="cm-tag cm-bracket">&gt;</span>
+                                <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">"main-nav__link main-nav__link--active transition-hideable"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"index.html"</span><span class="cm-tag cm-bracket">&gt;</span>
+                                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">"text transition"</span><span class="cm-tag cm-bracket">&gt;</span>Domů<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tag cm-bracket">&gt;</span>
+                                <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span>
+                            <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">li</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                            <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">li</span> <span class="cm-attribute">class</span>=<span class="cm-string">"main-nav__item transition-hideable"</span><span class="cm-tag cm-bracket">&gt;</span>
+                                <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">"main-nav__link transition-hideable"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"seznam.html"</span><span class="cm-tag cm-bracket">&gt;</span>
+                                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">"text transition"</span><span class="cm-tag cm-bracket">&gt;</span>Seznam závisláků<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tag cm-bracket">&gt;</span>
+                                <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span>
+                            <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">li</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                        <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">ul</span><span class="cm-tag cm-bracket">&gt;</span>
+                        <span class="cm-comment">&lt;!-- /.main-nav__items --&gt;</span>
+
+                    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">nav</span><span class="cm-tag cm-bracket">&gt;</span>
+                    <span class="cm-comment">&lt;!-- /.main-nav --&gt;</span>
+
+
+                    <span class="cm-comment">&lt;!--––––––––– // MAIN-NAV // –––––––––--&gt;</span>
+
+
+                    <span class="cm-comment">&lt;!--––––––––– ** USER-NAV ** –––––––––--&gt;</span>
+
+
+                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">nav</span> <span class="cm-attribute">class</span>=<span class="cm-string">"page-header__user-nav user-nav user-nav--login"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">input</span> <span class="cm-attribute">class</span>=<span class="cm-string">"ui__hidden-toggle"</span> <span class="cm-attribute">id</span>=<span class="cm-string">"user-nav__mobile-opener"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"checkbox"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">"user-nav__opener transition"</span> <span class="cm-attribute">for</span>=<span class="cm-string">"user-nav__mobile-opener"</span><span class="cm-tag cm-bracket">&gt;</span>
+                            <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">"icon icon--lock"</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-comment">&lt;!-- icon --&gt;</span><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tag cm-bracket">&gt;</span>
+                            <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">"text"</span> <span class="cm-attribute">aria-hidden</span>=<span class="cm-string">"true"</span><span class="cm-tag cm-bracket">&gt;</span>Příhlásit<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tag cm-bracket">&gt;</span>
+                            <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">"visually-hidden"</span><span class="cm-tag cm-bracket">&gt;</span>Zobrazit / skrýt možnosti přihlášení<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tag cm-bracket">&gt;</span>
+                            <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">"icon icon--arrow"</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-comment">&lt;!-- icon --&gt;</span><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tag cm-bracket">&gt;</span>
+                        <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">ul</span> <span class="cm-attribute">class</span>=<span class="cm-string">"user-nav__login-options"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                            <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">li</span> <span class="cm-attribute">class</span>=<span class="cm-string">"user-nav__login-option user-nav__login-option--facebook"</span><span class="cm-tag cm-bracket">&gt;</span>
+                                <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">"user-nav__login-option-link user-nav__login-option-link--facebook"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"#"</span><span class="cm-tag cm-bracket">&gt;</span>Přihlásit pomocí facobooku<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span>
+                            <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">li</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                            <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">li</span> <span class="cm-attribute">class</span>=<span class="cm-string">"user-nav__login-option user-nav__login-option--normal"</span><span class="cm-tag cm-bracket">&gt;</span>
+                                <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">"user-nav__login-option-link user-nav__login-option-link--normal"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"#"</span> <span class="cm-attribute">data-a11y-dialog-show</span>=<span class="cm-string">"dialog--login"</span><span class="cm-tag cm-bracket">&gt;</span>Klasické přihlášení<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span>
+                            <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">li</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                        <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">ul</span><span class="cm-tag cm-bracket">&gt;</span>
+                        <span class="cm-comment">&lt;!-- /.user-nav__login-options --&gt;</span>
+
+                    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">nav</span><span class="cm-tag cm-bracket">&gt;</span>
+                    <span class="cm-comment">&lt;!-- /.page-header__user-nav user-nav --&gt;</span>
+
+
+                    <span class="cm-comment">&lt;!--––––––––– // USER-NAV // –––––––––--&gt;</span>
+
+
+                <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+                <span class="cm-comment">&lt;!-- /.layout__center --&gt;</span>
+
+            <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+            <span class="cm-comment">&lt;!-- /.page-header__top-bar --&gt;</span>
+
+            <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"page-header__main ui__header"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"layout__center"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"page-header__image x-print"</span><span class="cm-tag cm-bracket">&gt;</span>
+                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">img</span> <span class="cm-attribute">class</span>=<span class="cm-string">"page-header__img"</span> <span class="cm-attribute">src</span>=<span class="cm-string">"img/page-header__person.svg"</span> <span class="cm-attribute">alt</span>=<span class="cm-string">""</span><span class="cm-tag cm-bracket">&gt;</span>
+                    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"page-header__content"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">h1</span> <span class="cm-attribute">class</span>=<span class="cm-string">"page-header__title"</span><span class="cm-tag cm-bracket">&gt;</span>
+                            <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">"text"</span><span class="cm-tag cm-bracket">&gt;</span>Vyhrajte svůj boj <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">"layout__br--mobile"</span><span class="cm-tag cm-bracket">&gt;</span>se závislostí díky sdílení s přáteli<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tag cm-bracket">&gt;</span>
+                        <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">h1</span><span class="cm-tag cm-bracket">&gt;</span>
+
+
+                        <span class="cm-comment">&lt;!--––––––––– ** FORM ** –––––––––--&gt;</span>
+
+
+                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">form</span> <span class="cm-attribute">class</span>=<span class="cm-string">"page-header__form form form--page-header x-print"</span> <span class="cm-attribute">method</span>=<span class="cm-string">"post"</span> <span class="cm-attribute">action</span>=<span class="cm-string">""</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                            <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">h2</span> <span class="cm-attribute">class</span>=<span class="cm-string">"visually-hidden"</span><span class="cm-tag cm-bracket">&gt;</span>Registrační formulář<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">h2</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                            <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"form__item form__item--half form__item--text"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">"form__label"</span> <span class="cm-attribute">for</span>=<span class="cm-string">"name"</span><span class="cm-tag cm-bracket">&gt;</span>Jmenuji se<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">input</span> <span class="cm-attribute">class</span>=<span class="cm-string">"form__field"</span> <span class="cm-attribute">id</span>=<span class="cm-string">"name"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"text"</span> <span class="cm-attribute">name</span>=<span class="cm-string">"name"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                            <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+                            <span class="cm-comment">&lt;!-- /.form__item form__item-text --&gt;</span>
+
+                            <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"form__item form__item--half form__item--editable-select"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                <span class="cm-comment">&lt;!-- !!! zobrazit input pro vlastní text: &lt;div class="form__editable-select-options form__editable-select-options--custom-value"&gt; + option[data-editable-select-custom] musí být selected--&gt;</span>
+                                <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"form__editable-select-options"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">"form__label"</span> <span class="cm-attribute">for</span>=<span class="cm-string">"type"</span><span class="cm-tag cm-bracket">&gt;</span>Chci se zbavit závislosti na<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">select</span> <span class="cm-attribute">class</span>=<span class="cm-string">"form__field"</span> <span class="cm-attribute">id</span>=<span class="cm-string">"type"</span> <span class="cm-attribute">name</span>=<span class="cm-string">"type"</span><span class="cm-tag cm-bracket">&gt;</span>
+                                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">option</span> <span class="cm-attribute">value</span>=<span class="cm-string">""</span><span class="cm-tag cm-bracket">&gt;</span>Čokoládě<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">option</span><span class="cm-tag cm-bracket">&gt;</span>
+                                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">option</span> <span class="cm-attribute">value</span>=<span class="cm-string">""</span><span class="cm-tag cm-bracket">&gt;</span>Kofeinu<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">option</span><span class="cm-tag cm-bracket">&gt;</span>
+                                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">option</span> <span class="cm-attribute">value</span>=<span class="cm-string">""</span><span class="cm-tag cm-bracket">&gt;</span>Počítačových hrách<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">option</span><span class="cm-tag cm-bracket">&gt;</span>
+                                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">option</span> <span class="cm-attribute">value</span>=<span class="cm-string">""</span><span class="cm-tag cm-bracket">&gt;</span>Sexu<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">option</span><span class="cm-tag cm-bracket">&gt;</span>
+                                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">option</span> <span class="cm-attribute">value</span>=<span class="cm-string">""</span><span class="cm-tag cm-bracket">&gt;</span>Sledování televize<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">option</span><span class="cm-tag cm-bracket">&gt;</span>
+                                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">option</span> <span class="cm-attribute">value</span>=<span class="cm-string">""</span><span class="cm-tag cm-bracket">&gt;</span>Nezdravém jídle<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">option</span><span class="cm-tag cm-bracket">&gt;</span>
+                                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">option</span> <span class="cm-attribute">value</span>=<span class="cm-string">""</span><span class="cm-tag cm-bracket">&gt;</span>Energetických nápojích<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">option</span><span class="cm-tag cm-bracket">&gt;</span>
+                                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">option</span> <span class="cm-attribute">data-editable-select-custom</span>=<span class="cm-string">"true"</span> <span class="cm-attribute">value</span>=<span class="cm-string">""</span><span class="cm-tag cm-bracket">&gt;</span>Něčem jiném<span class="cm-atom">&amp;hellip;</span><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">option</span><span class="cm-tag cm-bracket">&gt;</span>
+                                    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">select</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+                                <span class="cm-comment">&lt;!-- /.form__editable-select-options --&gt;</span>
+
+                                <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"form__editable-select-custom-value"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">"visually-hidden"</span> <span class="cm-attribute">for</span>=<span class="cm-string">"custom-type"</span><span class="cm-tag cm-bracket">&gt;</span>Vlastní druh závislosti<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">input</span> <span class="cm-attribute">class</span>=<span class="cm-string">"form__field"</span> <span class="cm-attribute">id</span>=<span class="cm-string">"custom-type"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"text"</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">"Zadejte vlastní závislost..."</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                            <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+                            <span class="cm-comment">&lt;!-- /.form__item form__item-editable-select --&gt;</span>
+
+                            <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"page-header__form-submit"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">button</span> <span class="cm-attribute">class</span>=<span class="cm-string">"page-header__form-btn form__btn btn btn--brown btn--has-icon btn--special"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"submit"</span><span class="cm-tag cm-bracket">&gt;</span>
+                                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">"text"</span><span class="cm-tag cm-bracket">&gt;</span>Pokračovat<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tag cm-bracket">&gt;</span>
+                                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">"icon"</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-comment">&lt;!--icon--&gt;</span><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tag cm-bracket">&gt;</span>
+                                <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">button</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                            <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+                            <span class="cm-comment">&lt;!-- /.page-header__form-submit --&gt;</span>
+
+                        <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">form</span><span class="cm-tag cm-bracket">&gt;</span>
+                        <span class="cm-comment">&lt;!-- /.page-header__form form --&gt;</span>
+
+
+                        <span class="cm-comment">&lt;!--––––––––– // FORM // –––––––––--&gt;</span>
+
+
+                    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+                    <span class="cm-comment">&lt;!-- /.page-header__content --&gt;</span>
+
+                <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+                <span class="cm-comment">&lt;!-- /.layout__center --&gt;</span>
+
+                <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"ui__header-wrapper"</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-comment">&lt;!-- css --&gt;</span><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+
+            <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+            <span class="cm-comment">&lt;!-- /.page-header__main ui__header --&gt;</span>
+
+        <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">header</span><span class="cm-tag cm-bracket">&gt;</span>
+        <span class="cm-comment">&lt;!-- /.page-header --&gt;</span>
+
+
+        <span class="cm-comment">&lt;!--––––––––– // PAGE-HEADER // –––––––––--&gt;</span>
+
+
+        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">main</span> <span class="cm-attribute">id</span>=<span class="cm-string">"main-content"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+
+            <span class="cm-comment">&lt;!--––––––––– ** BEST-MEMBERS ** –––––––––--&gt;</span>
+
+
+            <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">article</span> <span class="cm-attribute">class</span>=<span class="cm-string">"best-members"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"layout__center"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">h2</span> <span class="cm-attribute">class</span>=<span class="cm-string">"best-members__title"</span><span class="cm-tag cm-bracket">&gt;</span>Nejlepší nezávisláci<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">h2</span><span class="cm-tag cm-bracket">&gt;</span>
+
+
+                    <span class="cm-comment">&lt;!--––––––––– ** MEMBERS ** –––––––––--&gt;</span>
+
+
+                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"best-members__members members"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">ul</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__list"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                            <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">li</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__member"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__profile-image-wrapper"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__profile-image x-print-href"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"profil.html"</span> <span class="cm-attribute">tabindex</span>=<span class="cm-string">"-1"</span><span class="cm-tag cm-bracket">&gt;</span>
+                                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">img</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__profile-image-img"</span> <span class="cm-attribute">src</span>=<span class="cm-string">"img/avatar__1--S.png"</span> <span class="cm-attribute">alt</span>=<span class="cm-string">"Jméno"</span><span class="cm-tag cm-bracket">&gt;</span>
+                                    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+                                <span class="cm-comment">&lt;!-- /.members__profile-image-wrapper --&gt;</span>
+
+                                <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__info"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">h3</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__name"</span><span class="cm-tag cm-bracket">&gt;</span>
+                                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__name-link"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"profil.html"</span> <span class="cm-attribute">tabindex</span>=<span class="cm-string">"-1"</span><span class="cm-tag cm-bracket">&gt;</span>Pavel<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span>
+                                    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">h3</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">p</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__type"</span><span class="cm-tag cm-bracket">&gt;</span>Bojuje se závislostí na <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">"highlight"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"seznam.html"</span><span class="cm-tag cm-bracket">&gt;</span>Čokoládě<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">p</span><span class="cm-tag cm-bracket">&gt;</span>
+                                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">p</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__period"</span><span class="cm-tag cm-bracket">&gt;</span>Nezávislý <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">"highlight"</span><span class="cm-tag cm-bracket">&gt;</span>241 dní<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">p</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__profile btn btn--brown btn--small"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"profil.html"</span><span class="cm-tag cm-bracket">&gt;</span>Zobrazit profil<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+                                <span class="cm-comment">&lt;!-- /.members__info --&gt;</span>
+
+                            <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">li</span><span class="cm-tag cm-bracket">&gt;</span>
+                            <span class="cm-comment">&lt;!-- /.members__member --&gt;</span>
+
+                            <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">li</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__member"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__profile-image-wrapper"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__profile-image x-print-href"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"profil.html"</span> <span class="cm-attribute">tabindex</span>=<span class="cm-string">"-1"</span><span class="cm-tag cm-bracket">&gt;</span>
+                                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">img</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__profile-image-img"</span> <span class="cm-attribute">src</span>=<span class="cm-string">"img/avatar__2--S.png"</span> <span class="cm-attribute">alt</span>=<span class="cm-string">"Jméno"</span><span class="cm-tag cm-bracket">&gt;</span>
+                                    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+                                <span class="cm-comment">&lt;!-- /.members__profile-image-wrapper --&gt;</span>
+
+                                <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__info"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">h3</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__name"</span><span class="cm-tag cm-bracket">&gt;</span>
+                                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__name-link"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"profil.html"</span> <span class="cm-attribute">tabindex</span>=<span class="cm-string">"-1"</span><span class="cm-tag cm-bracket">&gt;</span>Iveta<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span>
+                                    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">h3</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">p</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__type"</span><span class="cm-tag cm-bracket">&gt;</span>Bojuje se závislostí na <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">"highlight"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"seznam.html"</span><span class="cm-tag cm-bracket">&gt;</span>Kofeinu<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">p</span><span class="cm-tag cm-bracket">&gt;</span>
+                                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">p</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__period"</span><span class="cm-tag cm-bracket">&gt;</span>Nezávislá <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">"highlight"</span><span class="cm-tag cm-bracket">&gt;</span>181 dní<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">p</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__profile btn btn--brown btn--small"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"profil.html"</span><span class="cm-tag cm-bracket">&gt;</span>Zobrazit profil<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+                                <span class="cm-comment">&lt;!-- /.members__info --&gt;</span>
+
+                            <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">li</span><span class="cm-tag cm-bracket">&gt;</span>
+                            <span class="cm-comment">&lt;!-- /.members__member --&gt;</span>
+
+                            <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">li</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__member"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__profile-image-wrapper"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__profile-image x-print-href"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"profil.html"</span> <span class="cm-attribute">tabindex</span>=<span class="cm-string">"-1"</span><span class="cm-tag cm-bracket">&gt;</span>
+                                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">img</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__profile-image-img"</span> <span class="cm-attribute">src</span>=<span class="cm-string">"img/avatar__4--S.png"</span> <span class="cm-attribute">alt</span>=<span class="cm-string">"Jméno"</span><span class="cm-tag cm-bracket">&gt;</span>
+                                    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+                                <span class="cm-comment">&lt;!-- /.members__profile-image-wrapper --&gt;</span>
+
+                                <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__info"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">h3</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__name"</span><span class="cm-tag cm-bracket">&gt;</span>
+                                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__name-link"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"profil.html"</span> <span class="cm-attribute">tabindex</span>=<span class="cm-string">"-1"</span><span class="cm-tag cm-bracket">&gt;</span>Karolína Veselá<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span>
+                                    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">h3</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">p</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__type"</span><span class="cm-tag cm-bracket">&gt;</span>Bojuje se závislostí na <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">"highlight"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"seznam.html"</span><span class="cm-tag cm-bracket">&gt;</span>Okurkách<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">p</span><span class="cm-tag cm-bracket">&gt;</span>
+                                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">p</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__period"</span><span class="cm-tag cm-bracket">&gt;</span>Nezávislá <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">"highlight"</span><span class="cm-tag cm-bracket">&gt;</span>65 dní<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">p</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__profile btn btn--brown btn--small"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"profil.html"</span><span class="cm-tag cm-bracket">&gt;</span>Zobrazit profil<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+                                <span class="cm-comment">&lt;!-- /.members__info --&gt;</span>
+
+                            <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">li</span><span class="cm-tag cm-bracket">&gt;</span>
+                            <span class="cm-comment">&lt;!-- /.members__member --&gt;</span>
+
+                            <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">li</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__member"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__profile-image-wrapper"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__profile-image x-print-href"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"profil.html"</span> <span class="cm-attribute">tabindex</span>=<span class="cm-string">"-1"</span><span class="cm-tag cm-bracket">&gt;</span>
+                                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">img</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__profile-image-img"</span> <span class="cm-attribute">src</span>=<span class="cm-string">"img/avatar__3--S.png"</span> <span class="cm-attribute">alt</span>=<span class="cm-string">"Jméno"</span><span class="cm-tag cm-bracket">&gt;</span>
+                                    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+                                <span class="cm-comment">&lt;!-- /.members__profile-image-wrapper --&gt;</span>
+
+                                <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__info"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">h3</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__name"</span><span class="cm-tag cm-bracket">&gt;</span>
+                                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__name-link"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"profil.html"</span> <span class="cm-attribute">tabindex</span>=<span class="cm-string">"-1"</span><span class="cm-tag cm-bracket">&gt;</span>Ken<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span>
+                                    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">h3</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">p</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__type"</span><span class="cm-tag cm-bracket">&gt;</span>Bojuje se závislostí na <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">"highlight"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"seznam.html"</span><span class="cm-tag cm-bracket">&gt;</span>Osahávání žen v tramvajích<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">p</span><span class="cm-tag cm-bracket">&gt;</span>
+                                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">p</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__period"</span><span class="cm-tag cm-bracket">&gt;</span>Nezávislý <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">"highlight"</span><span class="cm-tag cm-bracket">&gt;</span>1 den<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">p</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__profile btn btn--brown btn--small"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"profil.html"</span><span class="cm-tag cm-bracket">&gt;</span>Zobrazit profil<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                                <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+                                <span class="cm-comment">&lt;!-- /.members__info --&gt;</span>
+
+                            <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">li</span><span class="cm-tag cm-bracket">&gt;</span>
+                            <span class="cm-comment">&lt;!-- /.members__member --&gt;</span>
+
+                        <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">ul</span><span class="cm-tag cm-bracket">&gt;</span>
+                        <span class="cm-comment">&lt;!-- /.members__list --&gt;</span>
+
+                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">"members__show-all btn btn--red"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"seznam.html"</span><span class="cm-tag cm-bracket">&gt;</span>Zobrazit celý seznam<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+                    <span class="cm-comment">&lt;!-- /.best-members__members members --&gt;</span>
+
+
+                    <span class="cm-comment">&lt;!--––––––––– // MEMBERS // –––––––––--&gt;</span>
+
+
+                <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+                <span class="cm-comment">&lt;!-- /.layout__center --&gt;</span>
+
+            <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">article</span><span class="cm-tag cm-bracket">&gt;</span>
+            <span class="cm-comment">&lt;!-- /.best-members --&gt;</span>
+
+
+            <span class="cm-comment">&lt;!--––––––––– // BEST-MEMBERS // –––––––––--&gt;</span>
+
+
+        <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">main</span><span class="cm-tag cm-bracket">&gt;</span>
+        <span class="cm-comment">&lt;!-- /#main-content --&gt;</span>
+
+    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+    <span class="cm-comment">&lt;!-- /.layout__push-footer --&gt;</span>
+
+
+    <span class="cm-comment">&lt;!--––––––––– ** PAGE-FOOTER ** –––––––––--&gt;</span>
+
+
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">footer</span> <span class="cm-attribute">class</span>=<span class="cm-string">"page-footer"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"page-footer__wrapper layout__center"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+            <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"page-footer__content"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">ul</span> <span class="cm-attribute">class</span>=<span class="cm-string">"page-footer__items"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">li</span> <span class="cm-attribute">class</span>=<span class="cm-string">"page-footer__item"</span><span class="cm-tag cm-bracket">&gt;</span>
+                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">"page-footer__link"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"index.html"</span><span class="cm-tag cm-bracket">&gt;</span>Domů<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span>
+                    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">li</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">li</span> <span class="cm-attribute">class</span>=<span class="cm-string">"page-footer__item"</span><span class="cm-tag cm-bracket">&gt;</span>
+                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">"page-footer__link"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"seznam.html"</span><span class="cm-tag cm-bracket">&gt;</span>Seznam závisláků<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span>
+                    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">li</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">li</span> <span class="cm-attribute">class</span>=<span class="cm-string">"page-footer__item"</span><span class="cm-tag cm-bracket">&gt;</span>
+                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">"page-footer__link"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"#"</span> <span class="cm-attribute">data-a11y-dialog-show</span>=<span class="cm-string">"dialog--login"</span><span class="cm-tag cm-bracket">&gt;</span>Přihlásit se<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span>
+                    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">li</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">li</span> <span class="cm-attribute">class</span>=<span class="cm-string">"page-footer__item"</span><span class="cm-tag cm-bracket">&gt;</span>
+                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">"page-footer__link"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"registrace.html"</span><span class="cm-tag cm-bracket">&gt;</span>Registrovat se<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span>
+                    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">li</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">li</span> <span class="cm-attribute">class</span>=<span class="cm-string">"page-footer__item"</span><span class="cm-tag cm-bracket">&gt;</span>
+                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">"page-footer__link"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"#"</span> <span class="cm-attribute">data-a11y-dialog-show</span>=<span class="cm-string">"dialog--password"</span><span class="cm-tag cm-bracket">&gt;</span>Zapomenuté heslo<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span>
+                    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">li</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">ul</span><span class="cm-tag cm-bracket">&gt;</span>
+                <span class="cm-comment">&lt;!-- /.page-footer__items --&gt;</span>
+
+                <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">ul</span> <span class="cm-attribute">class</span>=<span class="cm-string">"page-footer__social-sites"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">li</span> <span class="cm-attribute">class</span>=<span class="cm-string">"page-footer__social-site"</span><span class="cm-tag cm-bracket">&gt;</span>
+                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">"page-footer__social-site-link"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"#"</span><span class="cm-tag cm-bracket">&gt;</span>
+                            <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">"icon icon--facebook"</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-comment">&lt;!-- icon --&gt;</span><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tag cm-bracket">&gt;</span>
+                            <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">"text visually-hidden"</span><span class="cm-tag cm-bracket">&gt;</span>Facebook<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tag cm-bracket">&gt;</span>
+                        <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span>
+                    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">li</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">ul</span><span class="cm-tag cm-bracket">&gt;</span>
+                <span class="cm-comment">&lt;!-- /.page-footer__social-sites --&gt;</span>
+
+                <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">p</span> <span class="cm-attribute">class</span>=<span class="cm-string">"page-footer__copyright x-tablet x-mobile"</span><span class="cm-tag cm-bracket">&gt;</span>Copyright <span class="cm-atom">&amp;copy;</span> 2017<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">p</span><span class="cm-tag cm-bracket">&gt;</span>
+
+            <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+            <span class="cm-comment">&lt;!-- /.page-footer__content --&gt;</span>
+
+        <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+        <span class="cm-comment">&lt;!-- /.page-footer__wrapper layout__center --&gt;</span>
+
+    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">footer</span><span class="cm-tag cm-bracket">&gt;</span>
+    <span class="cm-comment">&lt;!-- /.page-footer --&gt;</span>
+
+
+    <span class="cm-comment">&lt;!--––––––––– // PAGE-FOOTER // –––––––––--&gt;</span>
+
+
+    <span class="cm-comment">&lt;!--––––––––– ** DIALOG ** –––––––––--&gt;</span>
+
+
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"dialog dialog--fade-in dialog--login"</span> <span class="cm-attribute">id</span>=<span class="cm-string">"dialog--login"</span> <span class="cm-attribute">aria-hidden</span>=<span class="cm-string">"true"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"dialog__overlay"</span> <span class="cm-attribute">tabindex</span>=<span class="cm-string">"-1"</span> <span class="cm-attribute">data-a11y-dialog-hide</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+
+        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"dialog__box"</span> <span class="cm-attribute">role</span>=<span class="cm-string">"dialog"</span> <span class="cm-attribute">aria-labelledby</span>=<span class="cm-string">"dialog__title"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+            <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"dialog__wrapper"</span> <span class="cm-attribute">role</span>=<span class="cm-string">"document"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">header</span> <span class="cm-attribute">class</span>=<span class="cm-string">"dialog__header"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">button</span> <span class="cm-attribute">class</span>=<span class="cm-string">"dialog__close clear-button transition"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"button"</span> <span class="cm-attribute">data-a11y-dialog-hide</span><span class="cm-tag cm-bracket">&gt;</span>
+                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">"x"</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-atom">&amp;times;</span><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tag cm-bracket">&gt;</span>
+                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">"text visually-hidden"</span><span class="cm-tag cm-bracket">&gt;</span>Zavřít<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tag cm-bracket">&gt;</span>
+                    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">button</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">h1</span> <span class="cm-attribute">class</span>=<span class="cm-string">"dialog__title"</span> <span class="cm-attribute">id</span>=<span class="cm-string">"dialog__title"</span><span class="cm-tag cm-bracket">&gt;</span>Přihlásit se<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">h1</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">header</span><span class="cm-tag cm-bracket">&gt;</span>
+                <span class="cm-comment">&lt;!-- /.dialog__header --&gt;</span>
+
+
+                <span class="cm-comment">&lt;!--––––––––– ** FORM ** –––––––––--&gt;</span>
+
+
+                <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">form</span> <span class="cm-attribute">class</span>=<span class="cm-string">"dialog__content dialog__form form form--dialog"</span> <span class="cm-attribute">method</span>=<span class="cm-string">"post"</span> <span class="cm-attribute">action</span>=<span class="cm-string">""</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"form__item form__item--text"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">"form__label"</span> <span class="cm-attribute">for</span>=<span class="cm-string">"email"</span><span class="cm-tag cm-bracket">&gt;</span>Email<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">input</span> <span class="cm-attribute">class</span>=<span class="cm-string">"form__field"</span> <span class="cm-attribute">id</span>=<span class="cm-string">"email"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"email"</span> <span class="cm-attribute">name</span>=<span class="cm-string">"email"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+                    <span class="cm-comment">&lt;!-- /.form__item form__item-text --&gt;</span>
+
+                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"form__item form__item--text"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">"form__label"</span> <span class="cm-attribute">for</span>=<span class="cm-string">"password"</span><span class="cm-tag cm-bracket">&gt;</span>Heslo<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">input</span> <span class="cm-attribute">class</span>=<span class="cm-string">"form__field"</span> <span class="cm-attribute">id</span>=<span class="cm-string">"password"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"password"</span> <span class="cm-attribute">name</span>=<span class="cm-string">"password"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+                    <span class="cm-comment">&lt;!-- /.form__item form__item-text --&gt;</span>
+
+                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"dialog__form-buttons"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">"dialog__forgotten-password-link form__btn btn btn--link"</span> <span class="cm-attribute">href</span>=<span class="cm-string">"index.html"</span> <span class="cm-attribute">data-a11y-dialog-hide</span> <span class="cm-attribute">data-a11y-dialog-show</span>=<span class="cm-string">"dialog--password"</span><span class="cm-tag cm-bracket">&gt;</span>Zapomenuté heslo<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">button</span> <span class="cm-attribute">class</span>=<span class="cm-string">"dialog__form-submit form__btn btn btn--red"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"submit"</span><span class="cm-tag cm-bracket">&gt;</span>Přihlásit se<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">button</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+                    <span class="cm-comment">&lt;!-- /.dialog__form-buttons --&gt;</span>
+
+                <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">form</span><span class="cm-tag cm-bracket">&gt;</span>
+                <span class="cm-comment">&lt;!-- /.dialog__content dialog__form dialog --&gt;</span>
+
+
+                <span class="cm-comment">&lt;!--––––––––– // FORM // –––––––––--&gt;</span>
+
+
+            <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+            <span class="cm-comment">&lt;!-- /.dialog__wrapper --&gt;</span>
+
+        <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+        <span class="cm-comment">&lt;!-- /.dialog__box --&gt;</span>
+
+    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+    <span class="cm-comment">&lt;!-- /.dialog --&gt;</span>
+
+
+    <span class="cm-comment">&lt;!--––––––––– // DIALOG // –––––––––--&gt;</span>
+
+
+    <span class="cm-comment">&lt;!--––––––––– ** DIALOG ** –––––––––--&gt;</span>
+
+
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"dialog dialog--fade-in dialog--password"</span> <span class="cm-attribute">id</span>=<span class="cm-string">"dialog--password"</span> <span class="cm-attribute">aria-hidden</span>=<span class="cm-string">"true"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"dialog__overlay"</span> <span class="cm-attribute">tabindex</span>=<span class="cm-string">"-1"</span> <span class="cm-attribute">data-a11y-dialog-hide</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+
+        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"dialog__box"</span> <span class="cm-attribute">role</span>=<span class="cm-string">"dialog"</span> <span class="cm-attribute">aria-labelledby</span>=<span class="cm-string">"dialog__title2"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+            <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"dialog__wrapper"</span> <span class="cm-attribute">role</span>=<span class="cm-string">"document"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">header</span> <span class="cm-attribute">class</span>=<span class="cm-string">"dialog__header"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">button</span> <span class="cm-attribute">class</span>=<span class="cm-string">"dialog__close clear-button transition"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"button"</span> <span class="cm-attribute">data-a11y-dialog-hide</span><span class="cm-tag cm-bracket">&gt;</span>
+                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">"x"</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-atom">&amp;times;</span><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tag cm-bracket">&gt;</span>
+                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">"text visually-hidden"</span><span class="cm-tag cm-bracket">&gt;</span>Zavřít<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tag cm-bracket">&gt;</span>
+                    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">button</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">h1</span> <span class="cm-attribute">class</span>=<span class="cm-string">"dialog__title"</span> <span class="cm-attribute">id</span>=<span class="cm-string">"dialog__title2"</span><span class="cm-tag cm-bracket">&gt;</span>Zapomenuté heslo<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">h1</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">header</span><span class="cm-tag cm-bracket">&gt;</span>
+                <span class="cm-comment">&lt;!-- /.dialog__header --&gt;</span>
+
+
+                <span class="cm-comment">&lt;!--––––––––– ** FORM ** –––––––––--&gt;</span>
+
+
+                <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">form</span> <span class="cm-attribute">class</span>=<span class="cm-string">"dialog__content dialog__form form form--dialog"</span> <span class="cm-attribute">method</span>=<span class="cm-string">"post"</span> <span class="cm-attribute">action</span>=<span class="cm-string">""</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"form__item form__item--text"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">"form__label"</span> <span class="cm-attribute">for</span>=<span class="cm-string">"email2"</span><span class="cm-tag cm-bracket">&gt;</span>Email<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">input</span> <span class="cm-attribute">class</span>=<span class="cm-string">"form__field"</span> <span class="cm-attribute">id</span>=<span class="cm-string">"email2"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"email"</span> <span class="cm-attribute">name</span>=<span class="cm-string">"email"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+                    <span class="cm-comment">&lt;!-- /.form__item form__item-text --&gt;</span>
+
+                    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"dialog__form-buttons"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">button</span> <span class="cm-attribute">class</span>=<span class="cm-string">"form__btn btn btn--red"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"submit"</span><span class="cm-tag cm-bracket">&gt;</span>Zaslat nové heslo<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">button</span><span class="cm-tag cm-bracket">&gt;</span>
+
+                    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+                    <span class="cm-comment">&lt;!-- /.dialog__form-buttons --&gt;</span>
+
+                <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">form</span><span class="cm-tag cm-bracket">&gt;</span>
+                <span class="cm-comment">&lt;!-- /.dialog__content dialog__form dialog --&gt;</span>
+
+
+                <span class="cm-comment">&lt;!--––––––––– // FORM // –––––––––--&gt;</span>
+
+
+            <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+            <span class="cm-comment">&lt;!-- /.dialog__wrapper --&gt;</span>
+
+        <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+        <span class="cm-comment">&lt;!-- /.dialog__box --&gt;</span>
+
+    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+    <span class="cm-comment">&lt;!-- /.dialog --&gt;</span>
+
+
+    <span class="cm-comment">&lt;!--––––––––– // DIALOG // –––––––––--&gt;</span>
+
+
+    <span class="cm-comment">&lt;!--———————————— JAVASCRIPT ————————————--&gt;</span>
+
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">script</span> <span class="cm-attribute">src</span>=<span class="cm-string">"https://code.jquery.com/jquery-3.3.1.min.js"</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">script</span><span class="cm-tag cm-bracket">&gt;</span>
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">script</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-operator">!</span><span class="cm-variable">window</span>.<span class="cm-property">jQuery</span> <span class="cm-operator">&amp;&amp;</span> <span class="cm-variable">document</span>.<span class="cm-property">write</span>(<span class="cm-string">"&lt;script src='libs/jq.min.js'&gt;&lt;"</span><span class="cm-operator">+</span><span class="cm-string">"/script&gt;"</span>);<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">script</span><span class="cm-tag cm-bracket">&gt;</span>
+
+    <span class="cm-comment">&lt;!--dev--&gt;</span>
+    <span class="cm-comment">&lt;!--&lt;script src="dev/PATHS.js"&gt;&lt;/script&gt;--&gt;</span>
+    <span class="cm-comment">&lt;!--&lt;script src="dev/load-js.js" data-files="all.build.js"&gt;&lt;/script&gt;--&gt;</span>
+    <span class="cm-comment">&lt;!--/dev--&gt;</span>
+
+    <span class="cm-comment">&lt;!--prod--&gt;</span>
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">script</span> <span class="cm-attribute">src</span>=<span class="cm-string">"build/all.build.min.js"</span> <span class="cm-attribute">defer</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">script</span><span class="cm-tag cm-bracket">&gt;</span>
+    <span class="cm-comment">&lt;!--/prod--&gt;</span>
+
+<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">body</span><span class="cm-tag cm-bracket">&gt;</span>
+<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">html</span><span class="cm-tag cm-bracket">&gt;</span></code>
+</pre>
+
+    <script src="../build/codesample.build.min.js"></script>
+
+</body>
+</html>

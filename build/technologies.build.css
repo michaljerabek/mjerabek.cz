@@ -490,8 +490,6 @@
 
             width: 61.88%;
             width: calc((100% / 21) * 13);
-
-            overflow: hidden;
         }
 
         @media (min-width: 768px) and (max-width: 1023px) {
@@ -531,7 +529,7 @@
             .no-js .technologies__sample:focus {
                 width: 87.5%;
                 width: calc(100% - 40px);
-                padding-left: 48px;
+                padding-left: 8px;
             }
         }
 
@@ -593,8 +591,7 @@
                 will-change: transform, opacity;
             }
 
-            .technologies__text-content-wrapper:not(.mCustomScrollbar),
-            .technologies__sample-content-wrapper:not(.mCustomScrollbar) {
+            .technologies__text-content-wrapper:not(.mCustomScrollbar) {
                 overflow: auto;
                 scroll-behavior: smooth;
                 overscroll-behavior: contain;
@@ -606,9 +603,7 @@
             }
 
             .technologies__text-content-wrapper:hover,
-            .technologies__sample-content-wrapper:hover,
-            .technologies__text-content-wrapper:focus,
-            .technologies__sample-content-wrapper:focus {
+            .technologies__text-content-wrapper:focus {
                 scrollbar-color: rgba(255, 255, 255, 0.35) transparent;
             }
 
@@ -648,10 +643,6 @@
 
                 @media (max-width: 767px) {
 
-                    .technologies__sample .mCSB_scrollTools.mCSB_scrollTools.mCSB_scrollTools {
-                        right: -16px;
-                    }
-
                     .technologies__text .mCSB_scrollTools.mCSB_scrollTools.mCSB_scrollTools {
                         right: -12px;
                     }
@@ -660,20 +651,6 @@
                 .technologies__text-content,
                 .technologies__sample-content {
                     display: block;
-                }
-
-                @media (min-width: 768px) {
-
-                    .technologies__sample-content {
-                        padding-left: 40px;
-                    }
-                }
-
-                @media (max-width: 767px) {
-
-                    .technologies__sample-content {
-                        padding-left: 8px;
-                    }
                 }
 
                 .technologies__text-content {
@@ -740,17 +717,14 @@
                     }
 
                 .technologies__sample-content {
-                    font-family: "PT Mono", monospace;
-                    font-size: 0.875rem;
-                    line-height: 1.6875rem;
-                }
+                    position: absolute;
+                    top: 0;
+                    left: 0;
 
-                @media (max-width: 767px) {
+                    width: 100%;
+                    height: 100%;
 
-                    .technologies__sample-content {
-                        font-size: 0.75rem;
-                        line-height: 1.4375rem;
-                    }
+                    border: none;
                 }
 
 /*---------------------------- SHOW-SAMPLE ----------------------------*/
@@ -1118,32 +1092,3 @@
     }
 
 /*//////////////////////////// NAVIGATION ////////////////////////////*/
-
-[data-codemirror-mimemode] { color: #d5d5d5; }
-.cm-keyword        { color: #6595A9; }
-.cm-atom           { color: #B3794E; }
-.cm-number         { color: #AF975A; }
-.cm-def            { color: #d5d5d5; }
-.cm-variable       { color: #AF975A; }
-.cm-variable-2     { color: #d5d5d5; }
-.cm-variable-3     { color: #6595A9; }
-.cm-operator       { color: #d5d5d5; }
-.cm-comment        { color: #878787; }
-.cm-string         { color: #B3794E; }
-.cm-string-2       { color: #78A7BB; }
-.cm-meta           { color: #B3794E; }
-.cm-qualifier      { color: #d5d5d5; }
-.cm-builtin        { color: #AF975A; }
-.cm-bracket        { color: #d5d5d5; }
-.cm-tag            { color: #C9B47F; }
-.cm-bracket.cm-tag { color: hsl(43, 31%, 35%); }
-.cm-attribute      { color: #AF975A; }
-.cm-property       { color: #C9B47F; }
-.cm-quote          { color: #d5d5d5; }
-.cm-header         { color: #6595A9; }
-.cm-link           { color: #C9B47F; }
-.cm-em             { color: #BF865E; font-style: italic; }
-.cm-strong         { color: #6595A9; }
-.cm-strikethrough  { color: #B3794E; }
-.cm-hr             { color: #AF975A; }
-.cm-error          { color: #BF865E; }

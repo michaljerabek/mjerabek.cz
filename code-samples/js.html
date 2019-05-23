@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+    <title>Ukázka dodávaného JS kódu</title>
+
+    <link href="https://fonts.googleapis.com/css?family=PT+Mono&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../build/codesample.build.min.css">
+
+</head>
+<body>
+
+    <pre class="scrolling-element"><code>(<span class="cm-keyword">function</span> (<span class="cm-def">ns</span>, <span class="cm-def">$</span>) {
+
+    <span class="cm-variable-2">ns</span>.<span class="cm-property">$temp</span> <span class="cm-operator">=</span> <span class="cm-variable-2">ns</span>.<span class="cm-property">$temp</span> <span class="cm-operator">||</span> <span class="cm-variable-2">$</span>([<span class="cm-atom">null</span>]);
+
+    <span class="cm-variable-2">ns</span>.<span class="cm-property">BreakText</span> <span class="cm-operator">=</span> (<span class="cm-keyword">function</span> () {
+
+        <span class="cm-keyword">var</span> <span class="cm-def">CLASS</span> <span class="cm-operator">=</span> {
+                <span class="cm-property">word</span>: <span class="cm-string">"word"</span>,
+                <span class="cm-property">letter</span>: <span class="cm-string">"letter"</span>,
+                <span class="cm-property">space</span>: <span class="cm-string">"space"</span>
+            },
+
+            <span class="cm-def">SELECTOR</span> <span class="cm-operator">=</span> {
+                <span class="cm-property">items</span>: <span class="cm-string">"[data-break-text='true']"</span>
+            },
+
+            <span class="cm-def">wrapLetter</span> <span class="cm-operator">=</span> <span class="cm-keyword">function</span> (<span class="cm-def">letter</span>, <span class="cm-def">num</span>, <span class="cm-def">smallCaps</span>) {
+
+                <span class="cm-keyword">var</span> <span class="cm-def">attrs</span> <span class="cm-operator">=</span> [
+                        <span class="cm-string">"class=\""</span>, <span class="cm-variable-2">CLASS</span>.<span class="cm-property">letter</span> <span class="cm-operator">+</span> <span class="cm-variable-2">num</span>, <span class="cm-string">"\" style=\"display: inline-block;\""</span>,
+                        <span class="cm-variable-2">smallCaps</span> <span class="cm-operator">?</span> <span class="cm-variable-2">ns</span>.<span class="cm-property">SmallCaps</span>.<span class="cm-property">getAttr</span>(<span class="cm-atom">true</span>) : <span class="cm-string">""</span>
+                    ].<span class="cm-property">join</span>(<span class="cm-string">" "</span>);
+
+                <span class="cm-keyword">return</span> <span class="cm-string">"&lt;span "</span> <span class="cm-operator">+</span> <span class="cm-variable-2">attrs</span> <span class="cm-operator">+</span> <span class="cm-string">"&gt;"</span> <span class="cm-operator">+</span> <span class="cm-variable-2">letter</span> <span class="cm-operator">+</span> <span class="cm-string">"&lt;/span&gt;"</span>;
+            },
+
+            <span class="cm-def">getWhiteSpace</span> <span class="cm-operator">=</span> <span class="cm-keyword">function</span> (<span class="cm-def">num</span>) {
+
+                <span class="cm-keyword">return</span> <span class="cm-string">"&lt;span class=\""</span> <span class="cm-operator">+</span> (<span class="cm-variable-2">CLASS</span>.<span class="cm-property">space</span> <span class="cm-operator">+</span> <span class="cm-variable-2">num</span>) <span class="cm-operator">+</span> <span class="cm-string">"\"&gt; &lt;/span&gt;"</span>;
+            },
+
+            <span class="cm-def">breakWord</span> <span class="cm-operator">=</span> <span class="cm-keyword">function</span> (<span class="cm-def">word</span>, <span class="cm-def">num</span>, <span class="cm-def">hasSmallCaps</span>) {
+
+                <span class="cm-keyword">var</span> <span class="cm-def">wordData</span> <span class="cm-operator">=</span> [],
+                    <span class="cm-def">l</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>;
+
+                <span class="cm-variable-2">wordData</span>.<span class="cm-property">push</span>(<span class="cm-string">"&lt;span class=\""</span> <span class="cm-operator">+</span> (<span class="cm-variable-2">CLASS</span>.<span class="cm-property">word</span> <span class="cm-operator">+</span> <span class="cm-variable-2">num</span>) <span class="cm-operator">+</span> <span class="cm-string">"\" style=\"display: inline-block;\"&gt;"</span>);
+
+                <span class="cm-keyword">for</span> (<span class="cm-variable-2">l</span>; <span class="cm-variable-2">l</span> <span class="cm-operator">&lt;</span> <span class="cm-variable-2">word</span>.<span class="cm-property">length</span>; <span class="cm-variable-2">l</span><span class="cm-operator">++</span>) {
+
+                    <span class="cm-variable-2">wordData</span>.<span class="cm-property">push</span>(<span class="cm-variable-2">wrapLetter</span>(<span class="cm-variable-2">word</span>[<span class="cm-variable-2">l</span>], <span class="cm-variable-2">l</span> <span class="cm-operator">+</span> <span class="cm-number">1</span>, <span class="cm-variable-2">hasSmallCaps</span>));
+                }
+
+                <span class="cm-variable-2">wordData</span>.<span class="cm-property">push</span>(<span class="cm-string">"&lt;/span&gt;"</span>);
+
+                <span class="cm-keyword">return</span> <span class="cm-variable-2">wordData</span>;
+            },
+
+            <span class="cm-def">breakText</span> <span class="cm-operator">=</span> <span class="cm-keyword">function</span> (<span class="cm-def">$item</span>, <span class="cm-def">hasSmallCaps</span>) {
+
+                <span class="cm-keyword">var</span> <span class="cm-def">text</span> <span class="cm-operator">=</span> <span class="cm-variable-2">$item</span>.<span class="cm-property">text</span>().<span class="cm-property">trim</span>(),
+                    <span class="cm-def">words</span> <span class="cm-operator">=</span> <span class="cm-variable-2">text</span>.<span class="cm-property">split</span>(<span class="cm-string-2">/\s/</span>),
+
+                    <span class="cm-def">textData</span> <span class="cm-operator">=</span> [],
+                    <span class="cm-def">w</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>;
+
+                <span class="cm-keyword">for</span> (<span class="cm-variable-2">w</span>; <span class="cm-variable-2">w</span> <span class="cm-operator">&lt;</span> <span class="cm-variable-2">words</span>.<span class="cm-property">length</span>; <span class="cm-variable-2">w</span><span class="cm-operator">++</span>) {
+
+                    <span class="cm-variable-2">textData</span> <span class="cm-operator">=</span> <span class="cm-variable-2">textData</span>.<span class="cm-property">concat</span>(<span class="cm-variable-2">breakWord</span>(<span class="cm-variable-2">words</span>[<span class="cm-variable-2">w</span>], <span class="cm-variable-2">w</span> <span class="cm-operator">+</span> <span class="cm-number">1</span>, <span class="cm-variable-2">hasSmallCaps</span>));
+
+                    <span class="cm-keyword">if</span> (<span class="cm-variable-2">w</span> <span class="cm-operator">&lt;</span> <span class="cm-variable-2">words</span>.<span class="cm-property">length</span> <span class="cm-operator">-</span> <span class="cm-number">1</span>) {
+
+                        <span class="cm-variable-2">textData</span>.<span class="cm-property">push</span>(<span class="cm-variable-2">getWhiteSpace</span>(<span class="cm-variable-2">w</span> <span class="cm-operator">+</span> <span class="cm-number">1</span>));
+                    }
+                }
+
+                <span class="cm-keyword">return</span> <span class="cm-variable-2">textData</span>;
+            },
+
+            <span class="cm-def">processElement</span> <span class="cm-operator">=</span> <span class="cm-keyword">function</span> (<span class="cm-def">i</span>, <span class="cm-def">el</span>) {
+
+                <span class="cm-variable-2">ns</span>.<span class="cm-property">$temp</span>[<span class="cm-number">0</span>] <span class="cm-operator">=</span> <span class="cm-variable-2">el</span>;
+
+                <span class="cm-keyword">var</span> <span class="cm-def">hasSmallCaps</span> <span class="cm-operator">=</span> <span class="cm-variable-2">ns</span>.<span class="cm-property">SmallCaps</span>.<span class="cm-property">isItem</span>(<span class="cm-variable-2">ns</span>.<span class="cm-property">$temp</span>),
+
+                    <span class="cm-def">result</span> <span class="cm-operator">=</span> <span class="cm-variable-2">breakText</span>(<span class="cm-variable-2">ns</span>.<span class="cm-property">$temp</span>, <span class="cm-variable-2">hasSmallCaps</span>);
+
+                <span class="cm-keyword">if</span> (<span class="cm-variable-2">hasSmallCaps</span>) {
+
+                    <span class="cm-variable-2">ns</span>.<span class="cm-property">SmallCaps</span>.<span class="cm-property">removeItem</span>(<span class="cm-variable-2">ns</span>.<span class="cm-property">$temp</span>);
+                }
+
+                <span class="cm-variable-2">ns</span>.<span class="cm-property">$temp</span>.<span class="cm-property">html</span>(<span class="cm-variable-2">result</span>.<span class="cm-property">join</span>(<span class="cm-string">""</span>));
+            },
+
+            <span class="cm-def">init</span> <span class="cm-operator">=</span> <span class="cm-keyword">function</span> () {
+
+                <span class="cm-keyword">var</span> <span class="cm-def">items</span> <span class="cm-operator">=</span> <span class="cm-variable">document</span>.<span class="cm-property">querySelectorAll</span>(<span class="cm-variable-2">SELECTOR</span>.<span class="cm-property">items</span>),
+
+                    <span class="cm-def">length</span> <span class="cm-operator">=</span> <span class="cm-variable-2">items</span>.<span class="cm-property">length</span>,
+                    <span class="cm-def">i</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>;
+
+                <span class="cm-keyword">for</span> (<span class="cm-variable-2">i</span>; <span class="cm-variable-2">i</span> <span class="cm-operator">&lt;</span> <span class="cm-variable-2">length</span>; <span class="cm-variable-2">i</span><span class="cm-operator">++</span>) {
+
+                    <span class="cm-variable-2">processElement</span>(<span class="cm-variable-2">i</span>, <span class="cm-variable-2">items</span>[<span class="cm-variable-2">i</span>]);
+                }
+            };
+
+        <span class="cm-keyword">return</span> {
+            <span class="cm-property">init</span>: <span class="cm-variable-2">init</span>
+        };
+
+    }());
+
+}((<span class="cm-keyword">function</span> (<span class="cm-def">ns</span>) { <span class="cm-variable">window</span>[<span class="cm-variable-2">ns</span>] <span class="cm-operator">=</span> <span class="cm-variable">window</span>[<span class="cm-variable-2">ns</span>] <span class="cm-operator">||</span> { <span class="cm-property">toString</span>: <span class="cm-keyword">function</span> () { <span class="cm-keyword">return</span> <span class="cm-variable-2">ns</span>; } }; <span class="cm-keyword">return</span> <span class="cm-variable">window</span>[<span class="cm-variable-2">ns</span>]; }(<span class="cm-string">"MJNS"</span>)), <span class="cm-variable">jQuery</span>));
+</code></pre>
+
+    <script src="../build/codesample.build.min.js"></script>
+
+</body>
+</html>

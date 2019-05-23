@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Code Highligher</title>
+
+    <style>
+
+        label {
+            display: block;
+        }
+
+        textarea {
+            display: block;
+
+            width: 100%;
+            min-height: 33.3vh;
+        }
+
+        p {
+            margin-bottom: 0.5em;
+        }
+
+        pre {
+            display: none;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <label>
+       <p>Input</p>
+        <textarea id="input"></textarea>
+    </label>
+
+    <br>
+
+    <label>
+       <p>Mode</p>
+        <select id="mode">
+            <option value="text/html">html</option>
+            <option value="text/css">css</option>
+            <option value="text/javascript">javascript</option>
+        </select>
+    </label>
+
+    <br>
+
+    <button id="run" type="button">Highlight</button>
+
+    <p>Output</p>
+
+    <textarea id="output"></textarea>
+
+    <pre id="output-pre"></pre>
+
+    <script src="../../libs/CodeMirror-5.28.0/lib/codemirror.js"></script>
+    <script src="../../libs/CodeMirror-5.28.0/addon/runmode/runmode.js"></script>
+    <script src="../../libs/CodeMirror-5.28.0/mode/javascript/javascript.js"></script>
+    <script src="../../libs/CodeMirror-5.28.0/mode/css/css.js"></script>
+    <script src="../../libs/CodeMirror-5.28.0/mode/xml/xml.js"></script>
+    <script src="../../libs/CodeMirror-5.28.0/mode/htmlmixed/htmlmixed.js"></script>
+
+    <script>
+
+        function fixCodeMirrorCSS() {
+
+            var mode = CodeMirror.mimeModes["text/css"],
+
+                valueKeywords = Object.keys(mode.valueKeywords),
+                addValueKeywords = [
+                    "line-height", "width", "cubic-bezier"
+                ];
+
+            addValueKeywords.forEach(function (keyword) {
+
+                if (valueKeywords.indexOf(keyword) === -1) {
+
+                    mode.valueKeywords[keyword] = true;
+                }
+            });
+        };
+
+        fixCodeMirrorCSS();
+
+        var elRun = document.querySelector("#run"),
+            elOutputPre = document.querySelector("#output-pre"),
+            elOutput = document.querySelector("#output"),
+            elInput = document.querySelector("#input"),
+            elMode = document.querySelector("#mode");
+
+        elRun.addEventListener("click", function (event) {
+
+            event.preventDefault();
+
+            CodeMirror.runMode(elInput.value, elMode.value, elOutputPre);
+
+            elOutput.value = elOutputPre.innerHTML;
+
+            elOutputPre.innerHTML = "";
+        });
+
+    </script>
+
+</body>
+</html>

@@ -72,12 +72,16 @@
             "technologies.build.css": [
                 lib("inert-polyfill/inert-polyfill.css"),
 
-                comp("technologies.css"),
-                comp("CodeMirror-theme.css")
+                comp("technologies.css")
             ],
 
             "print.build.css": [
                 file("print.css")
+            ],
+
+            "codesample.build.css": [
+                file("code-sample/code-sample.css"),
+                file("code-sample/CodeMirror-theme.css")
             ]
         };
 

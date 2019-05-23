@@ -40,6 +40,7 @@
                     elLink = document.createElement("link");
 
                 elScript.defer = true;
+                elScript.async = false;
                 elScript.src = JS_TO_LOAD;
                 elScript.onload = onLoad;
 
@@ -84,7 +85,8 @@
             };
 
         return {
-            init: init
+            init: init,
+            shouldBeLoaded: shouldBeLoaded
         };
 
     }());

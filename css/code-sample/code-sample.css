@@ -1,0 +1,81 @@
+/*====================================================================*/
+/*--------------------------- CODE-SAMPLE ----------------------------*/
+/*====================================================================*/
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    padding: 0;
+    margin: 0;
+
+    font-family: "PT Mono", monospace;
+
+    color: #d5d5d5;
+}
+
+::-moz-selection {
+    color: white;
+    background: rgba(123, 104, 57, 0.85) !important;
+}
+
+::selection {
+    color: white;
+    background: rgba(123, 104, 57, 0.85) !important;
+}
+
+html,
+body {
+    position: relative;
+
+    height: 100vh;
+
+    overflow: hidden;
+}
+
+body * {
+    font-size: 0.875rem;
+    line-height: 1.6875rem;
+}
+
+.mobile body * {
+    font-size: 0.75rem;
+    line-height: 1.4375rem;
+}
+
+    .scrolling-element {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+        padding-left: 40px;
+
+        overflow: hidden;
+    }
+
+    .mobile .scrolling-element {
+        padding-left: 8px;
+    }
+
+    .scrolling-element:not(.mCustomScrollbar) {
+        overflow: auto;
+        scroll-behavior: smooth;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0) transparent;
+        -webkit-overflow-scrolling: touch;
+
+        transition: scrollbar-color 0.275s cubic-bezier(0, 0, .54, .9) 0s;
+    }
+
+    .scrolling-element:hover,
+    .scrolling-element:focus {
+        scrollbar-color: rgba(255, 255, 255, 0.35) transparent;
+
+        transition: scrollbar-color 0.4s cubic-bezier(0, 0, .25, 1) 0s;
+    }
+
+        .mobile .mCSB_scrollTools.mCSB_scrollTools.mCSB_scrollTools {
+            right: -6px;
+        }
