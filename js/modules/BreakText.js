@@ -33,7 +33,7 @@
                 var wordData = [],
                     l = 0;
 
-                wordData.push("<span class=\"" + (CLASS.word + " " + CLASS.word + num) + "\">");
+                wordData.push("<span class=\"" + (CLASS.word + " " + CLASS.word + num) + "\" style=\"display: inline-block;\">");
 
                 for (l; l < word.length; l++) {
 

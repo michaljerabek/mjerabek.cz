@@ -659,10 +659,6 @@
                 }
             }
 
-                .intro__title .small-caps--lower {
-                    font-size: 0.7em;
-                }
-
                 .intro__title [class*="letter"] {
                     position: relative;
                 }
@@ -775,8 +771,7 @@
                 /*/animation*/
 
                 /*small-caps*/
-                .intro__title .word1 .letter7,
-                .intro__title .word2 .letter1 {
+                .intro__title .word1 .letter7 {
                     font-size: 1em;
                 }
                 /*/small-caps*/

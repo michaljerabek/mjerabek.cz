@@ -175,7 +175,7 @@
                 var wordData = [],
                     l = 0;
 
-                wordData.push("<span class=\"" + (CLASS.word + " " + CLASS.word + num) + "\">");
+                wordData.push("<span class=\"" + (CLASS.word + " " + CLASS.word + num) + "\" style=\"display: inline-block;\">");
 
                 for (l; l < word.length; l++) {
 
@@ -411,13 +411,22 @@
 
                 background: ".intro__background",
                 backgroundLayers: ".intro__background-layer",
-                findSquare: ".square"
+                findSquare: ".square",
+
+                logoTemplate: ".intro__logo-template"
             },
 
             $self,
 
             $bgLayers,
             parallax,
+
+            loadLogo = function () {
+
+                var $template = $self.find(SELECTOR.logoTemplate);
+
+                $template.replaceWith($template.text());
+            },
 
             initBackground = function () {
 
@@ -457,6 +466,8 @@
                 $self = $(SELECTOR.self);
 
                 ns.$ParallaxLoader.then(initBackground);
+
+                setTimeout(loadLogo, 3000);
             };
 
         return {

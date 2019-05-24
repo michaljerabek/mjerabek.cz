@@ -17,13 +17,22 @@
 
                 background: ".intro__background",
                 backgroundLayers: ".intro__background-layer",
-                findSquare: ".square"
+                findSquare: ".square",
+
+                logoTemplate: ".intro__logo-template"
             },
 
             $self,
 
             $bgLayers,
             parallax,
+
+            loadLogo = function () {
+
+                var $template = $self.find(SELECTOR.logoTemplate);
+
+                $template.replaceWith($template.text());
+            },
 
             initBackground = function () {
 
@@ -63,6 +72,8 @@
                 $self = $(SELECTOR.self);
 
                 ns.$ParallaxLoader.then(initBackground);
+
+                setTimeout(loadLogo, 3000);
             };
 
         return {
