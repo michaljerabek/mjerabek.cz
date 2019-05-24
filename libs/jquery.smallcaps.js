@@ -25,9 +25,9 @@
     function addStyles() {
         var style = document.createElement("style");
         style.innerHTML = [
-            ".small-caps { \n\tfont-variant: normal; \n\ttext-transform: uppercase; \n}\n\n",
-            ".small-caps--upper { \n\tfont-size: 1em; \n}\n\n",
-            ".small-caps--lower { \n\tfont-size: 0.7em; \n}"
+            ".js-small-caps { \n\tfont-variant: normal; \n\ttext-transform: uppercase; \n}\n\n",
+            ".js-small-caps--upper { \n\tfont-size: 1em; \n}\n\n",
+            ".js-small-caps--lower { \n\tfont-size: 0.7em; \n}"
         ].join("");
         document.head.appendChild(style);
     }
@@ -81,10 +81,10 @@
         return character.toUpperCase() === character;
     }
     function wrapUpper(text) {
-        return "<span class='small-caps small-caps--upper'>" + text + "</span>";
+        return "<span class='js-small-caps js-small-caps--upper'>" + text + "</span>";
     }
     function wrapLower(text) {
-        return "<span class='small-caps small-caps--lower'>" + text + "</span>";
+        return "<span class='js-small-caps js-small-caps--lower'>" + text + "</span>";
     }
     function hasChildren($obj) {
         return $obj.length > 0;

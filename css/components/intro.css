@@ -774,6 +774,13 @@
                 }
                 /*/animation*/
 
+                /*small-caps*/
+                .intro__title .word1 .letter7,
+                .intro__title .word2 .letter1 {
+                    font-size: 1em;
+                }
+                /*/small-caps*/
+
                 /*kerning*/
                 .intro__title .word1 .letter1 {
                     margin-right: -0.035em;

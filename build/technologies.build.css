@@ -826,6 +826,8 @@
             }
 
                 .technologies__show-sample .text {
+                    font-variant: small-caps;
+
                     color: #C9B47F;
                 }
 

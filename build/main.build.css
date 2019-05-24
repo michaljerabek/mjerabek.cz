@@ -158,6 +158,17 @@ em {
     text-decoration: line-through;
 }*/
 
+.small-caps .word .letter {
+    font-size: 0.7em;
+    font-variant: normal;
+    text-transform: uppercase;
+}
+
+.small-caps .word1 .letter1,
+.small-caps--all .word .letter1 {
+    font-size: 1em;
+}
+
 /* Zobrazí inline obsah před/za elementem podle jeho data-atributu.
  * Vhodné pro oddělení obsahu. */
 [data-before]:before {
@@ -2620,6 +2631,13 @@ input[type="time"]:focus {
                         show 2.5s ease-out 0.3s 1 forwards;
                 }
                 /*/animation*/
+
+                /*small-caps*/
+                .intro__title .word1 .letter7,
+                .intro__title .word2 .letter1 {
+                    font-size: 1em;
+                }
+                /*/small-caps*/
 
                 /*kerning*/
                 .intro__title .word1 .letter1 {
@@ -5944,6 +5962,8 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 }
 
 [href*="#reference-trutnov-vet"] .references__project-name .letter9 {
+    font-size: 1em;
+
     margin-right: -0.05em;
 }
 
@@ -6880,6 +6900,12 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 
         pointer-events: auto;
     }
+
+        /*small-caps*/
+        .about-me__title .text > span:nth-child(2) .word1 .letter1 {
+            font-size: 0.7em;
+        }
+        /*/small-caps*/
 
         /*kerning*/
         .about-me__title .text > span:first-child .word1 .letter1 {

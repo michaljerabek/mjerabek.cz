@@ -41,7 +41,6 @@
 
     var FILES = {
             "libs.build.js": [
-                lib("jquery.smallcaps.js"),
                 lib("infinitum/infinitum.js")
             ],
 
@@ -51,7 +50,6 @@
                 mod("BreakText.js"),
                 mod("JSHover.js"),
                 mod("Intro.js"),
-                mod("SmallCaps.js"),
                 mod("MainNav.js"),
                 mod("Offer.js"),
                 mod("TechnologiesLoader.js"),

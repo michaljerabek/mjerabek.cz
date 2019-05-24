@@ -16,6 +16,12 @@
         pointer-events: auto;
     }
 
+        /*small-caps*/
+        .about-me__title .text > span:nth-child(2) .word1 .letter1 {
+            font-size: 0.7em;
+        }
+        /*/small-caps*/
+
         /*kerning*/
         .about-me__title .text > span:first-child .word1 .letter1 {
             margin-right: -0.015em;

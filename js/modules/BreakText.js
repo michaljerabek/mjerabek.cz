@@ -18,31 +18,26 @@
                 lazyItems: "[data-break-text='lazy']"
             },
 
-            wrapLetter = function (letter, num, smallCaps) {
+            wrapLetter = function (letter, num) {
 
-                var attrs = [
-                        "class=\"", CLASS.letter + num, "\" style=\"display: inline-block;\"",
-                        smallCaps ? ns.SmallCaps.getAttr(smallCaps) : ""
-                    ].join(" ");
-
-                return "<span " + attrs + ">" + letter + "</span>";
+                return "<span class=\"" + (CLASS.letter + " " + CLASS.letter + num) + "\" style=\"display: inline-block;\">" + letter + "</span>";
             },
 
             getWhiteSpace = function (num) {
 
-                return "<span class=\"" + (CLASS.space + num) + "\"> </span>";
+                return "<span class=\"" + (CLASS.space + " " + CLASS.space + num) + "\"> </span>";
             },
 
-            breakWord = function (word, num, hasSmallCaps) {
+            breakWord = function (word, num) {
 
                 var wordData = [],
                     l = 0;
 
-                wordData.push("<span class=\"" + (CLASS.word + num) + "\" style=\"display: inline-block;\">");
+                wordData.push("<span class=\"" + (CLASS.word + " " + CLASS.word + num) + "\">");
 
                 for (l; l < word.length; l++) {
 
-                    wordData.push(wrapLetter(word[l], l + 1, hasSmallCaps));
+                    wordData.push(wrapLetter(word[l], l + 1));
                 }
 
                 wordData.push("</span>");
@@ -50,7 +45,7 @@
                 return wordData;
             },
 
-            breakText = function ($item, hasSmallCaps) {
+            breakText = function ($item) {
 
                 var text = $item.text().trim(),
                     words = text.split(/\s/),
@@ -60,7 +55,7 @@
 
                 for (w; w < words.length; w++) {
 
-                    textData = textData.concat(breakWord(words[w], w + 1, hasSmallCaps));
+                    textData = textData.concat(breakWord(words[w], w + 1));
 
                     if (w < words.length - 1) {
 
@@ -75,14 +70,7 @@
 
                 ns.$temp[0] = el;
 
-                var smallCapsAttr = ns.SmallCaps.getState(ns.$temp),
-
-                    result = breakText(ns.$temp, smallCapsAttr);
-
-                if (smallCapsAttr) {
-
-                    ns.SmallCaps.removeItem(ns.$temp);
-                }
+                var result = breakText(ns.$temp);
 
                 ns.$temp.html(result.join(""));
             },
