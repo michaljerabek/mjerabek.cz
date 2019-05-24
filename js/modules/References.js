@@ -364,11 +364,11 @@
                 ensureInitialImageLoad();
 
                 //iOS fix (špatná výška)
-                setTimeout(function() {
+                /*setTimeout(function() {
 
                     ns.$win.trigger("resize.References." + ns);
 
-                }, 200);
+                }, 200);*/
             },
 
             initBackground = function () {

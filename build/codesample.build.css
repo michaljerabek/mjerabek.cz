@@ -50,13 +50,8 @@ body * {
 
         width: 100%;
         height: 100%;
-        padding-left: 40px;
 
         overflow: hidden;
-    }
-
-    .mobile .scrolling-element {
-        padding-left: 8px;
     }
 
     .scrolling-element:not(.mCustomScrollbar) {
@@ -76,9 +71,21 @@ body * {
         transition: scrollbar-color 0.4s cubic-bezier(0, 0, .25, 1) 0s;
     }
 
+
+        .scrolling-element code {
+            display: block;
+
+            padding-left: 40px;
+        }
+
+        .mobile .scrolling-element code {
+            padding-left: 8px;
+        }
+
         .mobile .mCSB_scrollTools.mCSB_scrollTools.mCSB_scrollTools {
             right: -6px;
         }
+
 [data-codemirror-mimemode] { color: #d5d5d5; }
 .cm-keyword        { color: #6595A9; }
 .cm-atom           { color: #B3794E; }

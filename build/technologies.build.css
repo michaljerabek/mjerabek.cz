@@ -499,6 +499,13 @@
             }
         }
 
+        @media (min-width: 768px) {
+
+            .technologies__sample {
+                overflow: hidden;
+            }
+        }
+
         @media (max-width: 767px) {
 
             .technologies__sample {
