@@ -28,11 +28,11 @@ $replaceTag = function ($tag, $value) use (&$content) {
     $content = preg_replace("/\{\{" . $tag . "}\}/", $value, $content);
 };
 
-$removeDev = function () use (&$content) {
+$removeSection = function ($name) use (&$content) {
 
-    $content = preg_replace("#\n*\s*(?<=<!--dev-->).*?(?=<!--/dev-->)#s", "", $content);
-    $content = preg_replace("#(\n*\s*<!--dev-->)#s", "\n", $content);
-    $content = preg_replace("#(<!--/dev-->\s*)\s*\n#s", "\n\n", $content);
+    $content = preg_replace("#\n*\s*(?<=<!--" . $name . "-->).*?(?=<!--/" . $name . "-->)#s", "", $content);
+    $content = preg_replace("#(\n*\s*<!--" . $name . "-->)#s", "\n", $content);
+    $content = preg_replace("#(<!--/" . $name . "-->\s*)\s*\n#s", "\n\n", $content);
 };
 
 $useProd = function () use (&$content) {
@@ -79,7 +79,12 @@ $replaceTag("[^{}]+", "");
 
 if (PROD) {
 
-    $removeDev();
+    if (preg_match("#^/_/*#", $_SERVER["REQUEST_URI"])) {
+
+        $removeSection("analytics");
+    }
+
+    $removeSection("dev");
     $useProd();
 }
 
