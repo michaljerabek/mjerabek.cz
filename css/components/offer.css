@@ -364,7 +364,7 @@ _:-ms-input-placeholder, :root .offer * { /*IE10-11*/
                     pointer-events: auto;
                 }
 
-                .js .offer__feature-icon-svg {
+                .offer--has-features-anims .offer__feature-icon-svg {
                     cursor: help;
                 }
 

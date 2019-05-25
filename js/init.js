@@ -42,7 +42,7 @@
 
     jQuery(function () {
 
-        var modules = ["$ParallaxLoader", "$BGObjectsOpacityAnimation", "$Cookies", "CustomScrollbarLoader", "Performance", "Visibility", "JSHover", "BreakText", "Intro", "SmallCaps", "Offer", "TechnologiesLoader", "References", "AboutMe", "Pricelist", "Form", "Contact", "Fonts", "FixBugs", "Analytics", "$ConsoleMessage", "MainNav"];
+        var modules = ["$ParallaxLoader", "$BGObjectsOpacityAnimation", "$OfferFeaturesAnimations", "$Cookies", "CustomScrollbarLoader", "Performance", "Visibility", "JSHover", "BreakText", "Intro", "SmallCaps", "Offer", "TechnologiesLoader", "References", "AboutMe", "Pricelist", "Form", "Contact", "Fonts", "FixBugs", "Analytics", "$ConsoleMessage", "MainNav"];
 
         modules.forEach(function (moduleName) {
 

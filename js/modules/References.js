@@ -275,17 +275,27 @@
 
             ensureInitialImageLoad = function () {
 
-                var sectionRect = $self[0].getBoundingClientRect();
-
-                if (window.location.hash === "#" + ID.self ||
-                    (sectionRect.top <= window.innerHeight && sectionRect.bottom >= 0)
-                ) {
+                if (window.location.hash === "#" + ID.self) {
 
                     setTimeout(loadImage.bind(null, $tabs.filter(SELECTOR.activeTab)), 0);
 
                     initialImageLoadStarted = true;
 
                 } else {
+
+                    if (ns.$win.scrollTop() > 0) {
+
+                        var sectionRect = $self[0].getBoundingClientRect();
+
+                        if (sectionRect.top <= window.innerHeight && sectionRect.bottom >= 0) {
+
+                            setTimeout(loadImage.bind(null, $tabs.filter(SELECTOR.activeTab)), 0);
+
+                            initialImageLoadStarted = true;
+
+                            return;
+                        }
+                    }
 
                     ns.$win.on("main-nav__target-changed.References." + ns, function (event, target) {
 

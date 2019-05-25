@@ -33,14 +33,25 @@
 
     <!--———————————— PRELOAD ————————————-->
 
-    <link rel="preconnect" href="https://code.jquery.com/" crossorigin>
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com/" crossorigin>
+    <link rel="preload" href="https://code.jquery.com/jquery-3.4.1.min.js" as="script" crossorigin>
 
     <link rel="preload" href="build/libs.build.min.css?v={{LIBS_VERSION}}" as="style">
     <link rel="preload" href="build/main.build.min.css?v={{VERSION}}" as="style">
     <link rel="preload" href="build/libs.build.min.js?v={{LIBS_VERSION}}" as="script">
     <link rel="preload" href="build/main.build.min.js?v={{VERSION}}" as="script">
+
+    <link rel="preload" href="fonts/JosefinSans-Regular.ttf" as="font" crossorigin>
+    <link rel="preload" href="fonts/JosefinSans-Italic.ttf" as="font" crossorigin>
+    <link rel="preload" href="fonts/JosefinSans-Bold.ttf" as="font" crossorigin>
+    <link rel="preload" href="fonts/JosefinSans-Light.ttf" as="font" crossorigin>
+    <link rel="preload" href="fonts/JosefinSans-LightItalic.ttf" as="font" crossorigin>
+    <link rel="preload" href="fonts/JosefinSans-SemiBold.ttf" as="font" crossorigin>
+    <link rel="preload" href="fonts/JosefinSans-SemiBoldItalic.ttf" as="font" crossorigin>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com/" crossorigin>
+
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Caudex:400,400i,700,700i;subset=latin-ext&display=swap" as="style" crossorigin>
 
 
     <!--———————————— FAVICON ————————————-->
@@ -73,7 +84,10 @@
 
     <!--———————————— FONTS ————————————-->
 
-    <link href="https://fonts.googleapis.com/css?family=Caudex:400,400i,700,700i;subset=latin-ext&display=swap" rel="stylesheet">
+    <noscript id="fonts__load">
+        <link href="https://fonts.googleapis.com/css?family=Caudex:400,400i,700,700i;subset=latin-ext&display=swap" rel="stylesheet" crossorigin>
+    </noscript>
+
     <noscript><link href="https://fonts.googleapis.com/css?family=PT+Mono&display=swap" rel="stylesheet"> </noscript>
 
 
@@ -104,7 +118,7 @@
     <script src="dev/load-css.js" data-files="libs.build.css, main.build.css, print.build.css" data-media="screen, screen, print"></script>
     <noscript><link href="dev/cssimport/libs.build.css" rel="stylesheet" media="screen"></noscript>
     <noscript><link href="dev/cssimport/main.build.css" rel="stylesheet" media="screen"></noscript>
-    <noscript><link href="css/components/technologies.css" rel="stylesheet" media="screen"></noscript>
+    <noscript><link href="build/technologies.build.min.css" rel="stylesheet" media="screen"></noscript>
     <!--/dev-->
 
     <!--prod-->
@@ -1693,7 +1707,7 @@
 
     <!--———————————— JAVASCRIPT ————————————-->
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin></script>
     <script>!window.jQuery && document.write("<script src='libs/jq.min.js'><"+"/script>");</script>
 
     <!--dev-->

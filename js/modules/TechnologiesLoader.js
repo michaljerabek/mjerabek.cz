@@ -1,5 +1,5 @@
 /*jslint indent: 4, white: true, nomen: true, regexp: true, unparam: true, node: true, browser: true, devel: true, nomen: true, plusplus: true, regexp: true, sloppy: true, vars: true*/
-/*global jQuery*/
+/*global jQuery, window, document*/
 
 (function (ns, $) {
 
@@ -42,7 +42,7 @@
             },
 
             TECHNOLOGIES_HASH_REGEX = /^#(html|css|js)$/i,
-            SECTION_TARGETS_REGEX = /^co-delam$/i,
+            SECTION_TARGETS_REGEX = new RegExp("^" + ns.Offer.getId() + "$", "i"),
 
             SECTION_TARGETS_LOAD_DELAY = 3000,
 

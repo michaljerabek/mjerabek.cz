@@ -8,7 +8,20 @@
                 caudexLoaded: "fonts__caudex--loaded"
             },
 
+            ID = {
+                toLoad: "fonts__load"
+            },
+
+            load = function () {
+
+                var $fonts = jQuery("#" + ID.toLoad);
+
+                $fonts.replaceWith($fonts.text());
+            },
+
             init = function () {
+
+                load();
 
                 if (document.fonts) {
 

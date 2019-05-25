@@ -80,6 +80,10 @@
                 mod("$ParallaxLoader.js")
             ],
 
+            "offer-features-animations.build.js": [
+                mod("OfferFeaturesAnimations.js")
+            ],
+
             "ConsoleMessage.build.js": [
                 mod("ConsoleMessage.js")
             ],
