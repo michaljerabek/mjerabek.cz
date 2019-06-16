@@ -28,20 +28,27 @@ $replaceTag = function ($tag, $value) use (&$content) {
     $content = preg_replace("/\{\{" . $tag . "}\}/", $value, $content);
 };
 
-$removeSection = function ($name) use (&$content) {
+$removeSectionTags = function ($name) use (&$content) {
 
-    $content = preg_replace("#\n*\s*(?<=<!--" . $name . "-->).*?(?=<!--/" . $name . "-->)#s", "", $content);
     $content = preg_replace("#(\n*\s*<!--" . $name . "-->)#s", "\n", $content);
     $content = preg_replace("#(<!--/" . $name . "-->\s*)\s*\n#s", "\n\n", $content);
 };
 
-$useProd = function () use (&$content) {
+$removeSection = function ($name) use (&$content, $removeSectionTags) {
+
+    $content = preg_replace("#\n*\s*(?<=<!--" . $name . "-->).*?(?=<!--/" . $name . "-->)#s", "", $content);
+
+    $removeSectionTags($name);
+};
+
+$useProd = function () use (&$content, $removeSectionTags) {
 
     $content = preg_replace_callback("#(?<=<!--prod-->).*?(?=<!--/prod-->)#s", function ($matches) {
         return preg_replace("#<!--|-->#", "", $matches[0]);
     }, $content);
-    $content = preg_replace("#(\n*\s*<!--prod-->)#s", "\n", $content);
-    $content = preg_replace("#(<!--/prod-->\s*)\s*\n#s", "\n\n", $content);
+
+    $removeSectionTags("prod");
+    $removeSectionTags("analytics");
 };
 
 if (isset($_SESSION["old_input"])) {
