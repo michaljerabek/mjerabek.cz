@@ -794,7 +794,7 @@ a:active .transition-hideable {
         transform: translateZ(8px);
 
         background-color: #000;
-        opacity: 0;
+        opacity: 0.001;
 
         pointer-events: none;
 
@@ -1895,9 +1895,6 @@ input[type="time"]:focus {
     }
 
     .intro__content-wrapper {
-        position: relative;
-        z-index: 5;
-
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -2709,8 +2706,6 @@ input[type="time"]:focus {
                 color: #7B6839;
 
                 pointer-events: auto;
-
-                will-change: transform, opacity;
             }
 
                 .intro__claim .first-line,
@@ -5680,11 +5675,15 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 .js .references__nav::after {
     content: "\2026";
 
-    position: absolute;
-    bottom: 2px;
+    display: block;
+
+    height: 0;
+    margin-top: -2px;
+    margin-bottom: 2px;
 
     font-size: 17px;
     line-height: 0px;
+    text-align: right;
 
     color: #bdbdbd;
 }
@@ -5699,14 +5698,14 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
 @media (min-width: 768px) {
 
     .js .references__nav::after {
-        right: 40px;
+        margin-right: 40px;
     }
 }
 
 @media (max-width: 767px) {
 
     .js .references__nav::after {
-        right: 20px;
+        margin-right: 20px;
     }
 }
 

@@ -121,11 +121,15 @@
 .js .references__nav::after {
     content: "\2026";
 
-    position: absolute;
-    bottom: 2px;
+    display: block;
+
+    height: 0;
+    margin-top: -2px;
+    margin-bottom: 2px;
 
     font-size: 17px;
     line-height: 0px;
+    text-align: right;
 
     color: #bdbdbd;
 }
@@ -140,14 +144,14 @@
 @media (min-width: 768px) {
 
     .js .references__nav::after {
-        right: 40px;
+        margin-right: 40px;
     }
 }
 
 @media (max-width: 767px) {
 
     .js .references__nav::after {
-        right: 20px;
+        margin-right: 20px;
     }
 }
 

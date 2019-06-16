@@ -71,17 +71,20 @@ body * {
         transition: scrollbar-color 0.4s cubic-bezier(0, 0, .25, 1) 0s;
     }
 
-
-        .scrolling-element code {
-            display: block;
-
-            padding-left: 40px;
+        .scrolling-element .mCSB_container {
+            transform: translateZ(0);
         }
 
-        .mobile .scrolling-element code {
-            padding-left: 8px;
-        }
+            .scrolling-element code {
+                display: block;
 
-        .mobile .mCSB_scrollTools.mCSB_scrollTools.mCSB_scrollTools {
-            right: -6px;
-        }
+                padding-left: 40px;
+            }
+
+            .mobile .scrolling-element code {
+                padding-left: 8px;
+            }
+
+            .mobile .mCSB_scrollTools.mCSB_scrollTools.mCSB_scrollTools {
+                right: -6px;
+            }
