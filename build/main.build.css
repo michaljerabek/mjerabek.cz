@@ -7485,11 +7485,11 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
                     }
 
                     .pricelist__price .small + span .word1 .letter1 {
-                        margin-right: -0.025em;
+                        margin-right: 0.0035em;
                     }
 
                     .pricelist__price .small + span .word1 .letter2 {
-                        margin-right: 0.035em;
+                        margin-right: 0.0275em;
                     }
 
                     .pricelist__price .small + span .word1 .letter3 {
