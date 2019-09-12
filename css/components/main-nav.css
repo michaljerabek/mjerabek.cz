@@ -790,7 +790,7 @@
                         visibility 0s linear 0.9s;
                 }
 
-                @supports (position: sticky) or (position: -webkit-sticky) {
+                @supports (position: sticky), (position: -webkit-sticky) {
 
                     .main-nav__items::after,
                     .main-nav__items::before {
