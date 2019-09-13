@@ -10,6 +10,7 @@
 
     width: 100%;
     padding: 14px 0;
+    max-height: 100%;
 
     transform: translateY(0%);
 
@@ -17,6 +18,9 @@
     background-color: #fff;
     opacity: 1;
     visibility: visible;
+
+    overflow: auto;
+    scrollbar-width: thin;
 
     transition: opacity 2s ease 3s,
         visibility 0s linear 3s,
@@ -40,23 +44,50 @@
 
     .cookies .layout__center {
         display: flex;
-        justify-content: space-between;
         align-items: center;
+        justify-content: space-between;
     }
 
+        @media (max-width: 767px) {
+
+            .cookies .layout__center {
+                flex-wrap: wrap;
+                justify-content: flex-end;
+            }
+        }
+
         .cookies__message {
-            padding-right: 17px;
+            max-width: 46.5rem;
+            padding-right: 1.25rem;
 
             font-size: 1.0625rem;
+            text-indent: -0.0625rem;
             line-height: 1.25rem;
         }
 
         @media (max-width: 767px) {
 
             .cookies__message {
+                width: 100%;
+                padding-right: 0;
+                padding-bottom:  1.0625rem;
+
                 font-size: 0.875rem;
+                text-indent: 0;
                 line-height: 1.0625rem;
             }
+        }
+
+        .cookies__detail {
+            display: block;
+
+            margin-top: 0.1875rem;
+
+            font-size: 0.75rem;
+            text-indent: 0;
+            line-height: 1.0625rem;
+
+            color: #6d6d6d;
         }
 
             .cookies__link {
