@@ -6785,6 +6785,13 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
                         pointer-events: auto;
                     }
 
+                    .references__more-projects-note,
+                    .references__other-projects-projects-note {
+                        font-style: italic;
+
+                        color: #6d6d6d;
+                    }
+
 /*--------------------------------------------------------------------*/
 /*---------------------------- BACKGROUND ----------------------------*/
 /*--------------------------------------------------------------------*/

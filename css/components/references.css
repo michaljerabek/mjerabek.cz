@@ -1231,6 +1231,13 @@
                         pointer-events: auto;
                     }
 
+                    .references__more-projects-note,
+                    .references__other-projects-projects-note {
+                        font-style: italic;
+
+                        color: #6d6d6d;
+                    }
+
 /*--------------------------------------------------------------------*/
 /*---------------------------- BACKGROUND ----------------------------*/
 /*--------------------------------------------------------------------*/
