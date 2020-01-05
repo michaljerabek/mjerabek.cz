@@ -7304,6 +7304,21 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
             font-size: 0;
         }
 
+            .pricelist__content p a {
+                text-decoration: none;
+
+                color: #7B6839;
+
+                transition-property: opacity, color;
+            }
+
+            .pricelist__content p a:focus,
+            .pricelist__content p a:hover {
+                color: #3C6474;
+
+                transition-property: opacity, color;
+            }
+
             .pricelist__pricelist,
             .pricelist__terms-and-conditions {
                 font-size: 1.0625rem;
@@ -7485,7 +7500,7 @@ _:-ms-input-placeholder, :root .offer__feature-icon .glass { /*IE10-11*/
                     }
 
                     .pricelist__price .small + span .word1 .letter1 {
-                        margin-right: 0.0035em;
+                        margin-right: 0.02em;
                     }
 
                     .pricelist__price .small + span .word1 .letter2 {
