@@ -12,9 +12,14 @@
     <title>Manuál k šabloně</title>
 
 
+    <!--———————————— FONTS ————————————-->
+
+    <link href="https://fonts.googleapis.com/css?family=Caudex:400,400i,700,700i|Josefin+Sans:100,100i,300,300i,400,400i,600,600i,700,700i|PT+Mono&display=swap&subset=latin-ext" rel="stylesheet">
+
+
     <!--———————————— STYLES ————————————-->
 
-    <link rel="stylesheet" href="./fonts/load.css">
+    <script>!navigator.onLine && document.write("<link rel=\"stylesheet\" href=\"./fonts/load.css\">");</script>
     <link rel="stylesheet" href="./css/vars.css">
     <link rel="stylesheet" href="./css/global.css">
     <link rel="stylesheet" href="./css/page.css">
@@ -34,7 +39,7 @@
 
         <header class="page__header">
 
-            <h1 class="page__title">Manuál k&nbsp;šabloně: <a href="../index.html">Ukázkový manuál</a></h1>
+            <h1 class="page__title">Manuál k&nbsp;šabloně: <a href="../index.html">Super Web</a></h1>
 
         </header>
         <!-- /.page__header -->
@@ -129,6 +134,7 @@
                                 <li><a href="#spojovani-js">Jak vytvořit produkční <span class="small">JS</span> z&nbsp;vývojového kódu?</a></li>
                                 <li><a href="#pristup-k-js-modulum">Jak přistupovat k&nbsp;<span class="small">API</span> u&nbsp;<span class="small">JS</span> modulů?</a></li>
 
+                                <li class="code__ariabutton"><a href="#ariabutton">Jak funguje otevírání skrytých elementů?</a></li>
                             </ul>
 
                         </section>
@@ -165,8 +171,15 @@
                                 <!--/css-->
 
                                 <li><code>/dev</code> — soubory potřebné pro vývoj šablony. (Viz <script>__linkTo("html-kod-pro-vyvoj");</script>.)</li>
+                                <li><code>/dev/templates</code> — soubory se šablonami pro generovaný kód. (Viz <script>__linkTo("gulp-generate");</script>.)</li>
+                                <li><code>/dev/templates/data</code> — soubory s&nbsp;daty pro šablony pro generovaný kód. (Viz <script>__linkTo("gulp-generate");</script>.)</li>
+                                <!--css-->
+                                <li><code>/dev/ie11CustomProperties</code> — knihovna, která přidává podporu pro <i><span class="small">CSS</span> Custom Propertíes</i> do <span class="small">IE 11</span>. (Viz <a href="https://github.com/nuxodin/ie11CustomProperties">GitHub</a>.)</li>
+                                <!--/css-->
                                 <li><code>/manual</code> — tento manuál.</li>
                             </ul>
+
+                            <p class="note">Komponenty, které jsou rozdělené na více souborů, mají vlastní složku, jejíž název odpovídá názvu komponentu. Má-li nějaký komponent rozšířené varianty, pak budou většinou společně ve složce s&nbsp;názvem základního komponentu (například: komponent <code>page</code> a&nbsp;jeho rozšířená varianta <code>home-page</code> budou ve složce <code>/css/components/page</code>).</p>
 
                         </section>
 
@@ -175,6 +188,7 @@
                             <h3>Soubory</h3>
 
                             <ul>
+                                <li><code>/README.md</code> — základní vysvětlení vytvoření produkčního kódu.</li>
                                 <!--css-->
                                 <li><code>/build/all.build.css</code> — spojené styly (včetně knihoven a pluginů, které nejsou načítané z <span class="small">CDN</span>).</li>
                                 <li><code>/build/all.build.min.css</code> — spojené a minifikované styly (včetně knihoven a pluginů, které nejsou načítané z <span class="small">CDN</span>).</li>
@@ -184,11 +198,13 @@
 
                                 <li><code>/build/all.build.js</code> — spojené skripty (včetně knihoven a pluginů, které nejsou načítané z <span class="small">CDN</span>).</li>
                                 <li><code>/build/all.build.min.js</code> — spojené a minifikované skripty (včetně knihoven a pluginů, které nejsou načítané z <span class="small">CDN</span>).</li>
-                                <li><code>/js/init.js</code> — soubor inicializující jednotlivé <span class="small">JS</span> komponenty/moduly.</li>
+                                <li><code>/js/init.js</code> — soubor inicializující jednotlivé <span class="small">JS</span> moduly.</li>
+                                <li><code>/js/GNS.js</code> — soubor (modul) s globálním jmenným prostorem a sdílenými vlastnostmi (properties) pro <span class="small">JS</span>. (Viz <script>__linkTo("js-metodologie");</script>)</li>
                                 <!--css-->
                                 <li><code>/css/reset.css</code> — soubor resetující výchozí styly prohlížeče.</li>
                                 <li><code>/css/main.css</code> — soubor se základními styly obsahu webu. (Viz <script>__linkTo("main-css");</script>.)</li>
                                 <li><code>/css/utility.css</code> — soubor s pomocnými styly. (Viz <script>__linkTo("utility-css");</script>.)</li>
+                                <li><code>/css/custom-properties.css</code> — základní nastevení globálních proměnných. (Viz <script>__linkTo("custom-properties-css");</script>.)</li>
                                 <li><code>/css/print.css</code> — soubor se základními tiskovými styly.</li>
                                 <!--/css-->
 
@@ -206,6 +222,7 @@
                                 <!--/css-->
                                 <li><code>/gulpfile.js</code> — soubor s automatizačními skripty pro <a href="https://gulpjs.com/"><i>Gulp</i></a>.</li>
                                 <li><code>/package.json</code> — soubor s nastavením <a class="small" href="https://www.npmjs.com/"><i>NPM</i></a>.</li>
+                                <li><code>/.babelrc</code> — soubor s nastavením pro <i><a href="https://babeljs.io/">Babel</a></i> (kompilace <span class="small">ES2015+</span> do <span class="small">ES5</span>).</li>
                             </ul>
 
                             <p><span class="small">HTML</span> kód jednotlivých stránek se nachází v kořenovém adresáři.</p>
@@ -231,7 +248,7 @@
                         </figure>
 
                         <!--css-->
-                        <p><strong>K dispozici je pak <i>gulp-task</i> <code>watch</code>, který automaticky spojí soubory, pokud se nějaký změní</strong> (nebo pokud se změní <code>/dev/load-css.js</code> nebo <code>/dev/load-js.js</code>):</p>
+                        <p><strong>K dispozici je pak <i>gulp-task</i> <code>watch</code>, který automaticky spojí a zkompiluje soubory, pokud se nějaký změní</strong> (nebo pokud se změní <code>/dev/load-css.js</code> nebo <code>/dev/load-js.js</code>):</p>
                         <!--/css-->
 
 
@@ -246,9 +263,9 @@
                         <!--css-->
                         <p class="note">Toto platí pouze pro <i>gulp-tasky</i> <code>css</code> a <code>js</code>. Optimalizace obrázků nebo vytváření <span class="small">SVG</span> spritu, je potřeba vždy spustit manuálně.</p>
 
-                        <p><strong><i>Gulp-taskem</i> <code>build</code> je pak možné spojit styly a skripty a odkomentovat potřebné elementy v <span class="small">HTML</span> souborech.</strong></p>
+                        <p><strong><i>Gulp-taskem</i> <code>build</code> je pak možné spojit a zkompilovat styly a skripty a odkomentovat potřebné elementy v <span class="small">HTML</span> souborech.</strong></p>
 
-                        <p>Pro detaily o spojování <span class="small">CSS</span> a <span class="small">JS</span> viz <script>__linkTo("spojovani-css");</script> a <script>__linkTo("spojovani-js");</script>, pro detaily o práci s vývojovými a produkčními soubory v <span class="small">HTML</span> viz <script>__linkTo("html-soubory");</script> a <script>__linkTo("html-kod-pro-vyvoj");</script>.</p>
+                        <p>Pro detaily o spojování a kompilaci <span class="small">CSS</span> a <span class="small">JS</span> viz <script>__linkTo("spojovani-css");</script> a <script>__linkTo("spojovani-js");</script>, pro detaily o práci s vývojovými a produkčními soubory v <span class="small">HTML</span> viz <script>__linkTo("html-soubory");</script> a <script>__linkTo("html-kod-pro-vyvoj");</script>.</p>
                         <!--/css-->
 
 
@@ -277,6 +294,7 @@
                                 <li><code>&lt;!--— <span class="small">FONTS</span> —--&gt;</code> — kód pro načtení písem.</li>
                                 <li><code>&lt;!--— <span class="small">SUPPORT</span> —--&gt;</code> — kód pro zajištění podpory pro starší prohlížeče.</li>
                                 <li><code>&lt;!--— <span class="small">CONTENT</span> —--&gt;</code> — obsah stránky.</li>
+                                <li><code>&lt;!--— <span class="small">APPENDED</span> —--&gt;</code> — kód přidaný po načtení stránky.</li>
                             </ul>
 
                         </section>
@@ -286,16 +304,21 @@
                             <h3 id="html-kod-pro-vyvoj"><span class="small">HTML</span> kód pro vývoj</h3>
 
                             <!--css-->
-                            <p><strong>V <span class="small">HTML</span> souborech jsou vložené soubory pro vývoj šablony</strong>, které jsou zakomentované a ohraničené komentáři <code>&lt;!--dev--&gt;</code> a <code>&lt;!--/dev--&gt;</code>. Tento kód je tedy možné pro produkční verzi odstranit. Jedná se o soubory <code>/dev/load-js.js</code>, <code>/dev/load-css.js</code>, <code>/dev/<span class="small">PATHS</span>.js</code> a <code>/dev/cssimport/all.build.css</code>. Skripty vkládají vývojové soubory <span class="small">CSS</span> a <span class="small">JS</span> do stránky. Při vývoji tento kód používat nemusíte. <strong>Tyto soubory se ale také používají pro spojování <span class="small">CSS</span> a <span class="small">JS</span>.</strong></p>
+                            <p><strong>V <span class="small">HTML</span> souborech jsou vložené soubory pro vývoj šablony</strong>, které jsou zakomentované a ohraničené komentáři <code>&lt;!--dev--&gt;</code> a <code>&lt;!--/dev--&gt;</code>. Tento kód je tedy možné pro produkční verzi odstranit. Jedná se (zejména) o soubory <code>/dev/load-js.js</code>, <code>/dev/load-css.js</code>, <code>/dev/<span class="small">PATHS</span>.js</code> a <code>/dev/cssimport/all.build.css</code>. Skripty vkládají vývojové soubory <span class="small">CSS</span> a <span class="small">JS</span> do stránky. Při vývoji tento kód používat nemusíte. <strong>Tyto soubory se ale také používají pro spojování a kompilaci <span class="small">CSS</span> a <span class="small">JS</span>.</strong></p>
+
+                            <p>V sekci <code>&lt;!--— <span class="small">STYLES</span> —--&gt;</code> se v <span class="small">IE 11</span> vkládá soubor <code>dev/ie11CustomProperties/ie11CustomProperties.js</code>, který zajišťuje podporu <i><span class="small">CSS</span> Custom Properties</i>. (Pro produkci se nepoužívá, protože <i>proměnné</i> se nakonec nepoužijí a zkompilují se pomocí Post<span class="small">CSS</span>.)</p>
+
                             <!--/css-->
 
+
+                            <p>V sekci <code>&lt;!--— <span class="small">JAVASCRIPT</span> —--&gt;</code> se v <span class="small">IE 11</span> vkládají soubory pro kompilaci <i class="small">ES2015+</i> do <i class="small">ES5</i>. (Pro produkci se kód zkompiluje.)</p>
 
                             <p><strong>V souboru <code>/dev/<span class="small">PATHS</span>.js</code> lze nastavit cesty k souborům.</strong> (Popis jednotlivých vlastností je uvnitř souboru a v relevantních sekcích.)</p>
 
                             <p class="note">Proces práce s vývojovými soubory je optimalizovaný pro použití editoru <a href="http://brackets.io">Brackets</a> a jeho funkci <i>Live Preview</i>, kde je potřeba vložit do stránky vývojové soubory a ne pouze soubory spojené.</p>
 
                             <!--css-->
-                            <p><strong>Pomocí výše zmíněných skriptů vložíte do stránky soubory přesně tak, jako by byly spojené.</strong> Jak se další soubory přidávají, naleznete v následujích sekcích <script>__linkTo("spojovani-js");</script> a <script>__linkTo("spojovani-css");</script>.</p>
+                            <p><strong>Pomocí výše zmíněných skriptů vložíte do stránky soubory přesně tak, jako by byly spojené (pouze spojené bez dalších modifikací).</strong> Jak se další soubory přidávají, naleznete v následujích sekcích <script>__linkTo("spojovani-js");</script> a <script>__linkTo("spojovani-css");</script>.</p>
 
                             <p><strong>Pokud se používají jiná spojení pro každou stránku (nebo více souborů), je potřeba zadat název spojeného souboru do atributu <code>data-file</code></strong> (viz Příklad 1). Pokud se používá více souborů, oddělují se čárkou (<code>,</code>). V případě stylů je také možné přidat atribut <code>data-media</code>, podle kterého se nastaví atribut <code>media</code> u elementů <code>link</code> (počet a pořadí musí odpovídat počtu a pořadí souborů).</p>
                             <!--/css-->
@@ -393,11 +416,15 @@
 
 
                             <!--css-->
-                            <p><strong>Chcete-li použít skripty pro vkládání vývojových souborů do stránky, pak musíte zakomentovat spojené soubory a odkomentovat soubory vývojové. To lze udělat pomocí <i>gulp-tasku</i> <code>dev</code>.</strong> Produkční kód lze zase použít pomocí <i>gulp-tasku</i> <code>prod</code>. <i>Gulp-tasky</i> odkomentují/zakomentují vše mezi komentáři <code>&lt;!--dev--&gt;</code> a <code>&lt;!--/dev--&gt;</code> a <code>&lt;!--prod--&gt;</code> a <code>&lt;!--/prod--&gt;</code>.</p>
+                            <p><strong>Chcete-li použít skripty pro vkládání vývojových souborů do stránky, pak musíte zakomentovat spojené a zkompilované soubory a odkomentovat soubory vývojové. To lze udělat pomocí <i>gulp-tasku</i> <code>dev</code>.</strong> Produkční kód lze zase použít pomocí <i>gulp-tasku</i> <code>prod</code>. <i>Gulp-tasky</i> odkomentují/zakomentují vše mezi komentáři <code>&lt;!--dev--&gt;</code> a <code>&lt;!--/dev--&gt;</code> a <code>&lt;!--prod--&gt;</code> a <code>&lt;!--/prod--&gt;</code>.</p>
                             <!--/css-->
 
 
                             <script>__copyElement("#htmlsave-info");</script>
+
+                            <hr>
+
+                            <p><strong>Některé části mohou být vygenerovány pomocí šablonovacího systému nebo vloženy z&nbsp;jiných souborů.</strong> Jedná se zejména o&nbsp;kód, který se opakuje ve&nbsp;více souborech nebo je závislý na&nbsp;komplexních datech. Více informací najdete v&nbsp;sekci <script>__linkTo("gulp-generate");</script>. <strong>Takovýto kód by se měl upravovat pomocí úpravy dat a&nbsp;příslušných šablon.</strong> Chcete-li upravovat kód rovnou ve&nbsp;vygenerovaném kódu, pak je vhodné odstranit komentáře definující příslušný generátor.</p>
 
                         </section>
 
@@ -767,6 +794,7 @@
                                 <li><code>id</code></li>
                                 <li><code>src</code>/<code>href</code></li>
                                 <li><i>další</i></li>
+                                <li><code>aria-*</code></li>
                                 <li><code>data-*</code></li>
                             </ol>
 
@@ -786,13 +814,15 @@
 
                         <section>
 
-                            <h3 id="spojovani-js">Úpravy a&nbsp;spojování <span class="small">JS</span></h3>
+                            <h3 id="spojovani-js">Úpravy, spojování a&nbsp;kompilace <span class="small">JS</span></h3>
 
                             <script>__copyElement("#node-npm-install");</script>
 
                             <p><strong>Upravujte vždy pouze vývojové soubory.</strong> Tedy soubory ve složkách <code>/js</code> a <code>/libs</code>.</p>
 
-                            <p>Ke spojování souborů se používá automatizační nástroj <a href="https://gulpjs.com/"><i>Gulp</i></a>. Jeho nastavení se nachází v souboru <code>/gulpfile.js</code>. V tomto souboru najdete sekci označenou komentářem <code class="small">JS</code>, kde můžete upravit nastavení použitých modulů. V souboru <code>/dev/<span class="small">PATHS</span>.js</code> v objektu <code class="small">PATHS</code> můžete upravit zdroje načítání souborů i složku pro výstup:</p>
+                            <p>Některé části mohou být vygenerovány pomocí šablonovacího systému nebo vloženy z&nbsp;jiných souborů. Takový kód se nachází mezi komentáři <code>/*&nbsp;<span class="small">GENERATE: NAME ...</span>&nbsp;*/</code> a&nbsp;<code>/*&nbsp;<span class="small">/GENERATE: NAME</span>&nbsp;*/</code> Více informací najdete v&nbsp;sekci <script>__linkTo("gulp-generate");</script>.</p>
+
+                            <p>Ke spojování a kompilaci souborů se používá automatizační nástroj <a href="https://gulpjs.com/"><i>Gulp</i></a>. Jeho nastavení se nachází v souboru <code>/gulpfile.js</code>. V tomto souboru najdete sekci označenou komentářem <code class="small">JS</code>, kde můžete upravit nastavení použitých modulů. V souboru <code>/dev/<span class="small">PATHS</span>.js</code> v objektu <code class="small">PATHS</code> můžete upravit zdroje načítání souborů i složku pro výstup:</p>
 
                             <ul>
                                 <li><code class="small">PATHS.JS_LOAD</code> — skript pro načítání souborů pro spojení.</li>
@@ -802,19 +832,27 @@
                                 <li><code class="small">PATHS.LIBS_FILES</code> — soubory knihoven a pluginů.</li>
                             </ul>
 
-                            <p><strong>Soubory se spojují pomocí příkazu <code>npm run gulp js</code> a výsledný soubor se vytvoří do složky <code>/build</code>.</strong> Najdete tam jak minifikovanou tak i neminifikovanou variantu.</p>
+                            <p><strong>Soubory se spojují a kompilují pomocí příkazu <code>npm run gulp js</code> a výsledný soubor se vytvoří do složky <code>/build</code>.</strong> Najdete tam jak minifikovanou tak i neminifikovanou variantu.</p>
 
-                            <p>Další moduly a soubory pro spojení se nastavují v souboru <code>/dev/load-js.js</code>. Na začátku souboru je objekt <code class="small">FILES</code>, kde vlastnost je název výsledného souboru a hodnota pole spojovaných souborů. Názvů souborů můžete použít kolik chcete a vytvořit tak specifická spojení pro konkrétní stránky.</p>
+                            <p>Další moduly a soubory pro spojení a kompilaci se nastavují v souboru <code>/dev/load-js.js</code>. Na začátku souboru je objekt <code class="small">FILES</code>, kde vlastnost je název výsledného souboru a hodnota pole spojovaných souborů. Názvů souborů můžete použít kolik chcete a vytvořit tak specifická spojení pro konkrétní stránky.</p>
 
-                            <p>K dispozici jsou i funkce, které přidají k cestám souborů prefixy k přislušným složkám:</p>
+                            <p><strong>Skripty jsou kompilovány z <span class="small">ES2015+</span> do <span class="small">ES5</span> pomocí <i><a href="https://babeljs.io">Babelu</a></i></strong>. Pokud se soubor nemá kompilovat, je možné před cestu k souboru přidat prefix <code>nobabel:</code>. Pokud je modul vytvořen podle standardu <a href="https://exploringjs.com/es6/ch_modules.html"><i><span class="small">ES</span> Modules</i></a>, je potřeba před cestu (a případně za <code>nobabel:</code>) přídat prefix <code>jsm:</code>. Modul se pak transformuje podle vzoru <a href="https://github.com/umdjs/umd"><i class="small">UMD</i></a>.</p>
+
+                            <p>K dispozici jsou funkce, které přidají k cestám souborů prefixy k přislušným složkám i prefixy pro <i><a href="https://babeljs.io">Babel</a></i>:</p>
 
                             <ul>
-                                <li><code>file(String)</code> — přidá k souboru prefix <code class="small">PATHS.JS_FILES</code>.</li>
-                                <li><code>mod(String)</code> — přidá k souboru prefix <code class="small">PATHS.JS_MODULES</code>.</li>
-                                <li><code>lib(String)</code> — přidá k souboru prefix <code class="small">PATHS.LIBS_FILES</code>.</li>
+                                <li><code>file(relativePath, isModule = true, useBabel = true)</code> — přidá k souboru prefix <code class="small">PATHS.JS_FILES</code>.</li>
+                                <li><code>mod(relativePath, isModule = true, useBabel = true)</code> — přidá k souboru prefix <code class="small">PATHS.JS_MODULES</code>.</li>
+                                <li><code>lib(relativePath, isModule = false, useBabel = false)</code> — přidá k souboru prefix <code class="small">PATHS.LIBS_FILES</code>.</li>
                             </ul>
 
-                            <p class="warning">Jako parametr zadávejte cestu bez počátečního lomítka.</p>
+                            <p>Parametry:</p>
+
+                            <ul>
+                                <li><code>relativePath (String)</code> — relativní cesta k souboru. <strong>Zadávejte bez počátečního lomítka.</strong></li>
+                                <li><code>isModule (Boolean)</code> — zda-li se jedná o modul podle <a href="https://exploringjs.com/es6/ch_modules.html"><i><span class="small">ES</span> Modules</i></a>.</li>
+                                <li><code>useBabel (Boolean)</code> — zda-li kompilovat pomocí <i><a href="https://babeljs.io">Babelu</a></i>.</li>
+                            </ul>
 
                             <p class="note">K názvu souboru se před příponu <code>.js</code> přidá u minifikované verze <code>.min</code>.</p>
 
@@ -834,12 +872,12 @@
                                         //...
                                         var FILES = {
                                                 "all.build.js": [
-                                                    lib("JQSlider/jqslider.js"), //nějaký plugin pro vytvoření slajdru
+                                                    lib("JQSlider/jqslider.js"), //nějaký plugin pro vytvoření slajdru =&gt; "nobabel:libs/JQSlider/jqslider.js"
 
-                                                    mod("Slider.js"), //vlastní modul vytvářející slajdry
-                                                    mod("Alert.js"), //přidaný soubor s novým modulem Alert
+                                                    mod("Slider.js"), //vlastní modul vytvářející slajdry =&gt; "jsm:js/modules/Slider.js"
+                                                    mod("Alert.js"), //přidaný soubor s novým modulem Alert =&gt; "jsm:js/modules/Alert.js"
 
-                                                    file("init.js") //inicializační skript
+                                                    file("init.js") //inicializační skript =&gt; "jsm:js/init.js"
                                                 ]
                                             };
                                         //...
@@ -908,58 +946,58 @@
 
                             <h3 id="js-metodologie"><span class="small">JS</span> — metodologie</h3>
 
-                            <p><strong>Kód je převážně rozdělen do modulů podle vzoru <i>Revealing Module</i>.</strong> Vzor spočívá v tom, že se veškerý <strong>kód uzavře do samospustitelné funkce, která vrátí metody, které mají být veřejné</strong>.</p>
+                            <p><strong>Kód je převážně rozdělen do modulů podle vzoru <a href="https://exploringjs.com/es6/ch_modules.html"><i><span class="small">ES</span> Modules</i></a>.</strong></p>
 
-                            <p>Každý modul se nachází v samostatném souboru ve složce <code>/js/modules</code>, jehož název je název modulu.</p>
+                            <p>Každý modul se většinou nachází v samostatném souboru ve složce <code>/js/modules</code>, jehož název je název modulu.</p>
 
-                            <p><strong>Tyto moduly jsou přiřazené ke jménnému prostoru <code class="small">MJNS</code></strong> (jmenný prostor je objekt přiřazený k <code>window</code>). Kvůli tomu jsou moduly obalené do další samospustitelné funkce, která jako první parametr (<code>ns</code>)  obsahuje jmenný prostor a přípdadně jako druhý (<code>$</code>) <i>jQuery</i>.</p>
+                            <p><strong>Tyto moduly jsou v inicializačním skriptu (<code>/js/init.js</code>) přiřazené ke globálnímu jménnému prostoru (dále <span class="small">GJP</span>) <code class="small">WNS</code></strong>. <span class="small">GJP</span> je objekt, který vrací modul <code>/js/<span class="small">GNS</span>.js</code>, přiřazený k <code>window</code>. Tento objekt při přetypování na <code>string</code> vrací název jmenného prostoru (<code class="small">WNS</code>).</p>
 
-                            <p>Modul zpravidla obsahuje metodu <code>init</code>, která modul inicializuje. Na začátku modulu mohou být proměnné (<i>konstanty</i>) s nastavením. Ty jsou psány velkým písmem. (Jedná se například o objekty <code class="small">CLASS</code> a <code class="small">SELECTOR</code>, kde je možné přepsat třídy a selektory elementů.)</p>
+                            <p><span class="small">GJP</span> (<code><span class="small">GNS</span>.js</code>) také obsahuje vlastnosti (properties), které jsou sdílené všemi moduly. Zejména <code>$</code>/<code>jQuery</code>, <code>$win</code>, <code>$doc</code>, <code>$t</code> ("obalí" element do objektu jQuery) a <code class="small">NAME</code> (název).</p>
 
-                            <p>Ještě před kódem modulu mohou být globální vlastnosti jmenného prostoru, které jsou sdílené všemi moduly. Nejčastěji <code>$win</code>, <code>$doc</code>  <code>$t</code>.</p>
+                            <p><span class="small">GJP</span> (<code><span class="small">GNS</span>.js</code>) je v modulech importován jako objekt <code class="small">GNS</code>.</p>
+
+                            <p>Modul zpravidla obsahuje metodu <code>init</code>, která modul inicializuje. Na začátku modulu mohou být konstanty s nastavením. Ty jsou psány velkými písmeny. (Jedná se například o objekty <code class="small">CLASS</code> a <code class="small">SELECTOR</code>, kde je možné přepsat třídy a selektory elementů.)</p>
 
                             <figure>
 
                                 <pre data-code="javascript">
                                     <code>
                                         /*/js/modules/ModuleName.js*/
+                                        import GNS from "./GNS.js"; //globální jmenný prostor
 
-                                        (function (ns, $) { //jmenný prostor a jQuery
+                                        const NAME = "ModuleName"; //název modulu
+                                        const NS = `.${GNS}.${NAME}`; //lokální jmenný prostor (např. pro události v jQuery)
 
-                                            ns.$win = ns.$win || $(window);
-                                            ns.$doc = ns.$doc || $(document);
-                                            /*"Obalí" element do objektu jQuery.*/
-                                            ns.$t = ns.$t || (function ($t) { return function (e) { $t[0] = e; return $t; }; }($([null])))
+                                        const $ = G.jQuery;
 
-                                            ns.ModuleName = (function () { //modul ModuleName;
+                                        const SELECTOR = {}; //selektory elementů
 
-                                                var SELECTOR = {}, //selektory elementů
+                                        function privateFn() {} //soukromá metoda
 
-                                                    privateFn = function () {}, //soukromá metoda
+                                        function init() {} //inicializační a veřejná metoda
 
-                                                    init = function () {}; //inicializační a veřejná metoda
-
-                                                return { //veřejné metody
-                                                    init: init
-                                                };
-
-                                            }());
-
-                                        }((function (ns) { window[ns] = window[ns] || { toString: function () { return ns; } }; return window[ns]; }("MJNS")), jQuery));
+                                        export default { init }; //veřejné metody
                                     </code>
                                 </pre>
 
-                                <figcaption>Příklad struktury běžného modulu.</figcaption>
+                                <figcaption>Ukázka struktury běžného modulu.</figcaption>
 
                             </figure>
 
-                            <p>Moduly je pak možné inicializovat v souboru <code>/js/init.js</code> pomocí:</p>
+                            <p>Moduly je pak možné inicializovat v souboru <code>/js/init.js</code> jako v Příkladu 1:</p>
 
-                            <figure>
+                            <figure class="example">
 
                                 <pre data-code="javascript">
                                     <code>
-                                        window.MJNS.ModuleName.init();
+                                        import GNS from "./GNS.js";
+
+                                        import ModuleName from "./modules/ModuleName.js";
+
+                                        window[GNS] = window[GNS] || GNS;
+
+                                        GNS.ModuleName = ModuleName;
+                                        ModuleName.init();
                                     </code>
                                 </pre>
 
@@ -967,9 +1005,9 @@
 
                             </figure>
 
-                            <p class="note">Ne všechen kód musí být vytvořen podle vzoru <i>Revealing Module</i>.</p>
+                            <hr>
 
-                            <p class="note">Kód je psán podle standardu <span class="small">ES5</span>.</p>
+                            <p class="note">Kód je psán podle standardu <span class="small">ES2015+</span>.</p>
 
                         </section>
 
@@ -984,10 +1022,11 @@
                             <ul>
                                 <li><code>--name</code>, <code>--n</code> — název modulu (a souboru).</li>
                                 <li><code>--dir</code>, <code>--d</code> — složka pro uložení souboru (relativní k <code class="small">PATHS.JS_MODULES</code>).</li>
-                                <li><code>--ns</code> — jmenný prostor (výchozí: <code class="small">MJNS</code>).</li>
+                                <li><code>--x-gns</code> — bez globálního jmenného prostoru.</li>
+                                <li><code>--x-ns</code> — bez lokálního jmenného prostoru (bez konstanty <code class="small">NS</code>).</li>
                                 <li><code>--x-jq</code> — bez <i>jQuery</i>.</li>
-                                <li><code>--objects</code>, <code>--object</code>, <code>--o</code> — objekty (<i>konstanty</i>) na začátku modulu oddělené čárkou. Možnosti: <code>c</code>: <code class="small">CLASS</code>; <code>i</code>: <code class="small">ID</code>; <code>d</code>: <code class="small">DATA</code>; <code>a</code>: <code class="small">ATTR</code>; <code>s</code>: <code class="small">SELECTOR</code>; <code>e</code>: <code class="small">EVENT</code>; <code>o</code>: <code class="small">OPTION</code>;</li>
-                                <li><code>--globals</code>, <code>--global</code>, <code>--g</code> — globální vlastnosti sdílené všemi moduly. Možnosti: <code>w</code>: <code>$win</code>; <code>d</code>: <code>$doc</code>; <code>h</code>: <code>$html</code>; <code>b</code>: <code>$body</code>; <code>t</code>: <code>$t</code>;</li>
+                                <li><code>--x-name</code> — bez konstanty <code class="small">NAME</code>.</li>
+                                <li><code>--consts</code>, <code>--const</code>, <code>--c</code>, <code>--objects</code>, <code>--object</code>, <code>--o</code> — objekty (konstanty) na začátku modulu. Možnosti: <code>c</code>: <code class="small">CLASS</code>; <code>i</code>: <code class="small">ID</code>; <code>d</code>: <code class="small">DATA</code>; <code>a</code>: <code class="small">ATTR</code>; <code>s</code>: <code class="small">SELECTOR</code>; <code>ev</code>: <code class="small">EVENT</code>; <code>o</code>: <code class="small">OPTION</code>; <code>e</code>: <code class="small">ELEMENT</code>;</li>
                                 <li><code>--rewrite</code> — dovolí přepsat existující soubor.</li>
                             </ul>
 
@@ -995,7 +1034,7 @@
 
                                 <pre data-code="shell">
                                     <code>
-                                        npm run gulp mod -- --n Gallery --g w,t --o c,s
+                                        npm run gulp mod -- --n Gallery --o c,s
                                     </code>
                                 </pre>
 
@@ -1003,35 +1042,28 @@
 
                                 <pre data-code="javascript">
                                     <code>
-                                        /*jslint indent: 4, white: true, nomen: true, regexp: true, unparam: true, node: true, browser: true, devel: true, nomen: true, plusplus: true, regexp: true, sloppy: true, vars: true*/
-                                        /*global jQuery, window*/
+                                        /*jshint esnext: true, evil: true, browser: true, devel: true*/
 
-                                        (function (ns, $) {
+                                        import GNS from "/js/GNS.js";
 
-                                            ns.$win = ns.$win || $(window);
-                                            ns.$t = ns.$t || (function ($t) { return function (e) { $t[0] = e; return $t; }; }($([null])))
+                                        const NAME = "Gallery";
+                                        const NS = `.${GNS}.${NAME}`;
 
-                                            ns.Gallery = (function () {
+                                        const $ = NS.jQuery;
 
-                                                var CLASS = {
+                                        const CLASS = {
 
-                                                    },
+                                        };
 
-                                                    SELECTOR = {
+                                        const SELECTOR = {
+                                            self: ".gallery"
+                                        };
 
-                                                    },
+                                        function init() {
 
-                                                    init = function () {
+                                        }
 
-                                                    };
-
-                                                return {
-                                                    init: init
-                                                };
-
-                                            }());
-
-                                        }((function (ns) { window[ns] = window[ns] || { toString: function () { return ns; } }; return window[ns]; }("MJNS")), jQuery));
+                                        export default { init };
                                     </code>
                                 </pre>
 
@@ -1061,17 +1093,23 @@
 
                             <p><strong>Soubory se spojují pomocí příkazu <code>npm run gulp css</code> a výsledný soubor se vytvoří do složky <code>/build</code>.</strong> Najdete tam jak minifikovanou tak i neminifikovanou variantu. Tento příkaz také vytváří soubor založený na <code>@import</code> do složky <code class="small">PATHS.CSS_IMPORT</code>.</p>
 
+                            <p><strong>Kromě spojení souborů, se také přepíší <i>Media Query</i> z&nbsp;pixelů na jednotky <code>em</code>, přidají se prefixované hodnoty a&nbsp;<i><span class="small">CSS</span> Custom Properties</i> se přepíší skutečnými hodnotami.</strong> K&nbsp;tomu se využívá <a href="https://postcss.org/"><i>Post<span class="small">CSS</span></i></a>.</p>
+
                             <p>Další komponenty a soubory pro spojení se nastavují v souboru <code>/dev/load-css.js</code>. Na začátku souboru je objekt <code class="small">FILES</code>, kde vlastnost je název výsledného souboru a hodnota pole spojovaných souborů. Názvů souborů můžete použít kolik chcete a vytvořit tak specifická spojení pro konkrétní stránky.</p>
 
                             <p>K dispozici jsou i funkce, které přidají k cestám souborů prefixy k přislušným složkám:</p>
 
                             <ul>
-                                <li><code>file(String)</code> — přidá k souboru prefix <code class="small">PATHS.CSS_FILES</code>.</li>
-                                <li><code>comp(String)</code> — přidá k souboru prefix <code class="small">PATHS.CSS_COMPONENTS</code>.</li>
-                                <li><code>lib(String)</code> — přidá k souboru prefix <code class="small">PATHS.LIBS_FILES</code>.</li>
+                                <li><code>file(relativePath)</code> — přidá k souboru prefix <code class="small">PATHS.CSS_FILES</code>.</li>
+                                <li><code>comp(relativePath)</code> — přidá k souboru prefix <code class="small">PATHS.CSS_COMPONENTS</code>.</li>
+                                <li><code>lib(relativePath)</code> — přidá k souboru prefix <code class="small">PATHS.LIBS_FILES</code>.</li>
                             </ul>
 
-                            <p class="warning">Jako parametr zadávejte cestu bez počátečního lomítka.</p>
+                            <p>Parametry:</p>
+
+                            <ul>
+                                <li><code>relativePath (String)</code> — relativní cesta k souboru. <strong>Zadávejte bez počátečního lomítka.</strong></li>
+                            </ul>
 
                             <p class="note">K názvu souboru se před příponu <code>.css</code> přidá u minifikované verze <code>.min</code>.</p>
 
@@ -1231,21 +1269,50 @@
                             </figure>
 
                             <!--css-->
-                            <p>Každý komponent (<i>Blok</i>) má samostatný soubor ve složce <code>/css/components</code>, jehož název je název komponentu (<i>Bloku</i>)</p>
+                            <p>Každý komponent (<i>Blok</i>) má samostatný soubor ve složce <code>/css/components</code>, jehož název je název komponentu (<i>Bloku</i>).</p>
                             <!--/css-->
 
 
                             <p class="note">Selektory se vytvářejí tak, aby měly co nejnižší možnou specificitu.</p>
 
+                            <p>Některé styly jsou přiřazené pomocnými třídami — viz <script>__linkTo("utility-css");</script>. Některé z&nbsp;těchto tříd mají zvýšenou specificitu pomocí <code>id</code>, konkrétně <code>#rewrite</code>. To například umožňuje elementům nastavovat vlastnosti <code>display</code> a&nbsp;zároveň používat pomocné třídy pro skrytí podle velikosti <i>viewportu</i> (<code>x-desktop</code>).</p>
+
+                            <p>Pokud je nutné přepsat nějakou z&nbsp;těchto pomocných tříd — což se nedoporučuje kvůli zachování logiky kódu — je vhodné tak učinit přesně stejným způsobem. Tedy přidat na začátek selektoru <code>#rewrite</code> a&nbsp;také použít danou pomocnou třídu. Viz následující příklad:</p>
+
+                            <figure class="example">
+
+                                <pre data-code="html">
+                                    <code>
+                                        &lt;section class="section"&gt;
+                                            &lt;h1 class="section__title color-primary"&gt;Vítejte!&lt;/h1&gt;
+                                        &lt;/section&gt;
+                                        &lt;!-- /.section --&gt;
+                                    </code>
+                                </pre>
+
+                                <p>Potřebujeme-li nutně přepsat třídu <code>color-primary</code>, je vhodné to udělat následujícím způsobem:</p>
+
+                                <pre data-code="css">
+                                    <code>
+                                        #rewrite .section__title.color-primary {
+                                            color: red;
+                                        }
+                                    </code>
+                                </pre>
+
+                            </figure>
+
                             <p><strong><i>Media Query</i> jsou založené na třech základních bodech: <i>Desktop</i>, <i>Tablet</i>, <i>Mobil</i>.</strong> (Konkrétně pro tuto šablonu viz <script>__linkTo("zakladni-media-breakpointy");</script>.) Styly, které jsou společné, se nachází mimo <code>@media</code>, rozdílné styly jsou (většinou) ohraničené pro určitou velikost viewportu (mají <code>min-width</code> i <code>max-width</code>). (Například, pokud se jedná o sekvenci změny jedné vlastnosti, tak zde ohraničení být nemusí.)</p>
+
+                            <p>Hodnoty se zadávájí v&nbsp;pixelech a&nbsp;při sestavení/spojení souborů se přepíší na jednotky <code>em</code>.</p>
 
 
 
                             <p>Jednotlivé seznamy pravidel stylů jsou seřazeny a odsazeny podle struktury <span class="small">HTML</span> kódu. V některých případech může být určitá část kódu přesunuta na jiné místo, je-li to vzájmu lepší čitelnosti a strukturovanosti (například v případě komplikovaných pozadí, které je tvořeno několika elementy).</p>
 
+
+
                             <p>Pravidla se píší vždy pod sebe a jsou (povětšinou) seřazena podle následujícího pořadí (seznam neobsahuje všechny možné vlastnosti):</p>
-
-
 
                             <pre>
                                 <code>
@@ -1282,6 +1349,12 @@
                                     }
                                 </code>
                             </pre>
+
+                            <!--css-->
+                            <p>V&nbsp;souboru <code><script>__linkTo("custom-properties-css");</script></code> se nachází globální nastavení webu pomocí <i><span class="small">CSS</span> Custom Properties <span class="small">(CP)</span></i>. <strong>Používají se pouze tak, aby bylo možné je při sestavení/spojení souborů přepsat skutečnými hodnotami.</strong> Není tak možné využít vlastností <i class="small">CP</i>, které závisí na existenci <i><span class="small">DOM</span>u</i>.</p>
+                            <!--/css-->
+
+                            <p><strong>Velikosti prvků se (preferovaně) nastavují pomocí jednotek <code>rem</code>.</strong> Na elementu <code>html</code> je nastavená velikost písma na <code>6.25%</code>, čímž je možné používat jednotky <code>rem</code> jako by šlo o&nbsp;<code>px</code>.</p>
 
                         </section>
 
@@ -1356,7 +1429,7 @@
                                         @media (min-width: 480px) and (max-width: 639px) {}
                                         @media (max-width: 479px) {}
 
-                                        /* Barvy:
+                                        /* Colors:
                                          * primary: currentColor
                                          */
                                     </code>
@@ -1371,6 +1444,428 @@
 
 
 
+
+                        <section>
+
+                            <h3 id="gulp-generate">Generování statického kódu</h3>
+
+                            <p>V <span class="small">HTML</span> nebo <span class="small">CSS</span> souborech je možné pomocí komentářů definovat oblast, do které se vygeneruje statický kód podle šablony a&nbsp;dat <i>gulp-taskem</i> <code>generate</code>.</p>
+
+                            <p class="warning"><strong>Použití pouze na vlastní nebezpečí!</strong> Funkcionalita není důsledně ověřená a výsledek tak může být jakýkoliv. Před přepsáním se proto zkopíruje aktuální stav upravovaných souborů do složky <code class="small">PATHS.HTML_SAVE</code>. Vyhněte se zejména použití generátorů uvnitř jiných generátorů, pokud si nejste jistí, že rozumíte, jak to funguje — můžete ztratit veškerá data specifikovaná ve vnořém generátoru (data je potřeba do vnořených generátorů předávat z&nbsp;rodičovských).</p>
+
+                            <p>Šablony a&nbsp;data je možné definovat <i>inline</i> uvnitř kódu nebo v&nbsp;externím souboru.</p>
+
+                            <p>Podporovány jsou tyto šablonovací enginy / formáty:</p>
+
+                            <ul>
+                                <li><i class="small">HTML</i></li>
+                                <li><i>Twig</i> — modul <i><a href="https://github.com/twigjs/twig.js">twig.js</a></i>.</li>
+                                <li><i class="small">EJS</i> — modul <i><a href="https://github.com/mde/ejs">ejs</a></i>.</li>
+                                <li><i>Handlebars</i> — modul <i><a href="https://github.com/wycats/handlebars.js">handlebars.js</a></i>.</li>
+                            </ul>
+
+                            <p class="note">Moduly pro <span class="small">EJS</span> a&nbsp;Handlebars nejsou ve výchozím stavu nainstalovány.</p>
+
+                            <p>Podporovány jsou tyto formáty dat:</p>
+
+                            <ul>
+                                <li><i class="small">JSON</i></li>
+                                <li><i class="small">YAML</i> — modul <i><a href="https://github.com/jeremyfa/yaml.js">yamljs</a></i>.</li>
+                                <li><i class="small">CSV</i> — modul <i><a href="https://github.com/pradeep-mishra/csvjson">csvjson</a></i></li>
+                                <li><i class="small">XML</i> — modul <i><a href="https://github.com/Leonidas-from-XIV/node-xml2js">xml2js</a></i>.</li>
+                            </ul>
+
+                            <h4>Základní definice generátoru</h4>
+
+                            <p>Definice generátoru v&nbsp;<span class="small">HTML</span>:</p>
+
+                            <figure>
+                                <pre data-code="html">
+                                    <code>
+                                        &lt;!-- GENERATE: NÁZEV | ŠABLONA | DATA? | ...DALŠÍ NASTAVENÍ? --&gt;
+
+                                        ...vygenerovaný obsah...
+
+                                        &lt;!-- /GENERATE: NÁZEV --&gt;
+                                    </code>
+                                </pre>
+                            </figure>
+
+                            <p>Definice generátoru v&nbsp;<span class="small">CSS</span>:</p>
+
+                            <figure>
+                                <pre data-code="css">
+                                    <code>
+                                        /* GENERATE: NÁZEV | ŠABLONA | DATA? | ...DALŠÍ NASTAVENÍ? */
+
+                                        ...vygenerovaný obsah...
+
+                                        /* /GENERATE: NÁZEV */
+                                    </code>
+                                </pre>
+                            </figure>
+
+                            <p>Jednotlivá nastavení se oddělují znakem <code>|</code>. Před ním i&nbsp;za ním musí být mezera.</p>
+
+                            <p>Jako <code class="small">NÁZEV</code> lze použít řetězec odpovídající následujícímu regulárnímu výrazu: <code>[A-Za-z0-9-_]+</code>.</p>
+
+                            <p><code class="small">ŠABLONU</code> a&nbsp;<code class="small">DATA</code> lze definovat jako <i>inline blok</i> nebo jako cestu k&nbsp;souboru relativní podle nastavení v&nbsp;<code>/dev/<span class="small">PATHS</span>.js</code>. V&nbsp;případě, že definujeme <i>inline blok</i>, pak se jako hodnota použije jazyk šablony / formát dat. V&nbsp;případě souboru se formát získá z&nbsp;přípony.</p>
+
+                            <p>Nastavení cest k&nbsp;souborům v&nbsp;<code>/dev/<span class="small">PATHS</span>.js</code>:</p>
+
+                            <ul>
+                                <li><code class="small">GENERATOR_TEMPLATES</code> — složka s&nbsp;šablonami.</li>
+                                <li><code class="small">GENERATOR_TEMPLATES_DATA</code> — složka s&nbsp;daty.</li>
+                            </ul>
+
+                            <p>Začíná-li cesta k&nbsp;souboru znakem <code>/</code>, pak je cesta relativní ke&nbsp;kořenové složce.</p>
+
+                            <p class="warning">Cesty k&nbsp;souborům nesmí obsahovat mezeru.</p>
+
+                            <p><code class="small">DALŠÍ NASTAVENÍ</code> lze použít pro úpravu zpracování dat u&nbsp;formátů <span class="small">XML</span> a&nbsp;<span class="small">CSV</span>.</p>
+
+                            <p><span class="small">XML</span>:</p>
+
+                            <ol>
+                                <li>Hodnota <code class="small">ROOT</code> nastaví vlastnost <code>explicitRoot</code> modulu <code>xml2js</code> na <code>true</code> — v&nbsp;datech pro šablonu se objeví i&nbsp;kořenový element.</li>
+                                <li>Hodnota <code class="small">ARRAY</code> nastaví vlastnost <code>explicitArray</code> modulu <code>xml2js</code> na <code>true</code> — data vždy vytvoří pole (i&nbsp;v&nbsp;případě jediného elementu).</li>
+                            </ol>
+
+                            <figure class="example">
+
+                                <figure>
+                                    <pre data-code="html">
+                                    <code>
+                                        &lt;!-- GENERATE: LIST | tpl.twig | data.xml | NOROOT | ARRAY --&gt;
+
+                                        ...vygenerovaný obsah...
+
+                                        &lt;!-- /GENERATE: LIST --&gt;
+                                    </code>
+                                </pre>
+                                </figure>
+
+                                <figcaption>Ukázka možné definice generátoru s&nbsp;<span class="small">XML</span> daty. Pokud nechceme použít kořenový element, můžeme jako hodnotu použít v&nbsp;zásadě cokoliv.</figcaption>
+
+                            </figure>
+                            <p><span class="small">CSV</span>:</p>
+
+                            <ol>
+                                <li>Oddělovač dat. Výchozí: <code>,</code>.</li>
+                                <li>Metoda zpracování dat. Možnosti: <code class="small">OBJECT</code> (použije metodu <code>toObject</code> modulu <code>csvjson</code>), <code class="small">COLUMN</code> (použije metodu <code>toColumnArray</code> modulu <code>csvjson</code>) nebo <code class="small">SCHEMA</code> (použije metodu <code>toSchemaObject</code> modulu <code>csvjson</code>). Výchozí: <code class="small">OBJECT</code>.</li>
+                                <li>Uvozovky. Výchozí: <code>"</code>.</li>
+                            </ol>
+
+                            <p class="note">V&nbsp;případě metod <code class="small">OBJECT</code> a&nbsp;<code class="small">SCHEMA</code> se data (získané pole) v&nbsp;šabloně přiřadí k&nbsp;vlastnosti <code>data</code>.</p>
+
+                            <figure class="example">
+
+                                <figure>
+                                    <pre data-code="html">
+                                        <code>
+                                            &lt;!-- GENERATE: LIST | tpl.twig | data.csv | ; | COLUMN | ' --&gt;
+
+                                            ...vygenerovaný obsah...
+
+                                            &lt;!-- /GENERATE: LIST --&gt;
+                                        </code>
+                                    </pre>
+                                </figure>
+
+                                <figcaption>Ukázka možné definice generátoru s&nbsp;<span class="small">CSV</span> daty.</figcaption>
+
+                            </figure>
+
+                            <h4>Definování <i>inline bloků</i></h4>
+
+                            <p><i>Inline bloky</i> se oddělují minimálně čtyřmi znaky <code>=</code> (<code>====</code>) na samostatném řádku a&nbsp;musí být odsazené čtyřmi mezerami (stejně jako jejich obsah).</p>
+
+                            <p>První <i>blok</i> obsahuje kód šablony, druhý data. Je-li pro šablonu použit externí soubor, pak se jako první definují data.</p>
+
+                            <div class="example">
+
+                                <figure>
+
+                                    <pre data-code="html">
+                                        <code>
+                                            &lt;!-- GENERATE: LIST | TWIG | JSON
+                                                ====
+                                                &lt;ul&gt;{% for key, value in items %}
+                                                    &lt;li class="item{% if key == active %} active{% endif %}"&gt;{{value}}&lt;&sol;li&gt;{% endfor %}
+                                                &lt;&sol;ul&gt;
+                                                ====
+                                                { "items": [1, 2, 3], "active": 1 }
+                                            --&gt;
+
+                                            &lt;ul&gt;
+                                                &lt;li class="item"&gt;1&lt;&sol;li&gt;
+                                                &lt;li class="item active"&gt;2&lt;&sol;li&gt;
+                                                &lt;li class="item"&gt;3&lt;&sol;li&gt;
+                                            &lt;&sol;ul&gt;
+
+                                            &lt;!-- /GENERATE: LIST --&gt;
+                                        </code>
+                                    </pre>
+
+                                    <figcaption>Zde definujeme generátor se&nbsp;šablonou v&nbsp;systému <i>Twig</i> a&nbsp;s&nbsp;daty ve&nbsp;formátu <span class="small">JSON</span>.</figcaption>
+
+                                </figure>
+
+                            </div>
+
+                            <p><i>Inline</i> data je možné použít i&nbsp;v&nbsp;případě použití externího souboru. Tato data se potom použijí jako rozšíření dat ze&nbsp;souboru (pomocí metody <code>Object.prototype.assign</code>).</p>
+
+                            <figure class="example">
+
+                                <p>Máme-li v&nbsp;souboru <code>tpl.twig</code> stejnou šablonu a&nbsp;v&nbsp;souboru <code>data.json</code> stejná data jako v&nbsp;příkladu výše. Můžeme přepsat data následujícím způsobem:</p>
+
+                                <pre data-code="html">
+                                    <code>
+                                        &lt;!-- GENERATE: LIST | tpl.twig | data.json
+                                            ====
+                                            { "active": 0 }
+                                        --&gt;
+
+                                        &lt;ul&gt;
+                                            &lt;li class="item active"&gt;1&lt;&sol;li&gt;
+                                            &lt;li class="item"&gt;2&lt;&sol;li&gt;
+                                            &lt;li class="item"&gt;3&lt;&sol;li&gt;
+                                        &lt;&sol;ul&gt;
+
+                                        &lt;!-- /GENERATE: LIST --&gt;
+                                    </code>
+                                </pre>
+
+                            </figure>
+
+                            <h4>Specifický obsah v&nbsp;generátoru</h4>
+
+                            <p>Někdy je potřeba do šablony vložit specifiký obsah pro danou stránku. To můžeme udělat úpravou dat nebo můžeme označit část kódu následujícím způsobem (tento kód se přidá po vygenerování univerzálního kódu z&nbsp;šablony):</p>
+
+                            <figure>
+                                <pre data-code="html">
+                                    <code>
+                                        &lt;!-- CONTENT: NÁZEV --&gt;
+
+                                        &lt;h1&gt;Nadpis&lt;&sol;h1&gt;
+
+                                        &lt;!-- /CONTENT: NÁZEV --&gt;
+                                    </code>
+                                </pre>
+                            </figure>
+
+                            <p>Jako <code class="small">NÁZEV</code> lze použít řetězec odpovídající následujícímu regulárnímu výrazu: <code>[A-Za-z0-9-_]+</code>.</p>
+
+                            <p>Takovýto kód se objeví v&nbsp;datech pro šablonu v&nbsp;objektu <code class="small">CONTENT</code>. Znaky <code>-</code> budou nahrazeny znaky <code>_</code>.</p>
+
+                            <figure class="example">
+
+                                <p>Takto mohou vypadat definice generátorů v&nbsp;souborech <code>page1.html</code> a&nbsp;<code>page2.html</code>:</p>
+
+                                <pre data-code="html">
+                                    <code>
+                                        &lt;!-- page1.html --&gt;
+
+                                        &lt;!-- GENERATE: SECTION | tpl.twig --&gt;
+
+                                        &lt;section&gt;
+
+                                            &lt;!-- CONTENT: TITLE --&gt;
+
+                                            &lt;h1&gt;Toto je nadpis souboru 1&lt;&sol;h1&gt;
+
+                                            &lt;!-- /CONTENT: TITLE --&gt;
+
+                                        &lt;&sol;section&gt;
+
+                                        &lt;!-- /GENERATE: SECTION --&gt;
+
+
+                                        &lt;!-- page2.html --&gt;
+
+                                        &lt;!-- GENERATE: SECTION | tpl.twig --&gt;
+
+                                        &lt;section&gt;
+
+                                            &lt;!-- CONTENT: TITLE --&gt;
+
+                                            &lt;h1&gt;Soubor 2 má jiný nadpis&lt;&sol;h1&gt;
+
+                                            &lt;!-- /CONTENT: TITLE --&gt;
+
+                                        &lt;&sol;section&gt;
+
+                                        &lt;!-- /GENERATE: SECTION --&gt;
+                                    </code>
+                                </pre>
+
+                                <p>V&nbsp;souboru <code>tpl.twig</code> pak může vypadat šablona následovně:</p>
+
+                                <pre data-code="twig">
+                                    <code>
+                                        &lt;section&gt;
+
+                                            {{CONTENT.TITLE}}
+
+                                        &lt;&sol;section&gt;
+                                    </code>
+                                </pre>
+
+                            </figure>
+
+                            <p><strong>Odsazení se nijak neupravuje.</strong> Změní-li se odsazení v&nbsp;šabloně, nově vygenerovaný kód bude odsazený špatně. Z&nbsp;tohoto důvodu je možné při spuštění generátoru ručně nastavit tuto změnu pomocí argumentu <code>--indent</code>. Jako hodnota se použije řetězec ve formátu <code class="small">"NÁZEV:ZMĚNA ODSAZENÍ,NÁZEV:ZMĚNA ODSAZENÍ"</code>, tedy napřiklad <code class="small">"TITLE:4,LIST:-8"</code>.</p>
+
+                            <h4>Data v&nbsp;šabloně</h4>
+
+                            <p>V&nbsp;šabloně jsou k&nbsp;dispozici následující data:</p>
+
+                            <ul>
+                                <li><code class="small">CURRENT_FILE</code> — název aktuálního souboru.</li>
+                                <li><code class="small">CONTENT</code> — definovaný obsah.</li>
+                                <li>Data získaná ze&nbsp;souboru nebo z&nbsp;<i>inline bloku</i>.</li>
+                                <li>Jsou-li získaná data pole, pak jsou přiřazena k&nbsp;vlastnosti <code>data</code>.</li>
+                            </ul>
+
+                            <h4>Speciální tagy</h4>
+
+                            <p>Tagem <code>=<span class="small">GX</span>=</code> je možné označit řádek, který se má po vygenerování kódu odstranit.</p>
+
+                            <p>V&nbsp;<i>inline blocích</i> je možné vložit komentáře tagy <code>=<span class="small">GC</span>=</code> a&nbsp;<code>=/<span class="small">GC</span>=</code>.</p>
+
+                            <figure class="example">
+
+                                <pre data-code="html">
+                                    <code>
+                                        &lt;!-- GENERATE: LIST | TWIG | JSON
+                                            ====
+                                            &lt;ul&gt;
+                                                =GX={% for value in items %}
+                                                &lt;li&gt;{{value}}&lt;&sol;li&gt;
+                                                =GC= /li =/GC=
+                                                =GX={% endfor %}
+                                            &lt;&sol;ul&gt;
+                                            ====
+                                            { "items": [1, 2, 3] }
+                                        --&gt;
+
+                                        &lt;ul&gt;
+                                            &lt;li&gt;1&lt;&sol;li&gt;
+                                            &lt;!-- /li --&gt;
+                                            &lt;li&gt;2&lt;&sol;li&gt;
+                                            &lt;!-- /li --&gt;
+                                            &lt;li&gt;3&lt;&sol;li&gt;
+                                            &lt;!-- /li --&gt;
+                                        &lt;&sol;ul&gt;
+
+                                        &lt;!-- /GENERATE: LIST --&gt;
+                                    </code>
+                                </pre>
+
+                                <p>Bez tagů pro odstranění řádků bude výsledek následující:</p>
+
+                                <pre data-code="html">
+                                    <code>
+                                        &lt;ul&gt;
+
+                                            &lt;li&gt;1&lt;&sol;li&gt;
+                                            &lt;!-- /li --&gt;
+
+                                            &lt;li&gt;2&lt;&sol;li&gt;
+                                            &lt;!-- /li --&gt;
+
+                                            &lt;li&gt;3&lt;&sol;li&gt;
+                                            &lt;!-- /li --&gt;
+
+                                        &lt;&sol;ul&gt;
+                                    </code>
+                                </pre>
+
+                            </figure>
+
+                            <h4>Použití</h4>
+
+                            <p>Argumenty:</p>
+
+                            <ul>
+                                <li><code>--files</code>, <code>--f</code> — seznam souborů oddělených čárkou (<code>,</code>), u&nbsp;kterých se mají spustit generátory. Cesta je relativní k&nbsp;<code class="small">PATHS.HTML_INPUT</code>, respektive k&nbsp;<code class="small">PATHS.CSS_FILES</code> v&nbsp;případě <span class="small">CSS</span>. Začíná-li cesta znakem <code>/</code>, pak je relativní ke&nbsp;kořenové složce.</li>
+                                <li><code>--generators</code>, <code>--g</code> — seznam generátořů oddělených čárkou (<code>,</code>), které se mají spustit.</li>
+                                <li><code>--indent</code>, <code>--i</code> — nastavení změny odsazení pro specifický obsah. Formát: <code class="small">"NÁZEV:ZMĚNA ODSAZENÍ,NÁZEV:ZMĚNA ODSAZENÍ"</code>.</li>
+                                <li><code>--css</code> — vynucení <i><span class="small">CSS</span> módu</i>.</li>
+                                <li><code>--html</code> — vynucení <i><span class="small">HTML</span> módu</i>.</li>
+                                <li><code>--x-nested</code> — nespouštět vnořené generátory.</li>
+                                <li><code>--log-data</code> — zobrazit nalezená data v&nbsp;konzoli.</li>
+                            </ul>
+
+                            <p class="note">Nepoužívá-li se vynucení <i>módu</i>, pak je detekován podle přípony prvního zadaného souboru.</p>
+
+                            <p class="note">Výchozí hodnoty pro <code>--files</code> jsou <code>*.html</code> v&nbsp;případě <i><span class="small">HTML</span> módu</i> a&nbsp;<code>*.css</code> v&nbsp;případě <i><span class="small">CSS</span> módu</i>. Není-li <i>mód</i> zadán, použije se <i class="small">HTML</i>.</p>
+
+                            <figure class="example">
+
+                                <p>Spuštění generátorů <code class="small">LIST</code> a&nbsp;<code class="small">SECTION</code> v&nbsp;souboru <code>index.html</code>:</p>
+
+                                <pre data-code="shell">
+                                    <code>
+                                        npm run gulp generate -- --g LIST,SECTION --f index.html
+                                    </code>
+                                </pre>
+
+                            </figure>
+
+                            <figure class="example">
+
+                                <p>V&nbsp;šabloně generátoru <code class="small">SECTION</code> jsme specifický obsah <code class="small">TITLE</code> zanořili do dalšího elementu a&nbsp;<code class="small">LIST</code> jsme naopak ze dvou vyjmuli, tím pádem nebude odsazení odpovídající:</p>
+
+                                <pre data-code="twig">
+                                    <code>
+                                        {# před změnou #}
+
+                                        &lt;section&gt;
+
+                                            {{CONTENT.TITLE}}
+
+                                            &lt;section&gt;
+                                                &lt;div&gt;
+
+                                                    {{CONTENT.LIST}}
+
+                                                &lt;/div&gt;
+                                            &lt;/section&gt;
+
+                                        &lt;/section&gt;
+
+                                        {# po změně #}
+
+                                        &lt;section&gt;
+
+                                            &lt;div&gt;
+
+                                                {{CONTENT.TITLE}}
+
+                                            &lt;/div&gt;
+
+                                            {{CONTENT.LIST}}
+
+                                        &lt;/section&gt;
+                                    </code>
+                                </pre>
+
+
+                                <p>Použijeme proto argument <code>--i</code> (<code>--indent</code>), abychom tuto změnu generátoru oznámili:</p>
+
+                                <pre data-code="shell">
+                                    <code>
+                                        npm run gulp generate -- --g SECTION --i "TITLE:4,LIST:-8"
+                                    </code>
+                                </pre>
+
+                            </figure>
+
+                            <script>__copyElement("#htmlsave-info");</script>
+
+                            <p class="note">Do této složky se ukládají i&nbsp;soubory pro <span class="small">CSS</span>.</p>
+
+                        </section>
 
                         <section>
 
@@ -1528,6 +2023,8 @@
 
                             <p>Komentáře typu <code>&lt;!--–––––––––&nbsp;**&nbsp;<span class="small">COMPONENT</span>&nbsp;**&nbsp;–––––––––--&gt;</code> a&nbsp;<code>&lt;!--–––––––––&nbsp;//&nbsp;<span class="small">COMPONENT</span>&nbsp;//&nbsp;–––––––––--&gt;</code> označují začátky a konce jednotlivých komponentů.</p>
 
+                            <p>Některé části mohou být vygenerovány pomocí šablonovacího systému nebo vloženy z&nbsp;jiných souborů. Takový kód se nachází mezi komentáři <code>&lt;!--&nbsp;<span class="small">GENERATE: NAME ...</span>&nbsp;--&gt;</code> a&nbsp;<code>&lt;!--&nbsp;<span class="small">/GENERATE: NAME</span>&nbsp;--&gt;</code> Více informací najdete v&nbsp;sekci <script>__linkTo("gulp-generate");</script>.</p>
+
                             <p>Styly jsou vložené v elementu <code>head</code> v sekci <code>&lt;!--— <span class="small">STYLES</span> —--&gt;</code> a skripty na konci elementu <code>body</code> v sekci <code>&lt;!--— <span class="small">JAVASCRIPT</span> —--&gt;</code>. Soubory pro produkční verzi jsou označené komentáři <code>&lt;!--prod--&gt;</code> a <code>&lt;!--/prod--&gt;</code> a pro vývoj <code>&lt;!--dev--&gt;</code> a <code>&lt;!--/dev--&gt;</code>. Pro další informace o sekcích a vývojových soborech viz <script>__linkTo("html-soubory");</script>.</p>
 
                             <!--css-->
@@ -1581,13 +2078,19 @@
 
                             <h3 id="pristup-k-js-modulum">Přístup k <span class="small">JS</span> modulům</h3>
 
-                            <p>Moduly jsou přiřazeny ke jmennému prostoru <code>window.MJNS</code>. K veřejným metodám <span class="small">(API)</span> jednotlivých modulů můžete tedy přistupovat pomocí:</p>
+                            <p>Moduly jsou přiřazeny ke jmennému prostoru <code>window.WNS</code>, což je objekt, který lze v dalších modulech získat také importováním <code>/js/<span class="small">GNS</span>.js</code>. K veřejným metodám <span class="small">(API)</span> jednotlivých modulů můžete tedy přistupovat pomocí:</p>
 
                             <figure>
 
                                 <pre data-code="javascript">
                                     <code>
-                                        window.MJNS.ModuleName.publicMethod();
+                                        //v modulu
+                                        import GNS from "/js/GNS.js";
+
+                                        GNS.ModuleName.publicMethod();
+
+                                        //mimo modul
+                                        window.WNS.ModuleName.publicMethod();
                                     </code>
                                 </pre>
 
@@ -1655,7 +2158,7 @@
                                 <tr>
                                     <td><strong>Desktop</strong></td>
                                     <td>
-                                        <strong><span class="small">1310</span>px+</strong>
+                                        <strong><span class="small">78</span>px–<span class="small">75</span>px</strong>
                                     </td>
                                     <td><code>desktop</code></td>
                                 </tr>
@@ -1663,7 +2166,7 @@
                                 <tr>
                                     <td><strong>Tablet</strong></td>
                                     <td>
-                                        <strong><span class="small">768</span>px–<span class="small">1309</span>px</strong>
+                                        <strong><span class="small">48</span>px+</strong>
                                     </td>
                                     <td><code>tablet</code></td>
                                 </tr>
@@ -1671,7 +2174,7 @@
                                 <tr>
                                     <td>Tablet velký</td>
                                     <td>
-                                        <span class="small">1024</span>px–<span class="small">1309</span>px
+                                        <span class="small">64</span>px+
                                     </td>
                                     <td><code>tablet-l</code></td>
                                 </tr>
@@ -1679,7 +2182,7 @@
                                 <tr>
                                     <td>Tablet malý</td>
                                     <td>
-                                        <span class="small">768</span>px–<span class="small">1023</span>px
+                                        <span class="small">48</span>px+
                                     </td>
                                     <td><code>tablet-s</code></td>
                                 </tr>
@@ -1687,7 +2190,7 @@
                                 <tr>
                                     <td><strong>Mobil</strong></td>
                                     <td>
-                                        <strong><span class="small">767</span>px-</strong>
+                                        <strong><span class="small">47</span>px–<span class="small">9375</span>px</strong>
                                     </td>
                                     <td><code>mobile</code></td>
                                 </tr>
@@ -1695,7 +2198,7 @@
                                 <tr>
                                     <td>Mobil velký</td>
                                     <td>
-                                        <span class="small">640</span>px–<span class="small">767</span>px
+                                        <span class="small">40</span>px+
                                     </td>
                                     <td><code>mobile-l</code></td>
                                 </tr>
@@ -1703,7 +2206,7 @@
                                 <tr>
                                     <td>Mobil střední</td>
                                     <td>
-                                        <span class="small">480</span>px–<span class="small">639</span>px
+                                        <span class="small">30</span>px+
                                     </td>
                                     <td><code>mobile-m</code></td>
                                 </tr>
@@ -1711,7 +2214,7 @@
                                 <tr>
                                     <td>Mobil malý</td>
                                     <td>
-                                        <span class="small">479</span>px-
+                                        <span class="small">29</span>px–<span class="small">9375</span>px
                                     </td>
                                     <td><code>mobile-s</code></td>
                                 </tr>
@@ -1778,7 +2281,7 @@
                                 </tr>
 
                                 <tr>
-                                    <td><code>visuallly-hidden</code></td>
+                                    <td><code>visually-hidden</code></td>
                                     <td>Skryje obsah, ale zůstane přístupný pro čtečky obrazovek apod.</td>
                                     <td></td>
                                 </tr>
@@ -1803,19 +2306,13 @@
 
                                 <!--colors-->
                                 <tr>
-                                    <td><code>color1</code><span class="">, <code>color-primary</code></span>, <code>bg1</code>, <code>bd1</code>, <code>hf-color1</code>, <code>active-color1</code>, &hellip;</td>
-                                    <td>
-                                        <span class="color-swatch" style="background: #021033;"></span>
-                                        <code class="color-text">#021033</code>
-                                    </td>
-                                    <td>Nastavuje barvu textu/pozadí/rámečku/výplně/čáry. Předpona <code>hf-</code> nastavuje barvu při <code>:hover</code> a <code>:focus</code>. Předpona <code>active-</code> nastavuje barvu u&nbsp;elementů s&nbsp;<i>modifikátorem</i> <code>--active</code> nebo u&nbsp;jejich potomků.</td>
-                                </tr>
 
-                                <tr>
-                                    <td><code>color2</code><span class="">, <code>color-secondary</code></span>, <code>bg2</code>, <code>bd2</code>, <code>hf-color2</code>, <code>active-color2</code>, &hellip;</td>
+                                    <!--noindex-->
+                                    <td><code>color-primary</code>, <code>bg-primary</code>, <code>bd-primary</code>, <code>hf-color-primary</code>, <code>active-color-primary</code>, &hellip;</td>
+                                    <!--/noindex-->
                                     <td>
-                                        <span class="color-swatch" style="background: #2fb8e6;"></span>
-                                        <code class="color-text">#2fb8e6</code>
+                                        <span class="color-swatch" style="background: red;"></span>
+                                        <code class="color-text">red</code>
                                     </td>
                                     <td>Nastavuje barvu textu/pozadí/rámečku/výplně/čáry. Předpona <code>hf-</code> nastavuje barvu při <code>:hover</code> a <code>:focus</code>. Předpona <code>active-</code> nastavuje barvu u&nbsp;elementů s&nbsp;<i>modifikátorem</i> <code>--active</code> nebo u&nbsp;jejich potomků.</td>
                                 </tr>
@@ -1823,8 +2320,11 @@
 
                                 <!--fonts-->
                                 <tr>
-                                    <td><code>font1</code><span class="">, <code>font-primary</code></span></td>
-                                    <td>Nastavuje font na <i>Montserrat</i>.</td>
+
+                                    <!--noindex-->
+                                    <td><code>font-primary</code></td>
+                                    <!--/noindex-->
+                                    <td>Nastavuje font na <i>inherit</i>.</td>
                                     <td></td>
                                 </tr>
                                 <!--/fonts-->
@@ -1839,7 +2339,12 @@
 
                             <script id="template__colors" type="text/html">
                                 <tr>
+                                    <!--index-->
                                     <td><code>color{{index}}</code><span class="{{class}}">, <code>color-{{name}}</code></span>, <code>bg{{index}}</code>, <code>bd{{index}}</code>, <code>hf-color{{index}}</code>, <code>active-color{{index}}</code>, &hellip;</td>
+                                    <!--/index-->
+                                    <!--noindex-->
+                                    <td><code>color-{{name}}</code>, <code>bg-{{name}}</code>, <code>bd-{{name}}</code>, <code>hf-color-{{name}}</code>, <code>active-color-{{name}}</code>, &hellip;</td>
+                                    <!--/noindex-->
                                     <td>
                                         <span class="color-swatch" style="background: {{color}};"></span>
                                         <code class="color-text">{{color}}</code>
@@ -1850,7 +2355,12 @@
 
                             <script id="template__fonts" type="text/html">
                                 <tr>
+                                    <!--index-->
                                     <td><code>font{{index}}</code><span class="{{class}}">, <code>font-{{name}}</code></span></td>
+                                    <!--/index-->
+                                    <!--noindex-->
+                                    <td><code>font-{{name}}</code></td>
+                                    <!--/noindex-->
                                     <td>Nastavuje font na <i>{{font}}</i>.</td>
                                     <td></td>
                                 </tr>
@@ -1858,7 +2368,28 @@
 
 
 
+                            <p class="note">Některé třídy mají zvýšenou specificitu pomocí <code>id</code>. Pokud je nutné přepsat některou z&nbsp;pomocných tříd, pak je vhodné pro to použít stejný způsob včetně dané třídy, tedy například <code>#rewrite .block__element.color-primary {}</code>. Viz také <script>__linkTo("css-metodologie");</script></p>
+
                         </section>
+
+                        <!--css-->
+                        <section>
+
+                            <h3 id="custom-properties-css">css/<wbr>custom-properties.css</h3>
+
+                            <p>Soubor obsahuje základní nastavení globálních promněnných webu pomocí <i><span class="small">CSS</span> Custom Properties <span class="small">(CP)</span></i>. Jedná se zejména&nbsp;o:</p>
+
+                            <ul>
+                                <li>obecná nastavení webu (maximální šířka, odsazení, &hellip;) — prefix <code>--page</code></li>
+                                <li>barvy — prefix <code>--color</code></li>
+                                <li>písma — prefix <code>--font</code></li>
+                                <li>přechody — prefix <code>--transition</code></li>
+                            </ul>
+
+                            <p class="warning"><i class="small">CP</i> se při sestavení/spojení souborů přepíší pomocí <a href="https://postcss.org/"><i>Post<span class="small">CSS</span></i></a> a&nbsp;pluginu <a href="https://github.com/MadLittleMods/postcss-css-variables"><i>postcss-css-variables</i></a> skutečnými hodnotami. Není tak možné využít vlastností <i class="small">CP</i>, které závisí na existenci <i><span class="small">DOM</span>u</i>.</p>
+
+                        </section>
+                        <!--/css-->
 
                         <section>
 
@@ -1886,13 +2417,92 @@
 
                         </section>
 
-                        <section>
+                        <section class="code__ariabutton">
+
+                            <h3 id="ariabutton">AriaButton: zobrazování/skrývání elementů</h3>
+
+                            <p>Modul <code>AriaButton</code> slouží k&nbsp;vytvoření přístupného (<i>accessible</i>) přepínání prvků na stránce.</p>
+
+                            <p>Použití: elementu <code>button</code> se přidá třída <code>js-aria-button</code> a&nbsp;minimálně atribut <code>aria-pressed</code>. Pokud tlačítko zobrazuje nějaký skrytý element, je potřeba přidat atribut <code>aria-expanded</code> a&nbsp;atribut <code>aria-controls</code>, do kterého se zadá <code>id</code> zobrazovaného elementu.</p>
+
+                            <p>Pokud má element atribut <code>aria-controls</code>, pak se elementu s&nbsp;příslušným <code>id</code> přidá třída <code>js-aria-button__target</code> a&nbsp;při přepnutí do aktivního stavu (<code>aria-expanded="true"</code>) se přidá třída <code>js-aria-button__target--expanded</code>.</p>
+
+                            <p>Při přepnutí se na elementu (<code>.js-aria-button</code>) spustí událost <code>ariabutton__change</code>. V&nbsp;objektu události pak jsou k&nbsp;dispozici vlastnosti <code>detail.state</code>, <code>detail.target</code> a&nbsp;<code>detail.click</code> (označuje, jestli došlo ke změně pomocí kliknutí nebo metody <code>click</code>).</p>
+
+                            <p class="warning"><i>Aria</i> atributy nikdy neměňte jinak než pomocí metody <code>click</code> na příslušném elementu nebo pomocí metod <code>setState</code> a&nbsp;<code>toggleState</code> v&nbsp;modulu.</p>
+
+                            <figure class="example">
+
+                                <p>Takto můžeme vytvořit jednoduché přepínání menu:</p>
+
+                                <pre data-code="html">
+                                    <code>
+                                        &lt;button class="menu__opener js-aria-button" aria-pressed="false" aria-expanded="false" aria-controls="menu__list"&gt;
+                                            Menu
+                                        &lt;/button&gt;
+                                        &lt;ul class="menu__list" id="menu__list"&gt;...&lt;/ul&gt;
+                                    </code>
+                                </pre>
+
+                                <pre data-code="css">
+                                    <code>
+                                        .menu__list {
+                                            display: none;
+                                        }
+
+                                        .menu__opener[aria-expanded="true"] ~ .menu__list {
+                                            display: block;
+                                        }
+                                    </code>
+                                </pre>
+
+                            </figure>
+
+                            <figure class="example">
+
+                                <p>V&nbsp;kódu se často nachází i&nbsp;kód pro zajištění funkčnosti při vypnutém <i>JavaScriptu</i>. Většinou se k&nbsp;tomu používá <code>input</code> typu <code>checkbox</code>:</p>
+
+                                <pre data-code="html">
+                                    <code>
+                                        &lt;input class="menu__toggle x-js" id="menu__toggle" type="checkbox"&gt;
+
+                                        &lt;label class="menu__opener x-js" for="menu__toggle"&gt;
+                                            Menu
+                                        &lt;/label&gt;
+
+                                        &lt;button class="menu__opener js-aria-button x-no-js" aria-pressed="false" aria-expanded="false" aria-controls="menu__list"&gt;
+                                            Menu
+                                        &lt;/button&gt;
+
+                                        &lt;ul class="menu__list" id="menu__list"&gt;...&lt;/ul&gt;
+                                    </code>
+                                </pre>
+
+                                <pre data-code="css">
+                                    <code>
+                                        .menu__list {
+                                            display: none;
+                                        }
+
+                                        .no-js .menu__toggle:checked ~ .menu__list,
+                                        .js .menu__opener[aria-expanded="true"] ~ .menu__list {
+                                            display: block;
+                                        }
+                                    </code>
+                                </pre>
+
+
+                            </figure>
+
+                        </section>
+
+                        <section hidden>
 
                             <h3>Interaktivní mapa</h3>
 
                             <p><strong>Do skriptu načítajícího <span class="small">API</span> pro Google Maps je potřeba vložit vlastní <span class="small">API</span> key!</strong> Lze vygenerovat zde: <a href="https://console.cloud.google.com">https://console.cloud.google.com</a>.</p>
 
-                            <p>Pozice se nastavuje na elmentu <code>.page-footer__map</code> atributem <code>data-map-coords</code>. Hodnota je pole souřadnic.</p>
+                            <p>Pozice se nastavuje na elmentu <code>*</code> atributem <code>*</code>. Hodnota je pole souřadnic.</p>
 
                         </section>
 
@@ -1914,7 +2524,7 @@
 
                             <h3>jQuery</h3>
 
-                            <p>Knihovna pro usnadnění práce například s <span class="small">DOM</span>em <span class="small">AJAX</span>em, událostmi nebo animacemi.</p>
+                            <p>Knihovna pro usnadnění práce například s <span class="small">DOM</span>em, <span class="small">AJAX</span>em, událostmi nebo animacemi.</p>
 
                             <ul>
                                 <li>Web: <a href="http://jquery.com/">http://jquery.com/</a></li>
@@ -1936,7 +2546,37 @@
 
                         </section>
 
-                        <section class="libs__slick">
+                        <section class="libs__focuswithin">
+
+                            <h3 id="focuswithin">focus-within polyfill</h3>
+
+                            <p>Vlastní polyfill pro <span class="small">CSS</span> selektor <code>:focus-within</code>.</p>
+
+                            <p>Polyfill přidává elementům odpovídajícím selektoru <code>:focus-within</code> atribut <code>focus-within="true"</code>.</p>
+
+                            <figure class="example">
+
+                                <p>V&nbsp;<span class="small">CSS</span> pak atribut můžeme použít takto:</p>
+
+                                <pre data-code="css">
+                                    <code>
+                                        .block[focus-within] .block__element {
+                                            display: block;
+                                        }
+
+                                        .block:focus-within .block__element {
+                                            display: block;
+                                        }
+                                    </code>
+                                </pre>
+
+                            </figure>
+
+                            <p class="note">Selektory je nutné rozdělit, protože nepodporující prohlížeče ignorují celou sadu pravidel, pokud jeden ze selektorů v&nbsp;seznamu nepodporují.</p>
+
+                        </section>
+
+                        <section class="libs__slick" hidden>
 
                             <h3 id="slick">Slick.js</h3>
 
@@ -2082,7 +2722,7 @@
                                 <li><code>prod</code>, <code>dev</code> — přepínání mezi produkčními a vývojovými soubory v <span class="small">HTML</span> souborech. Viz <script>__linkTo("html-kod-pro-vyvoj");</script>.</li>
                                 <li><code>copy</code> — kopírování sekci, komponentů a elementů mezi <span class="small">HTML</span> soubory. Viz <script>__linkTo("gulp-html-copy");</script></li>
                                 <li><code>edit</code> — úprava <span class="small">HTML</span> souborů pomocí <code>gulp-cheerio</code>. Viz <script>__linkTo("gulp-html-edit");</script>.</li>
-                                <li><code>htmlsave</code>, <code>recoversave</code>, <code>clearsave</code> — uložení a obnova <span class="small">HTML</span> zálohy. Viz <script>__linkTo("html-kod-pro-vyvoj");</script>, <script>__linkTo("gulp-html-copy");</script> a <script>__linkTo("gulp-html-edit");</script>.</li>
+                                <li><code>htmlsave</code>, <code>recoversave</code>, <code>clearsave</code> — uložení a obnova <span class="small">HTML</span> zálohy. Viz <script>__linkTo("html-kod-pro-vyvoj");</script>, <script>__linkTo("gulp-html-copy");</script>, <script>__linkTo("gulp-html-edit");</script> a&nbsp;<script>__linkTo("gulp-generate");</script>.</li>
                                 <!--css-->
                                 <li><code>css</code> — spojení a minifikace stylů. Viz <script>__linkTo("spojovani-css");</script></li>
                                 <!--/css-->
@@ -2093,6 +2733,7 @@
 
                                 <li><code>js</code> — spojení a minifikace skriptů. Viz <script>__linkTo("spojovani-js");</script></li>
                                 <li><code>mod</code> — vygenerování souboru pro <span class="small">JS</span> modul. Viz <script>__linkTo("generovani-js");</script>.</li>
+                                <li><code>generate</code> — vygenerování statického kódu. Viz <script>__linkTo("gulp-generate");</script>.</li>
                                 <li><code>svg</code> — vytvoření jednoho <span class="small">SVG</span> souboru z několika (<span class="small">SVG</span> spritu). Viz <script>__linkTo("svg-a-png-ikony");</script>.</li>
                                 <li><code>critical</code> — vygenerování <i>critical <span class="small">CSS</span></i>. Viz <script>__linkTo("critical-css");</script>.</li>
                                 <li><code>images</code> — optimalizace (zmenšení) obrázků. Viz <script>__linkTo("obrazky-a-fotky");</script>.</li>
@@ -2115,7 +2756,7 @@
 
         <footer class="page__footer">
 
-            <p><span class="small">2018</span> <span class="page__footer-div">|</span> Michal Jeřábek <span class="page__footer-div page__footer-div--name-links">|</span> <a href="http://mjerabek.cz">mjerabek.cz</a> <span class="page__footer-div">|</span> <a href="https://github.com/michaljerabek">GitHub</a></p>
+            <p><span class="small">2020</span> <span class="page__footer-div">|</span> Michal Jeřábek <span class="page__footer-div page__footer-div--name-links">|</span> <a href="https://mjerabek.cz">mjerabek.cz</a> <span class="page__footer-div">|</span> <a href="https://github.com/michaljerabek">GitHub</a></p>
 
         </footer>
         <!-- /.page__footer -->
@@ -2135,18 +2776,13 @@
     <script src="./js/CodeMirror-5.39.3/mode/xml/xml.js"></script>
     <script src="./js/CodeMirror-5.39.3/mode/htmlmixed/htmlmixed.js"></script>
     <script src="./js/CodeMirror-5.39.3/mode/php/php.js"></script>
+    <script src="./js/CodeMirror-5.39.3/mode/twig/twig.js"></script>
 
     <script src="./js/slugify/index.js"></script>
 
-    <script src="./js/Content.js" type="module"></script>
-    <script src="./js/Navigation.js" type="module"></script>
-    <script src="./js/main.js" type="module"></script>
-
-    <script nomodule="">
-        document.body.className += " nomodule";
-        alert("Použijte prohlížeč podporující ES Modules!");
-        document.body.className = document.body.className.replace(/ nomodule$/, "");
-    </script>
+    <script src="./js/Content.js"></script>
+    <script src="./js/Navigation.js"></script>
+    <script src="./js/main.js"></script>
 
 </body>
 </html>

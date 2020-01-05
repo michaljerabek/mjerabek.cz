@@ -4,6 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const replace = require("gulp-replace");
 const cheerio = require("gulp-cheerio");
+const promise = require("gulp-promise");
 const gulp = require("gulp");
 
 const PATHS = require(path.resolve("../../dev/PATHS.js")).PATHS;
@@ -21,23 +22,34 @@ function getTagRegExp(tagName) {
     return new RegExp(`(${startTag})([\\s\\S]*?)(${endTag})`, "gi");
 }
 
-/*!!! Tasky je nutné spouštět postupně.*/
-
 const usesSCSS = typeof PATHS.SCSS_OUTPUT !== "undefined";
 
-let utilityFile = usesSCSS ? path.join(PATHS.SCSS_OUTPUT, "all.build.css") : path.join(PATHS.CSS_FILES, "utility.css"),
-    utilityContentRegExp = usesSCSS ? /--- UTILITY ---[\s\S]+?\/\*-+/ : /[\s\S]+/;
+let utilityFile = path.join(usesSCSS ? PATHS.SCSS_OUTPUT: PATHS.CSS_OUTPUT, "all.build.css"),
+    utilityContentRegExp = /--- UTILITY ---[\s\S]+?\/\*-+/;
 
-gulp.task("styles", () => {
+exports.styles = styles;
+exports.colors = colors;
+exports.fonts = fonts;
+exports.media = media;
+exports.libs = libs;
+exports.code = code;
 
-    gulp.src("../index.html", {base: "/manual/js"})
+exports.init = gulp.series(styles, colors, fonts, media, libs, code);
+
+function styles() {
+
+    return gulp.src("../index.html", {base: "/manual/js"})
         .pipe(replace(getTagRegExp(usesSCSS ? "css": "scss"), () => ""))
         .pipe(gulp.dest("/manual"));
-});
+}
 
-gulp.task("colors", () => {
+function colors(cb) {
 
-    return gulp.src(utilityFile, {base: "/manual/js"})
+    const gpromise = new promise();
+
+    gpromise.makePromises([arguments.callee.name], () => cb());
+
+    gulp.src(utilityFile, {base: "/manual/js"})
         .pipe(replace(utilityContentRegExp, css => {
 
             let template;
@@ -56,11 +68,12 @@ gulp.task("colors", () => {
                 )
                 .pipe(replace(getTagRegExp("colors"), (match, startTag, content, endTag) => {
 
-                    let colors = css.match(/\.color[0-9]+[^\{]+{[^\}]+}/g) || [];
+                    let colors = css.match(/\.color([0-9]+|-[a-z-]+)[^\{]+{[^\}]+}/g) || [];
 
                     if (colors.length) {
 
-                        let colorNames = colors.map(color => color.match(/\.color-([a-z-]+)/i)).map(color => color ? color[1] : "");
+                        let colorNames = colors.map(color => color.match(/\.color-([a-z-]+)/i)).map(color => color ? color[1] : ""),
+                            colorIndexes = colors.map(color => color.match(/\.color([0-9]+)/i)).map(color => color ? color[1] : "");
 
                         colors = colors.map(color => color.split("{")[1].replace(/[;}]/g, "").split(":")[1].trim());
 
@@ -69,6 +82,7 @@ gulp.task("colors", () => {
                                 .replace(/{{color}}/g, color)
                                 .replace(/{{name}}/g, colorNames[c])
                                 .replace(/{{class}}/g, colorNames[c] ? "": "hidden")
+                                .replace(getTagRegExp(colorIndexes[c] ? "noindex": "index"), "")
                             );
 
                         colors = colors.join("");
@@ -78,13 +92,20 @@ gulp.task("colors", () => {
 
                     return `${startTag}    ${endTag}`;
                 }))
-                .pipe(gulp.dest("/manual"));
+                .pipe(gulp.dest("/manual"))
+                .pipe(gpromise.deliverGulpPromise(arguments.callee.name));
         }));
-});
 
-gulp.task("fonts", () => {
+    return gpromise;
+}
 
-    return gulp.src(utilityFile, {base: "/manual/js"})
+function fonts(cb) {
+
+    const gpromise = new promise();
+
+    gpromise.makePromises([arguments.callee.name], () => cb());
+
+    gulp.src(utilityFile, {base: "/manual/js"})
         .pipe(replace(utilityContentRegExp, css => {
 
             let template;
@@ -103,11 +124,12 @@ gulp.task("fonts", () => {
                 )
                 .pipe(replace(getTagRegExp("fonts"), (match, startTag, content, endTag) => {
 
-                    let fonts = css.match(/\.font[0-9]+[^\{]+{[^\}]+}/g) || [];
+                    let fonts = css.match(/\.font([0-9]+|-[a-z-]+)[^\{]+{[^\}]+}/g) || [];
 
                     if (fonts.length) {
 
-                        let fontNames = fonts.map(font => font.match(/\.font-([a-z-]+)/i)).map(font => font ? font[1] : "");
+                        let fontNames = fonts.map(font => font.match(/\.font-([a-z-]+)/i)).map(font => font ? font[1] : ""),
+                            fontIndexes = fonts.map(font => font.match(/\.font([0-9]+)/i)).map(font => font ? font[1] : "");
 
                         fonts = fonts.map(font => font.split("{")[1].replace(/[;}]/g, "").split(":")[1].trim());
 
@@ -118,6 +140,7 @@ gulp.task("fonts", () => {
                                 .replace(/{{font}}/g, font)
                                 .replace(/{{name}}/g, fontNames[f])
                                 .replace(/{{class}}/g, fontNames[f] ? "": "hidden")
+                                .replace(getTagRegExp(fontIndexes[f] ? "noindex": "index"), "")
                             );
 
                         fonts = fonts.join("");
@@ -127,11 +150,14 @@ gulp.task("fonts", () => {
 
                     return `${startTag}    ${endTag}`;
                 }))
-                .pipe(gulp.dest("/manual"));
+                .pipe(gulp.dest("/manual"))
+                .pipe(gpromise.deliverGulpPromise(arguments.callee.name));
         }));
-});
 
-gulp.task("media", () => {
+    return gpromise;
+}
+
+function media(cb) {
 
     const NAME = {
         desktop: "Desktop",
@@ -142,10 +168,15 @@ gulp.task("media", () => {
     const SUBNAME = {
         l: "velký",
         m: "střední",
-        s: "malý"
+        s: "malý",
+        xs: "extra malý"
     };
 
-    return gulp.src(utilityFile, {base: "/manual/js"})
+    const gpromise = new promise();
+
+    gpromise.makePromises([arguments.callee.name], () => cb());
+
+    gulp.src(utilityFile, {base: "/manual/js"})
         .pipe(replace(utilityContentRegExp, css => {
 
             let template;
@@ -164,13 +195,13 @@ gulp.task("media", () => {
                 )
                 .pipe(replace(getTagRegExp("media"), (match, startTag, content, endTag) => {
 
-                    let media = css.match(/(@media[^}{]+?\{)(?:\s*html \.x-(?:desktop|tablet|mobile)-?[sml]?)/g) || [];
+                    let media = css.match(/(@media[^}{]+?\{)(?:\s*\#rewrite \.x-(?:desktop|tablet|mobile)-?[x]?[sml]?)/g) || [];
 
                     if (media.length) {
 
                         media = media.map(item => [
                             item.replace(/(\s*\{[\s\S]*)|(@media\s*)/g, ""),
-                            item.match(/(desktop|tablet|mobile)-?(s|m|l)?/i)
+                            item.match(/(desktop|tablet|mobile)-?(x?s|m|x?l)?/i)
                         ]);
 
                         media = media.map(item => {
@@ -207,13 +238,17 @@ gulp.task("media", () => {
 
                     return `${startTag}    ${endTag}`;
                 }))
-                .pipe(gulp.dest("/manual"));
+                .pipe(gulp.dest("/manual"))
+                .pipe(gpromise.deliverGulpPromise(arguments.callee.name));
         }));
-});
 
-gulp.task("libs", () => {
+    return gpromise;
+}
+
+function libs() {
 
     const LIBS = {
+        libs__focuswithin: path.join(PATHS.LIBS_FILES, "focus-within-polyfill.js"),
         libs__jquery: path.join(PATHS.LIBS_FILES, "jq.min.js"),
         libs__svg4everybody: path.join(PATHS.LIBS_FILES, "svg4everybody/dist/svg4everybody.js"),
         libs__slick: path.join(PATHS.LIBS_FILES, "slick/slick.js"),
@@ -247,12 +282,12 @@ gulp.task("libs", () => {
             })
         )
         .pipe(gulp.dest("/manual"));
+}
 
-});
-
-gulp.task("code", () => {
+function code() {
 
     const CODE = {
+        code__ariabutton: path.join(PATHS.JS_MODULES, "AriaButton.js"),
         code__jshover: path.join(PATHS.JS_MODULES, "JSHover.js"),
         code__blueimpgallery: path.join(PATHS.JS_MODULES, "BlueimpGallery.js")
     };
@@ -282,4 +317,4 @@ gulp.task("code", () => {
             })
         )
         .pipe(gulp.dest("/manual"));
-});
+}

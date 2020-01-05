@@ -1,177 +1,180 @@
 /*jslint indent: 4, white: true, nomen: true, regexp: true, unparam: true, node: true, browser: true, devel: true, nomen: true, plusplus: true, regexp: true, sloppy: true, vars: true, esversion: 6*/
 
-const CLASS = {
-    tableWrapper: "content__table"
-};
+(function() {
 
-const DATA = {
-    codeType: "code"
-};
+    const CLASS = {
+        tableWrapper: "content__table"
+    };
 
-const SELECTOR = {
-    pageTitle: ".page__title",
+    const DATA = {
+        codeType: "code"
+    };
 
-    self: ".content",
+    const SELECTOR = {
+        pageTitle: ".page__title",
 
-    findNavHeadings: "section:not([hidden]) > h2:not(.x-nav), section:not([hidden]) section:not([hidden]) h3:not(.x-nav)",
+        self: ".content",
 
-    findTable: "table",
-    findPre: "pre",
-    findPreToHighlight: "pre[data-code]",
-    findSection: ".content > section:not([hidden])",
-    findSectionOutlineHeading: "h2[id]",
-    findSubsectionOutlineHeading: "section:not([hidden]) > h3[id]"
-};
+        findNavHeadings: "section:not([hidden]) > h2:not(.x-nav), section:not([hidden]) section:not([hidden]) h3:not(.x-nav)",
 
-let selfEl;
+        findTable: "table",
+        findPre: "pre",
+        findPreToHighlight: "pre[data-code]",
+        findSection: ".content > section:not([hidden])",
+        findSectionOutlineHeading: "h2[id]",
+        findSubsectionOutlineHeading: "section:not([hidden]) > h3[id]"
+    };
+
+    let selfEl;
 
 
-function getOutline() {
+    function getOutline() {
 
-    let sectionEls = Array.from(selfEl.querySelectorAll(SELECTOR.findSection));
+        let sectionEls = Array.from(selfEl.querySelectorAll(SELECTOR.findSection));
 
-    return sectionEls.map(sectionEl => {
+        return sectionEls.map(sectionEl => {
 
-        let headingEl = sectionEl.querySelector(SELECTOR.findSectionOutlineHeading),
-            subheadingEls = Array.from(sectionEl.querySelectorAll(SELECTOR.findSubsectionOutlineHeading));
+            let headingEl = sectionEl.querySelector(SELECTOR.findSectionOutlineHeading),
+                subheadingEls = Array.from(sectionEl.querySelectorAll(SELECTOR.findSubsectionOutlineHeading));
 
-        return !headingEl ? null : {
-            heading: {
-                id: headingEl.id,
-                html: headingEl.innerHTML
-            },
-            subheadings: subheadingEls.map(subheadingEl => ({
-                id: subheadingEl.id,
-                html: subheadingEl.innerHTML
-            }))
-        };
-    }).filter(Boolean);
-}
-
-function highlightCode() {
-
-    let preEls = selfEl.querySelectorAll(SELECTOR.findPreToHighlight);
-
-    for (let preEl of preEls) {
-
-        let modeName = preEl.dataset[DATA.codeType],
-            codeEl = preEl.querySelector("code") || preEl;
-
-        if (modeName === "html") {
-
-            modeName += "mixed";
-        }
-
-        CodeMirror.runMode(codeEl.textContent, { name: modeName }, codeEl);
+            return !headingEl ? null : {
+                heading: {
+                    id: headingEl.id,
+                    html: headingEl.innerHTML
+                },
+                subheadings: subheadingEls.map(subheadingEl => ({
+                    id: subheadingEl.id,
+                    html: subheadingEl.innerHTML
+                }))
+            };
+        }).filter(Boolean);
     }
-}
 
-function formatPreElsContent() {
+    function highlightCode() {
 
-    let preEls = selfEl.querySelectorAll(SELECTOR.findPre);
+        let preEls = selfEl.querySelectorAll(SELECTOR.findPreToHighlight);
 
-    for (let preEl of preEls) {
+        for (let preEl of preEls) {
 
-        let codeEl = preEl.querySelector("code") || preEl,
-            content = codeEl.textContent;
+            let modeName = preEl.dataset[DATA.codeType],
+                codeEl = preEl.querySelector("code") || preEl;
 
-        content = content.replace(/^\s*\n/, "").replace(/\n\s*$/, "");
+            if (modeName === "html") {
 
-        let spaceLength = content.match(/^\s*/);
+                modeName += "mixed";
+            }
 
-        if (spaceLength) {
-
-            spaceLength = spaceLength[0];
-
-            codeEl.textContent = content.replace(new RegExp("\n" + spaceLength, "g"), "\n")
-                .replace(new RegExp("^" + spaceLength), "");
-        }
-
-        if (codeEl.tagName.toLocaleLowerCase() === "code" && codeEl.parentElement.tagName.toLocaleLowerCase() === "pre") {
-
-            codeEl.parentElement.innerHTML = codeEl.parentElement.innerHTML.trim();
+            CodeMirror.runMode(codeEl.textContent, { name: modeName }, codeEl);
         }
     }
-}
 
-function wrapTables() {
+    function formatPreElsContent() {
 
-    let tableEls = selfEl.querySelectorAll(SELECTOR.findTable);
+        let preEls = selfEl.querySelectorAll(SELECTOR.findPre);
 
-    for (let tableEl of tableEls) {
+        for (let preEl of preEls) {
 
-        let wrapper = document.createElement("div"),
-            clone = tableEl.cloneNode(true);
+            let codeEl = preEl.querySelector("code") || preEl,
+                content = codeEl.textContent;
 
-        wrapper.classList.add(CLASS.tableWrapper);
+            content = content.replace(/^\s*\n/, "").replace(/\n\s*$/, "");
 
-        wrapper.appendChild(clone);
+            let spaceLength = content.match(/^\s*/);
 
-        tableEl.parentNode.insertBefore(wrapper, tableEl);
+            if (spaceLength) {
 
-        tableEl.parentNode.removeChild(tableEl);
-    }
-}
+                spaceLength = spaceLength[0];
 
-function slugifyHeadingContent(content) {
+                codeEl.textContent = content.replace(new RegExp("\n" + spaceLength, "g"), "\n")
+                    .replace(new RegExp("^" + spaceLength), "");
+            }
 
-    let id, count = 0;
+            if (codeEl.tagName.toLocaleLowerCase() === "code" && codeEl.parentElement.tagName.toLocaleLowerCase() === "pre") {
 
-    do {
-
-        id = slugify(content, {
-            remove: /[\/\\*+~.()'"!:@]/g
-        }) + (count++ ? "-" + count: "");
-
-        id = id.toLowerCase();
-
-    } while (document.querySelector("#" + id));
-
-    return id;
-}
-
-function generateNavIds() {
-
-    var headingEls = selfEl.querySelectorAll(SELECTOR.findNavHeadings);
-
-    for (let headingEl of headingEls) {
-
-        if (!headingEl.id) {
-
-            headingEl.id = slugifyHeadingContent(headingEl.textContent);
+                codeEl.parentElement.innerHTML = codeEl.parentElement.innerHTML.trim();
+            }
         }
     }
-}
 
-function init() {
+    function wrapTables() {
 
-    selfEl = document.querySelector(SELECTOR.self);
+        let tableEls = selfEl.querySelectorAll(SELECTOR.findTable);
 
-    if (selfEl) {
+        for (let tableEl of tableEls) {
 
-        if (window.__linkTo) {
+            let wrapper = document.createElement("div"),
+                clone = tableEl.cloneNode(true);
 
-            window.__linkTo.init();
+            wrapper.classList.add(CLASS.tableWrapper);
+
+            wrapper.appendChild(clone);
+
+            tableEl.parentNode.insertBefore(wrapper, tableEl);
+
+            tableEl.parentNode.removeChild(tableEl);
         }
-
-        if (window.__copyElement) {
-
-            window.__copyElement.init();
-        }
-
-        document.title = document.querySelector(SELECTOR.pageTitle).textContent;
-
-        generateNavIds();
-
-        wrapTables();
-
-        formatPreElsContent();
-
-        highlightCode();
     }
-}
 
-export {
-    init,
-    getOutline
-};
+    function slugifyHeadingContent(content) {
+
+        let id, count = 0;
+
+        do {
+
+            id = slugify(content, {
+                remove: /[\/\\*+~.()'"!:@]/g
+            }) + (count++ ? "-" + count: "");
+
+            id = id.toLowerCase();
+
+        } while (document.querySelector("#" + id));
+
+        return id;
+    }
+
+    function generateNavIds() {
+
+        var headingEls = selfEl.querySelectorAll(SELECTOR.findNavHeadings);
+
+        for (let headingEl of headingEls) {
+
+            if (!headingEl.id) {
+
+                headingEl.id = slugifyHeadingContent(headingEl.textContent);
+            }
+        }
+    }
+
+    function init() {
+
+        selfEl = document.querySelector(SELECTOR.self);
+
+        if (selfEl) {
+
+            if (window.__linkTo) {
+
+                window.__linkTo.init();
+            }
+
+            if (window.__copyElement) {
+
+                window.__copyElement.init();
+            }
+
+            document.title = document.querySelector(SELECTOR.pageTitle).textContent;
+
+            generateNavIds();
+
+            wrapTables();
+
+            formatPreElsContent();
+
+            highlightCode();
+        }
+    }
+
+    window.Content = {
+        init,
+        getOutline
+    };
+}());
