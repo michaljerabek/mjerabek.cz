@@ -227,9 +227,13 @@
             });
     }
 
+    <span class="cm-keyword">let</span> <span class="cm-def">currentScrollTop</span> <span class="cm-operator">=</span> <span class="cm-variable">GNS</span>.<span class="cm-property">$win</span>.<span class="cm-property">scrollTop</span>();
+
     <span class="cm-variable-2">$element</span>[<span class="cm-number">0</span>].<span class="cm-property">focus</span>({
         <span class="cm-property">preventScroll</span>: <span class="cm-atom">true</span>
     });
+
+    <span class="cm-variable">GNS</span>.<span class="cm-property">$win</span>.<span class="cm-property">scrollTop</span>(<span class="cm-variable-2">currentScrollTop</span>);
 }
 
 <span class="cm-keyword">function</span> <span class="cm-def">moveFocus</span>(<span class="cm-def">$link</span>, <span class="cm-def">$focusTarget</span>) {
