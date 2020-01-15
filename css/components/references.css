@@ -283,6 +283,59 @@
 
 /*---------------------------- KERNING ----------------------------*/
 
+[href*="#reference-urban-interiery"] .references__project-name .word1 .letter2 {
+    margin-left: -0.005em;
+}
+
+[href*="#reference-urban-interiery"] .references__project-name .word1 .letter3 {
+    margin-left: 0.0275em;
+}
+
+[href*="#reference-urban-interiery"] .references__project-name .word1 .letter4 {
+    margin-left: -0.0em;
+}
+
+[href*="#reference-urban-interiery"] .references__project-name .word1 .letter5 {
+    margin-left: -0.04em;
+}
+
+[href*="#reference-urban-interiery"] .references__project-name .word2 .letter1 {
+    margin-left: -0.025em;
+}
+
+[href*="#reference-urban-interiery"] .references__project-name .word2 .letter2 {
+    margin-left: -0.005em;
+}
+
+[href*="#reference-urban-interiery"] .references__project-name .word2 .letter3 {
+    margin-left: 0.015em;
+}
+
+[href*="#reference-urban-interiery"] .references__project-name .word2 .letter4 {
+    margin-left: 0.0075em;
+}
+
+[href*="#reference-urban-interiery"] .references__project-name .word2 .letter5 {
+    margin-left: -0.01em;
+}
+
+[href*="#reference-urban-interiery"] .references__project-name .word2 .letter6 {
+    margin-left: 0.0175em;
+}
+
+[href*="#reference-urban-interiery"] .references__project-name .word2 .letter7 {
+    margin-left: -0.005em;
+}
+
+[href*="#reference-urban-interiery"] .references__project-name .word2 .letter8 {
+    margin-left: -0.005em;
+}
+
+[href*="#reference-urban-interiery"] .references__project-name .word2 .letter9 {
+    margin-left: -0.03em;
+}
+
+
 [href*="#reference-zase-ostre"] .references__project-name .word1 .letter1 {
     margin-right: 0.0115em;
 }

@@ -18,145 +18,329 @@
 <body>
 
     <pre class="scrolling-element"><code><span class="cm-comment">/*====================================================================*/</span>
-<span class="cm-comment">/*------------------------------ MEMBERS -----------------------------*/</span>
+<span class="cm-comment">/*------------------------ REFERENCES-SECTION ------------------------*/</span>
 <span class="cm-comment">/*====================================================================*/</span>
 
-<span class="cm-qualifier">.members</span> {
-    <span class="cm-property">margin</span>: <span class="cm-number">0</span> <span class="cm-number">-15px</span>;
-
-    <span class="cm-property">font-size</span>: <span class="cm-number">0</span>;
-    <span class="cm-property">text-align</span>: <span class="cm-atom">center</span>;
+<span class="cm-qualifier">.references-section</span> {
+    <span class="cm-property">background</span>: <span class="cm-atom">url</span>(<span class="cm-string">"../../../img/references__bg.svg"</span>) <span class="cm-number">-25%</span> <span class="cm-number">-25%</span> <span class="cm-atom">repeat</span>;
+    <span class="cm-property">background-attachment</span>: <span class="cm-atom">fixed</span>;
 }
 
-<span class="cm-def">@media</span> (<span class="cm-property">max-width</span>: <span class="cm-number">767px</span>) {
+<span class="cm-def">@media</span> (<span class="cm-property">max-width</span>: <span class="cm-number">1023px</span>) {
 
-    <span class="cm-qualifier">.members</span> {
-        <span class="cm-property">max-width</span>: <span class="cm-number">560px</span>;
-        <span class="cm-property">margin-right</span>: <span class="cm-atom">auto</span>;
-        <span class="cm-property">margin-left</span>: <span class="cm-atom">auto</span>;
+    <span class="cm-qualifier">.references-section</span> {
+        <span class="cm-property">background-size</span>: <span class="cm-number">1260px</span> <span class="cm-number">1260px</span>;
     }
 }
 
-    <span class="cm-def">@media</span> (<span class="cm-property">min-width</span>: <span class="cm-number">640px</span>) {
+<span class="cm-comment">/*--------------------------------------------------------------------*/</span>
+<span class="cm-comment">/*---------------------------- REFERENCES ----------------------------*/</span>
+<span class="cm-comment">/*--------------------------------------------------------------------*/</span>
 
-        <span class="cm-qualifier">.members__list</span>:<span class="cm-variable-3">not</span>(:<span class="cm-variable-3">first-child</span>) {
-            <span class="cm-property">margin-top</span>: <span class="cm-number">50px</span>;
+<span class="cm-qualifier">.references-section__references</span> {
+    <span class="cm-property">max-width</span>: <span class="cm-number">1920rem</span>;
+    <span class="cm-property">padding</span>: <span class="cm-number">0</span> <span class="cm-number">5rem</span>;
+    <span class="cm-property">margin-right</span>: <span class="cm-atom">auto</span>;
+    <span class="cm-property">margin-left</span>: <span class="cm-atom">auto</span>;
+
+    <span class="cm-property">font-size</span>: <span class="cm-number">0</span>;
+
+    <span class="cm-property">pointer-events</span>: <span class="cm-atom">none</span>;
+}
+
+<span class="cm-def">@media</span> (<span class="cm-property">min-width</span>: <span class="cm-number">640px</span>) <span class="cm-keyword">and</span> (<span class="cm-property">max-width</span>: <span class="cm-number">799px</span>),
+    (<span class="cm-property">min-width</span>: <span class="cm-number">420px</span>) <span class="cm-keyword">and</span> (<span class="cm-property">max-width</span>: <span class="cm-number">499px</span>) {
+
+        <span class="cm-qualifier">.references-section__references</span> {
+            <span class="cm-property">padding</span>: <span class="cm-number">0</span> <span class="cm-number">4rem</span>;
+        }
+}
+
+<span class="cm-def">@media</span> (<span class="cm-property">min-width</span>: <span class="cm-number">360px</span>) <span class="cm-keyword">and</span> (<span class="cm-property">max-width</span>: <span class="cm-number">419px</span>) {
+
+    <span class="cm-qualifier">.references-section__references</span> {
+        <span class="cm-property">padding</span>: <span class="cm-number">0</span> <span class="cm-number">3rem</span>;
+    }
+}
+
+    <span class="cm-qualifier">.references-section__header</span>,
+    <span class="cm-qualifier">.references-section__image-link</span> {
+        <span class="cm-property">display</span>: <span class="cm-atom">inline-block</span>;
+
+        <span class="cm-property">width</span>: <span class="cm-atom">calc</span>(<span class="cm-number">100%</span> / <span class="cm-number">6</span> - <span class="cm-number">5rem</span> * <span class="cm-number">2</span>);
+        <span class="cm-property">margin</span>: <span class="cm-number">5rem</span>;
+
+        <span class="cm-property">vertical-align</span>: <span class="cm-atom">top</span>;
+
+        <span class="cm-property">background</span>: <span class="cm-atom">var</span>(<span class="cm-variable-2">--color-dark</span>);
+
+        <span class="cm-property">overflow</span>: <span class="cm-atom">hidden</span>;
+    }
+
+    <span class="cm-def">@media</span> (<span class="cm-property">max-width</span>: <span class="cm-number">1539px</span>) {
+
+        <span class="cm-qualifier">.references-section__header</span>,
+        <span class="cm-qualifier">.references-section__image-link</span> {
+            <span class="cm-property">width</span>: <span class="cm-atom">calc</span>(<span class="cm-number">100%</span> / <span class="cm-number">5</span> - <span class="cm-number">5rem</span> * <span class="cm-number">2</span>);
+        }
+    }
+
+    <span class="cm-def">@media</span> (<span class="cm-property">max-width</span>: <span class="cm-number">1259px</span>) {
+
+        <span class="cm-qualifier">.references-section__header</span>,
+        <span class="cm-qualifier">.references-section__image-link</span> {
+            <span class="cm-property">width</span>: <span class="cm-atom">calc</span>(<span class="cm-number">100%</span> / <span class="cm-number">4</span> - <span class="cm-number">5rem</span> * <span class="cm-number">2</span>);
+        }
+    }
+
+    <span class="cm-def">@media</span> (<span class="cm-property">max-width</span>: <span class="cm-number">1023px</span>) {
+
+        <span class="cm-qualifier">.references-section__header</span>,
+        <span class="cm-qualifier">.references-section__image-link</span> {
+            <span class="cm-property">width</span>: <span class="cm-atom">calc</span>(<span class="cm-number">100%</span> / <span class="cm-number">3</span> - <span class="cm-number">5rem</span> * <span class="cm-number">2</span>);
+        }
+    }
+
+    <span class="cm-def">@media</span> (<span class="cm-property">min-width</span>: <span class="cm-number">640px</span>) <span class="cm-keyword">and</span> (<span class="cm-property">max-width</span>: <span class="cm-number">799px</span>) {
+
+        <span class="cm-qualifier">.references-section__header</span>,
+        <span class="cm-qualifier">.references-section__image-link</span> {
+            <span class="cm-property">width</span>: <span class="cm-atom">calc</span>(<span class="cm-number">100%</span> / <span class="cm-number">3</span> - <span class="cm-number">4rem</span> * <span class="cm-number">2</span>);
+            <span class="cm-property">margin</span>: <span class="cm-number">4rem</span>;
         }
     }
 
     <span class="cm-def">@media</span> (<span class="cm-property">max-width</span>: <span class="cm-number">639px</span>) {
 
-        <span class="cm-qualifier">.members__list</span>:<span class="cm-variable-3">not</span>(:<span class="cm-variable-3">first-child</span>) {
-            <span class="cm-property">margin-top</span>: <span class="cm-number">40px</span>;
+        <span class="cm-qualifier">.references-section__header</span>,
+        <span class="cm-qualifier">.references-section__image-link</span> {
+            <span class="cm-property">width</span>: <span class="cm-atom">calc</span>(<span class="cm-number">100%</span> / <span class="cm-number">2</span> - <span class="cm-number">5rem</span> * <span class="cm-number">2</span>);
         }
     }
 
-        <span class="cm-qualifier">.members__member</span> {
-            <span class="cm-property">display</span>: <span class="cm-atom">inline-block</span>;
+    <span class="cm-def">@media</span> (<span class="cm-property">min-width</span>: <span class="cm-number">420px</span>) <span class="cm-keyword">and</span> (<span class="cm-property">max-width</span>: <span class="cm-number">499px</span>) {
 
-            <span class="cm-property">padding</span>: <span class="cm-number">0</span> <span class="cm-number">15px</span>;
-            <span class="cm-property">margin-bottom</span>: <span class="cm-number">60px</span>;
+        <span class="cm-qualifier">.references-section__header</span>,
+        <span class="cm-qualifier">.references-section__image-link</span> {
+            <span class="cm-property">width</span>: <span class="cm-atom">calc</span>(<span class="cm-number">100%</span> / <span class="cm-number">2</span> - <span class="cm-number">4rem</span> * <span class="cm-number">2</span>);
+            <span class="cm-property">margin</span>: <span class="cm-number">4rem</span>;
+        }
+    }
 
-            <span class="cm-property">text-align</span>: <span class="cm-atom">left</span>;
+    <span class="cm-def">@media</span> (<span class="cm-property">min-width</span>: <span class="cm-number">360px</span>) <span class="cm-keyword">and</span> (<span class="cm-property">max-width</span>: <span class="cm-number">419px</span>) {
 
-            <span class="cm-property">overflow</span>: <span class="cm-atom">hidden</span>;
+        <span class="cm-qualifier">.references-section__header</span>,
+        <span class="cm-qualifier">.references-section__image-link</span> {
+            <span class="cm-property">width</span>: <span class="cm-atom">calc</span>(<span class="cm-number">100%</span> / <span class="cm-number">2</span> - <span class="cm-number">3rem</span> * <span class="cm-number">2</span>);
+            <span class="cm-property">margin</span>: <span class="cm-number">3rem</span>;
+        }
+    }
+
+    <span class="cm-def">@media</span> (<span class="cm-property">max-width</span>: <span class="cm-number">359px</span>) {
+
+        <span class="cm-qualifier">.references-section__header</span>,
+        <span class="cm-qualifier">.references-section__image-link</span> {
+            <span class="cm-property">width</span>: <span class="cm-atom">calc</span>(<span class="cm-number">100%</span> / <span class="cm-number">1</span> - <span class="cm-number">10rem</span> * <span class="cm-number">2</span>);
+            <span class="cm-property">margin-right</span>: <span class="cm-number">10rem</span>;
+            <span class="cm-property">margin-left</span>: <span class="cm-number">10rem</span>;
+        }
+    }
+
+<span class="cm-comment">/*---------------------------- HEADER ----------------------------*/</span>
+
+<span class="cm-qualifier">.references-section__header</span> {
+    <span class="cm-property">border</span>: <span class="cm-number">1rem</span> <span class="cm-atom">solid</span> <span class="cm-atom">currentColor</span>;
+}
+
+    <span class="cm-qualifier">.references-section__header-content</span> {
+        <span class="cm-property">display</span>: <span class="cm-atom">flex</span>;
+        <span class="cm-property">flex-direction</span>: <span class="cm-atom">column</span>;
+        <span class="cm-property">justify-content</span>: <span class="cm-atom">flex-end</span>;
+
+        <span class="cm-property">padding</span>: <span class="cm-number">21rem</span>;
+    }
+
+    <span class="cm-def">@media</span> (<span class="cm-property">min-width</span>: <span class="cm-number">640px</span>) <span class="cm-keyword">and</span> (<span class="cm-property">max-width</span>: <span class="cm-number">799px</span>),
+        (<span class="cm-property">min-width</span>: <span class="cm-number">420px</span>) <span class="cm-keyword">and</span> (<span class="cm-property">max-width</span>: <span class="cm-number">499px</span>) {
+
+            <span class="cm-qualifier">.references-section__header-content</span> {
+                <span class="cm-property">padding</span>: <span class="cm-number">16rem</span>;
+            }
+    }
+
+    <span class="cm-def">@media</span> (<span class="cm-property">min-width</span>: <span class="cm-number">360px</span>) <span class="cm-keyword">and</span> (<span class="cm-property">max-width</span>: <span class="cm-number">419px</span>) {
+
+        <span class="cm-qualifier">.references-section__header-content</span> {
+            <span class="cm-property">padding</span>: <span class="cm-number">14rem</span>;
+        }
+    }
+
+        <span class="cm-qualifier">.references-section__header-content</span> * {
+            <span class="cm-property">pointer-events</span>: <span class="cm-atom">auto</span>;
         }
 
-        <span class="cm-def">@media</span> (<span class="cm-property">min-width</span>: <span class="cm-number">768px</span>) {
+        <span class="cm-qualifier">.references-section__project-name</span> {
+            <span class="cm-property">max-width</span>: <span class="cm-number">100%</span>;
+            <span class="cm-property">margin-bottom</span>: <span class="cm-number">7rem</span>;
 
-            <span class="cm-qualifier">.members__member</span> {
-                <span class="cm-property">width</span>: <span class="cm-number">50%</span>;
+            <span class="cm-property">font-size</span>: <span class="cm-number">19rem</span>;
+            <span class="cm-property">font-weight</span>: <span class="cm-number">600</span>;
+            <span class="cm-property">text-transform</span>: <span class="cm-atom">uppercase</span>;
+            <span class="cm-property">line-height</span>: <span class="cm-number">25rem</span>;
+            <span class="cm-property">letter-spacing</span>: <span class="cm-number">0.06em</span>;
+        }
+
+        <span class="cm-def">@media</span> (<span class="cm-property">min-width</span>: <span class="cm-number">640px</span>) <span class="cm-keyword">and</span> (<span class="cm-property">max-width</span>: <span class="cm-number">799px</span>),
+            (<span class="cm-property">min-width</span>: <span class="cm-number">420px</span>) <span class="cm-keyword">and</span> (<span class="cm-property">max-width</span>: <span class="cm-number">499px</span>) {
+
+                <span class="cm-qualifier">.references-section__project-name</span> {
+                    <span class="cm-property">margin-bottom</span>: <span class="cm-number">5rem</span>;
+
+                    <span class="cm-property">font-size</span>: <span class="cm-number">17rem</span>;
+                    <span class="cm-property">line-height</span>: <span class="cm-number">21rem</span>;
+                }
+        }
+
+        <span class="cm-def">@media</span> (<span class="cm-property">min-width</span>: <span class="cm-number">360px</span>) <span class="cm-keyword">and</span> (<span class="cm-property">max-width</span>: <span class="cm-number">419px</span>) {
+
+            <span class="cm-qualifier">.references-section__project-name</span> {
+                <span class="cm-property">margin-bottom</span>: <span class="cm-number">4rem</span>;
+
+                <span class="cm-property">font-size</span>: <span class="cm-number">15rem</span>;
+                <span class="cm-property">line-height</span>: <span class="cm-number">19rem</span>;
             }
         }
 
-        <span class="cm-def">@media</span> (<span class="cm-property">max-width</span>: <span class="cm-number">767px</span>) {
+        <span class="cm-qualifier">.references-section__project-name</span>:<span class="cm-variable-3">only-child</span> {
+            <span class="cm-property">margin-bottom</span>: <span class="cm-number">0</span>;
 
-            <span class="cm-qualifier">.members__member</span> {
-                <span class="cm-property">width</span>: <span class="cm-number">100%</span>;
+            <span class="cm-property">line-height</span>: <span class="cm-number">34rem</span>;
+        }
+
+        <span class="cm-def">@media</span> (<span class="cm-property">min-width</span>: <span class="cm-number">640px</span>) <span class="cm-keyword">and</span> (<span class="cm-property">max-width</span>: <span class="cm-number">799px</span>),
+            (<span class="cm-property">min-width</span>: <span class="cm-number">420px</span>) <span class="cm-keyword">and</span> (<span class="cm-property">max-width</span>: <span class="cm-number">499px</span>) {
+
+                <span class="cm-qualifier">.references-section__project-name</span>:<span class="cm-variable-3">only-child</span> {
+                    <span class="cm-property">line-height</span>: <span class="cm-number">28rem</span>;
+                }
+        }
+
+        <span class="cm-def">@media</span> (<span class="cm-property">min-width</span>: <span class="cm-number">360px</span>) <span class="cm-keyword">and</span> (<span class="cm-property">max-width</span>: <span class="cm-number">419px</span>) {
+
+            <span class="cm-qualifier">.references-section__project-name</span>:<span class="cm-variable-3">only-child</span> {
+                <span class="cm-property">line-height</span>: <span class="cm-number">25rem</span>;
             }
         }
 
-            <span class="cm-qualifier">.members__profile-image-wrapper</span> {
-                <span class="cm-property">float</span>: <span class="cm-atom">left</span>;
+            <span class="cm-qualifier">.references-section__project-name</span> <span class="cm-qualifier">.ui-text-arrow</span> {
+                <span class="cm-property">margin-right</span>: <span class="cm-number">0</span>;
+                <span class="cm-property">margin-left</span>: <span class="cm-number">2rem</span>;
 
-                <span class="cm-property">width</span>: <span class="cm-number">140px</span>;
-                <span class="cm-property">height</span>: <span class="cm-number">140px</span>;
+                <span class="cm-property">stroke-width</span>: <span class="cm-number">2</span>;
             }
 
-                <span class="cm-qualifier">.members__profile-image</span> {
-                    <span class="cm-property">display</span>: <span class="cm-atom">block</span>;
+        <span class="cm-qualifier">.references-section__description</span> {
+            <span class="cm-property">max-width</span>: <span class="cm-number">100%</span>;
 
-                    <span class="cm-property">width</span>: <span class="cm-number">140px</span>;
-                    <span class="cm-property">height</span>: <span class="cm-number">140px</span>;
+            <span class="cm-property">font-size</span>: <span class="cm-number">15rem</span>;
+            <span class="cm-property">font-style</span>: <span class="cm-atom">italic</span>;
+            <span class="cm-property">font-weight</span>: <span class="cm-number">400</span>;
+            <span class="cm-property">line-height</span>: <span class="cm-number">21rem</span>;
+            <span class="cm-property">letter-spacing</span>: <span class="cm-number">0.01em</span>;
+        }
 
-                    <span class="cm-property">text-align</span>: <span class="cm-atom">center</span>;
-                    <span class="cm-property">line-height</span>: <span class="cm-number">140px</span>;
+        <span class="cm-def">@media</span> (<span class="cm-property">min-width</span>: <span class="cm-number">640px</span>) <span class="cm-keyword">and</span> (<span class="cm-property">max-width</span>: <span class="cm-number">799px</span>),
+            (<span class="cm-property">min-width</span>: <span class="cm-number">420px</span>) <span class="cm-keyword">and</span> (<span class="cm-property">max-width</span>: <span class="cm-number">499px</span>) {
 
-                    <span class="cm-property">background-color</span>: <span class="cm-atom">#f6f6f6</span>;
-                    <span class="cm-property">border-radius</span>: <span class="cm-number">50%</span>;
-
-                    <span class="cm-property">overflow</span>: <span class="cm-atom">hidden</span>;
+                <span class="cm-qualifier">.references-section__description</span> {
+                    <span class="cm-property">font-size</span>: <span class="cm-number">14rem</span>;
+                    <span class="cm-property">line-height</span>: <span class="cm-number">19rem</span>;
+                    <span class="cm-property">letter-spacing</span>: <span class="cm-number">0.025em</span>;
                 }
+        }
 
-                <span class="cm-qualifier">.members__profile-image</span>:<span class="cm-variable-3">focus</span>,
-                <span class="cm-qualifier">.members__profile-image</span>:<span class="cm-variable-3">hover</span> {
-                    <span class="cm-property">opacity</span>: <span class="cm-number">0.85</span>;
-                }
+        <span class="cm-def">@media</span> (<span class="cm-property">min-width</span>: <span class="cm-number">360px</span>) <span class="cm-keyword">and</span> (<span class="cm-property">max-width</span>: <span class="cm-number">419px</span>) {
 
-                    <span class="cm-qualifier">.members__profile-image-img</span> {
-                        <span class="cm-property">width</span>: <span class="cm-atom">inherit</span>;
-                        <span class="cm-property">height</span>: <span class="cm-atom">inherit</span>;
-                    }
-
-            <span class="cm-qualifier">.members__info</span> {
-                <span class="cm-property">margin-left</span>: <span class="cm-number">170px</span>;
+            <span class="cm-qualifier">.references-section__description</span> {
+                <span class="cm-property">font-size</span>: <span class="cm-number">13rem</span>;
+                <span class="cm-property">line-height</span>: <span class="cm-number">17rem</span>;
+                <span class="cm-property">letter-spacing</span>: <span class="cm-number">0.025em</span>;
             }
+        }
 
-                <span class="cm-qualifier">.members__name</span> {
-                    <span class="cm-property">margin-top</span>: <span class="cm-number">2px</span>;
-                    <span class="cm-property">margin-bottom</span>: <span class="cm-number">5px</span>;
-                }
+<span class="cm-comment">/*------------------------------ COLORS ------------------------------*/</span>
 
-                    <span class="cm-qualifier">.members__name-link</span> {
-                        <span class="cm-property">font-family</span>: <span class="cm-variable">Russo</span> <span class="cm-variable">One</span>;
-                        <span class="cm-property">font-size</span>: <span class="cm-number">27px</span>;
-                        <span class="cm-property">text-decoration</span>: <span class="cm-atom">none</span>;
-                        <span class="cm-property">line-height</span>: <span class="cm-number">1.25</span>;
+<span class="cm-qualifier">.references-section__header</span> {
+    <span class="cm-property">color</span>: <span class="cm-atom">#9EC9C7</span>;
+}
 
-                        <span class="cm-property">color</span>: <span class="cm-atom">#553a32</span>;
-                    }
+<span class="cm-qualifier">.references-section__header</span> ~ <span class="cm-qualifier">.references-section__header</span> {
+    <span class="cm-property">color</span>: <span class="cm-atom">#8A9194</span>;
+}
 
-                    <span class="cm-qualifier">.members__name-link</span>:<span class="cm-variable-3">focus</span>,
-                    <span class="cm-qualifier">.members__name-link</span>:<span class="cm-variable-3">hover</span> {
-                        <span class="cm-property">color</span>: <span class="cm-atom">#b21d47</span>;
-                    }
+<span class="cm-comment">/*---------------------------- IMAGE ----------------------------*/</span>
 
-                <span class="cm-qualifier">.members__period</span>,
-                <span class="cm-qualifier">.members__type</span> {
-                    <span class="cm-property">margin-bottom</span>: <span class="cm-number">3px</span>;
+<span class="cm-qualifier">.references-section__image-link</span> {
+    <span class="cm-property">position</span>: <span class="cm-atom">relative</span>;
 
-                    <span class="cm-property">font-size</span>: <span class="cm-number">13px</span>;
-                    <span class="cm-property">line-height</span>: <span class="cm-number">21px</span>;
+    <span class="cm-property">outline-offset</span>: <span class="cm-number">-2rem</span>;
 
-                    <span class="cm-property">color</span>: <span class="cm-atom">#999</span>;
-                }
+    <span class="cm-property">pointer-events</span>: <span class="cm-atom">auto</span>;
+}
 
-                    <span class="cm-qualifier">.members</span> <span class="cm-qualifier">.highlight</span> {
-                        <span class="cm-property">font-family</span>: <span class="cm-variable">Russo</span> <span class="cm-variable">One</span>;
-                        <span class="cm-property">font-size</span>: <span class="cm-number">15px</span>;
-                        <span class="cm-property">text-decoration</span>: <span class="cm-atom">none</span>;
+<span class="cm-qualifier">.references-section__image-link</span>:<span class="cm-variable-3">not</span>(:<span class="cm-variable-3">hover</span>):<span class="cm-variable-3">not</span>(:<span class="cm-variable-3">focus</span>):<span class="cm-variable-3">not</span>(:<span class="cm-variable-3">active</span>) {
+    <span class="cm-property">transition-delay</span>: <span class="cm-number">0.05s</span>;
+}
 
-                        <span class="cm-property">color</span>: <span class="cm-atom">#b21d47</span>;
-                    }
+<span class="cm-qualifier">.references-section__image-link</span>:<span class="cm-variable-3">before</span> {
+    <span class="cm-property">content</span>: <span class="cm-string">""</span>;
 
-                    <span class="cm-qualifier">.members</span> <span class="cm-qualifier">.highlight</span>[<span class="cm-tag">href</span>]:<span class="cm-variable-3">hover</span>,
-                    <span class="cm-qualifier">.members</span> <span class="cm-qualifier">.highlight</span>[<span class="cm-tag">href</span>]:<span class="cm-variable-3">focus</span> {
-                        <span class="cm-property">color</span>: <span class="cm-atom">#553a32</span>;
-                    }
+    <span class="cm-property">position</span>: <span class="cm-atom">absolute</span>;
+    <span class="cm-property">top</span>: <span class="cm-number">0px</span>;
+    <span class="cm-property">left</span>: <span class="cm-number">0px</span>;
+    <span class="cm-property">z-index</span>: <span class="cm-number">2</span>;
 
-                <span class="cm-qualifier">.members__profile</span> {
-                    <span class="cm-property">margin-top</span>: <span class="cm-number">7px</span>;
-                }</code></pre>
+    <span class="cm-property">width</span>: <span class="cm-number">100%</span>;
+    <span class="cm-property">height</span>: <span class="cm-number">100%</span>;
+
+    <span class="cm-property">border</span>: <span class="cm-number">3rem</span> <span class="cm-atom">solid</span> <span class="cm-atom">var</span>(<span class="cm-variable-2">--color-light</span>);
+    <span class="cm-property">opacity</span>: <span class="cm-number">0</span>;
+
+    <span class="cm-property">transition</span>: <span class="cm-atom">inherit</span>;
+    <span class="cm-property">transition-property</span>: <span class="cm-atom">opacity</span>;
+}
+
+<span class="cm-def">@media</span> (<span class="cm-property">min-width</span>: <span class="cm-number">360px</span>) <span class="cm-keyword">and</span> (<span class="cm-property">max-width</span>: <span class="cm-number">419px</span>) {
+
+    <span class="cm-qualifier">.references-section__image-link</span>:<span class="cm-variable-3">before</span> {
+        <span class="cm-property">border-width</span>: <span class="cm-number">2rem</span>;
+    }
+}
+
+<span class="cm-qualifier">.references-section__image-link</span>:<span class="cm-variable-3">focus</span>:<span class="cm-variable-3">before</span> {
+    <span class="cm-property">opacity</span>: <span class="cm-number">1</span>;
+}
+
+    <span class="cm-qualifier">.references-section__img</span> {
+        <span class="cm-property">opacity</span>: <span class="cm-number">0.7</span>;
+
+        <span class="cm-property">transition</span>: <span class="cm-atom">inherit</span>;
+        <span class="cm-property">will-change</span>: <span class="cm-atom">opacity</span>;
+    }
+
+    <span class="cm-qualifier">.references-section__references</span>:<span class="cm-variable-3">hover</span> <span class="cm-qualifier">.references-section__img</span>,
+    <span class="cm-qualifier">.references-section__references</span>[<span class="cm-tag">focus-within</span>] <span class="cm-qualifier">.references-section__img</span> {
+        <span class="cm-property">opacity</span>: <span class="cm-number">0.6</span>;
+    }
+
+    <span class="cm-qualifier">.references-section__references</span>:<span class="cm-variable-3">focus-within</span> <span class="cm-qualifier">.references-section__img</span> {
+        <span class="cm-property">opacity</span>: <span class="cm-number">0.6</span>;
+    }
+
+    <span class="cm-qualifier">.references-section__image-link</span>:<span class="cm-variable-3">hover</span> <span class="cm-qualifier">.references-section__img</span>,
+    <span class="cm-qualifier">.references-section__image-link</span>:<span class="cm-variable-3">focus</span> <span class="cm-qualifier">.references-section__img</span> {
+        <span class="cm-property">opacity</span>: <span class="cm-number">1</span>;
+    }</code></pre>
 
     <script src="../build/codesample.build.min.js"></script>
 
