@@ -27,6 +27,14 @@
 
 <span class="cm-variable">$</span>.<span class="cm-property">easing</span>[<span class="cm-variable">NS</span>] <span class="cm-operator">=</span> <span class="cm-def">x</span> <span class="cm-operator">=&gt;</span> <span class="cm-number">1</span> <span class="cm-operator">-</span> <span class="cm-variable">Math</span>.<span class="cm-property">pow</span>(<span class="cm-number">1</span> <span class="cm-operator">-</span> <span class="cm-variable-2">x</span>, <span class="cm-number">3.5</span>);
 
+<span class="cm-keyword">const</span> <span class="cm-def">SUPPORT</span> <span class="cm-operator">=</span> {
+    <span class="cm-property">HISTORY</span>: <span class="cm-variable">window</span>.<span class="cm-property">history</span> <span class="cm-operator">&amp;&amp;</span> <span class="cm-variable">history</span>.<span class="cm-property">replaceState</span>,
+    <span class="cm-property">PASSIVE_EVENT</span>: ((<span class="cm-def">support</span> <span class="cm-operator">=</span> <span class="cm-atom">false</span>) <span class="cm-operator">=&gt;</span> {
+        <span class="cm-keyword">try</span> { <span class="cm-variable">addEventListener</span>(<span class="cm-string">"x"</span>, <span class="cm-atom">null</span>, { <span class="cm-property">get</span> <span class="cm-property">passive</span>() { <span class="cm-variable-2">support</span> <span class="cm-operator">=</span> <span class="cm-atom">true</span>; } }); } <span class="cm-keyword">catch</span> (<span class="cm-def">e</span>) {}
+        <span class="cm-keyword">return</span> <span class="cm-variable-2">support</span>;
+    })()
+};
+
 <span class="cm-keyword">const</span> <span class="cm-def">CLASS</span> <span class="cm-operator">=</span> {
     <span class="cm-property">activeLink</span>: <span class="cm-string">"main-nav__link--active"</span>,
 
@@ -51,7 +59,7 @@
 
     <span class="cm-property">fixable</span>: <span class="cm-string">".page-header__top"</span>,
     <span class="cm-property">scrollTarget</span>: <span class="cm-string">"[data-main-nav-target='true']"</span>,
-    <span class="cm-property">localLink</span>: <span class="cm-string">"a[href*='#']:not([href='#']):not([data-"</span> <span class="cm-operator">+</span> <span class="cm-variable">DATA</span>.<span class="cm-property">ignore</span> <span class="cm-operator">+</span> <span class="cm-string">"='true'])"</span>
+    <span class="cm-property">linkWithHash</span>: <span class="cm-string">"a[href*='#']:not([href='#']):not([data-"</span> <span class="cm-operator">+</span> <span class="cm-variable">DATA</span>.<span class="cm-property">ignore</span> <span class="cm-operator">+</span> <span class="cm-string">"='true'])"</span>
 };
 
 <span class="cm-keyword">const</span> <span class="cm-def">EVENT</span> <span class="cm-operator">=</span> {
@@ -76,14 +84,6 @@
     <span class="cm-property">TARGET_IN_VIEW_DIV</span>: <span class="cm-number">4</span>
 };
 
-<span class="cm-keyword">const</span> <span class="cm-def">SUPPORT</span> <span class="cm-operator">=</span> {
-    <span class="cm-property">HISTORY</span>: <span class="cm-variable">window</span>.<span class="cm-property">history</span> <span class="cm-operator">&amp;&amp;</span> <span class="cm-variable">history</span>.<span class="cm-property">replaceState</span>,
-    <span class="cm-property">PASSIVE_EVENT</span>: ((<span class="cm-def">result</span> <span class="cm-operator">=</span> <span class="cm-atom">false</span>) <span class="cm-operator">=&gt;</span> {
-        <span class="cm-keyword">try</span> { <span class="cm-variable">document</span>.<span class="cm-property">addEventListener</span>(<span class="cm-string">"test"</span>, <span class="cm-atom">null</span>, { <span class="cm-property">get</span> <span class="cm-property">passive</span>() { <span class="cm-variable-2">result</span> <span class="cm-operator">=</span> <span class="cm-atom">true</span>; } }); } <span class="cm-keyword">catch</span> (<span class="cm-def">e</span>) {}
-        <span class="cm-keyword">return</span> <span class="cm-variable-2">result</span>;
-    })()
-};
-
 <span class="cm-keyword">const</span> <span class="cm-def">SCROLL_OFFSET</span> <span class="cm-operator">=</span> {
     <span class="cm-string cm-property">"(max-height: 29.9375em)"</span>: <span class="cm-number">0</span>,
     <span class="cm-string cm-property">"(min-height: 30em) and (max-width: 47.9375em)"</span>: <span class="cm-number">60</span>,
@@ -93,8 +93,6 @@
 };
 
 <span class="cm-keyword">let</span> <span class="cm-def">isFixed</span> <span class="cm-operator">=</span> <span class="cm-atom">false</span>;
-
-<span class="cm-keyword">let</span> <span class="cm-def">preserveHistory</span>;
 
 <span class="cm-keyword">let</span> <span class="cm-def">skipFindLinkToActivateOnScroll</span>;
 <span class="cm-keyword">let</span> <span class="cm-def">skipFindLinkToActivateOnScrollTimeout</span>;
@@ -107,18 +105,19 @@
 
 <span class="cm-keyword">function</span> <span class="cm-def">getScrollOffset</span>() {
 
-    <span class="cm-keyword">for</span> (<span class="cm-keyword">let</span> <span class="cm-def">mq</span> <span class="cm-keyword">in</span> <span class="cm-variable">SCROLL_OFFSET</span>) {
+    <span class="cm-keyword">let</span> <span class="cm-def">offset</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>;
 
-        <span class="cm-keyword">if</span> (<span class="cm-variable">SCROLL_OFFSET</span>.<span class="cm-property">hasOwnProperty</span>(<span class="cm-variable-2">mq</span>)) {
+    <span class="cm-variable">Object</span>.<span class="cm-property">keys</span>(<span class="cm-variable">SCROLL_OFFSET</span>).<span class="cm-property">some</span>(<span class="cm-def">mq</span> <span class="cm-operator">=&gt;</span> {
 
-            <span class="cm-keyword">if</span> (<span class="cm-variable">window</span>.<span class="cm-property">matchMedia</span>(<span class="cm-variable-2">mq</span>).<span class="cm-property">matches</span>) {
+        <span class="cm-keyword">if</span> (<span class="cm-variable">window</span>.<span class="cm-property">matchMedia</span>(<span class="cm-variable-2">mq</span>).<span class="cm-property">matches</span>) {
 
-                <span class="cm-keyword">return</span> <span class="cm-variable">SCROLL_OFFSET</span>[<span class="cm-variable-2">mq</span>];
-            }
+            <span class="cm-variable-2">offset</span> <span class="cm-operator">=</span> <span class="cm-variable">SCROLL_OFFSET</span>[<span class="cm-variable-2">mq</span>];
+
+            <span class="cm-keyword">return</span> <span class="cm-atom">true</span>;
         }
-    }
+    });
 
-    <span class="cm-keyword">return</span> <span class="cm-number">0</span>;
+    <span class="cm-keyword">return</span> <span class="cm-variable-2">offset</span>;
 }
 
 <span class="cm-keyword">function</span> <span class="cm-def">getDataOption</span>(<span class="cm-def">option</span>, <span class="cm-meta">...</span><span class="cm-def">$elements</span>) {
@@ -157,7 +156,7 @@
     <span class="cm-variable">ELEMENT</span>.<span class="cm-property">$acitveLink</span> <span class="cm-operator">=</span> <span class="cm-atom">null</span>;
 }
 
-<span class="cm-keyword">function</span> <span class="cm-def">activateLink</span>(<span class="cm-def">$link</span>, <span class="cm-def">byScroll</span>) {
+<span class="cm-keyword">function</span> <span class="cm-def">activateLink</span>(<span class="cm-def">$link</span>) {
 
     <span class="cm-keyword">if</span> (<span class="cm-operator">!</span><span class="cm-variable-2">$link</span> <span class="cm-operator">||</span> (<span class="cm-variable">ELEMENT</span>.<span class="cm-property">$acitveLink</span> <span class="cm-operator">&amp;&amp;</span> <span class="cm-variable">ELEMENT</span>.<span class="cm-property">$acitveLink</span>[<span class="cm-number">0</span>] <span class="cm-operator">===</span> <span class="cm-variable-2">$link</span>[<span class="cm-number">0</span>])) {
 
@@ -173,30 +172,16 @@
         <span class="cm-variable">ELEMENT</span>.<span class="cm-property">$acitveLink</span> <span class="cm-operator">=</span> <span class="cm-variable-2">$link</span>;
 
         <span class="cm-variable">updateHistory</span>(<span class="cm-variable-2">$link</span>);
-
-    } <span class="cm-keyword">else</span> {
-
-        <span class="cm-variable">ELEMENT</span>.<span class="cm-property">$acitveLink</span> <span class="cm-operator">=</span> <span class="cm-atom">null</span>;
     }
-
-    <span class="cm-variable">skipFindLinkToActivateOnScroll</span> <span class="cm-operator">=</span> <span class="cm-operator">!</span><span class="cm-variable-2">byScroll</span>;
 }
 
-<span class="cm-keyword">function</span> <span class="cm-def">updateHistory</span>(<span class="cm-def">$link</span>) {
+<span class="cm-keyword">function</span> <span class="cm-def">updateHistory</span>(<span class="cm-def">$link</span> <span class="cm-operator">=</span> <span class="cm-atom">null</span>) {
 
-    <span class="cm-keyword">if</span> (<span class="cm-variable">preserveHistory</span>) {
+    <span class="cm-keyword">if</span> (<span class="cm-variable-2">$link</span> <span class="cm-operator">===</span> <span class="cm-atom">null</span> <span class="cm-operator">&amp;&amp;</span> <span class="cm-variable">SUPPORT</span>.<span class="cm-property">HISTORY</span>) {
 
-        <span class="cm-keyword">return</span>;
-    }
+        <span class="cm-variable">history</span>.<span class="cm-property">replaceState</span>(<span class="cm-atom">null</span>, <span class="cm-atom">null</span>, <span class="cm-string">"#"</span>);
 
-    <span class="cm-keyword">if</span> (<span class="cm-variable-2">$link</span> <span class="cm-operator">===</span> <span class="cm-atom">null</span>) {
-
-        <span class="cm-keyword">if</span> (<span class="cm-variable">SUPPORT</span>.<span class="cm-property">HISTORY</span>) {
-
-            <span class="cm-variable">history</span>.<span class="cm-property">replaceState</span>(<span class="cm-atom">null</span>, <span class="cm-atom">null</span>, <span class="cm-string">"#"</span>);
-
-            <span class="cm-variable">GNS</span>.<span class="cm-property">$win</span>.<span class="cm-property">trigger</span>(<span class="cm-variable">EVENT</span>.<span class="cm-property">change</span>, [<span class="cm-atom">null</span>]);
-        }
+        <span class="cm-variable">GNS</span>.<span class="cm-property">$win</span>.<span class="cm-property">trigger</span>(<span class="cm-variable">EVENT</span>.<span class="cm-property">change</span>, [<span class="cm-atom">null</span>]);
     }
 
     <span class="cm-keyword">if</span> (<span class="cm-variable-2">$link</span> <span class="cm-operator">&amp;&amp;</span> <span class="cm-variable-2">$link</span>[<span class="cm-number">0</span>]) {
@@ -287,7 +272,7 @@
     );
 }
 
-<span class="cm-keyword">function</span> <span class="cm-def">onScrollAnimationBreak</span>(<span class="cm-def">event</span>) {
+<span class="cm-keyword">function</span> <span class="cm-def">onScrollAnimationBreakByUser</span>(<span class="cm-def">event</span>) {
 
     <span class="cm-keyword">if</span> (<span class="cm-variable-2">event</span>.<span class="cm-property">type</span> <span class="cm-operator">===</span> <span class="cm-string">"touchstart"</span> <span class="cm-operator">&amp;&amp;</span> <span class="cm-operator">!</span><span class="cm-variable">GNS</span>.<span class="cm-property">$t</span>(<span class="cm-variable-2">event</span>.<span class="cm-property">target</span>).<span class="cm-property">closest</span>(<span class="cm-variable">SELECTOR</span>.<span class="cm-property">link</span>).<span class="cm-property">length</span>) {
 
@@ -302,58 +287,64 @@
     <span class="cm-variable">activateByScroll</span>(<span class="cm-atom">true</span>);
 }
 
+<span class="cm-keyword">function</span> <span class="cm-def">onScrollAnimationStop</span>() {
+
+    <span class="cm-variable">GNS</span>.<span class="cm-property">$t</span>(<span class="cm-variable">document</span>.<span class="cm-property">body</span>).<span class="cm-property">removeAttr</span>(<span class="cm-string">"aria-busy"</span>);
+
+    <span class="cm-variable">destroyScrollAnimationBreakByUser</span>();
+
+    <span class="cm-variable">clearTimeout</span>(<span class="cm-variable">scrollThrottle</span>);
+    <span class="cm-variable">scrollThrottle</span> <span class="cm-operator">=</span> <span class="cm-atom">null</span>;
+
+    <span class="cm-variable">handleFixableEl</span>();
+}
+
+<span class="cm-keyword">function</span> <span class="cm-def">initScrollAnimationBreakByUser</span>() {
+
+    <span class="cm-variable">destroyScrollAnimationBreakByUser</span>();
+
+    <span class="cm-variable">window</span>.<span class="cm-property">addEventListener</span>(<span class="cm-string">"mousewheel"</span>, <span class="cm-variable">onScrollAnimationBreakByUser</span>);
+    <span class="cm-variable">window</span>.<span class="cm-property">addEventListener</span>(<span class="cm-string">"DOMMouseScroll"</span>, <span class="cm-variable">onScrollAnimationBreakByUser</span>);
+    <span class="cm-variable">window</span>.<span class="cm-property">addEventListener</span>(<span class="cm-string">"keydown"</span>, <span class="cm-variable">onScrollAnimationBreakByUser</span>);
+    <span class="cm-variable">window</span>.<span class="cm-property">addEventListener</span>(<span class="cm-string">"touchstart"</span>, <span class="cm-variable">onScrollAnimationBreakByUser</span>, <span class="cm-variable">SUPPORT</span>.<span class="cm-property">PASSIVE_EVENT</span> <span class="cm-operator">?</span> { <span class="cm-property">passive</span>: <span class="cm-atom">false</span> }: <span class="cm-atom">false</span>);
+}
+
+<span class="cm-keyword">function</span> <span class="cm-def">destroyScrollAnimationBreakByUser</span>() {
+
+    <span class="cm-variable">window</span>.<span class="cm-property">removeEventListener</span>(<span class="cm-string">"mousewheel"</span>, <span class="cm-variable">onScrollAnimationBreakByUser</span>);
+    <span class="cm-variable">window</span>.<span class="cm-property">removeEventListener</span>(<span class="cm-string">"DOMMouseScroll"</span>, <span class="cm-variable">onScrollAnimationBreakByUser</span>);
+    <span class="cm-variable">window</span>.<span class="cm-property">removeEventListener</span>(<span class="cm-string">"keydown"</span>, <span class="cm-variable">onScrollAnimationBreakByUser</span>);
+    <span class="cm-variable">window</span>.<span class="cm-property">removeEventListener</span>(<span class="cm-string">"touchstart"</span>, <span class="cm-variable">onScrollAnimationBreakByUser</span>);
+}
+
 <span class="cm-keyword">function</span> <span class="cm-def">animateScrollTop</span>(<span class="cm-def">scrollTop</span>, <span class="cm-def">scrollDuration</span>, <span class="cm-def">onComplete</span>) {
-
-    <span class="cm-keyword">let</span> <span class="cm-def">blockHistory</span> <span class="cm-operator">=</span> <span class="cm-variable">preserveHistory</span>;
-
-    <span class="cm-keyword">let</span> <span class="cm-def">animation</span> <span class="cm-operator">=</span> {
-        <span class="cm-property">scrollTop</span>: <span class="cm-variable-2">scrollTop</span>
-    };
-
-    <span class="cm-keyword">let</span> <span class="cm-def">animationOptions</span> <span class="cm-operator">=</span> {
-        <span class="cm-property">duration</span>: <span class="cm-variable-2">scrollDuration</span>,
-        <span class="cm-property">easing</span>: <span class="cm-variable">NS</span>,
-
-        <span class="cm-property">step</span>: () <span class="cm-operator">=&gt;</span> {
-            <span class="cm-variable">preserveHistory</span> <span class="cm-operator">=</span> <span class="cm-variable-2">blockHistory</span>;
-        },
-        <span class="cm-property">complete</span>: () <span class="cm-operator">=&gt;</span> {
-
-            <span class="cm-keyword">if</span> (<span class="cm-variable-2">onComplete</span> <span class="cm-operator">&amp;&amp;</span> <span class="cm-operator">!</span><span class="cm-variable-2">onComplete</span>.<span class="cm-property">run</span>) {
-
-                <span class="cm-variable-2">onComplete</span>();
-                <span class="cm-variable-2">onComplete</span>.<span class="cm-property">run</span> <span class="cm-operator">=</span> <span class="cm-atom">true</span>;
-            }
-        },
-        <span class="cm-property">always</span>: () <span class="cm-operator">=&gt;</span> {
-
-            <span class="cm-variable">GNS</span>.<span class="cm-property">$t</span>(<span class="cm-variable">document</span>.<span class="cm-property">body</span>).<span class="cm-property">removeAttr</span>(<span class="cm-string">"aria-busy"</span>);
-
-            <span class="cm-variable">window</span>.<span class="cm-property">removeEventListener</span>(<span class="cm-string">"mousewheel"</span>, <span class="cm-variable">onScrollAnimationBreak</span>);
-            <span class="cm-variable">window</span>.<span class="cm-property">removeEventListener</span>(<span class="cm-string">"DOMMouseScroll"</span>, <span class="cm-variable">onScrollAnimationBreak</span>);
-            <span class="cm-variable">window</span>.<span class="cm-property">removeEventListener</span>(<span class="cm-string">"touchstart"</span>, <span class="cm-variable">onScrollAnimationBreak</span>);
-
-            <span class="cm-variable">clearTimeout</span>(<span class="cm-variable">scrollThrottle</span>);
-            <span class="cm-variable">scrollThrottle</span> <span class="cm-operator">=</span> <span class="cm-atom">null</span>;
-
-            <span class="cm-variable">handleFixableEl</span>();
-
-            <span class="cm-variable">preserveHistory</span> <span class="cm-operator">=</span> <span class="cm-atom">false</span>;
-        }
-    };
 
     <span class="cm-variable">GNS</span>.<span class="cm-property">$t</span>(<span class="cm-variable">document</span>.<span class="cm-property">body</span>).<span class="cm-property">attr</span>(<span class="cm-string">"aria-busy"</span>, <span class="cm-string">"true"</span>);
 
-    <span class="cm-variable">window</span>.<span class="cm-property">removeEventListener</span>(<span class="cm-string">"mousewheel"</span>, <span class="cm-variable">onScrollAnimationBreak</span>);
-    <span class="cm-variable">window</span>.<span class="cm-property">removeEventListener</span>(<span class="cm-string">"DOMMouseScroll"</span>, <span class="cm-variable">onScrollAnimationBreak</span>);
-    <span class="cm-variable">window</span>.<span class="cm-property">removeEventListener</span>(<span class="cm-string">"touchstart"</span>, <span class="cm-variable">onScrollAnimationBreak</span>);
-    <span class="cm-variable">window</span>.<span class="cm-property">addEventListener</span>(<span class="cm-string">"mousewheel"</span>, <span class="cm-variable">onScrollAnimationBreak</span>);
-    <span class="cm-variable">window</span>.<span class="cm-property">addEventListener</span>(<span class="cm-string">"DOMMouseScroll"</span>, <span class="cm-variable">onScrollAnimationBreak</span>);
-    <span class="cm-variable">window</span>.<span class="cm-property">addEventListener</span>(<span class="cm-string">"touchstart"</span>, <span class="cm-variable">onScrollAnimationBreak</span>, <span class="cm-variable">SUPPORT</span>.<span class="cm-property">PASSIVE_EVENT</span> <span class="cm-operator">?</span> { <span class="cm-property">passive</span>: <span class="cm-atom">false</span> }: <span class="cm-atom">false</span>);
+    <span class="cm-variable">skipFindLinkToActivateOnScroll</span> <span class="cm-operator">=</span> <span class="cm-atom">true</span>;
+    <span class="cm-variable">debounceSkipFindLinkToActivateOnScroll</span>();
+
+    <span class="cm-variable">initScrollAnimationBreakByUser</span>();
 
     <span class="cm-variable">ELEMENT</span>.<span class="cm-property">$scrollingElement</span>
         .<span class="cm-property">stop</span>()
-        .<span class="cm-property">animate</span>(<span class="cm-variable-2">animation</span>, <span class="cm-variable-2">animationOptions</span>);
+        .<span class="cm-property">animate</span>(
+            { <span class="cm-property">scrollTop</span>: <span class="cm-variable-2">scrollTop</span> },
+            {
+                <span class="cm-property">duration</span>: <span class="cm-variable-2">scrollDuration</span>,
+                <span class="cm-property">easing</span>: <span class="cm-variable">NS</span>,
+
+                <span class="cm-property">always</span>: <span class="cm-variable">onScrollAnimationStop</span>,
+                <span class="cm-property">complete</span>: () <span class="cm-operator">=&gt;</span> {
+
+                    <span class="cm-keyword">if</span> (<span class="cm-variable-2">onComplete</span> <span class="cm-operator">&amp;&amp;</span> <span class="cm-operator">!</span><span class="cm-variable-2">onComplete</span>.<span class="cm-property">run</span>) {
+
+                        <span class="cm-variable-2">onComplete</span>();
+                        <span class="cm-variable-2">onComplete</span>.<span class="cm-property">run</span> <span class="cm-operator">=</span> <span class="cm-atom">true</span>;
+                    }
+                }
+            }
+        );
 }
 
 <span class="cm-keyword">function</span> <span class="cm-def">getScrollDuration</span>(<span class="cm-def">targetScrollTop</span>) {
@@ -377,7 +368,28 @@
     }
 }
 
-<span class="cm-keyword">function</span> <span class="cm-def">scrollToTarget</span>(<span class="cm-def">linkElOr$link</span>) {
+<span class="cm-keyword">function</span> <span class="cm-def">get$LinkToActivate</span>(<span class="cm-def">$link</span>, <span class="cm-def">$scrollTarget</span>) {
+
+    <span class="cm-keyword">let</span> <span class="cm-def">activateLinkSelector</span> <span class="cm-operator">=</span> <span class="cm-variable">getDataOption</span>(<span class="cm-variable">DATA</span>.<span class="cm-property">active</span>, <span class="cm-variable-2">$link</span>, <span class="cm-variable-2">$scrollTarget</span>);
+
+    <span class="cm-keyword">if</span> (<span class="cm-variable-2">activateLinkSelector</span>) {
+
+        <span class="cm-keyword">return</span> <span class="cm-variable">$</span>(<span class="cm-variable-2">activateLinkSelector</span>);
+    }
+
+    <span class="cm-keyword">let</span> <span class="cm-def">linkIsInsideMainNav</span> <span class="cm-operator">=</span> <span class="cm-variable-2">$link</span>.<span class="cm-property">closest</span>(<span class="cm-variable">SELECTOR</span>.<span class="cm-property">self</span>).<span class="cm-property">length</span>;
+
+    <span class="cm-keyword">return</span> <span class="cm-variable-2">linkIsInsideMainNav</span> <span class="cm-operator">?</span> <span class="cm-variable-2">$link</span>: <span class="cm-variable">findMainNav$LinkByTargetId</span>(<span class="cm-variable-2">$link</span>[<span class="cm-number">0</span>].<span class="cm-property">hash</span>);
+}
+
+<span class="cm-keyword">function</span> <span class="cm-def">get$LinkToActivateFromTargetEl</span>(<span class="cm-def">scrollTargetEl</span>) {
+
+    <span class="cm-keyword">let</span> <span class="cm-def">activateLinkSelector</span> <span class="cm-operator">=</span> <span class="cm-variable-2">scrollTargetEl</span>.<span class="cm-property">getAttribute</span>(<span class="cm-string">"data-"</span> <span class="cm-operator">+</span> <span class="cm-variable">DATA</span>.<span class="cm-property">active</span>);
+
+    <span class="cm-keyword">return</span> <span class="cm-variable-2">activateLinkSelector</span> <span class="cm-operator">?</span> <span class="cm-variable">$</span>(<span class="cm-variable-2">activateLinkSelector</span>): <span class="cm-variable">findMainNav$LinkByTargetId</span>(<span class="cm-variable-2">scrollTargetEl</span>.<span class="cm-property">id</span>);
+}
+
+<span class="cm-keyword">function</span> <span class="cm-def">scrollToTargetByLink</span>(<span class="cm-def">linkElOr$link</span>) {
 
     <span class="cm-keyword">if</span> (<span class="cm-operator">!</span><span class="cm-variable-2">linkElOr$link</span> <span class="cm-operator">||</span> (<span class="cm-variable-2">linkElOr$link</span>.<span class="cm-property">jquery</span> <span class="cm-operator">&amp;&amp;</span> <span class="cm-operator">!</span><span class="cm-variable-2">linkElOr$link</span>.<span class="cm-property">length</span>)) {
 
@@ -395,22 +407,7 @@
 
         <span class="cm-variable-2">$link</span>.<span class="cm-property">blur</span>();
 
-        <span class="cm-variable">toggleMobileOpener</span>(<span class="cm-atom">false</span>);
-
-        <span class="cm-keyword">let</span> <span class="cm-def">activateLinkSelector</span> <span class="cm-operator">=</span> <span class="cm-variable">getDataOption</span>(<span class="cm-variable">DATA</span>.<span class="cm-property">active</span>, <span class="cm-variable-2">$link</span>, <span class="cm-variable-2">$scrollTarget</span>);
-
-        <span class="cm-keyword">if</span> (<span class="cm-variable-2">activateLinkSelector</span>) {
-
-            <span class="cm-variable">activateLink</span>(<span class="cm-variable">$</span>(<span class="cm-variable-2">activateLinkSelector</span>));
-
-        } <span class="cm-keyword">else</span> {
-
-            <span class="cm-keyword">let</span> <span class="cm-def">linkIsInsideMainNav</span> <span class="cm-operator">=</span> <span class="cm-variable-2">$link</span>.<span class="cm-property">closest</span>(<span class="cm-variable">SELECTOR</span>.<span class="cm-property">self</span>).<span class="cm-property">length</span>;
-
-            <span class="cm-variable">activateLink</span>(
-                <span class="cm-variable-2">linkIsInsideMainNav</span> <span class="cm-operator">?</span> <span class="cm-variable-2">$link</span>: <span class="cm-variable">findMainNav$LinkByTargetId</span>(<span class="cm-variable-2">targetId</span>)
-            );
-        }
+        <span class="cm-variable">ELEMENT</span>.<span class="cm-property">currentScrollTarget</span> <span class="cm-operator">=</span> <span class="cm-variable-2">$scrollTarget</span>[<span class="cm-number">0</span>];
 
         <span class="cm-keyword">let</span> <span class="cm-def">scrollTargetTop</span> <span class="cm-operator">=</span> <span class="cm-variable">getScrollTargetTop</span>(<span class="cm-variable-2">$link</span>, <span class="cm-variable-2">$scrollTarget</span>);
 
@@ -423,6 +420,10 @@
             }
         );
 
+        <span class="cm-variable">activateLink</span>(<span class="cm-variable">get$LinkToActivate</span>(<span class="cm-variable-2">$link</span>, <span class="cm-variable-2">$scrollTarget</span>));
+
+        <span class="cm-variable">toggleMobileOpener</span>(<span class="cm-atom">false</span>);
+
         <span class="cm-variable-2">$scrollTarget</span>.<span class="cm-property">attr</span>(<span class="cm-string">"id"</span>, <span class="cm-variable-2">targetId</span>);
 
         <span class="cm-keyword">return</span> <span class="cm-atom">true</span>;
@@ -433,7 +434,7 @@
 
 <span class="cm-keyword">function</span> <span class="cm-def">findCurrentScrollTargetEl</span>() {
 
-    <span class="cm-keyword">let</span> <span class="cm-def">currentScrollTargetEl</span>;
+    <span class="cm-keyword">let</span> <span class="cm-def">currentScrollTargetEl</span> <span class="cm-operator">=</span> <span class="cm-atom">null</span>;
     <span class="cm-keyword">let</span> <span class="cm-def">currentScrollTargetTop</span> <span class="cm-operator">=</span> <span class="cm-atom">null</span>;
 
     <span class="cm-variable">ELEMENT</span>.<span class="cm-property">$scrollTargets</span>.<span class="cm-property">each</span>((<span class="cm-def">i</span>, <span class="cm-def">targetEl</span>) <span class="cm-operator">=&gt;</span> {
@@ -450,19 +451,22 @@
     <span class="cm-keyword">return</span> <span class="cm-variable-2">currentScrollTargetEl</span>;
 }
 
+<span class="cm-keyword">function</span> <span class="cm-def">debounceSkipFindLinkToActivateOnScroll</span>() {
+
+    <span class="cm-variable">clearTimeout</span>(<span class="cm-variable">skipFindLinkToActivateOnScrollTimeout</span>);
+
+    <span class="cm-variable">skipFindLinkToActivateOnScrollTimeout</span> <span class="cm-operator">=</span> <span class="cm-variable">setTimeout</span>(() <span class="cm-operator">=&gt;</span> {
+
+        <span class="cm-variable">skipFindLinkToActivateOnScroll</span> <span class="cm-operator">=</span> <span class="cm-atom">false</span>;
+
+    }, <span class="cm-number">150</span>);
+}
+
 <span class="cm-keyword">function</span> <span class="cm-def">activateByScroll</span>(<span class="cm-def">forceActivation</span>) {
 
     <span class="cm-keyword">if</span> (<span class="cm-operator">!</span><span class="cm-variable-2">forceActivation</span> <span class="cm-operator">&amp;&amp;</span> <span class="cm-variable">skipFindLinkToActivateOnScroll</span>) {
 
-        <span class="cm-variable">clearTimeout</span>(<span class="cm-variable">skipFindLinkToActivateOnScrollTimeout</span>);
-
-        <span class="cm-variable">skipFindLinkToActivateOnScrollTimeout</span> <span class="cm-operator">=</span> <span class="cm-variable">setTimeout</span>(() <span class="cm-operator">=&gt;</span> {
-
-            <span class="cm-variable">skipFindLinkToActivateOnScroll</span> <span class="cm-operator">=</span> <span class="cm-atom">false</span>;
-
-        }, <span class="cm-number">150</span>);
-
-        <span class="cm-keyword">return</span>;
+        <span class="cm-keyword">return</span> <span class="cm-variable">debounceSkipFindLinkToActivateOnScroll</span>();
     }
 
     <span class="cm-keyword">let</span> <span class="cm-def">currentScrollTargetEl</span> <span class="cm-operator">=</span> <span class="cm-variable">findCurrentScrollTargetEl</span>();
@@ -479,10 +483,9 @@
             <span class="cm-keyword">return</span>;
         }
 
-        <span class="cm-keyword">let</span> <span class="cm-def">activateLinkSelector</span> <span class="cm-operator">=</span> <span class="cm-variable-2">currentScrollTargetEl</span>.<span class="cm-property">getAttribute</span>(<span class="cm-string">"data-"</span> <span class="cm-operator">+</span> <span class="cm-variable">DATA</span>.<span class="cm-property">active</span>);
-        <span class="cm-keyword">let</span> <span class="cm-def">$link</span> <span class="cm-operator">=</span> <span class="cm-variable-2">activateLinkSelector</span> <span class="cm-operator">?</span> <span class="cm-variable">$</span>(<span class="cm-variable-2">activateLinkSelector</span>): <span class="cm-variable">findMainNav$LinkByTargetId</span>(<span class="cm-variable-2">currentScrollTargetEl</span>.<span class="cm-property">id</span>);
+        <span class="cm-keyword">let</span> <span class="cm-def">$link</span> <span class="cm-operator">=</span> <span class="cm-variable">get$LinkToActivateFromTargetEl</span>(<span class="cm-variable-2">currentScrollTargetEl</span>);
 
-        <span class="cm-variable">activateLink</span>(<span class="cm-variable-2">$link</span>, <span class="cm-atom">true</span>);
+        <span class="cm-variable">activateLink</span>(<span class="cm-variable-2">$link</span>);
         <span class="cm-variable">updateHistory</span>(<span class="cm-variable-2">$link</span>);
     }
 }
@@ -498,22 +501,19 @@
 
         <span class="cm-keyword">if</span> (<span class="cm-variable">GNS</span>.<span class="cm-property">$t</span>(<span class="cm-variable-2">targetOrLinkEl</span>).<span class="cm-property">is</span>(<span class="cm-variable">SELECTOR</span>.<span class="cm-property">link</span>)) {
 
-            <span class="cm-variable">scrollToTarget</span>(<span class="cm-variable-2">targetOrLinkEl</span>);
-
-        } <span class="cm-keyword">else</span> {
-
-            <span class="cm-variable">scrollToTarget</span>(
-                <span class="cm-variable">findMainNav$LinkByTargetId</span>(
-                    <span class="cm-variable-2">targetOrLinkEl</span>.<span class="cm-property">jquery</span> <span class="cm-operator">?</span> <span class="cm-variable-2">targetOrLinkEl</span>[<span class="cm-number">0</span>].<span class="cm-property">id</span>: <span class="cm-variable-2">targetOrLinkEl</span>.<span class="cm-property">id</span>
-                )
-            );
+            <span class="cm-keyword">return</span> <span class="cm-variable">scrollToTargetByLink</span>(<span class="cm-variable-2">targetOrLinkEl</span>);
         }
-    } <span class="cm-keyword">else</span> {
 
-        <span class="cm-variable">scrollToTarget</span>(
-            <span class="cm-variable">findMainNav$LinkByTargetId</span>(<span class="cm-variable-2">targetOrLinkEl</span>)
+        <span class="cm-keyword">return</span> <span class="cm-variable">scrollToTargetByLink</span>(
+            <span class="cm-variable">findMainNav$LinkByTargetId</span>(
+                <span class="cm-variable-2">targetOrLinkEl</span>.<span class="cm-property">jquery</span> <span class="cm-operator">?</span> <span class="cm-variable-2">targetOrLinkEl</span>[<span class="cm-number">0</span>].<span class="cm-property">id</span>: <span class="cm-variable-2">targetOrLinkEl</span>.<span class="cm-property">id</span>
+            )
         );
     }
+
+    <span class="cm-keyword">return</span> <span class="cm-variable">scrollToTargetByLink</span>(
+        <span class="cm-variable">findMainNav$LinkByTargetId</span>(<span class="cm-variable-2">targetOrLinkEl</span>)
+    );
 }
 
 <span class="cm-keyword">function</span> <span class="cm-def">handleFixableEl</span>() {
@@ -532,9 +532,9 @@
     }
 }
 
-<span class="cm-keyword">function</span> <span class="cm-def">handleLocalLinkClick</span>(<span class="cm-def">event</span>) {
+<span class="cm-keyword">function</span> <span class="cm-def">handleLinkWithHashClick</span>(<span class="cm-def">event</span>) {
 
-    <span class="cm-keyword">if</span> (<span class="cm-variable">isLocalLink</span>(<span class="cm-variable-2">event</span>.<span class="cm-property">currentTarget</span>) <span class="cm-operator">&amp;&amp;</span> <span class="cm-variable">scrollToTarget</span>(<span class="cm-variable-2">event</span>.<span class="cm-property">currentTarget</span>)) {
+    <span class="cm-keyword">if</span> (<span class="cm-variable">isLocalLink</span>(<span class="cm-variable-2">event</span>.<span class="cm-property">currentTarget</span>) <span class="cm-operator">&amp;&amp;</span> <span class="cm-variable">scrollToTargetByLink</span>(<span class="cm-variable-2">event</span>.<span class="cm-property">currentTarget</span>)) {
 
         <span class="cm-variable-2">event</span>.<span class="cm-property">preventDefault</span>();
     }
@@ -563,7 +563,9 @@
 <span class="cm-keyword">function</span> <span class="cm-def">initEvents</span>() {
 
     <span class="cm-variable">GNS</span>.<span class="cm-property">$win</span>.<span class="cm-property">on</span>(<span class="cm-string">"scroll."</span> <span class="cm-operator">+</span> <span class="cm-variable">NS</span> <span class="cm-operator">+</span> <span class="cm-string">" resize."</span> <span class="cm-operator">+</span> <span class="cm-variable">NS</span>, <span class="cm-variable">handleScrollAndResize</span>);
-    <span class="cm-variable">GNS</span>.<span class="cm-property">$doc</span>.<span class="cm-property">on</span>(<span class="cm-string">"click."</span> <span class="cm-operator">+</span> <span class="cm-variable">NS</span>, <span class="cm-variable">SELECTOR</span>.<span class="cm-property">localLink</span>, <span class="cm-variable">handleLocalLinkClick</span>);
+    <span class="cm-variable">GNS</span>.<span class="cm-property">$doc</span>.<span class="cm-property">on</span>(<span class="cm-string">"click."</span> <span class="cm-operator">+</span> <span class="cm-variable">NS</span>, <span class="cm-variable">SELECTOR</span>.<span class="cm-property">linkWithHash</span>, <span class="cm-variable">handleLinkWithHashClick</span>);
+
+    <span class="cm-variable">GNS</span>.<span class="cm-property">$win</span>.<span class="cm-property">trigger</span>(<span class="cm-string">"scroll."</span> <span class="cm-operator">+</span> <span class="cm-variable">NS</span>);
 
     <span class="cm-variable">window</span>.<span class="cm-property">addEventListener</span>(<span class="cm-string">"ariabutton__change"</span>, <span class="cm-def">event</span> <span class="cm-operator">=&gt;</span> {
 
@@ -572,8 +574,6 @@
             <span class="cm-variable">onMobileOpenerPressed</span>();
         }
     });
-
-    <span class="cm-variable">GNS</span>.<span class="cm-property">$win</span>.<span class="cm-property">trigger</span>(<span class="cm-string">"scroll."</span> <span class="cm-operator">+</span> <span class="cm-variable">NS</span>);
 }
 
 <span class="cm-keyword">function</span> <span class="cm-def">initElements</span>() {
@@ -592,12 +592,8 @@
 
     <span class="cm-keyword">if</span> (<span class="cm-operator">!</span><span class="cm-variable">init</span>.<span class="cm-property">initialized</span>) {
 
-        <span class="cm-variable">preserveHistory</span> <span class="cm-operator">=</span> (<span class="cm-variable">window</span>.<span class="cm-property">location</span>.<span class="cm-property">hash</span> <span class="cm-operator">||</span> <span class="cm-string">""</span>).<span class="cm-property">length</span> <span class="cm-operator">&gt;</span> <span class="cm-number">1</span>;
-
         <span class="cm-variable">initElements</span>();
         <span class="cm-variable">initEvents</span>();
-
-        <span class="cm-variable">preserveHistory</span> <span class="cm-operator">=</span> <span class="cm-atom">false</span>;
 
         <span class="cm-variable">init</span>.<span class="cm-property">initialized</span> <span class="cm-operator">=</span> <span class="cm-atom">true</span>;
     }
