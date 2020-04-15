@@ -737,7 +737,7 @@ a:active .transition-hideable {
 /*--------------------------------------------------------------------*/
 
 .ui__perspective {
-    perspective: 0.00000001px;
+    perspective: 0.0001px;
     perspective-origin: 50% 150vh;
 
     width: 100%;
