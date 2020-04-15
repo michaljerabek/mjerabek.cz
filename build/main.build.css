@@ -737,7 +737,7 @@ a:active .transition-hideable {
 /*--------------------------------------------------------------------*/
 
 .ui__perspective {
-    perspective: 100px;
+    perspective: 0.00000001px;
     perspective-origin: 50% 150vh;
 
     width: 100%;
@@ -745,6 +745,17 @@ a:active .transition-hideable {
     background-color: #000;
 
     overflow: hidden;
+
+    transition: perspective 0s linear 0.75s;
+}
+
+.no-js #html:target ~ .ui__perspective,
+.no-js #css:target ~ .ui__perspective,
+.no-js #js:target ~ .ui__perspective,
+.ui__content--technologies .ui__perspective {
+    perspective: 100px;
+
+    transition: none;
 }
 
 .ff-android .ui__perspective {
