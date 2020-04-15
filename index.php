@@ -2,7 +2,7 @@
 
 session_start();
 
-define("VERSION", "2020-01-15-1");
+define("VERSION", "2020-04-15-1");
 define("LIBS_VERSION", "2019-05-25-4");
 define("PROD",
     (isset($_ENV["ENV"]) && $_ENV["ENV"] === "production") ||
