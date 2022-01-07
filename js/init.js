@@ -15,12 +15,9 @@
 
         var idleCallback = window.requestIdleCallback || function (fn) { return setTimeout(fn, 0); },
 
-            loadCookies = document.cookie.indexOf("cookieconsent_status=dismiss") === -1,
-
             scriptsToLoad = [
                 PROD ? "build/background.build.min.js?v=" + NS.VERSION: null,
-                PROD ? "build/ConsoleMessage.build.min.js?v=" + NS.VERSION: "js/modules/ConsoleMessage.js",
-                PROD ? loadCookies ? "build/Cookies.build.min.js?v=" + NS.VERSION: null: "js/modules/Cookies.js"
+                PROD ? "build/ConsoleMessage.build.min.js?v=" + NS.VERSION: "js/modules/ConsoleMessage.js"
             ].filter(function (src) { return src; });
 
         idleCallback(function () {
@@ -42,7 +39,7 @@
 
     jQuery(function () {
 
-        var modules = ["$ParallaxLoader", "$BGObjectsOpacityAnimation", "$OfferFeaturesAnimations", "$Cookies", "CustomScrollbarLoader", "Performance", "Visibility", "JSHover", "BreakText", "Intro", "SmallCaps", "Offer", "TechnologiesLoader", "References", "AboutMe", "Pricelist", "Form", "Contact", "Fonts", "FixBugs", "Analytics", "$ConsoleMessage", "MainNav"];
+        var modules = ["$ParallaxLoader", "$BGObjectsOpacityAnimation", "$OfferFeaturesAnimations", "CustomScrollbarLoader", "Performance", "Visibility", "JSHover", "BreakText", "Intro", "SmallCaps", "Offer", "TechnologiesLoader", "References", "AboutMe", "Pricelist", "Form", "Contact", "Fonts", "FixBugs", "$ConsoleMessage", "MainNav"];
 
         modules.forEach(function (moduleName) {
 
