@@ -61,7 +61,6 @@
                 mod("Contact.js"),
                 mod("Fonts.js"),
                 mod("FixBugs.js"),
-                mod("Analytics.js"),
 
                 file("init.js")
             ],
@@ -86,10 +85,6 @@
 
             "ConsoleMessage.build.js": [
                 mod("ConsoleMessage.js")
-            ],
-
-            "Cookies.build.js": [
-                mod("Cookies.js")
             ],
 
             "codesample.build.js": [

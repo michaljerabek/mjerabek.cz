@@ -65,8 +65,7 @@
                 comp("references.css"),
                 comp("about-me.css"),
                 comp("pricelist.css"),
-                comp("contact.css"),
-                comp("cookies.css")
+                comp("contact.css")
             ],
 
             "technologies.build.css": [
