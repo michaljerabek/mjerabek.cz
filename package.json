@@ -5,7 +5,7 @@
   "main": "",
   "dependencies": {},
   "devDependencies": {
-    "critical": "^0.9.1",
+    "critical": "^5.0.3",
     "csvjson": "^5.1.0",
     "fse": "^4.0.1",
     "gulp": "^3.9.1",
